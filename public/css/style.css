@@ -262,4 +262,36 @@ h6{
     font-size: 1rem;
     font-weight: 400;
 }
+/* =================== TABLAS =================== */
+/* hola*/
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Manrope';
+}
+.header_table {
+    max-height: 100vh;
+    width: 100%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+}
 
+.header_table thead th {
+    position: sticky;
+    top: 0;
+    background-color: #085262;
+    color: #e6e7e8;
+    font-size: 1.125rem;
+}
+th,td {
+    border-bottom: 1px solid #000000;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-align: center;
+    background-color: #E9E8EB;
+}
+tr:hover td {
+    color: #3a42b4;
+    cursor: pointer;
+    background-color: #ffffff;
+}
