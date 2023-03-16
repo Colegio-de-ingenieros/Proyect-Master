@@ -41,6 +41,13 @@ body{
     padding: 0 16px;
 }
 
+.body2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    padding: 0 16px;
+}
+
+
 /* =================== ENCABEZADOS =================== */
 h1{
     color: var(--color-black);
@@ -223,7 +230,20 @@ h6{
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
+.input-format2{
+    color: var(--color-black);
+    background-color: var(--color-gray);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .input-format:focus{
