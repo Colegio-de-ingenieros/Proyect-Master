@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
 :root{
     --color-primary: #212d6a;
     --color-secondary: #273544;
-    --color-tertiary: #61a8ab;
-    --color-quaternary: #085262;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
 
     --color-white: #ffffff;
     --color-gray: #dfe3e7;
@@ -14,5 +17,122 @@
 
     --color-red: #ff0000;
 
-    --radius: 15px;
+    --radius: .9375rem;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}
+
+body{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    padding: 0 16px;
+}
+
+/* =================== ENCABEZADOS =================== */
+h1{
+    color: var(--color-black);
+    font-size: 96px;
+    font-weight: 800;
+}
+
+h2{
+    color: var(--color-black);
+    font-size: 64px;
+    font-weight: 800;
+}
+
+h3{
+    color: var(--color-black);
+    font-size: 54px;
+    font-weight: 800;
+}
+
+h4{
+    color: var(--color-black);
+    font-size: 40px;
+    font-weight: 800;
+}
+
+h5{
+    color: var(--color-black);
+    font-size: 32px;
+    font-weight: 600;
+}
+
+h6{
+    color: var(--color-black);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+/* =================== SUBTITULOS ============== */
+.subtitulo-1{
+    color: var(--color-black);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.subtitulo-2{
+    color: var(--color-black);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* =================== PARAGRAFOS ============== */
+
+.lead-1{
+    color: var(--color-black);
+    font-size: 32px;
+    font-weight: 400;
+}
+
+/* =================== Leads =================== */
+
+.lead-2{
+    color: var(--color-black);
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* =================== TEXTOS =================== */
+
+.body-1{
+    color: var(--color-black);
+    font-size: 26px;
+    font-weight: 400;
+}
+
+.body-2{
+    color: var(--color-black);
+    font-size: 22px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* =================== LARGE LABELS =================== */
+.label-1{
+    color: var(--color-black);
+    font-size: 1.875rem;
+    font-weight: 600;
+}
+
+.label-2{
+    color: var(--color-black);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.label-3{
+    color: var(--color-black);
+    font-size: 1rem;
+    font-weight: 600;
 }
