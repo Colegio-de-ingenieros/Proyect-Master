@@ -276,6 +276,7 @@ nav ul li ul li a:hover{
         visibility: visible;
         opacity: 1;
     }
+}
     @media screen and (max-width: 650px){
         .header_superior{
             align-items: center;
