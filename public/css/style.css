@@ -265,6 +265,7 @@ h6{
 
 }
 .input-textarea{
+    height: 100px;
     resize: none;
     color: var(--color-black);
     background-color: var(--color-white);
