@@ -38,7 +38,12 @@ html{
 
 body{
     color: var(--color-black);
-    background-color: var(--color-gray);
+    background-color: var(--color-white);
+}
+
+hr{
+    border: 2px solid var(--color-placeholder-1);
+    border-radius: 5px;
 }
 
 .body2{
@@ -162,7 +167,7 @@ body{
     font-weight: 600;
     border-radius: var(--radius-2);
 
-    padding: 10px 20px;
+    padding: 18px 32px;
     border: none;
     background: var(--color-quaternary);
     color: var(--color-white);
@@ -173,7 +178,7 @@ body{
     font-weight: 600;
     border-radius: var(--radius-2);
 
-    padding: 12px 32px;
+    padding: 24px 48px;
     border: none;
     background: var(--color-quaternary);
     color: var(--color-white);
@@ -184,7 +189,7 @@ body{
     font-weight: 600;
     border-radius: var(--radius-2);
 
-    padding: 16px 48px;
+    padding: 30px 60px;
     border: none;
     background: var(--color-quaternary);
     color: var(--color-white);
@@ -201,7 +206,6 @@ body{
     transform: scale(1.1);
 }
 
-
 /* ==================== INPUTS =====================*/
 .inputs{
     display: flex;
@@ -212,21 +216,17 @@ body{
     gap: 16px;
 }
 
-.input-format{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
+.inputs-2{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+    background-color: var(--color-gray);
 }
 
-.input-format2{
+.input-format{
     color: var(--color-black);
     background-color: var(--color-gray);
     border-radius: var(--radius-2);
@@ -238,20 +238,59 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 300ms all;
 }
+
+.input-format-2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
 
     font-size: 1rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(17%, -50%);
-    width: 500px;
-
+    justify-content: center;
+    transition: 300ms all;
 }
-.input-textarea{
+
+.input-format:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    /* transform: scale(1.1); */
+}
+
+.input-format-2:focus{
+    background: var(--color-white);
+    box-shadow: var(--shadow-1);
+    transform: scale(1.1);
+}
+
+.input-format:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format-2:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-format-2::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-textarea-2{
     height: 100px;
     resize: none;
     color: var(--color-black);
@@ -266,23 +305,12 @@ body{
     align-items: center;
     justify-content: center;
     grid-column: span 3;
+    transition: 300ms all;
 }
 
-.input-format:focus{
-    background: var(--color-gray-2);
+.input-textarea-2:focus{
     box-shadow: var(--shadow-1);
-    transition: all 300ms;
-}
-
-.input-format:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.input-format::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
+    transform: scale(1.1);
 }
 /* =================== TABLAS =================== */
 
@@ -325,4 +353,11 @@ tr:hover td {
 
 header{
     box-shadow: var(--shadow-2);
+}
+
+/* ================== SECTION ================ */
+.section-main{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
 }

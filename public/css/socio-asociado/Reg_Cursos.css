@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #273544;
+    --color-secondary: #303a6e;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
+
+    --color-white: #ffffff;
+    --color-gray: #dfe3e7;
+    --color-gray-2: #d6dbe0;
+    --color-black: #000000;
+
+    --color-placeholder-1: #93979b;
+    --color-placeholder-2: #7c838a;
+    --color-placeholder-3: #474a57;
+
+    --color-red: #ff0000;
+
+    --radius-1: 15px;
+    --radius-2: 8px;
+
+    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .75rem;
+}
+
+.section-main{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.formulario-cursos {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-gap: 20px;
+}

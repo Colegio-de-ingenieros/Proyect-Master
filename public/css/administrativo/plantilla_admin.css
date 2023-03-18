@@ -1,14 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
 body{
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     background-color: #dfe3e7;
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Manrope', sans-serif;
+    font-family: 'Inter', sans-serif;
     text-decoration: none;
 }
 h1.nombre_Ventana{
@@ -48,8 +47,6 @@ header{
 .logo:hover{
     cursor: pointer;
 }
-
-
 
 /*Barra de busqueda*/
 .input-buscar{

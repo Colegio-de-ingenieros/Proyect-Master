@@ -145,7 +145,7 @@ header{
 
 .dropdown-link > a{
     display: flex;
-    background-color: #fff;
+    background-color: var(--color-gray-3);
     color: var(--color-primary);
     padding: .5rem 1rem;
     font-size: .9rem;

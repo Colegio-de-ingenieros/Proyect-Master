@@ -7,8 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registro de cursos - CISCIG</title>
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/menu.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cursos.css">
+
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
@@ -133,7 +136,41 @@
   </header>
 
   <main>
+    <section class="section-main">
+      <h4 class="h4">Registro de cursos</h4>
+      <hr>
 
+      <div class="formulario-cursos">
+
+        <div class="campo">
+          <label for="clave-curso" class="label-3 clave">Clave del curso</label>
+          <input type="text" name="clave-curso" id="clave-curso" class="input-format" placeholder="Clave del curso">
+        </div>
+
+        <div class="campo">
+          <label for="nombre-curso" class="label-3 nombre">Nombre del curso</label>
+          <input type="text" name="nombre-curso" id="nombre-curso" class="input-format" placeholder="Nombre del curso">
+        </div>
+
+        <div class="campo">
+          <label for="objetivo" class="label-3 objetivo">Objetivo</label>
+          <input type="textarea" name="objetivo" id="objetivo" class="input-format" placeholder="Ingresa tu texto aquí...">
+        </div>
+
+        <div class="campo">
+          <label for="subtemas" class="label-3 subtemas">Subtemas</label>
+          <input type="textarea" name="subtemas" id="subtemas" class="input-format" placeholder="Ingresa tu texto aquí...">
+        </div>
+
+        <div class="campo">
+          <label for="duración" class="label-3 duracion">Duracion del curso</label>
+          <input type="text" name="duración" id="duración" class="input-format" placeholder="Ingrese la duración...">
+      </div> 
+
+      <div class="campo">
+        <button type="button" class="btn-small btn">Registrar</button>
+      </div>
+    </section>
   </main>
 </body>
 
