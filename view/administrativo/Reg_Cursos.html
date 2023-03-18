@@ -33,7 +33,6 @@
       </div>
 
       <div class="derecha">
-        <i class="fas fa-search"></i>
         <input type="text" class="input-format buscador" name="busqueda" id="busqueda" placeholder="Buscar...">
         <div class="buttons">
           <input type="button" value="Cerrar sesión" class="btn-small btn">
@@ -235,14 +234,14 @@
       <div class="formulario-cursos">
 
         <div class="campo">
-          <label for="clave-curso" class="label-3 clave">Clave del curso</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso">
-        </div>
-
-        <div class="campo">
           <label for="nombre-curso" class="label-3 nombre">Nombre del curso</label>
           <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2"
             placeholder="Nombre del curso">
+        </div>
+
+        <div class="campo">
+          <label for="clave-curso" class="label-3 clave">Clave del curso</label>
+          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso">
         </div>
 
         <div class="campo">
@@ -252,19 +251,34 @@
         </div>
 
         <div class="campo">
-          <label for="subtemas" class="label-3 subtemas">Subtemas</label>
-          <input type="textarea" name="subtemas" id="subtemas" class="input-format-2"
-            placeholder="Ingresa tu texto aquí...">
-        </div>
-
-        <div class="campo">
           <label for="duración" class="label-3 duracion">Duracion del curso</label>
           <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración...">
         </div>
 
+      </div>
+
+      <hr class="hr-2">
+
+      <div class="titulos-registrados">
+        <p class="subtitulo-2">Temas registrados</p>
+        <p class="body-1" id="1" >Sin temas registrados</p>
+      </div>
+
+      <div class="formulario-titulos">
+        
         <div class="campo">
-          <button type="button" class="btn-small btn">Registrar</button>
+          <label for="titulo-curso" class="label-3 titulo-curso">Titulo del tema</label>
+          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el costo...">
         </div>
+
+        <div class="campo">
+          <label for="Subtitulo-curso" class="label-3 titulo-curso">Subtitulo del tema</label>
+          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el costo...">
+        </div>
+
+      </div>
+
+      
     </section>
   </main>
 </body>

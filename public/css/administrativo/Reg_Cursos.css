@@ -32,6 +32,7 @@
     font-family: 'Inter', sans-serif;
     
 }
+
 body{
     background-color: var(--color-gray);
 }
@@ -57,10 +58,28 @@ main{
     margin-bottom: 1rem;
 }
 
-.formulario-cursos {
+.formulario-cursos, .formulario-titulos{
     margin-top: 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-gap: 20px;
+}
+
+.input-format-2{
+    width: 80%;
+}
+
+.hr-2{
+    margin-top: 1rem;
+    margin-bottom: 0.2rem;
+    opacity: 0.2;
+}
+
+.subtitulo-2{
+    font-size: 1.3rem;
+}
+
+.body-1{
+    font-size: 0.8rem;
 }
