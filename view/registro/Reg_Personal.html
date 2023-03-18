@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrate</title>
+    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../../public/css/registro/plantilla_registro.css">
+	<link rel="stylesheet" href="../../public/css/style.css">
+</head>
+<body>
+    <header>
+		<div class="header_superior">
+			<div class="titulo">
+                
+                <div class = "nombre_ventana">
+                    <h1 class = "nombre_Ventana">Menu registro</h1>
+                </div>
+
+			</div>
+
+			
+		</div>
+
+		<!-- Menu Desplegable -->
+        <div class="container_menu" >
+            
+                <div class="menu">
+                    <input type="checkbox" id="check__menu">
+                    <label id="label__check" for="check__menu">
+                        <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+                    </label>
+                    <nav>
+                        <ul>
+                            <li class="logo_menu"><a href="#">
+                                <img class="logo_ciscig" src="../../public/css/administrativo/LOGO_CISCIG.png" alt="">
+                            </a>
+                            </li>
+                            
+                            <li>
+                                <a href="Reg_Personal.html">
+                                    <i class="fa-solid fa-user"></i>
+                                    Personal
+                                </a>
+    
+                                
+                            </li>
+    
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-users"></i>
+                                    Empresarial
+                                </a>
+    
+                                
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    Login
+                                </a>
+    
+                                
+                            </li>
+    
+                            
+                        </ul>
+                    </nav>
+                </div>
+            
+        </div>
+	</header>
+	<div class="contePlantilla" >
+		<h3>Registro personal </h3>
+		<br>
+        <p class="subtitulo-1"> Datos personales</p>
+        <hr size="1px"/>
+		<div class="contenedor-formulario">
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Nombre(s)</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format" placeholder="Ingrese su texto aquí..." id="nomPerso" name="nomPerso" required maxlength="40">
+				</div>
+			</div>
+
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Apellido paterno</p>
+				</div>
+				<div class="input-form">
+					<input type="email" class="input-format" placeholder="someone@example.com" id="apePPerso" name="apePPerso" required maxlength="20">
+				</div>
+			</div>
+
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Apellido materno</p>
+				</div>
+				<div class="input-form">
+					<input type="password" class="input-format"placeholder="Password" id="apeMPerso" name="apeMPerso" required maxlength="20">
+				</div>
+			</div>
+
+            <div class="grupo-input3">
+				<div class="label-form">
+					<p class="label-2">Correo</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="correoPerso" name="correoPerso" required maxlength="40">
+				</div>
+			</div>
+
+			<div class="grupo-input3">
+				<div class="label-form">
+					<p class="label-2">Cedula</p>
+				</div>
+				<div class="input-form">
+					<input type="email" class="input-format" placeholder="someone@example.com" id="cedulaPerso" name="cedulaPerso" required maxlength="8">
+				</div>
+			</div>
+
+			<div class="grupo-input3">
+				<div class="label-form">
+					<p class="label-2">Telefono fijo</p>
+				</div>
+				<div class="input-form">
+					<input type="password" class="input-format"placeholder="Password" id="telFPerso" name="telFPerso" required maxlength="10">
+				</div>
+			</div>
+
+            <div class="grupo-input4">
+				<div class="label-form">
+					<p class="label-2">Telefono movil</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="telMPerso" name="telMPerso" required maxlength="10">
+				</div>
+			</div>
+
+            <div class="grupo-input4">
+				<div class="label-form">
+					<p class="label-2">Fecha de nacimiento</p>
+				</div>
+				<div class="input-form">
+					<input type="date" class="input-format"placeholder="Ingrese su texto aquí..." id="fechaNacPerso" name="fechaNacPerso" required maxlength="20">
+				</div>
+			</div>
+
+
+			<div class="grupo-input4">
+				<div class="label-form">
+					<p class="label-2">Label nombre</p>
+				</div>
+				<div class="input-form">
+					<textarea type="text" class="input-textarea" placeholder="Ingrese el texto aquí..."></textarea>
+				</div>
+			</div>
+		</div>
+
+        <br>
+        <p class="subtitulo-1"> Dirección</p>
+        <hr size="1px"/>
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Codigo postal</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="cpPerso" name="cpPerso" required maxlength="5">
+				</div>
+            </div>
+
+            <div class="grupo-input4">
+				<div class="label-form">
+					<p class="label-2">Calle</p>
+				</div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="callePerso" name="callePerso" required maxlength="100">
+                    <option value="1">Participante</option>
+                    <option value="2">Ponente</option>
+                    </select>
+                </div>
+			</div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Colonia</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
+                    <option value="1">Participante</option>
+                    <option value="2">Ponente</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Ciudad</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ciudadPerso" name="ciudadPerso" required maxlength="50">
+                    <option value="1">Participante</option>
+                    <option value="2">Ponente</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Estado</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="estadoPerso" name="estadoPerso" required maxlength="50">
+                    <option value="1">Participante</option>
+                    <option value="2">Ponente</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <br>
+        <p class="subtitulo-1"> Educación</p>
+        <hr size="1px"/>
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Certificaciones</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="nomCerPerso" name="nomCerPerso" required maxlength="60">
+				</div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Maximo grado de estudios</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                    <option value="1">Participante</option>
+                    <option value="2">Ponente</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">¿La pasantia se relaciona con tecnologias?</p>
+                </div>
+                <div class="input-form">
+                    <input type="checkbox"  name="pasantiaPer1" id="pasantiaPer1">&nbsp;&nbsp;&nbsp;Si<br>
+                    <input type="checkbox"  class="case" name="pasantiaPer2" id="pasantiaPer2">&nbsp;&nbsp;&nbsp;No
+                </div>
+            </div>
+        </div>
+        
+        <br>
+        <p class="subtitulo-1"> Datos laborales</p>
+        <hr size="1px"/>
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Empresa donde labora</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="nomEmpPerso" name="nomEmpPerso" required maxlength="100">
+				</div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Puesto</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="puestoEmpPerso" name="puestoEmpPerso" required maxlength="50">
+				</div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Correo laboral</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="correoEmpPerso" name="correoEmpPerso" required maxlength="40">
+				</div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Telefono de oficina</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="telFEmpPerso" name="telFEmpPerso" required maxlength="10">
+				</div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Funciones</p>
+                </div>
+                <div class="input-form">
+					<input type="text" class="input-format"placeholder="Ingrese su texto aquí...">
+				</div>
+            </div>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">¿Alguna vez ha sido condenado por algún delito grave o un delito menor? (puede ser fraude, soborno, corrupción, robo, malversación, captación sexual, o cualquier delito que pone en tela de juicio la integridad o juicio, etc.)</p>
+                </div>
+                <div class="input-form">
+                    <input type="checkbox"  name="antecedente1" id="antecedente1">&nbsp;&nbsp;&nbsp;Si<br>
+                    <input type="checkbox"  class="case" name="antecedente2" id="antecedente2">&nbsp;&nbsp;&nbsp;No
+                </div>
+            </div>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">Certifico que la información proporcionada es verídica y correcta hasta mi más leal saber y entender. Acepto que se incluyan mis datos personales en de “Colegio de Ingenieros en Sistemas Computacionales para la Seguridad de Información, Control Interno y Gobernanza, A.C.” Me obligo a apegarme y cumplir cabalmente con los Estatutos y el Código de Ética del Colegio.</p>
+                </div>
+                <div class="input-form">
+                    <input type="checkbox"  name="veridico1" id="veridico1">&nbsp;&nbsp;&nbsp;Si<br>
+                    <input type="checkbox"  class="case" name="veridico2" id="veridico2">&nbsp;&nbsp;&nbsp;No
+                </div>
+            </div>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">Aviso de privacidad</p>
+                </div>
+                <div class="input-form">
+                    <input type="checkbox"  name="aviso1" id="aviso1">&nbsp;&nbsp;&nbsp;Estoy de acuerdo con el aviso de privacidad<br>
+                </div>
+            </div>
+
+        <div class="boton_registrar">
+            <button class="btn-medium btn">Registrar</button>
+        </div>
+		
+    </div>
+</body>
+</html>
