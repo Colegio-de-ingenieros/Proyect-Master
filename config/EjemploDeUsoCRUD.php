@@ -1,7 +1,7 @@
 <?php
 
-    /* include_once("CRUD_bd_general.php");
-    $base = new CRUD_general();
+    /* include_once("Crud_bd.php");
+    $base = new Crud_bd();
     $base->conexion_bd();
 
     // $sql = "INSERT INTO alunmos (nombre,paterno,materno,semestre,no_control,correo,telefono) VALUES(:nom, :apep, :apem, :se,:con, :correo, :tele)";
@@ -22,8 +22,8 @@
     }
     $base->cerrar_conexion(); */
     
-    /*include_once("CRUD_bd_general.php");
-    $perro=new CRUD_general();
+    /*include_once("Crud_bd.php");
+    $perro=new Crud_bd();
     $perro->conexion_bd();
 
     $consulta="SELECT * FROM evento,alumnos";
@@ -48,7 +48,7 @@
      */ 
 
      /*   Ejemplo nuevo
-    $base = new CRUD_general();
+    $base = new Crud_bd();
     $base->conexion_bd();
     $resultado=$base->mostrar("SELECT * FROM estados");
     var_dump($resultado);
@@ -62,7 +62,7 @@
 
     /*
     ejemplo con fechas
-     $base = new CRUD_general();
+     $base = new Crud_bd();
     $base->conexion_bd();
     $fecha=date("Y-m-d");
     $sql = "INSERT INTO proyectos (IdPro,NomProyecto,IniPro,FinPro,ObjPro,MontoPro,EstatusPro) VALUES(:id,:nom,:ini,:fin,:obj,:monto,:estatus)";
