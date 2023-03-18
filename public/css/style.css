@@ -265,7 +265,7 @@ hr{
 .input-format-2:focus{
     background: var(--color-white);
     box-shadow: var(--shadow-1);
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .input-format:focus::placeholder{

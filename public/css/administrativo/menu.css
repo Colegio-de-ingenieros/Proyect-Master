@@ -50,6 +50,39 @@ header{
     box-shadow: var(--shadow-1);
 }
 
+.superior{
+    background:var(--color-primary);    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.izquierda{
+    display: flex;
+    align-items: center;
+}
+
+.h3{
+    color: var(--color-white);
+    font-size: 2.3rem;
+}
+
+.logo{
+    filter: grayscale(100%) brightness(1100%);
+}
+
+.derecha{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.buscador{
+    height: 40px;
+    margin-right: 1rem;
+}
+
 .overlay{
     position: absolute;
     width: 100%;
@@ -60,8 +93,8 @@ header{
 }
 
 .container{
-    max-width: 85rem;
-    padding: 0 2rem;
+    max-width: 105rem;
+    padding: 0 0.5rem;
     margin: 0 auto;
     display: flex;
     position: relative;
@@ -114,7 +147,7 @@ header{
 .nav-link > a{
     line-height: 3rem;
     color: var(--color-primary);
-    padding: 0 .8rem;
+    padding: 0.5rem;
     letter-spacing: 1px;
     font-size: 1.125rem;
     display: flex;
