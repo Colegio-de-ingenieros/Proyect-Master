@@ -6,6 +6,8 @@
     --color-quaternary: #61a8ab;
     --color-quinary: #085262;
 
+    --color-header:#e3e3e3;
+
     --color-primary-transparent: rgba(39, 53, 68, 0.5);
     --color-secondary-transparent: rgba(48, 58, 110, 0.5);
     --color-tertiary-transparent: rgba(63, 69, 82, 0.5);
@@ -41,7 +43,7 @@ a{
 header{
     position: sticky;
     top: 0px;
-    background:var(--color-gray-3);
+    background:var(--color-header);
     width: 100%;
     z-index: 1000;
 }
@@ -145,7 +147,7 @@ header{
 
 .dropdown-link > a{
     display: flex;
-    background-color: var(--color-gray-3);
+    background-color: var(--color-gray-2);
     color: var(--color-primary);
     padding: .5rem 1rem;
     font-size: .9rem;
@@ -173,7 +175,7 @@ header{
     height: 11px;
     top: -5.5px;
     left: 32px;
-    background-color: #fff;
+    background-color: var(--color-gray-2);
     transform: rotate(45deg);
     cursor: pointer;
     transition: .3s;
