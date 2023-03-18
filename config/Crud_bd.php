@@ -42,7 +42,7 @@ class Crud_bd{
          */
         
         try{
-
+            $this->conexion->beginTransaction();
             if($arrayAsociativo == null){
                 $sentencia = $this->conexion->query($consultaEscrita);
             }else{
@@ -50,17 +50,20 @@ class Crud_bd{
                 $sentencia->execute($arrayAsociativo);
         
             }
-            
+            $this->conexion->commit();
             $filas=$sentencia->fetchAll();
             $sentencia = null;
     
             #var_dump($filas);
             return $filas;
 
-        } catch (Exception $e) {
-
-            die("Error:".$e->getMessage());
-            echo "Linea del error " . $e->getLine();
+        }catch (\Exception $e) {
+            if ($this->conexion->inTransaction()) {
+                $this->conexion->rollback();
+                
+                echo "rollback";
+            }
+            throw $e;
         }
     }
 
@@ -70,15 +73,21 @@ class Crud_bd{
          * se colocan en el array asociativo 
          */
         try{
+            $this->conexion->beginTransaction(); 
             $resultados=$this->conexion->prepare($consultaEscrita);
             $resultados->execute($arrayAsociativo);
+            $this->conexion->commit();
             $resultados = null;
             
             return true;
-        }catch (Exception $e) {
-
-            die("Error:".$e->getMessage());
-            echo "Linea del error " . $e->getLine();
+        }catch (\Exception $e) {
+            if ($this->conexion->inTransaction()) {
+                $this->conexion->rollback();
+              
+                echo "rollback";
+            }
+            throw $e;
+            
         }
        
 
