@@ -1,8 +1,9 @@
 <?php
 
-    /* include_once("Crud_bd.php");
+    include_once("Crud_bd.php");
     $base = new Crud_bd();
     $base->conexion_bd();
+    $fecha = date('y-m-d');
 
     // $sql = "INSERT INTO alunmos (nombre,paterno,materno,semestre,no_control,correo,telefono) VALUES(:nom, :apep, :apem, :se,:con, :correo, :tele)";
     // $base->insertar_eliminar_actualizar($sql, [":nom"=>"maria", ":apep"=>"llamas", ":apem"=>"Marquez", ":se"=>"2",":con"=>"Z20020020", ":correo"=>"solo@gmail.com",":tele"=>"4371023438"]);
@@ -11,8 +12,20 @@
     // $base->insertar_eliminar_actualizar("DELETE FROM datos_usuarios WHERE id=:id", [":id"=>"4"]);
     // $base->mostrar("SELECT * FROM datos_usuarios where id=:id", [":id"=>"1"]);
     
-    $sql = "INSERT INTO docentes (nombre,paterno,materno,funcion,correo,telefono,rfc,titulo) VALUES(:nom,:apep,:apem,:funcion,:correo,:tele,:rfc,:titulo)";
-    $parametros = [":nom"=>"Arturo",":apep"=>"de leon",":apem"=>"Montero",":funcion"=>"Admin",":correo"=>"solo@gmail.com",":tele"=>"2341567879",":rfc"=>"ae46dhho09876",":titulo"=>"Inge"];
+    /*$q1 = "INSERT INTO proyectos (IdPro, NomProyecto, IniPro, FinPro, ObjPro, MontoPro, EstatusPro)
+    VALUES(:id, :nom, :inicio, :fin, :obj, :monto, :estatus)";
+
+    $a1 = [":id"=>'PCRUD2', ":nom"=>'prueba de insersión arreglos', ":inicio"=>$fecha, ":fin"=>$fecha, 
+    ":obj"=>'Verificar que se pueden hacer varias consultas en una sola transacción', ":monto"=>100, ":estatus"=>1];
+
+    $q2 = "INSERT INTO proyectos (IdPro, NomProyecto, IniPro, FinPro, ObjPro, MontoPro, EstatusPro)
+        VALUES(:id, :nom, :inicio, :fin, :obj, :monto, :estatus)";
+
+    $a2 = [":id" => 'PCRUD3', ":nom" => 'prueba de insersión arreglos2', ":inicio" => $fecha, ":fin" => $fecha,
+        ":obj" => 'Verificar que se pueden hacer varias consultas en una sola transacción', ":monto" => 100, ":estatus" => 1];
+
+    $sql = [$q1, $q2];
+    $parametros = [$a1, $a2];
     $resultado = $base->insertar_eliminar_actualizar($sql,$parametros);
 
     if($resultado){
@@ -20,7 +33,7 @@
     }else{
         echo "No se pudo insertar";
     }
-    $base->cerrar_conexion(); */
+    $base->cerrar_conexion(); 
     
     /*include_once("Crud_bd.php");
     $perro=new Crud_bd();
