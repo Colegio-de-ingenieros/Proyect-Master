@@ -22,6 +22,7 @@
     --radius-2: 8px;
 
     --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
 *{
@@ -38,7 +39,6 @@ html{
 body{
     color: var(--color-black);
     background-color: var(--color-gray);
-    padding: 0 16px;
 }
 
 .body2{
@@ -47,39 +47,38 @@ body{
     padding: 0 16px;
 }
 
-
 /* =================== ENCABEZADOS =================== */
-h1{
+.h1{
     color: var(--color-black);
     font-size: 96px;
     font-weight: 800;
 }
 
-h2{
+.h2{
     color: var(--color-black);
     font-size: 64px;
     font-weight: 800;
 }
 
-h3{
+.h3{
     color: var(--color-black);
     font-size: 54px;
     font-weight: 800;
 }
 
-h4{
+.h4{
     color: var(--color-black);
     font-size: 40px;
     font-weight: 800;
 }
 
-h5{
+.h5{
     color: var(--color-black);
     font-size: 32px;
     font-weight: 600;
 }
 
-h6{
+.h6{
     color: var(--color-black);
     font-size: 30px;
     font-weight: 500;
@@ -98,15 +97,13 @@ h6{
     font-weight: 500;
 }
 
-/* =================== PARAGRAFOS ============== */
+/* =================== LEADS ============== */
 
 .lead-1{
     color: var(--color-black);
     font-size: 32px;
     font-weight: 400;
 }
-
-/* =================== Leads =================== */
 
 .lead-2{
     color: var(--color-black);
@@ -149,23 +146,14 @@ h6{
 }
 
 /* =================== BOTONES =================== */
-.buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    gap: 16px;
-}
-
 .btn-small{
     font-size: 1rem;
     font-weight: 600;
     border-radius: var(--radius-2);
 
-    padding: 6px 12px;
+    padding: 12px 24px;
     border: none;
-    background: var(--color-primary);
+    background: var(--color-quaternary);
     color: var(--color-white);
 }
 
@@ -176,7 +164,7 @@ h6{
 
     padding: 10px 20px;
     border: none;
-    background: var(--color-primary);
+    background: var(--color-quaternary);
     color: var(--color-white);
 }
 
@@ -187,7 +175,7 @@ h6{
 
     padding: 12px 32px;
     border: none;
-    background: var(--color-primary);
+    background: var(--color-quaternary);
     color: var(--color-white);
 }
 
@@ -198,17 +186,23 @@ h6{
 
     padding: 16px 48px;
     border: none;
-    background: var(--color-primary);
+    background: var(--color-quaternary);
     color: var(--color-white);
 }
 
-.btn:hover{
-    background: var(--color-secondary);
-    transition: 300ms all;
-    box-shadow: var(--shadow-1);
+.btn{
+    transition: 0.3s;
 }
 
-/* ====================  LINKS =====================*/
+.btn:hover{
+    background: var(--color-primary);
+    transition: 300ms all;
+    box-shadow: var(--shadow-1);
+    transform: scale(1.1);
+}
+
+
+/* ==================== INPUTS =====================*/
 .inputs{
     display: flex;
     flex-direction: column;
@@ -245,13 +239,6 @@ h6{
     align-items: center;
     justify-content: center;
 }
-.input-busca{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
 
     font-size: 1rem;
     display: flex;
@@ -297,46 +284,14 @@ h6{
     font-size: 1rem;
     font-weight: 400;
 }
-.input-busca:focus{
-    background: var(--color-gray-2);
-    box-shadow: var(--shadow-1);
-    transition: all 300ms;
-}
-
-.input-busca:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.input-busca::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
-.input-textarea:focus{
-    background: var(--color-gray-2);
-    box-shadow: var(--shadow-1);
-    transition: all 300ms;
-}
-
-.input-textarea:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.input-textarea::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
-
 /* =================== TABLAS =================== */
-/* hola*/
+
 table{
     width: 100%;
     border-collapse: collapse;
-    font-family: 'Manrope';
+    font-family: '';
 }
+
 .header_table {
     max-height: 100vh;
     width: 100%;
@@ -351,21 +306,23 @@ table{
     color: #e6e7e8;
     font-size: 1.125rem;
 }
+
 th,td {
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
     text-align: center;
-    background-color: #dfe3e7;
+    background-color: #E9E8EB;
 }
+
 tr:hover td {
     color: #3a42b4;
     cursor: pointer;
     background-color: #ffffff;
 }
-@media screen and (max-width: 650px){
-    .header_table{
-        align-items: center;
-        position: sticky;
-    }
+
+/* =================== NAV =================== */
+
+header{
+    box-shadow: var(--shadow-2);
 }
