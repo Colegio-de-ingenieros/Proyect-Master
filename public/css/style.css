@@ -245,6 +245,40 @@ h6{
     align-items: center;
     justify-content: center;
 }
+.input-busca{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(17%, -50%);
+    width: 500px;
+
+}
+.input-textarea{
+    resize: none;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 3;
+}
 
 .input-format:focus{
     background: var(--color-gray-2);
@@ -262,6 +296,39 @@ h6{
     font-size: 1rem;
     font-weight: 400;
 }
+.input-busca:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    transition: all 300ms;
+}
+
+.input-busca:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-busca::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+.input-textarea:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    transition: all 300ms;
+}
+
+.input-textarea:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-textarea::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 /* =================== TABLAS =================== */
 /* hola*/
 table{
@@ -288,10 +355,16 @@ th,td {
     padding: 10px 20px;
     font-size: 15px;
     text-align: center;
-    background-color: #E9E8EB;
+    background-color: #dfe3e7;
 }
 tr:hover td {
     color: #3a42b4;
     cursor: pointer;
     background-color: #ffffff;
+}
+@media screen and (max-width: 650px){
+    .header_table{
+        align-items: center;
+        position: sticky;
+    }
 }

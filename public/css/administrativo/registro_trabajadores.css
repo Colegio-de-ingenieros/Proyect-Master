@@ -112,11 +112,19 @@ h3{
     transform: translate(76%,-634.5%);
     padding: 20px;
 }
+.etiqueta_ver_contraseña{
+    color: var(--color-black);
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    transform: translate(72.5%,-634.5%);
+    padding: 20px;
+}
 /*---------------------------- Sesión contenedores ----------------------*/
 .contenedor_global{
     background: #e8ebea;
     width: 800px;
-    height: 500px;
+    height: 700px;
     justify-content: center;
     margin: 0 auto;  
 }
@@ -239,7 +247,21 @@ h3{
 
     transform: translate(224%,-1010.5%); 
 }
+.caja_contrasena_verificada{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
 
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: translate(224%,-1010.5%); 
+}
 /*--------------------------------- Sección Botones ---------------------------------- */
 .boton_registrar{
     font-size: 1.25rem;
