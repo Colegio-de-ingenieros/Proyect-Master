@@ -1,0 +1,24 @@
+body{
+    background-color: var(--color-gray);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: .75rem;
+}
+
+.section-main{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.cabezera{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}

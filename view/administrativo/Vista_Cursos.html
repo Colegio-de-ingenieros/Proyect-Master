@@ -5,34 +5,63 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de cursos - CISCIG</title>
+  <title>Vista de cursos - CISCIG</title>
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="../../public/css/style.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/menu.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/menu.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Cursos.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
   <header>
+    <!-- Seccion superior -->
+    <div class="superior">
+      <div class="izquierda">
+        <div class="logo-container">
+          <img src="../../public/img/ciscigCompleto.png" alt="" class="logo">
+        </div>
+        <h3 class="h3">Titulo de la ventana</h3>
+      </div>
+
+      <div class="derecha">
+        <input type="text" class="input-format buscador" name="busqueda" id="busqueda" placeholder="Buscar...">
+        <div class="buttons">
+          <input type="button" value="Cerrar sesión" class="btn-small btn">
+        </div>
+      </div>
+    </div>
+
+    <!-- Seccion inferior -->
     <div class="container">
       <input type="checkbox" name="" id="check">
 
-      <div class="logo-container">
-        <img src="../../public/img/ciscigCompleto.png" alt="" class="logo">
-      </div>
 
       <div class="nav-btn">
         <div class="nav-links">
           <ul>
-            <!-- Cursos -->
+            <!-- Usuarios -->
             <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Cursos<i class="fas fa-caret-down"></i></a>
+              <a href="#">Usuarios<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Trabajadores -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Trabajadores<i class="fas fa-caret-down"></i></a>
               <div class="dropdown">
                 <ul>
                   <li class="dropdown-link">
@@ -45,24 +74,9 @@
                 </ul>
               </div>
             </li>
-            <!-- Cuotas -->
+            <!-- Certificaciones -->
             <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Cuotas<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Registrar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Bolsa de trabajo -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Bolsa de trabajo<i class="fas fa-caret-down"></i></a>
+              <a href="#">Certificaciones<i class="fas fa-caret-down"></i></a>
               <div class="dropdown">
                 <ul>
                   <li class="dropdown-link">
@@ -75,9 +89,54 @@
                 </ul>
               </div>
             </li>
-            <!-- Servicios -->
+            <!-- Cursos -->
             <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Servicios<i class="fas fa-caret-down"></i></a>
+              <a href="#">Cursos<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Solicitar</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Proyectos -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Proyectos<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Solicitar</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Instructores -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Instructores<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Solicitar</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Seguimiento -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Seguimiento<i class="fas fa-caret-down"></i></a>
               <div class="dropdown">
                 <ul>
                   <li class="dropdown-link">
@@ -105,13 +164,46 @@
                 </ul>
               </div>
             </li>
-
+            <!-- Reportes -->
             <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Mi perfil<i class="fas fa-caret-down"></i></a>
+              <a href="#">Reportes<i class="fas fa-caret-down"></i></a>
               <div class="dropdown">
                 <ul>
                   <li class="dropdown-link">
-                    <a href="#">Datos generales</a>
+                    <a href="#">Solicitar</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Servicios -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Servicios<i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Solicitar</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Visualizar</a>
+                  </li>
+                  <div class="arrow"></div>
+                </ul>
+              </div>
+            </li>
+            <!-- Bolsa de trabajo -->
+            <li class="nav-link label-1" style="--i: .85s">
+              <a href="#">Bolsa <i class="fas fa-caret-down"></i></a>
+              <div class="dropdown">
+                <ul>
+                  <li class="dropdown-link">
+                    <a href="#">Ofertas de trabajo</a>
+                  </li>
+                  <li class="dropdown-link">
+                    <a href="#">Mi CV</a>
                   </li>
                   <div class="arrow"></div>
                 </ul>
@@ -123,10 +215,6 @@
 
       </div>
 
-      <div class="buttons">
-        <input type="button" value="Cerrar sesión" class="btn-small btn">
-      </div>
-
       <div class="hamburger-menu-container">
         <div class="hamburger-menu">
           <div></div>
@@ -135,44 +223,72 @@
     </div>
   </header>
 
+
   <main>
     <section class="section-main">
+
       <div class="cabezera">
-        <h4 class="h4">Registro de cursos</h4>
-      <input type="search" class="input-format" placeholder="Busca aquí...">
+        <h4 class="h4">Vista de cursos</h4>
+
+        <div class="grupo-input">
+          <div class="input-form-2">
+            <input type="text" class="input-format-2" placeholder="Busca algo en la tabla...">
+          </div>
+        </div>
       </div>
+
       <hr>
 
-      <div class="formulario-cursos">
-
-        <div class="campo">
-          <label for="clave-curso" class="label-3 clave">Clave del curso</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format" placeholder="Clave del curso">
-        </div>
-
-        <div class="campo">
-          <label for="nombre-curso" class="label-3 nombre">Nombre del curso</label>
-          <input type="text" name="nombre-curso" id="nombre-curso" class="input-format" placeholder="Nombre del curso">
-        </div>
-
-        <div class="campo">
-          <label for="objetivo" class="label-3 objetivo">Objetivo</label>
-          <input type="textarea" name="objetivo" id="objetivo" class="input-format" placeholder="Ingresa tu texto aquí...">
-        </div>
-
-        <div class="campo">
-          <label for="subtemas" class="label-3 subtemas">Subtemas</label>
-          <input type="textarea" name="subtemas" id="subtemas" class="input-format" placeholder="Ingresa tu texto aquí...">
-        </div>
-
-        <div class="campo">
-          <label for="duración" class="label-3 duracion">Duracion del curso</label>
-          <input type="text" name="duración" id="duración" class="input-format" placeholder="Ingrese la duración...">
-      </div> 
-
-      <div class="campo">
-        <button type="button" class="btn-small btn">Registrar</button>
+      <div class="contenedor-formulario">
       </div>
+      
+      <div class="table">
+
+        <div class="header_table">
+          <table>
+            <thead>
+              <tr>
+                <th>Clave</th>
+                <th>Nombre</th>
+                <th>Duración</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>0001</td>
+                <td>Python para principiantes</td>
+                <td>200 hrs</td>
+                <td>
+                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="#">Eliminar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>0002</td>
+                <td>C++ desde 0 hasta master</td>
+                <td>220 hrs</td>
+                <td>
+                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="#">Eliminar</a>
+                </td>
+              </tr>
+              <tr>
+                <td>0003</td>
+                <td>Java, JavaScript como profesional</td>
+                <td>210 hrs</td>
+                <td>
+                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <a href="#">Eliminar</a>
+                </td>
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+      
     </section>
   </main>
 </body>
