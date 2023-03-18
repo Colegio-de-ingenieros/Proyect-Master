@@ -45,6 +45,14 @@ main{
     width: 80%;
 }
 
+.cabezera{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
 .formulario-cursos {
     margin-top: 10px;
     display: grid;
