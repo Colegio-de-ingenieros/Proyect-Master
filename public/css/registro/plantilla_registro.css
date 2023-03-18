@@ -100,11 +100,6 @@ nav{
     
 }
 
-.nav2{
-    height: 100%;
-    float: right;
-    
-}
 
 nav > ul{
     align-items: center;
@@ -114,11 +109,15 @@ nav > ul{
     display: inline-flex;
 }
 
+
 nav  ul  li{
     height: 100%;
     list-style: none;
     position: relative;
 }
+
+
+
 
 nav > ul > li > a{
     padding: 5px;

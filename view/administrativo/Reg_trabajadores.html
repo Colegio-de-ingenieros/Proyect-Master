@@ -4,38 +4,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantilla contenedor</title>
+    <title>Registro Trabajadores</title>
+    <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/administrativo/registro_trabajadores.css">
 </head>
 <body>
-    <div class="contenedor_global", side="center">
-        <h1>Registro </h1><br>
-        <h3>Datos generales</h3>
-        <hr size="1px" color="Gray"/> 
-        <form method="POST" class="contenedor_elementos">
-            <label class="label-3">RFC</label>
-            <input type="text" class="caja_rfc"  id="caja_rfc" name="caja_rfc" placeholder="Ingresa tu RFC">
-              <label class="etiquetanombre">Nombre</label>
-              <input type="text" class="caja_nombre"  id="caja_nombre" name="caja_nombre" placeholder="Ingresa tu Nombre">
-              <label class="etiqueta_apellido_paterno">Apellido paterno</label>
-              <input type="text" class="caja_apellido_paterno"  id="caja_ap_paterno" name="caja_ap_paterno" placeholder="Ingresa tu Apellido paterno">
-              <label class="etiqueta_apellido_materno">Apellido materno</label>
-              <input type="text" class="caja_apellido_materno"  id="caja_ap_materno" name="caja_ap_materno" placeholder="Ingresa tu Apellido materno">
-              <label class="etiqueta_correo">Correo electrónico</label>
-              <input type="email" class="caja_correo" id="caja_correo" name="caja_correo" placeholder="someone@example.com">
-              <label class="etiqueta_telefono">Teléfono</label>
-              <input type="tel" class="caja_telefono" id="caja_telefono" name="caja_telefono" placeholder="Tel">
-              <label class="etiqueta_contrasena">Contraseña</label>
-              <input type="password" class="caja_contrasena" id="caja_contra" name="caja_contra" placeholder="Password">
-              <label class="etiqueta_ver_contraseña">Verificar contraseña</label>
-              <input type="password" class="caja_contrasena_verificada" id="caja_contra_verificar" name="caja_contra_verificar" placeholder="Password">
-              <button class="boton_registrar">Registrar</button>
-              <button class="boton_modificar">Modificar</button>
-              <button class="boton_eliminar">Eliminar</button>
-              <button class="boton_consultar">Consultar</button>
-            </div>
-        </form>    
+    <div class="contePlantilla" >
+		<h3>Registro </h3>
+		<hr size="1px"/>
+		<br>
+        <p class="subtitulo-1"> Datos generales</p>
+		<div class="contenedor-formulario">
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">RFC</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format"  id="caja_rfc" name="caja_rfc" placeholder="Ingresa tu RFC">
+				</div>
+			</div>
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Nombre</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format"  id="caja_nombre" name="caja_nombre" placeholder="Ingresa tu Nombre">
+				</div>
+			</div>
 
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Apellido paterno</p>
+				</div>
+				<div class="input-form">
+					<input type="text" class="input-format"  id="caja_ap_paterno" name="caja_ap_paterno" placeholder="Ingresa tu Apellido paterno">
+				</div>
+			</div>
+
+			<div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Apellido materno</p>
+				</div>
+				<div class="input-form">
+                    <input type="text" class="input-format"  id="caja_ap_materno" name="caja_ap_materno" placeholder="Ingresa tu Apellido materno">
+				</div>
+			</div>
+            <div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Correo electronico</p>
+				</div>
+				<div class="input-form">
+                    <input type="email" class="input-format" id="caja_correo" name="caja_correo" placeholder="someone@example.com">
+				</div>
+			</div>
+            <div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Teléfono</p>
+				</div>
+				<div class="input-form">
+                    <input type="tel" class="input-format" id="caja_telefono" name="caja_telefono" placeholder="4371002090">
+				</div>
+			</div>
+            <div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Contraseña</p>
+				</div>
+				<div class="input-form">
+                    <input type="password" class="input-format" id="caja_contra" name="caja_contra" placeholder="Password">
+				</div>
+			</div>
+            <div class="grupo-input">
+				<div class="label-form">
+					<p class="label-2">Confirmar contraseña</p>
+				</div>
+				<div class="input-form">
+                    <input type="password" class="input-format" id="caja_contra_verificar" name="caja_contra_verificar" placeholder="Password">
+				</div>
+			</div>
+		</div>
+        <br>
+
+		<div class="boton_registrar">
+			<button class="btn-medium btn">Registrar</button>
+		</div>
+		
     </div>
 </body>
 </html>
