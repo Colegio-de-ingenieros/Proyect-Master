@@ -9,7 +9,7 @@ define("USUARIO", "AdminCISCIG");
 define("PASSWORD", 'ColegioCISCIG2023.');
 
 
-class CRUD_general{
+class Crud_bd{
 
     private $conexion;
 
