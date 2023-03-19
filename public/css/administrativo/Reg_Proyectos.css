@@ -7,7 +7,7 @@
 .label-form{
     padding-bottom: 10px;
 }
-.input-format{
+.input-format-2{
     width: 100%;
 }
 
@@ -29,8 +29,7 @@
     resize: none;
     width: 100%;
     height: 6rem;
-    color: var(--color-black);
-    background-color: var(--color-gray);
+
     border-radius: var(--radius-2);
     padding: 10px 20px;
     border: none;
@@ -44,7 +43,6 @@
 }
 
 .input-textarea:focus{
-    background: var(--color-gray-2);
     box-shadow: var(--shadow-1);
     /* transform: scale(1.1); */
 }
