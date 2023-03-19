@@ -33,7 +33,7 @@
 				<nav>
 					<ul>
                         <li class="logo_menu"><a href="#">
-                            <img class="logo_ciscig" src="../../public/css/administrativo/LOGO_CISCIG.png" alt="">
+                            <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
                         </a>
 						</li>
                         
@@ -178,7 +178,8 @@
 			</div>
 		</div>
 	</header>
-	<div class="contePlantilla" >
+	<form id="formulario">
+		<div class="contePlantilla" >
 		<h3>Registro de certificaciones</h3>
 		<br>
         <p class="subtitulo-1">Datos generales</p>
@@ -189,7 +190,7 @@
 					<p class="label-2">Nombre</p>
 				</div>
 				<div class="input-form">
-					<input type="text" class="input-format"placeholder="Ingrese el nombre aquí">
+					<input type="text" class="input-format"placeholder="Ingrese el nombre aquí" name="inputNombre", id="inputNombre" required>
 				</div>
 			</div>
 
@@ -198,7 +199,7 @@
 					<p class="label-2">Logo</p>
 				</div>
 				<div class="input-form">
-					<input type="file" class="input-format" placeholder="File">
+					<input type="file" class="input-format" placeholder="File"  name="inputLogo", id="inputLogo" required>
 				</div>
 			</div>
 
@@ -207,7 +208,7 @@
 					<p class="label-2">Precio socio/asociado</p>
 				</div>
 				<div class="input-form">
-					<input type="Number" class="input-format"placeholder="Ingrese el precio">
+					<input type="text" class="input-format"placeholder="Ingrese el precio"  name="inputPrecio", id="inputPrecio" required>
 				</div>
 			</div>
 
@@ -216,13 +217,13 @@
 					<p class="label-2">Descripción</p>
 				</div>
 				<div class="input-form">
-					<textarea type="text" class="input-textarea" placeholder="Ingrese la descripción aquí"></textarea>
+					<textarea type="text" class="input-textarea" placeholder="Ingrese la descripción aquí"  name="inputDescripcion", id="inputDescripcion" required></textarea>
 				</div>
 			</div>
 		</div>
         <br>
         <div class="boton_registrar">
-			<button class="btn-medium btn">Registrar</button>
+			<button type="submit" class="btn-medium btn"  name="botonRegistrar", id="botonRegistrar">Registrar</button>
 		</div>
         <br>
             <p class="subtitulo-1">Visualización</p>
@@ -264,5 +265,9 @@
         </div>
         <br><br>
     </div>
+	</form>
+	<script src="js/Vali_Certificaciones.js"></script>
 </body>
+
+<script src="../../controller/administrativo/js/Registro_Certificaciones.js"></script>
 </html>
