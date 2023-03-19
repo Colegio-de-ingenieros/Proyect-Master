@@ -5,12 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vista de cursos - CISCIG</title>
-  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-
+  <title>Vista de cursos - CISICG</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/menu.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -22,208 +20,179 @@
 
 <body>
   <header>
-    <!-- Seccion superior -->
-    <div class="superior">
-      <div class="izquierda">
-        <div class="logo-container">
-          <img src="../../public/img/ciscigCompleto.png" alt="" class="logo">
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <h1 class="nombre_Ventana">Nombre ventana</h1>
         </div>
-        <h3 class="h3">Titulo de la ventana</h3>
+
       </div>
 
-      <div class="derecha">
-        <input type="text" class="input-format buscador" name="busqueda" id="busqueda" placeholder="Buscar...">
-        <div class="buttons">
-          <input type="button" value="Cerrar sesión" class="btn-small btn">
+      <div class="input-buscar">
+        <div class="barra-busqueda">
+          <input type="text" class="input" name="busqueda" id="busqueda" placeholder="Buscar...">
+          <i class="fas fa-search"></i>
         </div>
       </div>
     </div>
 
-    <!-- Seccion inferior -->
-    <div class="container">
-      <input type="checkbox" name="" id="check">
-
-
-      <div class="nav-btn">
-        <div class="nav-links">
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
           <ul>
-            <!-- Usuarios -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Usuarios<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Trabajadores -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Trabajadores<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Registrar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Certificaciones -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Certificaciones<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Ofertas de trabajo</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Mi CV</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Cursos -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Cursos<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Proyectos -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Proyectos<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Instructores -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Instructores<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Seguimiento -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Seguimiento<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Pólizas -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Pólizas<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Reportes -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Reportes<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Servicios -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Servicios<i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Solicitar</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Visualizar</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
-            </li>
-            <!-- Bolsa de trabajo -->
-            <li class="nav-link label-1" style="--i: .85s">
-              <a href="#">Bolsa <i class="fas fa-caret-down"></i></a>
-              <div class="dropdown">
-                <ul>
-                  <li class="dropdown-link">
-                    <a href="#">Ofertas de trabajo</a>
-                  </li>
-                  <li class="dropdown-link">
-                    <a href="#">Mi CV</a>
-                  </li>
-                  <div class="arrow"></div>
-                </ul>
-              </div>
+            <li class="logo_menu"><a href="#">
+                <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+              </a>
             </li>
 
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Individual</a></li>
+                <li><a id="menuSucursal2" href="#">General</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Ofertas</a></li>
+                <li><a id="menuSucursal1" href="#">C.V</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Cerrar sesión
+              </a>
+            </li>
           </ul>
-        </div>
-
-      </div>
-
-      <div class="hamburger-menu-container">
-        <div class="hamburger-menu">
-          <div></div>
-        </div>
+        </nav>
       </div>
     </div>
   </header>
-
-
+  
   <main>
     <section class="section-main">
 
