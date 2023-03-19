@@ -1,3 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+body{
+    font-family: 'Manrope', sans-serif;
+    background-color: #dfe3e7;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+    text-decoration: none;
+}
+h1.nombre_Ventana{
+    color: #FFFF;
+    font-weight: 900;
+    font-size: 48px;
+}
+
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+/*HEADER SUPERIOR*/
+
+.header_superior{
+    background-color: #273645;
+    height: 125px;
+    max-width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+
+}
+.titulo{
+    font-size: 12px;
+    padding: 0px 50px;
+}
+
+.logo{
+    width: 150px;
+}
+.logo:hover{
+    cursor: pointer;
+}
+
+
+
+/*Barra de busqueda*/
+.input-buscar{
+    padding:0 50px 0 50px;
+    display: flex;
+}
+.barra-busqueda{
+    background-color: #fff;
+    width: fit-content;
+    border: 1px solid silver;
+    border-radius: 30px;
+}
+  
+  .input-buscar input {
+    width: 240px;
+    height: 30px;
+    padding: 0 20px;
+    font-size: 12px;
+    color: #222;
+    outline: none;
+    border: 1px solid transparent;
+    border-radius: 30px;
+  }
+
+/*Barra Menu*/
+.container_menu{
+    width: 100%;
+    height: 80px;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    padding: 0px 20px;
+    
+  }
+
+.menu{
+    height: 100%;
+}
+
+nav{
+    height: 100%;
+}
+
+nav > ul{
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+}
+
+nav  ul  li{
+    height: 100%;
+    list-style: none;
+    position: relative;
+}
+
+nav > ul > li > a{
+    padding: 5px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 900;
+    transition: all 300ms ease;
+    color: #000000;
+}
+i{
+    padding: 5px;
+    font-size: 16px;
+}
+img.logo_ciscig{
+    width: 150px;
+}
+
+nav > ul > li > a:hover{
+    color: #61A8AB;
+    box-shadow: 0px 0px px 1px #61A8AB;
+}
+
+/*SUBMENU*/
+
+nav ul li ul{
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: absolute;
+    top: 100px;
+    left: -5px;
+    padding: 14px 10px;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    z-index: 10;
+    transition: all 300ms ease;
+}
+
+nav ul li:hover ul{
+    visibility: visible;
+    opacity: 1;
+    top: 70px;
+}
+
+nav ul li ul::before{
+    content: '';
+    width: 0;
+    height: 0;
+    border-left:12px solid transparent ;
+    border-right: 12px solid transparent;
+    border-bottom: 12px solid white;
+    position: absolute;
+    top: -12px;
+    left: 20px;
+}
+
+nav ul li ul li a{
+    display: block;
+    color: #000000;
+    padding: 6px;
+    padding-left: 14px;
+    margin-top: 15px;
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: all 300ms ease;
+}
+
+nav ul li ul li a:hover{
+    color: #61A8AB;
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: 800;
+} 
+
+/*----------------------- Encabezados --------------------------*/
+h3{
+    color: var(--color-black);
+    font-size: 54px;
+    font-weight: 800;
+}
+/* =================== SUBTITULOS ============== */
+.subtitulo-1{
+    color: var(--color-black);
+    font-size: 28px;
+    font-weight: 700;
+}
+
+/* =================== LARGE LABELS =================== */
+
+.label-2{
+    color: var(--color-black);
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+/* ====================  LINKS =====================*/
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+}
+
+.input-format{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/*-------------------------------- Animaciones de las cajas de texto ----------------------*/
+.input-format:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    transition: all 300ms;
+}
+
+.input-format:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
 /* contenedor guia */
 html{
     font-family: 'Inter', sans-serif;
@@ -50,4 +298,111 @@ html{
 
 hr{
     color: gray;
+}
+
+/*Responsive*/
+.icon__menu{
+    font-size: 34px;
+    color: #000000;
+    cursor: pointer;
+    width: 26px;
+    height: 100%;
+    display: none;
+    align-items: center;
+}
+
+.label__check{
+    width: 26px;
+    height: 100%;
+    display: none;
+}
+
+#check__menu{
+    display: none;
+}
+
+@media screen and (max-width: 1450px){
+    li.logo_menu{
+        display: none;
+    }
+    h1.nombre_Ventana{
+        color: #FFFF;
+        font-weight: 900;
+        font-size: 30px;
+    }
+    .container_menu{
+        height: fit-content;
+    }
+    .btn-cerrar-session{
+        display: flex;
+    }
+
+    .header_superior{
+        padding: 5px;
+        height: fit-content;
+        width:auto;
+    }
+    .titulo{
+        font-size: 8px;
+    }
+    .logo{
+        width: 125px;
+    }
+
+    nav > ul{
+        font-size: 12px;
+        flex-direction: column;
+        background-color: #fff;
+        position: fixed;
+        left: 0;
+        top: 95px;
+        width: 100%;
+        transition: all 300ms ease;
+        z-index: 100;
+        opacity: 0;
+        *visibility: hidden;
+    }
+    
+    nav > ul > li > a:hover{
+        transform: scale(1);
+    }
+    
+    nav ul li ul{
+        left: 100px;
+    }
+
+    nav > ul > li:hover ul{
+        top: 20px;
+    }
+
+    nav > ul > li:first-child a{
+        background-position: 20px;
+    }
+
+    #selected{
+        transform: scale(1);
+
+    }
+
+    .icon__menu{
+        display: flex;
+    }
+
+    #check__menu:checked ~ nav > ul{
+        height: 70%;
+        visibility: visible;
+        opacity: 1;
+    }
+    .contePlantilla{
+        margin: 8em auto; 
+    }
+}
+@media screen and (max-width: 650px){
+    .header_superior{
+        align-items: center;
+        display: list-item;
+    }
+    nav > ul {
+        top: 120px;
+    }
 }
