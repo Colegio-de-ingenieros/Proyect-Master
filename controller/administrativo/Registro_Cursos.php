@@ -1,4 +1,5 @@
 <?php
+echo "Hello World";
 // Leemos el arreglo enviado desde JavaScript
 $arreglo = json_decode($_POST["arreglo"]);
 
@@ -8,8 +9,5 @@ $lista1 = json_decode($_POST["lista1"]);
 // Leemos la lista 2 enviada desde JavaScript
 $lista2 = json_decode($_POST["lista2"]);
 
-// Imprimimos los datos leídos
-var_dump($arreglo);
-var_dump($lista1);
-var_dump($lista2);
+
 ?>
