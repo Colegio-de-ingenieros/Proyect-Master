@@ -5,11 +5,11 @@ let Obj = false
 let dur = false
 let tem= false    
 let sub = false
-const lista = [];
-const su = [];
+let lista = [];
+let su = [];
 const expresiones = {
     clave:/^[0-9]{6}$/,
-    duracion:/^[0-9]{3}$/,
+    duracion:/^[0-9]{0,9}$/,
     nombre:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     tema:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
@@ -207,8 +207,7 @@ function regi()
         formData.append("su", JSON.stringify(su));
 
         var xmlhttp = new XMLHttpRequest();
-
-        xmlhttp.open("POST", "archivo.php");
+        xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
 
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -219,9 +218,23 @@ function regi()
 
          // Enviamos los datos mediante AJAX
         xmlhttp.send(formData); 
+
+        lista=[];
+        su=[];
+
+        /* resetea los campos de las cajas de texto*/
+        document.getElementById("clave-curso").value = "";
+        document.getElementById("nombre-curso").value = "";
+        document.getElementById("objetivo").value = "";
+        document.getElementById("duración").value = "";
+        document.getElementById("titulo-curso").value = "";
+        document.getElementById("Subtitulo-curso").value = "";
+
+
+
     }
     else {
-        bre.disabled = true;
+        console.log("entro al else");
     }
 }
 
@@ -229,10 +242,14 @@ function te()
 {
    lista.push(document.getElementById("titulo-curso").value); 
     console.log(lista);
+    document.getElementById("titulo-curso").value = "";
+   
 }
 
 function subt()
 {
    su.push(document.getElementById("Subtitulo-curso").value); 
     console.log(su);
+    document.getElementById("Subtitulo-curso").value = "";
+    
 }
