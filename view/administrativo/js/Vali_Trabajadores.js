@@ -227,13 +227,13 @@ function validar(bandera){
     if(bandera == true ){        
         guardar.removeAttribute("style");
         guardar.disabled=false;
-        console.log("pase validacion");
+        //console.log("pase validacion");
         
     }
     else{
         guardar.style.border = "3px solid red";        
         guardar.disabled=true;
-        console.log("no pase validacion");
+        //console.log("no pase validacion");
 
     }
 
