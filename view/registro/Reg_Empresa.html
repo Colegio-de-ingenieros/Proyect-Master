@@ -14,7 +14,7 @@
 	<div class="contePlantilla">
 		<h3 class="h3">Registro empresarial</h3>
 		<br>
-		<form action="" id="formulario">
+		<form action="../controller/Alta_empresa.php" id="formula">
 			<p class="subtitulo-1"> Datos generales</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -59,7 +59,7 @@
 						<p class="label-2">Confirmar contraseña</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="password_confirmacion"class="input-format-2" placeholder="someone@example.com">
+						<input type="text" name="password_confirmacion"class="input-format-2" placeholder="someone@example.com">
 					</div>
 				</div>
 
@@ -80,37 +80,10 @@
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Estado</p>
-					</div>
-					<div class="input-form">
-						<input type="text" name="estado" class="input-format-2" placeholder="Ingrese su texto aquí...">
-					</div>
-				</div>
-
-				<div class="grupo-input">
-					<div class="label-form">
 						<p class="label-2">Código postal</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="codigo_postal" class="input-format-2" placeholder="Ingrese su texto aquí...">
-					</div>
-				</div>
-
-				<div class="grupo-input">
-					<div class="label-form">
-						<p class="label-2">Ciudad</p>
-					</div>
-					<div class="input-form">
-						<input type="text" name="ciudad" class="input-format-2" placeholder="Ingrese su texto aquí...">
-					</div>
-				</div>
-
-				<div class="grupo-input">
-					<div class="label-form">
-						<p class="label-2">Colonia</p>
-					</div>
-					<div class="input-form">
-						<input type="text" name="colonia"class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="codigo_postal" id="codigo_postal" class="input-format-2" placeholder="Ingrese su texto aquí...">
 					</div>
 				</div>
 
@@ -122,6 +95,37 @@
 						<input type="text" name="calle" class="input-format-2" placeholder="Ingrese su texto aquí...">
 					</div>
 				</div>
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Colonia</p>
+					</div>
+					<div class="input-form">
+
+						<select name="colonia" id="busqueda_colonia" class="input-format-2">
+							<option value="0">selecciona tu colonia</option>
+						</select>
+					</div>
+			
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ciudad</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ciudad" id="ciudad"	class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Estado</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="estado" id="estado" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+				
 				
 			</div>
 			<!--PARTE TRES-->
@@ -346,10 +350,13 @@
 			</div>
 
 			<div class="boton_registrar">
-				<button type="button" class="btn-medium btn" id="boton_registrar">Registrar</button>
+				<input type="submit" class="btn-medium btn" id="boton_registrar" value="Registrar">
+				
 			</div>
 			<br>
 		</form>
+
+	<script src="../registro/js/Alta_empresa_in.js"></script>
 
 </body>
 
