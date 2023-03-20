@@ -19,8 +19,9 @@
             $arre = [":rfc"=>$rfc];
 
             $resultados = $this->base->mostrar($querry, $arre);
-
+            
             if($resultados != null){
+                
                 return true;
             }
 

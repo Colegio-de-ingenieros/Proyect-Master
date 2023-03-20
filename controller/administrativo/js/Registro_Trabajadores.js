@@ -18,5 +18,12 @@ formulario.addEventListener('submit', function (e)
     .then(res => res.json())
     .then(data => {
         console.log(data);
+        if (data === 'exito') {
+            alert("Registro exitoso");
+        }
+        //los datos no pasaron alguna validacion
+        else {
+            alert("RFC ya existente");
+        }
     })
 })
