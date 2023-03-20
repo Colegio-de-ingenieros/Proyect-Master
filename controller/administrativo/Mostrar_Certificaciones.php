@@ -1,0 +1,55 @@
+<?php
+include_once('../../model/Mostrar_Certificaciones.php');
+
+$salida = '';
+$base = new MostrarCertificaciones();
+$base->instancias();
+
+//manda a hacer la busqueda
+$resultado = $base->getCertificaciones();
+
+if ($resultado == true) {
+    //pone los encabezados de la tabla
+    $salida .= '<table>
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Precio socio/asociado</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+    //agrega los resultados de la busqueda
+    for ($i = 0; $i < count($resultado); $i++) {
+        //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+        $idc = $resultado[$i]["IdCerInt"];
+        $logo = $resultado[$i]["LogoCerInt"];
+        $nombre = $resultado[$i]["NomCertInt"];
+        $desc = $resultado[$i]["DesCerInt"];
+        $precio = $base->buscarUltimoPrecio($idc);
+        //$extension = getExt($logo);
+
+        //escribe los valores en la tabla
+        $salida .= '<tr>';
+        $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
+        $salida .= '<td>' . $nombre . '</td>';
+        $salida .= '<td>' . $desc . '</td>';
+        $salida .= '<td>' . $precio . '</td>';
+        $salida .= '</tr>';
+
+        
+    }
+} 
+
+else {
+    $salida .= 'No se encontraron resultados';
+}
+
+$salida .= "</tbody></table>";
+//echo '<script>alert("si entra al php");</script>';
+
+echo $salida;
+
+?>

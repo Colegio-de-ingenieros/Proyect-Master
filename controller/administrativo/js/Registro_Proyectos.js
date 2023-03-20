@@ -7,8 +7,8 @@ formulario.addEventListener('submit', function (e)
 {
     e.preventDefault();
     var datos = new FormData(formulario);
-    //fusiona el html con el php de la logica y validaciones
-    fetch('../../controller/administrativo/Registro_Trabajadores.php', {
+    //Une el html con el php de la logica y validaciones
+    fetch('../../controller/administrativo/Registro_Proyecto.php', {
         method: 'POST',
         body: datos
     })
@@ -17,7 +17,7 @@ formulario.addEventListener('submit', function (e)
         .then(data =>
         {
             //el registro fue exitoso
-            if (data === 'todo chido') {
+            if (data === 'Correcto') {
                 alert("Registro exitoso");
             }
 
