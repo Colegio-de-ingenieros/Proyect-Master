@@ -187,7 +187,8 @@
 
 				<div class="table">
 					<div class="header_table">
-						<table>
+					<?php include('../../controller/administrativo/Mostrar_Proyectos.php'); ?>
+						<!--<table>
 							<thead>
 								<tr>
 									<th>Nombre</th>
@@ -198,7 +199,7 @@
 									<th>Acciones</th>
 								</tr>
 							</thead>
-						</table>
+						</table>-->
 					</div>
 				</div>
 				
@@ -210,5 +211,5 @@
         
     </div>
 </body>
-<script src="../../controller/administrativo/js/Mostrar_Proyectos.js"></script>
+
 </html>
