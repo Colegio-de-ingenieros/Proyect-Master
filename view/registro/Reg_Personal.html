@@ -40,7 +40,7 @@
                     <nav>
                         <ul>
                             <li class="logo_menu"><a href="#">
-                                <img class="logo_ciscig" src="../../public/css/administrativo/LOGO_CISCIG.png" alt="">
+                                <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
                             </a>
                             </li>
                             
@@ -81,7 +81,7 @@
 	<div class="contePlantilla">
 		<h1>Registro personal </h1>
 		<br>
-        <form action="registro.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+        <form action="../../controller/socio-asociado/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
             <p class="subtitulo-1"> Datos personales</p>
             <hr size="1px"/>
             <div class="contenedor-formulario">
@@ -299,6 +299,15 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="correoEmpPerso" name="correoEmpPerso" required maxlength="40">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Extension de telefono</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ExtTelFEmp" name="ExtTelFEmp" required maxlength="10">
                     </div>
                 </div>
 

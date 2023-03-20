@@ -1,44 +1,21 @@
 <?php
 include_once('../../model/Reg_Trabajadores.php');
+$rfc = $_POST["caja_rfc"];
+$nombre = $_POST["caja_nombre"];
+$apaterno = $_POST["caja_ap_paterno"];
+$amaterno = $_POST["caja_ap_materno"];
+$correo = $_POST["caja_correo"];
+$telefono = $_POST["caja_telefono"];
+$pass = $_POST["caja_contra"];
+$pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
+//$ban=true;
+$obj = new NuevoTrabajador();
+$obj->conexion();
 
-class RegistroTrabajadores{
-    private $obj, $rfc, $nombre, $apaterno, $amaterno, $correo, $telefono, $pass;
-    echo 'console.log("hola")';
-    //inicializa los valores que ocupan las demas funciones
-    function instancias(){
-        $this->obj = new NuevoTrabajador();
-        $this->obj->conexion();
-        $this->rfc = $_POST["caja_rfc"];
-        $this->nombre = $_POST["caja_nombre"];
-        $this->apaterno = $_POST["caja_ap_paterno"];
-        $this->amaterno = $_POST["caja_ap_materno"];
-        $this->correo = $_POST["caja_correo"];
-        $this->telefono = $_POST["caja_telefono"];
-        $this->pass = $_POST["caja_contra"];
-        $this->insertar();
-    }
+if($obj->buscarPorRFC($rfc)){
+    echo json_encode('ya existe');
+}else{
+    $obj->insertar($nombre, $apaterno, $amaterno, $rfc, $correo, $telefono, $pass_hashed);
+    echo json_encode('exito');
     
-
-    //manda a llamar al archivo de model para meter los datos a la base
-    function insertar(){
-        $this->obj->insertar($this->rfc, $this->nombre, $this->apaterno, $this->amaterno, $this->correo, $this->telefono, $this->pass);
-
-        //verifica que los datos se insertarin en la base de datos
-        $resultados = $this->obj->buscarPorRFC($this->rfc);
-
-        
-        if($resultados == true){
-            echo json_encode('exito');
-        }
-
-        else{
-            echo json_encode('Ha ocurrido un error al conectar con la base de datos');
-        }
-    }
-
 }
-
-$obj = new RegistroTrabajadores();
-$obj->instancias();
-
-?>
