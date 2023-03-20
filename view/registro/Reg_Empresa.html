@@ -5,12 +5,74 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="/public/css/style.css">
+	<title>Registrate</title> 
 	<link rel="stylesheet" href="/public/css/Reg_Empresas.css">
+	<link rel="stylesheet" href="/public/css/style.css">
+	<link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
 </head>
 
-<body>
+<body><header>
+	<div class="header_superior">
+		<div class="titulo">
+			
+			<div class = "nombre_ventana">
+				<h1 class = "nombre_Ventana">Menu registro</h1>
+			</div>
+
+		</div>
+
+		
+	</div>
+
+	<!-- Menu Desplegable -->
+	<div class="container_menu" >
+		
+			<div class="menu">
+				<input type="checkbox" id="check__menu">
+				<label id="label__check" for="check__menu">
+					<i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+				</label>
+				<nav>
+					<ul>
+						<li class="logo_menu"><a href="#">
+							<img class="logo_ciscig" src="../../public/css/administrativo/LOGO_CISCIG.png" alt="">
+						</a>
+						</li>
+						
+						<li>
+							<a href="Reg_Personal.html">
+								<i class="fa-solid fa-user"></i>
+								Personal
+							</a>
+
+							
+						</li>
+
+						<li>
+							<a href="Reg_Empresa.html">
+								<i class="fa-solid fa-users"></i>
+								Empresarial
+							</a>
+
+							
+						</li>
+
+						<li>
+							<a href="#">
+								<i class="fa-solid fa-right-to-bracket"></i>
+								Login
+							</a>
+
+							
+						</li>
+
+						
+					</ul>
+				</nav>
+			</div>
+		
+	</div>
+</header>
 	<div class="contePlantilla">
 		<h3 class="h3">Registro empresarial</h3>
 		<br>
@@ -59,7 +121,7 @@
 						<p class="label-2">Confirmar contraseña</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="password_confirmacion"class="input-format-2" placeholder="someone@example.com">
+						<input type="text" name="password_confirmacion"class="input-format-2" placeholder="Ingrese su texto aquí...">
 					</div>
 				</div>
 
@@ -346,6 +408,14 @@
 					<div class="input-form">
 						<input type="email" name="ac_correo"class="input-format-2" placeholder="someone@example.com">
 					</div>
+				</div>
+			</div> 
+			<div class="grupo-input2">
+				<div class="label-form">
+					<p class="label-2">Aviso de privacidad</p>
+				</div>
+				<div class="input-form">
+					<input type="checkbox" name="opcion4" id="avisos1" value="opcion1" onclick="deseleccionar4('opcion1')">&nbsp;&nbsp;&nbsp;Estoy de acuerdo con el aviso de privacidad<br>
 				</div>
 			</div>
 
