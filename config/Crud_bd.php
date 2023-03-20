@@ -23,7 +23,7 @@ class Crud_bd{
             
             $this->conexion = new PDO(HOST. DBNAME,USUARIO,PASSWORD );
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $this->conexion->exec("SET CHARACTER SET UTF8");
+            $this->conexion->exec("SET NAME UTF8");
             
             return $this->conexion;
         } catch (Exception $e) {

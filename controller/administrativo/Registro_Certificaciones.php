@@ -70,6 +70,7 @@ class RegistroCert{
             }
             
             else{
+                $this->logo = file_get_contents($temp);
                 $this->insertar();
             }
 
