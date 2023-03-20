@@ -1,7 +1,7 @@
 <?php
     include('../../config/Crud_bd.php');
 
-    class NuevaCertificacion{
+    class NuevoProyecto{
         private $base;
 
         //crea un objeto del CRUD para hacer las consultas
@@ -12,8 +12,7 @@
 
         //retorna true si el id que recibe ya esta en la base y false si no
         function buscarPorId($id){
-            $querry = "SELECT * FROM proyectos
-            WHERE IdPro = :id";
+            $querry = "SELECT * FROM proyectos WHERE IdPro = :id";
 
             $arre = [":id"=>$id];
 
@@ -29,7 +28,7 @@
         }
 
         //busca el ultimo id de la tabla proyectos
-        function buscarUltimoIdProyectos(){
+        function buscarUltimoIdPro(){
             $querry = "SELECT * FROM proyectos";
 
             $resultados = $this->base->mostrar($querry);
@@ -38,7 +37,7 @@
             $aux = [];
 
             for($i=0; $i<count($resultados);$i++){
-                array_push($aux, floatval($resultados[$i]["IdCerInt"]));
+                array_push($aux, floatval($resultados[$i]["IdPro"]));
             }
 
             sort($aux, 0);
@@ -54,17 +53,27 @@
 
         
         //manda las consultas para insertar en la tabla proyectos
-        function insertar($idP, $nombreP, $iniP, $finP, $objP, $montoP, $estatusP){
+        function insertar($idP, $nombreP, $iniP, $finP, $objP, $montoP){
             //consultas para la tabla de certificaciones internas
             $q1 = "INSERT INTO proyectos (IdPro, NomProyecto, IniPro, FinPro, ObjPro, MontoPro, EstatusPro)
-            VALUES(:id, :nombre, :inicio, :fin, :objetivo, :monto,:estatusP)";
+            VALUES(:id, :nombreP, :iniP, :finP, :objp, :montoP,:estatusP)";
 
-            $a1 = [":id"=>$idP, ":nombre"=>$nombreP, ":inicio"=>$iniP, ":fin"=>$finP,":objetivo"=>$objP, ":monto"=>$montoP,   "estatusP"=>1];
+            $a1 = [":id"=>$idP, ":nombre"=>$nombreP, ":iniP"=>$iniP, ":finP"=>$finP,":objP"=>$objP, ":montoP"=>$montoP,   "estatusP"=>1];
 
             //acomoda todo en arreglos para mandarlos al CRUD
             $querry = [$q1];
             $parametros = [$a1];
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function generarID(){
+            $idp = buscarUltimoIdPro();
+            $id = floatval($idp) +1; 
+            $idp = strval($id);
+            for($i=strlen($idp); $i<6; $i++){
+                $idp = '0'.$idp;
+            }
+            return $idp;
         }
         
     }
