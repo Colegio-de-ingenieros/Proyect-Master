@@ -2,10 +2,28 @@
 require_once("../config/Crud_bd.php");
 class Alta_empresa extends Crud_bd{
 
+    public $sql = [];
+    public $parametros = [];
+
+    public function buscar_empresa($rfc)
+    {
+        $this->conexion_bd();
+        $datos = $this->mostrar("SELECT * FROM usuaemp where RFCUsuaEmp =:rfc",[":rfc"=>$rfc]);
+        $this->cerrar_conexion();
+
+        if(count($datos) == 0){
+
+            return false;
+        }else{
+            
+            return true;
+        }
+    }
+
     public function insertar_empresa($rfc,$nombre,$calle,$hora_inicio,$hora_fin,$razon,$correo,$contra)
     {
         # esta funcion inserta una empresa en la bd
-        $this->conexion_bd();
+        
         $sql = "INSERT INTO usuaemp (RFCUsuaEmp, NomUsuaEmp, CalleUsuaEmp, HrIniUsuaEmp,HrFinUsuaEmp,RazonUsuaEmp,CorreoUsuaEmp,ContraUsuaEmp) VALUES(:rfc,:nombre,:calle,:hrinicio,:hrfin,:razon,:correo,:contra)";
         $parametros = [
                         ":rfc"=>$rfc,
@@ -17,10 +35,8 @@ class Alta_empresa extends Crud_bd{
                         ":correo"=>$correo,
                         ":contra"=>$contra
                     ];
-        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
-        $this->cerrar_conexion();
-
-        return $resultado;
+        $this->sql[] = $sql;
+        $this->parametros[] = $parametros;  
     }
    
     public function buscar_colonias($codigoPostal){
@@ -38,18 +54,16 @@ class Alta_empresa extends Crud_bd{
     public function insertar_dias_laborales($rfc,$dias )
     {
 
-        $sql = array();
-        $parametros = array();
 
-        $this->conexion_bd();
+
+      
         for ($i=0; $i <count($dias) ; $i++){
             
-            $sql[]= "INSERT INTO empdias (RFCUsuaEmp,IdLab) VALUES (:rfc,:dia)";
-            $parametros[] = [":rfc"=>$rfc,":dia"=>$dias[$i]];
+            $this->sql[]= "INSERT INTO empdias (RFCUsuaEmp,IdLab) VALUES (:rfc,:dia)";
+            $this->parametros[] = [":rfc"=>$rfc,":dia"=>$dias[$i]];
         }
-        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
-        $this->cerrar_conexion();
-        return $resultado;
+        
+        
         
     }
 
@@ -67,7 +81,7 @@ class Alta_empresa extends Crud_bd{
 
 
  
-    public function insertar_areas($nombre,$paterno,$materno,$telefono,$extension,$correo,$tipo_area,$rfc_empresa)
+    public function insertar_areas($nombre,$paterno,$materno,$telefono,$extension,$correo,$tipo_area,$rfc_empresa,$suma)
     {
         
         $arreglo = $this->obtener_id_area_emp();
@@ -80,7 +94,8 @@ class Alta_empresa extends Crud_bd{
             $id++;
         }
 
-        $this->conexion_bd();
+        $id = $id +  $suma;
+    
 
         $sql_area = "INSERT INTO areaEmpresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
                 ."ExtenTelFEncArea, CorreoEncArea) VALUES (:id,:nom,:pa,:ma,:tel,:ext,:correo)";
@@ -93,14 +108,14 @@ class Alta_empresa extends Crud_bd{
         $sql_tipo = "INSERT INTO areaemptipo (IdArea,IdAreaEmp) VALUES (:tipo,:id)";
         $parametros_tipo = [":tipo"=>$tipo_area,":id"=>$id];
 
-        $sqls = [$sql_area,$sql_emparea,$sql_tipo];
-        $parametros = [$parametros_area,$parametros_emparea,$parametros_tipo];
+        $this->sql[] = $sql_area;
+        $this->parametros[] = $parametros_area;
+        $this->sql[] = $sql_emparea;
+        $this->parametros[] = $parametros_emparea;
+        $this->sql[] = $sql_tipo;
+        $this->parametros[] = $parametros_tipo;
 
-        $resultado = $this->insertar_eliminar_actualizar($sqls, $parametros);
-
-        $this->cerrar_conexion();
-
-        return $resultado;
+        
 
 
         
@@ -109,23 +124,22 @@ class Alta_empresa extends Crud_bd{
     public function establecer_tipo_usuario($rfc_empresa,$tipo)
     {
         //le coloca el tipo de usario que es la empresa
-        $this->conexion_bd();
+      
         $sql = "INSERT INTO emptipousua (IdUsua,RFCUsuaEmp) VALUES(:tipo,:rfc)";
         $parametros = [":tipo"=>$tipo,":rfc"=>$rfc_empresa];
-        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
-        $this->cerrar_conexion();
-        return $resultado;
+
+        $this->sql[] = $sql;
+        $this->parametros[] = $parametros;
 
     }
     public function establecer_colonia_empresa($rfc_empresa,$id_colonia)
     {
         # relaciona una empresa con una colonia
-        $this->conexion_bd();
+
         $sql = "INSERT INTO usuaemplugares (RFCUsuaEmp,IdColonia) VALUES(:rfc,:colonia)";
         $parametros = [":rfc"=>$rfc_empresa,":colonia"=>$id_colonia];
-        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
-        $this->cerrar_conexion();
-        return $resultado;
+        $this->sql[] = $sql;
+        $this->parametros[] = $parametros;
 
     }
     public function obtener_numero_consecutivo()
@@ -140,7 +154,7 @@ class Alta_empresa extends Crud_bd{
         return $resultado;
 
     }
-    public function numero_inteligente($rfc_empresa)
+    public function numero_inteligente($rfc_empresa,$correo_empresa)
     {
         # genera el numero inteligente
         $mydate=getdate(date("U"));
@@ -162,20 +176,38 @@ class Alta_empresa extends Crud_bd{
         
         $numero_inteligente = $year.$mes.$numero_con_ceros;
 
-        $this->conexion_bd();
+    
         $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
         $parametros_inteligentes = [":consecutivo"=>$numero,":inteligente"=>$numero_inteligente];
 
         $sql_usua = "INSERT INTO usuaempnintel (RFCUsuaEmp,IdNIntel) VALUES(:rfc,:consecutivo)";
         $parametros_usua = [":rfc"=>$rfc_empresa,":consecutivo"=>$numero];
 
-        $sql = [$sql_inteligentes,$sql_usua];
-        $parametros = [$parametros_inteligentes,$parametros_usua];
+        $this->sql[] = $sql_inteligentes;
+        $this->parametros[] = $parametros_inteligentes;
+        $this->sql[] = $sql_usua;
+        $this->parametros[] = $parametros_usua;
 
-        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
-        $this->cerrar_conexion();
+       
+        
+        //$this->mandar_correo($correo_empresa);
+     
+
+    }
+    public function mandar_correo($destinatario)
+    {   
+        $remitente = "ecateam22@gmail.com";
+        $asunto = "Bienvenido a CISCIG!!!";
+        $cuerpo = "El nombre de la empresa hora sera asociado del Colegio de Ingenieros en Sistemas  Computacionales";
+        //manda el correo electronico
+        ini_set( 'display_errors', 1 );
+        error_reporting( E_ALL );
+        $headers = "From:" . $remitente . " \r\n";
+        $headers .= "Cc:afgh@somedomain.com \r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/html\r\n";
+        $resultado = mail($destinatario,$asunto,$cuerpo, $headers);
         return $resultado;
-
     }
     public function agregar_ceros($numero)
     {
@@ -193,11 +225,20 @@ class Alta_empresa extends Crud_bd{
 
         return $numero_nuevo;
     }
+    public function inserciones()
+    {
+        # code...
+        $this->conexion_bd();
+        $res = $this->insertar_eliminar_actualizar($this->sql,$this->parametros);
+        $this->cerrar_conexion();
+        return $res;
+
+    }
 }
-/*
+
 $m = new Alta_empresa();
-$m->numero_inteligente("mm");
-*/
+$r = $m->buscar_empresa("WOY890215GI2");
+
 #$m->establecer_colonia_empresa("mm",10011);
 #$m->establecer_tipo_usuario("mm","3");
 #$r = date("h:i:s");
