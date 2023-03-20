@@ -13,11 +13,11 @@ formulario.addEventListener('submit', function (e)
         body: datos
     })
         //recibe el mensaje para mandarlo como alerta
-        //.then(res => res.json())
+        .then(res => res.json())
         .then(data =>
         {
             //el registro fue exitoso
-            if (data === 'exito') {
+            if (data === 'todo chido') {
                 alert("Registro exitoso");
             }
 

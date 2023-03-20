@@ -3,7 +3,7 @@ include_once('../../model/Reg_Trabajadores.php');
 
 class RegistroTrabajadores{
     private $obj, $rfc, $nombre, $apaterno, $amaterno, $correo, $telefono, $pass;
-
+    echo 'console.log("hola")';
     //inicializa los valores que ocupan las demas funciones
     function instancias(){
         $this->obj = new NuevoTrabajador();
@@ -15,8 +15,9 @@ class RegistroTrabajadores{
         $this->correo = $_POST["caja_correo"];
         $this->telefono = $_POST["caja_telefono"];
         $this->pass = $_POST["caja_contra"];
-
+        $this->insertar();
     }
+    
 
     //manda a llamar al archivo de model para meter los datos a la base
     function insertar(){
@@ -25,6 +26,7 @@ class RegistroTrabajadores{
         //verifica que los datos se insertarin en la base de datos
         $resultados = $this->obj->buscarPorRFC($this->rfc);
 
+        
         if($resultados == true){
             echo json_encode('exito');
         }
