@@ -191,15 +191,25 @@
 			<div></div>
 			<div class="grupo-input">
 				<div class="input-form">
-					<input type="text" class="input-busca"placeholder="Buscar..">
+					<input type="search" id="search" class="input-busca" placeholder="Buscar..">
 				</div>
 			</div>
 		</div>
 		<br>
+        <br>
+        <br>
+        <br>
         <div class="table">
-            <div class="header_table">
+            <div class="errors-cointainer">
+                <p></p>
+            </div>
+            <div class="header_table" style="display:none;" id="resultContainer">
                 <table id="tabla_Trabajador">
-                    
+                    <thead><tr><th>RFC</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Correo electronico</th><th>Teléfono</th><th>Acciones</th></tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
                 </table>
             </div>
         </div>
