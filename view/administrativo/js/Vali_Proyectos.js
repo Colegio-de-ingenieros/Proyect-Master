@@ -20,22 +20,22 @@ botonRegistrar.addEventListener("click", (e) => {
 
 /*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
-    NomPro:/^[a-zA-ZÁ-ý0-9\s.,]{1,60}$/,
-    ObjPro:/^[a-zA-ZÁ-ý\s,."]{1,10000}$/,
+    NomPro:/^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
+    ObjPro:/^[a-zA-ZÁ-ý\s ,."]{1,10000}$/,
     MonPro:/^[0-9.]{0,100}$/,
 
 }
 
 /* Input Nombre del Proyecto */
-formulario.nom_proyecto.addEventListener('keyup', (e) => {
+formulario.nombre_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.nom_proyecto.value = valorInput
+	formulario.nombre_proyecto.value = valorInput
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?]/g, '')
     
-    if (!expresiones.Nompro.test(valorInput)) {
-        nom_proyecto.style.border = "3px solid red";
+    if (!expresiones.NomPro.test(valorInput)) {
+        nombre_proyecto.style.border = "3px solid red";
         bNomPro= false
 	}else{
         nom_proyecto.removeAttribute("style");
@@ -71,10 +71,12 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
 	formulario.monto_proyecto.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
+    //Elimina letras
+    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]/g, '')
     // Eliminar caracteres especiales
    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
-   .trim();
+    .trim();
 
     if (!expresiones.MonPro.test(valorInput)) {
         monto_proyecto.style.border = "3px solid red";
