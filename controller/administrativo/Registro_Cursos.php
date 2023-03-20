@@ -1,6 +1,6 @@
 <?php
-include_once('../../view/administrativo/js/Registro_Cursos.js');
 
+include_once('../../model/Reg_Cursos.php');
 // Leemos el arreglo enviado desde JavaScript
 $arreglo = json_decode($_POST["arrayin"]);
 
@@ -10,11 +10,35 @@ $lista1 = json_decode($_POST["lista"]);
 // Leemos la lista 2 enviada desde JavaScript
 $lista2 = json_decode($_POST["su"]);
 
-// Imprimimos los datos leídos
+//imprimimos
 var_dump($arreglo);
 var_dump($lista1);
 var_dump($lista2);
 
+
+$obj = new NuevoCurso();
+$obj->conexion();
+
+$obj->insertar($arreglo);
+    
+if($lista1!=null){
+    $conta=0;
+    foreach($lista1 as $valor){
+        $obj->insertarTema($arreglo,$lista1,$conta);
+        $conta++;    
+    }
+        
+        echo "Datos insertados correctamente";
+    }
+    if ($lista2!=null){
+        $conta1=0;
+        foreach($lista2 as $valor1){
+            $obj->insertarSub($arreglo,$lista2,$conta1);
+            $conta1++;
+       }
+    }
+
+/* 
 $servername = "localhost";
 $username = "AdiminCISCIG";
 $password = "ColegioCISCIG2023";
@@ -58,5 +82,5 @@ if ($lista2!=null){
     
         echo "Datos insertados correctamente";
 
-
+ */
 ?>
