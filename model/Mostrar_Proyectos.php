@@ -1,7 +1,7 @@
 <?php
 include('../../config/Crud_bd.php'); 
 
-class MostrarCertificaciones{
+class MostrarProyectos{
     private $base;
 
     function instancias(){
@@ -10,7 +10,7 @@ class MostrarCertificaciones{
     }
 
 
-    //hace la consulta principal de los datos de las certificaciones
+    //hace la consulta principal de los datos de los proyectos
     function getProyectos(){
         $querry = "SELECT NomProyecto, IniPro, FinPro, MontoPro, ObjPro FROM proyectos";
         $resultados = $this->base->mostrar($querry);
@@ -19,7 +19,7 @@ class MostrarCertificaciones{
     }
 }
 
-$obj = new MostrarCertificaciones();
+$obj = new MostrarProyectos();
 $obj->instancias();
 
 ?>

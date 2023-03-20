@@ -21,7 +21,7 @@ if ($resultado == true) {
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                </table>
+            
                 <tbody>';
 
     //agrega los resultados de la busqueda
