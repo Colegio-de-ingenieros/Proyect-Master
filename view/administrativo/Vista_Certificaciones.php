@@ -174,14 +174,11 @@
 	<main>
 		<section class="section-main">
 			<div class="cabezera">
-				<h4 class="h4">Visualización de Certificaciones</h4>
-				
+				<h4 class="subtitulo-1">Visualización / Consulta</h4>
 			</div>
-			<br>
-			<p class="subtitulo-1">Certificaciones registradas</p>
 			<hr>
 
-			<form action="" class="formulario-de-vista" id="formulario-vista">
+			<form class="formulario-de-vista" id="formulario">
 				<div class="grupo-input">
 					<div class="input-form">
 						<input type="search" class="input-format2" placeholder="Search">				
@@ -190,7 +187,8 @@
 
 				<div class="table">
 					<div class="header_table">
-						<table>
+						<?php include('../../controller/administrativo/Mostrar_Certificaciones.php'); ?>
+						<!---<table>
                             <thead>
                                 <tr>
                                     <th>Logo</th>
@@ -200,44 +198,14 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>0001</td>
-                                    <td>Python para principiantes</td>
-                                    <td>200 hrs</td>
-                                    <td>$4870.00</td>
-                                    <td>
-                                        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="#">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0002</td>
-                                    <td>C++ desde 0 hasta master</td>
-                                    <td>220 hrs</td>
-                                    <td>$7160.50</td>
-                                    <td>
-                                        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="#">Eliminar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>0003</td>
-                                    <td>Java, JavaScript como profesional</td>
-                                    <td>210 hrs</td>
-                                    <td>$2208.58</td>
-                                    <td>
-                                        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="#">Eliminar</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        </table>--->
 					</div>
 				</div>
 			</form>
+			<script src="js/Vali_Certificaciones.js"></script>
 		</section>
 	</main>	 
     </div>
 </body>
+<script src="../../controller/administrativo/js/Registro_Certificaciones.js"></script>
 </html>
