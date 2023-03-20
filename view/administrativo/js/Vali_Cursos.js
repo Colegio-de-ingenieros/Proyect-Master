@@ -6,7 +6,7 @@ let dur = false
 let tem= false    
 let sub = false
 const lista = [];
-
+const su = [];
 const expresiones = {
     clave:/^[0-9]{6}$/,
     duracion:/^[0-9]{3}$/,
@@ -128,7 +128,7 @@ tema.addEventListener('keyup', (e) => {
        tema.removeAttribute("style");
        tem = true
     }
-    /* validar(tem); */
+     validar2(tem); 
 })
 
 let subtema = document.getElementById("Subtitulo-curso");
@@ -151,24 +151,24 @@ subtema.addEventListener('keyup', (e) => {
        subtema.removeAttribute("style");
        sub = true
     }
-    validar(sub);
+    validar3(sub); 
 })
 
 
 function validar(bandera)
 {
-    const guardar = document.getElementById('botonRegistrar');
+    const guarda = document.getElementById('registraform');
     if (bandera == true) {
-        guardar.disabled = false;
+        guarda.disabled = false;
     }
     else {
-        guardar.disabled = true;
+        guarda.disabled = true;
     }
 
 }
 function validar2(bandera)
 {
-    const guardar = document.getElementById('botonRegistrar');
+    const guardar = document.getElementById("temas");
     if (bandera == true) {
         guardar.disabled = false;
     }
@@ -179,21 +179,46 @@ function validar2(bandera)
 }
 function validar3(bandera)
 {
-    const guardar = document.getElementById('botonRegistrar');
+    const guardar1 = document.getElementById("subtemas");
     if (bandera == true) {
-        guardar.disabled = false;
+        guardar1.disabled = false;
     }
     else {
-        guardar.disabled = true;
+        guardar1.disabled = true;
     }
 
 }
 
 function regi()
 {
-    const bre = document.getElementById('btem');
-    if (bId == true && bNom == true && Obj == true && dur == true) {
-        bre.disabled = false;
+
+    if (bId == true && bNom == true && Obj == true && dur == true ) {
+        /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
+        var arrayin = new Array(4);
+        arrayin[0] = document.getElementById("clave-curso").value;
+        arrayin[1] = document.getElementById("nombre-curso").value;
+        arrayin[2] = document.getElementById("objetivo").value;
+        arrayin[3] = document.getElementById("duración").value;
+        console.log(arrayin);
+
+        var formData = new FormData();
+        formData.append("arrayin", JSON.stringify(arrayin));
+        formData.append("lista", JSON.stringify(lista));
+        formData.append("su", JSON.stringify(su));
+
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("POST", "archivo.php");
+
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              // Imprimimos la respuesta del archivo PHP
+              console.log(this.responseText);
+            }
+          };
+
+         // Enviamos los datos mediante AJAX
+        xmlhttp.send(formData); 
     }
     else {
         bre.disabled = true;
@@ -204,4 +229,10 @@ function te()
 {
    lista.push(document.getElementById("titulo-curso").value); 
     console.log(lista);
+}
+
+function subt()
+{
+   su.push(document.getElementById("Subtitulo-curso").value); 
+    console.log(su);
 }
