@@ -92,9 +92,11 @@ function validar(bandera){
     const registrar = document.getElementById('registrar');
     if(bandera == true){
         registrar.disabled=false;
+        console.log("pase validacion");
     }
     else{
         registrar.disabled=true;
+        console.log("no pase validacion");
     }
 
 }

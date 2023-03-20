@@ -8,11 +8,12 @@
 let estado = document.getElementById("estado");
 let ciudad = document.getElementById("ciudad");
 
-let cod_postal = document.getElementById("codigo_postal");
-cod_postal.addEventListener('blur', () => {
-    let contenido =  cod_postal.value;
-    if(contenido.length == 5){
 
+document.getElementById("codigo_postal").addEventListener('blur', (e) => {
+    let contenido =  document.getElementById("codigo_postal").value;
+    
+    if(contenido.length == 5){
+        
         let formulario_data = new FormData();
         formulario_data.append("codigo_postal",contenido);
         
@@ -41,7 +42,7 @@ formulario.addEventListener("submit",(e)=>{
     dias.forEach(dia => {
         formulario_data.append("dias[]",dia)
     });
-    
+   
     
     fetch("/controller/Alta_empresa.php",
     {
@@ -53,7 +54,7 @@ formulario.addEventListener("submit",(e)=>{
         alert(data[0]);
     });
 });
-let boton_enviar = document.getElementById("boton_registrar");
+
 
 
 function rellenar_lista(datos) {
