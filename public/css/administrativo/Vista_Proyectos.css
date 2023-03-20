@@ -12,9 +12,36 @@
     padding: 2rem 0 0 0;
 
 }
+.input-format2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
 
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-format2:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    transition: all 300ms;
+}
+
+.input-format2:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format2::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
 table{
-    z-index: 0;
     width: 130%;
     border-collapse: collapse;
     font-family: 'Manrope';
@@ -46,3 +73,10 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 }
+/*@media screen and (max-width: 650px){
+    .header_table{
+        align-items: center;
+        top: 0;
+        position: sticky;
+    }
+}*/
