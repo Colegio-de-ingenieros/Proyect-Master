@@ -27,15 +27,15 @@ const expresiones = {
 }
 
 /* Input Nombre del Proyecto */
-formulario.nombre_proyecto.addEventListener('keyup', (e) => {
+formulario.nom_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.nombre_proyecto.value = valorInput
+	formulario.nom_proyecto.value = valorInput
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?]/g, '')
     
     if (!expresiones.NomPro.test(valorInput)) {
-        nombre_proyecto.style.border = "3px solid red";
+        nom_proyecto.style.border = "3px solid red";
         bNomPro= false
 	}else{
         nom_proyecto.removeAttribute("style");
