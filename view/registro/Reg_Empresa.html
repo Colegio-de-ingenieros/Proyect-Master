@@ -1,341 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/public/css/style.css">
-    <link rel="stylesheet" href="/public/css/Reg_Empresas.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/public/css/style.css">
+	<link rel="stylesheet" href="/public/css/Reg_Empresas.css">
 </head>
+
 <body>
-    <div class="contePlantilla" >
+	<div class="contePlantilla">
 		<h3 class="h3">Registro empresarial</h3>
 		<br>
-        <p class="subtitulo-1"> Datos generales</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario">
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">RFC fiscal</p>
+		<form action="" id="formulario">
+			<p class="subtitulo-1"> Datos generales</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">RFC fiscal</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rfc" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
 				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Nombre comercial</p>
+					</div>
+					<div class="input-form">
+						<input type="text"name="nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Correo electrónico</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="correo" class="input-format-2" placeholder="someone@example.com">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Contraseña</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="password" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Confirmar contraseña</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="password_confirmacion"class="input-format-2" placeholder="someone@example.com">
+					</div>
+				</div>
+
+				<div class="grupo-input2">
+					<div class="label-form">
+						<p class="label-2">Razón social</p>
+					</div>
+					<div class="input-form">
+						<textarea type="text" name="razon" class="input-textarea-2"
+							placeholder="Ingrese el texto aquí..."></textarea>
+					</div>
+				</div>
+			</div>
+			<!--PARTE DOS-->
+			<p class="subtitulo-1"> Domicilio fiscal</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Estado</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="estado" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Código postal</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="codigo_postal" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ciudad</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ciudad" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Colonia</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="colonia"class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Calle y número</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="calle" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+				
+			</div>
+			<!--PARTE TRES-->
+			<p class="subtitulo-1"> Horario laboral</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Días laborales</p>
+					</div>
+					<div class="input-form">
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="2"> Lunes </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="3"> Martes </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="4"> Miércoles </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="5"> Jueves </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="6"> Viernes </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="7"> Sábado </label>
+						<br>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="1"> Domingo </label>
+						<br>
+					</div>
+				</div>
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Hora de inicio</p>
+					</div>
+					<div class="input-form">
+						<input type="time" class="input-format-2" name="inicio" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Hora de fin</p>
+					</div>
+					<div class="input-form">
+						<input type="time" class="input-format-2" name="fin" placeholder="Ingrese su texto aquí...">
+					</div>
 				</div>
 			</div>
 
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Nombre comercial</p>
+			<!--PARTE CUATRO-->
+			<p class="subtitulo-1"> Áreas</p>
+			<p class="subtitulo-1">Área de Recursos Humanos</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Nombre del encargado</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rh_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
 				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. paterno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rh_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. materno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rh_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Número de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rh_tele" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Extensión de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="rh_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Correo electrónico</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="rh_correo" class="input-format-2" placeholder="someone@example.com">
+					</div>
 				</div>
 			</div>
 
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Correo electrónico</p>
+			<!--PARTE CINCO-->
+			<p class="subtitulo-1">Área de TI</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Nombre del encargado</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ti_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
 				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2"placeholder="someone@example.com">
-				</div>
-			</div> 
 
-            <div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Contraseña</p>
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. paterno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ti_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
 				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. materno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ti_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Número de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ti_tele" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Extensión de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ti_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Correo electrónico</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="ti_correo" class="input-format-2" placeholder="someone@example.com">
+					</div>
+				</div>
+			</div>
+			<!--PARTE SEIS-->
+			<p class="subtitulo-1">Área de Capacitación</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Nombre del encargado</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ac_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. paterno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ac_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ap. materno</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ac_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Número de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ac_tele"class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Extensión de teléfono</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ac_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Correo electrónico</p>
+					</div>
+					<div class="input-form">
+						<input type="email" name="ac_correo"class="input-format-2" placeholder="someone@example.com">
+					</div>
 				</div>
 			</div>
 
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Confirmar contraseña</p>
-				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2"placeholder="someone@example.com">
-				</div>
+			<div class="boton_registrar">
+				<button type="button" class="btn-medium btn" id="boton_registrar">Registrar</button>
 			</div>
+			<br>
+		</form>
 
-			<div class="grupo-input2">
-				<div class="label-form">
-					<p class="label-2">Razón social</p>
-				</div>
-				<div class="input-form">
-					<textarea type="text" class="input-textarea-2" placeholder="Ingrese el texto aquí..."></textarea>
-				</div>
-			</div>  
-        </div> 
-        <!--PARTE DOS--> 
-        <p class="subtitulo-1"> Domicilio fiscal</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario">
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Calle y número</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Colonia</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ciudad</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div> 
-
-            <div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Estado</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Código postal</p>
-				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-        </div> 
-        <!--PARTE TRES-->  
-        <p class="subtitulo-1"> Horario laboral</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario"> 
-            <div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Días laborales</p>
-				</div> 
-				<div class="input-form">
-					<label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Lunes  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Martes  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Miércoles  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Jueves  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Viernes  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Sábado  </label> <br>
-                    <label for="" class="label-2"><input type="checkbox" class="checkbox-format" >  Domingo  </label> <br>
-				</div>
-			</div>
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Hora de inicio</p>
-				</div>
-				<div class="input-form">
-					<input type="time" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Hora de fin</p>
-				</div>
-				<div class="input-form">
-					<input type="time" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-        </div> 
-
-        <!--PARTE CUATRO-->  
-        <p class="subtitulo-1"> Áreas</p>
-		<p class="subtitulo-1">Área de Recursos Humanos</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario">
-			<div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Nombre del encargado</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. paterno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. materno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div> 
-
-            <div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Número de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Extensión de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Correo electrónico</p>
-				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2" placeholder="someone@example.com">
-				</div>
-			</div> 
-        </div> 
-
-        <!--PARTE CINCO-->  
-		<p class="subtitulo-1">Área de TI</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario">
-			<div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Nombre del encargado</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. paterno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. materno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div> 
-
-            <div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Número de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Extensión de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Correo electrónico</p>
-				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2" placeholder="someone@example.com">
-				</div>
-			</div> 
-        </div> 
-        <!--PARTE SEIS-->  
-		<p class="subtitulo-1">Área de Capacitación</p>
-		<hr size="1px"/>
-		<div class="contenedor-formulario">
-			<div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Nombre del encargado</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. paterno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Ap. materno</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div> 
-
-            <div class="grupo-input">
-				<div class="label-form">
-                    <p class="label-2">Número de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2"placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Extensión de teléfono</p>
-				</div>
-				<div class="input-form">
-					<input type="text" class="input-format-2" placeholder="Ingrese su texto aquí...">
-				</div>
-			</div>
-
-			<div class="grupo-input">
-				<div class="label-form">
-					<p class="label-2">Correo electrónico</p>
-				</div>
-				<div class="input-form">
-					<input type="email" class="input-format-2" placeholder="someone@example.com">
-				</div>
-			</div> 
-        </div>
-
-		<div class="boton_registrar">
-			<button class="btn-medium btn">Registrar</button>
-		</div>  
-        <br>
-	
 </body>
-</html> 
+
+</html>
