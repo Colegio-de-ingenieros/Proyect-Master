@@ -17,7 +17,7 @@ formulario.addEventListener('submit', function (e)
         .then(data =>
         {
             //el registro fue exitoso
-            if (data === 'exito') {
+            if (data === 'todo chido') {
                 alert("Registro exitoso");
             }
 

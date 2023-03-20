@@ -14,7 +14,8 @@
         function buscarPorRFC($rfc){
             $querry = "SELECT * FROM trabajadores
             WHERE RFCT = :rfc";
-
+            
+            
             $arre = [":rfc"=>$rfc];
 
             $resultados = $this->base->mostrar($querry, $arre);

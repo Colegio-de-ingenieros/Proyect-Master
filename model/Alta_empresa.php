@@ -22,32 +22,19 @@ class Alta_empresa extends Crud_bd{
 
         return $resultado;
     }
-    public function buscar_estado($idestado)
-    {
-        # esta funcion trae todos los estados
-        $this->conexion_bd();
-        $sql = "SELECT nomestado FROM estados WHERE idestado=:id";
-        $resultado = $this->mostrar($sql,[":id"=>$idestado]);
-        $this->cerrar_conexion();
-        return $resultado;
-    }
-    public function busar_municipio($idMunicipio){
-        # esta funcion trae todos los municipios
-        $this->conexion_bd();
-        $sql = "SELECT nommunicipio,idestado FROM municipios WHERE idmunicipio=:id";
-        $resultado = $this->mostrar($sql,[":id"=>$idMunicipio]);
-        $this->cerrar_conexion();
-        return $resultado;
-    }
+   
     public function buscar_colonias($codigoPostal){
-        # esta funcion trae todos los municipios
+        # esta funcion trae todas las colonias en base al codigo postal
         $this->conexion_bd();
-        $sql = "SELECT IdColonia,nomcolonia,idmunicipio FROM colonias WHERE codpostal=:cod";
+        $sql = "SELECT IdColonia,nomcolonia,ciudad,nomestado FROM"
+                ." estados,municipios,colonias WHERE estados.idestado = municipios.idestado AND"
+                ." municipios.idmunicipio =colonias.idmunicipio AND colonias.codpostal = :cod ";
         $resultado = $this->mostrar($sql,[":cod"=>$codigoPostal]);
         $this->cerrar_conexion();
         return $resultado;
     }
 
+   
     public function insertar_dias_laborales($rfc,$dias )
     {
 
@@ -130,12 +117,91 @@ class Alta_empresa extends Crud_bd{
         return $resultado;
 
     }
+    public function establecer_colonia_empresa($rfc_empresa,$id_colonia)
+    {
+        # relaciona una empresa con una colonia
+        $this->conexion_bd();
+        $sql = "INSERT INTO usuaemplugares (RFCUsuaEmp,IdColonia) VALUES(:rfc,:colonia)";
+        $parametros = [":rfc"=>$rfc_empresa,":colonia"=>$id_colonia];
+        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
+        $this->cerrar_conexion();
+        return $resultado;
+
+    }
+    public function obtener_numero_consecutivo()
+    {
+        # esta funcion te dara el numero en el que se quedaron
+
+        $this->conexion_bd();
+        $sql = "SELECT Max(IdNIntel) FROM numinteligentes";
+        $resultado = $this->mostrar($sql);
+        $this->cerrar_conexion();
+       
+        return $resultado;
+
+    }
+    public function numero_inteligente($rfc_empresa)
+    {
+        # genera el numero inteligente
+        $mydate=getdate(date("U"));
+        $year = $mydate["year"];
+        $mes = date('m');
+        $arreglo = $this->obtener_numero_consecutivo();
+        $numero = "";
+
+
+        if (is_null($arreglo[0][0]) == 1) {
+            # significa que no hay registros por eso hay que generarlo
+            $numero = 1;
+        }else{
+            $numero = $arreglo[0][0];
+            $numero++;
+           
+        }
+        $numero_con_ceros = $this->agregar_ceros($numero);
+        
+        $numero_inteligente = $year.$mes.$numero_con_ceros;
+
+        $this->conexion_bd();
+        $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
+        $parametros_inteligentes = [":consecutivo"=>$numero,":inteligente"=>$numero_inteligente];
+
+        $sql_usua = "INSERT INTO usuaempnintel (RFCUsuaEmp,IdNIntel) VALUES(:rfc,:consecutivo)";
+        $parametros_usua = [":rfc"=>$rfc_empresa,":consecutivo"=>$numero];
+
+        $sql = [$sql_inteligentes,$sql_usua];
+        $parametros = [$parametros_inteligentes,$parametros_usua];
+
+        $resultado = $this->insertar_eliminar_actualizar($sql,$parametros);
+        $this->cerrar_conexion();
+        return $resultado;
+
+    }
+    public function agregar_ceros($numero)
+    {
+        $ceros = "";
+        $numero_nuevo="";
+        for ($i=0; $i < 4 ; $i++) { 
+            $numero_nuevo = $ceros .$numero;
+            if(strlen($numero_nuevo) == 4){
+                break;
+            }else{
+                $ceros = $ceros . "0";
+            }
+
+        }
+
+        return $numero_nuevo;
+    }
 }
 /*
 $m = new Alta_empresa();
+$m->numero_inteligente("mm");
+*/
+#$m->establecer_colonia_empresa("mm",10011);
 #$m->establecer_tipo_usuario("mm","3");
-$r = date("h:i:s");
-$m->insertar_empresa("rrr","k","k",$r,$r,"d","d","d");*/
+#$r = date("h:i:s");
+#$m->insertar_empresa("rrr","k","k",$r,$r,"d","d","d");
 #$id =$m->obtener_id_area_emp();
 #$m->insertar_areas("ti","po","po","4371023438","123","ssd",2,"mm");
 #var_dump($id); 
