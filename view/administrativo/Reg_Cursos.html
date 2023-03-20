@@ -206,23 +206,23 @@
         <div class="campo">
           <label for="nombre-curso" class="label-3 nombre">Nombre del curso</label>
           <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2"
-            placeholder="Nombre del curso">
+            placeholder="Nombre del curso" minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
           <label for="clave-curso" class="label-3 clave">Clave del curso</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso">
+          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso" maxlength="6" required>
         </div>
 
         <div class="campo">
           <label for="objetivo" class="label-3 objetivo">Objetivo</label>
           <input type="textarea" name="objetivo" id="objetivo" class="input-format-2"
-            placeholder="Ingresa tu texto aquí...">
+            placeholder="Ingresa tu texto aquí..." minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
           <label for="duración" class="label-3 duracion">Duracion del curso</label>
-          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración...">
+          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..." maxlength="3" required>
         </div>
 
       </div>
@@ -238,27 +238,28 @@
         
         <div class="campo">
           <label for="titulo-curso" class="label-3 titulo-curso">Titulo del tema</label>
-          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el costo...">
+          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el costo..." minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
           <label for="Subtitulo-curso" class="label-3 titulo-curso">Subtitulo del tema</label>
-          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el costo...">
+          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el costo..." minlength="1" maxlength="40" required>
         </div>
 
       </div>
 
       <div class="section-botones">
         <div class="campo">
-          <button class="btn-small btn">Guardar tema</button>
+          <button id="btem" onclick="te()" class="btn-small btn">Guardar tema</button>
         </div>
 
         <div class="campo">
-          <button class="btn-small btn">Guardar registro</button>
+          <button id="bre" class="btn-small btn" onclick="regi()">Guardar Registro</button>
         </div>
+
       </div>
     </section>
   </main>
 </body>
-
+<script src="/Proyect-Master/view/administrativo/js/Vali_Cursos.js"></script>
 </html>
