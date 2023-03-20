@@ -74,11 +74,18 @@ class Crud_bd{
          */
         try{
             $this->conexion->beginTransaction(); 
-            for($i=0; $i<count($consultaEscrita);$i++){
-                $resultados = $this->conexion->prepare($consultaEscrita[$i]);
-                $resultados->execute($arrayAsociativo[$i]);
+
+            if(is_array($consultaEscrita) && is_array($arrayAsociativo)){
+                for($i=0; $i<count($consultaEscrita);$i++){
+                    $resultados = $this->conexion->prepare($consultaEscrita[$i]);
+                    $resultados->execute($arrayAsociativo[$i]);
+                }
+            }else{
+                $resultados=$this->conexion->prepare($consultaEscrita);
+                $resultados->execute($arrayAsociativo);
+
             }
-            
+           
             $this->conexion->commit();
             $resultados = null;
             
