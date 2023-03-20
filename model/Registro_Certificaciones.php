@@ -53,8 +53,7 @@
         }
 
         //busca el ultimo id de la tabla certificaciones internas
-        function buscarUltimoIdHist()
-        {
+        function buscarUltimoIdHist(){
             $querry = "SELECT * FROM historico";
 
             $resultados = $this->base->mostrar($querry);
