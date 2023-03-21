@@ -1,34 +1,30 @@
 //declara las variables globales
 var formulario = document.getElementById('formulario');
-
+var respuesta = document.getElementById('respuesta');
 
 //responde cuando hay un click en el boton
 formulario.addEventListener('submit', function (e)
 {
     e.preventDefault();
-    
-    console.log('me diste click');
     var datos = new FormData(formulario);
-    console.log(datos.get('nom_proyecto'));
-    console.log(datos.get('obj_proyecto'));
-    //Une el html con el php de la logica y validaciones
+    //fusiona el html con el php de la logica y validaciones
     fetch('../../controller/administrativo/Registro_Proyectos.php', {
         method: 'POST',
         body: datos
-        
     })
- 
+        //recibe el mensaje para mandarlo como alerta
         .then(res => res.json())
         .then(data =>
         {
-                        
-            console.log(data);
-            if (data === 'Correcto') {
+            //el registro fue exitoso
+            if (data === 'todo chido') {
                 alert("Registro exitoso");
+                //location.href = '../../view/administrativo/Reg_Certificaciones.html';
             }
 
+            //los datos no pasaron alguna validacion
             else {
-                alert("ERROR");
+                alert(data);
             }
         })
 })
