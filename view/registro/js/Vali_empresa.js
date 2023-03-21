@@ -39,7 +39,7 @@ const expresiones = {
     calle:/^[a-zA-ZÁ-Ýá-ý\s]+#[0-9\s]{1,100}$/,
     email:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     password:/^(?=.*[0-9])(?=.*[!@#$*-_\.])[a-zA-Z0-9!@#$*-_\.]{8,16}$/,
-    razon:/^[a-zA-ZÁ-ý\s,]{3,100}$/,
+    razon:/^[a-zA-ZÁ-ý\s,\.]{3,100}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{3,50}$/,
     nombre_area:/^[a-zA-ZÁ-Ýá-ý\s]{3,40}$/,
@@ -182,7 +182,7 @@ formulario.razon.addEventListener('keyup', (e) => {
 
 	formulario.razon.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|.<>\/?]/g, '');
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?]/g, '');
 
 
     if (!expresiones.razon.test(valorInput)) {
