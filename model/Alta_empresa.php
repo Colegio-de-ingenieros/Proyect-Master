@@ -70,7 +70,7 @@ class Alta_empresa extends Crud_bd{
     public function obtener_id_area_emp()
     {
         $this->conexion_bd();
-        $sql = "SELECT Max(IdAreaEmp) FROM areaempresa";
+        $sql = "SELECT Max(CAST(IdAreaEmp AS INT)) FROM areaempresa";
         $resultado = $this->mostrar($sql);
         $this->cerrar_conexion();
         
@@ -95,6 +95,7 @@ class Alta_empresa extends Crud_bd{
         }
 
         $id = $id +  $suma;
+       
     
 
         $sql_area = "INSERT INTO areaEmpresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
@@ -146,8 +147,8 @@ class Alta_empresa extends Crud_bd{
     {
         # esta funcion te dara el numero en el que se quedaron
 
-        $this->conexion_bd();
-        $sql = "SELECT Max(IdNIntel) FROM numinteligentes";
+        $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
+        $sql = "SELECT Max(CAST(IdNIntel AS INT)) FROM numinteligentes";
         $resultado = $this->mostrar($sql);
         $this->cerrar_conexion();
        
@@ -236,21 +237,5 @@ class Alta_empresa extends Crud_bd{
     }
 }
 
-$m = new Alta_empresa();
-$r = $m->buscar_empresa("WOY890215GI2");
-
-#$m->establecer_colonia_empresa("mm",10011);
-#$m->establecer_tipo_usuario("mm","3");
-#$r = date("h:i:s");
-#$m->insertar_empresa("rrr","k","k",$r,$r,"d","d","d");
-#$id =$m->obtener_id_area_emp();
-#$m->insertar_areas("ti","po","po","4371023438","123","ssd",2,"mm");
-#var_dump($id); 
-// $r =$m->insertar_dias_laborales("mm",[1,2,3,4]);
-// if($r){
-//     echo "se pudo";
-// }else{
-//     echo "no se pudo";
-// }
 
 ?>

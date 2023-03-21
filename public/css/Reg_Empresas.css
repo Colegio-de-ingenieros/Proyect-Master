@@ -41,6 +41,11 @@ html{
 
 .label-form{
     padding-bottom: 10px;
+} 
+
+.label-texto{
+    padding-bottom: 10px;
+    width: 1200px;
 }
 
 .input-format{
