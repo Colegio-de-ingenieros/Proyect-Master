@@ -1,9 +1,5 @@
 <?php
 include_once('../../model/Mostrar_Trabajadores.php');
-echo'<script type="text/javascript">
-        alert("Tarea Guardada");
-        window.location.href="index.php";
-        </script>';
 $salida = '';
 $base = new MostrarTrabajadores();
 $base->instancias();
@@ -29,6 +25,7 @@ if ($resultado == true) {
 
     //agrega los resultados de la busqueda
     for ($i = 0; $i < count($resultado); $i++) {
+
         //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
         $rfc = $resultado[$i]["RFCT"];
         $nombre = $resultado[$i]["NombreT"];
@@ -46,7 +43,7 @@ if ($resultado == true) {
         $salida .= '<td>' . $amat . '</td>';
         $salida .= '<td>' . $correo . '</td>';
         $salida .= '<td>' . $telefono . '</td>';
-        $salida .= "<a href='editar.php?rfc=". $rfc ."'>Editar</a>""<a href='eliminar.php?rfc=". $rfc ."'>Eliminar</a>";
+        $salida .= '<td><a href="../../controller/administrativo/editarTrabajador.php?rfc='.$rfc.'" class="table_item__link">Editar</a> | <a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
         $salida .= '</tr>';
 
         
