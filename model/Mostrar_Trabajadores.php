@@ -1,19 +1,22 @@
 <?php
-require_once("../../controller/administrativo/Mostrar_Trabajadores.php");
-$criterio = $_POST['criterio'];
+include('../../config/Crud_bd.php'); 
 
-$query = "SELECT * FROM trabajadores 
-WHERE NombreT LIKE '%$criterio%' OR ApePT LIKE '%$criterio%' OR ApeMT LIKE '%$criterio%' OR RFCT LIKE '%$criterio%' OR CorreoT LIKE '%$criterio%' OR TelT LIKE '%$criterio%'";
- 
-$trabajadores=[];
-$errores=['data'=>false];
+class MostrarTrabajadores{
+    private $base;
 
-$result =$db->query($query);
-if ($result->num_rows > 0) {
-    while($row = $result->fetch_assoc()) {
-        $trabajadores[] = $row;
+    function instancias(){
+        $this->base = new Crud_bd();
+        $this->base->conexion_bd();
     }
-    echo json_encode($trabajadores);
-} else {
-    echo json_encode($errores);
+    //hace la consulta principal de los datos de las certificaciones
+    function getTrabajadores(){
+        $querry = "SELECT * FROM Trabajadores";
+        $resultados = $this->base->mostrar($querry);
+
+        return $resultados;
+    }
 }
+
+$obj = new MostrarTrabajadores();
+$obj->instancias();
+?>
