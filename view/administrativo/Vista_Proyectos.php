@@ -172,42 +172,27 @@
 	</header>
 
 	<main>
-		<section class="section-main">
-			<div class="cabezera">
+	
+		<div>
+			<div class="article-tablas">
+				<article>
 				<h4 class="subtitulo-1">Visualización / Consulta</h4>
-			</div>
-			<hr>
-
-			<form action="" class="formulario-de-vista" id="formulario-vista">
-				<div class="grupo-input">
+				<hr>
+					<div class="grupo-input">
 					<div class="input-form">
-						<input type="search" class="input-format2" placeholder="Search">				
+						<input type="search" class="input-format2" placeholder="Search" name="busqueda" id="busqueda">
 					</div>
-				</div>
-
-				<div class="table">
-					<div class="header_table">
-					<?php include('../../controller/administrativo/Mostrar_Proyectos.php'); ?>
-						<!--<table>
-							<thead>
-								<tr>
-									<th>Nombre</th>
-									<th>Fecha de inicio</th>
-									<th>Fecha de finalización</th>
-									<th>Monto</th>
-									<th>Objetivo</th>
-									<th>Acciones</th>
-								</tr>
-							</thead>
-						</table>-->
 					</div>
-				</div>
-				
-
-				
-			</form>
-		</section>
-	</main>	
+					<br>
+					<div class="tablas">
+						<section class="header_table" id="tablaResultado">
+						
+						</section>
+					</div>
+				</article>
+			</div>
+		</div>
+    </main>
         
     </div>
 </body>
