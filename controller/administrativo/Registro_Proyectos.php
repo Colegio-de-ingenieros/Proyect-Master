@@ -1,23 +1,70 @@
 <?php
-include_once('../../model/Alta_Proyectos.php');
+include_once('../../model/Registro_Proyectos.php');
 
-$nombreP = $_POST["nom_proyecto"];
-$iniP = $_POST["ini_proyecto"];
-$finP = $_POST["fin_proyecto"];
-$objP = $_POST["obj_proyecto"];
-$montoP = $_POST["monto_proyecto"];
+class RegistroPro{
+    private $obj, $idp, $nombre, $inicio, $fin, $objetivo, $monto;
 
-$obj = new NuevoProyecto();
-$obj->conexion();
-$idP = $obj->generarID();
+    //inicializa los valores que ocupan las demas funciones
+    function instancias(){
+        $this->obj = new NuevoProyecto();
+        $this->obj->conexion();
+        $this->idp = $this->generarID();
+        $this->nombre = $_POST["nom_proyecto"];
+        $this->inicio = $_POST["ini_proyecto"];
+        $this->fin = $_POST["fin_proyecto"];
+        $this->objetivo = $_POST["obj_proyecto"];
+        $this->monto = $_POST["monto_proyecto"];
+        $this->insertar();
 
-$obj->insertar($idP, $nombreP, $iniP,$finP, $objP,$montoP);
+    }
 
-if($obj->buscarPorId($idP)){
-    echo json_encode('Correcto');
+    //busca el ultimo ID de la tabla que le piden y genera el siguiente
+    function generarID(){
+       
+        $ids = $this->obj->buscarUltimoIdPro();
+        
+        
+        $id = floatval($ids) +1; 
+
+        $ids = strval($id);
+
+
+        for($i=strlen($ids); $i<6; $i++){
+            $ids = '0'.$ids;
+        }
+        //echo json_encode($tipo . ' ' . $ids);
+
+        return $ids;
+    }
+
+    //manda a llamar al archivo de model para meter los datos a la base
+    function insertar(){
+    
+        $this->obj->insertar($this->idp, $this->nombre, $this->inicio,$this->fin, $this->objetivo, $this->monto);
+
+        //verifica que los datos se insertarin en la base de datos
+        $resultados = $this->obj->buscarPorId($this->idp);
+
+        if($resultados == true){
+            echo json_encode('todo chido');
+        }
+
+        else{
+            echo json_encode('Ha ocurrido un error al conectar con la base de datos');
+        }
+    }
+
+    
+
 }
-else{
-     echo json_encode('Ha ocurrido un error al conectar con la base de datos');
-}
+
+/*$base = new NuevaCertificacion();
+$base->conexion();
+$id = $base->buscarUltimoId();
+
+echo($id[0]);*/
+
+$obj = new RegistroPro();
+$obj->instancias();
 
 ?>

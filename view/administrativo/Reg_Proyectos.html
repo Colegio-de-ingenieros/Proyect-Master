@@ -23,7 +23,7 @@
 			</div>
 	  
 			<div class="boton-cerrar-session">
-				<button class="btn-cerrar-session btn">Cerrar sesión</button>
+				<button class="btn-cerrar-session btn">Cerrar session</button>
 			</div>
 		</div>
 
@@ -119,18 +119,6 @@
 					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
 					</ul>
 				  </li>
-
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-file-lines"></i>
-					  Reportes
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Individual</a></li>
-					  <li><a id="menuSucursal2" href="#">General</a></li>
-					</ul>
-				  </li>
 	  
 				  <li>
 					<a href="#">
@@ -141,6 +129,18 @@
 					<ul>
 					  <li><a id="menuSucursal1" href="#">Registrar</a></li>
 					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+					</ul>
+				  </li>
+	  
+				  <li>
+					<a href="#">
+					  <i class="fa-solid fa-file-lines"></i>
+					  Reportes
+					</a>
+	  
+					<ul>
+					  <li><a id="menuSucursal1" href="#">Individual</a></li>
+					  <li><a id="menuSucursal2" href="#">General</a></li>
 					</ul>
 				  </li>
 	  
@@ -180,13 +180,13 @@
 			<p class="subtitulo-1"> Datos generales</p>
 			<hr>
 
-			<form class="formulario-de-datos" id="formulario" name="formulario">
+			<form class="formulario-de-datos" id="formulario">
 				<div class="grupo-input">
 					<div class="label-form">
 						<p class="label-2">Nombre del proyecto</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="nom_proyecto" id="nom_proyecto" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="nom_proyecto" id="nom_proyecto" class="input-format-2" placeholder="Ingrese su texto aquí..." required>
 					</div>
 				</div>
 
@@ -195,7 +195,7 @@
 						<p class="label-2">Fecha de inicio</p>
 					</div>
 					<div class="input-form">
-						<input type="date" name="ini_proyecto" id="ini_proyecto" class="input-format-2" placeholder="Date">
+						<input type="date" name="ini_proyecto" id="ini_proyecto" class="input-format-2" placeholder="Date" required>
 					</div>
 				</div>
 
@@ -204,7 +204,7 @@
 						<p class="label-2">Fecha de fin</p>
 					</div>
 					<div class="input-form">
-						<input type="date" name="fin_proyecto" id="fin_proyecto" class="input-format-2" placeholder="Date">
+						<input type="date" name="fin_proyecto" id="fin_proyecto" class="input-format-2" placeholder="Date" required>
 					</div>
 				</div>
 
@@ -213,7 +213,7 @@
 						<p class="label-2">Monto</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="monto_proyecto" id="monto_proyecto" class="input-format-2"placeholder="Ingrese el monto total del proyecto en $">
+						<input type="text" name="monto_proyecto" id="monto_proyecto" class="input-format-2"placeholder="Ingrese el monto total del proyecto en $" required>
 					</div>
 				</div>
 
@@ -222,7 +222,7 @@
 						<p class="label-2">Objetivo</p>
 					</div>
 					<div class="input-form">
-						<textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea" placeholder="Ingrese el texto aquí..."></textarea>
+						<textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea" placeholder="Ingrese el texto aquí..." required></textarea>
 					</div>
 				</div>
 				<br>
