@@ -203,17 +203,12 @@
             <div class="errors-cointainer">
                 <p></p>
             </div>
-            <div class="header_table" style="display:none;" id="resultContainer">
-                <table id="tabla_Trabajador">
-                    <thead><tr><th>RFC</th><th>Nombre</th><th>Apellido paterno</th><th>Apellido materno</th><th>Correo electronico</th><th>Teléfono</th><th>Acciones</th></tr>
-                    </thead>
-                    <tbody>
-
-                    </tbody>
-                </table>
+            <div class="header_table" id="resultContainer">
+				<?php include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </div>
         </div>
     </div>
+	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
 </body>
-<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
+<!--<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></>-->
 </html>
