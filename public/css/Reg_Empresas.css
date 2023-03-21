@@ -24,9 +24,11 @@ html{
     gap: 20px;
 }
 
+.grupo-input-datos-generales{
+    display: block;
+}
 
 .grupo-input{ 
-    width: 100%;
     display: block;  
 }
 .grupo-input2{

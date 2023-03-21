@@ -5,74 +5,71 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Registrate</title> 
+	<title>Regístrate</title> 
 	<link rel="stylesheet" href="/public/css/Reg_Empresas.css">
 	<link rel="stylesheet" href="/public/css/style.css">
-	<link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
+	<link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css"> 
 </head>
 
-<body><header>
-	<div class="header_superior">
-		<div class="titulo">
-			
-			<div class = "nombre_ventana">
-				<h1 class = "nombre_Ventana">Menu registro</h1>
+<body>
+	<header>
+		<div class="header_superior">
+		  <div class="titulo">
+	
+			<div class="nombre_ventana">
+			  
+			  <h1 class="nombre_Ventana">Regístrate</h1>
 			</div>
-
+	
+		  </div>
+	
+		  <div class="boton-cerrar-session">
+			  <button class="btn-cerrar-session btn">Login</button>
+		  </div>
 		</div>
-
+	
+			<!-- Menu Desplegable -->
+			<div class="container_menu" >
+				
+					<div class="menu">
+						<input type="checkbox" id="check__menu">
+						<label id="label__check" for="check__menu">
+							<i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+						</label>
+						<nav>
+							<ul>
+								<li class="logo_menu"><a href="#">
+									<img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+								</a>
+								</li>
+								
+								<li>
+									<a href="Reg_Personal.html">
+										<i class="fa-solid fa-user"></i>
+										Personal
+									</a>
 		
-	</div>
-
-	<!-- Menu Desplegable -->
-	<div class="container_menu" >
+									
+								</li>
 		
-			<div class="menu">
-				<input type="checkbox" id="check__menu">
-				<label id="label__check" for="check__menu">
-					<i class="fa-sharp fa-solid fa-bars icon__menu"></i>
-				</label>
-				<nav>
-					<ul>
-						<li class="logo_menu"><a href="#">
-							<img class="logo_ciscig" src="../../public/css/administrativo/LOGO_CISCIG.png" alt="">
-						</a>
-						</li>
+								<li>
+									<a href="#">
+										<i class="fa-solid fa-users"></i>
+										Empresarial
+									</a>
+		
+									
+								</li>
+	
 						
-						<li>
-							<a href="Reg_Personal.html">
-								<i class="fa-solid fa-user"></i>
-								Personal
-							</a>
-
-							
-						</li>
-
-						<li>
-							<a href="Reg_Empresa.html">
-								<i class="fa-solid fa-users"></i>
-								Empresarial
-							</a>
-
-							
-						</li>
-
-						<li>
-							<a href="#">
-								<i class="fa-solid fa-right-to-bracket"></i>
-								Login
-							</a>
-
-							
-						</li>
-
-						
-					</ul>
-				</nav>
+		
+								
+							</ul>
+						</nav>
+					</div>
+				
 			</div>
-		
-	</div>
-</header>
+		</header>
 	<div class="contePlantilla">
 		<h3 class="h3">Registro empresarial</h3>
 		<br>
@@ -85,7 +82,7 @@
 						<p class="label-2">RFC fiscal</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rfc" id="rfc" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rfc" id="rfc" class="input-format" placeholder="Ingrese su RFC">
 					</div>
 				</div>
 
@@ -94,7 +91,7 @@
 						<p class="label-2">Nombre comercial</p>
 					</div>
 					<div class="input-form">
-						<input type="text"name="nombre" id="nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text"name="nombre" id="nombre" class="input-format" placeholder="Ingrese el nombre comercial">
 					</div>
 				</div>
 
@@ -103,7 +100,7 @@
 						<p class="label-2">Correo electrónico</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="correo" id="correo_m" class="input-format-2" placeholder="someone@example.com">
+						<input type="email" name="correo" id="correo_m" class="input-format" placeholder="someone@example.com">
 					</div>
 				</div>
 
@@ -112,7 +109,7 @@
 						<p class="label-2">Contraseña</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="password" id="password" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="password" id="password" class="input-format" placeholder="Ingrese su contraseña">
 					</div>
 				</div>
 
@@ -121,20 +118,19 @@
 						<p class="label-2">Confirmar contraseña</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="password_confirmacion" id="password_confirmacion" class="input-format-2" placeholder="someone@example.com">
-					</div>
-				</div>
-
-				<div class="grupo-input2">
-					<div class="label-form">
-						<p class="label-2">Razón social</p>
-					</div>
-					<div class="input-form">
-						<textarea type="text" name="razon" id="razon" class="input-textarea-2"
-							placeholder="Ingrese el texto aquí..."></textarea>
+						<input type="text" name="password_confirmacion" id="password_confirmacion" class="input-format" placeholder="Confirmar contraseña">
 					</div>
 				</div>
 			</div>
+			<div class="grupo-input2">
+				<div class="label-form">
+					<p class="label-2">Razón social</p>
+				</div>
+				<div class="input-form">
+					<textarea type="text" name="razon" id="razon" class="input-format" placeholder="Ingrese la razón social"></textarea>
+				</div>
+			</div>
+			
 			<!--PARTE DOS-->
 			<p class="subtitulo-1"> Domicilio fiscal</p>
 			<hr size="1px" />
@@ -145,7 +141,7 @@
 						<p class="label-2">Código postal</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="codigo_postal" id="codigo_postal" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="codigo_postal" id="codigo_postal" class="input-format" placeholder="Ingrese un código postal">
 					</div>
 				</div>
 
@@ -154,7 +150,7 @@
 						<p class="label-2">Calle y número</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="calle" id="calle" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="calle" id="calle" class="input-format" placeholder="Ingrese la calle y número">
 					</div>
 				</div>
 				<div class="grupo-input">
@@ -163,7 +159,7 @@
 					</div>
 					<div class="input-form">
 
-						<select name="colonia" id="busqueda_colonia" class="input-format-2">
+						<select name="colonia" id="busqueda_colonia" class="input-format">
 							<option value="0">selecciona tu colonia</option>
 						</select>
 					</div>
@@ -175,7 +171,7 @@
 						<p class="label-2">Ciudad</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ciudad" id="ciudad"	class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ciudad" id="ciudad"	class="input-format" placeholder="Ingrese la ciudad">
 					</div>
 				</div>
 
@@ -184,7 +180,7 @@
 						<p class="label-2">Estado</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="estado" id="estado" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="estado" id="estado" class="input-format" placeholder="Ingrese el estado">
 					</div>
 				</div>
 				
@@ -220,7 +216,7 @@
 						<p class="label-2">Hora de inicio</p>
 					</div>
 					<div class="input-form">
-						<input type="time" class="input-format-2" name="inicio" id="inicio" placeholder="Ingrese su texto aquí...">
+						<input type="time" class="input-format" name="inicio" id="inicio" placeholder="Ingrese su texto aquí...">
 					</div>
 				</div>
 
@@ -229,7 +225,7 @@
 						<p class="label-2">Hora de fin</p>
 					</div>
 					<div class="input-form">
-						<input type="time" class="input-format-2" name="fin" id="fin" placeholder="Ingrese su texto aquí...">
+						<input type="time" class="input-format" name="fin" id="fin" placeholder="Ingrese su texto aquí...">
 					</div>
 				</div>
 			</div>
@@ -244,25 +240,25 @@
 						<p class="label-2">Nombre del encargado</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rh_nombre" id="rh_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rh_nombre" id="rh_nombre" class="input-format" placeholder="Ingrese el nombre del encargado">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. paterno</p>
+						<p class="label-2">Apellido paterno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rh_paterno" id="rh_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rh_paterno" id="rh_paterno" class="input-format" placeholder="Ingrese el apellido paterno">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. materno</p>
+						<p class="label-2">Apellido materno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rh_materno" id="rh_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rh_materno" id="rh_materno" class="input-format" placeholder="Ingrese el apellido materno">
 					</div>
 				</div>
 
@@ -271,7 +267,7 @@
 						<p class="label-2">Número de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rh_tele" id="rh_tele"	class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rh_tele" id="rh_tele"	class="input-format" placeholder="Ingrese el número de teléfono">
 					</div>
 				</div>
 
@@ -280,7 +276,7 @@
 						<p class="label-2">Extensión de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="rh_exten" id="rh_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="rh_exten" id="rh_exten" class="input-format" placeholder="Ingrese la extensión del área">
 					</div>
 				</div>
 
@@ -289,7 +285,7 @@
 						<p class="label-2">Correo electrónico</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="rh_correo" id="rh_correo" class="input-format-2" placeholder="someone@example.com">
+						<input type="email" name="rh_correo" id="rh_correo" class="input-format" placeholder="someone@example.com">
 					</div>
 				</div>
 			</div>
@@ -303,25 +299,25 @@
 						<p class="label-2">Nombre del encargado</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ti_nombre" id="ti_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ti_nombre" id="ti_nombre" class="input-format" placeholder="Ingrese el nombre del encargado">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. paterno</p>
+						<p class="label-2">Apellido paterno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ti_paterno" id="ti_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ti_paterno" id="ti_paterno" class="input-format" placeholder="Ingrese el apellido paterno">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. materno</p>
+						<p class="label-2">Apellido materno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ti_materno" id="ti_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ti_materno" id="ti_materno" class="input-format" placeholder="Ingrese el apellido materno">
 					</div>
 				</div>
 
@@ -330,7 +326,7 @@
 						<p class="label-2">Número de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ti_tele" id="ti_tele" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ti_tele" id="ti_tele" class="input-format" placeholder="Ingrese el número de teléfono">
 					</div>
 				</div>
 
@@ -339,7 +335,7 @@
 						<p class="label-2">Extensión de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ti_exten" id="ti_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ti_exten" id="ti_exten" class="input-format" placeholder="Ingrese la extensión del área">
 					</div>
 				</div>
 
@@ -348,7 +344,7 @@
 						<p class="label-2">Correo electrónico</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="ti_correo" id="ti_correo" class="input-format-2" placeholder="someone@example.com">
+						<input type="email" name="ti_correo" id="ti_correo" class="input-format" placeholder="someone@example.com">
 					</div>
 				</div>
 			</div>
@@ -361,25 +357,25 @@
 						<p class="label-2">Nombre del encargado</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ac_nombre" id="ac_nombre" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ac_nombre" id="ac_nombre" class="input-format" placeholder="Ingrese el nombre del encargado">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. paterno</p>
+						<p class="label-2">Apellido paterno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ac_paterno" id="ac_paterno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ac_paterno" id="ac_paterno" class="input-format" placeholder="Ingrese el apellido paterno">
 					</div>
 				</div>
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Ap. materno</p>
+						<p class="label-2">Apellido materno</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ac_materno" id="ac_materno" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ac_materno" id="ac_materno" class="input-format" placeholder="Ingrese el apellido materno">
 					</div>
 				</div>
 
@@ -388,7 +384,7 @@
 						<p class="label-2">Número de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ac_tele" id="ac_tele" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ac_tele" id="ac_tele" class="input-format" placeholder="Ingrese el número de teléfono">
 					</div>
 				</div>
 
@@ -397,7 +393,7 @@
 						<p class="label-2">Extensión de teléfono</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="ac_exten" id="ac_exten" class="input-format-2" placeholder="Ingrese su texto aquí...">
+						<input type="text" name="ac_exten" id="ac_exten" class="input-format" placeholder="Ingrese la extensión del área">
 					</div>
 				</div>
 
@@ -406,7 +402,7 @@
 						<p class="label-2">Correo electrónico</p>
 					</div>
 					<div class="input-form">
-						<input type="email" name="ac_correo" id="ac_correo" class="input-format-2" placeholder="someone@example.com">
+						<input type="email" name="ac_correo" id="ac_correo" class="input-format" placeholder="someone@example.com">
 					</div>
 				</div>
 			</div> 
