@@ -1,7 +1,7 @@
 <?php
-require_once('../../model/Reg_personal.php');
+require_once('../model/Reg_personal.php');
 $objeto=new Personal();
-
+$data =[];
 if(
     isset ($_POST["nomPerso"]) &&
     isset ($_POST["apePPerso"]) &&
@@ -90,9 +90,8 @@ if(
     
 
     $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp);
-    $resultado2=$objeto->buscar_colonias($codigoP);
 
-    if($resultado1==True && $resultado2==True){
+    if($resultado1==True){
         echo "Todo chido";
     }else{
         echo "No todo chido";
@@ -101,7 +100,7 @@ if(
 }else if(isset($_POST["cpPerso"])){
 
 
-    $data = $objeto->buscar_colonias($codigoP);
+    $data = $objeto->buscar_colonias($_POST["cpPerso"]);
 
 }
 

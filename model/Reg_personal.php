@@ -1,5 +1,5 @@
 <?php
-    include('../../config/Crud_bd.php');
+    include('../config/Crud_bd.php');
 
     class Personal extends Crud_bd{
 
@@ -110,17 +110,13 @@
             $resultado4=$this->insertar_eliminar_actualizar($q6, $a6);
             $this->cerrar_conexion();
 
-            return $resultado;
-            return $resultado1;
-            return $resultado2;
-            return $resultado3;
-            return $resultado4;
+            
         }
 
         public function buscar_colonias($codigoPostal){
             # esta funcion trae todas las colonias en base al codigo postal
             $this->conexion_bd();
-            $sql = "SELECT IdColonia,nomcolonia,ciudad,nomestado FROM"
+            $sql = "SELECT IdColonia,nomcolonia,nommunicipio,nomestado FROM"
                     ." estados,municipios,colonias WHERE estados.idestado = municipios.idestado AND"
                     ." municipios.idmunicipio =colonias.idmunicipio AND colonias.codpostal = :cod ";
             $resultado = $this->mostrar($sql,[":cod"=>$codigoPostal]);
