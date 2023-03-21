@@ -12,7 +12,8 @@
 
         //retorna true si el id que recibe ya esta en la base y false si no
         function buscarPorId($id){
-            $querry = "SELECT * FROM proyectos WHERE IdPro = :id";
+            $querry = "SELECT * FROM proyectos
+            WHERE IdPro = :id";
 
             $arre = [":id"=>$id];
 
@@ -27,7 +28,7 @@
             }
         }
 
-        //busca el ultimo id de la tabla proyectos
+        //busca el ultimo id de la tabla certificaciones internas
         function buscarUltimoIdPro(){
             $querry = "SELECT * FROM proyectos";
 
@@ -51,29 +52,19 @@
             return $id;
         }
 
-        
-        //manda las consultas para insertar en la tabla proyectos
-        function insertar($idP, $nombreP, $iniP, $finP, $objP, $montoP){
+        //manda las consultas para insertar en las tablas de certificaciones internas e historicos
+        function insertar($idp, $nombre, $inicio, $fin, $objetivo, $monto){
             //consultas para la tabla de certificaciones internas
-            $q1 = "INSERT INTO proyectos (IdPro, NomProyecto, IniPro, FinPro, ObjPro, MontoPro, EstatusPro)
-            VALUES(:id, :nombreP, :iniP, :finP, :objp, :montoP,:estatusP)";
+            $q1 = "INSERT INTO proyectos (IdPro, NomProyecto, IniPro, FinPro, ObjPro, MontoPro,EstatusPro)
+            VALUES(:id, :nombre, :inicio, :fin,:objetivo, :monto, :estatus)";
 
-            $a1 = [":id"=>$idP, ":nombre"=>$nombreP, ":iniP"=>$iniP, ":finP"=>$finP,":objP"=>$objP, ":montoP"=>$montoP,   "estatusP"=>1];
+            $a1 = [":id"=>$idp, ":nombre"=>$nombre, ":inicio"=>$inicio, ":fin"=>$fin, ":objetivo"=>$objetivo,  ":monto"=>$monto,  "estatus"=>1];
 
             //acomoda todo en arreglos para mandarlos al CRUD
             $querry = [$q1];
             $parametros = [$a1];
-            $this->base->insertar_eliminar_actualizar($querry, $parametros);
-        }
 
-        function generarID(){
-            $idp = buscarUltimoIdPro();
-            $id = floatval($idp) +1; 
-            $idp = strval($id);
-            for($i=strlen($idp); $i<6; $i++){
-                $idp = '0'.$idp;
-            }
-            return $idp;
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
         
     }
