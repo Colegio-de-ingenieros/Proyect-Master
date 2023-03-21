@@ -16,6 +16,8 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script>
 </head>
 
 <body>
@@ -193,7 +195,7 @@
     </div>
   </header>
   
-  <main>
+  <main class="section-main" id="tablaResultados">
     <section class="section-main">
 
       <div class="cabezera">
@@ -213,7 +215,7 @@
       
       <div class="table">
          <div class="header_table">
-            <?php include('../../controller/administrativo/Mostrar_Cursos.php'); ?>
+            <!--  -->
            <!--<table>   
              <thead>
               <tr>
