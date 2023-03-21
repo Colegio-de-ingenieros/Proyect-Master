@@ -203,10 +203,7 @@
                         <p class="label-2">Colonia</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
                     </div>
                 </div>
 
@@ -215,10 +212,7 @@
                         <p class="label-2">Ciudad</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ciudadPerso" name="ciudadPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ciudadPerso" name="ciudadPerso" required maxlength="50">
                     </div>
                 </div>
 
@@ -227,10 +221,7 @@
                         <p class="label-2">Estado</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="estadoPerso" name="estadoPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="estadoPerso" name="estadoPerso" required maxlength="50">
                     </div>
                 </div>
             </div>
@@ -244,7 +235,43 @@
                         <p class="label-2">Certificaciones</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="nomCerPerso" name="nomCerPerso" required maxlength="60">
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="idCerPerso" name="idCerPerso" required maxlength="6">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Nombre de certificacion</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format" placeholder="Ingrese su texto aquí..." id="nomCert" name="nomCert" required maxlength="60">
+                    </div>
+                </div>
+
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Organizacion del certificado</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format" placeholder="Ingrese su texto aquí..." id="orgCert" name="orgCert" required maxlength="50">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de inicio</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format" placeholder="Ingrese su texto aquí..." id="fechaCert" name="fechaCert" required maxlength="60">
+                    </div>
+                </div>
+
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de fin</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format" placeholder="Ingrese su texto aquí..." id="orgCert" name="orgCert" required maxlength="50">
                     </div>
                 </div>
 
@@ -254,8 +281,10 @@
                     </div>
                     <div class="input-form">
                         <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
+                        <option value="1">Pasante</option>
+                        <option value="2">Licenciatura</option>
+                        <option value="2">Maestría</option>
+                        <option value="2">Doctorado</option>
                         </select>
                     </div>
                 </div>
@@ -402,5 +431,7 @@
         }
 
       </script>
+
+      <script src="../registro/js/Reg_Personal.js"></script>
 </body>
 </html>
