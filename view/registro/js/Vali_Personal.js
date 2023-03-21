@@ -294,12 +294,10 @@ formulario.nomCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.nomCert.value = valorInput
-    // Eliminar letras
-	.replace(/\D/g, '')
      // Eliminar el ultimo espaciado
    .trim();
 
-    if (!expresiones.nombre.test(valorInput)) {
+    if (!expresiones.calle.test(valorInput)) {
         formulario.nomCert.style.border = "3px solid red";
         bandNomCerti = false;
 	}else{
@@ -309,7 +307,143 @@ formulario.nomCert.addEventListener('keyup', (e) => {
     validar();
 });
 
+/* Input organizacion certificaciones*/
+formulario.orgCert.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
 
+	formulario.orgCert.value = valorInput
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.calle.test(valorInput)) {
+        formulario.orgCert.style.border = "3px solid red";
+        bandOrgCerti = false;
+	}else{
+        formulario.orgCert.removeAttribute("style");
+        bandOrgCerti = true;
+    }
+    validar();
+});
+
+/* Input nombre empresa*/
+formulario.nomEmpPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.nomEmpPerso.value = valorInput
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.calle.test(valorInput)) {
+        formulario.nomEmpPerso.style.border = "3px solid red";
+        bandEmpLab = false;
+	}else{
+        formulario.nomEmpPerso.removeAttribute("style");
+        bandEmpLab = true;
+    }
+    validar();
+});
+
+/* Input puesto empresa*/
+formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.puestoEmpPerso.value = valorInput
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.calle.test(valorInput)) {
+        formulario.puestoEmpPerso.style.border = "3px solid red";
+        bandPuesto = false;
+	}else{
+        formulario.puestoEmpPerso.removeAttribute("style");
+        bandPuesto = true;
+    }
+    validar();
+});
+
+/* Input correo empresa*/
+formulario.correoEmpPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.correoEmpPerso.value = valorInput
+    // Eliminar espacios en blanco
+	.replace(/\s/g, '')
+    // Eliminar caracteres especiales
+   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
+    // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.email.test(valorInput)) {
+        formulario.correoEmpPerso.style.border = "3px solid red";
+        bandCorreoLab = false;
+	}else{
+        formulario.correoEmpPerso.removeAttribute("style");
+        bandCorreoLab = true;
+    }
+    validar();
+});
+
+/* Input ext telefono fijo*/
+formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.ExtTelFEmp.value = valorInput
+    // Eliminar espacios en blanco
+	.replace(/\s/g, '')
+    // Eliminar letras
+	.replace(/\D/g, '')
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.exten.test(valorInput)) {
+        formulario.ExtTelFEmp.style.border = "3px solid red";
+        bandExtTelMofi = false;
+	}else{
+        formulario.ExtTelFEmp.removeAttribute("style");
+        bandExtTelMofi = true;
+    }
+    validar();
+});
+
+/* Input telefono fijo empresa*/
+formulario.telFEmpPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.telFEmpPerso.value = valorInput
+    // Eliminar espacios en blanco
+	.replace(/\s/g, '')
+    // Eliminar letras
+	.replace(/\D/g, '')
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.telefono.test(valorInput)) {
+        formulario.telFEmpPerso.style.border = "3px solid red";
+        bandTelMofi = false;
+	}else{
+        formulario.telFEmpPerso.removeAttribute("style");
+        bandTelMofi = true;
+    }
+    validar();
+});
+
+/* Input puesto empresa*/
+formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.funcionEmpPerso.value = valorInput
+     // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.calle.test(valorInput)) {
+        formulario.funcionEmpPerso.style.border = "3px solid red";
+        bandFunciones = false;
+	}else{
+        formulario.funcionEmpPerso.removeAttribute("style");
+        bandFunciones = true;
+    }
+    validar();
+});
 
 const boton_enviar = document.getElementById("boton_registrar");
 
