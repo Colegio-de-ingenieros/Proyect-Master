@@ -77,28 +77,50 @@
         }
 
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-        function insertar($idc, $logo, $desc, $nombre, $precio, $fecha, $idh){
+        function insertar($idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha){
             //consultas para la tabla de certificaciones internas
             $q1 = "INSERT INTO certinterna (IdCerInt, LogoCerInt, DesCerInt, NomCertInt, EstatusCertInt)
             VALUES(:id, :logo, :descripcion, :nombre, :estatus)";
 
             $a1 = [":id"=>$idc, ":logo"=>$logo, ":nombre"=>$nombre, ":descripcion"=>$desc, "estatus"=>1];
 
-            //consulta para la tabla de historicos
-            $q2 = "INSERT INTO historico (Idh, FechaH, PrecioH)
+            //consultas para la tabla de historicos
+            $q2g = "INSERT INTO historico (Idh, FechaH, PrecioH)
             VALUES(:id, :fecha, :precio)";
 
-            $a2 =[":id"=>$idh, ":fecha"=>$fecha, ":precio"=>$precio];
+            $a2g =[":id"=>$idhg, ":fecha"=>$fecha, ":precio"=>$precioG];
 
-            //consulta para insertar en la tabla de relacion certh
-            $q3 = "INSERT INTO certh (IdCerInt, IdH)
+            $q2a = "INSERT INTO historico (Idh, FechaH, PrecioH)
+                VALUES(:id, :fecha, :precio)";
+
+            $a2a = [":id" => $idha, ":fecha" => $fecha, ":precio" => $precioA];
+
+            //consultas para insertar en la tabla de relacion certh
+            $q3g = "INSERT INTO certh (IdCerInt, IdH)
             VALUES(:idc, :idh)";
 
-            $a3 = [":idc"=>$idc, ":idh"=>$idh];
+            $a3g = [":idc"=>$idc, ":idh"=>$idhg];
+
+            $q3a = "INSERT INTO certh (IdCerInt, IdH)
+                VALUES(:idc, :idh)";
+
+            $a3a = [":idc" => $idc, ":idh" => $idha];
+
+            //consultas para insertar registros en la relacion tipousuahis
+            $q4g = "INSERT INTO tipousuahis (IdUsua, IdH) 
+            VALUES(:idu, :idh)";
+
+            $a4g = [":idu"=>5, ":idh"=>$idhg];
+
+            $q4a = "INSERT INTO tipousuahis (IdUsua, IdH) 
+                VALUES(:idu, :idh)";
+
+            $a4a = [":idu" => 1, ":idh" => $idha];
+
 
             //acomoda todo en arreglos para mandarlos al CRUD
-            $querry = [$q1, $q2, $q3];
-            $parametros = [$a1, $a2, $a3];
+            $querry = [$q1, $q2g, $q2a, $q3g, $q3a, $q4g, $q4a];
+            $parametros = [$a1, $a2g, $a2a, $a3g, $a3a, $a4g, $a4a];
 
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
