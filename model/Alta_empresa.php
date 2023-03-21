@@ -148,7 +148,8 @@ class Alta_empresa extends Crud_bd{
         # esta funcion te dara el numero en el que se quedaron
 
         $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
-        $sql = "SELECT Max(CAST(IdNIntel AS INT)) FROM numinteligentes";
+        
+        $sql = "SELECT MAX(CAST(SUBSTRING(IdNIntel,2) AS INT)) FROM numinteligentes";
         $resultado = $this->mostrar($sql);
         $this->cerrar_conexion();
        
@@ -176,13 +177,14 @@ class Alta_empresa extends Crud_bd{
         $numero_con_ceros = $this->agregar_ceros($numero);
         
         $numero_inteligente = $year.$mes.$numero_con_ceros;
+        $numero_consecutivo = "E".$numero_con_ceros;
 
     
         $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
-        $parametros_inteligentes = [":consecutivo"=>$numero,":inteligente"=>$numero_inteligente];
+        $parametros_inteligentes = [":consecutivo"=>$numero_consecutivo,":inteligente"=>$numero_inteligente];
 
         $sql_usua = "INSERT INTO usuaempnintel (RFCUsuaEmp,IdNIntel) VALUES(:rfc,:consecutivo)";
-        $parametros_usua = [":rfc"=>$rfc_empresa,":consecutivo"=>$numero];
+        $parametros_usua = [":rfc"=>$rfc_empresa,":consecutivo"=>$numero_consecutivo];
 
         $this->sql[] = $sql_inteligentes;
         $this->parametros[] = $parametros_inteligentes;

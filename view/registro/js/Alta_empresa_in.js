@@ -5,8 +5,7 @@
  * este archivo se encarga de mandar los datos al controlador 
  * de Alta_empresa.php
  */
-let estado = document.getElementById("estado");
-let ciudad = document.getElementById("ciudad");
+
 
 
 document.getElementById("codigo_postal").addEventListener('blur', (e) => {
@@ -74,6 +73,7 @@ formulario.addEventListener("submit",(e)=>{
         .then(data => {
             alert(data[0]);
         });
+        formulario.reset();
     }
    
 });
@@ -107,6 +107,12 @@ function checke() {
         }
     }
     return lista;
+}
+function limpiar() {
+    estado.value = "";
+    ciudad.value = "";
+    
+    
 }
 
 
