@@ -41,7 +41,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
         nom_proyecto.removeAttribute("style");
         bNomPro = true
     }
-    validar(bNomPro);
+    //validar(bNomPro);
 })
 
 /* Input Objetivo Proyecto*/
@@ -61,7 +61,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
         obj_proyecto.removeAttribute("style");
         bObjPro = true
     }
-    validar(bObjPro);
+    //validar(bObjPro);
 })
 
 /* Input Monto Proyecto*/
@@ -85,18 +85,18 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
         monto_proyecto.removeAttribute("style");
         bMonPro = true
     }
-    validar(bMonPro);
+    //validar(bMonPro);
 })
 
 function validar(bandera){
     const registrar = document.getElementById('registrar');
     if(bandera == true){
         registrar.disabled=false;
-        console.log("pase validacion");
+       
     }
     else{
         registrar.disabled=true;
-        console.log("no pase validacion");
+       
     }
 
 }
