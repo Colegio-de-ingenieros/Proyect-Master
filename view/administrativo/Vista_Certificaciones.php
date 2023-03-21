@@ -176,42 +176,26 @@
 	</header>
 
 	<main>
-		<section class="section-main" id="tablaResultado">
-			<div class="cabezera">
+		<div>
+			<div class="article-tablas">
+				<article>
 				<h4 class="subtitulo-1">Visualización / Consulta</h4>
-			</div>
-			<hr>
-
-			<form class="formulario-de-vista" id="formulario">
-				<div class="grupo-input">
+				<hr>
+					<div class="grupo-input">
 					<div class="input-form">
 						<input type="search" class="input-format2" placeholder="Search" name="busqueda" id="busqueda">
 					</div>
-				</div>
-
-				<div class="table">
-					<div class="header_table">
-
-						<?php //include('../../controller/administrativo/Mostrar_Certificaciones.php'); 
-						?>
-						<!---<table>
-                            <thead>
-                                <tr>
-                                    <th>Logo</th>
-                                    <th>Nombre</th>
-                                    <th>Descripcion</th>
-                                    <th>Precio socio/asociado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                        </table>--->
 					</div>
-				</div>
-			</form>
-
-		</section>
-	</main>
+					<br>
+					<div class="tablas">
+						<section class="header_table" id="tablaResultado">
+						
+						</section>
+					</div>
+				</article>
+			</div>
+		</div>
+    </main>
 	</div>
 </body>
-
 </html>
