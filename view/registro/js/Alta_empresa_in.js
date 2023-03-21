@@ -41,7 +41,7 @@ formulario.addEventListener("submit",(e)=>{
     let time_fin = document.getElementById("fin");
     let dias = checke();
 
-    console.log("entro al submit");
+
 
     if (dias.length == 0) {
         alert("Debe seleccionar días laborales");
@@ -58,7 +58,7 @@ formulario.addEventListener("submit",(e)=>{
 
     if (dias.length > 0 && aviso_privacidad.checked && time_inicio.value.length > 0 && time_fin.value.length > 0 ) {
          /** extraemos los datos del formulario */
-         console.log("entro al if");
+
         let formulario_data = new FormData(e.target);
         dias.forEach(dia => {
             formulario_data.append("dias[]",dia)
