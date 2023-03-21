@@ -195,72 +195,33 @@
     </div>
   </header>
   
-  <main class="section-main" id="tablaResultados">
-    <section class="section-main">
-
-      <div class="cabezera">
-        <h4 class="h4">Vista de cursos</h4>
-
-        <div class="grupo-input">
-          <div class="input-form-2">
-            <input type="text" class="input-format-2" placeholder="Busca algo en la tabla...">
-          </div>
+  <main class="section-main" id="tablaResultado">
+    <div class="contenedortrabajadores" >
+		  <h3>Vista </h3>
+		<hr size="1px"/>
+		<br>
+        <p class="subtitulo-1"> Vista general trabajadores</p>
+		<div class="contenedor-formulario">
+			<div></div>
+			<div class="grupo-input">
+				<div class="input-form">
+					<input type="search" id="search" class="input-busca" placeholder="Buscar..">
+				</div>
+			</div>
+		</div>
+		<br>
+        <br>
+        <br>
+        <br>
+        <div class="table">
+            <div class="errors-cointainer">
+                <p></p>
+            </div>
+            <div class="header_table" id="resultContainer">
+				<?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+            </div>
         </div>
-      </div>
-
-      <hr>
-
-      <div class="contenedor-formulario">
-      </div>
-      
-      <div class="table">
-         <div class="header_table">
-            <!--  -->
-           <!--<table>   
-             <thead>
-              <tr>
-                <th>Clave</th>
-                <th>Nombre</th>
-                <th>Duración</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <tr>
-                <td>0001</td>
-                <td>Python para principiantes</td>
-                <td>200 hrs</td>
-                <td>
-                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#">Eliminar</a>
-                </td>
-              </tr>
-              <tr>
-                <td>0002</td>
-                <td>C++ desde 0 hasta master</td>
-                <td>220 hrs</td>
-                <td>
-                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#">Eliminar</a>
-                </td>
-              </tr>
-              <tr>
-                <td>0003</td>
-                <td>Java, JavaScript como profesional</td>
-                <td>210 hrs</td>
-                <td>
-                  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  <a href="#">Eliminar</a>
-                </td>
-              </tr>
-            </tbody> 
-
-          </table>  -->
-         </div> 
-      </div>
-      
-    </section>
+    </div>
   </main>
 </body>
 

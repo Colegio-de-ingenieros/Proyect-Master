@@ -12,6 +12,33 @@ if ($datos == true) {
     
     $respuesta .= 
     '
+    <style>
+    table{
+        width: 150%;
+        border-collapse: collapse;
+        font-family: "Manrope";
+
+    }
+    
+    .header_table thead th {
+        
+        top: 0;
+        background-color: #085262;
+        color: #e6e7e8;
+        font-size: 1.125rem;
+    }
+    th,td {
+        border-bottom: 1px solid #000000;
+        padding: 10px 20px;
+        font-size: 15px;
+        text-align: center;
+        background-color: #dfe3e7;
+    }
+    .di{
+       padding-top: 20px;
+    }
+    </style>
+    <div class="di">
     <table class = "header_table">
             <thead>
                 <tr>
@@ -41,7 +68,7 @@ if ($datos == true) {
         <a href="#">Eliminar</a>
         </td>';
         $respuesta .= '</tr>';
-        
+        $respuesta .= '</div>';
 
         
     }
