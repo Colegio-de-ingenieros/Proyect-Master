@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
 	<link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
 </head>
 <body>
 <header>
@@ -178,8 +180,9 @@
       </div>
     </div>
   </header>
+  <main class="section-main" id="tablaResultado">
     <div class="contenedortrabajadores" >
-		<h3>Vista </h3>
+		  <h3>Vista </h3>
 		<hr size="1px"/>
 		<br>
         <p class="subtitulo-1"> Vista general trabajadores</p>
@@ -200,10 +203,11 @@
                 <p></p>
             </div>
             <div class="header_table" id="resultContainer">
-				<?php include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+				<?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </div>
         </div>
     </div>
+  </main>
 	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
 </body>
 <!--<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></>-->
