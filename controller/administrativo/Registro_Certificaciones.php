@@ -2,17 +2,19 @@
 include_once('../../model/Registro_Certificaciones.php');
 
 class RegistroCert{
-    private $obj, $idc, $idh, $precio, $logo, $desc, $nombre;
+    private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre;
 
     //inicializa los valores que ocupan las demas funciones
     function instancias(){
         $this->obj = new NuevaCertificacion();
         $this->obj->conexion();
         $this->idc = $this->generarID('cert');
-        $this->idh = $this->generarID('histo');
-        $this->nombre = $_POST["inputNombre"];
-        $this->precio = $_POST["inputPrecio"];
-        $this->desc = $_POST["inputDescripcion"];
+        $this->idhg = $this->generarID('histo');
+        $this->idha = $this->otroID('histo');
+        $this->nombre = $_POST["nombre"];
+        $this->precioG = $_POST["precioGen"];
+        $this->precioA = $_POST["precioAsoc"];
+        $this->desc = $_POST["descripcion"];
         $this->logo = $_FILES["inputLogo"]['name'];
         $this->validarFoto();
 
@@ -36,6 +38,7 @@ class RegistroCert{
         for($i=strlen($ids); $i<6; $i++){
             $ids = '0'.$ids;
         }
+        //echo json_encode($tipo . ' ' . $ids);
 
         return $ids;
     }
@@ -43,7 +46,8 @@ class RegistroCert{
     //manda a llamar al archivo de model para meter los datos a la base
     function insertar(){
         $fecha = date('y-m-d');
-        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precio, $fecha, $this->idh);
+        //$idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha
+        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha);
 
         //verifica que los datos se insertarin en la base de datos
         $resultados = $this->obj->buscarPorId($this->idc);
@@ -81,6 +85,18 @@ class RegistroCert{
         }
         
 
+    }
+
+    //toma el id de historico que se acaba de generar y genera el siguiente
+    function otroID(){
+        $id = floatval($this->idhg) + 1;
+        $ids = strval($id);
+
+        for ($i = strlen($ids); $i < 6; $i++) {
+            $ids = '0' . $ids;
+        }
+        
+        return $ids;
     }
 }
 

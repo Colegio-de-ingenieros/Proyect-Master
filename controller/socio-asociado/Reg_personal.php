@@ -98,4 +98,14 @@ if(
         echo "No todo chido";
     }
 
+}else if(isset($_POST["cpPerso"])){
+
+
+    $data = $objeto->buscar_colonias($codigoP);
+
 }
+
+header("Content-Type: application/json");
+echo json_encode($data);
+
+?>
