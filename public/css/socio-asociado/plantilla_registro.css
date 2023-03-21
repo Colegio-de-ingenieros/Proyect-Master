@@ -1,154 +1,74 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 
-:root{
-    --color-primary: #273544;
-    --color-secondary: #303a6e;
-    --color-tertiary: #3f4552;
-    --color-quaternary: #61a8ab;
-    --color-quinary: #085262;
-
-    --color-white: #ffffff;
-    --color-gray: #dfe3e7;
-    --color-gray-2: #d6dbe0;
-    --color-black: #000000;
-
-    --color-placeholder-1: #93979b;
-    --color-placeholder-2: #7c838a;
-    --color-placeholder-3: #474a57;
-
-    --color-red: #ff0000;
-
-    --radius-1: 15px;
-    --radius-2: 8px;
-
-    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
-    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-}
-
-body{
+body {
     font-family: 'Manrope', sans-serif;
     background-color: #dfe3e7;
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Manrope', sans-serif;
     text-decoration: none;
 }
-h1.nombre_Ventana{
+
+h1.nombre_Ventana {
     color: #FFFF;
     font-weight: 900;
     font-size: 48px;
 }
 
-header{
+header {
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     background: #fff;
-}
-
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 13rem;
-}
-
-/* Main y section */
-.section-main{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
-
-.cabezera{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-h1.nombre_Ventana{
-    color: #FFFF;
-    font-weight: 900;
-    font-size: 48px;
-}
-
-header{
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background: #fff;
-}
-
-img.logo_ciscig{
-    padding-right: 10px;
-    width: 70px;
-}
-.nombre_ventana{
-    display: flex;
-    align-items: center;
-}
-
-.boton-cerrar-session{
-    padding-right: 50px;
-}
-
-.btn-cerrar-session{
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: var(--radius-2);
-
-    padding: 12px 24px;
-    border: none;
-    background: var(--color-quaternary);
-    color: var(--color-white);
 }
 
 /*HEADER SUPERIOR*/
 
-.header_superior{
+.header_superior {
     background-color: #273645;
     height: 125px;
     max-width: 100%;
     margin: auto;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 
 }
-.titulo{
+
+.titulo {
     font-size: 12px;
     padding: 0px 50px;
 }
 
-.logo{
+.logo {
     width: 150px;
 }
-.logo:hover{
+
+.logo:hover {
     cursor: pointer;
 }
 
 
 
 /*Barra de busqueda*/
-.input-buscar{
-    padding:0 50px 0 50px;
+.input-buscar {
+    padding: 0 50px 0 50px;
     display: flex;
 }
-.barra-busqueda{
+
+.barra-busqueda {
     background-color: #fff;
     width: fit-content;
     border: 1px solid silver;
     border-radius: 30px;
 }
-  
-  .input-buscar input {
+
+.input-buscar input {
     width: 240px;
     height: 30px;
     padding: 0 20px;
@@ -157,27 +77,31 @@ img.logo_ciscig{
     outline: none;
     border: 1px solid transparent;
     border-radius: 30px;
-  }
+}
 
 /*Barra Menu*/
-.container_menu{
+.container_menu {
     width: 100%;
-    height: 80px;
+    height: 70px;
     background: #ffffff;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 0px 20px;
-    
-  }
 
-.menu{
+
+}
+
+.menu {
     height: 100%;
 }
 
-nav{
+nav {
     height: 100%;
+    float: left;
+
 }
 
-nav > ul{
+
+nav>ul {
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -186,46 +110,45 @@ nav > ul{
 }
 
 
-
-nav  ul  li{
+nav ul li {
     height: 100%;
     list-style: none;
     position: relative;
-    padding: 15%;
 }
 
 
 
 
-nav > ul > li > a{
+nav>ul>li>a {
     padding: 5px;
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     text-transform: uppercase;
-    font-size: 25px;
+    font-size: 12px;
     font-weight: 900;
     transition: all 300ms ease;
     color: #000000;
 }
-i{
+
+i {
     padding: 5px;
     font-size: 16px;
 }
-img.logo_ciscig{
-    width: 200px;
-    
+
+img.logo_ciscig {
+    width: 150px;
 }
 
-nav > ul > li > a:hover{
+nav>ul>li>a:hover {
     color: #61A8AB;
     box-shadow: 0px 0px px 1px #61A8AB;
 }
 
 /*SUBMENU*/
 
-nav ul li ul{
+nav ul li ul {
     width: 150px;
     display: flex;
     flex-direction: column;
@@ -236,22 +159,22 @@ nav ul li ul{
     padding: 14px 10px;
     visibility: hidden;
     opacity: 0;
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     z-index: 10;
     transition: all 300ms ease;
 }
 
-nav ul li:hover ul{
+nav ul li:hover ul {
     visibility: visible;
     opacity: 1;
     top: 70px;
 }
 
-nav ul li ul::before{
+nav ul li ul::before {
     content: '';
     width: 0;
     height: 0;
-    border-left:12px solid transparent ;
+    border-left: 12px solid transparent;
     border-right: 12px solid transparent;
     border-bottom: 12px solid white;
     position: absolute;
@@ -259,7 +182,7 @@ nav ul li ul::before{
     left: 20px;
 }
 
-nav ul li ul li a{
+nav ul li ul li a {
     display: block;
     color: #000000;
     padding: 6px;
@@ -271,129 +194,72 @@ nav ul li ul li a{
     transition: all 300ms ease;
 }
 
-nav ul li ul li a:hover{
+nav ul li ul li a:hover {
     color: #61A8AB;
     padding-left: 20px;
     font-size: 12px;
     font-weight: 800;
-} 
-
-/*----------------------- Encabezados --------------------------*/
-h3{
-    color: var(--color-black);
-    font-size: 54px;
-    font-weight: 800;
-}
-/* =================== SUBTITULOS ============== */
-.subtitulo-1{
-    color: var(--color-black);
-    font-size: 28px;
-    font-weight: 700;
 }
 
-/* =================== LARGE LABELS =================== */
 
-.label-2{
-    color: var(--color-black);
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-/* ====================  LINKS =====================*/
-.inputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    gap: 16px;
-}
-
-.input-format{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-/*-------------------------------- Animaciones de las cajas de texto ----------------------*/
-.input-format:focus{
-    background: var(--color-gray-2);
-    box-shadow: var(--shadow-1);
-    transition: all 300ms;
-}
-
-.input-format:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.input-format::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
 /* contenedor guia */
-html{
+html {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
-}    
-.contenedor{
+}
+
+.contePlantilla {
     height: 32em;
     width: 60em;
     border: none;
-    background-color: none; 
+    background-color: none;
     width: 80%;
     height: 500px;
     justify-content: center;
-    margin: 14em auto; 
-} 
-.contenedor-formulario{
+    margin: 14em auto;
+}
+
+.contenedor-formulario {
     padding: 20px 0px 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
 
-.grupo-input2{
+.grupo-input2 {
     display: block;
-    grid-column: span 1;
+    grid-column: span 3;
 
 }
-.grupo-input{
-    display: block;
-}
-.grupo-input-datos-generales{
+
+.grupo-input {
     display: block;
 }
 
-.label-form{
+.label-form {
     padding-bottom: 10px;
 }
 
-.input-format{
+.input-format {
     width: 100%;
 }
 
-.input-textarea{
+.input-textarea {
     width: 100%;
 }
-.boton_registrar{
+
+.boton_registrar {
     display: flex;
     flex-direction: column;
-    align-items: center;}
+    align-items: center;
+}
 
-hr{
+hr {
     color: gray;
 }
 
 /*Responsive*/
-.icon__menu{
+.icon__menu {
     font-size: 34px;
     color: #000000;
     cursor: pointer;
@@ -403,46 +269,50 @@ hr{
     align-items: center;
 }
 
-.label__check{
+.label__check {
     width: 26px;
     height: 100%;
     display: none;
 }
 
-#check__menu{
+#check__menu {
     display: none;
 }
 
-@media screen and (max-width: 1450px){
-    li.logo_menu{
+@media screen and (max-width: 1450px) {
+    li.logo_menu {
         display: none;
-        
     }
-    h1.nombre_Ventana{
+
+    h1.nombre_Ventana {
         color: #FFFF;
         font-weight: 900;
         font-size: 30px;
     }
-    .container_menu{
+
+    .container_menu {
         height: fit-content;
     }
-    .btn-cerrar-session{
+
+    .btn-cerrar-session {
         display: flex;
     }
 
-    .header_superior{
+    .header_superior {
         padding: 5px;
         height: fit-content;
-        width:auto;
+        width: auto;
     }
-    .titulo{
+
+    .titulo {
         font-size: 8px;
     }
-    .logo{
+
+    .logo {
         width: 125px;
     }
 
-    nav > ul{
+    nav>ul {
         font-size: 12px;
         flex-direction: column;
         background-color: #fff;
@@ -455,47 +325,50 @@ hr{
         opacity: 0;
         *visibility: hidden;
     }
-    
-    nav > ul > li > a:hover{
+
+    nav>ul>li>a:hover {
         transform: scale(1);
     }
-    
-    nav ul li ul{
+
+    nav ul li ul {
         left: 100px;
     }
 
-    nav > ul > li:hover ul{
+    nav>ul>li:hover ul {
         top: 20px;
     }
 
-    nav > ul > li:first-child a{
+    nav>ul>li:first-child a {
         background-position: 20px;
     }
 
-    #selected{
+    #selected {
         transform: scale(1);
 
     }
 
-    .icon__menu{
+    .icon__menu {
         display: flex;
     }
 
-    #check__menu:checked ~ nav > ul{
+    #check__menu:checked~nav>ul {
         height: 70%;
         visibility: visible;
         opacity: 1;
     }
-    .contePlantilla{
-        margin: 8em auto; 
+
+    .contePlantilla {
+        margin: 8em auto;
     }
 }
-@media screen and (max-width: 650px){
-    .header_superior{
+
+@media screen and (max-width: 650px) {
+    .header_superior {
         align-items: center;
         display: list-item;
     }
-    nav > ul {
+
+    nav>ul {
         top: 120px;
     }
 }
