@@ -1,76 +1,63 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Regístrate</title> 
-	<link rel="stylesheet" href="/public/css/Reg_Empresas.css">
-	<link rel="stylesheet" href="/public/css/style.css">
-	<link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css"> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrate</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
 </head>
 
 <body>
-	<header>
-		<div class="header_superior">
-		  <div class="titulo">
-	
-			<div class="nombre_ventana">
-			  
-			  <h1 class="nombre_Ventana">Regístrate</h1>
-			</div>
-	
-		  </div>
-	
-		  <div class="boton-cerrar-session">
-			  <button class="btn-cerrar-session btn">Login</button>
-		  </div>
-		</div>
-	
-			<!-- Menu Desplegable -->
-			<div class="container_menu" >
-				
-					<div class="menu">
-						<input type="checkbox" id="check__menu">
-						<label id="label__check" for="check__menu">
-							<i class="fa-sharp fa-solid fa-bars icon__menu"></i>
-						</label>
-						<nav>
-							<ul>
-								<li class="logo_menu"><a href="#">
-									<img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-								</a>
-								</li>
-								
-								<li>
-									<a href="Reg_Personal.html">
-										<i class="fa-solid fa-user"></i>
-										Personal
-									</a>
-		
-									
-								</li>
-		
-								<li>
-									<a href="#">
-										<i class="fa-solid fa-users"></i>
-										Empresarial
-									</a>
-		
-									
-								</li>
-	
-						
-		
-								
-							</ul>
-						</nav>
-					</div>
-				
-			</div>
-		</header>
-	<div class="contePlantilla">
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Registrate</h1>
+        </div>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+          <button class="btn-cerrar-session btn">Login</button>
+      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user"></i>
+                Personal
+              </a>
+
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-users"></i>
+                Empresarial
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+	<div class="contenedortrabajadores">
 		<h3 class="h3">Registro empresarial</h3>
 		<br>
 		<form action="" id="formula">
@@ -411,19 +398,20 @@
 					<p class="label-2">Aviso de privacidad</p>
 				</div>
 				<div class="input-form">
-					<input type="checkbox" name="opcion4" id="avisos1" value="opcion1">&nbsp;&nbsp;&nbsp; <a href="/view/Aviso_Privacidad.html">Estoy de acuerdo con el aviso de privacidad</a> <br>
+					<input type="checkbox" name="opcion4" id="avisos1" value="opcion1">&nbsp;&nbsp;&nbsp; Estoy de acuerdo con el aviso de privacidad. <br>
+					<p> Para conocer el Aviso de Privacidad da clic <a title="click" target="_blank"  href="/view/Aviso_Privacidad.html">aquí.</a> </p> 
 				</div>
 			</div>
 
 			<div class="boton_registrar">
-				<input type="submit" class="btn-medium btn" id="boton_registrar" value="Registrar" disabled>
+				<input type="submit" class="btn-medium btn" id="boton_registrar" value="Registrar" >
 				
 			</div>
 			<br>
 		</form>
 
 	<script src="../registro/js/Alta_empresa_in.js"></script>
-	<script src="../registro/js/Vali_empresa.js"></script>
+	<script src="../registro/js/Vali_empresa.js"></script> 
 </body>
 
 </html>

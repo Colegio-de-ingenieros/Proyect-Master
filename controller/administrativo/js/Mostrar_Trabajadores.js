@@ -1,39 +1,31 @@
-window.addEventListener('DOMContentLoaded', function() {
-    const search=document.querySelector('#search');
-    const tabla=document.querySelector('#tabla_Trabajador tbody');
-    const result=document.querySelector('#resultContainer');
-    const errors=document.querySelector('.errorsContainer');
-    let criterio = ''
-    if(search){
-        search.addEventListener('input', event =>{
-            criterio = event.target.value.toUpperCase()
-            mostrarTrabajadores()
-        })
-    }
-    //enviar peticion usando fetch
-    const buscarTrabajadores = async () =>{
-        let buscarTrabajadores=new FormData()
-        buscarTrabajadores.append('criterio', criterio)
-        try{
-            const response=await fetch('../../model/Mostrar_Trabajadores.php',{
-                method: 'POST',
-                body: buscarTrabajadores
-            })
-            return response.json()
-        }catch(error){
-            alert(`${'Error al buscar los trabajadores'}${error.message}`)
-            console.log(error)
-        }
-    }
-    //funcion para mostrar los datos
-    const mostrarTrabajadores = () =>{
-        buscarTrabajadores()
-        .then(dataResults =>{
-            console.log(dataResults)
-        })
-    }
+$(buscar_datos());
 
-});
+function buscar_datos(consulta){
+    $.ajax({
+        url: '../../controller/administrativo/Mostrar_Trabajadores.php',
+        type: 'POST',
+        dataType: 'html',
+        data: { consulta: consulta },
+    })
+
+        .done(function (respuesta)
+        {
+            $("#tablaResultado").html(respuesta);
+        })
+        .fail(function ()
+        {
+            console.log("error");
+        })
+}
+
+$(document).on('keyup', '#busqueda', function (){
+    var valorBusqueda = $(this).val();
+    if (valorBusqueda != "") {
+        buscar_datos(valorBusqueda);
+    } else {
+        buscar_datos();
+    }
+})
 
 /*let trabajador=[
     {rfc:"MIML970715L19",nombre:"Leobardo", apaterno:"Miramontes", amaterno:"Ibarra",correo:'led.tesmur@gmail.com',telefono:'449 123 4567'},
