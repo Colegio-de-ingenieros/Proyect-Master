@@ -20,12 +20,9 @@ nombrecurso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	nombrecurso.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
 
     if (!expresiones.nombre.test(valorInput)) {
         nombrecurso.style.border = "3px solid red";
@@ -66,13 +63,10 @@ objetivo.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	objetivo.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
+
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-    
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
 
     if (!expresiones.objetivo.test(valorInput)) {
         objetivo.style.border = "3px solid red";
@@ -113,12 +107,9 @@ tema.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	tema.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
     
 
     if (!expresiones.tema.test(valorInput)) {
@@ -136,13 +127,10 @@ subtema.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	subtema.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
+
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-    
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
 
     if (!expresiones.subtema.test(valorInput)) {
         subtema.style.border = "3px solid red";
