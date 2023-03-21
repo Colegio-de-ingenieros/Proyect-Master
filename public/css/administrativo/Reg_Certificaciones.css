@@ -91,6 +91,7 @@
 /* para el logo*/
 .photo{
     padding: 15px;
+    float: left;
   }
   .prevPhoto {
     color: var(--color-black);
@@ -148,7 +149,7 @@
   display: -o-flex;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: right;
   border-radius: 50%;
   width: 25px;
   height: 25px;
