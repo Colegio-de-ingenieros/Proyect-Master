@@ -119,6 +119,18 @@
 					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
 					</ul>
 				  </li>
+
+				  <li>
+					<a href="#">
+					  <i class="fa-solid fa-file-lines"></i>
+					  Reportes
+					</a>
+	  
+					<ul>
+					  <li><a id="menuSucursal1" href="#">Individual</a></li>
+					  <li><a id="menuSucursal2" href="#">General</a></li>
+					</ul>
+				  </li>
 	  
 				  <li>
 					<a href="#">
@@ -129,18 +141,6 @@
 					<ul>
 					  <li><a id="menuSucursal1" href="#">Registrar</a></li>
 					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
-					</ul>
-				  </li>
-	  
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-file-lines"></i>
-					  Reportes
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Individual</a></li>
-					  <li><a id="menuSucursal2" href="#">General</a></li>
 					</ul>
 				  </li>
 	  
