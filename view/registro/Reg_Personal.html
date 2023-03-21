@@ -1,85 +1,65 @@
-<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate</title>
-    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
-	<link rel="stylesheet" href="../../public/css/style.css">
-
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-        sizes="192x192">
-    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    <meta name="msapplication-TileImage"
-        content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrate</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
 </head>
+
 <body>
-    <header>
-		<div class="header_superior">
-			<div class="titulo">
-                <div class = "nombre_ventana">
-                    <h1 class = "nombre_Ventana">Menu registro</h1>
-                </div>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
 
-			</div>
-
-			
-		</div>
-
-		<!-- Menu Desplegable -->
-        <div class="container_menu" >
-            
-                <div class="menu">
-                    <input type="checkbox" id="check__menu">
-                    <label id="label__check" for="check__menu">
-                        <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
-                    </label>
-                    <nav>
-                        <ul>
-                            <li class="logo_menu"><a href="#">
-                                <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-                            </a>
-                            </li>
-                            
-                            <li>
-                                <a href="Reg_Personal.html">
-                                    <i class="fa-solid fa-user"></i>
-                                    Personal
-                                </a>
-    
-                                
-                            </li>
-    
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-users"></i>
-                                    Empresarial
-                                </a>
-    
-                                
-                            </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-right-to-bracket"></i>
-                                    Login
-                                </a>
-    
-                                
-                            </li>
-    
-                            
-                        </ul>
-                    </nav>
-                </div>
-            
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Registrate</h1>
         </div>
-	</header>
-	<div class="contePlantilla">
-		<h1>Registro personal </h1>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+          <button class="btn-cerrar-session btn">Login</button>
+      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user"></i>
+                Personal
+              </a>
+
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-users"></i>
+                Empresarial
+              </a>
+            </li>
+
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+  
+	<div class="contenedortrabajadores">
+		<h3>Registro personal </h1>
 		<br>
         <form action="../../controller/socio-asociado/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
             <p class="subtitulo-1"> Datos personales</p>
