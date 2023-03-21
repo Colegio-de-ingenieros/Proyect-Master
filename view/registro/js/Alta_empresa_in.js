@@ -36,23 +36,46 @@ let formulario  = document.getElementById("formula");
 formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     //traemos los datos del checkbox
+    let aviso_privacidad = document.getElementById("avisos1");
+    let time_inicio = document.getElementById("inicio");
+    let time_fin = document.getElementById("fin");
     let dias = checke();
-    /** extraemos los datos del formulario */
-    let formulario_data = new FormData(e.target);
-    dias.forEach(dia => {
-        formulario_data.append("dias[]",dia)
-    });
-   
+
+    console.log("entro al submit");
+
+    if (dias.length == 0) {
+        alert("Debe seleccionar días laborales");
+    }
+    if(aviso_privacidad.checked == false){
+        alert("Antes debe aceptar el aviso de privacidad");
+    }   
+    if(time_inicio.value.length == 0){
+        alert("Debes seleccionar una hora de inicio");
+    }
+    if(time_fin.value.length == 0){
+        alert("Debes seleccionar una hora de fin");
+    }
+
+    if (dias.length > 0 && aviso_privacidad.checked && time_inicio.value.length > 0 && time_fin.value.length > 0 ) {
+         /** extraemos los datos del formulario */
+         console.log("entro al if");
+        let formulario_data = new FormData(e.target);
+        dias.forEach(dia => {
+            formulario_data.append("dias[]",dia)
+        });
     
-    fetch("/controller/Alta_empresa.php",
-    {
-        method: 'POST',
-        body: formulario_data,
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data[0]);
-    });
+        
+        fetch("/controller/Alta_empresa.php",
+        {
+            method: 'POST',
+            body: formulario_data,
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data[0]);
+        });
+    }
+   
 });
 
 
