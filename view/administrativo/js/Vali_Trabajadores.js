@@ -38,7 +38,7 @@ const expresiones = {
     apeMa:/^[a-zA-ZÁ-ý\s]{0,20}$/,
     email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
     telefono:/^[0-9]{10}$/,
-    passw:/^[a-zA-Z0-9üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]{8,255}$/
+    passw:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])).{8,16}$/,
 }
 
 formulario.caja_rfc.addEventListener('keyup', (e) => {
@@ -60,7 +60,7 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
         caja_rfc.removeAttribute("style");
         bRFC = true
     }
-    //validar(bRFC);
+    validar(bRFC);
 })
 
 /* Input del nombre del trabajador*/
@@ -80,7 +80,7 @@ formulario.caja_nombre.addEventListener('keyup', (e) => {
         caja_nombre.removeAttribute("style");
         bNom = true
     }
-    //validar(bNom);
+    validar(bNom);
 })
 
 /* Input del apellido paterno*/
@@ -100,7 +100,7 @@ formulario.caja_ap_paterno.addEventListener('keyup', (e) => {
         caja_ap_paterno.removeAttribute("style");
         bAP = true
     }
-    //validar(bAP);
+    validar(bAP);
 })
 
 /* Input del apellido materno*/
@@ -120,7 +120,7 @@ if (!expresiones.apeMa.test(valorInput)) {
     caja_ap_materno.removeAttribute("style");
     bAM = true
 }
-//validar(bAM);
+validar(bAM);
 })
 
 formulario.caja_correo.addEventListener('keyup', (e) => {
@@ -141,7 +141,7 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
         caja_correo.removeAttribute("style");
         bEmail = true
     }
-    //validar(bEmail);
+    validar(bEmail);
 })
 
 /* Input telefono*/
@@ -163,7 +163,7 @@ formulario.caja_telefono.addEventListener('keyup', (e) => {
         caja_telefono.removeAttribute("style");
         bandTel = true
     }
-    //validar(bandTel);
+    validar(bandTel);
 })
 
 /* Input de la constrasenia*/
@@ -186,7 +186,7 @@ formulario.caja_contra.addEventListener('keyup', (e) => {
         bandPas1 = true
     }
     validarPassword2();
-    //validar(bandPas1);
+    validar(bandPas1);
 })
 
 /* Input de la confirmacion de la constrasenia*/
@@ -216,7 +216,7 @@ const validarPassword2 = () =>{
         caja_contra_verificar.removeAttribute("style");
         bandPas2 = true
     }
-    //validar(bandPas2);
+    validar(bandPas2);
 }
 
 
@@ -224,16 +224,17 @@ const validarPassword2 = () =>{
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
-    if(bandera == true ){        
+    if(bandera == false ){        
+        guardar.style.border = "3px solid red";        
+        guardar.disabled=true;
+        //console.log("no pase validacion");
+        
+    }
+    else{
         guardar.removeAttribute("style");
         guardar.disabled=false;
         //console.log("pase validacion");
         
-    }
-    else{
-        guardar.style.border = "3px solid red";        
-        guardar.disabled=true;
-        //console.log("no pase validacion");
 
     }
 
