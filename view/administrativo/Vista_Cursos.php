@@ -212,10 +212,10 @@
       </div>
       
       <div class="table">
-
-        <div class="header_table">
-          <table>
-            <thead>
+         <div class="header_table">
+            <?php include('../../controller/administrativo/Mostrar_Cursos.php'); ?>
+           <!--<table>   
+             <thead>
               <tr>
                 <th>Clave</th>
                 <th>Nombre</th>
@@ -252,10 +252,10 @@
                   <a href="#">Eliminar</a>
                 </td>
               </tr>
-            </tbody>
+            </tbody> 
 
-          </table>
-        </div>
+          </table>  -->
+         </div> 
       </div>
       
     </section>

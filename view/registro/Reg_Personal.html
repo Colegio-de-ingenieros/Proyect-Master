@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrate</title>
-    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
-	<link rel="stylesheet" href="../../public/css/style.css">
-
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-        sizes="192x192">
-    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    <meta name="msapplication-TileImage"
-        content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrate</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
+  
 </head>
+
 <body>
-    <header>
-		<div class="header_superior">
-			<div class="titulo">
-                <div class = "nombre_ventana">
-                    <h1 class = "nombre_Ventana">Menu registro</h1>
-                </div>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
 
-			</div>
+        <div class="nombre_ventana">
+          
+          <h1 class="nombre_Ventana">Registrate</h1>
+        </div>
 
-			
-		</div>
+      </div>
+
+      <div class="boton-cerrar-session">
+          <button class="btn-cerrar-session btn">Login</button>
+      </div>
+    </div>
 
 		<!-- Menu Desplegable -->
         <div class="container_menu" >
@@ -62,14 +62,7 @@
                                 
                             </li>
 
-                            <li>
-                                <a href="#">
-                                    <i class="fa-solid fa-right-to-bracket"></i>
-                                    Login
-                                </a>
-    
-                                
-                            </li>
+                    
     
                             
                         </ul>
@@ -78,10 +71,11 @@
             
         </div>
 	</header>
-	<div class="contePlantilla">
-		<h1>Registro personal </h1>
-		<br>
-        <form action="../../controller/socio-asociado/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+    <form action="../../controller/socio-asociado/Reg_personal.php" class="formulario" method="post" enctype="multipart/form-data" id="formulario">
+		<div class="contenedor">
+            <h1>Registro personal </h1>
+		    <br>
+        
             <p class="subtitulo-1"> Datos personales</p>
             <hr size="1px"/>
             <div class="contenedor-formulario">
@@ -203,10 +197,7 @@
                         <p class="label-2">Colonia</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
                     </div>
                 </div>
 
@@ -215,10 +206,7 @@
                         <p class="label-2">Ciudad</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ciudadPerso" name="ciudadPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="ciudadPerso" name="ciudadPerso" required maxlength="50">
                     </div>
                 </div>
 
@@ -227,10 +215,7 @@
                         <p class="label-2">Estado</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="estadoPerso" name="estadoPerso" required maxlength="50">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
-                        </select>
+                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="estadoPerso" name="estadoPerso" required maxlength="50">
                     </div>
                 </div>
             </div>
@@ -244,7 +229,45 @@
                         <p class="label-2">Certificaciones</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="nomCerPerso" name="nomCerPerso" required maxlength="60">
+                        <button onclick="addInput()">Agregar campo</button>
+                        <button onclick="removeInput()">Eliminar campo</button>
+                        <div id="input-container"></div>
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Nombre de certificacion</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format" placeholder="Ingrese su texto aquí..." id="nomCert" name="nomCert" required maxlength="60">
+                    </div>
+                </div>
+
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Organizacion del certificado</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format" placeholder="Ingrese su texto aquí..." id="orgCert" name="orgCert" required maxlength="50">
+                    </div>
+                </div>
+
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de inicio</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format" placeholder="Ingrese su texto aquí..." id="fechaCert" name="fechaCert" required maxlength="60">
+                    </div>
+                </div>
+
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de fin</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format" placeholder="Ingrese su texto aquí..." id="orgCert" name="orgCert" required maxlength="50">
                     </div>
                 </div>
 
@@ -254,8 +277,10 @@
                     </div>
                     <div class="input-form">
                         <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
-                        <option value="1">Participante</option>
-                        <option value="2">Ponente</option>
+                        <option value="1">Pasante</option>
+                        <option value="2">Licenciatura</option>
+                        <option value="2">Maestría</option>
+                        <option value="2">Doctorado</option>
                         </select>
                     </div>
                 </div>
@@ -360,9 +385,10 @@
 
             <div class="boton_registrar">
                 <button class="btn-medium btn">Registrar</button>
+            
             </div>
+        </div>
 		</div>
-    </div>
 
     <script>
         function deseleccionar1(opcion1) {
@@ -402,5 +428,7 @@
         }
 
       </script>
+
+      <script src="../registro/js/Reg_Personal.js"></script>
 </body>
 </html>
