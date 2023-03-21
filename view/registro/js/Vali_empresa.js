@@ -73,7 +73,7 @@ formulario.rfc.addEventListener('keyup', (e) => {
         formulario.rfc.removeAttribute("style");
         baderas.brfc = true;
     }
-    validar();
+    
 });
 /**nombre */
 formulario.nombre.addEventListener('blur', (e) => {
@@ -95,7 +95,7 @@ formulario.nombre.addEventListener('keyup', (e) => {
         formulario.nombre.removeAttribute("style");
         baderas.bnombre_empresa = true;
     }
-    validar();
+
 });
 /**correo empresa */
 formulario.correo_m.addEventListener('keyup', (e) => {
@@ -116,7 +116,7 @@ formulario.correo_m.addEventListener('keyup', (e) => {
         formulario.correo_m.removeAttribute("style");
         baderas.bcorreo_empresa = true;
     }
-    validar();
+    
 });
 
 /* password*/
@@ -138,7 +138,7 @@ formulario.password.addEventListener('keyup', (e) => {
         password.removeAttribute("style");
         baderas.bcontra = true
     }
-    validar();
+    
 });
 /* password confrimacion*/
 formulario.password_confirmacion.addEventListener('blur', (e) => {
@@ -168,7 +168,7 @@ formulario.password_confirmacion.addEventListener('keyup', (e) => {
         password_confirmacion.removeAttribute("style");
         baderas.bcontra_conf = true
     }
-    validar();
+    
 });
 
 /**razon social */
@@ -192,7 +192,7 @@ formulario.razon.addEventListener('keyup', (e) => {
         formulario.razon.removeAttribute("style");
         baderas.brazon = true;
     }
-    validar();
+    
 });
 /**codigo postal */
 formulario.codigo_postal.addEventListener('keyup', (e) => {
@@ -215,7 +215,7 @@ formulario.codigo_postal.addEventListener('keyup', (e) => {
         baderas.bestado = true;
         baderas.bciudad = true;
     }
-    validar();
+    
 });
 /**calle  */
 formulario.calle.addEventListener('blur', (e) => {
@@ -238,7 +238,7 @@ formulario.calle.addEventListener('keyup', (e) => {
         formulario.calle.removeAttribute("style");
         baderas.bcalle = true;
     }
-    validar(); 
+    
 });
 /**ciudad */
 formulario.ciudad.addEventListener('blur', (e) => {
@@ -262,7 +262,7 @@ formulario.ciudad.addEventListener('keyup', (e) => {
         formulario.ciudad.removeAttribute("style");
         baderas.bciudad = true;
     }
-    validar();
+    
 });
 /**estado */
 formulario.estado.addEventListener('blur', (e) => {
@@ -286,7 +286,7 @@ formulario.estado.addEventListener('keyup', (e) => {
         formulario.estado.removeAttribute("style");
         baderas.bestado = true;
     }
-    validar();
+    
 });
 /* rh nombre */
 formulario.rh_nombre.addEventListener('blur', (e) => {
@@ -310,7 +310,7 @@ formulario.rh_nombre.addEventListener('keyup', (e) => {
         formulario.rh_nombre.removeAttribute("style");
         baderas.brh_nombre = true;
     }
-    validar();
+
 });
 /* rh paterno */
 formulario.rh_paterno.addEventListener('blur', (e) => {
@@ -334,7 +334,7 @@ formulario.rh_paterno.addEventListener('keyup', (e) => {
         formulario.rh_paterno.removeAttribute("style");
         baderas.brh_pa = true;
     }
-    validar();
+    
 });
 
 /* rh materno */
@@ -359,7 +359,7 @@ formulario.rh_materno.addEventListener('keyup', (e) => {
         formulario.rh_materno.removeAttribute("style");
         baderas.brh_ma = true;
     }
-    validar();
+    
 });
 /**rh telefono */
 formulario.rh_tele.addEventListener('keyup', (e) => {
@@ -380,7 +380,7 @@ formulario.rh_tele.addEventListener('keyup', (e) => {
         formulario.rh_tele.removeAttribute("style");
         baderas.brh_te = true;
     }
-    validar();
+    
 });
 /**rh  extension telefono */
 formulario.rh_exten.addEventListener('keyup', (e) => {
@@ -401,7 +401,7 @@ formulario.rh_exten.addEventListener('keyup', (e) => {
         formulario.rh_exten.removeAttribute("style");
         baderas.brh_exten = true;
     }
-    validar();
+    
 });
 /**rh correo */
 formulario.rh_correo.addEventListener('keyup', (e) => {
@@ -422,7 +422,7 @@ formulario.rh_correo.addEventListener('keyup', (e) => {
         formulario.rh_correo.removeAttribute("style");
         baderas.brh_correo = true;
     }
-    validar();
+    
 });
 
 /////////////////////////////   ti  ///////////////////////////////////////////
@@ -448,7 +448,7 @@ formulario.ti_nombre.addEventListener('keyup', (e) => {
         formulario.ti_nombre.removeAttribute("style");
         baderas.bti_nombre = true;
     }
-    validar();
+    
 });
 /* ti paterno */
 formulario.ti_paterno.addEventListener('blur', (e) => {
@@ -472,7 +472,7 @@ formulario.ti_paterno.addEventListener('keyup', (e) => {
         formulario.ti_paterno.removeAttribute("style");
         baderas.bti_pa = true;
     }
-    validar();
+   
 });
 
 /* ti materno */
@@ -497,7 +497,7 @@ formulario.ti_materno.addEventListener('keyup', (e) => {
         formulario.ti_materno.removeAttribute("style");
         baderas.bti_ma = true;
     }
-    validar();
+
 });
 /**ti telefono */
 formulario.ti_tele.addEventListener('keyup', (e) => {
@@ -518,7 +518,7 @@ formulario.ti_tele.addEventListener('keyup', (e) => {
         formulario.ti_tele.removeAttribute("style");
         baderas.bti_te = true;
     }
-    validar();
+    
 });
 /**ti  extension telefono */
 formulario.ti_exten.addEventListener('keyup', (e) => {
@@ -539,7 +539,7 @@ formulario.ti_exten.addEventListener('keyup', (e) => {
         formulario.ti_exten.removeAttribute("style");
         baderas.bti_exten = true;
     }
-    validar();
+    
 });
 /**ti correo */
 formulario.ti_correo.addEventListener('keyup', (e) => {
@@ -560,7 +560,7 @@ formulario.ti_correo.addEventListener('keyup', (e) => {
         formulario.ti_correo.removeAttribute("style");
         baderas.bti_correo = true;
     }
-    validar();
+    
     
 });
 
@@ -587,7 +587,7 @@ formulario.ac_nombre.addEventListener('keyup', (e) => {
         formulario.ac_nombre.removeAttribute("style");
         baderas.bca_nombre = true;
     }
-    validar();
+   
 });
 /* ca paterno */
 formulario.ac_paterno.addEventListener('blur', (e) => {
@@ -611,7 +611,7 @@ formulario.ac_paterno.addEventListener('keyup', (e) => {
         formulario.ac_paterno.removeAttribute("style");
         baderas.bca_pa = true;
     }
-    validar();
+   
     
 });
 
@@ -637,7 +637,7 @@ formulario.ac_materno.addEventListener('keyup', (e) => {
         formulario.ac_materno.removeAttribute("style");
         baderas.bca_ma = true;
     }
-    validar();
+   
     
 });
 /**ca telefono */
@@ -659,7 +659,7 @@ formulario.ac_tele.addEventListener('keyup', (e) => {
         formulario.ac_tele.removeAttribute("style");
         baderas.bca_te = true;
     }
-    validar();
+    
 });
 /**ca  extension telefono */
 formulario.ac_exten.addEventListener('keyup', (e) => {
@@ -680,7 +680,7 @@ formulario.ac_exten.addEventListener('keyup', (e) => {
         formulario.ac_exten.removeAttribute("style");
         baderas.bca_exten = true;
     }
-    validar();
+   
     
 });
 /**ti correo */
@@ -702,12 +702,102 @@ formulario.ac_correo.addEventListener('keyup', (e) => {
         formulario.ac_correo.removeAttribute("style");
         baderas.bca_correo = true;
     }
-    validar();
+    
     
 });
 const boton_enviar = document.getElementById("boton_registrar");
+boton_enviar.addEventListener("click",(e)=>{
+    
+    
+    if(baderas.brfc == false){
+        rfc.style.border = "3px solid red";
+    }
+    if(baderas.bnombre_empresa == false){
+        document.getElementById("nombre").style.border = "3px solid red";
+    }
+    if(baderas.bcorreo_empresa == false){
+        document.getElementById("correo_m").style.border = "3px solid red";
+    }
+    if(baderas.bcontra == false ){
+        document.getElementById("password").style.border = "3px solid red";
+    }
+    if(baderas.bcontra_conf == false){
+        document.getElementById("password_confirmacion").style.border = "3px solid red";
+    }
+    if(baderas.brazon == false){
+        document.getElementById("razon").style.border = "3px solid red";
+    }
+    if(baderas.bcodigo_postal == false){
+        document.getElementById("codigo_postal").style.border = "3px solid red";
+    }
+    if(baderas.bcalle == false){
+        document.getElementById("calle").style.border = "3px solid red";
+    }
+    // if(baderas.bciudad == false){
+    //     document.getElementById("ciudad").style.border = "3px solid red";
+    // }
+    // if(baderas.bestado == false){
+    //     document.getElementById("estado").style.border = "3px solid red";
+    // }
+    if(baderas.brh_nombre == false){
+        document.getElementById("rh_nombre").style.border = "3px solid red";
+    }
+    if(baderas.brh_pa == false){
+        document.getElementById("rh_paterno").style.border = "3px solid red";
+    }
+    if(baderas.brh_ma == false){
+        document.getElementById("rh_materno").style.border = "3px solid red";
+    }
+    if(baderas.brh_te == false){
+        document.getElementById("rh_tele").style.border = "3px solid red";
+    }
+    if(baderas.brh_exten == false){
+        document.getElementById("rh_exten").style.border = "3px solid red";
+    }
+    if(baderas.brh_correo == false){
+        document.getElementById("rh_correo").style.border = "3px solid red";
+    }
+    if(baderas.bti_nombre == false){
+        document.getElementById("ti_nombre").style.border = "3px solid red";
+    }
+    
+    if(baderas.bti_pa == false){
+        document.getElementById("ti_paterno").style.border = "3px solid red";
+    }
+    if(baderas.bti_ma == false){
+        document.getElementById("ti_materno").style.border = "3px solid red";
+    }
+    if(baderas.bti_te == false){
+        document.getElementById("ti_tele").style.border = "3px solid red";
+    }
+    if(baderas.bti_exten == false){
+        document.getElementById("ti_exten").style.border = "3px solid red";
+    }
+    if(baderas.bti_correo == false){
+        document.getElementById("ti_correo").style.border = "3px solid red";
+    }
+    if(baderas.bca_nombre == false){
+        document.getElementById("ac_nombre").style.border = "3px solid red";
+    }
+    if(baderas.bca_pa == false){
+        document.getElementById("ac_paterno").style.border = "3px solid red";
+    }
+    if(baderas.bca_ma == false){  
+        document.getElementById("ac_materno").style.border = "3px solid red";
+    }
+    if(baderas.bca_te == false){
+        document.getElementById("ac_tele").style.border = "3px solid red";
+    }
+    if(baderas.bca_exten == false){
+        document.getElementById("ac_exten").style.border = "3px solid red";
+    }
+    if(baderas.bca_correo == false){
+        document.getElementById("ac_correo").style.border = "3px solid red";
+    }
+    validar(e);
+});
 
-function validar() {
+function validar(e) {
     //si hay una bandera en falso la coloca en rojo
 
     let is_ok = true;
@@ -719,10 +809,8 @@ function validar() {
         }
 
     }
-    if(is_ok){
-        boton_enviar.disabled=false;
-    }else{
-        boton_enviar.disabled=true;
+    if(is_ok == false){
+        e.preventDefault();
     }
 }
 

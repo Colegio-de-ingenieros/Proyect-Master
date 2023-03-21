@@ -16,6 +16,7 @@
       <div class="titulo">
 
         <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" alt="">
           <h1 class="nombre_Ventana">Trabajadores</h1>
         </div>
 
@@ -32,7 +33,7 @@
         <nav>
           <ul>
             <li class="logo_menu"><a href="#">
-                <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" alt="">
+                <img class="logo_ciscig" src="#" alt="">
               </a>
             </li>
 
@@ -54,8 +55,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
               </ul>
             </li>
 
