@@ -11,7 +11,8 @@ const expresiones = {
     clave:/^[0-9]{6}$/,
     duracion:/^[0-9]{0,9}$/,
     nombre:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
-    objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    objetivos:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
     tema:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     subtema:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
 }
@@ -231,6 +232,7 @@ function te()
    /* lista.push(document.getElementById("titulo-curso").value); 
     console.log(lista);
     document.getElementById("titulo-curso").value = ""; */
+    document.getElementById("titulo-curso").value = ""; 
     lista.push([su]);
     document.getElementById("titulo-curso").disabled = false;
     su = [];
@@ -241,7 +243,7 @@ function subt()
 {
     if (document.getElementById("titulo-curso").value){
         su.push(document.getElementById("titulo-curso").value);
-        document.getElementById("titulo-curso").value = "";
+        /* document.getElementById("titulo-curso").value = ""; */
         /* desabilitar caja de temas */
         document.getElementById("titulo-curso").disabled = true;
         su.push(document.getElementById("Subtitulo-curso").value);
