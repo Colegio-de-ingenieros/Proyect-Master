@@ -355,6 +355,7 @@ html{
 }
 
 .input-format{
+    resize: none;
     width: 100%;
 }
 
