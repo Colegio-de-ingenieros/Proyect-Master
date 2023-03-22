@@ -237,7 +237,9 @@ function te()
     lista.push([su]);
     document.getElementById("titulo-curso").disabled = false;
     su = [];
-    contador =0;
+    contador = 0;
+    console.loj("aqui");
+    alert("Se ha agregado un tema al registro");
     
 }
 
@@ -263,7 +265,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
     }
 }
 else{
-alert ("completa los campos de titulo y subtitulo");
+alert ("completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
 }
 
     /* if (document.getElementById("titulo-curso").value){
