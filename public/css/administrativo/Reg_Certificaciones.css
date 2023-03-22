@@ -1,31 +1,54 @@
-.formulario-de-datos{
+.formulario-de-datos {
     padding: 20px 0px 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
-.label-form{
+
+.label-form {
     padding-bottom: 10px;
 }
-.input-format{
+
+/* .input-format {
+    width: 100%;
+} */
+
+.input-format-2 {
     width: 100%;
 }
 
-.grupo-input2{
+
+.input-format-2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.grupo-input2 {
     grid-column: span 2;
 }
 
-.grupo-input3{
+.grupo-input3 {
     grid-column: span 3;
 }
 
-.grupo-boton-reg{
+.grupo-boton-reg {
     display: flex;
     flex-direction: column;
     align-items: center;
     grid-column: span 3;
 }
-.input-textarea{
+
+.input-textarea-2{
     resize: none;
     width: 100%;
     height: 6rem;
@@ -42,24 +65,42 @@
     transition: 300ms all;
 }
 
-.input-textarea:focus{
+/* .input-textarea:focus {
     background: var(--color-gray-2);
     box-shadow: var(--shadow-1);
     transition: all 300ms;
+} */
+
+.input-format-2:focus{
+    background: var(--color-white);
+    box-shadow: var(--shadow-1);
+    transform: scale(1.02);
 }
 
-.input-textarea:focus::placeholder{
+/* .input-textarea:focus::placeholder {
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+} */
+
+.input-format-2:focus::placeholder{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
 
-.input-textarea::placeholder{
+/* .input-textarea::placeholder {
     color: var(--color-placeholder-1);
     font-size: 1rem;
     font-weight: 400;
+} */
+
+.input-textarea-2::focus{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+    transform: scale(1.02);
 }
 
-.input-format{
+/* .input-format {
     color: var(--color-black);
     background-color: var(--color-white);
     border-radius: var(--radius-2);
@@ -71,29 +112,32 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.input-format:focus{
+} */
+
+/* .input-format:focus {
     background: var(--color-gray-2);
     box-shadow: var(--shadow-1);
     transition: all 300ms;
-}
+} */
 
-.input-format:focus::placeholder{
+/* .input-format:focus::placeholder {
     color: var(--color-placeholder-2);
     font-weight: 500;
-}
+} */
 
-.input-format::placeholder{
+/* .input-format::placeholder {
     color: var(--color-placeholder-1);
     font-size: 1rem;
     font-weight: 400;
-}
+} */
+
 /* para el logo*/
-.photo{
+.photo {
     padding: 15px;
     float: left;
-  }
-  .prevPhoto {
+}
+
+.prevPhoto {
     color: var(--color-black);
     background-color: var(--color-white);
     border-radius: var(--radius-2);
@@ -111,51 +155,52 @@
     background-size: cover;
     background-position: center center;
     margin: auto;
-  }
-  
-  .prevPhoto label{
-  cursor: pointer;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-  }
-  
-  .prevPhoto img{
-  width: 100%;
-  height: 100%;
-  }
-  
-  .upimg, .notBlock{
-  display: none !important;
-  }
-  
-  .errorArchivo{
-  font-size: 16px;
-  font-family: arial;
-  color: #cc0000;
-  text-align: center;
-  font-weight: bold; 
-  margin-top: 10px;
-  }
-  
-  .delPhoto{
-  color: #FFF;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: -ms-flex;
-  display: -o-flex;
-  display: flex;
-  justify-content: center;
-  align-items: right;
-  border-radius: 50%;
-  width: 25px;
-  height: 25px;
-  background: red;
-  position: absolute;
-  right: -10px;
-  top: -10px;
-  z-index: 10;
-  }
+}
+
+.prevPhoto label {
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.prevPhoto img {
+    width: 100%;
+    height: 100%;
+}
+
+.upimg,
+.notBlock {
+    display: none !important;
+}
+
+.errorArchivo {
+    font-size: 16px;
+    font-family: arial;
+    color: #cc0000;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.delPhoto {
+    color: #FFF;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    justify-content: center;
+    align-items: right;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    background: red;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    z-index: 10;
+}

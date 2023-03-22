@@ -1,7 +1,7 @@
 <?php
 require_once('../model/Reg_personal.php');
 $objeto=new Personal();
-$data =[];
+
 if(
     isset ($_POST["nomPerso"]) &&
     isset ($_POST["apePPerso"]) &&
@@ -18,7 +18,11 @@ if(
     isset ($_POST["coloniaPerso"]) &&
     isset ($_POST["ciudadPerso"]) &&
     isset ($_POST["estadoPerso"]) &&
-    isset ($_POST["nomCerPerso"]) &&
+    isset ($_POST["noCert"]) &&
+    isset ($_POST["nomCert"]) &&
+    isset ($_POST["orgCert"]) &&
+    isset ($_POST["fechaICert"]) &&
+    isset ($_POST["fechaFCert"]) &&
     isset ($_POST["tipoGradoPerso"]) &&
     isset ($_POST["opcion1"]) &&
     isset ($_POST["nomEmpPerso"]) &&
@@ -46,14 +50,18 @@ if(
     $colonia=$_POST["coloniaPerso"];
     $ciudad=$_POST["ciudadPerso"];
     $estado=$_POST["estadoPerso"];
-    $certifi=$_POST["nomCerPerso"];
+    $noCert=$_POST["noCert"];
+    $certifi=$_POST["nomCert"];
+    $orgCert=$_POST["orgCert"];
+    $fechaICert=$_POST["fechaICert"];
+    $fechaFCert=$_POST["fechaFCert"];
     $gradoEst=$_POST["tipoGradoPerso"];
     $pasantia=$_POST["opcion1"];
     $empresaLab=$_POST["nomEmpPerso"];
     $puestoEmp=$_POST["puestoEmpPerso"];
     $correoEmp=$_POST["correoEmpPerso"];
-    $telFEmp=$_POST["telFEmpPerso"];
     $extTelFEmp=$_POST["ExtTelFEmp"];
+    $telFEmp=$_POST["telFEmpPerso"];
     $funcionEmp=$_POST["funcionEmpPerso"];
     $antecedentes=$_POST["opcion2"];
     $veridicas=$_POST["opcion3"];
@@ -88,23 +96,46 @@ if(
     }
 
     
+    
+    $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $noCert, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp);
+    //$resultado2=$objeto->buscar_colonias($_POST["cpPerso"]);
 
-    $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp);
-
-    if($resultado1==True){
+    if($resultado1==False){
         echo "Todo chido";
+        echo $nombre;
+        echo $apeP;
+        echo $apeM;
+        echo $correo;
+        echo $contra;
+        echo $confiContra;
+        echo $cedula;
+        echo $telF;
+        echo $telM;
+        echo $fecha;
+        echo $codigoP;
+        echo $calle;
+        echo $colonia;
+        echo $ciudad;
+        echo $estado;
+        echo $noCert;
+        echo $certifi;
+        echo $orgCert;
+        echo $fechaICert;
+        echo $fechaFCert;
+        echo $gradoEst;
+        echo $pasan;
+        echo $empresaLab;
+        echo $puestoEmp;
+        echo $correoEmp;
+        echo $extTelFEmp;
+        echo $telFEmp;
+        echo $funcionEmp;
+        echo $antece;
+        echo $veridi;
+        echo $aviso;
     }else{
         echo "No todo chido";
     }
 
-}else if(isset($_POST["cpPerso"])){
-
-
-    $data = $objeto->buscar_colonias($_POST["cpPerso"]);
-
 }
-
-header("Content-Type: application/json");
-echo json_encode($data);
-
 ?>

@@ -9,6 +9,7 @@
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Cursos.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -16,8 +17,8 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script>
 </head>
 
 <body>
@@ -26,16 +27,14 @@
       <div class="titulo">
 
         <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
           <h1 class="nombre_Ventana">Nombre ventana</h1>
         </div>
 
       </div>
 
-      <div class="input-buscar">
-        <div class="barra-busqueda">
-          <input type="text" class="input" name="busqueda" id="busqueda" placeholder="Buscar...">
-          <i class="fas fa-search"></i>
-        </div>
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn">Cerrar session</button>
       </div>
     </div>
 
@@ -48,10 +47,6 @@
         </label>
         <nav>
           <ul>
-            <li class="logo_menu"><a href="#">
-                <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-              </a>
-            </li>
 
             <li>
               <a href="#">
@@ -95,8 +90,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -107,8 +102,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -179,48 +174,42 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
-                <li><a id="menuSucursal1" href="#">C.V</a></li>
               </ul>
             </li>
 
-            <li>
-              <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Cerrar sesión
-              </a>
-            </li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
-  
+
   <main class="section-main" id="tablaResultado">
-    <div class="contenedortrabajadores" >
-		  <h3>Vista </h3>
-		<hr size="1px"/>
-		<br>
-        <p class="subtitulo-1"> Vista general trabajadores</p>
-		<div class="contenedor-formulario">
-			<div></div>
-			<div class="grupo-input">
-				<div class="input-form">
-					<input type="search" id="search" class="input-busca" placeholder="Buscar..">
-				</div>
-			</div>
-		</div>
-		<br>
-        <br>
-        <br>
-        <br>
-        <div class="table">
-            <div class="errors-cointainer">
-                <p></p>
-            </div>
-            <div class="header_table" id="resultContainer">
-				<?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
-            </div>
+    <div class="contenedortrabajadores">
+      <h3 class="h3">Vista de cursos</h3>
+      <hr size="1px" />
+
+      <p class="subtitulo-2"> Vista general trabajadores</p>
+      <div class="contenedor-formulario">
+        <div></div>
+        <div class="grupo-input">
+          <div class="input-form">
+            <input type="search" id="search" class="input-format-2" placeholder="Buscar..">
+          </div>
         </div>
+      </div>
+
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="table">
+        <div class="errors-cointainer">
+          <p></p>
+        </div>
+        <div class="header_table" id="resultContainer">
+          <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+        </div>
+      </div>
     </div>
   </main>
 </body>

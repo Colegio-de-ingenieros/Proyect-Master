@@ -19,7 +19,7 @@ formulario.addEventListener('submit', function (e)
             //el registro fue exitoso
             if (data === 'todo chido') {
                 alert("Registro exitoso");
-                //location.href = '../../view/administrativo/Reg_Certificaciones.html';
+                location.href = '../../view/administrativo/Reg_Proyectos.html';
             }
 
             //los datos no pasaron alguna validacion

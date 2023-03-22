@@ -69,8 +69,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -81,8 +81,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -93,8 +93,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
               </ul>
             </li>
 
