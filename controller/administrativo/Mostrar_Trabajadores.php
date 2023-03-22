@@ -1,5 +1,4 @@
 <?php
-echo 'hola';
 include_once('../../model/Mostrar_Trabajadores.php');
 $salida = '';
 $base = new MostrarTrabajadores();
@@ -7,12 +6,12 @@ $base->instancias();
 
 //manda a hacer la busqueda
 $resultado = $base->getTrabajadores();
-echo '<script>alert("si entra al php");</script>';
-echo "si entra al php";
+//echo '<script>alert("si entra al php");</script>';
+//echo "si entra al php";
 if ($resultado == true) {
     //pone los encabezados de la tabla
-    $salida .= '<table>
-                    <thead>
+    $salida .= '<table class="header_table" center >
+                    <thead  >
                         <tr>
                             <th>RFC</th>
                             <th>Nombre</th>
@@ -53,7 +52,7 @@ if ($resultado == true) {
 } 
 
 else {
-    echo "si entra al else";
+    //echo "si entra al else";
     $salida .= 'No se encontraron resultados';
 }
 
