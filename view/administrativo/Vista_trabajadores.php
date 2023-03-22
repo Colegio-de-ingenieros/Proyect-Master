@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
 	<link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/style.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
 </head>
@@ -180,6 +181,9 @@
       </div>
     </div>
   </header>
+
+</header>
+
   <main class="section-main" id="tablaResultado">
     <div class="contenedortrabajadores" >
 		  <h3>Vista </h3>
@@ -199,9 +203,6 @@
         <br>
         <br>
         <div class="table">
-            <div class="errors-cointainer">
-                <p></p>
-            </div>
             <div class="header_table" id="resultContainer">
 				<?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </div>
