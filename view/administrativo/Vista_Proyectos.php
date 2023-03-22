@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 	<link rel="stylesheet" href="../../public/css/administrativo/Vista_Proyectos.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="../../controller/administrativo/js/Mostrar_Proyectos.js"></script>
 </head>
 <body>
     <header>
