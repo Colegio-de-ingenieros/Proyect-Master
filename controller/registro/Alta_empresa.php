@@ -2,7 +2,7 @@
 /**
  * procesa los datos y hace la consulta
  */
-require_once("../model/Alta_empresa.php");
+require_once("../../model/Alta_empresa.php");
 $objeto = new Alta_empresa();
 $data =[];
 if(
