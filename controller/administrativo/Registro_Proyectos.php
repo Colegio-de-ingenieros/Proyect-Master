@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Registro_Proyectos.php');
+include_once('../../model/Reg_Proyectos.php');
 
 class RegistroPro{
     private $obj, $idp, $nombre, $inicio, $fin, $objetivo, $monto;

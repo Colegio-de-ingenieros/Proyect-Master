@@ -7,11 +7,13 @@ let tem= false
 let sub = false
 let lista = [];
 let su = [];
+let contador = 0;
 const expresiones = {
     clave:/^[0-9]{6}$/,
     duracion:/^[0-9]{0,9}$/,
     nombre:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
-    objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    objetivosjhg:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
     tema:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     subtema:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
 }
@@ -218,7 +220,7 @@ function regi()
         document.getElementById("titulo-curso").value = "";
         document.getElementById("Subtitulo-curso").value = "";
 
-
+        alert("Registro exitoso");
 
     }
     else {
@@ -231,29 +233,53 @@ function te()
    /* lista.push(document.getElementById("titulo-curso").value); 
     console.log(lista);
     document.getElementById("titulo-curso").value = ""; */
+    document.getElementById("titulo-curso").value = ""; 
     lista.push([su]);
     document.getElementById("titulo-curso").disabled = false;
     su = [];
+    contador =0;
     
 }
 
 function subt()
 {
-    if (document.getElementById("titulo-curso").value){
+if (document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value){
+    if (contador == 0){
         su.push(document.getElementById("titulo-curso").value);
-        document.getElementById("titulo-curso").value = "";
-        /* desabilitar caja de temas */
+        
+        document.getElementById("titulo-curso").disabled = true;
+        su.push(document.getElementById("Subtitulo-curso").value);
+        document.getElementById("Subtitulo-curso").value = "";
+        console.log(("if")); 
+        contador++;
+        alert("Se ha agregado un tema con un subtema");
+    } else{
+        
+        console.log(("else"));
+        su.push(document.getElementById("Subtitulo-curso").value); 
+        console.log(su);
+        document.getElementById("Subtitulo-curso").value = "";
+        alert("Se ha agregado un subtema");
+    }
+}
+else{
+alert ("completa los campos de titulo y subtitulo");
+}
+
+    /* if (document.getElementById("titulo-curso").value){
+        su.push(document.getElementById("titulo-curso").value);
+        
         document.getElementById("titulo-curso").disabled = true;
         su.push(document.getElementById("Subtitulo-curso").value);
         document.getElementById("Subtitulo-curso").value = "";
         console.log(("if"));
     }
     else{
-        /* codigo para meter a la lista su el texto que esta en la caja de subtemas */
+        
         console.log(("else"));
         su.push(document.getElementById("Subtitulo-curso").value); 
         console.log(su);
         document.getElementById("Subtitulo-curso").value = "";
     }
-    console.log(su);
+    console.log(su); */
 }
