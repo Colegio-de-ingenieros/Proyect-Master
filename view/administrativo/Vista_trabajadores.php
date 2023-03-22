@@ -181,6 +181,9 @@
       </div>
     </div>
   </header>
+
+</header>
+
   <main class="section-main" id="tablaResultado">
     <div class="contenedortrabajadores" >
 		  <h3>Vista </h3>
