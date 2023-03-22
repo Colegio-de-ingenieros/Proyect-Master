@@ -1,4 +1,5 @@
 /* Declara una variable global */
+/* Declara una variable global */
 let bandNom = false
 let bandAP = false
 let bandAM = true
@@ -65,7 +66,7 @@ formulario.nomPerso.addEventListener('keyup', (e) => {
         formulario.nomPerso.removeAttribute("style");
         bandNom = true;
     }
-    validar();
+    validar(bandNom);
 });
 
 /* Input apellidos */
@@ -87,7 +88,7 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
         formulario.apePPerso.removeAttribute("style");
         bandAP = true;
     }
-    validar();
+    validar(bandAP);
 });
 
 /* Input correo */
@@ -109,7 +110,7 @@ formulario.correoPerso.addEventListener('keyup', (e) => {
         formulario.correoPerso.removeAttribute("style");
         bandEmail = true;
     }
-    validar();
+    validar(bandEmail);
 });
 
 /* Input contraseña */
@@ -132,6 +133,7 @@ formulario.contraPerso.addEventListener('keyup', (e) => {
         bandContra = true;
     }
     validarPassword2();
+    validar(bandContra);
 });
 
 /* password confirmacion*/
@@ -161,6 +163,7 @@ const validarPassword2 = () =>{
         confiContraPerso.removeAttribute("style");
         bandConfiContra = true
     }
+    validar(bandConfiContra);
 }
 
 /* Input cedula*/
@@ -182,7 +185,7 @@ formulario.cedulaPerso.addEventListener('keyup', (e) => {
         formulario.cedulaPerso.removeAttribute("style");
         bandCedu = true;
     }
-    validar();
+    validar(bandCedu);
 });
 
 /* Input telefono fijo*/
@@ -204,7 +207,7 @@ formulario.telFPerso.addEventListener('keyup', (e) => {
         formulario.telFPerso.removeAttribute("style");
         bandTelF = true;
     }
-    validar();
+    validar(bandTelF);
 });
 
 /* Input telefono movil*/
@@ -226,7 +229,7 @@ formulario.telMPerso.addEventListener('keyup', (e) => {
         formulario.telMPerso.removeAttribute("style");
         bandTelM = true;
     }
-    validar();
+    validar(bandTelM);
 });
 
 /* Input codigo postal*/
@@ -248,7 +251,7 @@ formulario.cpPerso.addEventListener('keyup', (e) => {
         formulario.cpPerso.removeAttribute("style");
         bandCP = true;
     }
-    validar();
+    validar(bandCP);
 });
 
 /* Input calle*/
@@ -264,7 +267,7 @@ formulario.callePerso.addEventListener('keyup', (e) => {
         formulario.callePerso.removeAttribute("style");
         bandCalle = true;
     }
-    validar();
+    validar(bandCalle);
 });
 
 /* Input certificaciones*/
@@ -286,7 +289,7 @@ formulario.noCert.addEventListener('keyup', (e) => {
         formulario.noCert.removeAttribute("style");
         bandCerti = true;
     }
-    validar();
+    validar(bandCerti);
 });
 
 /* Input nombre certificaciones*/
@@ -304,7 +307,7 @@ formulario.nomCert.addEventListener('keyup', (e) => {
         formulario.nomCert.removeAttribute("style");
         bandNomCerti = true;
     }
-    validar();
+    validar(bandNomCerti);
 });
 
 /* Input organizacion certificaciones*/
@@ -322,7 +325,7 @@ formulario.orgCert.addEventListener('keyup', (e) => {
         formulario.orgCert.removeAttribute("style");
         bandOrgCerti = true;
     }
-    validar();
+    validar(bandOrgCerti);
 });
 
 /* Input nombre empresa*/
@@ -340,7 +343,7 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
         formulario.nomEmpPerso.removeAttribute("style");
         bandEmpLab = true;
     }
-    validar();
+    validar(bandEmpLab);
 });
 
 /* Input puesto empresa*/
@@ -358,7 +361,7 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
         formulario.puestoEmpPerso.removeAttribute("style");
         bandPuesto = true;
     }
-    validar();
+    validar(bandPuesto);
 });
 
 /* Input correo empresa*/
@@ -380,7 +383,7 @@ formulario.correoEmpPerso.addEventListener('keyup', (e) => {
         formulario.correoEmpPerso.removeAttribute("style");
         bandCorreoLab = true;
     }
-    validar();
+    validar(bandCorreoLab);
 });
 
 /* Input ext telefono fijo*/
@@ -402,7 +405,7 @@ formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
         formulario.ExtTelFEmp.removeAttribute("style");
         bandExtTelMofi = true;
     }
-    validar();
+    validar(bandExtTelMofi);
 });
 
 /* Input telefono fijo empresa*/
@@ -424,7 +427,7 @@ formulario.telFEmpPerso.addEventListener('keyup', (e) => {
         formulario.telFEmpPerso.removeAttribute("style");
         bandTelMofi = true;
     }
-    validar();
+    validar(bandTelMofi);
 });
 
 /* Input puesto empresa*/
@@ -442,26 +445,73 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
         formulario.funcionEmpPerso.removeAttribute("style");
         bandFunciones = true;
     }
-    validar();
+    validar(bandFunciones);
 });
 
 const boton_enviar = document.getElementById("boton_registrar");
+boton_enviar.addEventListener("click",(e)=>{
 
-function validar() {
-    //si hay una bandera en falso la coloca en rojo
-
-    let is_ok = true;
-    
-    for (const key in baderas) {
-
-        if(baderas[key] == false){
-            is_ok = false;
-        }
-
-    }
-    if(is_ok){
-        boton_enviar.disabled=false;
+    if(bandNom == false){
+        formulario.nomPerso.style.border = "3px solid red";
+    }else if(bandAP == false){
+        formulario.apePPerso.style.border = "3px solid red";
+    }else if(bandAM == false){
+        formulario.apeMPerso.style.border = "3px solid red";
+    }else if(bandEmail == false){
+        formulario.correoPerso.style.border = "3px solid red";
+    }else if(bandContra == false){
+        formulario.contraPerso.style.border = "3px solid red";
+    }else if(bandConfiContra == false){
+        formulario.confiContraPerso.style.border = "3px solid red";
+    }else if(bandCedu == false){
+        formulario.cedulaPerso.style.border = "3px solid red";
+    }else if(bandTelF == false){
+        formulario.telFPerso.style.border = "3px solid red";
+    }else if(bandTelM == false){
+        formulario.telMPerso.style.border = "3px solid red";
+    }else if(bandCP == false){
+        formulario.cpPerso.style.border = "3px solid red";
+    }else if(bandCalle == false){
+        formulario.callePerso.style.border = "3px solid red";
+    }else if(bandCerti == false){
+        formulario.noCert.style.border = "3px solid red";
+    }else if(bandNomCerti == false){
+        formulario.nomCert.style.border = "3px solid red";
+    }else if(bandOrgCerti == false){
+        formulario.orgCert.style.border = "3px solid red";
+    }else if(bandEmpLab == false){
+        formulario.nomEmpPerso.style.border = "3px solid red";
+    }else if(bandPuesto == false){
+        formulario.puestoEmpPerso.style.border = "3px solid red";
+    }else if(bandCorreoLab == false){
+        formulario.correoEmpPerso.style.border = "3px solid red";
+    }else if(bandExtTelMofi == false){
+        formulario.ExtTelFEmp.style.border = "3px solid red";
+    }else if(bandTelMofi == false){
+        formulario.telFEmpPerso.style.border = "3px solid red";
+    }else if(bandFunciones == false){
+        formulario.funcionEmpPerso.style.border = "3px solid red";
     }else{
-        boton_enviar.disabled=true;
+        validar(true);
     }
+
+
+});
+
+function validar(bandera){
+    const guardar = document.getElementById('boton_registrar');
+    if(bandera == false ){        
+        guardar.style.border = "3px solid red";        
+        guardar.disabled=true;
+        //console.log("no pase validacion");
+        
+    }
+    else{
+        guardar.removeAttribute("style");
+        guardar.disabled=false;
+        //console.log("pase validacion");
+        
+
+    }
+
 }

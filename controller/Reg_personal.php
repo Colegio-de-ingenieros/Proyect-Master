@@ -100,7 +100,7 @@ if(
     $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $noCert, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp);
     //$resultado2=$objeto->buscar_colonias($_POST["cpPerso"]);
 
-    if($resultado1){
+    if($resultado1==False){
         echo "Todo chido";
         echo $nombre;
         echo $apeP;
