@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,22 +13,23 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../../controller/administrativo/js/Mostrar_Proyectos.js"></script>
 </head>
+
 <body>
-    <header>
-		<div class="header_superior">
-			<div class="titulo">
-	  
-			  <div class="nombre_ventana">
-				<img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-				<h1 class="nombre_Ventana">Proyectos</h1>
-			  </div>
-	  
-			</div>
-	  
-			<div class="boton-cerrar-session">
-				<button class="btn-cerrar-session btn">Cerrar sesión</button>
-			</div>
-		</div>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Proyectos</h1>
+        </div>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+      </div>
+    </div>
 
 		<!-- Menu Desplegable -->
 		<div class="container_menu">
@@ -81,8 +83,8 @@
 					</a>
 	  
 					<ul>
-					  <li><a id="menuSucursal1" href="#">Registrar</a></li>
-					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+            <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+            <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Visualizar</a></li>
 					</ul>
 				  </li>
 	  
@@ -122,81 +124,81 @@
 					</ul>
 				  </li>
 
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-file-lines"></i>
-					  Reportes
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Individual</a></li>
-					  <li><a id="menuSucursal2" href="#">General</a></li>
-					</ul>
-				  </li>
-	  
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-file"></i>
-					  Pólizas
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Registrar</a></li>
-					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
-					</ul>
-				  </li>
-	  
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-user-gear"></i>
-					  Servicios
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Visualizar</a></li>
-					</ul>
-				  </li>
-	  
-				  <li>
-					<a href="#">
-					  <i class="fa-solid fa-briefcase"></i>
-					  Bolsa de trabajo
-					</a>
-	  
-					<ul>
-					  <li><a id="menuSucursal1" href="#">Ofertas</a></li>
-					</ul>
-				  </li>
-				</ul>
-			  </nav>
-			</div>
-		</div>
-	</header>
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
 
-	<main>
-	
-		<div>
-			<div class="article-tablas">
-				<article>
-				<h4 class="subtitulo-1">Visualización / Consulta</h4>
-				<hr>
-					<div class="grupo-input">
-					<div class="input-form">
-						<input type="search" class="input-format2" placeholder="Search" name="busqueda" id="busqueda">
-					</div>
-					</div>
-					<br>
-					<div class="tablas">
-						<section class="header_table" id="tablaResultado">
-						
-						</section>
-					</div>
-				</article>
-			</div>
-		</div>
-    </main>
-        
+              <ul>
+                <li><a id="menuSucursal1" href="#">Individual</a></li>
+                <li><a id="menuSucursal2" href="#">General</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Ofertas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
+  </header>
+
+  <main>
+
+    <div>
+      <div class="article-tablas">
+        <article>
+          <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          <hr>
+          <div class="grupo-input">
+            <div class="input-form">
+              <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
+            </div>
+          </div>
+          <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
+
+            </section>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  </div>
 </body>
 
 </html>
