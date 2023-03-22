@@ -28,7 +28,7 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Nombre ventana</h1>
+          <h1 class="nombre_Ventana">Cursos</h1>
         </div>
 
       </div>
