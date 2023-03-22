@@ -192,7 +192,7 @@ body{
 
 .input-textarea-2:focus{
     box-shadow: var(--shadow-1);
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 .input-textarea-2:focus::placeholder{
