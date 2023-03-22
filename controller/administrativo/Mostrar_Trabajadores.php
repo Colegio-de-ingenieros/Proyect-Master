@@ -1,4 +1,5 @@
 <?php
+echo 'hola';
 include_once('../../model/Mostrar_Trabajadores.php');
 $salida = '';
 $base = new MostrarTrabajadores();
@@ -6,7 +7,8 @@ $base->instancias();
 
 //manda a hacer la busqueda
 $resultado = $base->getTrabajadores();
-
+echo '<script>alert("si entra al php");</script>';
+echo "si entra al php";
 if ($resultado == true) {
     //pone los encabezados de la tabla
     $salida .= '<table>
@@ -43,7 +45,7 @@ if ($resultado == true) {
         $salida .= '<td>' . $amat . '</td>';
         $salida .= '<td>' . $correo . '</td>';
         $salida .= '<td>' . $telefono . '</td>';
-        $salida .= '<td><a href="../../controller/administrativo/editarTrabajador.php?rfc='.$rfc.'" class="table_item__link">Editar</a> | <a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
+        $salida .= '<td><a href="../../controller/administrativo/editarTrabajador.php?rfc='.$rfc.'" class="table_item__link">Editar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
         $salida .= '</tr>';
 
         
@@ -51,6 +53,7 @@ if ($resultado == true) {
 } 
 
 else {
+    echo "si entra al else";
     $salida .= 'No se encontraron resultados';
 }
 

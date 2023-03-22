@@ -15,7 +15,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("/controller/socio-asociado/Reg_personal.php",
+        fetch("/controller/Reg_personal.php",
         {
             method: 'POST',
             body: formulario_data,
@@ -28,30 +28,6 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
 
     }
   });
-
-let formulario  = document.getElementById("formula");
-formulario.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    //traemos los datos del checkbox
-    let dias = checke();
-    /** extraemos los datos del formulario */
-    let formulario_data = new FormData(e.target);
-    dias.forEach(dia => {
-        formulario_data.append("dias[]",dia)
-    });
-   
-    
-    fetch("/controller/socio-asociado/Reg_personal.php",
-    {
-        method: 'POST',
-        body: formulario_data,
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert(data[0]);
-    });
-});
-
 
 
 function rellenar_lista(datos) {
@@ -69,16 +45,4 @@ function rellenar_lista(datos) {
         optionElement.text = registro[1];
         document.getElementById("coloniaPerso").appendChild(optionElement);
     });
-    
-}
-function checke() {
-    let lista = [];
-    var checked_list = document.querySelectorAll('.checkbox-format');
-    for(var i=0; checked_list[i]; ++i){
-        if(checked_list[i].checked){
-            lista.push(checked_list[i].value);
-            
-        }
-    }
-    return lista;
 }

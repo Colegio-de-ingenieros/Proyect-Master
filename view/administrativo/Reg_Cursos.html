@@ -20,21 +20,20 @@
 </head>
 
 <body>
+
   <header>
     <div class="header_superior">
       <div class="titulo">
 
         <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
           <h1 class="nombre_Ventana">Nombre ventana</h1>
         </div>
 
       </div>
 
-      <div class="input-buscar">
-        <div class="barra-busqueda">
-          <input type="text" class="input" name="busqueda" id="busqueda" placeholder="Buscar...">
-          <i class="fas fa-search"></i>
-        </div>
+      <div class="boton-cerrar-session">
+          <button class="btn-cerrar-session btn">Cerrar session</button>
       </div>
     </div>
 
@@ -47,10 +46,6 @@
         </label>
         <nav>
           <ul>
-            <li class="logo_menu"><a href="#">
-                <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-              </a>
-            </li>
 
             <li>
               <a href="#">
@@ -70,8 +65,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Trabajadores.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -82,8 +77,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -106,8 +101,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -178,22 +173,15 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
-                <li><a id="menuSucursal1" href="#">C.V</a></li>
               </ul>
             </li>
 
-            <li>
-              <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Cerrar sesión
-              </a>
-            </li>
           </ul>
         </nav>
       </div>
     </div>
   </header>
-  
+
   <main>
     <section class="section-main">
       <div class="cabezera">
@@ -238,12 +226,12 @@
         
         <div class="campo">
           <label for="titulo-curso" class="label-3 titulo-curso">Titulo del tema</label>
-          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el costo..." minlength="1" maxlength="40" required>
+          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
           <label for="Subtitulo-curso" class="label-3 titulo-curso">Subtitulo del tema</label>
-          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el costo..." minlength="1" maxlength="40" required>
+          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
         </div>
 
       </div>
@@ -260,7 +248,13 @@
 
       </div>
 
-      <button id="registraform" class="btn-small btn" onclick="regi()">Finalizar registro</button>
+      <div class="section-botones-2">
+        <div class="campo">
+          <button id="registraform" class="btn-small btn" onclick="regi()">Finalizar registro</button>
+        </div>
+      </div>
+
+      
     </section>
   </main>
 </body>

@@ -14,7 +14,7 @@ if ($datos == true) {
     '
     <style>
     table{
-        width: 100%;
+        width: 150%;
         border-collapse: collapse;
         font-family: "Manrope";
 
@@ -39,7 +39,7 @@ if ($datos == true) {
     }
     </style>
     <div class="di">
-    <table>
+    <table class = "header_table">
             <thead>
                 <tr>
                     <th>Clave</th>
@@ -65,7 +65,8 @@ if ($datos == true) {
         $respuesta .= '<td>' . $duracion . ' hrs </td>';
         $respuesta .= '<td> 
         <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">Eliminar</a>
+        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver</a>
         </td>';
         $respuesta .= '</tr>';
         $respuesta .= '</div>';

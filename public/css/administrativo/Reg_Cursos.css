@@ -80,4 +80,170 @@ body{
 .section-botones{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin-top: -3rem;
+}
+
+.section-botones-2{
+    display: grid;
+    margin-top: 2rem;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+}
+
+.inputs-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+    background-color: var(--color-gray);
+}
+
+.input-format{
+    color: var(--color-black);
+    background-color: var(--color-gray);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.input-format-2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.input-format:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    /* transform: scale(1.1); */
+}
+
+.input-format-2:focus{
+    background: var(--color-white);
+    box-shadow: var(--shadow-1);
+    transform: scale(1.02);
+}
+
+.input-format:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format-2:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-format-2::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-textarea-2{
+    height: 100px;
+    resize: none;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: span 3;
+    transition: 300ms all;
+}
+
+.input-textarea-2:focus{
+    box-shadow: var(--shadow-1);
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 650px) {
+    main{
+        margin-top: 11.5rem;
+    }
+    .section-main{
+        width: 80%;
+    }
+
+    .formulario-cursos {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        grid-gap: 20px;
+    }
+
+    .h4{
+        align-items: center;
+        font-size: 2rem;
+    }
+    
+    .cabezera{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .campo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titulos-registrados{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formulario-titulos{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .section-botones, .section-botones-2{
+        margin-top: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+    }
+
+    .btn{
+        width: 50%;
+        height: 50px;
+    }
 }
