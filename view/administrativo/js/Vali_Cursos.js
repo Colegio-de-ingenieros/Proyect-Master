@@ -8,6 +8,8 @@ let sub = false
 let lista = [];
 let su = [];
 let contador = 0;
+let b = false
+
 const expresiones = {
     clave:/^[0-9]{6}$/,
     duracion:/^[0-9]+$/,
@@ -181,7 +183,7 @@ function validar3(bandera)
 
 function regi()
 {
-
+    if (lista.length != 0){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
         /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
         var arrayin = new Array(4);
@@ -227,20 +229,27 @@ function regi()
         alert("Faltan campos por llenar");
     }
 }
+else{
+    alert("Ingresar temas y subtemas es necesario");
+}
+}
 
 function te()
 {
-   /* lista.push(document.getElementById("titulo-curso").value); 
+    if(lista != 0 || b==true){
+    lista.push(document.getElementById("titulo-curso").value); 
     console.log(lista);
-    document.getElementById("titulo-curso").value = ""; */
+    document.getElementById("titulo-curso").value = ""; 
     document.getElementById("titulo-curso").value = ""; 
     lista.push([su]);
     document.getElementById("titulo-curso").disabled = false;
-    su = [];
+    su = []
     contador = 0;
-    console.loj("aqui");
     alert("Se ha agregado un tema al registro");
-    
+    }
+    else{
+        alert("Necesita escribir un tema y añadirle un subtema para registrarlo");
+    }
 }
 
 function subt()
@@ -254,7 +263,8 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
         console.log(("if")); 
         contador++;
-        alert("Se ha agregado un tema con un subtema");
+        alert("Se ha agregado un subtema al tema");
+        b=true;
     } else{
         
         console.log(("else"));
