@@ -58,8 +58,8 @@
     </div>
   </header>
   
-	<div class="contenedortrabajadores">
-		<h3>Registro personal </h1>
+	<div class="contenedorregistro">
+		<h3>Registro personal </h3>
 		<br>
         <form action="/controller/registro/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
             <p class="subtitulo-1"> Datos personales</p>
@@ -139,7 +139,7 @@
 
                 <div class="grupo-input4">
                     <div class="label-form">
-                        <p class="label-2">Teléfono móóvil</p>
+                        <p class="label-2">Teléfono móvil</p>
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" required maxlength="10">
@@ -340,8 +340,10 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su funcion" id="funcionEmpPerso" name="funcionEmpPerso" required maxlength="100">
+                        <button id="temas" class="btn-small btn" onclick="te()">Añadir nuevo tema</button>
                     </div>
                 </div>
+                
 
         <br></br>       
 		</div>
@@ -379,9 +381,10 @@
         <button class="btn-medium btn">Registrar</button>
         </div>
         
-    </form>
-    </br>
     </div>
+</br>
+</form>
+
 
     <script>
         function deseleccionar1(opcion1) {
