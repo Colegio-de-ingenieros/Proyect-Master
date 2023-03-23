@@ -1,5 +1,5 @@
 <?php
-require_once("../config/Crud_bd.php");
+require_once("../../config/Crud_bd.php");
 class Alta_empresa extends Crud_bd{
 
     public $sql = [];
@@ -42,7 +42,7 @@ class Alta_empresa extends Crud_bd{
     public function buscar_colonias($codigoPostal){
         # esta funcion trae todas las colonias en base al codigo postal
         $this->conexion_bd();
-        $sql = "SELECT IdColonia,nomcolonia,ciudad,nomestado FROM"
+        $sql = "SELECT IdColonia,nomcolonia,nommunicipio,nomestado FROM"
                 ." estados,municipios,colonias WHERE estados.idestado = municipios.idestado AND"
                 ." municipios.idmunicipio =colonias.idmunicipio AND colonias.codpostal = :cod ";
         $resultado = $this->mostrar($sql,[":cod"=>$codigoPostal]);
