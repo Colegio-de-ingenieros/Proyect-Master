@@ -15,7 +15,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("/controller/Reg_personal.php",
+        fetch("/controller/registro/Registro_personal.php",
         {
             method: 'POST',
             body: formulario_data,
@@ -46,3 +46,33 @@ function rellenar_lista(datos) {
         document.getElementById("coloniaPerso").appendChild(optionElement);
     });
 }
+
+//declara las variables globales
+var formulario = document.getElementById('formulario');
+
+//responde cuando hay un click en el boton
+formulario.addEventListener('submit', function (e)
+{
+    e.preventDefault();
+    var datos= new FormData(formulario);
+
+    let aviso_privacidad = document.getElementById("avisos1");
+    
+    if(aviso_privacidad.checked == false){
+        alert("Antes debe aceptar el aviso de privacidad");
+    }   
+
+    if (aviso_privacidad.checked) {
+
+        fetch('/controller/registro/Registro_personal.php', {
+            method: 'POST',
+            body: datos
+        })
+
+        .then(res => res.json())
+        .then(data => {
+            alert(data);
+            });
+            formulario.reset();
+    }
+})
