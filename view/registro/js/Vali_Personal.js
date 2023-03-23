@@ -56,8 +56,7 @@ formulario.nomPerso.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-    //Elimina el ultimo espaciado
-    .trim();
+   
 
     if (!expresiones.nombre.test(valorInput)) {
         formulario.nomPerso.style.border = "3px solid red";
