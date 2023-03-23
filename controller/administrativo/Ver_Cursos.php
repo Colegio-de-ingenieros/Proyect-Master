@@ -13,7 +13,7 @@ $bd->BD();
 /* mostrar los datos */
 $datos = $bd->cursos_disponibles($id);
 $datost = $bd->temas($id);
-$datoss = $bd->subtemas($id);
+/* $datoss = $bd->subtemas($id); */
 
     for ($i = 0; $i < count($datos); $i++) {
         //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
@@ -70,6 +70,9 @@ $respuesta .='
 			font-size: 24px;
 			margin: 0 0 10px 0;
 		}
+		h3 {
+			text-align: left;
+		}
 		
 		p, ul, ol {
 			margin: 0 0 10px 0;
@@ -94,11 +97,14 @@ $respuesta .='
 		footer p {
 			margin: 0;
 		}
+		li {
+			text-align: left;
+		}
 	</style>
 <body>
 	<header>
 		<h1>'. $nombre .'</h1>
-        <h1>'. $clave .'</h1>
+        <h2>'. $clave .'</h2>
 	</header>
 	<main>
 		<section>
@@ -114,33 +120,36 @@ $respuesta .='
             <h1>'. $estatus.'</h1>
 		</section>
 		<section>
-			<h2>Temas</h2>
+			<h2>Temario</h2>
 			<p>';
-            if ($datoss){
+            if ($datost){
+				$rec='';
             for ($i = 0; $i < count($datost); $i++) {
                 $tem = $datost[$i]["NomTema"];
-                $respuesta .= $tem . '<br>';
+				$sub = $datost[$i]["NomSubT"];
+				if ($rec != $tem){
+					$respuesta .= '<h3>'.$tem .'</h3><br>';
+					$respuesta .= 
+					'<ul>
+						<li>'. $sub .'</li>
+					</ul>';
+					$rec = $datost[$i]["NomTema"];
+
+				}
+				else {
+					$respuesta .= 
+					'<ul>
+						<li>'. $sub .'</li>
+					</ul>';
+				}
+                
             
             }
         }else{
-            $respuesta .= 'No hay temas';
+            $respuesta .= 'No hay temario';
         }
             $respuesta .=    '</p>
-		</section>
-		<section>
-			<h2>Subtemas</h2>
-			<p>';
-            if ($datoss){
-            for ($i = 0; $i < count($datoss); $i++) {
-                $sub = $datoss[$i]["NomSubT"];
-                $respuesta .= $sub . '<br>';
-            
-            }
-        }else{
-            $respuesta .= 'No hay subtemas';
-        }
-            $respuesta .=   '</p>
-		</section>
+		</section> 
 	</main>
 	<footer>
 		<p>Curso ofrecido por el CISCIG</p>

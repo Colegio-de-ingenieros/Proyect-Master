@@ -10,7 +10,7 @@ let su = [];
 let contador = 0;
 const expresiones = {
     clave:/^[0-9]{6}$/,
-    duracion:/^[0-9]{0,9}$/,
+    duracion:/^[0-9]+$/,
     nombre:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivosjhg:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivo:/^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
@@ -220,11 +220,11 @@ function regi()
         document.getElementById("titulo-curso").value = "";
         document.getElementById("Subtitulo-curso").value = "";
 
-        alert("Registro exitoso");
+        alert("Registro del curso completado");
 
     }
     else {
-        console.log("entro al else");
+        alert("Faltan campos por llenar");
     }
 }
 

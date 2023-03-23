@@ -11,16 +11,16 @@ $lista1 = json_decode($_POST["lista"]);
 /* $lista2 = json_decode($_POST["su"]); */
 
 //imprimimos
-var_dump($arreglo);
-var_dump($lista1);
+/* var_dump($arreglo);
+var_dump($lista1); */
 /* var_dump($lista2); */
 
 /* imprimir el segundo dato de la segunda posicion en la lista de listas lista1 */
  /* echo $lista1[1][0][1]; */
 /* consegir la longitud de la lista */
-echo count($lista1[0][0]);
+/* echo count($lista1[0][0]); */
 /* echo count($lista1[1][0]); */
-echo count($lista1);
+/* echo count($lista1); */
 
 $obj = new NuevoCurso();
 $obj->conexion();
@@ -47,7 +47,7 @@ if ($n){
 }
 
 $tema = array();
-
+if ($lista1){
 for($i=0;$i<count($lista1);$i++){
     $obj->insertarTema($incre,$lista1[$i][0][0]);
     
@@ -83,7 +83,7 @@ for($i=0;$i<count($lista1);$i++){
         $incre++;
     }
 } 
-
+}
 
 
 
