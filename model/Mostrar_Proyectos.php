@@ -19,7 +19,7 @@ class MostrarProyectos{
     }
 }
 
-$obj = new MostrarProyectos();
-$obj->instancias();
+//$obj = new MostrarProyectos();
+//$obj->instancias();
 
 ?>

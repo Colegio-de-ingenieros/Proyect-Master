@@ -61,7 +61,7 @@
 	<div class="contenedortrabajadores">
 		<h3>Registro personal </h1>
 		<br>
-        <form action="../../controller/socio-asociado/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+        <form action="/controller/Reg_personal.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
             <p class="subtitulo-1"> Datos personales</p>
             <hr size="1px"/>
             <div class="contenedor-formulario">
@@ -194,7 +194,7 @@
                         <p class="label-2">Ciudad</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50" disabled>
+                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50">
                     </div>
                 </div>
 
@@ -203,7 +203,7 @@
                         <p class="label-2">Estado</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50" disabled>
+                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50">
                     </div>
                 </div>
             </div>
@@ -244,7 +244,7 @@
                         <p class="label-2">Fecha de inicio</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" name="fechaCert" required maxlength="60">
+                        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" name="fechaICert" required maxlength="60">
                     </div>
                 </div>
 
@@ -421,8 +421,7 @@
         }
 
       </script>
-
-      <script src="../registro/js/Reg_Personal.js"></script>
       <script src="../registro/js/Vali_Personal.js"></script>
+
 </body>
 </html>
