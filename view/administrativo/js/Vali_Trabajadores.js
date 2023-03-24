@@ -33,8 +33,8 @@ botonRegresar.addEventListener("click", (e) => {
 
 const expresiones = {
     rfc: /^[A-Z0-9]{13}$/,
-    nombre:/^[a-zA-ZÁ-ý.\s]{3,40}$/,
-    apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
+    nombre:/^[a-zA-ZÁ-ý.\s]{1,40}$/,
+    apellidos:/^[a-zA-ZÁ-ý\s]{1,20}$/,
     apeMa:/^[a-zA-ZÁ-ý\s]{0,20}$/,
     email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
     telefono:/^[0-9]{10}$/,
@@ -225,13 +225,13 @@ const validarPassword2 = () =>{
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
     if(bandera == false ){        
-        guardar.style.border = "3px solid red";        
+        //guardar.style.border = "3px solid red";        
         guardar.disabled=true;
         //console.log("no pase validacion");
         
     }
     else{
-        guardar.removeAttribute("style");
+        //guardar.removeAttribute("style");
         guardar.disabled=false;
         //console.log("pase validacion");
         
