@@ -197,7 +197,7 @@
                         <p class="label-2">Ciudad</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50">
+                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50" readonly>
                     </div>
                 </div>
 
@@ -206,13 +206,33 @@
                         <p class="label-2">Estado</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50">
+                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50" readonly>
                     </div>
                 </div>
             </div>
             
             <br>
             <p class="subtitulo-1"> Educación</p>
+            <hr size="1px"/>
+            <div class="contenedor-formulario">
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Máximo grado de estudios</p>
+                    </div>
+                    <div class="input-form">
+                        <select type="text" class="input-format"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                        <option value="0" selected disabled>Seleccione su máximo grado de estudios</option>
+                        <option value="1">Pasante</option>
+                        <option value="2">Licenciatura</option>
+                        <option value="2">Maestría</option>
+                        <option value="2">Doctorado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <p class="subtitulo-1"> Certificación</p>
             <hr size="1px"/>
             <div class="contenedor-formulario">
 
@@ -252,20 +272,7 @@
                     </div>
                 </div>
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Máximo grado de estudios</p>
-                    </div>
-                    <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
-                        <option value="0" selected disabled>Seleccione su máximo grado de estudios</option>
-                        <option value="1">Pasante</option>
-                        <option value="2">Licenciatura</option>
-                        <option value="2">Maestría</option>
-                        <option value="2">Doctorado</option>
-                        </select>
-                    </div>
-                </div>
+                
                 <div class="grupo-input2">
                     
                 </div>
@@ -441,6 +448,7 @@
         }
 
       </script>
+      <script src="../registro/js/Alertas_personal.js"></script>
       <script src="../registro/js/Reg_Personal.js"></script>
       <script src="../registro/js/Vali_Personal.js"></script>
 
