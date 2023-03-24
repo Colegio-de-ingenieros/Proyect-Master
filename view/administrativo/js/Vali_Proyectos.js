@@ -1,7 +1,11 @@
 /* Declara una variable global */
 let bNomPro = false
 let bObjPro = false
-let bMonPro = false    
+let bMonPro = false  
+let bFecha = false
+
+
+
 
 /*Detecta cuando el boton fue presionado*/
 let botonRegistrar = document.getElementById("registrar");
@@ -13,6 +17,8 @@ botonRegistrar.addEventListener("click", (e) => {
         obj_proyecto.style.border = "3px solid red";
     }else if(bMonPro==false){
         monto_proyecto.style.border = "3px solid red";
+    }else if(bFecha==false){
+        fin_proyecto.style.border = "3px solid red";
     }else{
         validar(true);
     }
@@ -20,9 +26,9 @@ botonRegistrar.addEventListener("click", (e) => {
 
 /*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
-    NomPro:/^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
+    NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s .,]{1,60}$/,
     ObjPro:/^[a-zA-ZÁ-ý\s ,."]{1,10000}$/,
-    MonPro:/^[0-9.]{0,100}$/,
+    MonPro:/^[0-9,]{0,100}$/,
 
 }
 
@@ -32,7 +38,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
 
 	formulario.nom_proyecto.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+='\[\]{};:"\\|<>\/?]/g, '')
     
     if (!expresiones.NomPro.test(valorInput)) {
         nom_proyecto.style.border = "3px solid red";
@@ -64,6 +70,24 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
     //validar(bObjPro);
 })
 
+/*Compara que la fecha fin sea posterior*/
+formulario.fin_proyecto.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+    
+	formulario.fin_proyecto.value = valorInput
+    if( (new Date(ini_proyecto.value).getTime() >= new Date(fin_proyecto.value).getTime()))
+    {
+        fin_proyecto.style.border = "3px solid red";
+        bFecha = false
+    }else{
+        fin_proyecto.removeAttribute("style");
+        bFecha = true
+    }
+    validar(bFecha);
+})
+
+
+
 /* Input Monto Proyecto*/
 formulario.monto_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
@@ -74,7 +98,7 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     //Elimina letras
     .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|.<>\/?]/g, '')
     // Eliminar el ultimo espaciado
     .trim();
 
