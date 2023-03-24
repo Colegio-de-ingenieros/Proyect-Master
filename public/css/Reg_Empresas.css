@@ -39,6 +39,10 @@ html{
 .grupo-input3{
     display: block;
     grid-column: span 2; 
+} 
+
+.label-2{
+    width: 90%;
 }
 
 .label-form{
