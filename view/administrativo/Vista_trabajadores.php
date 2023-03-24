@@ -190,7 +190,7 @@
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-
+              
             </section>
           </div>
         </article>
