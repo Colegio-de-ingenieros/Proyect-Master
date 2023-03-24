@@ -186,17 +186,15 @@
   <main>
     <section class="section-main">
       <div class="cabezera">
-
         <div class="izquierda">
-          <h4 class="h4">Vista de cursos</h4>
-          <h6 class="subtitulo-1">Vista general de cursos</h6>
+          <h6 class="subtitulo-1">Visualización / Consulta</h6>
         </div>
-
+        <hr>
         <div class="derecha">
           <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
         </div>
       </div>
-      <hr>
+      
 
       <div id="tablaResultado">
         

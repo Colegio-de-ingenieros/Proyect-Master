@@ -51,6 +51,11 @@ body{
     justify-content: center;
 }
 
+.h4{
+    margin-bottom: 2.125rem;
+}
+
+
 .formulario-cursos, .formulario-titulos{
     margin-top: 10px;
     display: grid;
