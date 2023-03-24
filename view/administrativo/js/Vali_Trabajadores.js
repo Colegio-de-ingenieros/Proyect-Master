@@ -48,7 +48,7 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
     .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
      // Eliminar el ultimo espaciado
 	.trim();
@@ -71,7 +71,7 @@ formulario.caja_nombre.addEventListener('keyup', (e) => {
    // Eliminar numeros
    .replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
 
     if (!expresiones.nombre.test(valorInput)) {
         caja_nombre.style.border = "3px solid red";
@@ -91,7 +91,7 @@ formulario.caja_ap_paterno.addEventListener('keyup', (e) => {
 // Eliminar numeros
 .replace(/[0-9]/g, '')
 // Eliminar caracteres especiales
-.replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+.replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
     if (!expresiones.apellidos.test(valorInput)) {
         caja_ap_paterno.style.border = "3px solid red";
@@ -111,7 +111,7 @@ formulario.caja_ap_materno.value = valorInput
 // Eliminar numeros
 .replace(/[0-9]/g, '')
 // Eliminar caracteres especiales
-.replace(/[üâäàåçê♪ëèïîì·ÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+.replace(/[üâäàåçê♪ëèïîì·ÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
 if (!expresiones.apeMa.test(valorInput)) {
     caja_ap_materno.style.border = "3px solid red";
@@ -130,7 +130,7 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()\-=\[\]{};·':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -174,7 +174,7 @@ formulario.caja_contra.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales·
-        .replace(/[·"ª·%&()=?¿`´^¨;:]/g, '')
+        .replace(/[·"ª·%&()=?¿`´^¨;:~}><°¡]/g, '')
     //.replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
         // Eliminar el ultimo espaciado
     .trim();
