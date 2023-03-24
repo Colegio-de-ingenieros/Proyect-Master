@@ -108,6 +108,42 @@
 
 //---------------------------------------------------------------------------------------------------
             //ingresa datos en la tabla personintel
+            # genera el numero inteligente
+            $mydate=getdate(date("U"));
+            $year = $mydate["year"];
+            $mes = date('m');
+            $arregloint = $this->obtener_numero_consecutivo_inteligente();
+            $numeroint = "";
+    
+    
+            if (is_null($arregloint[0][0]) == 1) {
+                # significa que no hay registros por eso hay que generarlo
+                $numeroint = 1;
+            }else{
+                $numeroint = $arregloint[0][0];
+                $numeroint++;
+               
+            }
+            $numeroint_con_ceros = $this->agregar_ceros($numeroint);
+            
+            $numero_inteligente = $year.$mes.$numero_con_ceros;
+            $idint = "E".$numeroint_con_ceros;
+    
+        
+            $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
+            $parametros_inteligentes = [":consecutivo"=>$idint,":inteligente"=>$numero_inteligente];
+    
+            $sql_usua = "INSERT INTO personintel (Idperso,IdNIntel) VALUES(:id,:consecutivo)";
+            $parametros_usua = [":id"=>$id,":consecutivo"=>$idint];
+    
+            $this->sql[] = $sql_inteligentes;
+            $this->parametros[] = $parametros_inteligentes;
+            $this->sql[] = $sql_usua;
+            $this->parametros[] = $parametros_usua;
+    
+           
+            
+            //$this->mandar_correo($correo);
             
 
 
@@ -207,48 +243,8 @@
             return $resultado;
     
         }
-        public function numero_inteligente($correo)
-        {
-            # genera el numero inteligente
-            $mydate=getdate(date("U"));
-            $year = $mydate["year"];
-            $mes = date('m');
-            $arreglo = $this->obtener_numero_consecutivo_inteligente();
-            $numero = "";
-    
-    
-            if (is_null($arreglo[0][0]) == 1) {
-                # significa que no hay registros por eso hay que generarlo
-                $numero = 1;
-            }else{
-                $numero = $arreglo[0][0];
-                $numero++;
-               
-            }
-            $numero_con_ceros = $this->agregar_ceros($numero);
-            
-            $numero_inteligente = $year.$mes.$numero_con_ceros;
-            $numero_consecutivo = "E".$numero_con_ceros;
-    
         
-            $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
-            $parametros_inteligentes = [":consecutivo"=>$numero_consecutivo,":inteligente"=>$numero_inteligente];
-    
-            $sql_usua = "INSERT INTO personintel (Idperso,IdNIntel) VALUES(:id,:consecutivo)";
-            $parametros_usua = [":id"=>$id,":consecutivo"=>$numero_consecutivo];
-    
-            $this->sql[] = $sql_inteligentes;
-            $this->parametros[] = $parametros_inteligentes;
-            $this->sql[] = $sql_usua;
-            $this->parametros[] = $parametros_usua;
-    
-           
-            
-            //$this->mandar_correo($correo);
-         
-    
-        }
-        public function mandar_correo($destinatario)
+        public function mandar_correo($correo)
         {   
             
             $remitente = "ecateam22@gmail.com";
