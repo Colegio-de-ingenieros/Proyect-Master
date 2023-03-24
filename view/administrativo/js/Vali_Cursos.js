@@ -9,6 +9,7 @@ let lista = [];
 let su = [];
 let contador = 0;
 let b = false
+let c = false
 
 const expresiones = {
     clave:/^[0-9]{6}$/,
@@ -183,7 +184,7 @@ function validar3(bandera)
 
 function regi()
 {
-    if (lista.length != 0){
+    if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
         /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
         var arrayin = new Array(4);
@@ -222,6 +223,8 @@ function regi()
         document.getElementById("titulo-curso").value = "";
         document.getElementById("Subtitulo-curso").value = "";
 
+        c=0;
+
         alert("Registro del curso completado");
 
     }
@@ -236,8 +239,9 @@ else{
 
 function te()
 {
-    if(lista != 0 || b==true){
-    lista.push(document.getElementById("titulo-curso").value); 
+    console.log()
+    if(su.length >= 2 && b==true){
+    /* lista.push(document.getElementById("titulo-curso").value);  */
     console.log(lista);
     document.getElementById("titulo-curso").value = ""; 
     document.getElementById("titulo-curso").value = ""; 
@@ -246,6 +250,8 @@ function te()
     su = []
     contador = 0;
     alert("Se ha agregado un tema al registro");
+    b=false;
+    c=1;
     }
     else{
         alert("Necesita escribir un tema y añadirle un subtema para registrarlo");
