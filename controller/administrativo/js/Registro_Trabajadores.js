@@ -19,7 +19,10 @@ formulario.addEventListener('submit', function (e)
     .then(data => {
         console.log(data);
         if (data === 'exito') {
+            const form= document.getElementById('formulario');
+            form.reset();
             alert("Registro exitoso");
+            
         }
         //los datos no pasaron alguna validacion
         else {

@@ -108,6 +108,43 @@
 
 //---------------------------------------------------------------------------------------------------
             //ingresa datos en la tabla personintel
+            # genera el numero inteligente
+            $mydate=getdate(date("U"));
+            $year = $mydate["year"];
+            $mes = date('m');
+            $arregloint = $this->obtener_numero_consecutivo_inteligente();
+            $numeroint = "";
+    
+    
+            if (is_null($arregloint[0][0]) == 1) {
+                # significa que no hay registros por eso hay que generarlo
+                $numeroint = 1;
+            }else{
+                $numeroint = $arregloint[0][0];
+                $numeroint++;
+               
+            }
+            $numeroint_con_ceros = $this->agregar_ceros($numeroint);
+            
+            $numero_inteligente = $year.$mes.$numero_con_ceros;
+            $idint = "E".$numeroint_con_ceros;
+    
+        
+            $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
+            $parametros_inteligentes = [":consecutivo"=>$idint,":inteligente"=>$numero_inteligente];
+    
+            $sql_usua = "INSERT INTO personintel (Idperso,IdNIntel) VALUES(:id,:consecutivo)";
+            $parametros_usua = [":id"=>$id,":consecutivo"=>$idint];
+    
+            $this->sql[] = $sql_inteligentes;
+            $this->parametros[] = $parametros_inteligentes;
+            $this->sql[] = $sql_usua;
+            $this->parametros[] = $parametros_usua;
+    
+           
+            
+            //$this->mandar_correo($correo);
+            
 
 
 
@@ -190,6 +227,37 @@
                     ." municipios.idmunicipio =colonias.idmunicipio AND colonias.codpostal = :cod ";
             $resultado = $this->mostrar($sql,[":cod"=>$codigoPostal]);
             $this->cerrar_conexion();
+            return $resultado;
+        }
+
+        public function obtener_numero_consecutivo_inteligente()
+        {
+            # esta funcion te dara el numero en el que se quedaron
+    
+            $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
+            
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdNIntel,2) AS INT)) FROM numinteligentes";
+            $resultado = $this->mostrar($sql);
+            $this->cerrar_conexion();
+           
+            return $resultado;
+    
+        }
+        
+        public function mandar_correo($correo)
+        {   
+            
+            $remitente = "ecateam22@gmail.com";
+            $asunto = "Bienvenido a CISCIG!!!";
+            $cuerpo = $nombre.",ahora eres asociado del Colegio de Ingenieros en Sistemas Computacionales. Numero Inteligente: ".$numero_inteligente;
+            //manda el correo electronico
+            ini_set( 'display_errors', 1 );
+            error_reporting( E_ALL );
+            $headers = "From:" . $remitente . " \r\n";
+            $headers .= "Cc:afgh@somedomain.com \r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-type: text/html\r\n";
+            $resultado = mail($destinatario,$asunto,$cuerpo, $headers);
             return $resultado;
         }
     }

@@ -59,8 +59,8 @@
 					</a>
 	  
 					<ul>
-					  <li><a id="menuSucursal1" href="#">Registrar</a></li>
-					  <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+					  <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+					  <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
 					</ul>
 				  </li>
 	  
@@ -180,7 +180,9 @@
     <div>
       <div class="article-tablas">
         <article>
-          <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          <div class="sub-titulo">
+            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          </div>
           <hr>
           <div class="grupo-input">
             <div class="input-form">

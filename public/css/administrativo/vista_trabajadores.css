@@ -1,32 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-:root{
-    --color-primary: #273544;
-    --color-secondary: #303a6e;
-    --color-tertiary: #3f4552;
-    --color-quaternary: #61a8ab;
-    --color-quinary: #085262;
-
-    --color-white: #ffffff;
-    --color-gray: #dfe3e7;
-    --color-gray-2: #d6dbe0;
-    --color-black: #000000;
-
-    --color-placeholder-1: #93979b;
-    --color-placeholder-2: #7c838a;
-    --color-placeholder-3: #474a57;
-
-    --color-red: #ff0000;
-
-    --radius-1: 15px;
-    --radius-2: 8px;
-
-    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
-}
-
-main{
-    
-}
-
 article{
     margin: 20px auto;
     padding: 10px;
@@ -37,100 +8,28 @@ article{
     margin: 20px auto;
     padding: 10px;
     width: 1200px;
-    background-color: #dfe3e7;
-}
-html{
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-}
-
-body{
-    color: var(--color-black);
-    background-color: var(--color-gray);
-    padding: 0 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-body{
-    font-family: 'Manrope', sans-serif;
     background-color: #dfe3e7;
 }
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Manrope', sans-serif;
-    text-decoration: none;
-}
-/*----------------------- Encabezados --------------------------*/
-h3{
-    color: var(--color-black);
-    font-size: 54px;
-    font-weight: 800;
-}
-/* =================== SUBTITULOS ============== */
-.subtitulo-1{
-    color: var(--color-black);
-    font-size: 28px;
-    font-weight: 700;
-} 
-/* contenedor guia */
-html{
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-}    
-.contenedortrabajadores{
-    height: 32em;
-    width: 60em;
-    border: none;
-    background-color: none; 
-    width: 80%;
-    height: 500px;
-    justify-content: center;
-    margin: 14em auto; 
-} 
-.contenedor-formulario{
-    padding: 20px 0px 20px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
-
-.grupo-input2{
-    display: block;
-    grid-column: span 1;
-
-}
-.grupo-input{
+.formulario-de-vista{
     display: block;
 }
-.grupo-input-datos-generales{
-    display: block;
+.table{
+    padding: 2rem 0 0 0;
 }
-
-.label-form{
-    padding-bottom: 10px;
-}
-
-.input-format{
-    width: 100%;
-}
-
-.input-textarea{
-    width: 100%;
-}
-.boton_registrar{
+.sub-titulo{
     display: flex;
     flex-direction: column;
-    align-items: center;}
-
-hr{
-    color: gray;
+    align-items: start;   
+    padding-left: 0rem; 
 }
-/*----------------------------- Seccion cajas de texto-----------------------*/
-.input-busca{
+.grupo-input{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;    
+    padding: 2rem 0 0 0;
+
+}
+.input-format-2{
     color: var(--color-black);
     background-color: var(--color-white);
     border-radius: var(--radius-2);
@@ -141,33 +40,21 @@ hr{
     font-size: 1rem;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(17%, -50%);
-    width: 500px;
-
+    justify-content: center;
+    transition: 300ms all;
 }
-/*------------------------------- Animacion de caja bucar -------------------------------*/
-.input-busca:focus{
-    background: var(--color-gray-2);
+
+.input-format-2:focus{
+    background: var(--color-white);
     box-shadow: var(--shadow-1);
-    transition: all 300ms;
+    transform: scale(1.02);
 }
 
-.input-busca:focus::placeholder{
+.input-format-2:focus::placeholder{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
-
-.input-busca::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
-/*-------------------------------- Seccion tabla -----------------------------*/
-table{
+.table{
     width: 130%;
     border-collapse: collapse;
     font-family: 'Manrope';
@@ -180,7 +67,6 @@ table{
 }
 
 .header_table thead th {
-    position: sticky;
     top: 0;
     background-color: #085262;
     color: #e6e7e8;
@@ -199,4 +85,17 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 }
-
+@media screen and (max-width: 1024px){
+    table{
+        width: 130%;
+        border-collapse: collapse;
+        font-family: 'Manrope';
+        margin-left: 25rem;
+    }
+    .sub-titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+        margin-left: 25rem;  
+    }
+  }

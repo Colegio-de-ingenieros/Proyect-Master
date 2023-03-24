@@ -275,7 +275,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
     }
 }
 else{
-alert ("completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
+alert ("Completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
 }
 
     /* if (document.getElementById("titulo-curso").value){

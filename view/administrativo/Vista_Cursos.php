@@ -66,8 +66,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -183,35 +183,25 @@
     </div>
   </header>
 
-  <main class="section-main" id="tablaResultado">
-    <div class="contenedortrabajadores">
-      <h3 class="h3">Vista de cursos</h3>
-      <hr size="1px" />
-
-      <p class="subtitulo-2"> Vista general trabajadores</p>
-      <div class="contenedor-formulario">
-        <div></div>
-        <div class="grupo-input">
-          <div class="input-form">
-            <input type="search" id="search" class="input-format-2" placeholder="Buscar..">
-          </div>
+  <main>
+    <section class="section-main">
+      <div class="cabezera">
+        <div class="izquierda">
+          <h6 class="subtitulo-1">Visualización / Consulta</h6>
+        </div>
+        <hr>
+        <div class="derecha">
+          <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
         </div>
       </div>
+      
 
-      <br>
-      <br>
-      <br>
-      <br>
-      <div class="table">
-        <div class="errors-cointainer">
-          <p></p>
-        </div>
-        <div class="header_table" id="resultContainer">
-          <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
-        </div>
+      <div id="tablaResultado">
+        
       </div>
-    </div>
+    </section>
   </main>
+
 </body>
 
 </html>
