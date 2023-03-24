@@ -130,7 +130,7 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};·':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -173,7 +173,8 @@ formulario.caja_contra.addEventListener('keyup', (e) => {
 	formulario.caja_contra.value = valorInput
     // Eliminar espacios en blanco
         .replace(/\s/g, '')
-        // Eliminar caracteres especiales
+        // Eliminar caracteres especiales·
+        .replace(/[·"ª·%&()=?¿`´^¨;:]/g, '')
     //.replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
         // Eliminar el ultimo espaciado
     .trim();
@@ -196,6 +197,7 @@ formulario.caja_contra_verificar.addEventListener('keyup', (e) => {
 	formulario.caja_contra_verificar.value = valorInput
     // Eliminar espacios en blanco
         .replace(/\s/g, '')
+        .replace(/[·"ª·%&()=?¿`´^¨;:]/g, '')
         // Eliminar caracteres especiales
     //.replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
         // Eliminar el ultimo espaciado

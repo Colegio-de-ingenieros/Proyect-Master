@@ -9,7 +9,7 @@ html{
 }    
 .contePlantilla{
     height: 32em;
-    width: 60em;
+    width: 90%;
     border: none;
     background-color: none; 
     width: 80%;
@@ -39,6 +39,10 @@ html{
 .grupo-input3{
     display: block;
     grid-column: span 2; 
+} 
+
+.label-2{
+    width: 90%;
 }
 
 .label-form{

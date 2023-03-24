@@ -8,6 +8,7 @@ $correo = $_POST["caja_correo"];
 $telefono = $_POST["caja_telefono"];
 $pass = $_POST["caja_contra"];
 $pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
+$num='4';
 //$ban=true;
 $obj = new NuevoTrabajador();
 $obj->conexion();
@@ -15,7 +16,8 @@ $obj->conexion();
 if($obj->buscarPorRFC($rfc)){
     echo json_encode('ya existe');
 }else{
-    $obj->insertar($nombre, $apaterno, $amaterno, $rfc, $correo, $telefono, $pass_hashed);
+    $obj->insertar($nombre, $apaterno, $amaterno, $rfc, $correo, $telefono, $pass_hashed,$num);
+    //$obj->insertar_tipo("4,$rfc);
     echo json_encode('exito');
     
 }

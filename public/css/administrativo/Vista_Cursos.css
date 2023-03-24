@@ -43,8 +43,20 @@ body{
 
 .cabezera{
     display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
+
+hr{
+    width: 100%;
+}
+
+.derecha {
+    display: flex;
     flex-direction: row;
-    align-items: space-between; 
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .contenedortrabajadores {

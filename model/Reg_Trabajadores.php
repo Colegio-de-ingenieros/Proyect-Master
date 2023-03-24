@@ -31,16 +31,21 @@
         }
 
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-        function insertar($nombre, $apat, $amat, $rfc, $correo, $telefono, $pass){
+        function insertar($nombre, $apat, $amat, $rfc, $correo, $telefono, $pass, $num){
             //consultas para la tabla de certificaciones internas
             $q1 = "INSERT INTO trabajadores (RFCT,NombreT,ApePT,ApeMT,CorreoT,TelT,ContraT)
             VALUES(:rfc, :nombre, :apat, :amat, :correo, :telefono, :pass)";
             $a1= [":rfc"=>$rfc, ":nombre"=>$nombre, ":apat"=>$apat, ":amat"=>$amat, ":correo"=>$correo, ":telefono"=>$telefono, ":pass"=>$pass];
             //acomoda todo en arreglos para mandarlos al CRUD
-            $querry = [$q1];
-            $parametros = [$a1];
+            $q2="INSERT INTO tratipousua (IdUsua,RFCT)
+            VALUES (:num, :rfc)";
+            $a2= [":num"=>$num,":rfc"=>$rfc];
 
+            $querry = [$q1,$q2];
+            $parametros = [$a1,$a2];           
+            
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
+            
         }
         
     }
