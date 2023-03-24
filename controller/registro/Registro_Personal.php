@@ -103,7 +103,7 @@ if(
 
 
     if($resultado1==False){
-        $objeto->numero_inteligente();
+        $objeto->numero_inteligente($correo);
         $data=["Se te envio un correo"];
         
     }else{

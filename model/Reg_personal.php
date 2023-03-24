@@ -207,7 +207,7 @@
             return $resultado;
     
         }
-        public function numero_inteligente($rfc_empresa,$correo_empresa)
+        public function numero_inteligente($correo)
         {
             # genera el numero inteligente
             $mydate=getdate(date("U"));
@@ -244,7 +244,7 @@
     
            
             
-            //$this->mandar_correo($correo_empresa);
+            //$this->mandar_correo($correo);
          
     
         }
