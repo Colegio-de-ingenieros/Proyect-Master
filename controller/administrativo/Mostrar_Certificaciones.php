@@ -16,8 +16,9 @@ if ($resultado == true) {
                     <th>Logo</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
+                    <th>Precio general</th>
                     <th>Precio socio/asociado</th>
-                    <th>Precio General</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>';
@@ -38,8 +39,12 @@ if ($resultado == true) {
         $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
         $salida .= '<td>' . $nombre . '</td>';
         $salida .= '<td>' . $desc . '</td>';
-        $salida .= '<td>' . $precioA . '</td>';
         $salida .= '<td>' . $precioG . '</td>';
+        $salida .= '<td>' . $precioA . '</td>';
+        $salida .= '<td> 
+        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>';
         $salida .= '</tr>';
 
         

@@ -15,7 +15,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("/controller/registro/Registro_personal.php",
+        fetch("../../controller/registro/Registro_personal.php",
         {
             method: 'POST',
             body: formulario_data,
@@ -60,11 +60,11 @@ formulario.addEventListener('submit', function (e)
     
     if(aviso_privacidad.checked == false){
         alert("Antes debe aceptar el aviso de privacidad");
-    }   
+    } 
 
     if (aviso_privacidad.checked) {
 
-        fetch('/controller/registro/Registro_personal.php', {
+        fetch('../../controller/registro/Registro_personal.php', {
             method: 'POST',
             body: datos
         })

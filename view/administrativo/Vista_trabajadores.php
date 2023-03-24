@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../public/css/administrativo/Vista_Trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
+	<!-- <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script> -->
 </head>
 <body>
 <header>
@@ -178,7 +178,9 @@
     <div>
       <div class="article-tablas">
         <article>
-          <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          <div class="sub-titulo">
+            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          </div>
           <hr>
           <div class="grupo-input">
             <div class="input-form">
@@ -188,7 +190,7 @@
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-
+            <?php include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </section>
           </div>
         </article>
