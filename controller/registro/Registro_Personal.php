@@ -1,6 +1,7 @@
 <?php
-require_once('../model/Reg_personal.php');
+require_once('../../model/Reg_personal.php');
 $objeto=new Personal();
+$data=[];
 
 if(
     isset ($_POST["nomPerso"]) &&
@@ -98,44 +99,25 @@ if(
     
     
     $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $noCert, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp);
-    //$resultado2=$objeto->buscar_colonias($_POST["cpPerso"]);
+    
+
 
     if($resultado1==False){
-        echo "Todo chido";
-        echo $nombre;
-        echo $apeP;
-        echo $apeM;
-        echo $correo;
-        echo $contra;
-        echo $confiContra;
-        echo $cedula;
-        echo $telF;
-        echo $telM;
-        echo $fecha;
-        echo $codigoP;
-        echo $calle;
-        echo $colonia;
-        echo $ciudad;
-        echo $estado;
-        echo $noCert;
-        echo $certifi;
-        echo $orgCert;
-        echo $fechaICert;
-        echo $fechaFCert;
-        echo $gradoEst;
-        echo $pasan;
-        echo $empresaLab;
-        echo $puestoEmp;
-        echo $correoEmp;
-        echo $extTelFEmp;
-        echo $telFEmp;
-        echo $funcionEmp;
-        echo $antece;
-        echo $veridi;
-        echo $aviso;
+        $objeto->numero_inteligente($correo);
+        $data=["Se te envio un correo"];
+        
     }else{
-        echo "No todo chido";
+        $data=["Hubo un error"];
+        
     }
+    
+}else if(isset($_POST["cpPerso"])){
+
+
+    $data = $objeto->buscar_colonias($_POST["cpPerso"]);
 
 }
+
+echo json_encode($data);
+
 ?>

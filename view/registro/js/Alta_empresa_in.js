@@ -17,7 +17,7 @@ document.getElementById("codigo_postal").addEventListener('blur', (e) => {
         formulario_data.append("codigo_postal",contenido);
         
 
-        fetch("/controller/registro/Alta_empresa.php",
+        fetch("../../controller/registro/Registro_Empresa.php",
         {
             method: 'POST',
             body: formulario_data,
@@ -64,7 +64,7 @@ formulario.addEventListener("submit",(e)=>{
         });
     
         
-        fetch("/controller/registro/Alta_empresa.php",
+        fetch("../../controller/registro/Registro_Empresa.php",
         {
             method: 'POST',
             body: formulario_data,

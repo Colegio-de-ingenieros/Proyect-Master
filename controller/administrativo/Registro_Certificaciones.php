@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Registro_Certificaciones.php');
+include_once('../../model/Reg_Certificaciones.php');
 
 class RegistroCert{
     private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre;

@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consulta Trabajadores</title>
     <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
-	<link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+    <link rel="stylesheet" href="../../public/css/administrativo/Vista_Trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
@@ -19,10 +19,14 @@
       <div class="titulo">
 
         <div class="nombre_ventana">
-          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" alt="">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
           <h1 class="nombre_Ventana">Trabajadores</h1>
         </div>
 
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
       </div>
     </div>
 
@@ -35,10 +39,6 @@
         </label>
         <nav>
           <ul>
-            <li class="logo_menu"><a href="#">
-                <img class="logo_ciscig" src="#" alt="">
-              </a>
-            </li>
 
             <li>
               <a href="#">
@@ -58,7 +58,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
               </ul>
             </li>
@@ -82,8 +82,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -93,11 +93,11 @@
                 Proyectos
               </a>
 
-              <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
-              </ul>
-            </li>
+							<ul>
+								<li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
+							</ul>
+						</li>
 
             <li>
               <a href="#">
@@ -166,15 +166,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
-                <li><a id="menuSucursal1" href="#">C.V</a></li>
               </ul>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="fa-solid fa-right-from-bracket"></i>
-                Cerrar sesión
-              </a>
             </li>
           </ul>
         </nav>
@@ -182,31 +174,27 @@
     </div>
   </header>
 
-</header>
-
-  <main class="section-main" id="tablaResultado">
-    <div class="contenedortrabajadores" >
-		  <h3>Vista </h3>
-		<hr size="1px"/>
-		<br>
-        <p class="subtitulo-1"> Vista general trabajadores</p>
-		<div class="contenedor-formulario">
-			<div></div>
-			<div class="grupo-input">
-				<div class="input-form">
-					<input type="search" id="search" class="input-busca" placeholder="Buscar..">
-				</div>
-			</div>
-		</div>
-		<br>
-        <br>
-        <br>
-        <br>
-        <div class="table">
-            <div class="header_table" id="resultContainer">
-				<?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+<main>
+    <div>
+      <div class="article-tablas">
+        <article>
+          <div class="sub-titulo">
+            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          </div>
+          <hr>
+          <div class="grupo-input">
+            <div class="input-form">
+              <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
             </div>
-        </div>
+          </div>
+          <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
+
+            </section>
+          </div>
+        </article>
+      </div>
     </div>
   </main>
 	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
