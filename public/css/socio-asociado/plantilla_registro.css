@@ -173,7 +173,7 @@ nav  ul  li{
     height: 100%;
     list-style: none;
     position: relative;
-    padding: 5%;
+    padding: 2%; 
 }
 
 nav > ul > li > a{

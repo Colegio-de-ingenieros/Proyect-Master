@@ -45,7 +45,7 @@ if ($resultado == true) {
                             <th>Nombre</th>
                             <th>Apellido paterno</th>
                             <th>Apellido materno</th>
-                            <th>Correo electronico</th>
+                            <th>Correo electrónico</th>
                             <th>Teléfono</th>
                             <th>Acciones</th>
                         </tr>
