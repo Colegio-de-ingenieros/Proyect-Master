@@ -70,12 +70,14 @@ table{
     font-size: 1.125rem;
 }
 th,td {
+    max-width: 150px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
     text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
     background-color: #dfe3e7;
-    
 }
 tr:hover td {
     color: #3a42b4;
