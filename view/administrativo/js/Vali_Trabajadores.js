@@ -130,8 +130,12 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
+    //condicional para que no inice con un numero
+    .replace(/^[0-9]/g, '')
+    //condicional para que no haya mas de un arroba
+    .replace(/@{2,}/g, '@')
    .trim();
 
     if (!expresiones.email.test(valorInput)) {
