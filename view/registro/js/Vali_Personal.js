@@ -90,6 +90,28 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
     validar(bandAP);
 });
 
+/* Input apellidos */
+formulario.apeMPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario.apeMPerso.value = valorInput
+    // Eliminar numeros
+    .replace(/[0-9]/g, '')
+     // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    //Elimina el ultimo espaciado
+    .trim();
+
+    if (!expresiones.apellidos.test(valorInput)) {
+        formulario.apeMPerso.style.border = "3px solid red";
+        bandAM = false;
+	}else{
+        formulario.apeMPerso.removeAttribute("style");
+        bandAM = true;
+    }
+    validar(bandAM);
+});
+
 /* Input correo */
 formulario.correoPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
@@ -296,6 +318,9 @@ formulario.nomCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.nomCert.value = valorInput
+
+    // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
      // Eliminar el ultimo espaciado
    .trim();
 
@@ -314,6 +339,9 @@ formulario.orgCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.orgCert.value = valorInput
+
+    // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
      // Eliminar el ultimo espaciado
    .trim();
 
@@ -332,6 +360,9 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.nomEmpPerso.value = valorInput
+
+    // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|,.<>\?]/g, '')
      // Eliminar el ultimo espaciado
    .trim();
 
@@ -350,6 +381,9 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.puestoEmpPerso.value = valorInput
+
+    // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|,.<>\/?]/g, '')
      // Eliminar el ultimo espaciado
    .trim();
 
