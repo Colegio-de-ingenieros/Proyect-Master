@@ -31,6 +31,7 @@ if ($resultado == true) {
         $inicio = $resultado[$i]["IniPro"];
         $fin = $resultado[$i]["FinPro"];
         $monto = $resultado[$i]["MontoPro"];
+        $monto=substr($monto, 0,  strlen($monto) - 3);
         $objetivo = $resultado[$i]["ObjPro"];
         
 
@@ -39,7 +40,7 @@ if ($resultado == true) {
         $salida .= '<td>' . $nombre . '</td>';
         $salida .= '<td>' . $inicio . '</td>';
         $salida .= '<td>' . $fin . '</td>';
-        $salida .= '<td>' . $monto . '</td>';
+        $salida .= '<td>$' . $monto . '</td>';
         $salida .= '<td>' . $objetivo . '</td>';
         $salida .= '<td>  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="#">Eliminar</a></td>';
