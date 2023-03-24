@@ -139,8 +139,8 @@ if(
                     }
                 
                     
-                    //$objeto->numero_inteligente($correo);
-                    //$resultado = $objeto->inserciones();
+                    $objeto->numero_inteligente($correo);
+                    $resultado = $objeto->inserciones();
                     $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp);
                     
                 
