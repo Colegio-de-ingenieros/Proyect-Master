@@ -10,11 +10,14 @@ article{
     width: 1200px;
     background-color: #dfe3e7;
 }
-.formulario-de-vista{
-    display: block;
-}
 .table{
     padding: 2rem 0 0 0;
+}
+.sub-titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;   
+    padding-left: 0rem; 
 }
 .grupo-input{
     display: flex;
@@ -61,7 +64,6 @@ table{
 }
 
 .header_table thead th {
-    
     top: 0;
     background-color: #085262;
     color: #e6e7e8;
@@ -80,3 +82,17 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 }
+@media screen and (max-width: 1024px){
+    table{
+        width: 130%;
+        border-collapse: collapse;
+        font-family: 'Manrope';
+        margin-left: 25rem;
+    }
+    .sub-titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+        margin-left: 25rem;  
+    }
+  }
