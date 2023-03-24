@@ -265,8 +265,8 @@
         $numero_con_ceros2 = $this->agregar_ceros($numero2);
         
         $numero_inteligente = $year.$mes.$numero_con_ceros;
-        $numero_consecutivo = "E".$numero_con_ceros;
-        $numero_consecutivo2 = "E".$numero_con_ceros2;
+        $numero_consecutivo = "P".$numero_con_ceros;
+        $numero_consecutivo2 = "P".$numero_con_ceros2;
 
     
         $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
