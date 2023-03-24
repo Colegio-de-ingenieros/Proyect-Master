@@ -10,14 +10,15 @@ let bandTel = false
 let botonRegresar = document.getElementById("boton_registro");
 botonRegresar.addEventListener("click", (e) => {
 
-    if (bRFC==false){
-        caja_rfc.style.border = "3px solid red";
-    }else if(bNom==false){
+
+    if(bNom==false){
         caja_nombre.style.border = "3px solid red";
     }else if(bAP==false){
         caja_ap_paterno.style.border = "3px solid red";
     }else if(bAM==false){
         caja_ap_materno.style.border = "3px solid red";
+    }else if (bRFC==false){
+        caja_rfc.style.border = "3px solid red";
     }else if(bEmail==false){
         caja_correo.style.border = "3px solid red";
     }else if(bandTel==false){
