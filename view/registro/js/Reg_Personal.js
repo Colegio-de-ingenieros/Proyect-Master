@@ -55,6 +55,15 @@ formulario.addEventListener('submit', function (e)
 {
     e.preventDefault();
     var datos= new FormData(formulario);
+
+    let aviso_privacidad = document.getElementById("avisos1");
+    
+    if(aviso_privacidad.checked == false){
+        alert("Antes debe aceptar el aviso de privacidad");
+    } 
+
+    if (aviso_privacidad.checked) {
+
         fetch('../../controller/registro/Registro_personal.php', {
             method: 'POST',
             body: datos
@@ -65,5 +74,5 @@ formulario.addEventListener('submit', function (e)
             alert(data);
             });
             formulario.reset();
-    
+    }
 })
