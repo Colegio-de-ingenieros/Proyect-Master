@@ -316,10 +316,7 @@ formulario.rh_materno.addEventListener('keyup', (e) => {
     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
-    if(e.target.value.length == 0 ){
-        formulario.rh_materno.removeAttribute("style");
-        baderas.brh_ma = true;
-    }else if (!expresiones.apellidos.test(valorInput2)) {
+    if (!expresiones.apellidos.test(valorInput2)) {
         formulario.rh_materno.style.border = "3px solid red";
         baderas.brh_ma = false;
 	}else{
@@ -371,10 +368,7 @@ formulario.rh_exten.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
-    if(e.target.value.length == 0 ){
-        formulario.rh_exten.removeAttribute("style");
-        baderas.brh_exten = true;
-    }else if (!expresiones.exten.test(valorInput2)) {
+    if (!expresiones.exten.test(valorInput2)) {
         formulario.rh_exten.style.border = "3px solid red";
         baderas.brh_exten = false;
 	}else{
@@ -474,10 +468,7 @@ formulario.ti_materno.addEventListener('keyup', (e) => {
     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
     let valorInput2 = e.target.value;
 
-    if(e.target.value.length == 0 ){
-        formulario.ti_materno.removeAttribute("style");
-        baderas.bti_ma = true;
-    }else if (!expresiones.apellidos.test(valorInput2)) {
+    if (!expresiones.apellidos.test(valorInput2)) {
         formulario.ti_materno.style.border = "3px solid red";
         baderas.bti_ma = false;
 	}else{
@@ -527,10 +518,7 @@ formulario.ti_exten.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
-    if(e.target.value.length == 0 ){
-        formulario.ti_exten.removeAttribute("style");
-        baderas.bti_exten = true;
-    }else if (!expresiones.exten.test(valorInput2)) {
+    if (!expresiones.exten.test(valorInput2)) {
         formulario.ti_exten.style.border = "3px solid red";
         baderas.bti_exten = false;
 	}else{
@@ -632,10 +620,7 @@ formulario.ac_materno.addEventListener('keyup', (e) => {
     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
-    if(e.target.value.length == 0 ){
-        formulario.ac_materno.removeAttribute("style");
-        baderas.bca_ma = true;
-    }else if (!expresiones.apellidos.test(valorInput2)) {
+    if (!expresiones.apellidos.test(valorInput2)) {
         formulario.ac_materno.style.border = "3px solid red";
         baderas.bca_ma = false;
 	}else{
@@ -687,10 +672,7 @@ formulario.ac_exten.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
-    if(e.target.value.length == 0 ){
-        formulario.ac_exten.removeAttribute("style");
-        baderas.bca_exten = true;
-    }else if (!expresiones.exten.test(valorInput2)) {
+    if (!expresiones.exten.test(valorInput2)) {
         formulario.ac_exten.style.border = "3px solid red";
         baderas.bca_exten = false;
 	}else{
