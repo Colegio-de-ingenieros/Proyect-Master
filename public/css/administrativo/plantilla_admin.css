@@ -304,6 +304,9 @@ nav ul li ul li a:hover{
     .logo{
         width: 125px;
     }
+    .cabezera{
+        margin-top: 50px;
+    }
 
     nav > ul{
         font-size: 12px;
