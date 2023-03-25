@@ -42,8 +42,9 @@ const expresiones = {
     cedula:/^[0-9]{8}/,
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
-    exten:/^[0-9+]{3}$/,
-    calle:/^[a-zA-ZÁ-ý\s0-9#-]{3,100}$/,
+    exten:/^[0-9]{3}$/,
+    nombre_c:/^[a-zA-ZÁ-ý\s.,]{3,40}$/,
+    calle:/^[a-zA-ZÁ-ý\s0-9#-.]{3,100}$/,
     noCert:/^[0-9]{6}$/,
 }
 
@@ -123,7 +124,7 @@ formulario.correoPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\+=\[\]{};':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -290,6 +291,9 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 
 	formulario.callePerso.value = valorInput
 
+    // Eliminar caracteres especiales
+    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+
     if (!expresiones.calle.test(valorInput)) {
         formulario.callePerso.style.border = "3px solid red";
         bandCalle = false;
@@ -300,53 +304,26 @@ formulario.callePerso.addEventListener('keyup', (e) => {
     validar(bandCalle);
 });
 
-/* Input certificaciones*/
-formulario.noCert.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-    if(valorInput !==""){
-        formulario.noCert.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
-   .trim();
-
-    if (!expresiones.noCert.test(valorInput)) {
-        formulario.noCert.style.border = "3px solid red";
-        bandCerti = false;
-	}else{
-        formulario.noCert.removeAttribute("style");
-        bandCerti = true;
-    }
-    validar(bandCerti);
-    }
-	
-});
 
 /* Input nombre certificaciones*/
 formulario.nomCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
     if(valorInput !==""){
+        formulario.nomCert.value = valorInput
 
-    
-	formulario.nomCert.value = valorInput
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
-    // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-   .trim();
-
-    if (!expresiones.calle.test(valorInput)) {
-        formulario.nomCert.style.border = "3px solid red";
-        bandNomCerti = false;
-	}else{
-        formulario.nomCert.removeAttribute("style");
-        bandNomCerti = true;
+        if (!expresiones.nombre_c.test(valorInput)) {
+            formulario.nomCert.style.border = "3px solid red";
+            bandNomCerti = false;
+        }else{
+            formulario.nomCert.removeAttribute("style");
+            bandNomCerti = true;
+        }
+        validar(bandNomCerti);
     }
-    validar(bandNomCerti);
-}
 });
 
 /* Input organizacion certificaciones*/
@@ -359,11 +336,9 @@ formulario.orgCert.addEventListener('keyup', (e) => {
 	formulario.orgCert.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-   .trim();
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
-    if (!expresiones.calle.test(valorInput)) {
+    if (!expresiones.nombre_c.test(valorInput)) {
         formulario.orgCert.style.border = "3px solid red";
         bandOrgCerti = false;
 	}else{
@@ -384,11 +359,9 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	formulario.nomEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|,.<>\?]/g, '')
-     // Eliminar el ultimo espaciado
-   .trim();
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|<>\?]/g, '')
 
-    if (!expresiones.calle.test(valorInput)) {
+    if (!expresiones.nombre_c.test(valorInput)) {
         formulario.nomEmpPerso.style.border = "3px solid red";
         bandEmpLab = false;
 	}else{
@@ -409,11 +382,9 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|,.<>\/?]/g, '')
-     // Eliminar el ultimo espaciado
-   .trim();
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|<>\/?]/g, '')
 
-    if (!expresiones.calle.test(valorInput)) {
+    if (!expresiones.nombre_c.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
         bandPuesto = false;
 	}else{
@@ -435,7 +406,7 @@ formulario.correoEmpPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\+=\[\]{};':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -511,10 +482,10 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
 
     
 	formulario.funcionEmpPerso.value = valorInput
-     // Eliminar el ultimo espaciado
-   .trim();
+     // Eliminar caracteres especiales
+   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|+<>\/?]/g, '')
 
-    if (!expresiones.calle.test(valorInput)) {
+    if (!expresiones.nombre_c.test(valorInput)) {
         formulario.funcionEmpPerso.style.border = "3px solid red";
         bandFunciones = false;
 	}else{

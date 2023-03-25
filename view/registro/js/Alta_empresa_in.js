@@ -24,8 +24,10 @@ document.getElementById("codigo_postal").addEventListener('blur', (e) => {
         })
         .then(response => response.json())
         .then(data => {
-
-            rellenar_lista(data);
+            if(data.length != 0){
+                rellenar_lista(data);
+            }
+            
         });
 
     }
