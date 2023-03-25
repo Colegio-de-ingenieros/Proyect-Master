@@ -16,7 +16,7 @@ document.getElementById("temas").disabled = false;
 const expresiones = {
     clave: /^[0-9]{6}$/,
     duracion: /^[0-9]+$/,
-    nombre: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
     objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
     tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
@@ -28,12 +28,14 @@ let nombrecurso = document.getElementById("nombre-curso");
 nombrecurso.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
 
+
     nombrecurso.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-°¨]/g, '')
+       //.replace(/[üâäàåçê♪ëèïîìÄÅæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-°¨]/g, '')
+       .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
-    if (!expresiones.nombre.test(valorInput)) {
+    if (!expresiones.nombres.test(valorInput)) {
         nombrecurso.style.border = "3px solid red";
         bNom = false
     } else {
@@ -185,6 +187,19 @@ function validar3(bandera) {
 
 function regi()
 {
+    if (bId == false){
+        clavecurso.style.border = "3px solid red";
+    }
+    if (bNom == false){
+        nombrecurso.style.border = "3px solid red";
+    }
+    if (Obj == false){
+        objetivo.style.border = "3px solid red";
+    }
+    if (dur == false){
+        duracion.style.border = "3px solid red";
+    }
+
     if (document.getElementById("titulo-curso") != ""){
     if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
@@ -240,9 +255,10 @@ function regi()
 }
 else{
     alert("Ingresar temas y subtemas es necesario");
+    }
 }
 
-}
+
 
 
 
