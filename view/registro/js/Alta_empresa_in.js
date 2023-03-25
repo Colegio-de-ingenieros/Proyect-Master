@@ -74,6 +74,8 @@ formulario.addEventListener("submit",(e)=>{
             alert(data[0]);
         });
         formulario.reset();
+        document.getElementById("ciudad").disabled = true;
+        document.getElementById("estado").disabled = true;
     }
    
 });
