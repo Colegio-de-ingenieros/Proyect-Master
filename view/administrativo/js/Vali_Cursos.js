@@ -11,6 +11,8 @@ let contador = 0;
 let b = false
 let c = false
 
+document.getElementById("tema").disabled = false;
+
 const expresiones = {
     clave: /^[0-9]{6}$/,
     duracion: /^[0-9]+$/,
@@ -262,7 +264,8 @@ function te() {
     c=1;
     }
     else {
-        alert("Necesita escribir un tema y añadirle un subtema para registrarlo");
+        /* alert("Necesita escribir un tema y añadirle un subtema para registrarlo"); */
+        document.getElementById("tema").disabled = true;
     }
 }
 
@@ -279,6 +282,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         alert("Se ha agregado un subtema al tema");
         b=true;
         document.getElementById("registraform").disabled = true;
+        document.getElementById("tema").disabled = false;
     }
      else{
         
@@ -288,6 +292,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
         alert("Se ha agregado un subtema");
         document.getElementById("registraform").disabled = true;
+        document.getElementById("tema").disabled = false;
     }
 }
     else {
