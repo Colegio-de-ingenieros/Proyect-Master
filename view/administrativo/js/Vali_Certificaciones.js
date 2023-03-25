@@ -4,7 +4,7 @@ let precioG = false
 let precioA = false
 let desc = false
 
-validar()
+//validar()
 
 //detecta tl click del boton
 let botonRegistrar = document.getElementById("registrar");
@@ -43,7 +43,7 @@ botonRegistrar.addEventListener("click", (e) =>
 //definicion de las expresiones regulares
 const expresiones = {
     name: /^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
-    precio: /^[0-9]+(.[0-9])*$/,
+    precio: /^[0-9]+(.([0-9])+)*$/,
     descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/
 }
 
@@ -66,7 +66,7 @@ formulario.nombre.addEventListener('keyup', (e) =>
         nom = true;
     }
 
-    validar();
+    //validar();
 })
 
 //revisa el campo precio general
@@ -179,7 +179,7 @@ formulario.descripcion.addEventListener('keyup', (e) =>{
         descripcion.removeAttribute("style");
         desc = true;
     }
-    validar()
+    //validar()
 })
 
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
@@ -188,12 +188,21 @@ function validar()
     
     const guardar = document.getElementById('registrar');
     //alert(ultimoNum(formulario.precioGen.value) == true);
-    /*if (ultimoNum(formulario.precioGen.value) == true) {
+    if (ultimoNum(formulario.precioGen.value) == true) {
         precioG = false;
         guardar.disabled = true;
-    }*/
+    }
 
-    if (nom == false) {
+     else if (ultimoNum(formulario.precioAsoc.value) == true) {
+        precioA = false;
+        guardar.disabled = true;
+    }
+
+    else {
+        guardar.disabled = false;
+    }
+
+    /*if (nom == false) {
         guardar.disabled = true;
     }
 
@@ -212,7 +221,7 @@ function validar()
 
     else {
         guardar.disabled = false;
-    }
+    }*/
 
 }
 
