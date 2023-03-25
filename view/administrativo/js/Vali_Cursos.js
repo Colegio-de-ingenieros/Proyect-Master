@@ -184,6 +184,7 @@ function validar3(bandera)
 
 function regi()
 {
+    if (document.getElementById("titulo-curso") != ""){
     if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
         /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
@@ -235,6 +236,10 @@ function regi()
 else{
     alert("Ingresar temas y subtemas es necesario");
 }
+    }
+    else{
+        alert("Ingresar un tema es necesario");
+    }   
 }
 
 function te()
@@ -249,6 +254,7 @@ function te()
     document.getElementById("titulo-curso").disabled = false;
     su = []
     contador = 0;
+        document.getElementById("registraform").disabled = false;
     alert("Se ha agregado un tema al registro");
     b=false;
     c=1;
@@ -271,6 +277,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         contador++;
         alert("Se ha agregado un subtema al tema");
         b=true;
+        document.getElementById("registraform").disabled = true;
     } else{
         
         console.log(("else"));
@@ -278,6 +285,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         console.log(su);
         document.getElementById("Subtitulo-curso").value = "";
         alert("Se ha agregado un subtema");
+        document.getElementById("registraform").disabled = true;
     }
 }
 else{

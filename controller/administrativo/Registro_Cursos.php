@@ -30,8 +30,8 @@ $obj->insertar($arreglo);
 
 
 $servername = "localhost";
-$username = "AdiminCISCIG";
-$password = "ColegioCISCIG2023.";
+$username = "root";
+$password = "";
 $dbname = "colegiociscig";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -40,56 +40,109 @@ $sql = ("SELECT MAX(IdTema) FROM temas");
 $res = mysqli_query($conn, $sql);
 $re = mysqli_fetch_assoc($res);
 $n= $re['MAX(IdTema)'];
-echo "tema".$n;
 
 $incre=0;
-if ($n != null){ 
-    $incre=$incre+$n;
+if ($n>=0){ 
+    $incre = $n;
     $incre = $incre+1;
-}
-echo "n".$n;
+} 
+$sql = ("SELECT (IdSubT) FROM subtemas");
+        $res = mysqli_query($conn, $sql);
+       /*  $re = mysqli_fetch_assoc($res);
+        $ns= $re['MAX(IdSubT)']; */
+        /* haz un cilo para recorrer todas las posiciones de la consulta y con un contador conservar el mayor numero encintrado */
+        $n=0;
+        while($re = mysqli_fetch_assoc($res)){
+            if($re['IdSubT']>$n){
+                $n=$re['IdSubT'];
+            }
+        }
+        
+        $incre=0;
+        if ($n>=0){ 
+            $incre=$n;
+            $incre = $incre+1;
+        }
 
-    $incre=$incre+$n;
-    $incre = $incre+1;
-
-echo $incre;
 $tema = [];
 
 for($i=0;$i<count($lista1);$i++){
+    while($re = mysqli_fetch_assoc($res)){
+        if($re['IdSubT']>$n){
+            $n=$re['IdSubT'];
+        }
+    }
+
     $obj->insertarTema($incre,$lista1[$i][0][0]);
 
     array_push($tema,$incre);
     $incre++;
 }
+/* for($i=0;$i<count($lista1);$i++){
+    echo "tams";
+    echo "dato".$lista1[$i][0][0];
+    echo "incre".$incre;
+
+    array_push($tema,$incre);
+    $incre++;
+    echo ""; 
+    
+} */
 echo "Datos insertados correctamente";
 
 for($i=0;$i<count($tema);$i++){
     $obj->curtem($arreglo[0],$tema[$i]);
 }
+/* for($i=0;$i<count($tema);$i++){
+      echo "lista".$tema[$i];  
+
+} */
 echo "Datos insertados correctamente";
 
 
-$sql = ("SELECT MAX(IdSubT) FROM subtemas");
-$res = mysqli_query($conn, $sql);
-$re = mysqli_fetch_assoc($res);
-$ns= $re['MAX(IdSubT)'];
-echo "sub". $ns;
 
-$incres=0;
-if ($ns ){ 
-    $incres=$incres+$ns;
-    $incres = $incres+1;
-}
+/* echo "sub". $ns;
+echo "incres".$incres;
 
+ */
+$sql = ("SELECT (IdSubT) FROM subtemas");
+        $res = mysqli_query($conn, $sql);
+       /*  $re = mysqli_fetch_assoc($res);
+        $ns= $re['MAX(IdSubT)']; */
+        /* haz un cilo para recorrer todas las posiciones de la consulta y con un contador conservar el mayor numero encintrado */
+        $ns=0;
+        while($re = mysqli_fetch_assoc($res)){
+            if($re['IdSubT']>$ns){
+                $ns=$re['IdSubT'];
+            }
+        }
+        
+        $incres=0;
+        if ($ns>=0){ 
+            $incres=$ns;
+            $incres = $incres+1;
+        }
 
 for($i=0;$i<count($lista1);$i++){
     for($j=1;$j<count($lista1[$i][0]);$j++){
+
         $obj->insertarSub($incres,$lista1[$i][0][$j]);
         $obj->temsub($tema[$i],$incres);
+        
         
         $incres = $incres+1;
     }
 } 
+/* for($i=0;$i<count($lista1);$i++){
+    for($j=1;$j<count($lista1[$i][0]);$j++){
+        echo "";
+        echo "INCRES". $incres;
+
+        echo "datos chidos" . $lista1[$i][0][$j];
+        $incres = $incres+1;
+        echo "";
+    }
+}  */
 echo "Datos insertados correctamente";
 
 
