@@ -246,10 +246,18 @@ hr{
         width: 80%;
     }
 
+    .campo-wide{
+        grid-column: span 1;
+    }
+
     .formulario-cursos {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(4, 1fr);
         grid-gap: 20px;
+    }
+
+    .hr-2{
+        width: 100%;
     }
 
     .h4{
@@ -263,6 +271,10 @@ hr{
     }
 
     .campo{
+        display: flex;
+        flex-direction: column;
+    }
+    .botones{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -289,5 +301,6 @@ hr{
     .btn-small{
         width: 50%;
         height: 50px;
+        font-size: 0.8rem;
     }
 }
