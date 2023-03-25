@@ -239,11 +239,11 @@ function regi()
 else{
     alert("Ingresar temas y subtemas es necesario");
 }
-    }
-    else{
-        alert("Ingresar un tema es necesario");
-    }   
+
 }
+
+
+
 
 function te() {
     console.log()
@@ -266,8 +266,7 @@ function te() {
     }
 }
 
-function subt()
-{
+function subt(){
 if (document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value){
     if (contador == 0){
         su.push(document.getElementById("titulo-curso").value);
@@ -280,7 +279,8 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         alert("Se ha agregado un subtema al tema");
         b=true;
         document.getElementById("registraform").disabled = true;
-    } else{
+    }
+     else{
         
         console.log(("else"));
         su.push(document.getElementById("Subtitulo-curso").value); 
@@ -289,10 +289,11 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         alert("Se ha agregado un subtema");
         document.getElementById("registraform").disabled = true;
     }
+}
     else {
         alert("Completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
-    }
-
+}
+}
     /* if (document.getElementById("titulo-curso").value){
         su.push(document.getElementById("titulo-curso").value);
         
@@ -309,4 +310,3 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
     }
     console.log(su); */
-}
