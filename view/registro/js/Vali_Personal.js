@@ -35,10 +35,10 @@ let bandVerifidica = false
 let bandAviso = false
 
 const expresiones = {
-    nombre:/^[a-zA-ZÁ-ý\s]{3,40}$/,
+    nombre:/^[a-zA-ZÁ-ý\s.]{3,40}$/,
     apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
     email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
-    passw:/^[a-zA-Z0-9-_@#./*+]{8,16}$/,
+    passw:/^[a-zA-Z0-9üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]{8,255}$/,
     cedula:/^[0-9]{8}/,
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
@@ -55,7 +55,7 @@ formulario.nomPerso.addEventListener('keyup', (e) => {
     // Eliminar numeros
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
    
 
     if (!expresiones.nombre.test(valorInput)) {
@@ -77,8 +77,6 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-    //Elimina el ultimo espaciado
-    .trim();
 
     if (!expresiones.apellidos.test(valorInput)) {
         formulario.apePPerso.style.border = "3px solid red";
@@ -94,13 +92,15 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
 formulario.apeMPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
+    if (!valorInput) {
+        return; // si el valor es nulo o vacío, sale de la función
+    }
+
 	formulario.apeMPerso.value = valorInput
     // Eliminar numeros
     .replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
     .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
-    //Elimina el ultimo espaciado
-    .trim();
 
     if (!expresiones.apellidos.test(valorInput)) {
         formulario.apeMPerso.style.border = "3px solid red";
@@ -120,7 +120,7 @@ formulario.correoPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 

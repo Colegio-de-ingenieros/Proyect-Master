@@ -198,7 +198,7 @@
             <p class="label-2">Fecha de inicio</p>
           </div>
           <div class="input-form">
-            <input type="date" name="ini_proyecto" id="ini_proyecto" class="input-format-2" placeholder="Date" required>
+            <input type="text" name="ini_proyecto" id="ini_proyecto" class="input-format-2" placeholder="YYYY-MM-DD" required pattern="\d{4}-\d{2}-\d{2}">
           </div>
         </div>
 
@@ -207,7 +207,7 @@
             <p class="label-2">Fecha de fin</p>
           </div>
           <div class="input-form">
-            <input type="date" name="fin_proyecto" id="fin_proyecto" class="input-format-2" placeholder="Date" required>
+            <input type="text" name="fin_proyecto" id="fin_proyecto" class="input-format-2" placeholder="YYYY-MM-DD"required pattern="\d{4}-\d{2}-\d{2}">
           </div>
         </div>
 
@@ -216,8 +216,8 @@
             <p class="label-2">Monto</p>
           </div>
           <div class="input-form">
-            <input type="text" name="monto_proyecto" id="monto_proyecto" class="input-format-2"
-              placeholder="Ingrese el monto total del proyecto en $" required>
+            <input  type="text"   name="monto_proyecto" id="monto_proyecto" class="input-format-2"
+              placeholder="Ingrese el monto total del proyecto en $" required >
           </div>
         </div>
 

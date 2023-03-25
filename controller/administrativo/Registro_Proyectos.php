@@ -39,7 +39,7 @@ class RegistroPro{
 
     //manda a llamar al archivo de model para meter los datos a la base
     function insertar(){
-    
+        $this->monto=floatval($this->monto);
         $this->obj->insertar($this->idp, $this->nombre, $this->inicio,$this->fin, $this->objetivo, $this->monto);
 
         //verifica que los datos se insertarin en la base de datos

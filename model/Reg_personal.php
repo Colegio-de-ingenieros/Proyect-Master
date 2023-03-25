@@ -68,9 +68,19 @@
             return $resultado;
         }
 
+        public function obtener_id_certificacion(){
+
+            $this->conexion_bd();
+            $sql = "SELECT Count(IdCertExt) FROM persocertexterna";
+            $resultado = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            return $resultado;
+        }
+
         
         
-        public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $noCert, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp){
+        public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp){
             
             $arreglo = $this->obtener_numero_consecutivo();
             $numero = "";
@@ -106,6 +116,18 @@
                 $id2 = $arreglo2[0][0];
                 $id2++;
             }
+
+            $arreglo3 = $this->obtener_id_certificacion();
+            $id3 = "";
+            if(is_null($arreglo3[0][0]) == 1){
+                $id3 = 1;
+                
+            }else{
+                $id3 = $arreglo3[0][0];
+                $id3++;
+            }
+            $numero_con_ceros5 = $this->agregar_ceros($id3);
+            $id4 = $numero_con_ceros5;
 
             
 
@@ -151,11 +173,11 @@
 //---------------------------------------------------------------------------------------------------
             //Ingresa datos en la tabla persocertexterna
             $q7 = "INSERT INTO persocertexterna (IdPerso,IdCertExt) VALUES(:id4,:idC)";
-            $a7 = [":id4"=>$id,":idC"=>$noCert];
+            $a7 = [":id4"=>$id,":idC"=>$id4];
 
             //Ingresa datos en la tabla certexterna
             $q8 = "INSERT INTO certexterna (IdCerExt, NomCerExt, OrgCerExt, IniCerExt, FinCerExt) VALUES(:idCE,:nombreC, :orgCer, :iniFecha, :finFecha)";
-            $a8 = [":idCE"=>$noCert,":nombreC"=>$certifi,":orgCer"=>$orgCert,":iniFecha"=>$fechaICert,":finFecha"=>$fechaFCert];
+            $a8 = [":idCE"=>$id4,":nombreC"=>$certifi,":orgCer"=>$orgCert,":iniFecha"=>$fechaICert,":finFecha"=>$fechaFCert];
 
 
 //---------------------------------------------------------------------------------------------------
@@ -243,8 +265,8 @@
         $numero_con_ceros2 = $this->agregar_ceros($numero2);
         
         $numero_inteligente = $year.$mes.$numero_con_ceros;
-        $numero_consecutivo = "E".$numero_con_ceros;
-        $numero_consecutivo2 = "E".$numero_con_ceros2;
+        $numero_consecutivo = "P".$numero_con_ceros;
+        $numero_consecutivo2 = "P".$numero_con_ceros2;
 
     
         $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
