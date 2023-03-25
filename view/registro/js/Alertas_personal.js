@@ -42,7 +42,7 @@ formulario.addEventListener('submit', function (e)
         .then(res => res.json())
         .then(data => {
             if (data === 'exito') {
-                alert("Registro exitoso, se teha enviado un correo electrónico con un número inteligente");
+                alert("Registro exitoso, se te ha enviado un correo electrónico con un número inteligente");
                 location.href="../../view/registro/Reg_Personal.html";
             }else if (data === 'numeros'){
                 alert("La contraseña debe contener números");

@@ -68,7 +68,7 @@ if(
 
         $resultado = $objeto->inserciones();
         if ($resultado) {
-            $data = ["La empresa se registro con exito"];
+            $data = ["Empresa registrada con éxito. Verifique su correo y guarde el número inteligente que le ha sido enviado"];
         }else{
             $data = ["La empresa no se registro"];
         }

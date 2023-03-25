@@ -15,35 +15,35 @@ let baderas = {
      brh_pa:  false,
      brh_ma: true,
      brh_te: false,
-     brh_exten: false,
+     brh_exten: true,
      brh_correo: false,
 
      bti_nombre: false,
      bti_pa:  false,
      bti_ma: true,
      bti_te: false,
-     bti_exten: false,
+     bti_exten: true,
      bti_correo: false,
 
      bca_nombre: false,
      bca_pa:  false,
      bca_ma: true,
      bca_te: false,
-     bca_exten: false,
+     bca_exten: true,
      bca_correo: false
 }
 
 const expresiones = {
     rfc:/^[A-Z]{3}[0-9]{6}[A-Z0-9]{3}$/,
     nombre:/^[a-zA-ZÁ-Ýá-ý\-\s]{1,100}$/,
-    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?[0-9\s]{1,100}$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]?){1,100}$/,
     email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     password:/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$\#\-_.!*\/+]){1})\S{8,16}$/,
     razon:/^[a-zA-ZÁ-ý\s,\.]{1,100}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
-    nombre_area:/^[a-zA-ZÁ-Ýá-ý\.\s]{1,40}$/,
-    apellidos:/^[a-zA-ZÁ-Ýá-ý\.\s]{1,20}$/,
+    nombre_area:/^[a-zA-ZÁ-Ýá-ý\s]{1,40}$/,
+    apellidos:/^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
     telefono:/^[0-9]{10}$/,
     exten:/^[0-9]{3}$/
 
@@ -139,9 +139,17 @@ formulario.password.addEventListener('keyup', (e) => {
         password.removeAttribute("style");
         baderas.bcontra = true
     }
-    
+    let valorpassword = formulario.password_confirmacion.value;
+    if((valorpassword == valorInput2) == false){
+        password_confirmacion.style.border = "3px solid red";
+        bcontra_conf = false
+    }else{
+        password_confirmacion.removeAttribute("style");
+        baderas.bcontra_conf = true
+    }
+
 });
-/* password confrimacion*/
+/* password confirmacion*/
 formulario.password_confirmacion.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -251,7 +259,7 @@ formulario.rh_nombre.addEventListener('keyup', (e) => {
 	formulario.rh_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
@@ -275,7 +283,7 @@ formulario.rh_paterno.addEventListener('keyup', (e) => {
 	formulario.rh_paterno.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.apellidos.test(valorInput2)) {
@@ -305,7 +313,7 @@ formulario.rh_materno.addEventListener('keyup', (e) => {
 
      
       // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
 
@@ -340,6 +348,16 @@ formulario.rh_tele.addEventListener('keyup', (e) => {
     
 });
 /**rh  extension telefono */
+formulario.rh_exten.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+    formulario.rh_exten.value = valorInput
+    .trimEnd();
+    if(e.target.value.length == 0 ){
+        formulario.rh_exten.removeAttribute("style");
+        baderas.brh_exten = true;
+    }
+
+});
 formulario.rh_exten.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -395,7 +413,7 @@ formulario.ti_nombre.addEventListener('keyup', (e) => {
 	formulario.ti_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
@@ -419,7 +437,7 @@ formulario.ti_paterno.addEventListener('keyup', (e) => {
 	formulario.ti_paterno.value = valorInput
 
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
      let valorInput2 = e.target.value;
     if (!expresiones.apellidos.test(valorInput2)) {
@@ -448,7 +466,7 @@ formulario.ti_materno.addEventListener('keyup', (e) => {
 	formulario.ti_materno.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
     let valorInput2 = e.target.value;
 
 
@@ -483,6 +501,14 @@ formulario.ti_tele.addEventListener('keyup', (e) => {
     
 });
 /**ti  extension telefono */
+formulario.ti_exten.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+    formulario.ti_exten.value = valorInput.trimEnd();
+    if(e.target.value.length == 0 ){
+        formulario.ti_exten.removeAttribute("style");
+        baderas.bti_exten = true;
+    }
+});
 formulario.ti_exten.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -539,7 +565,7 @@ formulario.ac_nombre.addEventListener('keyup', (e) => {
 	formulario.ac_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
      let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
@@ -563,7 +589,7 @@ formulario.ac_paterno.addEventListener('keyup', (e) => {
 	formulario.ac_paterno.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.apellidos.test(valorInput2)) {
@@ -593,7 +619,7 @@ formulario.ac_materno.addEventListener('keyup', (e) => {
 	formulario.ac_materno.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.apellidos.test(valorInput2)) {
@@ -628,6 +654,15 @@ formulario.ac_tele.addEventListener('keyup', (e) => {
     
 });
 /**ca  extension telefono */
+formulario.ac_exten.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+    formulario.ac_exten.value = valorInput
+    .trimEnd();
+    if(e.target.value.length == 0 ){
+        formulario.ac_exten.removeAttribute("style");
+        baderas.bca_exten = true;
+    }
+});
 formulario.ac_exten.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -677,26 +712,19 @@ boton_enviar.addEventListener("click",(e)=>{
     
     if(baderas.brfc == false){
         rfc.style.border = "3px solid red";
-    }
-    if(baderas.bnombre_empresa == false){
+    }else if(baderas.bnombre_empresa == false){
         document.getElementById("nombre").style.border = "3px solid red";
-    }
-    if(baderas.bcorreo_empresa == false){
+    }else if(baderas.bcorreo_empresa == false){
         document.getElementById("correo_m").style.border = "3px solid red";
-    }
-    if(baderas.bcontra == false ){
+    }else if(baderas.bcontra == false ){
         document.getElementById("password").style.border = "3px solid red";
-    }
-    if(baderas.bcontra_conf == false){
+    }else if(baderas.bcontra_conf == false){
         document.getElementById("password_confirmacion").style.border = "3px solid red";
-    }
-    if(baderas.brazon == false){
+    }else if(baderas.brazon == false){
         document.getElementById("razon").style.border = "3px solid red";
-    }
-    if(baderas.bcodigo_postal == false){
+    }else if(baderas.bcodigo_postal == false){
         document.getElementById("codigo_postal").style.border = "3px solid red";
-    }
-    if(baderas.bcalle == false){
+    }else if(baderas.bcalle == false){
         document.getElementById("calle").style.border = "3px solid red";
     }
     // if(baderas.bciudad == false){
@@ -705,59 +733,41 @@ boton_enviar.addEventListener("click",(e)=>{
     // if(baderas.bestado == false){
     //     document.getElementById("estado").style.border = "3px solid red";
     // }
-    if(baderas.brh_nombre == false){
+    else if(baderas.brh_nombre == false){
         document.getElementById("rh_nombre").style.border = "3px solid red";
-    }
-    if(baderas.brh_pa == false){
+    }else if(baderas.brh_pa == false){
         document.getElementById("rh_paterno").style.border = "3px solid red";
-    }
-    if(baderas.brh_ma == false){
+    }else if(baderas.brh_ma == false){
         document.getElementById("rh_materno").style.border = "3px solid red";
-    }
-    if(baderas.brh_te == false){
+    }else if(baderas.brh_te == false){
         document.getElementById("rh_tele").style.border = "3px solid red";
-    }
-    if(baderas.brh_exten == false){
+    }else if(baderas.brh_exten == false){
         document.getElementById("rh_exten").style.border = "3px solid red";
-    }
-    if(baderas.brh_correo == false){
+    }else if(baderas.brh_correo == false){
         document.getElementById("rh_correo").style.border = "3px solid red";
-    }
-    if(baderas.bti_nombre == false){
+    }else if(baderas.bti_nombre == false){
         document.getElementById("ti_nombre").style.border = "3px solid red";
-    }
-    
-    if(baderas.bti_pa == false){
+    }else if(baderas.bti_pa == false){
         document.getElementById("ti_paterno").style.border = "3px solid red";
-    }
-    if(baderas.bti_ma == false){
+    }else if(baderas.bti_ma == false){
         document.getElementById("ti_materno").style.border = "3px solid red";
-    }
-    if(baderas.bti_te == false){
+    }else if(baderas.bti_te == false){
         document.getElementById("ti_tele").style.border = "3px solid red";
-    }
-    if(baderas.bti_exten == false){
+    }else if(baderas.bti_exten == false){
         document.getElementById("ti_exten").style.border = "3px solid red";
-    }
-    if(baderas.bti_correo == false){
+    }else if(baderas.bti_correo == false){
         document.getElementById("ti_correo").style.border = "3px solid red";
-    }
-    if(baderas.bca_nombre == false){
+    }else if(baderas.bca_nombre == false){
         document.getElementById("ac_nombre").style.border = "3px solid red";
-    }
-    if(baderas.bca_pa == false){
+    }else if(baderas.bca_pa == false){
         document.getElementById("ac_paterno").style.border = "3px solid red";
-    }
-    if(baderas.bca_ma == false){  
+    }else if(baderas.bca_ma == false){  
         document.getElementById("ac_materno").style.border = "3px solid red";
-    }
-    if(baderas.bca_te == false){
+    }else if(baderas.bca_te == false){
         document.getElementById("ac_tele").style.border = "3px solid red";
-    }
-    if(baderas.bca_exten == false){
+    }else if(baderas.bca_exten == false){
         document.getElementById("ac_exten").style.border = "3px solid red";
-    }
-    if(baderas.bca_correo == false){
+    }else if(baderas.bca_correo == false){
         document.getElementById("ac_correo").style.border = "3px solid red";
     }
     validar(e);
