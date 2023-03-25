@@ -9,7 +9,7 @@ let lista = [];
 let su = [];
 let contador = 0;
 let b = false
-let c = false
+let c = 0
 
 document.getElementById("temas").disabled = false;
 
@@ -187,20 +187,21 @@ function validar3(bandera) {
 
 function regi()
 {
-    if (bId == false){
-        clavecurso.style.border = "3px solid red";
-    }
     if (bNom == false){
         nombrecurso.style.border = "3px solid red";
     }
-    if (Obj == false){
-        objetivo.style.border = "3px solid red";
+    else if (bId == false){
+        clavecurso.style.border = "3px solid red";
     }
-    if (dur == false){
+    else if (dur == false){
         duracion.style.border = "3px solid red";
     }
+    else if (Obj == false){
+        objetivo.style.border = "3px solid red";
+    }
 
-    if (document.getElementById("titulo-curso") != ""){
+    if (document.getElementById("titulo-curso") != "" && c==1){
+
     if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
         /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
@@ -253,9 +254,10 @@ function regi()
         alert("Ingresar temas y subtemas es necesario");
     }
 }
-else{
+ else{
+    if (bId == true && bNom == true && Obj == true && dur == true)
     alert("Ingresar temas y subtemas es necesario");
-    }
+    } 
 }
 
 
