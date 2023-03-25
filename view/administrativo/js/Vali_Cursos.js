@@ -11,7 +11,7 @@ let contador = 0;
 let b = false
 let c = false
 
-document.getElementById("tema").disabled = false;
+document.getElementById("temas").disabled = false;
 
 const expresiones = {
     clave: /^[0-9]{6}$/,
@@ -30,7 +30,7 @@ nombrecurso.addEventListener('keyup', (e) => {
 
     nombrecurso.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-°¨]/g, '')
 
 
     if (!expresiones.nombre.test(valorInput)) {
@@ -51,7 +51,7 @@ clavecurso.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -74,7 +74,7 @@ objetivo.addEventListener('keyup', (e) => {
     objetivo.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -95,7 +95,7 @@ duracion.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -117,7 +117,7 @@ tema.addEventListener('keyup', (e) => {
 
     tema.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
 
@@ -138,7 +138,7 @@ subtema.addEventListener('keyup', (e) => {
     subtema.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.subtema.test(valorInput)) {
@@ -265,7 +265,7 @@ function te() {
     }
     else {
         /* alert("Necesita escribir un tema y añadirle un subtema para registrarlo"); */
-        document.getElementById("tema").disabled = true;
+        document.getElementById("temas").disabled = true;
     }
 }
 
@@ -282,7 +282,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         alert("Se ha agregado un subtema al tema");
         b=true;
         document.getElementById("registraform").disabled = true;
-        document.getElementById("tema").disabled = false;
+        document.getElementById("temas").disabled = false;
     }
      else{
         
@@ -292,7 +292,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
         alert("Se ha agregado un subtema");
         document.getElementById("registraform").disabled = true;
-        document.getElementById("tema").disabled = false;
+        document.getElementById("temas").disabled = false;
     }
 }
     else {
