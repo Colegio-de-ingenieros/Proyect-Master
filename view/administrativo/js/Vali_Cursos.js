@@ -181,16 +181,18 @@ function validar3(bandera) {
 
 }
 
-function regi() {
-    if (lista.length != 0 && c == 1) {
-        if (bId == true && bNom == true && Obj == true && dur == true) {
-            /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
-            var arrayin = new Array(4);
-            arrayin[0] = document.getElementById("clave-curso").value;
-            arrayin[1] = document.getElementById("nombre-curso").value;
-            arrayin[2] = document.getElementById("objetivo").value;
-            arrayin[3] = document.getElementById("duración").value;
-            console.log(arrayin);
+function regi()
+{
+    if (document.getElementById("titulo-curso") != ""){
+    if (lista.length != 0 && c==1){
+    if (bId == true && bNom == true && Obj == true && dur == true ) {
+        /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
+        var arrayin = new Array(4);
+        arrayin[0] = document.getElementById("clave-curso").value;
+        arrayin[1] = document.getElementById("nombre-curso").value;
+        arrayin[2] = document.getElementById("objetivo").value;
+        arrayin[3] = document.getElementById("duración").value;
+        console.log(arrayin);
 
             var formData = new FormData();
             formData.append("arrayin", JSON.stringify(arrayin));
@@ -234,47 +236,58 @@ function regi() {
         alert("Ingresar temas y subtemas es necesario");
     }
 }
+else{
+    alert("Ingresar temas y subtemas es necesario");
+}
+    }
+    else{
+        alert("Ingresar un tema es necesario");
+    }   
+}
 
 function te() {
     console.log()
-    if (su.length >= 2 && b == true) {
-        /* lista.push(document.getElementById("titulo-curso").value);  */
-        console.log(lista);
-        document.getElementById("titulo-curso").value = "";
-        document.getElementById("titulo-curso").value = "";
-        lista.push([su]);
-        document.getElementById("titulo-curso").disabled = false;
-        su = []
-        contador = 0;
-        alert("Se ha agregado un tema al registro");
-        b = false;
-        c = 1;
+    if(su.length >= 2 && b==true){
+    /* lista.push(document.getElementById("titulo-curso").value);  */
+    console.log(lista);
+    document.getElementById("titulo-curso").value = ""; 
+    document.getElementById("titulo-curso").value = ""; 
+    lista.push([su]);
+    document.getElementById("titulo-curso").disabled = false;
+    su = []
+    contador = 0;
+        document.getElementById("registraform").disabled = false;
+    alert("Se ha agregado un tema al registro");
+    b=false;
+    c=1;
     }
     else {
         alert("Necesita escribir un tema y añadirle un subtema para registrarlo");
     }
 }
 
-function subt() {
-    if (document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value) {
-        if (contador == 0) {
-            su.push(document.getElementById("titulo-curso").value);
-
-            document.getElementById("titulo-curso").disabled = true;
-            su.push(document.getElementById("Subtitulo-curso").value);
-            document.getElementById("Subtitulo-curso").value = "";
-            console.log(("if"));
-            contador++;
-            alert("Se ha agregado un subtema al tema");
-            b = true;
-        } else {
-
-            console.log(("else"));
-            su.push(document.getElementById("Subtitulo-curso").value);
-            console.log(su);
-            document.getElementById("Subtitulo-curso").value = "";
-            alert("Se ha agregado un subtema");
-        }
+function subt()
+{
+if (document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value){
+    if (contador == 0){
+        su.push(document.getElementById("titulo-curso").value);
+        
+        document.getElementById("titulo-curso").disabled = true;
+        su.push(document.getElementById("Subtitulo-curso").value);
+        document.getElementById("Subtitulo-curso").value = "";
+        console.log(("if")); 
+        contador++;
+        alert("Se ha agregado un subtema al tema");
+        b=true;
+        document.getElementById("registraform").disabled = true;
+    } else{
+        
+        console.log(("else"));
+        su.push(document.getElementById("Subtitulo-curso").value); 
+        console.log(su);
+        document.getElementById("Subtitulo-curso").value = "";
+        alert("Se ha agregado un subtema");
+        document.getElementById("registraform").disabled = true;
     }
     else {
         alert("Completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
