@@ -92,6 +92,10 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
 formulario.apeMPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
+    if (!valorInput) {
+        return; // si el valor es nulo o vacío, sale de la función
+    }
+
 	formulario.apeMPerso.value = valorInput
     // Eliminar numeros
     .replace(/[0-9]/g, '')
