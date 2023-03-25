@@ -322,7 +322,7 @@ main{
     .section-main-trabajadores{
         display: flex;
         flex-direction: column;
-        width: 96%;
+        width: 98%;
     }
 }
 
@@ -347,7 +347,7 @@ main{
     .section-main-trabajadores{
         display: flex;
         flex-direction: column;
-        width: 96%;
+        width: 80%;
     }
     
 }
