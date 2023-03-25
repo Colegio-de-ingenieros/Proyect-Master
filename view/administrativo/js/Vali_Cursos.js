@@ -9,12 +9,14 @@ let lista = [];
 let su = [];
 let contador = 0;
 let b = false
-let c = false
+let c = 0
+
+document.getElementById("temas").disabled = false;
 
 const expresiones = {
     clave: /^[0-9]{6}$/,
     duracion: /^[0-9]+$/,
-    nombre: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
     objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
     tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
@@ -26,12 +28,14 @@ let nombrecurso = document.getElementById("nombre-curso");
 nombrecurso.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
 
+
     nombrecurso.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+       //.replace(/[üâäàåçê♪ëèïîìÄÅæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-°¨]/g, '')
+       .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
-    if (!expresiones.nombre.test(valorInput)) {
+    if (!expresiones.nombres.test(valorInput)) {
         nombrecurso.style.border = "3px solid red";
         bNom = false
     } else {
@@ -49,7 +53,7 @@ clavecurso.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -72,7 +76,7 @@ objetivo.addEventListener('keyup', (e) => {
     objetivo.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -93,7 +97,7 @@ duracion.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -115,7 +119,7 @@ tema.addEventListener('keyup', (e) => {
 
     tema.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
 
@@ -136,7 +140,7 @@ subtema.addEventListener('keyup', (e) => {
     subtema.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.subtema.test(valorInput)) {
@@ -183,7 +187,21 @@ function validar3(bandera) {
 
 function regi()
 {
-    if (document.getElementById("titulo-curso") != ""){
+    if (bNom == false){
+        nombrecurso.style.border = "3px solid red";
+    }
+    else if (bId == false){
+        clavecurso.style.border = "3px solid red";
+    }
+    else if (dur == false){
+        duracion.style.border = "3px solid red";
+    }
+    else if (Obj == false){
+        objetivo.style.border = "3px solid red";
+    }
+
+    if (document.getElementById("titulo-curso") != "" && c==1){
+
     if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
         /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
@@ -236,11 +254,13 @@ function regi()
         alert("Ingresar temas y subtemas es necesario");
     }
 }
-else{
+ else{
+    if (bId == true && bNom == true && Obj == true && dur == true)
     alert("Ingresar temas y subtemas es necesario");
+    } 
 }
 
-}
+
 
 
 
@@ -262,7 +282,8 @@ function te() {
     c=1;
     }
     else {
-        alert("Necesita escribir un tema y añadirle un subtema para registrarlo");
+        /* alert("Necesita escribir un tema y añadirle un subtema para registrarlo"); */
+        document.getElementById("temas").disabled = true;
     }
 }
 
@@ -279,6 +300,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         alert("Se ha agregado un subtema al tema");
         b=true;
         document.getElementById("registraform").disabled = true;
+        document.getElementById("temas").disabled = false;
     }
      else{
         
@@ -288,6 +310,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
         alert("Se ha agregado un subtema");
         document.getElementById("registraform").disabled = true;
+        document.getElementById("temas").disabled = false;
     }
 }
     else {

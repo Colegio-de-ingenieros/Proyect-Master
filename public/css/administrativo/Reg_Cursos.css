@@ -238,7 +238,7 @@ hr{
     }
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 700px) {
     main{
         margin-top: 11.5rem;
     }
@@ -246,10 +246,19 @@ hr{
         width: 80%;
     }
 
+    .campo-wide{
+        grid-column: span 1;
+        margin-top: 3px;
+    }
+
     .formulario-cursos {
         grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(4, 1fr);
-        grid-gap: 20px;
+        grid-template-rows: repeat(4, 0.6fr);
+        grid-gap: 0;
+    }
+
+    .hr-2{
+        width: 100%;
     }
 
     .h4{
@@ -259,10 +268,14 @@ hr{
     
     .cabezera{
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
-    .campo{
+    .campo {
+        display: flex;
+        flex-direction: column;
+    }
+    .botones{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -271,13 +284,13 @@ hr{
     .titulos-registrados{
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
     }
 
     .formulario-titulos{
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(2, 1fr);
-        grid-gap: 20px;
+        grid-gap: 5px;
     }
 
     .section-botones, .section-botones-2{
@@ -289,5 +302,6 @@ hr{
     .btn-small{
         width: 50%;
         height: 50px;
+        font-size: 1rem;
     }
 }
