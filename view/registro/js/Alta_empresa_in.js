@@ -43,17 +43,14 @@ formulario.addEventListener("submit",(e)=>{
 
 
     if (dias.length == 0) {
-        alert("Debe seleccionar días laborales");
-    }
-    if(aviso_privacidad.checked == false){
-        alert("Antes debe aceptar el aviso de privacidad");
-    }   
-    if(time_inicio.value.length == 0){
-        alert("Debes seleccionar una hora de inicio");
-    }
-    if(time_fin.value.length == 0){
-        alert("Debes seleccionar una hora de fin");
-    }
+        alert("Por favor, seleccione al menos un día laboral.");
+    }else if(time_inicio.value.length == 0){
+        alert("Por favor, seleccione una hora de inicio.");
+    }else if(time_fin.value.length == 0){
+        alert("Por favor, seleccione una hora de fin.");
+    }else if(aviso_privacidad.checked == false){
+        alert("Para continuar con el registro, debe aceptar el aviso de privacidad.");
+    } 
 
     if (dias.length > 0 && aviso_privacidad.checked && time_inicio.value.length > 0 && time_fin.value.length > 0 ) {
          /** extraemos los datos del formulario */
