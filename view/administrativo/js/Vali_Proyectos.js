@@ -9,7 +9,7 @@ let bCompara = false
 /*Detecta cuando el boton fue presionado*/
 let botonRegistrar = document.getElementById("registrar");
 botonRegistrar.addEventListener("click", (e) => {
-
+    registrar.disabled=true;
     if (bNomPro==false){
         nom_proyecto.style.border = "3px solid red";
     }else if(bObjPro=false){
@@ -24,6 +24,7 @@ botonRegistrar.addEventListener("click", (e) => {
         fin_proyecto.style.border = "3px solid red";
     }else{
         validar(true);
+        registrar.disabled=false;
     }
 });
 
