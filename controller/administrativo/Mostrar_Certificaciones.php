@@ -42,8 +42,9 @@ if ($resultado == true) {
         $salida .= '<td>' . $precioG . '</td>';
         $salida .= '<td>' . $precioA . '</td>';
         $salida .= '<td> 
-        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
+        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
+        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp
         </td>';
         $salida .= '</tr>';
 
