@@ -50,8 +50,29 @@ body{
     margin-bottom: 1rem;
     justify-content: center;
 }
+hr{
+    margin-top: -13px;
+}
 
-.formulario-cursos, .formulario-titulos{
+.h4{
+    margin-bottom: 2.125rem;
+}
+
+.formulario-cursos{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.campo-wide{
+    grid-column: span 3;
+    margin-top: -25px;
+    margin-bottom: 10px;
+}
+
+.formulario-titulos{
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -64,7 +85,7 @@ body{
 }
 
 .hr-2{
-    margin-top: 1rem;
+    margin-top: 3px;
     margin-bottom: 0.2rem;
     opacity: 0.2;
 }
@@ -186,7 +207,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    grid-column: span 3;
     transition: 300ms all;
 }
 

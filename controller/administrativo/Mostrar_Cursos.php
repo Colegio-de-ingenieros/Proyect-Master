@@ -7,14 +7,14 @@ $bd->BD();
 
 //manda a hacer la busqueda
 $datos = $bd->cursos_disponibles();
-echo '<script>alert("si entra al php");</script>';
+
 if ($datos == true) {
     
     $respuesta .= 
     '
     <style>
     table{
-        width: 150%;
+        width: 100%;
         border-collapse: collapse;
         font-family: "Manrope";
 

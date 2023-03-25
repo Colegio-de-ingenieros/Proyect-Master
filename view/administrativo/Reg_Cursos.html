@@ -33,7 +33,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-          <button class="btn-cerrar-session btn">Cerrar session</button>
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
       </div>
     </div>
 
@@ -89,8 +89,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Visualizar</a></li>
               </ul>
             </li>
 
@@ -193,45 +193,50 @@
       <div class="formulario-cursos">
 
         <div class="campo">
-          <label for="nombre-curso" class="label-3 nombre">Nombre del curso</label>
-          <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2"
-            placeholder="Nombre del curso" minlength="1" maxlength="40" required>
+          <label for="nombre-curso" class="label-2 nombre">Nombre del curso</label>
+          <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Nombre del curso"
+            minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
-          <label for="clave-curso" class="label-3 clave">Clave del curso</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso" maxlength="6" required>
+          <label for="clave-curso" class="label-2 clave">Clave del curso</label>
+          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso"
+            maxlength="6" required>
         </div>
 
         <div class="campo">
-          <label for="objetivo" class="label-3 objetivo">Objetivo</label>
+          <label for="duración" class="label-2 duracion">Duración del curso</label>
+          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..."
+            required>
+        </div>
+
+        <div class="campo-wide">
+          <label for="objetivo" class="label-2 objetivo">Objetivo</label>
           <input type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
             placeholder="Ingresa tu texto aquí..." required>
         </div>
 
-        <div class="campo">
-          <label for="duración" class="label-3 duracion">Duracion del curso</label>
-          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..." required>
-        </div>
-
       </div>
 
-      <hr class="hr-2">
+      
 
       <div class="titulos-registrados">
         <p class="subtitulo-1">Temario</p>
+        <hr class="hr-2">
       </div>
 
       <div class="formulario-titulos">
-        
+
         <div class="campo">
-          <label for="titulo-curso" class="label-3 titulo-curso">Titulo del tema</label>
-          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2" placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
+          <label for="titulo-curso" class="label-2 titulo-curso">Título del tema</label>
+          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2"
+            placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
-          <label for="Subtitulo-curso" class="label-3 titulo-curso">Subtitulo del tema</label>
-          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2" placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
+          <label for="Subtitulo-curso" class="label-2 titulo-curso">Subtema del tema</label>
+          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2"
+            placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
         </div>
 
       </div>
@@ -250,13 +255,14 @@
 
       <div class="section-botones-2">
         <div class="campo">
-          <button id="registraform" class="btn-small btn" onclick="regi()">Finalizar registro</button>
+          <button id="registraform" class="btn-medium btn" onclick="regi()">Registrar</button>
         </div>
       </div>
 
-      
+
     </section>
   </main>
 </body>
 <script src="js/Vali_Cursos.js"></script>
+
 </html>

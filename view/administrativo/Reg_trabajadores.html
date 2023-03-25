@@ -174,96 +174,101 @@
     </div>
   </header>
 
-  <form class="formulario" id="formulario">
-    <div class="contenedortrabajadores">
-      <h3>Registro </h3>
-      <hr size="1px" />
+  <main>
+    <section class="section-main-trabajadores">
+      <div class="cabezera">
+        <h4 class="h4">Registro Trabajadores</h4>
+      </div>
       <br>
       <p class="subtitulo-1"> Datos generales</p>
-      <div class="contenedor-formulario">
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Nombre(s)</p>
-          </div>
-          <div class="input-form">
-            <input type="text" class="input-format-2" id="caja_nombre" name="caja_nombre" maxlength="40"
-              placeholder="Ingresa tu nombre" required>
-          </div>
-        </div>
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Apellido paterno</p>
-          </div>
-          <div class="input-form">
-            <input type="text" class="input-format-2" id="caja_ap_paterno" name="caja_ap_paterno" maxlength="20"
-              placeholder="Ingresa tu apellido paterno" required>
-          </div>
-        </div>
+      <hr>
 
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Apellido materno</p>
+      <form class="formulario" id="formulario">
+        
+          <div class="contenedor-formulario">
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Nombre(s)</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" id="caja_nombre" name="caja_nombre" maxlength="40"
+                  placeholder="Ingresa tu nombre" required>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Apellido paterno</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" id="caja_ap_paterno" name="caja_ap_paterno" maxlength="20"
+                  placeholder="Ingresa tu apellido paterno" required>
+              </div>
+            </div>
+    
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Apellido materno</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" id="caja_ap_materno" name="caja_ap_materno" maxlength="20"
+                  placeholder="Ingresa tu apellido materno">
+              </div>
+            </div>
+    
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">RFC</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" id="caja_rfc" name="caja_rfc" maxlength="13"
+                  placeholder="Ingresa tu RFC" required>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Correo electrónico</p>
+              </div>
+              <div class="input-form">
+                <input type="email" class="input-format-2" id="caja_correo" name="caja_correo" maxlength="40"
+                  placeholder="someone@example.com" required>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Teléfono</p>
+              </div>
+              <div class="input-form">
+                <input type="tel" class="input-format-2" id="caja_telefono" name="caja_telefono" maxlength="10"
+                  placeholder="4371002090" required>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Contraseña</p>
+              </div>
+              <div class="input-form">
+                <input type="password" class="input-format-2" id="caja_contra" name="caja_contra" minlength="8"
+                  maxlength="16" placeholder="Password" required>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Confirmar contraseña</p>
+              </div>
+              <div class="input-form">
+                <input type="password" class="input-format-2" id="caja_contra_verificar" name="caja_contra_verificar"
+                  minlength="8" maxlength="16" placeholder="Password" required>
+              </div>
+            </div>
           </div>
-          <div class="input-form">
-            <input type="text" class="input-format-2" id="caja_ap_materno" name="caja_ap_materno" maxlength="20"
-              placeholder="Ingresa tu apellido materno">
+          <br>
+          <div class="boton_registrar">
+            <button class="btn-medium btn" id="boton_registro" type="submit">Registrar</button>
           </div>
-        </div>
-
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">RFC</p>
-          </div>
-          <div class="input-form">
-            <input type="text" class="input-format-2" id="caja_rfc" name="caja_rfc" maxlength="13"
-              placeholder="Ingresa tu RFC" required>
-          </div>
-        </div>
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Correo electrónico</p>
-          </div>
-          <div class="input-form">
-            <input type="email" class="input-format-2" id="caja_correo" name="caja_correo" maxlength="40"
-              placeholder="someone@example.com" required>
-          </div>
-        </div>
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Teléfono</p>
-          </div>
-          <div class="input-form">
-            <input type="tel" class="input-format-2" id="caja_telefono" name="caja_telefono" maxlength="10"
-              placeholder="4371002090" required>
-          </div>
-        </div>
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Contraseña</p>
-          </div>
-          <div class="input-form">
-            <input type="password" class="input-format-2" id="caja_contra" name="caja_contra" minlength="8"
-              maxlength="16" placeholder="Password" required>
-          </div>
-        </div>
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Confirmar contraseña</p>
-          </div>
-          <div class="input-form">
-            <input type="password" class="input-format-2" id="caja_contra_verificar" name="caja_contra_verificar"
-              minlength="8" maxlength="16" placeholder="Password" required>
-          </div>
-        </div>
-      </div>
+      </form>
       <br>
-
-      <div class="boton_registrar">
-        <button class="btn-medium btn" id="boton_registro" type="submit">Registrar</button>
-      </div>
-
-    </div>
-  </form>
+    </section>
+  </main>
   <script src="js/Vali_Trabajadores.js"></script>
 </body>
 <script src="../../controller/administrativo/js/Registro_Trabajadores.js"></script>

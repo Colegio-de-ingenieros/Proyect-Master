@@ -173,7 +173,7 @@ nav  ul  li{
     height: 100%;
     list-style: none;
     position: relative;
-    padding: 15%;
+    padding: 2%; 
 }
 
 nav > ul > li > a{
@@ -323,7 +323,7 @@ html{
 }    
 .contenedorregistro{
     height: 32em;
-    width: 60em;
+    width: 90%;
     border: none;
     background-color: none; 
     width: 80%;
@@ -492,6 +492,10 @@ hr{
 
     .titulo{
         padding: 0 1rem;
+    } 
+
+    .contenedor-formulario{
+        display: flow-root;
     }
     
 }

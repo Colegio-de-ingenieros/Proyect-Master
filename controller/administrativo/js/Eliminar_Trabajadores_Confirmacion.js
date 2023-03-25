@@ -1,4 +1,5 @@
 function confirmacion(e){
+    
     if (confirm("¿Está seguro que desea eliminar el trabajador?")){
         return true;
     }else{
@@ -7,6 +8,6 @@ function confirmacion(e){
 }
 let linkDelete = document.querySelectorAll(".table_item__link");
 
-for(var i = 0; i<linkDelete.length; i++){
+for (var i = 0; i < linkDelete.length; i++) {
     linkDelete[i].addEventListener('click', confirmacion);
 }

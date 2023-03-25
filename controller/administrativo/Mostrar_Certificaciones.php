@@ -32,6 +32,8 @@ if ($resultado == true) {
         $desc = $resultado[$i]["DesCerInt"];
         $precioG = $base->buscarUltimoPrecioG($idc);
         $precioA = $base->buscarUltimoPrecioA($idc);
+        $precioG = substr($precioG, 0,  strlen($precioG) - 3);
+        $precioA = substr($precioA, 0,  strlen($precioA) - 3);
         //$extension = getExt($logo);
 
         //escribe los valores en la tabla
@@ -39,8 +41,8 @@ if ($resultado == true) {
         $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
         $salida .= '<td>' . $nombre . '</td>';
         $salida .= '<td>' . $desc . '</td>';
-        $salida .= '<td>' . $precioG . '</td>';
-        $salida .= '<td>' . $precioA . '</td>';
+        $salida .= '<td>$' . $precioG . '</td>';
+        $salida .= '<td>$' . $precioA . '</td>';
         $salida .= '<td> 
         <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
