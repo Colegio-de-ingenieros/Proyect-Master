@@ -111,7 +111,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
         precioG = true;
     }
 
-    validar()
+    validar(precioG)
 
 })
     
@@ -157,7 +157,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
             precioA = true;
         }
 
-        validar()
+        validar(precioA)
     })
 
 //revisa el campo descripcion
@@ -183,7 +183,7 @@ formulario.descripcion.addEventListener('keyup', (e) =>{
 })
 
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
-function validar()
+function validar(bandera)
 {
     
     const guardar = document.getElementById('registrar');
@@ -202,26 +202,13 @@ function validar()
         guardar.disabled = false;
     }
 
-    /*if (nom == false) {
-        guardar.disabled = true;
-    }
-
-    else if (precioG == false) {
-        guardar.disabled = true;
-    }
-
-    else if (precioA == false) {
-        guardar.disabled = true;
-    }
-
-
-    else if (desc == false) {
+    if (bandera == false) {
         guardar.disabled = true;
     }
 
     else {
         guardar.disabled = false;
-    }*/
+    }
 
 }
 
