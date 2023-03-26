@@ -17,11 +17,15 @@ formulario.addEventListener('submit', function (e)
         .then(data =>
         {
             //el registro fue exitoso
-            if (data === 'todo chido') {
+            if (data === 'Correcto') {
                 alert("Registro exitoso");
                 location.href = '../../view/administrativo/Reg_Proyectos.html';
             }
-
+            
+            else if (data === 'Fechas') {
+                alert("Fecha fin no es posterior a fecha inicio");
+                //location.href = '../../view/administrativo/Reg_Proyectos.html';
+            }
             //los datos no pasaron alguna validacion
             else {
                 alert(data);
