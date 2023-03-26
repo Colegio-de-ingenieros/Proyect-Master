@@ -70,9 +70,6 @@ if(
     $checkboxcertificacion=$_POST["checkboxcertificacionoculto"];
     $checkboxlaboral=$_POST["checkboxlaboraloculto"];
 
-    echo $checkboxcertificacion;
-    echo $checkboxlaboral;
-
 
     if($pasantia=='opcion1'){
         $pasan=1;
