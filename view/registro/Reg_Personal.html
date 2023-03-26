@@ -79,7 +79,7 @@
                         <p class="label-2">Apellido paterno</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  maxlength="20">
+                        <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  required maxlength="20">
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                         <p class="label-2">Teléfono móvil</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" maxlength="10">
+                        <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" required maxlength="10">
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
                         <p class="label-2">Colonia*</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
+                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" maxlength="50">
                             <option value="0">Seleccione su colonia</option>
 						</select>
                     </div>
@@ -197,7 +197,7 @@
                         <p class="label-2">Ciudad*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50" readonly>
+                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso"  maxlength="50" readonly>
                     </div>
                 </div>
 
@@ -206,7 +206,7 @@
                         <p class="label-2">Estado*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50" readonly>
+                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso"  maxlength="50" readonly>
                     </div>
                 </div>
             </div>
@@ -415,7 +415,8 @@
         </div>
         
         <div class="boton_registrar">
-        <button class="btn-medium btn">Registrar</button>
+        <!--<button class="btn-medium btn">Registrar</button>-->
+        <input type="submit" class="btn-medium btn" id="boton_registrar" value="Registrar" >
         </div>
         
     

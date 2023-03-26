@@ -16,36 +16,32 @@ let bandColonia = false
 let bandCiudad = false
 let bandEstado = false
 
-let bandCerti = false
-let bandNomCerti = false
-let bandOrgCerti = false
-let bandFechaICerti = false
-let bandFechaFCerti = false
-let bandMaxG = false
-let bandPasantia = false
+let bandCerti = true
+let bandNomCerti = true
+let bandOrgCerti = true
 
-let bandEmpLab = false
-let bandPuesto = false
-let bandCorreoLab = false
-let bandExtTelMofi = false
-let bandTelMofi = false
-let bandFunciones = false
-let bandAntecedentes = false
-let bandVerifidica = false
-let bandAviso = false
+let bandEmpLab = true
+let bandPuesto = true
+let bandCorreoLab = true
+let bandExtTelMofi = true
+let bandTelMofi = true
+let bandFunciones = true
 
 const expresiones = {
-    nombre:/^[a-zA-ZÁ-ý\s.]{3,40}$/,
-    apellidos:/^[a-zA-ZÁ-ý\s]{3,20}$/,
-    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
-    passw:/^[a-zA-Z0-9üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]{8,255}$/,
+    nombre:/^[a-zA-ZÁ-Ýá-ý\s.]{1,40}$/,
+    apellidos:/^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
+    email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
+    passw:/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$\#\-_.!*\/+]){1})\S{8,16}$/,
     cedula:/^[0-9]{8}/,
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
     exten:/^[0-9]{3}$/,
-    nombre_c:/^[a-zA-ZÁ-ý\s.,]{3,40}$/,
-    calle:/^[a-zA-ZÁ-ý\s0-9#-.]{3,100}$/,
-    noCert:/^[0-9]{6}$/,
+    nombre_c:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,60}$/,
+    nombre_o:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]?){1,100}$/,
+    nombre_e:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,100}$/,
+    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
+    funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9\s]{1,60}$/,
 }
 
 /* Input nombres */
@@ -53,12 +49,10 @@ formulario.nomPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
 	formulario.nomPerso.value = valorInput
-    // Eliminar numeros
-    .replace(/[0-9]/g, '')
-     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
-   
 
+     // Eliminar caracteres especiales
+     .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+   
     if (!expresiones.nombre.test(valorInput)) {
         formulario.nomPerso.style.border = "3px solid red";
         bandNom = false;
@@ -75,10 +69,9 @@ formulario.apePPerso.addEventListener('keyup', (e) => {
 
     if(valorInput !==""){
         formulario.apePPerso.value = valorInput
-        // Eliminar numeros
-        .replace(/[0-9]/g, '')
-         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+        
+        // Eliminar caracteres especiales
+        .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
     
         if (!expresiones.apellidos.test(valorInput)) {
             formulario.apePPerso.style.border = "3px solid red";
@@ -98,10 +91,9 @@ formulario.apeMPerso.addEventListener('keyup', (e) => {
 
     if(valorInput !==""){
         formulario.apeMPerso.value = valorInput
-    // Eliminar numeros
-    .replace(/[0-9]/g, '')
-     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    
+        // Eliminar caracteres especiales
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     if (!expresiones.apellidos.test(valorInput)) {
         formulario.apeMPerso.style.border = "3px solid red";
@@ -124,7 +116,7 @@ formulario.correoPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\+=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -146,7 +138,7 @@ formulario.contraPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   //.replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\=\[\]{};':\\|,<>\/?]/g, '')
+    .replace(/[^a-zA-Z0-9$\#\-_.@,!*\/+]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -198,9 +190,9 @@ formulario.cedulaPerso.addEventListener('keyup', (e) => {
 	formulario.cedulaPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
    .trim();
 
     if (!expresiones.cedula.test(valorInput)) {
@@ -221,10 +213,10 @@ formulario.telFPerso.addEventListener('keyup', (e) => {
         formulario.telFPerso.value = valorInput
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
-        // Eliminar letras
-        .replace(/\D/g, '')
-         // Eliminar el ultimo espaciado
-       .trim();
+        // Eliminar caracteres especiales
+        .replace(/[^0-9]/g, '')
+        // Eliminar el ultimo espaciado
+        .trim();
     
         if (!expresiones.telefono.test(valorInput)) {
             formulario.telFPerso.style.border = "3px solid red";
@@ -246,9 +238,9 @@ formulario.telMPerso.addEventListener('keyup', (e) => {
         formulario.telMPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
    .trim();
 
     if (!expresiones.telefono.test(valorInput)) {
@@ -270,9 +262,9 @@ formulario.cpPerso.addEventListener('keyup', (e) => {
 	formulario.cpPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
    .trim();
 
     if (!expresiones.codigoP.test(valorInput)) {
@@ -292,7 +284,7 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 	formulario.callePerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\s]/g, '');
 
     if (!expresiones.calle.test(valorInput)) {
         formulario.callePerso.style.border = "3px solid red";
@@ -312,8 +304,8 @@ formulario.nomCert.addEventListener('keyup', (e) => {
     if(valorInput !==""){
         formulario.nomCert.value = valorInput
 
-        // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+         // Eliminar caracteres especiales
+        .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s,.]/g, '');
 
         if (!expresiones.nombre_c.test(valorInput)) {
             formulario.nomCert.style.border = "3px solid red";
@@ -336,9 +328,9 @@ formulario.orgCert.addEventListener('keyup', (e) => {
 	formulario.orgCert.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
 
-    if (!expresiones.nombre_c.test(valorInput)) {
+    if (!expresiones.nombre_o.test(valorInput)) {
         formulario.orgCert.style.border = "3px solid red";
         bandOrgCerti = false;
 	}else{
@@ -359,9 +351,9 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	formulario.nomEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|<>\?]/g, '')
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s.]/g, '');
 
-    if (!expresiones.nombre_c.test(valorInput)) {
+    if (!expresiones.nombre_e.test(valorInput)) {
         formulario.nomEmpPerso.style.border = "3px solid red";
         bandEmpLab = false;
 	}else{
@@ -382,9 +374,9 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*_+\-=\[\]{};\\|<>\/?]/g, '')
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
-    if (!expresiones.nombre_c.test(valorInput)) {
+    if (!expresiones.puesto_e.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
         bandPuesto = false;
 	}else{
@@ -406,7 +398,7 @@ formulario.correoEmpPerso.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Üáéíóú¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\+=\[\]{};':"\\|,<>\/?]/g, '')
+   .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
     // Eliminar el ultimo espaciado
    .trim();
 
@@ -431,9 +423,9 @@ formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
 	formulario.ExtTelFEmp.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
    .trim();
 
     if (!expresiones.exten.test(valorInput)) {
@@ -457,9 +449,9 @@ formulario.telFEmpPerso.addEventListener('keyup', (e) => {
 	formulario.telFEmpPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
-    // Eliminar letras
-	.replace(/\D/g, '')
-     // Eliminar el ultimo espaciado
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
    .trim();
 
     if (!expresiones.telefono.test(valorInput)) {
@@ -473,7 +465,7 @@ formulario.telFEmpPerso.addEventListener('keyup', (e) => {
     }
 });
 
-/* Input puesto empresa*/
+/* Input funcion empresa*/
 formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -483,7 +475,7 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
     
 	formulario.funcionEmpPerso.value = valorInput
      // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖ·Ü¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡#$%^&^*()\-=\[\]{};':"\\|+<>\/?]/g, '')
+     .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s,.]/g, '');
 
     if (!expresiones.nombre_c.test(valorInput)) {
         formulario.funcionEmpPerso.style.border = "3px solid red";
@@ -521,8 +513,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.cpPerso.style.border = "3px solid red";
     }else if(bandCalle == false){
         formulario.callePerso.style.border = "3px solid red";
-    }else if(bandCerti == false){
-        formulario.noCert.style.border = "3px solid red";
     }else if(bandNomCerti == false){
         formulario.nomCert.style.border = "3px solid red";
     }else if(bandOrgCerti == false){
@@ -547,11 +537,11 @@ boton_enviar.addEventListener("click",(e)=>{
 });
 
 function validar(bandera){
+    console.log(bandera)
     const guardar = document.getElementById('boton_registrar');
     if(bandera == false ){        
         guardar.style.border = "3px solid red";        
         guardar.disabled=true;
-        //console.log("no pase validacion");
         
     }
     else{
