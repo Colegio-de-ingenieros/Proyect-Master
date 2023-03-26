@@ -33,7 +33,9 @@ if(
     isset ($_POST["funcionEmpPerso"]) &&
     isset ($_POST["opcion2"]) &&
     isset ($_POST["opcion3"]) &&
-    isset ($_POST["opcion4"]) 
+    isset ($_POST["opcion4"]) &&
+    isset ($_POST["checkboxcertificacionoculto"]) &&
+    isset ($_POST["checkboxlaboraloculto"])
 ){
     $nombre=$_POST["nomPerso"];
     $apeP=$_POST["apePPerso"];
@@ -65,6 +67,8 @@ if(
     $antecedentes=$_POST["opcion2"];
     $veridicas=$_POST["opcion3"];
     $avisos=$_POST["opcion4"];
+    $checkboxcertificacion=$_POST["checkboxcertificacionoculto"];
+    $checkboxlaboral=$_POST["checkboxlaboraloculto"];
 
     $bandn = 0;
     $bandc = 0;
@@ -138,10 +142,10 @@ if(
                         $aviso=0;
                     }
                 
-                    
+    
                     $objeto->numero_inteligente($correo);
                     $resultado = $objeto->inserciones();
-                    $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp);
+                    $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp, $checkboxlaboral,$checkboxcertificacion);
                     
                 
                     if($resultado1==False){
