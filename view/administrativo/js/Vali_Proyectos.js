@@ -2,29 +2,25 @@
 let bNomPro = false
 let bObjPro = false
 let bMonPro = false  
-let bFechaIni = false
-let bFechaFin = false
-let bCompara = false
+//let bFechaFin = false
 
 /*Detecta cuando el boton fue presionado*/
 let botonRegistrar = document.getElementById("registrar");
 botonRegistrar.addEventListener("click", (e) => {
-    registrar.disabled=true;
+   /* registrar.disabled=true;*/
+    if (ultimoNum(formulario.monto_proyecto.value) == true) {
+        bMonPro= false;
+        formulario.monto_proyecto.value = formulario.monto_proyecto.value + '0'
+    }
     if (bNomPro==false){
         nom_proyecto.style.border = "3px solid red";
     }else if(bObjPro=false){
         obj_proyecto.style.border = "3px solid red";
     }else if(bMonPro==false){
         monto_proyecto.style.border = "3px solid red";
-    }else if(bFechaIni==false){
-        ini_proyecto.style.border = "3px solid red";
-    }else if(bFechaFin==false){
-        fin_proyecto.style.border = "3px solid red";
-    }else if(bCompara==false){
-        fin_proyecto.style.border = "3px solid red";
     }else{
         validar(true);
-        registrar.disabled=false;
+        /*registrar.disabled=false;*/
     }
 });
 
@@ -32,9 +28,7 @@ botonRegistrar.addEventListener("click", (e) => {
 const expresiones = {
     NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s .,]{1,60}$/,
     ObjPro:/^[a-zA-ZÁ-ý\s ,.]{1,10000}$/,
-    MonPro: /^[0-9]+(.[0-9])*$/,
-    FechaIni:/^[0-9-]{10}$/,
-    FechaFin:/^[0-9-]{10}$/,
+    MonPro: /^[0-9]+(.([0-9])+)*$/,
 
 }
 
@@ -44,8 +38,8 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
 
 	formulario.nom_proyecto.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+='\[\]{};:"\\|<>\/?]/g, '')
-    
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+
     if (!expresiones.NomPro.test(valorInput)) {
         nom_proyecto.style.border = "3px solid red";
         bNomPro= false
@@ -53,7 +47,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
         nom_proyecto.removeAttribute("style");
         bNomPro = true
     }
-    validar(bNomPro);
+    /*validar(bNomPro);*/
 })
 
 /* Input Objetivo Proyecto*/
@@ -64,7 +58,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
     // Eliminar numeros
 	.replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
-    .replace(/[üâäà·åçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_\-+=\[\]{};':"\\|<>\/?]/g, '')
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
     if (!expresiones.ObjPro.test(valorInput)) {
         obj_proyecto.style.border = "3px solid red";
@@ -73,71 +67,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
         obj_proyecto.removeAttribute("style");
         bObjPro = true
     }
-    validar(bObjPro);
-})
-
-/* Input Fecha Inicio*/
-formulario.ini_proyecto.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.ini_proyecto.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-    //Elimina letras
-    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]/g, '')
-    // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\=,\[\]{};':"\\|<>\/?]/g, '')
-    // Eliminar el ultimo espaciado
-    .trim();
-
-    if (!expresiones.FechaIni.test(valorInput)) {
-        ini_proyecto.style.border = "3px solid red";
-        bFechaIni = false
-	}else{
-        ini_proyecto.removeAttribute("style");
-        bFechaIni = true
-    }
-    validar(bFechaIni);
-})
-
-/* Input Fecha Fin*/
-formulario.fin_proyecto.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-	formulario.fin_proyecto.value = valorInput
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-    //Elimina letras
-    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]/g, '')
-    // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\=,\[\]{};':"\\|<>\/?]/g, '')
-    // Eliminar el ultimo espaciado
-    .trim();
-
-    if (!expresiones.FechaFin.test(valorInput)) {
-        fin_proyecto.style.border = "3px solid red";
-        bFechaFin = false
-	}else{
-        fin_proyecto.removeAttribute("style");
-        bFechaFin = true
-    }
-    validar(bFechaFin);
-})
-
-/*Compara que la fecha fin sea posterior*/
-formulario.fin_proyecto.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-    
-	formulario.fin_proyecto.value = valorInput
-    if( (new Date(ini_proyecto.value).getTime() >= new Date(fin_proyecto.value).getTime()))
-    {
-        fin_proyecto.style.border = "3px solid red";
-        bCompara = false
-    }else{
-        fin_proyecto.removeAttribute("style");
-        bCompara = true
-    }
-    validar(bCompara);
+    /*validar(bObjPro);*/
 })
 
 /* Input Monto Proyecto*/
@@ -147,9 +77,9 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     //Elimina letras
-    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM]/g, '')
+    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMñÑ]/g, '')
     // Eliminar caracteres especiales
-   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};':"\\|<>\/?]/g, '')
+   .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´':"\\|<>\/?]/g, '')
     // Eliminar el ultimo espaciado
     .trim();
 
@@ -178,13 +108,18 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
         bMonPro = true;
     }
 
-    validar(bMonPro)
+    //validar(bMonPro)
 })
 
    
 
 function validar(bandera){
     const registrar = document.getElementById('registrar');
+    if (ultimoNum(formulario.monto_proyecto.value) == true) {
+        bMonPro = false;
+        registrar.disabled = true;
+    }
+
     if(bandera == true){
         registrar.disabled=false;
        
@@ -244,3 +179,5 @@ function ultimoNum(cadena)
         return false;
     }
 }
+
+

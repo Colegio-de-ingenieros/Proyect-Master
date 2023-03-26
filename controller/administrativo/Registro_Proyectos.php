@@ -14,7 +14,18 @@ class RegistroPro{
         $this->fin = $_POST["fin_proyecto"];
         $this->objetivo = $_POST["obj_proyecto"];
         $this->monto = $_POST["monto_proyecto"];
-        $this->insertar();
+
+        $FechaI= new DateTime($this->inicio);
+        $FechaF= new DateTime($this->fin);
+
+        //Compara que la fecha fin sea posterios a la fecha de inicio
+        if ($FechaF > $FechaI){
+            $this->insertar();
+        }
+        else{
+            echo json_encode('Fechas');
+        }
+        
 
     }
 
@@ -46,7 +57,7 @@ class RegistroPro{
         $resultados = $this->obj->buscarPorId($this->idp);
 
         if($resultados == true){
-            echo json_encode('todo chido');
+            echo json_encode('Correcto');
         }
 
         else{
