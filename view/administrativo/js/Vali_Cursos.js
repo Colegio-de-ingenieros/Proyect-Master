@@ -11,7 +11,11 @@ let contador = 0;
 let b = false
 let c = 0
 
-document.getElementById("temas").disabled = false;
+let conta = -1;
+
+
+
+document.getElementById("registraform").disabled = true;
 
 const expresiones = {
     clave: /^[0-9]{6}$/,
@@ -204,8 +208,7 @@ function regi()
 
     if (lista.length != 0 && c==1){
     if (bId == true && bNom == true && Obj == true && dur == true ) {
-        /* crear un arreglo de 6 posiciones donde se almacenen los contenidos de las cajas de texto del form "formulario-cursos" */
-        var arrayin = new Array(4);
+                var arrayin = new Array(4);
         arrayin[0] = document.getElementById("clave-curso").value;
         arrayin[1] = document.getElementById("nombre-curso").value;
         arrayin[2] = document.getElementById("objetivo").value;
@@ -215,25 +218,25 @@ function regi()
             var formData = new FormData();
             formData.append("arrayin", JSON.stringify(arrayin));
             formData.append("lista", JSON.stringify(lista));
-            /* formData.append("su", JSON.stringify(su)); */
+           
 
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
 
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    // Imprimimos la respuesta del archivo PHP
+                    
                     console.log(this.responseText);
                 }
             };
 
-            // Enviamos los datos mediante AJAX
+           
             xmlhttp.send(formData);
 
             lista = [];
             su = [];
 
-            /* resetea los campos de las cajas de texto*/
+            
             document.getElementById("clave-curso").value = "";
             document.getElementById("nombre-curso").value = "";
             document.getElementById("objetivo").value = "";
@@ -263,60 +266,62 @@ function regi()
 
 
 
-
-
 function te() {
-    console.log()
-    if(su.length >= 2 && b==true){
-    /* lista.push(document.getElementById("titulo-curso").value);  */
-    console.log(lista);
-    document.getElementById("titulo-curso").value = ""; 
-    document.getElementById("titulo-curso").value = ""; 
-    lista.push([su]);
-    document.getElementById("titulo-curso").disabled = false;
-    su = []
-    contador = 0;
-        document.getElementById("registraform").disabled = false;
-    //alert("Se ha agregado un tema al registro");
-    b=false;
-    c=1;
-    }
-    else {
-        /* alert("Necesita escribir un tema y añadirle un subtema para registrarlo"); */
-        document.getElementById("temas").disabled = true;
-    }
+    if ( document.getElementById("titulo-curso").value && lista.length > 0){
+        document.getElementById("titulo-curso").disabled = false;
+        document.getElementById("titulo-curso").value = "";
+        contador=0;
+        console.log(lista); 
 }
-
+else if (document.getElementById("titulo-curso").value && document.getElementById("Subtitulo-curso").value){
+    alert("Presione el boton de Añadir")
+}
+else if (!document.getElementById("Subtitulo-curso").value && !document.getElementById("titulo-curso").value){
+    alert("Agregue tema y subtema")
+}
+else if (document.getElementById("Subtitulo-curso").value){
+    alert("Agregue tema")
+}
+else if (document.getElementById("titulo-curso").value){ {
+    alert("Agregue subtema");
+}
+}
+}
 function subt(){
-if (document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value){
-    if (contador == 0){
+
+    if (contador == 0  && document.getElementById("Subtitulo-curso").value && document.getElementById("titulo-curso").value){
+        su=[];
         su.push(document.getElementById("titulo-curso").value);
         
-        document.getElementById("titulo-curso").disabled = true;
         su.push(document.getElementById("Subtitulo-curso").value);
         document.getElementById("Subtitulo-curso").value = "";
         console.log(("if")); 
         contador++;
+        lista.push(su);
+        console.log(lista); 
         alert("Se ha añadido el tema con su subtema");
+        conta++;
         b=true;
-        document.getElementById("registraform").disabled = true;
-        document.getElementById("temas").disabled = false;
+        c=1;
+        document.getElementById("registraform").disabled = false;
     }
-     else{
+     else if (contador != 0 && document.getElementById("Subtitulo-curso").value)    {
         
         console.log(("else"));
-        su.push(document.getElementById("Subtitulo-curso").value); 
+        lista[conta].push(document.getElementById("Subtitulo-curso").value);
+        console.log(lista); 
         console.log(su);
         document.getElementById("Subtitulo-curso").value = "";
         alert("Se ha añadido un subtema");
-        document.getElementById("registraform").disabled = true;
-        document.getElementById("temas").disabled = false;
+       
+
     }
-}
+
     else {
         alert("Completa los campos de titulo y subtitulo, campos necesarios para agregar un tema");
 }
 }
+
     /* if (document.getElementById("titulo-curso").value){
         su.push(document.getElementById("titulo-curso").value);
         

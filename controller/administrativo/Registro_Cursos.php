@@ -30,8 +30,8 @@ $obj->insertar($arreglo);
 
 
 $servername = "localhost";
-$username = "AdminCISCIG";
-$password = "ColegioCISCIG2023.";
+$username = "AdminCISSIG";
+$password = "ColegioCiscig2023.";
 $dbname = "colegiociscig";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -73,7 +73,7 @@ for($i=0;$i<count($lista1);$i++){
         }
     }
 
-    $obj->insertarTema($incre,$lista1[$i][0][0]);
+    $obj->insertarTema($incre,$lista1[$i][0]);
 
     array_push($tema,$incre);
     $incre++;
@@ -124,9 +124,9 @@ $sql = ("SELECT (IdSubT) FROM subtemas");
         }
 
 for($i=0;$i<count($lista1);$i++){
-    for($j=1;$j<count($lista1[$i][0]);$j++){
+    for($j=1;$j<count($lista1[$i]);$j++){
 
-        $obj->insertarSub($incres,$lista1[$i][0][$j]);
+        $obj->insertarSub($incres,$lista1[$i][$j]);
         $obj->temsub($tema[$i],$incres);
         
         
@@ -143,6 +143,17 @@ for($i=0;$i<count($lista1);$i++){
         echo "";
     }
 }  */
+
+/* for($i=0;$i<count($lista1);$i++){
+    for($j=1;$j<count($lista1[$i]);$j++){
+        echo "";
+        echo "INCRES". $incres;
+
+        echo "datos chidos" . $lista1[$i][$j];
+        $incres = $incres+1;
+        echo "";
+    }
+} */
 echo "Datos insertados correctamente";
 
 
