@@ -537,7 +537,6 @@ boton_enviar.addEventListener("click",(e)=>{
 });
 
 function validar(bandera){
-    console.log(bandera)
     const guardar = document.getElementById('boton_registrar');
     if(bandera == false ){        
         guardar.style.border = "3px solid red";        

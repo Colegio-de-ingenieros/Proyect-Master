@@ -70,104 +70,60 @@ if(
     $checkboxcertificacion=$_POST["checkboxcertificacionoculto"];
     $checkboxlaboral=$_POST["checkboxlaboraloculto"];
 
-    $bandn = 0;
-    $bandc = 0;
-    $bandM = 0;
-    $bandm = 0;
-    $confi = False;
-    if($contra == $confiContra){
-        if(strlen($contra) >= 8){
-            for($i=0;$i<strlen($contra);$i++){
-                //verificar que tenga numeros
-                if(ord($contra[$i])>=48 and ord($contra[$i])<=57){
-                    $bandn ++;
-                }
-                //verificar que tenga caracteres especiales
-                if((ord($contra[$i]) <=47 or ord($contra[$i])>=58) and (ord($contra[$i])<=64 or ord($contra[$i])>=91) and (ord($contra[$i])<=96 or ord($contra[$i])>=123)){
-                    $bandc ++;
-                }
 
-                //verificar que tenga mayusculas
-                if(ord($contra[$i])>=65 and ord($contra[$i])<=90){
-                    $bandM ++;
-                }
-
-                //verificar que tenga minusculas
-                if(ord($contra[$i])>=97 and ord($contra[$i])<=122){
-                    $bandm ++;
-                }
-            }
-
-            if($bandn == 0){
-                echo json_encode("numeros");
-                //$in->alertas("validacion", 'Datos inválidos', 'La contraseña debe contener números');
-            }
-
-            else if($bandM == 0 or $bandm == 0){
-                echo json_encode("mayusculas");
-                //$in->alertas("validacion", 'Datos inválidos', 'La contraseña debe contener mayúsculas y minúsculas');
-            }
-
-            else if($bandc == 0){
-                echo json_encode("caracteres");
-                //$in->alertas("validacion", 'Datos inválidos', 'La contraseña debe tener al menos un carácter especial');
-            }
-
-            else{
-                    $password = password_hash($contra, PASSWORD_DEFAULT);
-                    if($pasantia=='opcion1'){
-                        $pasan=1;
-                    }else{
-                        $pasan=0;
-                    }
+    if($pasantia=='opcion1'){
+        $pasan=1;
+    }else{
+        $pasan=0;
+    }
                     
-                
-                    if($antecedentes=='opcion1'){
-                        $antece=1;
-                    }else{
-                        $antece=0;
-                    }
+    if($antecedentes=='opcion1'){
+        $antece=1;
+    }else{
+        $antece=0;
+    }
                     
-                
-                    if($veridicas=='opcion1'){
-                        $veridi=1;
-                    }else{
-                        $veridi=0;
-                    }
-                    
-                
-                    if($avisos=='opcion1'){
-                        $aviso=1;
-                    }else{
-                        $aviso=0;
-                    }
-                
+    if($veridicas=='opcion1'){
+        $veridi=1;
+    }else{
+        $veridi=0;
+    }
     
-                    $objeto->numero_inteligente($correo);
-                    $resultado = $objeto->inserciones();
-                    $resultado1=$objeto->insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $codigoP, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp, $checkboxlaboral,$checkboxcertificacion);
-                    
+    if($avisos=='opcion1'){
+        $aviso=1;
+    }else{
+        $aviso=0;
+    }
+
+
                 
-                    if($resultado1==False){
-                        echo json_encode('exito');
-                        
-                    }else{
-                        echo json_encode('no exito');
-                        
-                    }
-            }
-        }
+    $password = password_hash($contra, PASSWORD_DEFAULT);
 
-        else{
-            echo json_encode("longitud");
-            //$in->alertas("validacion", 'Datos inválidos', 'La contraseña debe tener un mínimo de 8 caracteres');
-        }
-    }
+    $idUsua = $objeto->id_usuaperso();
+    $idEmpPerso = $objeto->obtener_id_emp_perso();
+    $idFuncion = $objeto->obtener_id_empresa_funcion();
+    $idCertExt = $objeto->obtener_id_certificacion();
+    $result = $objeto->numero_inteligente($idUsua);
+    $consecutivo=$result[0]; 
+    $numIntel =$result[1];
 
-    else {
-        echo json_encode("coincidencia");
-        //$in->alertas("validacion", 'Datos inválidos', 'La contraseña y la confirmación no coinciden');
+    //echo json_encode($checkboxlaboral);
+
+    $u=$objeto->insertar_usuaperso($idUsua, $nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp, $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $gradoEst, $colonia, $consecutivo, $numIntel, $checkboxcertificacion, $checkboxlaboral);
+
+    //echo json_encode($u);
+
+    //falta mandar el correo
+
+    if($u==true){
+        echo json_encode('exito');
+        
+    }else{
+        echo json_encode('no exito');
+        
     }
+    
+                    
 
     
     
