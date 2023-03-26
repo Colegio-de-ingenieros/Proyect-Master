@@ -83,6 +83,15 @@
         public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp, $checkboxlaboral,$checkboxcertificacion){
 
             $arreglo = $this->obtener_numero_consecutivo();
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
 
             $numero_con_ceros = $this->agregar_ceros($numero);
             $id = "P".$numero_con_ceros;
@@ -125,12 +134,7 @@
 //---------------------------------------------------------------------------------------------------
             //ingresa los datos de la tabla usuaperso
             $this->conexion_bd();
-            if ($checkboxcertificacion == "activado"){
-                $nombre = "activado";
-            }
-            if ($checkboxlaboral == "activado"){
-                $apeP = "activado";
-            }
+            
             $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
             VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
             $a1 = [":id"=>$id, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$contra];
