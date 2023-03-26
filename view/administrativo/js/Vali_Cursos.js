@@ -277,7 +277,7 @@ function te() {
     su = []
     contador = 0;
         document.getElementById("registraform").disabled = false;
-    alert("Se ha agregado un tema al registro");
+    //alert("Se ha agregado un tema al registro");
     b=false;
     c=1;
     }
@@ -297,7 +297,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         document.getElementById("Subtitulo-curso").value = "";
         console.log(("if")); 
         contador++;
-        alert("Se ha agregado un subtema al tema");
+        alert("Se ha añadido el tema con su subtema");
         b=true;
         document.getElementById("registraform").disabled = true;
         document.getElementById("temas").disabled = false;
@@ -308,7 +308,7 @@ if (document.getElementById("Subtitulo-curso").value && document.getElementById(
         su.push(document.getElementById("Subtitulo-curso").value); 
         console.log(su);
         document.getElementById("Subtitulo-curso").value = "";
-        alert("Se ha agregado un subtema");
+        alert("Se ha añadido un subtema");
         document.getElementById("registraform").disabled = true;
         document.getElementById("temas").disabled = false;
     }

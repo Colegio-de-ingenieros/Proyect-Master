@@ -81,8 +81,11 @@ $respuesta .='
 		footer p {
 			margin: 0;
 		}
+
 		li {
 			text-align: left;
+		}
+		p {
 		}
 	</style>
 <body>
@@ -113,7 +116,7 @@ $respuesta .='
 
 	<div class="nombre_ventana">
 	  <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-	  <h1 class="nombre_Ventana">Información del curso</h1>
+	  <h1 class="nombre_Ventana">Cursos</h1>
 	</div>
 
   </div>
@@ -270,20 +273,16 @@ $respuesta .='
 
 	<main>
 	<section>
-		<h1>'. $nombre .'</h1>
-        <h2>'. $clave .'</h2>
+		<h1 style="width: 500px; word-wrap: break-word;">'. $nombre .'</h1>
+        <h4>'. $clave .'</h4>
 	</section>
 		<section>
 			<h2>Objetivo</h2>
-			<p>'. $objetivo .'</p>
+			<p style="width: 500px; word-wrap: break-word;">'. $objetivo .'</p>
 		</section>
 		<section>
 			<h2>Duración</h2>
             <h1>'. $duracion .' hrs</h1>
-		</section>
-		<section>
-			<h2>Estatus</h2>
-            <h1>'. $estatus.'</h1>
 		</section>
 		<section>
 			<h2>Temario</h2>
@@ -296,10 +295,10 @@ $respuesta .='
                 $tem = $datost[$i]["NomTema"];
 				$sub = $datost[$i]["NomSubT"];
 				if ($rec != $tem){
-					$respuesta .= '<h3>'.$tem .'</h3><br>';
+					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
 					$respuesta .= 
 					'<ul class="tema">
-						<li class = "subtema">'. $sub .'</li>
+						<li class = "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
 					</ul>';
 					$rec = $datost[$i]["NomTema"];
 
@@ -307,7 +306,7 @@ $respuesta .='
 				else {
 					$respuesta .= 
 					'<ul>
-						<li class= "subtema">'. $sub .'</li>
+						<li class= "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
 					</ul>';
 				}
                 
@@ -319,9 +318,7 @@ $respuesta .='
             $respuesta .=    '</p>
 		</section> 
 	</main>
-	<footer>
-		<p>Curso ofrecido por el CISCIG</p>
-	</footer>
+
 </body>
 ';
 $respuesta .= '</html>';

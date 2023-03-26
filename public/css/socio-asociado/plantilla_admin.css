@@ -37,51 +37,23 @@ body{
     background-color: var(--color-gray);
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 13rem;
-}
-
-/* Main y section */
-.section-main{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-}
-
-.cabezera{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-h1.nombre_Ventana{
-    color: #FFFF;
-    font-weight: 900;
-    font-size: 48px;
-}
-
 header{
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     background: #fff;
-    z-index: 1;
-}
-
-img.logo_ciscig{
-    padding-right: 10px;
-    width: 70px;
-}
-.nombre_ventana{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
+
+.logo_ciscig{
+    padding-right: 10px;
+    width: 210px;
+}
+
 
 .boton-cerrar-session{
     padding-right: 50px;
@@ -97,22 +69,7 @@ img.logo_ciscig{
     background: var(--color-quaternary);
     color: var(--color-white);
 }
-/*HEADER SUPERIOR*/
 
-.header_superior{
-    background-color: #273645;
-    height: 125px;
-    max-width: 100%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-
-}
-.titulo{
-    font-size: 12px;
-    padding: 0px 50px;
-}
 
 .logo{
     width: 150px;
@@ -121,41 +78,14 @@ img.logo_ciscig{
     cursor: pointer;
 }
 
-/*Barra de busqueda*/
-.input-buscar{
-    padding:0 50px 0 50px;
-    display: flex;
-}
-.barra-busqueda{
-    background-color: #fff;
-    width: fit-content;
-    border: 1px solid silver;
-    border-radius: 30px;
-}
-  
-  .input-buscar input {
-    width: 240px;
-    height: 30px;
-    padding: 0 20px;
-    font-size: 12px;
-    color: #222;
-    outline: none;
-    border: 1px solid transparent;
-    border-radius: 30px;
-  }
 
-/*Barra Menu*/
-.container_menu{
-    width: 100%;
-    height: 70px;
-    background: #ffffff;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    padding: 0px 20px;
-    
-  }
+
 
 .menu{
     height: 100%;
+    display: flex;
+    align-items: center;
+
 }
 
 nav{
@@ -183,9 +113,8 @@ nav > ul > li > a{
     height: 100%;
     display: flex;
     align-items: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 900;
+    font-size: 1rem;
+    font-weight: 800;
     transition: all 300ms ease;
     color: #000000;
 }
@@ -245,7 +174,6 @@ nav ul li ul li a{
     margin-top: 15px;
     font-size: 12px;
     font-weight: 800;
-    text-transform: uppercase;
     transition: all 300ms ease;
 }
 
@@ -267,46 +195,23 @@ nav ul li ul li a:hover{
     align-items: center;
 }
 
-.label__check{
+#label__check{
     width: 26px;
     height: 100%;
-    display: none;
+    margin-left: 20px;  
 }
 
 #check__menu{
     display: none;
 }
 
-@media screen and (max-width: 1250px){
+@media screen and (max-width: 990px){
     main{
         margin-top: 8.5rem;
     }
-    li.logo_menu{
-        display: none;
-    }
-    h1.nombre_Ventana{
-        color: #FFFF;
-        font-weight: 900;
-        font-size: 30px;
-    }
-    .container_menu{
-        height: fit-content;
-    }
+    
     .btn-cerrar-session{
         display: flex;
-    }
-
-    .header_superior{
-        padding: 5px;
-    }
-    .titulo{
-        font-size: 8px;
-    }
-    .logo{
-        width: 125px;
-    }
-    .cabezera{
-        margin-top: 50px;
     }
 
     nav > ul{
@@ -322,7 +227,8 @@ nav ul li ul li a:hover{
         z-index: 100;
         opacity: 0;
         *visibility: hidden;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+        /* box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); */
+        box-shadow: var(--shadow-1);
     }
     
     nav > ul > li > a:hover{
@@ -354,30 +260,25 @@ nav ul li ul li a:hover{
         height: 70%;
         visibility: visible;
         opacity: 1;
+        margin-top: -92px;
     }
     .contePlantilla{
         margin: 8em auto; 
     }
 }
 
-@media screen and (max-width: 760px) {
-    .nombre_Ventana{
-        font-size: 1rem;
-    }
-}
-
-@media screen and (max-width: 650px){
-
-    main{
-        margin-top: 10.5rem;
-    }
-    img.logo_ciscig{
+@media screen and (max-width: 600px){
+    .logo_ciscig{
         padding-right: 10px;
-        width: 54px;
+        width: 150px;
     }
 
-    .titulo{
-        padding: 0 1rem;
+    .btn-cerrar-session{
+        font-size: 0.7rem;
+        margin-right: -1.5rem;
     }
-    
+
+    #check__menu:checked ~ nav > ul {
+        margin-top: -115px;
+    }
 }

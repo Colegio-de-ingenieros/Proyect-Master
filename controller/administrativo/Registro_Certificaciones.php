@@ -67,12 +67,13 @@ class RegistroCert{
             $tipo = $_FILES['inputLogo']['type'];
             $tamano = $_FILES['inputLogo']['size'];
             $temp = $_FILES['inputLogo']['tmp_name'];
-
             //verifica que el archivo sea una imagen
             if (!((strpos($tipo, "gif") || strpos($tipo, "jpeg") || strpos($tipo, "jpg") || strpos($tipo, "png")))) {
                 echo json_encode("El archivo debe estar en un formato de imágen (.gif, .jepg, .jpg o .png)");
             }
-            
+            if(intval($tamano)>1000000){
+                echo json_encode("El tamaño de la imagen debe ser menor a 1 MB");
+            }
             else{
                 $this->logo = file_get_contents($temp);
                 $this->insertar();
