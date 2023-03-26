@@ -276,15 +276,15 @@ function te() {
 else if (document.getElementById("titulo-curso").value && document.getElementById("Subtitulo-curso").value){
     alert("Presione el boton de Añadir")
 }
-else if (!document.getElementById("Subtitulo-curso").value && !document.getElementById("titulo-curso").value){
+else if (document.getElementById("Subtitulo-curso").value=="" && document.getElementById("titulo-curso").value==""){
     alert("Agregue tema y subtema")
 }
-else if (document.getElementById("Subtitulo-curso").value){
+else if (document.getElementById("Subtitulo-curso").value ==""){
     alert("Agregue tema")
 }
-else if (document.getElementById("titulo-curso").value){ {
+else if (document.getElementById("titulo-curso").value == ""){ 
     alert("Agregue subtema");
-}
+
 }
 }
 function subt(){

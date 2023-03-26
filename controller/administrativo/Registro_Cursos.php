@@ -30,8 +30,8 @@ $obj->insertar($arreglo);
 
 
 $servername = "localhost";
-$username = "AdminCISSIG";
-$password = "ColegioCiscig2023.";
+$username = "AdminCISCIG";
+$password = "ColegioCICSCIG2023.";
 $dbname = "colegiociscig";
 
 $conn = mysqli_connect($servername, $username, $password, $dbname);
