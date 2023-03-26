@@ -230,6 +230,8 @@
                     </div>
                 </div>
             </div>
+            <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
+            <input type="checkbox" id="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación*<br>
 
             <br>
             <p class="subtitulo-1"> Certificación</p>
@@ -296,6 +298,17 @@
                     <input type="checkbox" name="opcion1" id="pasantia2" value="opcion2" onclick="deseleccionar1('opcion2')">&nbsp;&nbsp;&nbsp;No<br>
                 </div>
             </div>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    
+                </div>
+                <div class="check-box">
+                    <input type="hidden" id="checkboxlaboralculto" name="checkboxlaboraloculto" value="desactivado">
+                    <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales*<br>
+                </div>
+            </div>
+            
             
             
             <br>
@@ -446,6 +459,63 @@
               }
             }
         }
+
+        const checkbox = document.getElementById('checkboxcertificacion');
+        const checkboxoculto = document.getElementById('checkboxcertificacionoculto');
+        
+        const input1 = document.getElementById('nomCert');
+        const input2 = document.getElementById('orgCert');
+        const input3 = document.getElementById('fechaICert');
+        const input4 = document.getElementById('fechaFCert');
+        
+        
+
+        checkbox.addEventListener('click', function() {
+        if (checkbox.checked) {
+        checkboxoculto.value = "activado";
+        input1.setAttribute('required', '');
+        input2.setAttribute('required', '');
+        input3.setAttribute('required', '');
+        input4.setAttribute('required', '');
+        } else {
+        checkboxoculto.value = "desactivado";
+        input1.removeAttribute('required');
+        input2.removeAttribute('required');
+        input3.removeAttribute('required');
+        input4.removeAttribute('required');
+        }
+        });
+
+        const checkbox2 = document.getElementById('checkboxlaboral');
+        const checkboxoculto2 = document.getElementById('checkboxlaboraloculto');
+        const input5 = document.getElementById('nomEmpPerso');
+        const input6 = document.getElementById('puestoEmpPerso');
+        const input7 = document.getElementById('correoEmpPerso');
+        const input8 = document.getElementById('telFEmpPerso');
+        const input9 = document.getElementById('ExtTelFEmp');
+        const input10 = document.getElementById('funcionEmpPerso');
+        
+        
+
+        checkbox2.addEventListener('click', function() {
+        if (checkbox.checked) {
+            checkboxoculto2.value = "activado";
+        input5.setAttribute('required', '');
+        input6.setAttribute('required', '');
+        input7.setAttribute('required', '');
+        input8.setAttribute('required', '');
+        input9.setAttribute('required', '');
+        input10.setAttribute('required', '');
+        } else {
+            checkboxoculto2.value = "desactivado";
+        input5.removeAttribute('required');
+        input6.removeAttribute('required');
+        input7.removeAttribute('required');
+        input8.removeAttribute('required');
+        input9.removeAttribute('required');
+        input10.removeAttribute('required');
+        }
+        });
 
       </script>
       <script src="../registro/js/Alertas_personal.js"></script>

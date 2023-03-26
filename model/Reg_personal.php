@@ -80,7 +80,7 @@
 
         
         
-        public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp){
+        public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp, $checkboxlaboral,$checkboxcertificacion){
             
             $arreglo = $this->obtener_numero_consecutivo();
             $numero = "";
@@ -204,18 +204,23 @@
 
             $query=[$q1, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10];
             $parametros=[$a1, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10];
-
+            
             $resultado=$this->insertar_eliminar_actualizar($q1, $a1);
             $resultado1=$this->insertar_eliminar_actualizar($q3, $a3);
             $resultado2=$this->insertar_eliminar_actualizar($q4, $a4);
-            $resultado3=$this->insertar_eliminar_actualizar($q5, $a5);
-            $resultado4=$this->insertar_eliminar_actualizar($q6, $a6);
+
+
             $resultado5=$this->insertar_eliminar_actualizar($q7, $a7);
             $resultado6=$this->insertar_eliminar_actualizar($q8, $a8);
+
+            
+            $resultado3=$this->insertar_eliminar_actualizar($q5, $a5);
+            $resultado4=$this->insertar_eliminar_actualizar($q6, $a6);
             $resultado7=$this->insertar_eliminar_actualizar($q9, $a9);
             $resultado8=$this->insertar_eliminar_actualizar($q10, $a10);
-            $this->cerrar_conexion();
 
+            $this->cerrar_conexion();
+            
             
         }
 
