@@ -64,11 +64,15 @@ if(
         //establecemos el tipo de usuario que es la empresa
         $objeto->establecer_tipo_usuario($rfc_empresa,3);
         $objeto->establecer_colonia_empresa($rfc_empresa,$_POST["colonia"]);
-        $objeto->numero_inteligente($rfc_empresa,$_POST["ti_correo"],$_POST["nombre"]);
+        $numero = $objeto->numero_inteligente($rfc_empresa);
+        
+        
 
         $resultado = $objeto->inserciones();
         if ($resultado) {
+            $objeto->mandar_correo($_POST["correo"],$numero,$_POST["nombre"]);
             $data = ["Empresa registrada con éxito. Verifique su correo y guarde el número inteligente que le ha sido enviado"];
+            
         }else{
             $data = ["La empresa no se registro"];
         }
