@@ -98,7 +98,7 @@ class Alta_empresa extends Crud_bd{
        
     
 
-        $sql_area = "INSERT INTO areempresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
+        $sql_area = "INSERT INTO areaempresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
                 ."ExtenTelFEncArea, CorreoEncArea) VALUES (:id,:nom,:pa,:ma,:tel,:ext,:correo)";
         $parametros_area = [":id"=>$id, ":nom"=>$nombre,":pa"=>$paterno,
                             ":ma"=>$materno,":tel"=>$telefono,":ext"=>$extension,
