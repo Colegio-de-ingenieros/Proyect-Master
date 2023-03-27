@@ -197,7 +197,7 @@ class Alta_empresa extends Crud_bd{
      
 
     }
-    public function mandar_correo($destinatario,$numero_inteligente,$nombre)
+    function mandar_correo($destinatario,$numero_inteligente,$nombre)
     {   
         $remitente = "ecateam22@gmail.com";
         $asunto = "Bienvenido a CISCIG!!!";
