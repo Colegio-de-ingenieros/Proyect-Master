@@ -10,7 +10,7 @@ class MostrarTrabajadores{
     }
     //hace la consulta principal de los datos de las certificaciones
     function getTrabajadores(){
-        $querry = "SELECT * FROM Trabajadores";
+        $querry = "SELECT * FROM trabajadores";
         $resultados = $this->base->mostrar($querry);
 
         return $resultados;
