@@ -14,7 +14,7 @@ botonRegistrar.addEventListener("click", (e) => {
     }
     if (bNomPro==false){
         nom_proyecto.style.border = "3px solid red";
-    }else if(bObjPro=false){
+    }else if(bObjPro==false){
         obj_proyecto.style.border = "3px solid red";
     }else if(bMonPro==false){
         monto_proyecto.style.border = "3px solid red";
@@ -67,7 +67,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
         obj_proyecto.removeAttribute("style");
         bObjPro = true
     }
-    /*validar(bObjPro);*/
+    validar(bObjPro);
 })
 
 /* Input Monto Proyecto*/
