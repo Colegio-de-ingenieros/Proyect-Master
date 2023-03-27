@@ -8,7 +8,7 @@
     <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-    <link rel="stylesheet" href="../../public/css/administrativo/Vista_Trabajadores.css">
+    <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script> -->
