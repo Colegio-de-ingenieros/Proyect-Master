@@ -40,7 +40,7 @@ const expresiones = {
     nombre_o:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]?){1,100}$/,
     nombre_e:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,100}$/,
-    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
+    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
     funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9\s]{1,60}$/,
 }
 
@@ -300,8 +300,9 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 /* Input nombre certificaciones*/
 formulario.nomCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let certificaciones=document.getElementById('checkboxcertificacion');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && certificaciones.checked){
         formulario.nomCert.value = valorInput
 
          // Eliminar caracteres especiales
@@ -315,14 +316,18 @@ formulario.nomCert.addEventListener('keyup', (e) => {
             bandNomCerti = true;
         }
         validar(bandNomCerti);
+    }else{
+        validar(true);
     }
+    
 });
 
 /* Input organizacion certificaciones*/
 formulario.orgCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let certificaciones=document.getElementById('checkboxcertificacion');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && certificaciones.checked){
 
     
 	formulario.orgCert.value = valorInput
@@ -338,14 +343,17 @@ formulario.orgCert.addEventListener('keyup', (e) => {
         bandOrgCerti = true;
     }
     validar(bandOrgCerti);
+    }else{
+        validar(true);
     }
 });
 
 /* Input nombre empresa*/
 formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.nomEmpPerso.value = valorInput
@@ -361,20 +369,23 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
         bandEmpLab = true;
     }
     validar(bandEmpLab);
+    }else{
+        validar(true);
     }
 });
 
 /* Input puesto empresa*/
 formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
 
     if (!expresiones.puesto_e.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
@@ -384,14 +395,17 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
         bandPuesto = true;
     }
     validar(bandPuesto);
+    }else{
+        validar(true);
     }
 });
 
 /* Input correo empresa*/
 formulario.correoEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.correoEmpPerso.value = valorInput
@@ -410,14 +424,18 @@ formulario.correoEmpPerso.addEventListener('keyup', (e) => {
         bandCorreoLab = true;
     }
     validar(bandCorreoLab);
-}
+    }else{
+        validar(true);
+    }
+    
 });
 
 /* Input ext telefono fijo*/
 formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.ExtTelFEmp.value = valorInput
@@ -436,14 +454,17 @@ formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
         bandExtTelMofi = true;
     }
     validar(bandExtTelMofi);
+    }else{
+        validar(true);
     }
 });
 
 /* Input telefono fijo empresa*/
 formulario.telFEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.telFEmpPerso.value = valorInput
@@ -462,15 +483,18 @@ formulario.telFEmpPerso.addEventListener('keyup', (e) => {
         bandTelMofi = true;
     }
     validar(bandTelMofi);
+    }else{
+        validar(true);
     }
 });
 
 /* Input funcion empresa*/
 formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    let laboral=document.getElementById('checkboxlaboral');
 
     
-    if(valorInput !==""){
+    if(valorInput !=="" && laboral.checked){
 
     
 	formulario.funcionEmpPerso.value = valorInput
@@ -485,8 +509,11 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
         bandFunciones = true;
     }
     validar(bandFunciones);
+    }else{
+        validar(true);
     }
 });
+
 
 const boton_enviar = document.getElementById("boton_registrar");
 boton_enviar.addEventListener("click",(e)=>{
@@ -513,22 +540,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.cpPerso.style.border = "3px solid red";
     }else if(bandCalle == false){
         formulario.callePerso.style.border = "3px solid red";
-    }else if(bandNomCerti == false){
-        formulario.nomCert.style.border = "3px solid red";
-    }else if(bandOrgCerti == false){
-        formulario.orgCert.style.border = "3px solid red";
-    }else if(bandEmpLab == false){
-        formulario.nomEmpPerso.style.border = "3px solid red";
-    }else if(bandPuesto == false){
-        formulario.puestoEmpPerso.style.border = "3px solid red";
-    }else if(bandCorreoLab == false){
-        formulario.correoEmpPerso.style.border = "3px solid red";
-    }else if(bandExtTelMofi == false){
-        formulario.ExtTelFEmp.style.border = "3px solid red";
-    }else if(bandTelMofi == false){
-        formulario.telFEmpPerso.style.border = "3px solid red";
-    }else if(bandFunciones == false){
-        formulario.funcionEmpPerso.style.border = "3px solid red";
     }else{
         validar(true);
     }
@@ -538,15 +549,16 @@ boton_enviar.addEventListener("click",(e)=>{
 
 function validar(bandera){
     const guardar = document.getElementById('boton_registrar');
-    if(bandera == false ){        
+
+    if(bandera == false){        
         guardar.style.border = "3px solid red";        
         guardar.disabled=true;
+        console.log("No pase validacion");
         
-    }
-    else{
+    }else{
         guardar.removeAttribute("style");
         guardar.disabled=false;
-        //console.log("pase validacion");
+        console.log("pase validacion");
         
 
     }
