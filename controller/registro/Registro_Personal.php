@@ -74,6 +74,7 @@ if(
     //echo $checkboxlaboral;
 
 
+
     if($pasantia=='opcion1'){
         $pasan=1;
     }else{

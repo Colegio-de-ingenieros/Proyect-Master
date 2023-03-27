@@ -66,22 +66,20 @@ formulario.nomPerso.addEventListener('keyup', (e) => {
 /* Input apellidos */
 formulario.apePPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-
-    if(valorInput !==""){
-        formulario.apePPerso.value = valorInput
-        
-        // Eliminar caracteres especiales
-        .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    formulario.apePPerso.value = valorInput
     
-        if (!expresiones.apellidos.test(valorInput)) {
-            formulario.apePPerso.style.border = "3px solid red";
-            bandAP = false;
-        }else{
-            formulario.apePPerso.removeAttribute("style");
-            bandAP = true;
-        }
-        validar(bandAP);
+    // Eliminar caracteres especiales
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+
+    if (!expresiones.apellidos.test(valorInput)) {
+        formulario.apePPerso.style.border = "3px solid red";
+        bandAP = false;
+    }else{
+        formulario.apePPerso.removeAttribute("style");
+        bandAP = true;
     }
+    validar(bandAP);
+
 	
 });
 
@@ -234,8 +232,7 @@ formulario.telFPerso.addEventListener('keyup', (e) => {
 formulario.telMPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-    if(valorInput !==""){
-        formulario.telMPerso.value = valorInput
+    formulario.telMPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
@@ -251,7 +248,7 @@ formulario.telMPerso.addEventListener('keyup', (e) => {
         bandTelM = true;
     }
     validar(bandTelM);
-    }
+    
 	
 });
 
@@ -299,10 +296,11 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 
 /* Input nombre certificaciones*/
 formulario.nomCert.addEventListener('keyup', (e) => {
+
 	let valorInput = e.target.value;
     let certificaciones=document.getElementById('checkboxcertificacion');
 
-    if(valorInput !=="" && certificaciones.checked){
+    if(valorInput !="" && certificaciones.checked){
         formulario.nomCert.value = valorInput
 
          // Eliminar caracteres especiales
@@ -327,7 +325,7 @@ formulario.orgCert.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let certificaciones=document.getElementById('checkboxcertificacion');
 
-    if(valorInput !=="" && certificaciones.checked){
+    if(valorInput !="" && certificaciones.checked){
 
     
 	formulario.orgCert.value = valorInput
@@ -353,7 +351,7 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.nomEmpPerso.value = valorInput
@@ -379,7 +377,7 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.puestoEmpPerso.value = valorInput
@@ -405,7 +403,7 @@ formulario.correoEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.correoEmpPerso.value = valorInput
@@ -435,7 +433,7 @@ formulario.ExtTelFEmp.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.ExtTelFEmp.value = valorInput
@@ -464,7 +462,7 @@ formulario.telFEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.telFEmpPerso.value = valorInput
@@ -494,7 +492,7 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
     let laboral=document.getElementById('checkboxlaboral');
 
     
-    if(valorInput !=="" && laboral.checked){
+    if(valorInput !="" && laboral.checked){
 
     
 	formulario.funcionEmpPerso.value = valorInput
@@ -522,8 +520,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.nomPerso.style.border = "3px solid red";
     }else if(bandAP == false){
         formulario.apePPerso.style.border = "3px solid red";
-    }else if(bandAM == false){
-        formulario.apeMPerso.style.border = "3px solid red";
     }else if(bandEmail == false){
         formulario.correoPerso.style.border = "3px solid red";
     }else if(bandContra == false){
