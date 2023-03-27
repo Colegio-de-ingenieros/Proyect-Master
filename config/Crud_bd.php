@@ -2,10 +2,15 @@
 /*
 * 
 * Este archivo crea las consultas para una base de datos en phpmyadmin
-*/
+
 define("HOST", "mysql:host=localhost;");
 define("DBNAME", "dbname=colegiociscig");
 define("USUARIO", "AdminCISCIG");
+define("PASSWORD", 'ColegioCISCIG2023.');
+*/
+define("HOST", "mysql:host=localhost;");
+define("DBNAME", "dbname=u283658544_colegiociscig");
+define("USUARIO", "u283658544_colegiociscig");
 define("PASSWORD", 'ColegioCISCIG2023.');
 
 
