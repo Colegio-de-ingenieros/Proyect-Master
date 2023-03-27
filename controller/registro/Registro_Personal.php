@@ -118,7 +118,7 @@ if(
     //echo json_encode($u);
 
     //falta mandar el correo
-
+    $objeto->mandar_correo($correo,$numIntel,$nombre);
     if($u==true){
         echo json_encode('exito');
         
