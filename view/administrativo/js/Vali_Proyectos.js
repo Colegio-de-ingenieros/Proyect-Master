@@ -26,7 +26,7 @@ botonRegistrar.addEventListener("click", (e) => {
 
 /*Funciones que define las distinas expresiones para validar los campos*/
 const expresiones = {
-    NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s .,]{1,60}$/,
+    NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s.,]{1,60}$/,
     ObjPro:/^[a-zA-ZÁ-ý\s ,.]{1,10000}$/,
     MonPro: /^[0-9]+(.([0-9])+)*$/,
 
@@ -38,7 +38,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
 
 	formulario.nom_proyecto.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.NomPro.test(valorInput)) {
         nom_proyecto.style.border = "3px solid red";
@@ -47,7 +47,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
         nom_proyecto.removeAttribute("style");
         bNomPro = true
     }
-    /*validar(bNomPro);*/
+    validar(bNomPro);
 })
 
 /* Input Objetivo Proyecto*/
@@ -58,7 +58,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
     // Eliminar numeros
 	.replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
-    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.ObjPro.test(valorInput)) {
         obj_proyecto.style.border = "3px solid red";
@@ -77,7 +77,7 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     //Elimina letras
-    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMñÑ]/g, '')
+    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
     // Eliminar caracteres especiales
    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´':"\\|<>\/?]/g, '')
     // Eliminar el ultimo espaciado
