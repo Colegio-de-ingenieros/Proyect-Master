@@ -12,7 +12,7 @@
 
         //retorna true si el id que recibe ya esta en la base y false si no
         function buscarPorId($id){
-            $querry = "SELECT * FROM certInterna
+            $querry = "SELECT * FROM certinterna
             WHERE IdCerInt = :id";
 
             $arre = [":id"=>$id];
@@ -30,7 +30,7 @@
 
         //busca el ultimo id de la tabla certificaciones internas
         function buscarUltimoIdCert(){
-            $querry = "SELECT * FROM certInterna";
+            $querry = "SELECT * FROM certinterna";
 
             $resultados = $this->base->mostrar($querry);
 
