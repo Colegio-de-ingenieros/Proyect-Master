@@ -98,7 +98,7 @@ class Alta_empresa extends Crud_bd{
        
     
 
-        $sql_area = "INSERT INTO areaEmpresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
+        $sql_area = "INSERT INTO areempresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea,"
                 ."ExtenTelFEncArea, CorreoEncArea) VALUES (:id,:nom,:pa,:ma,:tel,:ext,:correo)";
         $parametros_area = [":id"=>$id, ":nom"=>$nombre,":pa"=>$paterno,
                             ":ma"=>$materno,":tel"=>$telefono,":ext"=>$extension,
@@ -156,7 +156,7 @@ class Alta_empresa extends Crud_bd{
         return $resultado;
 
     }
-    public function numero_inteligente($rfc_empresa,$correo_empresa)
+    public function numero_inteligente($rfc_empresa,$correo_empresa,$nombre)
     {
         # genera el numero inteligente
         $mydate=getdate(date("U"));
@@ -193,15 +193,15 @@ class Alta_empresa extends Crud_bd{
 
        
         
-        //$this->mandar_correo($correo_empresa);
+        $this->mandar_correo($correo_empresa,$numero_inteligente,$nombre);
      
 
     }
-    public function mandar_correo($destinatario)
+    public function mandar_correo($destinatario,$numero_inteligente,$nombre)
     {   
         $remitente = "ecateam22@gmail.com";
         $asunto = "Bienvenido a CISCIG!!!";
-        $cuerpo = "El nombre de la empresa hora sera asociado del Colegio de Ingenieros en Sistemas  Computacionales";
+        $cuerpo = "La empresa ".$nombre ." ahora sera asociado del Colegio de Ingenieros en Sistemas Computacionales.Este será tu número inteligente:".$numero_inteligente;
         //manda el correo electronico
         ini_set( 'display_errors', 1 );
         error_reporting( E_ALL );

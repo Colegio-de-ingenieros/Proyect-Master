@@ -64,7 +64,7 @@ if(
         //establecemos el tipo de usuario que es la empresa
         $objeto->establecer_tipo_usuario($rfc_empresa,3);
         $objeto->establecer_colonia_empresa($rfc_empresa,$_POST["colonia"]);
-        $objeto->numero_inteligente($rfc_empresa,$_POST["ti_correo"]);
+        $objeto->numero_inteligente($rfc_empresa,$_POST["ti_correo"],$_POST["nombre"]);
 
         $resultado = $objeto->inserciones();
         if ($resultado) {
