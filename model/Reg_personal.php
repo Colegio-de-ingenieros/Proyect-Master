@@ -2,230 +2,13 @@
     include('../../config/Crud_bd.php');
 
     class Personal extends Crud_bd{
+        private $base;
 
-        public function agregar_ceros($numero){
-        $ceros = "";
-        $numero_nuevo="";
-        for ($i=0; $i < 4 ; $i++) { 
-            $numero_nuevo = $ceros .$numero;
-            if(strlen($numero_nuevo) == 4){
-                break;
-            }else{
-                $ceros = $ceros . "0";
-            }
-
+        function conexion(){
+            $this->base = new Crud_bd();
+            $this->base->conexion_bd();
         }
 
-        return $numero_nuevo;
-        }
-
-        public function obtener_numero_consecutivo()
-        {
-            # esta funcion te dara el numero en el que se quedaron
-
-            $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
-            
-            $sql = "SELECT COUNT(IdPerso) FROM usuaperso";
-            $resultado = $this->mostrar($sql);
-            $this->cerrar_conexion();
-        
-            return $resultado;
-
-        }
-
-        public function obtener_numero_consecutivo_inteligente()
-        {
-            # esta funcion te dara el numero en el que se quedaron
-
-            $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
-            
-            $sql = "SELECT COUNT(IdNintel) FROM numinteligentes";
-            $resultado = $this->mostrar($sql);
-            $this->cerrar_conexion();
-        
-            return $resultado;
-
-        }
-
-
-        public function obtener_id_personal_emp(){
-
-            $this->conexion_bd();
-            $sql = "SELECT Count(IdEmpPerso) FROM usuapersoemp";
-            $resultado = $this->mostrar($sql);
-            $this->cerrar_conexion();
-        
-            return $resultado;
-        }
-
-        public function obtener_id_empresa_funcion(){
-
-            $this->conexion_bd();
-            $sql = "SELECT Count(IdFuncion) FROM persoempfun";
-            $resultado = $this->mostrar($sql);
-            $this->cerrar_conexion();
-        
-            return $resultado;
-        }
-
-        public function obtener_id_certificacion(){
-
-            $this->conexion_bd();
-            $sql = "SELECT Count(IdCertExt) FROM persocertexterna";
-            $resultado = $this->mostrar($sql);
-            $this->cerrar_conexion();
-        
-            return $resultado;
-        }
-
-        
-        
-        public function insertar_usuaperso($nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $contra, $codigoPostal, $gradoEst, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $certifi, $orgCert, $fechaICert, $fechaFCert, $funcionEmp, $checkboxlaboral,$checkboxcertificacion){
-
-            $arreglo = $this->obtener_numero_consecutivo();
-            $numero = "";
-            if(is_null($arreglo[0][0]) == 1){
-                $numero = 1;
-                
-            }else{
-                $numero = $arreglo[0][0];
-                $numero++;
-                
-            }
-
-            $numero_con_ceros = $this->agregar_ceros($numero);
-            $id = "P".$numero_con_ceros;
-            
-
-            $arreglo1 = $this->obtener_id_personal_emp();
-            $id1 = "";
-            if(is_null($arreglo1[0][0]) == 1){
-                $id1 = 1;
-                
-            }else{
-                $id1 = $arreglo1[0][0];
-                $id1++;
-            }
-
-            $arreglo2 = $this->obtener_id_empresa_funcion();
-            $id2 = "";
-            if(is_null($arreglo2[0][0]) == 1){
-                $id2 = 1;
-                
-            }else{
-                $id2 = $arreglo2[0][0];
-                $id2++;
-            }
-
-            $arreglo3 = $this->obtener_id_certificacion();
-            $id3 = "";
-            if(is_null($arreglo3[0][0]) == 1){
-                $id3 = 1;
-                
-            }else{
-                $id3 = $arreglo3[0][0];
-                $id3++;
-            }
-            $numero_con_ceros5 = $this->agregar_ceros($id3);
-            $id4 = $numero_con_ceros5;
-
-            
-
-//---------------------------------------------------------------------------------------------------
-            //ingresa los datos de la tabla usuaperso
-            $this->conexion_bd();
-            
-            $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
-            VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
-            $a1 = [":id"=>$id, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$contra];
-
-//---------------------------------------------------------------------------------------------------
-            //Ingresa datos en la tabla persotipousua
-
-
-//---------------------------------------------------------------------------------------------------
-            //ingresa datos en la tabla personintel
-            
-
-
-
-//---------------------------------------------------------------------------------------------------
-
-            //ingresa datos en la tabla persoestudios
-            $sql = "SELECT IdColonia FROM
-             estados,municipios,colonias WHERE estados.idestado = municipios.idestado AND
-              municipios.idmunicipio =colonias.idmunicipio AND colonias.codpostal = :cod ";
-            $resultado = $this->mostrar($sql,[":cod"=>$codigoPostal]);
-            $id_colonia=[];
-            for($i=0; $i<count($resultado);$i++){
-                array_push($id_colonia, $resultado[$i]["IdColonia"]);
-                $id_colonia1=$id_colonia[$i];
-            }
-    
-            $q3 = "INSERT INTO persolugares (IdPerso,IdColonia) VALUES(:id2,:colonia)";
-            $a3 = [":id2"=>$id,":colonia"=>$id_colonia1];   
-
-
-//---------------------------------------------------------------------------------------------------
-            //ingresa datos en la tabla persoestudio
-            $q4 = "INSERT INTO persoestudios (IdPerso,IdGrado) VALUES(:id3,:idG)";
-            $a4 = [":id3"=>$id,":idG"=>$gradoEst];
-
-//---------------------------------------------------------------------------------------------------
-            //Ingresa datos en la tabla persocertexterna
-            $q7 = "INSERT INTO persocertexterna (IdPerso,IdCertExt) VALUES(:id4,:idC)";
-            $a7 = [":id4"=>$id,":idC"=>$id4];
-
-            //Ingresa datos en la tabla certexterna
-            $q8 = "INSERT INTO certexterna (IdCerExt, NomCerExt, OrgCerExt, IniCerExt, FinCerExt) VALUES(:idCE,:nombreC, :orgCer, :iniFecha, :finFecha)";
-            $a8 = [":idCE"=>$id4,":nombreC"=>$certifi,":orgCer"=>$orgCert,":iniFecha"=>$fechaICert,":finFecha"=>$fechaFCert];
-
-
-//---------------------------------------------------------------------------------------------------
-            //ingresa datos en la tabla usuapersoemp
-            $q5 = "INSERT INTO usuapersoemp (IdPerso, IdEmpPerso)
-            VALUES(:id4, :idE)";
-            $a5 = [":id4"=>$id, ":idE"=>$id1];
-
-            //ingresa datos en la tabla empresaperso
-            $q6 = "INSERT INTO empresaperso (IdEmpPerso, NomEmpPerso, PuestoEmpPerso, CorreoEmpPerso, TelFEmpPerso, ExtenTelFEmpPerso)
-            VALUES(:idEmpre, :nombre, :puesto, :correo, :telFEmp, :extTelFEmp)";
-            $a6 = [":idEmpre"=>$id1, ":nombre"=>$empresaLab, ":puesto"=>$puestoEmp, ":correo"=>$correoEmp, ":telFEmp"=>$telFEmp, ":extTelFEmp"=>$extTelFEmp];
-
-//---------------------------------------------------------------------------------------------------
-            //Ingresa datos en la tabla persoempfun
-            $q9 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion)
-            VALUES(:id5, :idFun)";
-            $a9 = [":id5"=>$id1, ":idFun"=>$id2];
-
-            //ingresa datos en la tabla empresaperso
-            $q10 = "INSERT INTO funciones (IdFuncion, NomFuncion)
-            VALUES(:id6, :funcion)";
-            $a10 = [":id6"=>$id2, ":funcion"=>$funcionEmp];
-
-            
-            $query=[$q1, $q3, $q4, $q5, $q6, $q7, $q8, $q9, $q10];
-            $parametros=[$a1, $a3, $a4, $a5, $a6, $a7, $a8, $a9, $a10];
-            
-            $resultado=$this->insertar_eliminar_actualizar($q1, $a1);
-            $resultado1=$this->insertar_eliminar_actualizar($q3, $a3);
-            $resultado2=$this->insertar_eliminar_actualizar($q4, $a4);
-            if ($checkboxcertificacion == "activado"){
-
-            $resultado5=$this->insertar_eliminar_actualizar($q7, $a7);
-            $resultado6=$this->insertar_eliminar_actualizar($q8, $a8);
-            }
-            if ($checkboxlaboral == "activado"){
-            
-            $resultado3=$this->insertar_eliminar_actualizar($q5, $a5);
-            $resultado4=$this->insertar_eliminar_actualizar($q6, $a6);
-            $resultado7=$this->insertar_eliminar_actualizar($q9, $a9);
-            $resultado8=$this->insertar_eliminar_actualizar($q10, $a10);
-            }
-            $this->cerrar_conexion();
-            
-            
-        }
 
         public function buscar_colonias($codigoPostal){
             # esta funcion trae todas las colonias en base al codigo postal
@@ -238,64 +21,254 @@
             return $resultado;
         }
 
-        public function numero_inteligente($correo)
-    {
-        # genera el numero inteligente
-        $mydate=getdate(date("U"));
-        $year = $mydate["year"];
-        $mes = date('m');
-        $arreglo = $this->obtener_numero_consecutivo();
-        $numero = "";
+        public function id_usuaperso(){
+            
+            $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
+            
+            $sql = "SELECT COUNT(IdPerso) FROM usuaperso";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
 
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
 
-        if (is_null($arreglo[0][0]) == 1) {
-            # significa que no hay registros por eso hay que generarlo
-            $numero = 1;
-        }else{
-            $numero = $arreglo[0][0];
-            $numero++;
-           
-        }
-        $numero_con_ceros = $this->agregar_ceros($numero);
-
-        $arreglo2 = $this->obtener_numero_consecutivo_inteligente();
-        $numero2 = "";
-
-
-        if (is_null($arreglo2[0][0]) == 1) {
-            # significa que no hay registros por eso hay que generarlo
-            $numero2 = 1;
-        }else{
-            $numero2 = $arreglo2[0][0];
-            $numero2++;
-           
-        }
-        $numero_con_ceros2 = $this->agregar_ceros($numero2);
+            $numero_con_ceros = $this->agregar_ceros($numero, 4);
+            $idUsuaPerso = "P".$numero_con_ceros;
         
-        $numero_inteligente = $year.$mes.$numero_con_ceros;
-        $numero_consecutivo = "P".$numero_con_ceros;
-        $numero_consecutivo2 = "P".$numero_con_ceros2;
+            return $idUsuaPerso;
+        }
 
+        public function obtener_id_emp_perso(){
+
+            $this->conexion_bd();
+            $sql = "SELECT Count(IdEmpPerso) FROM empresaperso";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
+
+            $idEmpPerso = $this->agregar_ceros($numero, 4);
+        
+            return $idEmpPerso;
+        }
+
+        public function obtener_id_empresa_funcion(){
+
+            $this->conexion_bd();
+            $sql = "SELECT Count(IdFuncion) FROM funciones";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
+
+            $idFuncion = $this->agregar_ceros($numero, 6);
+        
+            return $idFuncion;
+        }
+
+        public function obtener_id_certificacion(){
+
+            $this->conexion_bd();
+            $sql = "SELECT Count(IdCerExt) FROM certexterna";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
+
+            $idCertExt = $this->agregar_ceros($numero, 6);
+        
+            return $idCertExt;
+        }
+
+        public function obtener_numero_consecutivo()
+        {
+            # esta funcion te dara el numero en el que se quedaron
+
+            $this->conexion_bd();//convertimos el numero de char a integer para tomar el mayor
+            
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdNIntel,2) AS INT)) FROM numinteligentes";
+            $resultado = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            return $resultado;
+
+        }
+
+        public function numero_inteligente($idUsua)
+        {
+            # genera el numero inteligente
+            $mydate=getdate(date("U"));
+            $year = $mydate["year"];
+            $mes = date('m');
+            $arreglo = $this->obtener_numero_consecutivo();
+            $numero = "";
+
+
+            if (is_null($arreglo[0][0]) == 1) {
+                # significa que no hay registros por eso hay que generarlo
+                $numero = 1;
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+            
+            }
+            $numero_con_ceros = $this->agregar_ceros($numero, 4);
+            
+            $numero_inteligente = $year.$mes.$numero_con_ceros;
+            $numero_consecutivo = "P".$numero_con_ceros;
+
+            return array($numero_consecutivo, $numero_inteligente);
+        }
+
+        public function agregar_ceros($numero, $lon){
+            $ceros = "";
+            $numero_nuevo="";
+            for ($i=0; $i < $lon ; $i++) { 
+                $numero_nuevo = $ceros .$numero;
+                if(strlen($numero_nuevo) == $lon){
+                    break;
+                }else{
+                    $ceros = $ceros . "0";
+                }
     
-        $sql_inteligentes = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo,:inteligente)";
-        $parametros_inteligentes = [":consecutivo"=>$numero_consecutivo2,":inteligente"=>$numero_inteligente];
+            }
+            return $numero_nuevo;
+        }
 
-        $sql_usua = "INSERT INTO personintel (IdPerso,IdNIntel) VALUES(:id,:consecutivo)";
-        $parametros_usua = [":id"=>$numero_consecutivo,":consecutivo"=>$numero_consecutivo2];
+        public function insertar_usuaperso($idUsua, $nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, 
+        $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, 
+        $idFuncion, $funcionEmp, 
+        $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, 
+        $gradoEst, 
+        $colonia, 
+        $consecutivo, $numIntel,
+        $checkCerti, $checkLab){
 
-        $this->sql[] = $sql_inteligentes;
-        $this->parametros[] = $parametros_inteligentes;
-        $this->sql[] = $sql_usua;
-        $this->parametros[] = $parametros_usua;
+            $this->conexion_bd();
 
-       
-        
-        //$this->mandar_correo($correo_empresa);
-     
+            //consultas para la tabla de usuaperso
+            $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
+            VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
 
-    }
-    public function mandar_correo($destinatario)
-    {   
+            $a1 = [":id"=>$idUsua, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$password];
+
+            //consultas para la tabla de empresaperso
+            $q2 = "INSERT INTO empresaperso (IdEmpPerso, NomEmpPerso, PuestoEmpPerso, CorreoEmpPerso, TelFEmpPerso, ExtenTelFEmpPerso)
+            VALUES(:idEmpre, :nombre, :puesto, :correo, :telFEmp, :extTelFEmp)";
+
+            $a2 = [":idEmpre"=>$idEmpPerso, ":nombre"=>$empresaLab, ":puesto"=>$puestoEmp, ":correo"=>$correoEmp, ":telFEmp"=>$telFEmp, ":extTelFEmp"=>$extTelFEmp];
+
+            //consultas para la tabla de funciones
+            $q3 = "INSERT INTO funciones (IdFuncion, NomFuncion)
+            VALUES(:idFun, :nomfun)";
+
+            $a3 = [":idFun"=>$idFuncion, ":nomfun"=>$funcionEmp];
+
+            //consultas para insertar registros en la relacion certexterna
+            $q4 = "INSERT INTO certexterna (IdCerExt, NomCerExt, OrgCerExt, IniCerExt, FinCerExt) VALUES(:idCE,:nombreC, :orgCer, :iniFecha, :finFecha)";
+            $a4 = [":idCE"=>$idCertExt,":nombreC"=>$certifi,":orgCer"=>$orgCert,":iniFecha"=>$fechaICert,":finFecha"=>$fechaFCert];
+
+
+            //consultas para insertar registros en la relacion usuapersoemp
+            $q5 = "INSERT INTO usuapersoemp (IdPerso, IdEmpPerso) VALUES(:id, :idEmpre)";
+
+            $a5 = [":id"=>$idUsua,":idEmpre"=>$idEmpPerso];
+
+            //consultas para insertar registros en la relacion persoempfun
+            $q6 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion) VALUES(:idEmpre, :idFun)";
+
+            $a6 = [":idEmpre"=>$idEmpPerso,":idFun"=>$idFuncion];
+
+            //Ingresa datos en la tabla persocertexterna
+            $q7 = "INSERT INTO persocertexterna (IdPerso,IdCertExt) VALUES(:id,:idCE)";
+            $a7 = [":id"=>$idUsua,":idCE"=>$idCertExt];
+
+            //consultas para insertar registros en la relacion persoestudios
+            $q8 = "INSERT INTO persoestudios (IdPerso, IdGrado) VALUES(:id, :idGra)";
+
+            $a8 = [":id"=>$idUsua,":idGra"=>$gradoEst];
+
+            //consultas para insertar registros en la relacion persolugares
+            $q9 = "INSERT INTO persolugares (IdPerso, IdColonia) VALUES(:id, :IdCol)";
+
+            $a9 = [":id"=>$idUsua,":IdCol"=>$colonia];
+
+            //consultas para insertar registros en la relacion persotipousua
+            $idU=1;
+            $q10 = "INSERT INTO persotipousua (IdUsua, IdPerso) VALUES(:idU, :id)";
+
+            $a10 = [":idU"=>$idU,":id"=>$idUsua];
+
+            //consultas para la tabla de numinteligentes
+            $q11 = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo, :numIntel)";
+ 
+            $a11 = [":consecutivo"=>$consecutivo, ":numIntel"=>$numIntel];
+
+            //consultas para insertar registros en la relacion personintel
+            $q12 = "INSERT INTO personintel (IdPerso, IdNIntel) VALUES(:idU, :numIntel)";
+
+            $a12 = [":idU"=>$idUsua,":numIntel"=>$consecutivo];
+
+            $querry=[];
+            $parametros=[];
+            if ($checkCerti == 'activado' and $checkLab=='activado'){    //acepto los dos checklist certificaciones y datos laborales
+                $querry = [$q1, $q2, $q3, $q4, $q5, $q6, $q7,  $q8, $q9, $q10, $q11, $q12];
+                $parametros = [$a1, $a2, $a3, $a4, $a5, $a6, $a7,  $a8, $a9, $a10, $a11, $a12];
+
+            }else if ($checkCerti == 'activado' and $checkLab=='desactivado'){ //acepto certificaciones, pero no datos laborales
+                $querry = [$q1, $q4, $q7, $q8, $q9, $q10, $q11, $q12];
+                $parametros = [$a1, $a4, $a7, $a8, $a9, $a10, $a11, $a12];
+
+            }else if ($checkCerti == 'desactivado' and $checkLab=='activado'){ //acepto datos laborales, pero no datos certificaciones
+                $querry = [$q1, $q2, $q3, $q5, $q6, $q8, $q9, $q10, $q11, $q12];
+                $parametros = [$a1, $a2, $a3, $a5, $a6, $a8, $a9, $a10, $a11, $a12];
+
+            }else if ($checkCerti == 'desactivado' and $checkLab=='desactivado'){ //no acepto ninguno
+                $querry = [$q1, $q8, $q9, $q10, $q11, $q12];
+                $parametros = [$a1, $a8, $a9, $a10, $a11, $a12];
+
+            }
+            //acomoda todo en arreglos para mandarlos al CRUD
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+
+        }
+
+
+        public function mandar_correo($destinatario)
+        {   
         $remitente = "ecateam22@gmail.com";
         $asunto = "Bienvenido a CISCIG!!!";
         $cuerpo = "El nombre de la empresa hora sera asociado del Colegio de Ingenieros en Sistemas  Computacionales";
@@ -310,19 +283,6 @@
         return $resultado;
     }
 
-    public function inserciones()
-    {
-        # code...
-        $this->conexion_bd();
-        $res = $this->insertar_eliminar_actualizar($this->sql,$this->parametros);
-        $this->cerrar_conexion();
-        return $res;
-
-    }
-
-
-        
-    }
     
-
+    }
 ?>

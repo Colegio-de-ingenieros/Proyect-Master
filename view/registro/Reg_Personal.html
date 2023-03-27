@@ -79,7 +79,7 @@
                         <p class="label-2">Apellido paterno</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  maxlength="20">
+                        <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  required maxlength="20">
                     </div>
                 </div>
 
@@ -112,7 +112,7 @@
                         <p class="label-2">Teléfono móvil</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" maxlength="10">
+                        <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" required maxlength="10">
                     </div>
                 </div>
 
@@ -186,7 +186,7 @@
                         <p class="label-2">Colonia*</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" required maxlength="50">
+                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" maxlength="50">
                             <option value="0">Seleccione su colonia</option>
 						</select>
                     </div>
@@ -197,7 +197,7 @@
                         <p class="label-2">Ciudad*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso" required maxlength="50" readonly>
+                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso"  maxlength="50" readonly>
                     </div>
                 </div>
 
@@ -206,7 +206,7 @@
                         <p class="label-2">Estado*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso" required maxlength="50" readonly>
+                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso"  maxlength="50" readonly>
                     </div>
                 </div>
             </div>
@@ -224,12 +224,13 @@
                         <option value="0" selected disabled>Seleccione su máximo grado de estudios</option>
                         <option value="1">Pasante</option>
                         <option value="2">Licenciatura</option>
-                        <option value="2">Maestría</option>
-                        <option value="2">Doctorado</option>
+                        <option value="3">Maestría</option>
+                        <option value="4">Doctorado</option>
                         </select>
                     </div>
                 </div>
             </div>
+            
             <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
             <input type="checkbox" id="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación*<br>
 
@@ -252,7 +253,7 @@
                         <p class="label-2">Organizacion del certificado</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese la organizacion de la certificación" id="orgCert" name="orgCert" maxlength="50">
+                        <input type="text" class="input-format" placeholder="Ingrese la organización de la certificación" id="orgCert" name="orgCert" maxlength="50">
                     </div>
                 </div>
 
@@ -304,7 +305,7 @@
                     
                 </div>
                 <div class="check-box">
-                    <input type="hidden" id="checkboxlaboralculto" name="checkboxlaboraloculto" value="desactivado">
+                    <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
                     <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales*<br>
                 </div>
             </div>
@@ -366,7 +367,7 @@
                         <p class="label-2">Funciones</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su funcion" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="50">
+                        <input type="text" class="input-format"placeholder="Ingrese su funcion" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60">
                     </div>
                 </div>
                 <div class="grupo-input2">
@@ -410,12 +411,13 @@
             </div>
             <div class="input-form">
                 <input type="checkbox" name="opcion4" id="avisos1" value="opcion1">&nbsp;&nbsp;&nbsp; Estoy de acuerdo con el aviso de privacidad. <br>
-					<p> Para conocer el Aviso de Privacidad da clic <a title="click" target="_blank"  href="/view/Aviso_Privacidad.html">aquí.</a> </p> 
+					<p> Para conocer el Aviso de Privacidad da clic <a title="click" target="_blank"  href="Aviso_Privacidad.html">aquí.</a> </p> 
             </div>
         </div>
         
         <div class="boton_registrar">
-        <button class="btn-medium btn">Registrar</button>
+        <!--<button class="btn-medium btn">Registrar</button>-->
+        <input type="submit" class="btn-medium btn" id="boton_registrar" value="Registrar" >
         </div>
         
     
@@ -472,13 +474,13 @@
 
         checkbox.addEventListener('click', function() {
         if (checkbox.checked) {
-        checkboxoculto.value = "activado";
+            checkboxoculto.value = "activado";
         input1.setAttribute('required', '');
         input2.setAttribute('required', '');
         input3.setAttribute('required', '');
         input4.setAttribute('required', '');
         } else {
-        checkboxoculto.value = "";
+            checkboxoculto.value = "desactivado";
         input1.removeAttribute('required');
         input2.removeAttribute('required');
         input3.removeAttribute('required');
@@ -498,7 +500,7 @@
         
 
         checkbox2.addEventListener('click', function() {
-        if (checkbox.checked) {
+        if (checkbox2.checked) {
             checkboxoculto2.value = "activado";
         input5.setAttribute('required', '');
         input6.setAttribute('required', '');
@@ -507,7 +509,7 @@
         input9.setAttribute('required', '');
         input10.setAttribute('required', '');
         } else {
-            checkboxoculto2.value = "";
+            checkboxoculto2.value = "desactivado";
         input5.removeAttribute('required');
         input6.removeAttribute('required');
         input7.removeAttribute('required');

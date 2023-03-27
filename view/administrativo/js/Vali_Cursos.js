@@ -15,7 +15,7 @@ let conta = -1;
 
 
 
-document.getElementById("registraform").disabled = true;
+document.getElementById("registraform").disabled = false;
 
 const expresiones = {
     clave: /^[0-9]{6}$/,
@@ -270,21 +270,23 @@ function te() {
     if ( document.getElementById("titulo-curso").value && lista.length > 0){
         document.getElementById("titulo-curso").disabled = false;
         document.getElementById("titulo-curso").value = "";
+        document.getElementById("Subtitulo-curso").value = "";
         contador=0;
         console.log(lista); 
+        document.getElementById("titulo-curso").disabled = false;
 }
 else if (document.getElementById("titulo-curso").value && document.getElementById("Subtitulo-curso").value){
     alert("Presione el boton de Añadir")
 }
-else if (!document.getElementById("Subtitulo-curso").value && !document.getElementById("titulo-curso").value){
+else if (document.getElementById("Subtitulo-curso").value=="" && document.getElementById("titulo-curso").value==""){
     alert("Agregue tema y subtema")
 }
-else if (document.getElementById("Subtitulo-curso").value){
+else if (document.getElementById("Subtitulo-curso").value ==""){
     alert("Agregue tema")
 }
-else if (document.getElementById("titulo-curso").value){ {
+else if (document.getElementById("titulo-curso").value == ""){ 
     alert("Agregue subtema");
-}
+
 }
 }
 function subt(){
@@ -303,6 +305,8 @@ function subt(){
         conta++;
         b=true;
         c=1;
+        /* bloque el campo tema */
+        document.getElementById("titulo-curso").disabled = true;
         document.getElementById("registraform").disabled = false;
     }
      else if (contador != 0 && document.getElementById("Subtitulo-curso").value)    {

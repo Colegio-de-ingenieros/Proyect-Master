@@ -60,8 +60,9 @@ class Crud_bd{
         }catch (\Exception $e) {
             if ($this->conexion->inTransaction()) {
                 $this->conexion->rollback();
-                
-                echo "rollback";
+
+                die("Error:" . $e->getMessage());
+                echo "Linea del error " . $e->getLine();
             }
             throw $e;
         }
@@ -93,8 +94,9 @@ class Crud_bd{
         }catch (\Exception $e) {
             if ($this->conexion->inTransaction()) {
                 $this->conexion->rollback();
-              
-                echo "rollback";
+
+                die("Error:" . $e->getMessage());
+                echo "Linea del error " . $e->getLine();
             }
             throw $e;
             
