@@ -12,7 +12,7 @@ class EliminarTrabajadores{
     function eliminar($rfc){
         $q2 = "DELETE FROM tratipousua WHERE RFCT = :rfc"; 
         $a2= [":rfc"=>$rfc];
-        $q1 = "DELETE FROM Trabajadores WHERE RFCT = :rfc"; 
+        $q1 = "DELETE FROM trabajadores WHERE RFCT = :rfc"; 
         $a1= [":rfc"=>$rfc];
         $querry = [$q2,$q1];
         $parametros = [$a2,$a1];
