@@ -5,12 +5,9 @@ const caja_subtitulo = document.getElementById("subtitulo-curso");
 
 const btn_add_tema = document.getElementById("btn_tema-add");
 const btn_add_new_tema = document.getElementById("btn_tema-new-add");
-const btn_mod_tema = document.getElementById("btn-tema-modificar");
-const btn_del_tema = document.getElementById("btn-tema-eliminar");
 
 const btn_add_subtema = document.getElementById("btn-subtema-add");
-const btn_mod_subtema = document.getElementById("btn-subtema-modificar");
-const btn_del_subtema = document.getElementById("btn-subtema-eliminar");
+const btn_end_proceso = document.getElementById("btn-end-proceso");
 
 const visualizar_listas = document.getElementById("visualizar_modificar");
 const listado = document.getElementById("lista");
@@ -27,6 +24,7 @@ caja_subtitulo.style.display = "none";
 btn_add_new_tema.style.display = "none";
 
 btn_add_subtema.style.display = "none";
+btn_end_proceso.style.display = "none";
 
 
 function agregar_tema(){
@@ -50,8 +48,10 @@ function agregar_tema(){
         caja_subtitulo.style.display = "flex";
 
         btn_add_tema.style.display = "none";
+        btn_end_proceso.style.display = "flex";
         btn_add_subtema.style.display = "flex";
         btn_add_new_tema.style.display = "flex";
+        btn_end_proceso.style.display = "flex";
 
         size = lista_temario_parcial.length;
 
@@ -112,8 +112,20 @@ function agregar_nuevo_tema(){
 
     leyenda.innerHTML = "Añadir Tema*";
 
+    console.log("Lista parcial");
+
+    for(let i = 0; i < lista_temario_parcial.length; i++){
+        console.log(lista_temario_parcial[i]);
+    }
+
     lista_temario_completo.push(lista_temario_parcial);
     contador_subtemas = 1;
+
+    console.log("Lista completa");
+
+    /* for(let i = 0; i < lista_temario_completo.length; i++){
+        console.log(lista_temario_completo[i]);
+    } */
 
     lista_temario_parcial = [];
 
@@ -122,14 +134,38 @@ function agregar_nuevo_tema(){
     }
 }
 
+function finalizar_registro_temario(){
+    console.log("Se ha presionado el boton de finalizar registro");
+    lista_temario_completo.push(lista_temario_parcial);
+    console.log("Lista completa");
+    leyenda.innerHTML = "Añadir tema*";
+
+    caja_titulo.style.display = "flex";
+    caja_subtitulo.style.display = "none";
+
+    btn_add_tema.style.display = "flex";
+    btn_add_subtema.style.display = "none";
+    btn_add_new_tema.style.display = "none";
+    btn_end_proceso.style.display = "none";
+
+    for(let i = 0; i < lista_temario_completo.length; i++){
+        console.log(lista_temario_completo[i]);
+    }
+}
+
 function funcion_enviar(){
-    let url = "../../controller/administrativo/Registro_Cursos.php";
+    let url = "../../controller/administrativo/Reg_Cursos.php";
 
     let nombre_curso = document.getElementById("nombre-curso");
     let clave_curso = document.getElementById("clave-curso");
     let duracion_curso = document.getElementById("duración");
     let objetivo = document.getElementById("objetivo");
-    let temario = lista_temario_completo;
+
+    for(let i = 0; i < lista_temario_completo.length; i++){
+        console.log(lista_temario_completo[i]);
+    }
+
+    let temario = JSON.stringify(lista_temario_completo);
 
     let form = new FormData();
     form.append("nombre_curso", nombre_curso.value);
@@ -144,7 +180,7 @@ function funcion_enviar(){
     })
     .then(response => response.json())
     .then(data => arrays(data))
-    .catch(error => console.log(error));
+    .catch(error => alert(error));
 
     const arrays = (data) => {
         console.log(data);

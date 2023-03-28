@@ -1,11 +1,29 @@
 <?php
+    include_once('../../model/Reg_Cursos.php');
 
-include_once('../../model/Reg_Cursos.php');
-// Leemos el arreglo enviado desde JavaScript
-$arreglo = json_decode($_POST["arrayin"]);
+    $nombre_curso = $_POST['nombre_curso'];
+    $clave_curso = $_POST['clave_curso'];
+    $duracion = $_POST['duracion_curso'];
+    $objetivo = $_POST['objetivo'];
+    $temario = json_decode($_POST['temario']);
 
-// Leemos la lista 1 enviada desde JavaScript
-$lista1 = json_decode($_POST["lista"]);
+    /* Imprime todas las variables */
+    echo $nombre_curso;
+    echo '<br>';
+    echo $clave_curso;
+    echo '<br>';
+    echo $duracion;
+    echo '<br>';
+    echo $objetivo;
+    echo '<br>';
+    echo $temario;
+
+
+
+#$arreglo = json_decode($_POST["arrayin"]);
+
+
+#$lista1 = json_decode($_POST["lista"]);
 
 // Leemos la lista 2 enviada desde JavaScript
 /* $lista2 = json_decode($_POST["su"]); */

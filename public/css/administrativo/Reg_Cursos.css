@@ -323,12 +323,11 @@ hr{
 .tema-btn-add, 
 .tema-btn-new-add{
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .subtema-btn-add,
-.subtema-btn-new-add,
-.subtema-btn-mod,
-.subtema-btn-del{
+.subtema-btn-new-add{
     margin-top: 10px;
 }
 
