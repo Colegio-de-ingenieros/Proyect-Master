@@ -162,7 +162,7 @@ function primeroNum(cadena){
 //verifica que si el ultimo caracter de una cadena es un punto
 function ultimoNum(cadena)
 {
-    alert(cadena.length);
+    //alert(cadena.length);
     if (cadena.length >= 1) {
         if (cadena[cadena.length - 1] == '.') {
             return true
