@@ -33,7 +33,7 @@ botonRegresar.addEventListener("click", (e) => {
 });
 
 const expresiones = {
-    rfc: /^[A-Z0-9]{13}$/,
+    rfc: /^([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})$/,
     nombre:/^[a-zA-ZÁ-ý.\s]{1,40}$/,
     apellidos:/^[a-zA-ZÁ-ý\s]{1,20}$/,
     apeMa:/^[a-zA-ZÁ-ý\s]{0,20}$/,
@@ -45,7 +45,7 @@ const expresiones = {
 formulario.caja_rfc.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.caja_rfc.value = valorInput
+	formulario.caja_rfc.value = valorInput.toUpperCase()
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
