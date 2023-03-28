@@ -43,7 +43,7 @@ botonRegistrar.addEventListener("click", (e) =>
 //definicion de las expresiones regulares
 const expresiones = {
     name: /^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
-    precio: /^[0-9]+(.([0-9]){2}){1}$/,
+    precio: /^[0-9]+(.([0-9])+)*$/,
     descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/
 }
 
