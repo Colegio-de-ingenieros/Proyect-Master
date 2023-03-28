@@ -194,24 +194,28 @@
 
         <div class="campo">
           <label for="nombre-curso" class="label-2 nombre">Nombre del curso</label>
+          <abbr title="Inserte letras, números, puntos y comas" class="label-2 nombre">?*</abbr>
           <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Nombre del curso"
             minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
           <label for="clave-curso" class="label-2 clave">Clave del curso</label>
+          <abbr title="Inserte como maximo 6 números" class="label-2 nombre">?*</abbr>
           <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso"
             maxlength="6" required>
         </div>
 
         <div class="campo">
           <label for="duración" class="label-2 duracion">Duración del curso</label>
+          <abbr title="Inserte como maximo 3 números" class="label-2 nombre">?*</abbr>
           <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..."
             required>
         </div>
 
         <div class="campo-wide">
           <label for="objetivo" class="label-2 objetivo">Objetivo</label>
+          <abbr title="Inserte letras, números, puntos y comas" class="label-2 nombre">?*</abbr>
           <input type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
             placeholder="Ingresa tu texto aquí..." required>
         </div>
@@ -227,7 +231,33 @@
 
       <div class="formulario-titulos">
 
-        <div class="campo">
+        <div class="entrada">
+          <div class="campos">
+            <label for="titulo-curso" class="label-2 titulo-curso" id="leyenda">Añadir tema*</label>
+
+            <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2 campo-texto" placeholder="Ingrese el tema aquí" minlength="1" maxlength="40" autocomplete="off" required>
+            <input type="text" name="subtitulo-curso" id="subtitulo-curso" class="input-format-2" placeholder="Ingrese el subtema aquí" minlength="1" maxlength="40" autocomplete="off" required>
+
+            <button id="btn_tema-add" class="btn-small btn tema-btn-add" onclick="agregar_tema()">Añadir tema</button>
+            <button id="btn-subtema-add" class="btn-small btn subtema-btn-add" onclick="agregar_subtema()">Añadir Subtema</button>
+            <button id="btn_tema-new-add" class="btn-small btn tema-btn-add" onclick="agregar_nuevo_tema()">Añadir nuevo tema</button>
+            <button id="btn-end-proceso" class="btn-small btn fin" onclick="finalizar_registro_temario()">Finalizar registro temario</button>
+      
+          </div>
+          
+        </div>
+
+        <div id="visualizar_modificar">
+          <div class="info_temario">
+            <h6 class="label-2">Temario:</h6>
+            <ul id="lista">
+              <li id="inicial" class="label-3">Sin temario añadido</li>
+            </ul>
+          </div>
+        </div>
+
+
+<!--         <div class="campo">
           <label for="titulo-curso" class="label-2 titulo-curso">Título del tema</label>
           <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2"
             placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
@@ -237,11 +267,11 @@
           <label for="Subtitulo-curso" class="label-2 titulo-curso">Subtema del tema</label>
           <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2"
             placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
-        </div>
+        </div> -->
 
       </div>
 
-      <div class="section-botones">
+<!--       <div class="section-botones">
         <div class="campo botones">
 
           <button id="temas" class="btn-small btn" onclick="te()">Añadir nuevo tema</button>
@@ -251,18 +281,19 @@
           <button id="subtemas" class="btn-small btn" onclick="subt()">Añadir</button>
         </div>
 
-      </div>
+      </div> -->
 
       <div class="section-botones-2">
         <div class="campo botones">
-          <button id="registraform" class="btn-medium btn" onclick="regi()">Registrar</button>
+          <button id="registraform" class="btn-medium btn" onclick="enviar()">Registrar</button>
         </div>
       </div>
 
 
     </section>
   </main>
+  
 </body>
 <script src="js/Vali_Cursos.js"></script>
-
+<script src="js/Reg_Cursos.js"></script>
 </html>

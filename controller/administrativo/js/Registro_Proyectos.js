@@ -23,7 +23,7 @@ formulario.addEventListener('submit', function (e)
             }
             
             else if (data === 'Fechas') {
-                alert("Fecha fin no es posterior a fecha inicio");
+                alert("Fecha de finalización no es posterior a fecha de inicio");
                 //location.href = '../../view/administrativo/Reg_Proyectos.html';
             }
             //los datos no pasaron alguna validacion

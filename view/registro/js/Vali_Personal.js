@@ -6,7 +6,7 @@ let bandAM = true
 let bandEmail = false
 let bandContra = false
 let bandConfiContra = false
-let bandCedu = false
+let bandCedu = true
 let bandTelF = false
 let bandTelM = false
 
@@ -32,7 +32,7 @@ const expresiones = {
     apellidos:/^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
     email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     passw:/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$\#\-_.!*\/+]){1})\S{8,16}$/,
-    cedula:/^[0-9]{8}/,
+    cedula:/^[0-9]{7,8}/,
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
     exten:/^[0-9]{3}$/,
@@ -184,7 +184,7 @@ const validarPassword2 = () =>{
 /* Input cedula*/
 formulario.cedulaPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-
+    if(valorInput !==""){
 	formulario.cedulaPerso.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
@@ -196,11 +196,12 @@ formulario.cedulaPerso.addEventListener('keyup', (e) => {
     if (!expresiones.cedula.test(valorInput)) {
         formulario.cedulaPerso.style.border = "3px solid red";
         bandCedu = false;
-	}else{
+	}else{ 
         formulario.cedulaPerso.removeAttribute("style");
         bandCedu = true;
     }
     validar(bandCedu);
+    }
 });
 
 /* Input telefono fijo*/
@@ -526,8 +527,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.contraPerso.style.border = "3px solid red";
     }else if(bandConfiContra == false){
         formulario.confiContraPerso.style.border = "3px solid red";
-    }else if(bandCedu == false){
-        formulario.cedulaPerso.style.border = "3px solid red";
     }else if(bandTelF == false){
         formulario.telFPerso.style.border = "3px solid red";
     }else if(bandTelM == false){

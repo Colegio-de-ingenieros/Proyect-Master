@@ -76,7 +76,7 @@ hr{
     margin-top: 10px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
     grid-gap: 20px;
 }
 
@@ -304,4 +304,42 @@ hr{
         height: 50px;
         font-size: 1rem;
     }
+}
+
+.campos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titulo-curso{
+    margin-bottom: 10px
+}
+
+.lista{
+    margin-top: 20px;
+}
+
+.tema-btn-add, 
+.tema-btn-new-add{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.subtema-btn-add,
+.subtema-btn-new-add{
+    margin-top: 10px;
+}
+
+#visualizar_modificar{
+    margin-left: 20px;
+}
+
+.elemento-tema{
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.elemento-subtema{
+    font-weight: 400;
 }

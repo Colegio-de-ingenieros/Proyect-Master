@@ -1,0 +1,40 @@
+.campos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titulo-curso{
+    margin-bottom: 10px
+}
+
+.lista{
+    margin-top: 20px;
+}
+
+.tema-btn-add, 
+.tema-btn-new-add,
+.tema-btn-mod,
+.tema-btn-del{
+    margin-top: 10px;
+}
+
+.subtema-btn-add,
+.subtema-btn-new-add,
+.subtema-btn-mod,
+.subtema-btn-del{
+    margin-top: 10px;
+}
+
+#visualizar_modificar{
+    margin-left: 20px;
+}
+
+.elemento-tema{
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.elemento-subtema{
+    font-weight: 400;
+}

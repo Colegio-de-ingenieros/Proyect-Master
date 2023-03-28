@@ -9,9 +9,9 @@ define("USUARIO", "AdminCISCIG");
 define("PASSWORD", 'ColegioCISCIG2023.');
 */
 define("HOST", "mysql:host=localhost;");
-define("DBNAME", "dbname=u283658544_colegiociscig");
-define("USUARIO", "u283658544_colegiociscig");
-define("PASSWORD", 'ColegioCISCIG2023.');
+define("DBNAME", "dbname=colegiociscig");
+define("USUARIO", "root");
+define("PASSWORD", '');
 
 
 class Crud_bd{

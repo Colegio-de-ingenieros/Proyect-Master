@@ -32,8 +32,8 @@ if ($resultado == true) {
         $desc = $resultado[$i]["DesCerInt"];
         $precioG = $base->buscarUltimoPrecioG($idc);
         $precioA = $base->buscarUltimoPrecioA($idc);
-        $precioG = substr($precioG, 0,  strlen($precioG));
-        $precioA = substr($precioA, 0,  strlen($precioA));
+        $precioG = substr($precioG, 0,  strlen($precioG)-3);
+        $precioA = substr($precioA, 0,  strlen($precioA)-3);
         //$extension = getExt($logo);
 
         //escribe los valores en la tabla

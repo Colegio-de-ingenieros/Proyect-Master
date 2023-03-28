@@ -12,7 +12,7 @@ botonRegistrar.addEventListener("click", (e) => {
         bMonPro= false;
         formulario.monto_proyecto.value = formulario.monto_proyecto.value + '0'
     }
-    if (bNomPro==false){
+    else if (bNomPro==false){
         nom_proyecto.style.border = "3px solid red";
     }else if(bObjPro==false){
         obj_proyecto.style.border = "3px solid red";
@@ -28,7 +28,7 @@ botonRegistrar.addEventListener("click", (e) => {
 const expresiones = {
     NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s.,]{1,60}$/,
     ObjPro:/^[a-zA-ZÁ-ý\s ,.]{1,10000}$/,
-    MonPro: /^[0-9]+(.([0-9])+)*$/,
+    MonPro:/^([0-9]+\.?[0-9]{0,2})$/,
 
 }
 
@@ -47,7 +47,7 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
         nom_proyecto.removeAttribute("style");
         bNomPro = true
     }
-    validar(bNomPro);
+    //validar(bNomPro);
 })
 
 /* Input Objetivo Proyecto*/
@@ -67,7 +67,7 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
         obj_proyecto.removeAttribute("style");
         bObjPro = true
     }
-    validar(bObjPro);
+    //validar(bObjPro);
 })
 
 /* Input Monto Proyecto*/
@@ -91,14 +91,14 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     }
 
     //elimina el primer caracter si es un punto
-    if (primeroNum(valorInput) == true) {
+    else if (primeroNum(valorInput) == true) {
         monto_proyecto.style.border = "3px solid red";
         valorInput = valorInput.substr(1, valorInput.length);
         //alert(valorInput.length);
         formulario.monto_proyecto.value = valorInput;
     }
     //verifica que se cumpla con la expresion correpondiente    
-    if (!expresiones.MonPro.test(valorInput)) {
+    else if (!expresiones.MonPro.test(valorInput)) {
         monto_proyecto.style.border = "3px solid red";
         bMonPro= false
     }
@@ -108,7 +108,7 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
         bMonPro = true;
     }
 
-    //validar(bMonPro)
+    validar(bMonPro)
 })
 
    
@@ -120,7 +120,7 @@ function validar(bandera){
         registrar.disabled = true;
     }
 
-    if(bandera == true){
+    else if(bandera == true){
         registrar.disabled=false;
        
     }
@@ -135,17 +135,15 @@ function validar(bandera){
 //funcion para verificar que la cadena no tenga mas de un punto
 function verificarPuntos(cadena){
     var puntos = 0;
-    
+
     for (i = 0; i < cadena.length; i++){
         if (cadena[i] == '.') {
             puntos++;
         }
     }
-
     if (puntos >= 2) {
         return true
     }
-
     else {
         return false
     }
@@ -156,7 +154,6 @@ function primeroNum(cadena){
     if (cadena[0] == '.') {
         return true
     }
-
     else {
         return false
     }
@@ -174,7 +171,6 @@ function ultimoNum(cadena)
             return false
         }
     }
-
     else {
         return false;
     }

@@ -5,5 +5,5 @@ $rfc=$_GET['rfc'];
 $obj = new EliminarTrabajadores();
 $obj->conexion();
 $obj->eliminar($rfc);
-echo '<script>alert("Eliminado con exito");window.location="../../view/administrativo/Vista_trabajadores.php";</script>';
+echo '<script>alert("Eliminado con éxito");window.location="../../view/administrativo/Vista_trabajadores.php";</script>';
 ?>
