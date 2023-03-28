@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vista de cursos - CISICG</title>
+  <title>Visualización cursos</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
@@ -19,6 +19,14 @@
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script>
+
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    
 </head>
 
 <body>
@@ -34,7 +42,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar session</button>
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
       </div>
     </div>
 
@@ -55,7 +63,7 @@
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="#">Visualizar</a></li>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -67,7 +75,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -79,7 +87,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -91,7 +99,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -103,7 +111,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -115,7 +123,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -127,7 +135,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -139,7 +147,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -162,7 +170,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -184,21 +192,27 @@
   </header>
 
   <main>
-    <section class="section-main">
-      <div class="cabezera">
-        <div class="izquierda">
-          <h6 class="subtitulo-1">Visualización / Consulta</h6>
-        </div>
-        <hr>
-        <div class="derecha">
-          <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
-        </div>
-      </div>
-      
+  <div>
+      <div class="article-tablas">
+        <article>
+          <div class="izquierda">
+            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          </div>
+          <hr>
+          <div class="grupo-input">
+            <div class="input-form">
+              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+            </div>
+          </div>
+          <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
 
-      <div id="tablaResultado">
-        
+            </section>
+          </div>
+        </article>
       </div>
+    </div>
     </section>
   </main>
 
