@@ -161,6 +161,7 @@ function funcion_enviar(){
     let duracion_curso = document.getElementById("duración");
     let objetivo = document.getElementById("objetivo");
 
+
     for(let i = 0; i < lista_temario_completo.length; i++){
         console.log(lista_temario_completo[i]);
     }
@@ -180,7 +181,7 @@ function funcion_enviar(){
     })
     .then(response => response.json())
     .then(data => arrays(data))
-    .catch(error => alert(error));
+    .catch(error => console.log(error));
 
     const arrays = (data) => {
         console.log(data);

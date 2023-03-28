@@ -5,23 +5,16 @@
     $clave_curso = $_POST['clave_curso'];
     $duracion = $_POST['duracion_curso'];
     $objetivo = $_POST['objetivo'];
-    $temario = json_decode($_POST['temario']);
+    $lista1 = json_decode($_POST['temario']);
 
-    /* Imprime todas las variables */
-    echo $nombre_curso;
-    echo '<br>';
-    echo $clave_curso;
-    echo '<br>';
-    echo $duracion;
-    echo '<br>';
-    echo $objetivo;
-    echo '<br>';
+    $arrayin = array($clave_curso, $nombre_curso, $objetivo, $duracion);
     
-    foreach ($temario as $lista) {
+    /* foreach ($lista1 as $lista) {
         foreach ($lista as $elemento) {
-            echo $elemento . " ";
+            echo $elemento . " "; 
         }
         echo "<br>";
-    }
-    
+    } */
+
+
 ?>
