@@ -42,7 +42,7 @@ if(
     /**se inserta la empresa */ 
     $existe = $objeto->buscar_empresa($_POST["rfc"]);
     if($existe){
-        $data = ["Esta empresa ya ha sido registrada anteriormente"];
+        $data = ["Esta empresa ya ha sido registrada anteriormente."];
     }else{
         $rfc_empresa = $_POST["rfc"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
@@ -71,10 +71,10 @@ if(
         $resultado = $objeto->inserciones();
         if ($resultado) {
             $objeto->mandar_correo($_POST["correo"],$numero,$_POST["nombre"]);
-            $data = ["Empresa registrada con éxito. Verifique su correo y guarde el número inteligente que le ha sido enviado"];
+            $data = ["Registro exitoso. Verifique su correo y guarde el número inteligente que le ha sido enviado"];
             
         }else{
-            $data = ["La empresa no se registro"];
+            $data = ["La empresa no se registro."];
         }
     }
     
