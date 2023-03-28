@@ -28,7 +28,7 @@ botonRegistrar.addEventListener("click", (e) => {
 const expresiones = {
     NomPro:/^[a-zA-ZÁ-Ýá-ý0-9\s.,]{1,60}$/,
     ObjPro:/^[a-zA-ZÁ-ý\s ,.]{1,10000}$/,
-    MonPro:/^([0-9]+\.?[0-9]{0,2})$/,
+    MonPro: /^[0-9]+(.([0-9])+)*$/,
 
 }
 
@@ -91,9 +91,14 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     }
 
     //elimina el primer caracter si es un punto
-    else if (primeroNum(valorInput) == true) {
+    if (primeroNum(valorInput) == true) {
         monto_proyecto.style.border = "3px solid red";
-        valorInput = valorInput.substr(1, valorInput.length);
+        valorInput = valorInput.substr(0, valorInput.length - 1);
+        formulario.monto_proyecto.value = valorInput;
+    }
+
+    if (validarDecimales(valorInput) == true) {
+        valorInput = valorInput.substr(0, valorInput.length - 1);
         //alert(valorInput.length);
         formulario.monto_proyecto.value = valorInput;
     }
@@ -176,4 +181,36 @@ function ultimoNum(cadena)
     }
 }
 
+//verifica que la cadena no tenga mas de dos decimales
+function validarDecimales(cadena){
+    var decimales = 0
+    var j = cadena.length - 1
+    var puntos = 0;
+    console.log(cadena);
+    for (i = 0; i < cadena.length; i++) {
+        if (cadena[i] == '.') {
+            puntos++;
+        }
+    }
 
+    if (puntos == 1) {
+        while (cadena[j] != '.' && j > 1) {
+            decimales++;
+            j--;
+            console.log("decimales: " + decimales);
+        }
+
+        if (decimales >= 3) {
+            return true
+        }
+
+        else {
+            return false
+        }
+    }
+
+    else {
+        return false
+    }
+
+}
