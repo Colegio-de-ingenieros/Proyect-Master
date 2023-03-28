@@ -43,7 +43,7 @@ botonRegistrar.addEventListener("click", (e) =>
 //definicion de las expresiones regulares
 const expresiones = {
     name: /^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
-    precio: /^[0-9]+(.([0-9])+)*$/,
+    precio: /^[0-9]+(.([0-9]){2}){1}$/,
     descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/
 }
 
@@ -92,6 +92,13 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
         formulario.precioGen.value = valorInput;
     }
 
+    //elimina el tercer decimal
+    if (validarDecimales(valorInput) == true) {
+        //precioAsoc.style.border = "3px solid red";
+        valorInput = valorInput.substr(0, valorInput.length - 1);
+        formulario.precioGen.value = valorInput;
+    }
+
     //elimina el primer caracter si es un punto
     if (primeroNum(valorInput) == true) {
         precioGen.style.border = "3px solid red";
@@ -135,6 +142,13 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
         //elimina el ultimo punto agregado si ya habia otro
         if (verificarPuntos(valorInput) == true) {
             precioAsoc.style.border = "3px solid red";
+            valorInput = valorInput.substr(0, valorInput.length - 1);
+            formulario.precioAsoc.value = valorInput;
+        }
+
+        //elimina el tercer decimal
+        if (validarDecimales(valorInput) == true) {
+            //precioAsoc.style.border = "3px solid red";
             valorInput = valorInput.substr(0, valorInput.length - 1);
             formulario.precioAsoc.value = valorInput;
         }
@@ -257,5 +271,29 @@ function ultimoNum(cadena)
 
     else {
         return false;
+    }
+}
+
+
+//verifica que la cadena no tenga mas de dos decimales
+function validarDecimales(cadena){
+    //var subcadena = '';
+    var decimales = 0
+    var i = cadena.length - 1
+    /*alert(i)
+    alert(cadena)*/
+
+    while (cadena[i] != '.' && i > 1) {
+        decimales ++;
+        //alert("decimales: "+decimales)
+        i--;
+    }
+
+    if (decimales >= 3) {
+        return true
+    }
+
+    else {
+        return false
     }
 }
