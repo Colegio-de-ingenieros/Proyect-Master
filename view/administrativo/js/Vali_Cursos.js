@@ -215,6 +215,7 @@ function regi()
         arrayin[3] = document.getElementById("duración").value;
         console.log(arrayin);
 
+/* Sending the data to the server. */
             var formData = new FormData();
             formData.append("arrayin", JSON.stringify(arrayin));
             formData.append("lista", JSON.stringify(lista));

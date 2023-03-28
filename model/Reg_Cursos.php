@@ -9,6 +9,12 @@
             $this->base->conexion_bd();
         }
 
+        function verificar_existencia($clave_curso){
+            $query = "SELECT ClaveCur FROM cursos WHERE ClaveCur = '$clave_curso'";
+            $resultado = $this->base->mostrar($query);
+            return $resultado;
+        }
+
         function insertar($arreglo){
             $q1 = "INSERT INTO cursos (ClaveCur,NomCur,ObjCur,DuracionCur) 
             VALUES(:ClaveCur, :NomCur, :ObjCur, :DuracionCur)";
@@ -19,7 +25,7 @@
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
 
-         function insertarTema($arreglo,$lista1){
+        function insertarTema($arreglo,$lista1){
             $q1 = "INSERT INTO temas (IdTema,NomTema)
             VALUES(:IdTema, :NomTema)";
             $a1= [":IdTema"=>$arreglo, ":NomTema"=>$lista1];

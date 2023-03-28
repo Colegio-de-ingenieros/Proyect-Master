@@ -27,15 +27,15 @@ btn_add_subtema.style.display = "none";
 btn_end_proceso.style.display = "none";
 
 
-function agregar_tema(){
+function agregar_tema() {
     contenido = caja_titulo.value;
 
-    if(contenido == ""){
+    if (contenido == "") {
         caja_titulo.style.border = "3px solid red";
         alert("El campo del tema no se puede encontrar vacio");
         return;
     }
-    else{
+    else {
         const nuevo_elemento = document.createElement("li");
         lista_temario_parcial.push(contenido);
         elemento_inicial.remove();
@@ -55,13 +55,13 @@ function agregar_tema(){
 
         size = lista_temario_parcial.length;
 
-        contenido = "Tema "+contador_temas+": "+contenido;
+        contenido = "Tema " + contador_temas + ": " + contenido;
 
         /* Creacion del elemento en la lista */
         nuevo_elemento.innerHTML = contenido;
-        nuevo_elemento.setAttribute("id","t"+size);
+        nuevo_elemento.setAttribute("id", "t" + size);
         nuevo_elemento.classList.add("label-3", "elemento-tema");
-        nuevo_elemento.setAttribute("onclick","retornar_tema('t"+size+"')");
+        nuevo_elemento.setAttribute("onclick", "retornar_tema('t" + size + "')");
         listado.appendChild(nuevo_elemento);
 
         caja_titulo.value = "";
@@ -69,15 +69,15 @@ function agregar_tema(){
     }
 }
 
-function agregar_subtema(){
+function agregar_subtema() {
     contenido = caja_subtitulo.value;
 
-    if(contenido == ""){
+    if (contenido == "") {
         caja_subtitulo.style.border = "3px solid red";
         alert("El campo no puede estar vacio");
         return;
     }
-    else{
+    else {
         const nuevo_elemento = document.createElement("li");
         lista_temario_parcial.push(contenido);
         console.log("Se ha presionado el boton del subtema");
@@ -87,13 +87,13 @@ function agregar_subtema(){
 
         size = lista_temario_parcial.length;
 
-        contenido = "Subtema "+contador_subtemas+": "+contenido;
+        contenido = "Subtema " + contador_subtemas + ": " + contenido;
 
         /* Creacion del elemento en la lista */
         nuevo_elemento.innerHTML = contenido;
-        nuevo_elemento.setAttribute("id","s"+size);
+        nuevo_elemento.setAttribute("id", "s" + size);
         nuevo_elemento.classList.add("label-3", "elemento-subtema");
-        nuevo_elemento.setAttribute("onclick","retornar_subtema('t"+(contador_temas - 1)+"s"+size+"')");
+        nuevo_elemento.setAttribute("onclick", "retornar_subtema('t" + (contador_temas - 1) + "s" + size + "')");
         listado.appendChild(nuevo_elemento);
 
         caja_subtitulo.value = "";
@@ -101,7 +101,7 @@ function agregar_subtema(){
     }
 }
 
-function agregar_nuevo_tema(){
+function agregar_nuevo_tema() {
     console.log("Se ha presionado el boton de añadir nuevo tema");
     caja_titulo.style.display = "flex";
     caja_subtitulo.style.display = "none";
@@ -114,7 +114,7 @@ function agregar_nuevo_tema(){
 
     console.log("Lista parcial");
 
-    for(let i = 0; i < lista_temario_parcial.length; i++){
+    for (let i = 0; i < lista_temario_parcial.length; i++) {
         console.log(lista_temario_parcial[i]);
     }
 
@@ -129,12 +129,12 @@ function agregar_nuevo_tema(){
 
     lista_temario_parcial = [];
 
-    for(let i = 0; i < lista_temario_completo.length; i++){
+    for (let i = 0; i < lista_temario_completo.length; i++) {
         console.log(lista_temario_completo[i]);
     }
 }
 
-function finalizar_registro_temario(){
+function finalizar_registro_temario() {
     console.log("Se ha presionado el boton de finalizar registro");
     lista_temario_completo.push(lista_temario_parcial);
     console.log("Lista completa");
@@ -148,12 +148,12 @@ function finalizar_registro_temario(){
     btn_add_new_tema.style.display = "none";
     btn_end_proceso.style.display = "none";
 
-    for(let i = 0; i < lista_temario_completo.length; i++){
+    for (let i = 0; i < lista_temario_completo.length; i++) {
         console.log(lista_temario_completo[i]);
     }
 }
 
-function funcion_enviar(){
+function funcion_enviar() {
     let url = "../../controller/administrativo/Reg_Cursos.php";
 
     let nombre_curso = document.getElementById("nombre-curso");
@@ -162,7 +162,7 @@ function funcion_enviar(){
     let objetivo = document.getElementById("objetivo");
 
 
-    for(let i = 0; i < lista_temario_completo.length; i++){
+    for (let i = 0; i < lista_temario_completo.length; i++) {
         console.log(lista_temario_completo[i]);
     }
 
@@ -179,11 +179,39 @@ function funcion_enviar(){
         method: "POST",
         body: form
     })
-    .then(response => response.json())
-    .then(data => arrays(data))
-    .catch(error => console.log(error));
+        .then(response => response.json())
+        .then(data => arrays(data))
+        .catch(error => console.log(error));
 
     const arrays = (data) => {
         console.log(data);
     }
+}
+
+function enviar() {
+    let nombre_curso = document.getElementById("nombre-curso");
+    let clave_curso = document.getElementById("clave-curso");
+    let duracion_curso = document.getElementById("duración");
+    let objetivo = document.getElementById("objetivo");
+
+    var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
+    var lista = lista_temario_completo;
+
+    var formData = new FormData();
+    formData.append("arrayin", JSON.stringify(arrayin));
+    formData.append("lista", JSON.stringify(lista));
+
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
+
+    xmlhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+
+            alert(this.responseText);
+        }
+    };
+
+
+    xmlhttp.send(formData);
 }
