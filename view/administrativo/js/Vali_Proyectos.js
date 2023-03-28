@@ -183,23 +183,34 @@ function ultimoNum(cadena)
 
 //verifica que la cadena no tenga mas de dos decimales
 function validarDecimales(cadena){
-    //var subcadena = '';
     var decimales = 0
-    var i = cadena.length - 1
-    /*alert(i)
-    alert(cadena)*/
-
-    while (cadena[i] != '.' && i > 1) {
-        decimales++;
-        //alert("decimales: "+decimales)
-        i--;
+    var j = cadena.length - 1
+    var puntos = 0;
+    console.log(cadena);
+    for (i = 0; i < cadena.length; i++) {
+        if (cadena[i] == '.') {
+            puntos++;
+        }
     }
 
-    if (decimales >= 3) {
-        return true
+    if (puntos == 1) {
+        while (cadena[j] != '.' && j > 1) {
+            decimales++;
+            j--;
+            console.log("decimales: " + decimales);
+        }
+
+        if (decimales >= 3) {
+            return true
+        }
+
+        else {
+            return false
+        }
     }
 
     else {
         return false
     }
+
 }
