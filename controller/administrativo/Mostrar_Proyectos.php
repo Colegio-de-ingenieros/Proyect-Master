@@ -7,6 +7,9 @@ $base->instancias();
 
 //manda a hacer la busqueda
 $resultado = $base->getProyectos();
+$resultado1 = $base->getIniPro();
+$resultado2 = $base->getFinPro();
+
 
 if ($resultado == true) {
     //pone los encabezados de la tabla
@@ -28,8 +31,8 @@ if ($resultado == true) {
     for ($i = 0; $i < count($resultado); $i++) {
         //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
         $nombre= $resultado[$i]["NomProyecto"];
-        $inicio = $resultado[$i]["IniPro"];
-        $fin = $resultado[$i]["FinPro"];
+        $inicio = $resultado1[$i]["IniPro"];
+        $fin = $resultado2[$i]["FinPro"];
         $monto = $resultado[$i]["MontoPro"];
         $monto=substr($monto, 0,  strlen($monto) - 3);
         $objetivo = $resultado[$i]["ObjPro"];
