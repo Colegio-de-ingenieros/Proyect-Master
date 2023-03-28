@@ -156,7 +156,7 @@ class Alta_empresa extends Crud_bd{
         return $resultado;
 
     }
-    public function numero_inteligente($rfc_empresa,$correo_empresa,$nombre)
+    public function numero_inteligente($rfc_empresa)
     {
         # genera el numero inteligente
         $mydate=getdate(date("U"));
@@ -193,24 +193,24 @@ class Alta_empresa extends Crud_bd{
 
        
         
-        $this->mandar_correo($correo_empresa,$numero_inteligente,$nombre);
+        return $numero_inteligente;
      
 
     }
-    public function mandar_correo($destinatario,$numero_inteligente,$nombre)
+    function mandar_correo($destinatario,$numero_inteligente,$nombre)
     {   
         $remitente = "ecateam22@gmail.com";
         $asunto = "Bienvenido a CISCIG!!!";
-        $cuerpo = "La empresa ".$nombre ." ahora sera asociado del Colegio de Ingenieros en Sistemas Computacionales.Este será tu número inteligente:".$numero_inteligente;
+        $cuerpo = "<p>La empresa ".$nombre ." ahora sera asociado del Colegio de Ingenieros en Sistemas Computacionales.Este será tu número inteligente:".$numero_inteligente."</p>";
         //manda el correo electronico
         ini_set( 'display_errors', 1 );
         error_reporting( E_ALL );
         $headers = "From:" . $remitente . " \r\n";
         $headers .= "Cc:afgh@somedomain.com \r\n";
         $headers .= "MIME-Version: 1.0\r\n";
-        $headers .= "Content-type: text/html\r\n";
-        $resultado = mail($destinatario,$asunto,$cuerpo, $headers);
-        return $resultado;
+        $headers .= "Content-type: text/html; charset=utf-8 \r\n";
+        mail($destinatario,$asunto,$cuerpo, $headers);
+        
     }
     public function agregar_ceros($numero)
     {
