@@ -33,6 +33,7 @@ function agregar_tema(){
     contenido = caja_titulo.value;
 
     if(contenido == ""){
+        caja_titulo.style.border = "3px solid red";
         alert("El campo del tema no se puede encontrar vacio");
         return;
     }
@@ -72,6 +73,7 @@ function agregar_subtema(){
     contenido = caja_subtitulo.value;
 
     if(contenido == ""){
+        caja_subtitulo.style.border = "3px solid red";
         alert("El campo no puede estar vacio");
         return;
     }
