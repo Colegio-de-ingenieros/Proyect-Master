@@ -6,7 +6,7 @@ let bandAM = true
 let bandEmail = false
 let bandContra = false
 let bandConfiContra = false
-let bandCedu = false
+let bandCedu = true
 let bandTelF = false
 let bandTelM = false
 
