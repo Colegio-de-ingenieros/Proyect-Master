@@ -108,7 +108,7 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
         bMonPro = true;
     }
 
-    //validar(bMonPro)
+    validar(bMonPro)
 })
 
    
