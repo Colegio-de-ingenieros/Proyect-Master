@@ -192,7 +192,8 @@
             <p class="label-2">Nombre</p>
           </div>
           <div class="input-form">
-            <input type="text" class="input-format-2" placeholder="Ingrese el nombre aquí" name="nombre" , id="nombre" required maxlength="60">
+            <input type="text" class="input-format-2" placeholder="Ingrese el nombre aquí" name="nombre" , id="nombre" required maxlength="60"
+            title="El nombre solo puede contener letras mayúsculas, minúsculas y números.">
           </div>
         </div>
 
@@ -202,7 +203,7 @@
           </div>
           <div class="input-form">
             <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioGen" , id="precioGen"
-              required>
+            title="El precio solo puede contener números y punto." required>
           </div>
         </div>
 
@@ -212,7 +213,7 @@
           </div>
           <div class="input-form">
             <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioAsoc" ,
-              id="precioAsoc" required>
+              id="precioAsoc" title="El precio solo puede contener números y punto." required>
           </div>
         </div>
 
@@ -221,7 +222,8 @@
             <p class="label-2">Descripción</p>
           </div>
           <div class="input-form">
-            <textarea type="text" class="input-textarea-2" placeholder="Ingrese la descripción aquí" name="descripcion", id="descripcion" required maxlength="1000"></textarea>
+            <textarea type="text" class="input-textarea-2" placeholder="Ingrese la descripción aquí" name="descripcion", id="descripcion" 
+            title="El nombre solo puede contener letras mayúsculas, minúsculas , números y puntos." required maxlength="1000"></textarea>
           </div>
         </div>
 
@@ -234,7 +236,7 @@
               <label for="inputLogo"></label>
             </div>
             <div class="upimg">
-              <input type="file" name="inputLogo" id="inputLogo" class="input-format-2">
+              <input type="file" name="inputLogo" id="inputLogo" class="input-format-2" title="El logo no debe pesar más de 1 MB.">
             </div>
             <div id="form_alert"></div>
           </div>
