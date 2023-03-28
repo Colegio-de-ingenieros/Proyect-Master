@@ -13,6 +13,8 @@ $bd->BD();
 /* mostrar los datos */
 $datos = $bd->cursos_disponibles($id);
 $datost = $bd->temas($id);
+$datoss = $bd->tema($id);
+/* $theme = $bd->tema($id); */
 /* $datoss = $bd->subtemas($id); */
 
     for ($i = 0; $i < count($datos); $i++) {
@@ -285,38 +287,88 @@ $respuesta .='
             <h1>'. $duracion .' hrs</h1>
 		</section>
 		<section>
-			<h2>Temario</h2>
+			<h2>Temas</h2>
 		</section>
 		<section>
 			<p>';
+
+
+					if ($datost) {
+				$rec = '';
+				for ($i = 0; $i < count($datost); $i++) {
+					$tem = $datost[$i]["NomTema"];
+					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
+				}}
+				$respuesta .= '</section>
+				';
+				$respuesta .= '
+				<section>
+			<h2>Subtemas</h2>
+		</section>
+		<section>
+		<ul class="tema">';
+		if ($datoss) {
+			$rec = '';
+			for ($i = 0; $i < count($datoss); $i++) {
+				$te = $datoss[$i]["NomSubT"];
+				$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$te .'</h3><br>';
+			}}
+			$respuesta .= ' </ul>
+		</section>
+		';
+			/* if ($datost) {
+				$rec = '';
+				for ($i = 0; $i < count($datost); $i++) {
+					$tem = $datost[$i]["NomTema"];
+					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
+					// Agregar consulta aquí:
+					$theme = $bd->tema($tem);
+					if ($theme) {
+						for ($j = 0; $j < count($theme); $j++) {
+							$sub = $theme[$j]["NomSubT"];    
+							$respuesta .= '<ul class="tema">
+										  <li class="subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
+										  </ul>';
+						}
+					}
+				}
+			} */
+			/* $b=0;
             if ($datost){
 				$rec='';
             for ($i = 0; $i < count($datost); $i++) {
                 $tem = $datost[$i]["NomTema"];
-				$sub = $datost[$i]["NomSubT"];
-				if ($rec != $tem){
 					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
-					$respuesta .= 
-					'<ul class="tema">
-						<li class = "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
-					</ul>';
-					$rec = $datost[$i]["NomTema"];
+						
+					}
+				}
+					
 
+			
+					
+				$theme = $bd->tema($tem);
+					if($theme){
+						for ($i = 0; $i < count($theme); $i++) {
+						$sub = $theme[$i]["NomSubT"];	
+						$respuesta .=
+						'<ul class="tema">
+					  <li class = "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
+						</ul>';
+					}
 				}
-				else {
-					$respuesta .= 
-					'<ul>
-						<li class= "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
-					</ul>';
-				}
+			
                 
             
-            }
-        }else{
-            $respuesta .= 'No hay temario';
-        }
-            $respuesta .=    '</p>
-		</section> 
+            
+			
+        
+		
+		else{
+				$respuesta .= 'No hay temario';
+				$respuesta .=    '</p>';
+			} */
+		
+			$respuesta .= '		</section> 
 	</main>
 
 </body>

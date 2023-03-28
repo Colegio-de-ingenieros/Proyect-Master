@@ -19,7 +19,7 @@ document.getElementById("registraform").disabled = false;
 
 const expresiones = {
     clave: /^[0-9]{6}$/,
-    duracion: /^[0-9]+$/,
+    duracion: /^[0-9]{0,3}$/,
     nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
     objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
     objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
@@ -226,7 +226,7 @@ function regi()
             xmlhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     
-                    console.log(this.responseText);
+                    alert(this.responseText);
                 }
             };
 
@@ -246,7 +246,7 @@ function regi()
 
             c = 0;
 
-            alert("Registro del curso completado");
+            /* alert("Registro del curso completado"); */
 
         }
         else {

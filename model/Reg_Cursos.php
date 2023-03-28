@@ -56,5 +56,25 @@
 
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
-    }
+        function idtema(){
+            $querry = "SELECT Max(CAST(IdTema as int)) FROM temas ";
+            $resultados = $this->base->mostrar($querry);
+    
+            return $resultados;
+        }
+
+
+        function idsub(){
+            $querry = "SELECT Max(CAST(IdSubT as int)) FROM subtemas";
+            $resultados = $this->base->mostrar($querry);
+    
+            return $resultados;
+        }     
+        function esta($identificador){
+            $querry ="SELECT ClaveCur FROM cursos where ClaveCur = $identificador";
+            $resultados = $this->base->mostrar($querry);
+    
+            return $resultados;
+        }           
+        }
 ?>
