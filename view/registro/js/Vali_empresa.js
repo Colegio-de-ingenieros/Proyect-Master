@@ -42,7 +42,7 @@ const expresiones = {
     razon:/^[a-zA-ZÁ-ý\s,\.]{1,100}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
-    nombre_area:/^[a-zA-ZÁ-Ýá-ý\s]{1,40}$/,
+    nombre_area:/^[a-zA-ZÁ-Ýá-ý\.\s]{1,40}$/,
     apellidos:/^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
     telefono:/^[0-9]{10}$/,
     exten:/^[0-9]{3}$/
@@ -259,7 +259,7 @@ formulario.rh_nombre.addEventListener('keyup', (e) => {
 	formulario.rh_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
@@ -412,7 +412,7 @@ formulario.ti_nombre.addEventListener('keyup', (e) => {
 	formulario.ti_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
@@ -563,7 +563,7 @@ formulario.ac_nombre.addEventListener('keyup', (e) => {
 	formulario.ac_nombre.value = valorInput
 
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
 
      let valorInput2 = e.target.value;
     if (!expresiones.nombre_area.test(valorInput2)) {
