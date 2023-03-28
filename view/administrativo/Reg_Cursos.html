@@ -193,31 +193,28 @@
       <div class="formulario-cursos">
 
         <div class="campo">
-          <label for="nombre-curso" class="label-2 nombre">Nombre del curso</label>
-          <abbr title="Inserte letras, números, puntos y comas" class="label-2 nombre">?*</abbr>
-          <input type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Nombre del curso"
+          <label for="nombre-curso" class="label-2 nombre">Nombre del curso*</label>
+          <input title="El nombre solo puede contener letras mayúsculas, minúsculas, números y comas." type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Nombre del curso"
             minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
-          <label for="clave-curso" class="label-2 clave">Clave del curso</label>
-          <abbr title="Inserte como maximo 6 números" class="label-2 nombre">?*</abbr>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso"
+          <label for="clave-curso" class="label-2 clave">Clave del curso*</label>
+          <input title="La clave debe contener 6 dígitos." type="text" name="clave-curso" id="clave-curso" class="input-format-2" placeholder="Clave del curso"
             maxlength="6" required>
         </div>
 
         <div class="campo">
-          <label for="duración" class="label-2 duracion">Duración del curso</label>
-          <abbr title="Inserte como maximo 3 números" class="label-2 nombre">?*</abbr>
-          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..."
+          <label for="duración" class="label-2 duracion">Duración del curso*</label>
+          
+          <input title="La duración solo puede contener 3 números como máximo." type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración"
             required>
         </div>
 
         <div class="campo-wide">
-          <label for="objetivo" class="label-2 objetivo">Objetivo</label>
-          <abbr title="Inserte letras, números, puntos y comas" class="label-2 nombre">?*</abbr>
-          <input type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
-            placeholder="Ingresa tu texto aquí..." required>
+          <label for="objetivo" class="label-2 objetivo">Objetivo*</label>
+          <input title="El objetivo solo puede contener letras y números." type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
+            placeholder="Ingresa tu texto aquí" required>
         </div>
 
       </div>
@@ -235,8 +232,8 @@
           <div class="campos">
             <label for="titulo-curso" class="label-2 titulo-curso" id="leyenda">Añadir tema*</label>
 
-            <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2 campo-texto" placeholder="Ingrese el tema aquí" minlength="1" maxlength="40" autocomplete="off" required>
-            <input type="text" name="subtitulo-curso" id="subtitulo-curso" class="input-format-2" placeholder="Ingrese el subtema aquí" minlength="1" maxlength="40" autocomplete="off" required>
+            <input title="El el campo tema solo puede contener letras, números, y comillas." type="text" name="titulo-curso" id="titulo-curso" class="input-format-2 campo-texto" placeholder="Ingrese el tema aquí" minlength="1" maxlength="40" autocomplete="off" required>
+            <input title="El el campo subtema solo puede contener letras, números y comillas." type="text" name="subtitulo-curso" id="subtitulo-curso" class="input-format-2" placeholder="Ingrese el subtema aquí" minlength="1" maxlength="40" autocomplete="off" required>
 
             <button id="btn_tema-add" class="btn-small btn tema-btn-add" onclick="agregar_tema()">Añadir tema</button>
             <button id="btn-subtema-add" class="btn-small btn subtema-btn-add" onclick="agregar_subtema()">Añadir Subtema</button>
@@ -256,32 +253,7 @@
           </div>
         </div>
 
-
-<!--         <div class="campo">
-          <label for="titulo-curso" class="label-2 titulo-curso">Título del tema</label>
-          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2"
-            placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
-        </div>
-
-        <div class="campo">
-          <label for="Subtitulo-curso" class="label-2 titulo-curso">Subtema del tema</label>
-          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2"
-            placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
-        </div> -->
-
       </div>
-
-<!--       <div class="section-botones">
-        <div class="campo botones">
-
-          <button id="temas" class="btn-small btn" onclick="te()">Añadir nuevo tema</button>
-        </div>
-
-        <div class="campo botones">
-          <button id="subtemas" class="btn-small btn" onclick="subt()">Añadir</button>
-        </div>
-
-      </div> -->
 
       <div class="section-botones-2">
         <div class="campo botones">

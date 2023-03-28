@@ -31,7 +31,6 @@ function agregar_tema() {
     contenido = caja_titulo.value;
 
     if (contenido == "") {
-        caja_titulo.style.border = "3px solid red";
         alert("El campo del tema no se puede encontrar vacio");
         return;
     }
@@ -42,7 +41,7 @@ function agregar_tema() {
 
         elemento_inicial.display = "none";
         console.log("Se ha presionado el boton del tema");
-        leyenda.innerHTML = "Añadir subtema*";
+        leyenda.innerHTML = "Añadir subtema";
 
         caja_titulo.style.display = "none";
         caja_subtitulo.style.display = "flex";
@@ -74,7 +73,7 @@ function agregar_subtema() {
 
     if (contenido == "") {
         caja_subtitulo.style.border = "3px solid red";
-        alert("El campo no puede estar vacio");
+        alert("El campo subtema no puede estar vacio");
         return;
     }
     else {
