@@ -8,8 +8,10 @@
   <title>Registro de cursos - CISCIG</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/prueba.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursoscopy.css">
+
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -206,19 +208,17 @@
 
         <div class="campo">
           <label for="duración" class="label-2 duracion">Duración del curso</label>
-          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración..."
+          <input type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración"
             required>
         </div>
 
         <div class="campo-wide">
           <label for="objetivo" class="label-2 objetivo">Objetivo</label>
           <input type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
-            placeholder="Ingresa tu texto aquí..." required>
+            placeholder="Ingresa tu texto aquí" required>
         </div>
 
       </div>
-
-      
 
       <div class="titulos-registrados">
         <p class="subtitulo-1">Temario</p>
@@ -237,6 +237,10 @@
             <button id="btn_tema-add" class="btn-small btn tema-btn-add" onclick="agregar_tema()">Añadir tema</button>
             <button id="btn-subtema-add" class="btn-small btn subtema-btn-add" onclick="agregar_subtema()">Añadir Subtema</button>
             <button id="btn_tema-new-add" class="btn-small btn tema-btn-add" onclick="agregar_nuevo_tema()">Añadir nuevo tema</button>
+            <button id="btn-tema-modificar" class="btn-small btn tema-btn-mod" onclick="modificar_tema()">Modificar tema</button>
+            <button id="btn-tema-eliminar" class="btn-small btn tema-btn-del" onclick="eliminar_tema()">Eliminar tema</button>
+            <button id="btn-subtema-modificar" class="btn-small btn subtema-btn-mod" onclick="modificar_subtema()">Modificar subtema</button>
+            <button id="btn-subtema-eliminar" class="btn-small btn subtema-btn-del" onclick="eliminar_subtema()">Eliminar subtema</button>
           </div>
           
         </div>
@@ -250,32 +254,7 @@
           </div>
         </div>
 
-
-<!--         <div class="campo">
-          <label for="titulo-curso" class="label-2 titulo-curso">Título del tema</label>
-          <input type="text" name="titulo-curso" id="titulo-curso" class="input-format-2"
-            placeholder="Ingrese el tema aquí..." minlength="1" maxlength="40" required>
-        </div>
-
-        <div class="campo">
-          <label for="Subtitulo-curso" class="label-2 titulo-curso">Subtema del tema</label>
-          <input type="text" name="Subtitulo-curso" id="Subtitulo-curso" class="input-format-2"
-            placeholder="Ingrese el subtema aquí..." minlength="1" maxlength="40" required>
-        </div> -->
-
       </div>
-
-<!--       <div class="section-botones">
-        <div class="campo botones">
-
-          <button id="temas" class="btn-small btn" onclick="te()">Añadir nuevo tema</button>
-        </div>
-
-        <div class="campo botones">
-          <button id="subtemas" class="btn-small btn" onclick="subt()">Añadir</button>
-        </div>
-
-      </div> -->
 
       <div class="section-botones-2">
         <div class="campo botones">
@@ -288,5 +267,5 @@
   </main>
 </body>
 <script src="js/Vali_Cursos.js"></script>
-<script src="js/Reg_Cursos.js"></script>
+<script src="js/Prueba.js"></script>
 </html>
