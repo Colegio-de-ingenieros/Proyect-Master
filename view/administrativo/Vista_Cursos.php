@@ -63,7 +63,7 @@
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="#">Visualizar</a></li>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -75,7 +75,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -87,7 +87,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -99,7 +99,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -111,7 +111,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -123,7 +123,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -135,7 +135,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -147,7 +147,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -170,7 +170,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
