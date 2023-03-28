@@ -5,6 +5,27 @@
  * este archivo se encarga de mandar los datos al controlador 
  * de Alta_empresa.php
  */
+let rh_nombre = document.getElementById("rh_nombre");
+let rh_paterno = document.getElementById("rh_paterno");
+let rh_materno = document.getElementById("rh_materno");
+let rh_tele = document.getElementById("rh_tele");
+let rh_exten = document.getElementById("rh_exten");
+let rh_correo = document.getElementById("rh_correo");
+
+let it_nombre = document.getElementById("ti_nombre");
+let it_paterno = document.getElementById("ti_paterno");
+let it_materno = document.getElementById("ti_materno");
+let it_tele = document.getElementById("ti_tele");
+let it_exten = document.getElementById("ti_exten");
+let it_correo = document.getElementById("ti_correo");
+
+let ac_nombre = document.getElementById("ac_nombre");
+let ac_paterno = document.getElementById("ac_paterno");
+let ac_materno = document.getElementById("ac_materno");
+let ac_tele = document.getElementById("ac_tele");
+let ac_exten = document.getElementById("ac_exten");
+let ac_correo = document.getElementById("ac_correo");
+
 
 
 
@@ -36,6 +57,7 @@ document.getElementById("codigo_postal").addEventListener('blur', (e) => {
 let formulario  = document.getElementById("formula");
 formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
+    disabled_opcionales(false);
     //traemos los datos del checkbox
     let aviso_privacidad = document.getElementById("avisos1");
     let time_inicio = document.getElementById("inicio");
@@ -75,6 +97,7 @@ formulario.addEventListener("submit",(e)=>{
         formulario.reset();
         document.getElementById("ciudad").disabled = true;
         document.getElementById("estado").disabled = true;
+        disabled_opcionales(true); 
     }
    
 });
@@ -100,7 +123,7 @@ function rellenar_lista(datos) {
 }
 function checke() {
     let lista = [];
-    var checked_list = document.querySelectorAll('.checkbox-format');
+    var checked_list = document.querySelectorAll('.dias');
     for(var i=0; checked_list[i]; ++i){
         if(checked_list[i].checked){
             lista.push(checked_list[i].value);
@@ -111,9 +134,31 @@ function checke() {
 }
 function limpiar() {
     estado.value = "";
-    ciudad.value = "";
-    
-    
+    ciudad.value = "";  
+}
+function disabled_opcionales(opcion){
+
+    rh_nombre.disabled = opcion; 
+    rh_paterno.disabled = opcion;
+    rh_materno.disabled = opcion;
+    rh_tele.disabled = opcion;
+    rh_exten.disabled = opcion;
+    rh_correo.disabled = opcion;
+
+    it_nombre.disabled = opcion;
+    it_paterno.disabled = opcion;
+    it_materno.disabled = opcion;
+    it_tele.disabled = opcion;
+    it_exten.disabled = opcion;
+    it_correo.disabled = opcion;
+
+    ac_nombre.disabled = opcion;
+    ac_paterno.disabled = opcion;
+    ac_materno.disabled = opcion;
+    ac_tele.disabled = opcion;
+    ac_exten.disabled = opcion;
+    ac_correo.disabled = opcion;
+
 }
 
 

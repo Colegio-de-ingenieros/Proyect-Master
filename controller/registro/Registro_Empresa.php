@@ -52,15 +52,27 @@ if(
         $objeto->insertar_dias_laborales($rfc_empresa,$_POST["dias"]);
 
         //insertamos las areas it,rh y capacitacion
-        $objeto->insertar_areas($_POST["rh_nombre"],$_POST["rh_paterno"],$_POST["rh_materno"],
-                                $_POST["rh_tele"],$_POST["rh_exten"],$_POST["rh_correo"],1,$rfc_empresa,0);
+        $posicion_suma = 0;
+        if($_POST["rh_nombre"] != "" && $_POST["ti_nombre"] != "" &&  $_POST["ac_nombre"] != ""){
+            $objeto->insertar_areas($_POST["rh_nombre"],$_POST["rh_paterno"],$_POST["rh_materno"],
+                                $_POST["rh_tele"],$_POST["rh_exten"],$_POST["rh_correo"],1,$rfc_empresa,$posicion_suma);
 
-        $objeto->insertar_areas($_POST["ti_nombre"],$_POST["ti_paterno"],$_POST["ti_materno"],
-                                $_POST["ti_tele"],$_POST["ti_exten"],$_POST["ti_correo"],2,$rfc_empresa,1);
+            $posicion_suma += 1;
+        }
+        if($_POST["ti_nombre"] != ""){
+            $objeto->insertar_areas($_POST["ti_nombre"],$_POST["ti_paterno"],$_POST["ti_materno"],
+                                $_POST["ti_tele"],$_POST["ti_exten"],$_POST["ti_correo"],2,$rfc_empresa,$posicion_suma);
+            $posicion_suma += 1;                    
+        }
 
-        $objeto->insertar_areas($_POST["ac_nombre"],$_POST["ac_paterno"],$_POST["ac_materno"],
-                                $_POST["ac_tele"],$_POST["ac_exten"],$_POST["ac_correo"],3,$rfc_empresa,2);
+        if($_POST["ac_nombre"] != ""){
+            $objeto->insertar_areas($_POST["ac_nombre"],$_POST["ac_paterno"],$_POST["ac_materno"],
+                                $_POST["ac_tele"],$_POST["ac_exten"],$_POST["ac_correo"],3,$rfc_empresa,$posicion_suma);
 
+            $posicion_suma += 1;
+        }
+
+        
         //establecemos el tipo de usuario que es la empresa
         $objeto->establecer_tipo_usuario($rfc_empresa,3);
         $objeto->establecer_colonia_empresa($rfc_empresa,$_POST["colonia"]);

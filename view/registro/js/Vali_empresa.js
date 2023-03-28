@@ -1,3 +1,11 @@
+let checkbox_rh = document.getElementById("rh_ck");
+let checkbox_it = document.getElementById("ti_ck");
+let checkbox_ac = document.getElementById("ac_ck");
+
+
+
+const boton_enviar = document.getElementById("boton_registrar");
+
 let baderas = {
      brfc: false,
      bnombre_empresa: false,
@@ -11,26 +19,26 @@ let baderas = {
      bciudad: true,
      bestado: true,
 
-     brh_nombre: false,
-     brh_pa:  false,
+     brh_nombre: true,
+     brh_pa:  true,
      brh_ma: true,
-     brh_te: false,
+     brh_te: true,
      brh_exten: true,
-     brh_correo: false,
+     brh_correo: true,
 
-     bti_nombre: false,
-     bti_pa:  false,
+     bti_nombre: true,
+     bti_pa:  true,
      bti_ma: true,
-     bti_te: false,
+     bti_te: true,
      bti_exten: true,
-     bti_correo: false,
+     bti_correo: true,
 
-     bca_nombre: false,
-     bca_pa:  false,
+     bca_nombre: true,
+     bca_pa:  true,
      bca_ma: true,
-     bca_te: false,
+     bca_te: true,
      bca_exten: true,
-     bca_correo: false
+     bca_correo: true
 }
 
 const expresiones = {
@@ -51,7 +59,148 @@ const expresiones = {
 
 }
 
+/** que se activen los campos del check  recursos humanos*/
+checkbox_rh.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
 
+        rh_nombre.disabled = false; 
+        rh_paterno.disabled = false;
+        rh_materno.disabled = false;
+        rh_tele.disabled = false;
+        rh_exten.disabled = false;
+        rh_correo.disabled = false;
+
+        baderas.brh_nombre= false
+        baderas.brh_pa =  false
+        baderas.brh_ma = true
+        baderas.brh_te = false
+        baderas.brh_exten = true
+        baderas.brh_correo = false
+
+
+    } else {
+        rh_nombre.disabled = true; 
+        rh_paterno.disabled = true;
+        rh_materno.disabled = true;
+        rh_tele.disabled = true;
+        rh_exten.disabled = true;
+        rh_correo.disabled = true;
+
+        rh_nombre.value = "";
+        rh_paterno.value = "";
+        rh_materno.value = "";
+        rh_tele.value = "";
+        rh_exten.value = "";
+        rh_correo.value = "";
+
+        rh_nombre.removeAttribute("style");
+        rh_paterno.removeAttribute("style");
+        rh_materno.removeAttribute("style");
+        rh_tele.removeAttribute("style");
+        rh_exten.removeAttribute("style");
+        rh_correo.removeAttribute("style");
+
+        baderas.brh_nombre= true
+        baderas.brh_pa =  true
+        baderas.brh_ma = true
+        baderas.brh_te = true
+        baderas.brh_exten = true
+        baderas.brh_correo = true
+    }
+});
+checkbox_it.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        it_nombre.disabled = false;
+        it_paterno.disabled = false;
+        it_materno.disabled = false;
+        it_tele.disabled = false;
+        it_exten.disabled = false;
+        it_correo.disabled = false;
+
+        baderas.bti_nombre = false
+        baderas.bti_pa =  false
+        baderas.bti_ma = true
+        baderas.bti_te = false
+        baderas.bti_exten = true
+        baderas.bti_correo = false
+    } else {
+        it_nombre.disabled = true;
+        it_paterno.disabled = true;
+        it_materno.disabled = true;
+        it_tele.disabled = true;
+        it_exten.disabled = true;
+        it_correo.disabled = true;
+
+        it_nombre.value = "";
+        it_paterno.value = "";
+        it_materno.value = "";
+        it_tele.value = "";
+        it_exten.value = "";
+        it_correo.value = "";
+
+        it_nombre.removeAttribute("style");
+        it_paterno.removeAttribute("style");
+        it_materno.removeAttribute("style");
+        it_tele.removeAttribute("style");
+        it_exten.removeAttribute("style");
+        it_correo.removeAttribute("style");
+
+        baderas.bti_nombre = true
+        baderas.bti_pa =  true
+        baderas.bti_ma = true
+        baderas.bti_te = true
+        baderas.bti_exten = true
+        baderas.bti_correo = true
+
+        
+    }
+});
+checkbox_ac.addEventListener('change', (event) => {
+    if (event.currentTarget.checked) {
+        ac_nombre.disabled = false;
+        ac_paterno.disabled = false;
+        ac_materno.disabled = false;
+        ac_tele.disabled = false;
+        ac_exten.disabled = false;
+        ac_correo.disabled = false;
+
+        baderas.bca_nombre = false
+        baderas.bca_pa =  false
+        baderas.bca_ma = true
+        baderas.bca_te = false
+        baderas.bca_exten = true
+        baderas.bca_correo = false
+    } else {
+        ac_nombre.disabled = true;
+        ac_paterno.disabled = true;
+        ac_materno.disabled = true;
+        ac_tele.disabled = true;
+        ac_exten.disabled = true;
+        ac_correo.disabled = true;
+
+        ac_nombre.value = "";
+        ac_paterno.value = "";
+        ac_materno.value = "";
+        ac_tele.value = "";
+        ac_exten.value = "";
+        ac_correo.value = "";
+
+        ac_nombre.removeAttribute("style");
+        ac_paterno.removeAttribute("style");
+        ac_materno.removeAttribute("style");
+        ac_tele.removeAttribute("style");
+        ac_exten.removeAttribute("style");
+        ac_correo.removeAttribute("style");
+
+        baderas.bca_nombre = true
+        baderas.bca_pa =  true
+        baderas.bca_ma = true
+        baderas.bca_te = true
+        baderas.bca_exten = true
+        baderas.bca_correo = true
+
+    }
+  })
 
 
 /**rfc */
@@ -704,7 +853,8 @@ formulario.ac_correo.addEventListener('keyup', (e) => {
     
     
 });
-const boton_enviar = document.getElementById("boton_registrar");
+
+
 boton_enviar.addEventListener("click",(e)=>{
     
     
@@ -772,6 +922,7 @@ boton_enviar.addEventListener("click",(e)=>{
 });
 let estado = document.getElementById("estado");
 let ciudad = document.getElementById("ciudad");
+
 function validar(e) {
     //si hay una bandera en falso la coloca en rojo
 
@@ -796,10 +947,16 @@ function validar(e) {
             estado.disabled = true;
         }else{
             ciudad.disabled = false;
+            
         }
     }
 }
 
+function colorear_campos_opcionales() {
     
+    
+}
+
+
 
     
