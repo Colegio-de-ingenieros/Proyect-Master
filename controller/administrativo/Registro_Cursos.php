@@ -20,7 +20,6 @@ class RegistroCursos{
         $this->nombre = $arreglo[0];
         $this->objetivo = $arreglo[3];
         $this->duracion = $arreglo[2];
-        echo json_encode('duracion'. $this->duracion);
         $idt=0;
         //Compara que la clave del curso exista
        $resultados = $this->obj->buscarClave($this->clave);
