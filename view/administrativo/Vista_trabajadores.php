@@ -12,6 +12,13 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<!-- <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script> -->
+
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 <body>
 <header>
@@ -47,7 +54,7 @@
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="#">Visualizar</a></li>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -59,7 +66,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -71,7 +78,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -83,7 +90,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -95,7 +102,7 @@
 
 							<ul>
 								<li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
+								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
 							</ul>
 						</li>
 
@@ -107,7 +114,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -119,7 +126,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -131,7 +138,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -154,7 +161,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -179,7 +186,7 @@
       <div class="article-tablas">
         <article>
           <div class="sub-titulo">
-            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+            <h4 class="subtitulo-1">Mostrar / Consultar</h4>
           </div>
           <hr>
           <div class="grupo-input">

@@ -46,7 +46,7 @@ nombrecurso.addEventListener('keyup', (e) => {
         nombrecurso.removeAttribute("style");
         bNom = true
     }
-    validar(bNom);
+    /* validar(bNom); */
 })
 
 let clavecurso = document.getElementById("clave-curso");
@@ -70,7 +70,7 @@ clavecurso.addEventListener('keyup', (e) => {
         clavecurso.removeAttribute("style");
         bId = true
     }
-    validar(bId);
+    /* validar(bId); */
 })
 
 let objetivo = document.getElementById("objetivo");
@@ -90,7 +90,7 @@ objetivo.addEventListener('keyup', (e) => {
         objetivo.removeAttribute("style");
         Obj = true
     }
-    validar(Obj);
+    /* validar(Obj); */
 })
 
 let duracion = document.getElementById("duración");
@@ -114,7 +114,7 @@ duracion.addEventListener('keyup', (e) => {
         duracion.removeAttribute("style");
         dur = true
     }
-    validar(dur);
+    /* validar(dur); */
 })
 
 let tema = document.getElementById("titulo-curso");
@@ -134,7 +134,7 @@ tema.addEventListener('keyup', (e) => {
         tema.removeAttribute("style");
         tem = true
     }
-    validar2(tem);
+    /* validar2(tem); */
 })
 
 let subtema = document.getElementById("subtitulo-curso");
@@ -154,11 +154,11 @@ subtema.addEventListener('keyup', (e) => {
         subtema.removeAttribute("style");
         sub = true
     }
-    validar3(sub);
+    /* validar3(sub); */
 })
 
 
-function validar(bandera) {
+/* function validar(bandera) {
     const guarda = document.getElementById('registraform');
     if (bandera == true) {
         guarda.disabled = false;
@@ -187,7 +187,7 @@ function validar3(bandera) {
         guardar1.disabled = true;
     }
 
-}
+} */
 
 function regi() {
     if (bNom == false) {
