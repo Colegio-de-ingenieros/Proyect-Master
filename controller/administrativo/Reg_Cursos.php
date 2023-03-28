@@ -9,6 +9,7 @@
 	$obj = new NuevoCurso();
 	$obj->conexion();
 
+	 
 	$identificador=$arreglo[0];
 
 	$existe=$obj->esta($identificador);
