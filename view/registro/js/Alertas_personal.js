@@ -34,7 +34,7 @@ formulario.addEventListener('submit', function (e)
 
     if (bandera==true){
         if(pasantia1.checked==false && pasantia2.checked==false){
-            alert("Antes debe seleccionar la pasantia");
+            alert("Antes debe seleccionar la pasantía");
         }else if(antecedente1.checked==false && antecedente2.checked==false){
             alert("Antes debe seleccionar antecedentes");
         }else if(veridico1.checked==false && veridico2.checked==false){
