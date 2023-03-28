@@ -119,3 +119,32 @@ function agregar_nuevo_tema(){
         console.log(lista_temario_completo[i]);
     }
 }
+
+function funcion_enviar(){
+    let url = "../../controller/administrativo/Registro_Cursos.php";
+
+    let nombre_curso = document.getElementById("nombre-curso");
+    let clave_curso = document.getElementById("clave-curso");
+    let duracion_curso = document.getElementById("duración");
+    let objetivo = document.getElementById("objetivo");
+    let temario = lista_temario_completo;
+
+    let form = new FormData();
+    form.append("nombre_curso", nombre_curso.value);
+    form.append("clave_curso", clave_curso.value);
+    form.append("duracion_curso", duracion_curso.value);
+    form.append("objetivo", objetivo.value);
+    form.append("temario", temario);
+
+    fetch(url, {
+        method: "POST",
+        body: form
+    })
+    .then(response => response.json())
+    .then(data => arrays(data))
+    .catch(error => console.log(error));
+
+    const arrays = (data) => {
+        console.log(data);
+    }
+}
