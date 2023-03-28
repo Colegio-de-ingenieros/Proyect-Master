@@ -6,7 +6,7 @@ let bandAM = true
 let bandEmail = false
 let bandContra = false
 let bandConfiContra = false
-let bandCedu = false
+let bandCedu = true
 let bandTelF = false
 let bandTelM = false
 
@@ -527,8 +527,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.contraPerso.style.border = "3px solid red";
     }else if(bandConfiContra == false){
         formulario.confiContraPerso.style.border = "3px solid red";
-    }else if(bandCedu == false){
-        formulario.cedulaPerso.style.border = "3px solid red";
     }else if(bandTelF == false){
         formulario.telFPerso.style.border = "3px solid red";
     }else if(bandTelM == false){
