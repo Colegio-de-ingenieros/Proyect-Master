@@ -137,7 +137,7 @@ tema.addEventListener('keyup', (e) => {
     validar2(tem);
 })
 
-let subtema = document.getElementById("Subtitulo-curso");
+let subtema = document.getElementById("subtitulo-curso");
 subtema.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
 
