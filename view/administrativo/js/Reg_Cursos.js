@@ -41,7 +41,7 @@ function agregar_tema() {
 
         elemento_inicial.display = "none";
         console.log("Se ha presionado el boton del tema");
-        leyenda.innerHTML = "Añadir subtema*";
+        leyenda.innerHTML = "Añadir subtema";
 
         caja_titulo.style.display = "none";
         caja_subtitulo.style.display = "flex";
