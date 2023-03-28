@@ -82,7 +82,7 @@ class RegistroCert{
         }
 
         else{
-            echo json_encode('No se ha subido nungún archivo');
+            echo json_encode('No se ha subido ningún archivo');
         }
         
 
