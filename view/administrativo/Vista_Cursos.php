@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vista de cursos - CISICG</title>
+  <title>Visualización cursos</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
@@ -34,7 +34,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar session</button>
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
       </div>
     </div>
 
@@ -184,21 +184,27 @@
   </header>
 
   <main>
-    <section class="section-main">
-      <div class="cabezera">
-        <div class="izquierda">
-          <h6 class="subtitulo-1">Visualización / Consulta</h6>
-        </div>
-        <hr>
-        <div class="derecha">
-          <input type="search" class="input-format-2" placeholder="Search" name="busqueda" id="busqueda">
-        </div>
-      </div>
-      
+  <div>
+      <div class="article-tablas">
+        <article>
+          <div class="izquierda">
+            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+          </div>
+          <hr>
+          <div class="grupo-input">
+            <div class="input-form">
+              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+            </div>
+          </div>
+          <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
 
-      <div id="tablaResultado">
-        
+            </section>
+          </div>
+        </article>
       </div>
+    </div>
     </section>
   </main>
 
