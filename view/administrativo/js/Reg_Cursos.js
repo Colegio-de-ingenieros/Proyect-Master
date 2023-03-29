@@ -34,7 +34,7 @@ function agregar_tema() {
 
     if (contenido == "") {
         caja_titulo.style.border = "3px solid red";
-        alert("El campo del tema no se puede encontrar vacio");
+        alert("Ingrese un tema");
         return;
     }
     else {
@@ -78,7 +78,7 @@ function agregar_subtema() {
 
     if (contenido == "") {
         caja_subtitulo.style.border = "3px solid red";
-        alert("El campo no puede estar vacio");
+        alert("Ingrese un subtema");
         return;
     }
     else {
@@ -250,5 +250,13 @@ function enviar() {
 
 
         xmlhttp.send(formData);
+
+        document.getElementById("nombre-curso").value = "";
+        document.getElementById("clave-curso").value = "";
+        document.getElementById("duración").value = "";
+        document.getElementById("objetivo").value = "";
+        document.getElementById("titulo-curso").value = "";
+        document.getElementById("subtitulo-curso").value = "";
+
     }
 }
