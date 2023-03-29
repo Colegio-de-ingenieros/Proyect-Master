@@ -222,6 +222,46 @@ function enviar() {
             let resultado = confirm("¿Está seguro de que desea guardar el registro del temario?");
             if (resultado == true) {
                 finalizar_registro_temario();
+                var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
+                var lista = lista_temario_completo;
+
+                var formData = new FormData();
+                formData.append("arrayin", JSON.stringify(arrayin));
+                formData.append("lista", JSON.stringify(lista));
+
+
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
+
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+
+                        alert(this.responseText);
+                    }
+                };
+
+
+                xmlhttp.send(formData);
+
+                const nuevo_elemento = document.createElement("li");
+
+                document.getElementById("nombre-curso").value = "";
+                document.getElementById("clave-curso").value = "";
+                document.getElementById("duración").value = "";
+                document.getElementById("objetivo").value = "";
+                document.getElementById("titulo-curso").value = "";
+                document.getElementById("subtitulo-curso").value = "";
+                document.getElementById("lista").innerHTML = "";
+
+                nuevo_elemento.innerHTML = "Sin temario añadido";
+                nuevo_elemento.setAttribute("id", "inicial");
+                nuevo_elemento.classList.add("label-3");
+                listado.appendChild(nuevo_elemento);
+
+                lista_temario_completo = [];
+                lista_temario_parcial = [];
+                contador_temas = 1;
+                contador_subtemas = 1;
             }
         }
         else {
@@ -251,16 +291,25 @@ function enviar() {
 
         xmlhttp.send(formData);
 
+        const nuevo_elemento = document.createElement("li");
+
         document.getElementById("nombre-curso").value = "";
         document.getElementById("clave-curso").value = "";
         document.getElementById("duración").value = "";
         document.getElementById("objetivo").value = "";
         document.getElementById("titulo-curso").value = "";
         document.getElementById("subtitulo-curso").value = "";
+        document.getElementById("lista").innerHTML = "";
+
+        nuevo_elemento.innerHTML = "Sin temario añadido";
+        nuevo_elemento.setAttribute("id", "inicial");
+        nuevo_elemento.classList.add("label-3");
+        listado.appendChild(nuevo_elemento);
 
         lista_temario_completo = [];
         lista_temario_parcial = [];
         contador_temas = 1;
         contador_subtemas = 1;
+
     }
 }
