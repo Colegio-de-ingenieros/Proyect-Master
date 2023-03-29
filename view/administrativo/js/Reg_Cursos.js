@@ -13,6 +13,7 @@ const visualizar_listas = document.getElementById("visualizar_modificar");
 const listado = document.getElementById("lista");
 const elemento_inicial = document.getElementById("inicial");
 
+let flag_almacenar = false;
 
 let lista_temario_completo = [];
 let lista_temario_parcial = [];
@@ -26,9 +27,10 @@ btn_add_new_tema.style.display = "none";
 btn_add_subtema.style.display = "none";
 btn_end_proceso.style.display = "none";
 
-
 function agregar_tema() {
     contenido = caja_titulo.value;
+    flag_almacenar = false;
+    console.log("El contenido de la bandera en agregar tema es: " + flag_almacenar + "");
 
     if (contenido == "") {
         caja_titulo.style.border = "3px solid red";
@@ -71,6 +73,8 @@ function agregar_tema() {
 
 function agregar_subtema() {
     contenido = caja_subtitulo.value;
+    flag_almacenar = false;
+    console.log("El contenido de la bandera en agregar subtema es: " + flag_almacenar + "");
 
     if (contenido == "") {
         caja_subtitulo.style.border = "3px solid red";
@@ -128,6 +132,9 @@ function agregar_nuevo_tema() {
     } */
 
     lista_temario_parcial = [];
+    flag_almacenar = true;
+
+    console.log("El contenido de la bandera en agregar tema es: " + flag_almacenar + "");
 
     for (let i = 0; i < lista_temario_completo.length; i++) {
         console.log(lista_temario_completo[i]);
@@ -153,7 +160,7 @@ function finalizar_registro_temario() {
     }
 }
 
-function funcion_enviar() {
+/* function funcion_enviar() {
     let url = "../../controller/administrativo/Reg_Cursos.php";
 
     let nombre_curso = document.getElementById("nombre-curso");
@@ -186,7 +193,7 @@ function funcion_enviar() {
     const arrays = (data) => {
         console.log(data);
     }
-}
+} */
 
 function enviar() {
     let nombre_curso = document.getElementById("nombre-curso");
@@ -194,24 +201,54 @@ function enviar() {
     let duracion_curso = document.getElementById("duración");
     let objetivo = document.getElementById("objetivo");
 
-    var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
-    var lista = lista_temario_completo;
-
-    var formData = new FormData();
-    formData.append("arrayin", JSON.stringify(arrayin));
-    formData.append("lista", JSON.stringify(lista));
-
-
-    var xmlhttp = new XMLHttpRequest();
-    xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
-
-    xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-
-            alert(this.responseText);
+    if (nombre_curso.value == "") {
+        alert("El campo nombre del curso no puede estar vacio");
+        nombre_curso.style.border = "3px solid red";
+    }
+    else if (clave_curso.value == "") {
+        alert("El campo clave del curso no puede estar vacio");
+        clave_curso.style.border = "3px solid red";
+    }
+    else if (duracion_curso.value == "") {
+        alert("El campo duración del curso no puede estar vacio");
+        duracion_curso.style.border = "3px solid red";
+    }
+    else if (objetivo.value == "") {
+        alert("El campo objetivo del curso no puede estar vacio");
+        objetivo.style.border = "3px solid red";
+    }
+    else if (lista_temario_completo.length == 0) {
+        if (flag_almacenar == false && lista_temario_parcial.length > 0) {
+            let resultado = confirm("¿Está seguro de que desea guardar el registro del temario?");
+            if (resultado == true) {
+                finalizar_registro_temario();
+            }
         }
-    };
+        else {
+            alert("El temario no puede estar vacio");
+        }
+    }
+    else {
+
+        var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
+        var lista = lista_temario_completo;
+
+        var formData = new FormData();
+        formData.append("arrayin", JSON.stringify(arrayin));
+        formData.append("lista", JSON.stringify(lista));
 
 
-    xmlhttp.send(formData);
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+
+                alert(this.responseText);
+            }
+        };
+
+
+        xmlhttp.send(formData);
+    }
 }
