@@ -260,5 +260,7 @@ function enviar() {
 
         lista_temario_completo = [];
         lista_temario_parcial = [];
+        contador_temas = 1;
+        contador_subtemas = 1;
     }
 }
