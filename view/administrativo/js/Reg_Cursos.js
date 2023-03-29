@@ -258,5 +258,7 @@ function enviar() {
         document.getElementById("titulo-curso").value = "";
         document.getElementById("subtitulo-curso").value = "";
 
+        lista_temario_completo = [];
+        lista_temario_parcial = [];
     }
 }
