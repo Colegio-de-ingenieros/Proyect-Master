@@ -1,11 +1,10 @@
 //declara las variables globales
 var formulario = document.getElementById('formulario');
+var respuesta = document.getElementById('respuesta');
 
 //responde cuando hay un click en el boton
 formulario.addEventListener('submit', function (e)
 {
-    e.preventDefault();
-
     let aviso_privacidad = document.getElementById("avisos1");
     let pasantia1 = document.getElementById("pasantia1");
     let pasantia2 = document.getElementById("pasantia2");
@@ -33,6 +32,7 @@ formulario.addEventListener('submit', function (e)
     }
 
     if (bandera==true){
+        console.log("no quiere")
         if(pasantia1.checked==false && pasantia2.checked==false){
             alert(" Para continuar con el registro, debe seleccionar la pasantía");
         }else if(antecedente1.checked==false && antecedente2.checked==false){
@@ -42,7 +42,7 @@ formulario.addEventListener('submit', function (e)
         }else if(aviso_privacidad.checked == false){
             alert("Para continuar con el registro, debe aceptar el aviso de privacidad");
         }else{
-    
+            e.preventDefault();
             var datos= new FormData(formulario);
             fetch('../../controller/registro/Registro_Personal.php', {
                 method: 'POST',
@@ -58,6 +58,8 @@ formulario.addEventListener('submit', function (e)
                 //los datos no pasaron alguna validacion
                 else if (data === 'no exito'){
                     alert("Hubo un error");
+                }else{
+                    alert (data)
                 }
             })
         }

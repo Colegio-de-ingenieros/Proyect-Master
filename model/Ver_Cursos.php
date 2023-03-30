@@ -49,7 +49,27 @@ class VerCurso{
         and temassub.IdSubT = subtemas.IdSubT";
         $datos = $this->bd->mostrar($consulta);
     }
+    function t($id){
+        /* $consulta = "SELECT  temas.NomTema, temas.IdTema  ORDER BY temas.IdTema ASC FROM cursos,cursotema,temas 
+        where cursos.ClaveCur = '$id' and cursos.ClaveCur = cursotema.ClaveCur 
+        and cursotema.IdTema = temas.IdTema"; */
+        $consulta = "SELECT temas.NomTema, temas.IdTema FROM cursos, cursotema, temas 
+        WHERE cursos.ClaveCur = '$id' 
+        AND cursos.ClaveCur = cursotema.ClaveCur 
+        AND cursotema.IdTema = temas.IdTema 
+        ORDER BY temas.IdTema DESC;";
+        $datos = $this->bd->mostrar($consulta);
+        return $datos;
+    }
+    function s($id,$tes){
 
+        $consulta = "SELECT NomSubT FROM temas, temassub, subtemas 
+            where  temas.IdTema = '$tes'
+            and temas.IdTema = temassub.IdTema
+            and temassub.IdSubT = subtemas.IdSubT";
+        $datos = $this->bd->mostrar($consulta);
+        return $datos;
+    }
 }
 /* tema
 SELECT DISTINCT NomTema FROM cursos,cursotema,temas 
