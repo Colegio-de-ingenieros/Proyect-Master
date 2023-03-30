@@ -25,7 +25,7 @@ formulario.addEventListener('submit', function (e)
         if (fecha_inicio!="" && fecha_fin!=""){
             if(Date.parse(fecha_inicio)>Date.parse(fecha_fin)){
                 bandera=false
-                alert("La fecha de inicio tiene que ser menor que la fecha final");
+                alert("La fecha de finalización debe ser posterior a la fecha de inicio");
             }else{
                 bandera=true
             }
@@ -34,13 +34,13 @@ formulario.addEventListener('submit', function (e)
 
     if (bandera==true){
         if(pasantia1.checked==false && pasantia2.checked==false){
-            alert("Antes debe seleccionar la pasantía");
+            alert(" Para continuar con el registro, debe seleccionar la pasantía");
         }else if(antecedente1.checked==false && antecedente2.checked==false){
-            alert("Antes debe seleccionar antecedentes");
+            alert("Para continuar con el registro, debe seleccionar antecedentes");
         }else if(veridico1.checked==false && veridico2.checked==false){
-            alert("Antes debe seleccionar datos veridicos");
+            alert("Para continuar con el registro, debe seleccionar datos veridicos");
         }else if(aviso_privacidad.checked == false){
-            alert("Antes debe aceptar el aviso de privacidad");
+            alert("Para continuar con el registro, debe aceptar el aviso de privacidad");
         }else{
     
             var datos= new FormData(formulario);
