@@ -2,13 +2,6 @@
     include('../../config/Crud_bd.php');
 
     class Personal extends Crud_bd{
-        private $base;
-
-        function conexion(){
-            $this->base = new Crud_bd();
-            $this->base->conexion_bd();
-        }
-
 
         public function buscar_colonias($codigoPostal){
             # esta funcion trae todas las colonias en base al codigo postal
@@ -166,14 +159,8 @@
             return $numero_nuevo;
         }
 
-        public function insertar_usuaperso($idUsua, $nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, 
-        $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, 
-        $idFuncion, $funcionEmp, 
-        $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, 
-        $gradoEst, 
-        $colonia, 
-        $consecutivo, $numIntel,
-        $checkCerti, $checkLab){
+        public function insertar_usuaCompleto($idUsua, $nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp, 
+        $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $gradoEst, $colonia, $consecutivo, $numIntel){
 
             $this->conexion_bd();
 
@@ -240,26 +227,169 @@
 
             $a12 = [":idU"=>$idUsua,":numIntel"=>$consecutivo];
 
-            $querry=[];
-            $parametros=[];
-            if ($checkCerti == 'activado' and $checkLab=='activado'){    //acepto los dos checklist certificaciones y datos laborales
-                $querry = [$q1, $q2, $q3, $q4, $q5, $q6, $q7,  $q8, $q9, $q10, $q11, $q12];
-                $parametros = [$a1, $a2, $a3, $a4, $a5, $a6, $a7,  $a8, $a9, $a10, $a11, $a12];
 
-            }else if ($checkCerti == 'activado' and $checkLab=='desactivado'){ //acepto certificaciones, pero no datos laborales
-                $querry = [$q1, $q4, $q7, $q8, $q9, $q10, $q11, $q12];
-                $parametros = [$a1, $a4, $a7, $a8, $a9, $a10, $a11, $a12];
-
-            }else if ($checkCerti == 'desactivado' and $checkLab=='activado'){ //acepto datos laborales, pero no datos certificaciones
-                $querry = [$q1, $q2, $q3, $q5, $q6, $q8, $q9, $q10, $q11, $q12];
-                $parametros = [$a1, $a2, $a3, $a5, $a6, $a8, $a9, $a10, $a11, $a12];
-
-            }else if ($checkCerti == 'desactivado' and $checkLab=='desactivado'){ //no acepto ninguno
-                $querry = [$q1, $q8, $q9, $q10, $q11, $q12];
-                $parametros = [$a1, $a8, $a9, $a10, $a11, $a12];
-
-            }
+            $querry = [$q1, $q2, $q3, $q4, $q5, $q6, $q7,  $q8, $q9, $q10, $q11, $q12];
+            $parametros = [$a1, $a2, $a3, $a4, $a5, $a6, $a7,  $a8, $a9, $a10, $a11, $a12];
             //acomoda todo en arreglos para mandarlos al CRUD
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+
+        }
+
+        public function insertar_conCerti($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
+        $gradoEst, $pasan,  $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $antece, $veridi, $aviso, $consecutivo, $numIntel){
+            $this->conexion_bd();
+
+            //consultas para la tabla de usuaperso
+            $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
+            VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
+
+            $a1 = [":id"=>$idUsua, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$password];
+
+            //consultas para insertar registros en la relacion certexterna
+            $q4 = "INSERT INTO certexterna (IdCerExt, NomCerExt, OrgCerExt, IniCerExt, FinCerExt) VALUES(:idCE,:nombreC, :orgCer, :iniFecha, :finFecha)";
+            $a4 = [":idCE"=>$idCertExt,":nombreC"=>$certifi,":orgCer"=>$orgCert,":iniFecha"=>$fechaICert,":finFecha"=>$fechaFCert];
+
+            //Ingresa datos en la tabla persocertexterna
+            $q7 = "INSERT INTO persocertexterna (IdPerso,IdCertExt) VALUES(:id,:idCE)";
+            $a7 = [":id"=>$idUsua,":idCE"=>$idCertExt];
+
+            //consultas para insertar registros en la relacion persoestudios
+            $q8 = "INSERT INTO persoestudios (IdPerso, IdGrado) VALUES(:id, :idGra)";
+
+            $a8 = [":id"=>$idUsua,":idGra"=>$gradoEst];
+
+            //consultas para insertar registros en la relacion persolugares
+            $q9 = "INSERT INTO persolugares (IdPerso, IdColonia) VALUES(:id, :IdCol)";
+
+            $a9 = [":id"=>$idUsua,":IdCol"=>$colonia];
+
+            //consultas para insertar registros en la relacion persotipousua
+            $idU=1;
+            $q10 = "INSERT INTO persotipousua (IdUsua, IdPerso) VALUES(:idU, :id)";
+
+            $a10 = [":idU"=>$idU,":id"=>$idUsua];
+
+            //consultas para la tabla de numinteligentes
+            $q11 = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo, :numIntel)";
+ 
+            $a11 = [":consecutivo"=>$consecutivo, ":numIntel"=>$numIntel];
+
+            //consultas para insertar registros en la relacion personintel
+            $q12 = "INSERT INTO personintel (IdPerso, IdNIntel) VALUES(:idU, :numIntel)";
+
+            $a12 = [":idU"=>$idUsua,":numIntel"=>$consecutivo];
+
+            $querry = [$q1, $q4, $q7, $q8, $q9, $q10, $q11, $q12];
+            $parametros = [$a1, $a4, $a7, $a8, $a9, $a10, $a11, $a12];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+        }
+
+        public function insertar_conLaboral($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
+        $gradoEst, $pasan,  $antece, $veridi, $aviso, $consecutivo, $numIntel, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp,){
+            $this->conexion_bd();
+            //consultas para la tabla de usuaperso
+            $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
+            VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
+
+            $a1 = [":id"=>$idUsua, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$password];
+
+            //consultas para la tabla de empresaperso
+            $q2 = "INSERT INTO empresaperso (IdEmpPerso, NomEmpPerso, PuestoEmpPerso, CorreoEmpPerso, TelFEmpPerso, ExtenTelFEmpPerso)
+            VALUES(:idEmpre, :nombre, :puesto, :correo, :telFEmp, :extTelFEmp)";
+
+            $a2 = [":idEmpre"=>$idEmpPerso, ":nombre"=>$empresaLab, ":puesto"=>$puestoEmp, ":correo"=>$correoEmp, ":telFEmp"=>$telFEmp, ":extTelFEmp"=>$extTelFEmp];
+
+            //consultas para la tabla de funciones
+            $q3 = "INSERT INTO funciones (IdFuncion, NomFuncion)
+            VALUES(:idFun, :nomfun)";
+
+            $a3 = [":idFun"=>$idFuncion, ":nomfun"=>$funcionEmp];
+
+            //consultas para insertar registros en la relacion usuapersoemp
+            $q5 = "INSERT INTO usuapersoemp (IdPerso, IdEmpPerso) VALUES(:id, :idEmpre)";
+
+            $a5 = [":id"=>$idUsua,":idEmpre"=>$idEmpPerso];
+
+            //consultas para insertar registros en la relacion persoempfun
+            $q6 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion) VALUES(:idEmpre, :idFun)";
+
+            $a6 = [":idEmpre"=>$idEmpPerso,":idFun"=>$idFuncion];
+
+            //consultas para insertar registros en la relacion persoestudios
+            $q8 = "INSERT INTO persoestudios (IdPerso, IdGrado) VALUES(:id, :idGra)";
+
+            $a8 = [":id"=>$idUsua,":idGra"=>$gradoEst];
+
+            //consultas para insertar registros en la relacion persolugares
+            $q9 = "INSERT INTO persolugares (IdPerso, IdColonia) VALUES(:id, :IdCol)";
+
+            $a9 = [":id"=>$idUsua,":IdCol"=>$colonia];
+
+            //consultas para insertar registros en la relacion persotipousua
+            $idU=1;
+            $q10 = "INSERT INTO persotipousua (IdUsua, IdPerso) VALUES(:idU, :id)";
+
+            $a10 = [":idU"=>$idU,":id"=>$idUsua];
+
+            //consultas para la tabla de numinteligentes
+            $q11 = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo, :numIntel)";
+ 
+            $a11 = [":consecutivo"=>$consecutivo, ":numIntel"=>$numIntel];
+
+            //consultas para insertar registros en la relacion personintel
+            $q12 = "INSERT INTO personintel (IdPerso, IdNIntel) VALUES(:idU, :numIntel)";
+
+            $a12 = [":idU"=>$idUsua,":numIntel"=>$consecutivo];
+
+            $querry = [$q1, $q2, $q3, $q5, $q6, $q8, $q9, $q10, $q11, $q12];
+            $parametros = [$a1, $a2, $a3, $a5, $a6, $a8, $a9, $a10, $a11, $a12];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+
+        }
+
+        public function insertar_normal($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
+        $gradoEst, $pasan, $antece, $veridi, $aviso, $consecutivo, $numIntel){
+            $this->conexion_bd();
+             //consultas para la tabla de usuaperso
+             $q1 = "INSERT INTO usuaperso (IdPerso, NomPerso, ApePPerso, ApeMPerso, CorreoPerso, CedulaPerso, TelFPerso, TelMPerso, FechaNacPerso, CallePerso, PasantiaPerso, AntecePerso, DatosVerPerso, AvisoPerso, ContraPerso)
+             VALUES(:id, :nombre, :apeP, :apeM, :correo, :cedula, :telF, :telM, :fecha, :calle, :pasan, :antece, :veridi, :aviso, :contra)";
+ 
+             $a1 = [":id"=>$idUsua, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":correo"=>$correo, ":cedula"=>$cedula, ":telF"=>$telF, ":telM"=>$telM, ":fecha"=>$fecha, ":calle"=>$calle, ":pasan"=>$pasan, ":antece"=>$antece, ":veridi"=>$veridi, ":aviso"=>$aviso, ":contra"=>$password];
+
+             //consultas para insertar registros en la relacion persoestudios
+            $q8 = "INSERT INTO persoestudios (IdPerso, IdGrado) VALUES(:id, :idGra)";
+
+            $a8 = [":id"=>$idUsua,":idGra"=>$gradoEst];
+
+            //consultas para insertar registros en la relacion persolugares
+            $q9 = "INSERT INTO persolugares (IdPerso, IdColonia) VALUES(:id, :IdCol)";
+
+            $a9 = [":id"=>$idUsua,":IdCol"=>$colonia];
+
+            //consultas para insertar registros en la relacion persotipousua
+            $idU=1;
+            $q10 = "INSERT INTO persotipousua (IdUsua, IdPerso) VALUES(:idU, :id)";
+
+            $a10 = [":idU"=>$idU,":id"=>$idUsua];
+
+            //consultas para la tabla de numinteligentes
+            $q11 = "INSERT INTO numinteligentes (IdNIntel,NInteligente) VALUES(:consecutivo, :numIntel)";
+ 
+            $a11 = [":consecutivo"=>$consecutivo, ":numIntel"=>$numIntel];
+
+            //consultas para insertar registros en la relacion personintel
+            $q12 = "INSERT INTO personintel (IdPerso, IdNIntel) VALUES(:idU, :numIntel)";
+
+            $a12 = [":idU"=>$idUsua,":numIntel"=>$consecutivo];
+
+            $querry = [$q1, $q8, $q9, $q10, $q11, $q12];
+            $parametros = [$a1, $a8, $a9, $a10, $a11, $a12];
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
             return $ejecucion;

@@ -7,25 +7,21 @@ let bandEmail = false
 let bandContra = false
 let bandConfiContra = false
 let bandCedu = true
-let bandTelF = false
+let bandTelF = true
 let bandTelM = false
 
 let bandCP = false
 let bandCalle = false
-let bandColonia = false
-let bandCiudad = false
-let bandEstado = false
 
-let bandCerti = true
-let bandNomCerti = true
-let bandOrgCerti = true
+let bandNomCerti = false
+let bandOrgCerti = false
 
-let bandEmpLab = true
-let bandPuesto = true
-let bandCorreoLab = true
+let bandEmpLab = false
+let bandPuesto = false
+let bandCorreoLab = false
 let bandExtTelMofi = true
-let bandTelMofi = true
-let bandFunciones = true
+let bandTelMofi = false
+let bandFunciones = false
 
 const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý\s.]{1,40}$/,
@@ -527,8 +523,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.contraPerso.style.border = "3px solid red";
     }else if(bandConfiContra == false){
         formulario.confiContraPerso.style.border = "3px solid red";
-    }else if(bandTelF == false){
-        formulario.telFPerso.style.border = "3px solid red";
     }else if(bandTelM == false){
         formulario.telMPerso.style.border = "3px solid red";
     }else if(bandCP == false){
@@ -545,17 +539,11 @@ boton_enviar.addEventListener("click",(e)=>{
 function validar(bandera){
     const guardar = document.getElementById('boton_registrar');
 
-    if(bandera == false){        
-        guardar.style.border = "3px solid red";        
+    if(bandera == false){              
         guardar.disabled=true;
-        console.log("No pase validacion");
         
     }else{
-        guardar.removeAttribute("style");
         guardar.disabled=false;
-        console.log("pase validacion");
-        
-
     }
 
 }
