@@ -93,8 +93,11 @@ formulario.addEventListener("submit",(e)=>{
         .then(response => response.json())
         .then(data => {
             alert(data[0]);
+            if(data[0] != "Esta empresa ya ha sido registrada anteriormente."){
+                formulario.reset();
+            }
         });
-        formulario.reset();
+        
         document.getElementById("ciudad").disabled = true;
         document.getElementById("estado").disabled = true;
         disabled_opcionales(true); 

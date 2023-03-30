@@ -36,12 +36,12 @@ const expresiones = {
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
     exten:/^[0-9]{3}$/,
-    nombre_c:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,60}$/,
+    nombre_c:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
     nombre_o:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
-    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]?){1,100}$/,
-    nombre_e:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,100}$/,
-    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
-    funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9\s]{1,60}$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]+)([\/\s]*)([0-9a-zA-ZÁ-Ýá-ý\s]*){1,100}$/,
+    nombre_e:/^[a-zA-ZÁ-Ýá-ý0-9.\s]{1,100}$/,
+    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
+    funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
 }
 
 /* Input nombres */
@@ -282,7 +282,7 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 	formulario.callePerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\\/\s]/g, '');
 
     if (!expresiones.calle.test(valorInput)) {
         formulario.callePerso.style.border = "3px solid red";
@@ -358,7 +358,7 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	formulario.nomEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s.]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9\.\s.]/g, '');
 
     if (!expresiones.nombre_e.test(valorInput)) {
         formulario.nomEmpPerso.style.border = "3px solid red";
@@ -384,7 +384,7 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     if (!expresiones.puesto_e.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
@@ -498,7 +498,7 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
     
 	formulario.funcionEmpPerso.value = valorInput
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s,.]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý0-9,.\s]/g, '');
 
     if (!expresiones.nombre_c.test(valorInput)) {
         formulario.funcionEmpPerso.style.border = "3px solid red";
