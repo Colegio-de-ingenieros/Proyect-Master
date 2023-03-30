@@ -293,29 +293,25 @@ $respuesta .='
 			<p>';
 
 
-					if ($datost) {
-				$rec = '';
+			$datost = $bd->t($id);
+			if ($datost) {
 				for ($i = 0; $i < count($datost); $i++) {
 					$tem = $datost[$i]["NomTema"];
+					$iden = $datost[$i]["IdTema"];
 					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
-				}}
-				$respuesta .= '</section>
-				';
-				$respuesta .= '
-				<section>
-			<h2>Subtemas</h2>
-		</section>
-		<section>
-		<ul class="tema">';
-		if ($datoss) {
-			$rec = '';
-			for ($i = 0; $i < count($datoss); $i++) {
-				$te = $datoss[$i]["NomSubT"];
-				$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$te .'</h3><br>';
-			}}
-			$respuesta .= ' </ul>
-		</section>
-		';
+					$datoss = $bd->s($tem,$iden);
+					if ($datoss) {
+						for ($j = 0; $j < count($datoss); $j++) {
+							$te = $datoss[$j]["NomSubT"];
+							$respuesta .= '<h4 style="width: 500px; word-wrap: break-word;">'.$te .'</h4><br>';
+						}                    
+					}
+				} 
+			}
+			else 
+			{
+				$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">No hay temas registrados</h3><br>';
+			}
 			/* if ($datost) {
 				$rec = '';
 				for ($i = 0; $i < count($datost); $i++) {
