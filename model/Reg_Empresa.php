@@ -203,7 +203,7 @@ class Alta_empresa extends Crud_bd{
 
         $remitente = "ColegioCISCIG@outlook.com";
         $asunto = "Bienvenido a CISCIG!!!";
-        $cuerpo = "<p>La empresa ".$nombre ." ahora sera asociado del Colegio de Ingenieros en Sistemas Computacionales. Este será tu número inteligente:".$numero_inteligente."</p>";
+        $cuerpo = "<p>La empresa ".$nombre ." ahora sera asociado del Colegio de Ingenieros en Sistemas Computacionales. Este será tu número inteligente: ".$numero_inteligente."</p>";
         //manda el correo electronico
         ini_set( 'display_errors', 1 );
         error_reporting( E_ALL );
