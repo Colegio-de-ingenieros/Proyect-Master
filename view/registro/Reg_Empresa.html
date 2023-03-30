@@ -8,6 +8,13 @@
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
+
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
@@ -194,19 +201,19 @@
 						<p class="label-2">Días laborales*</p>
 					</div>
 					<div class="input-form">
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="2"> Lunes </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="2"> Lunes </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="3"> Martes </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="3"> Martes </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="4"> Miércoles </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="4"> Miércoles </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="5"> Jueves </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="5"> Jueves </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="6"> Viernes </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="6"> Viernes </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="7"> Sábado </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="7"> Sábado </label>
 						<br>
-						<label for="" class="label-2"><input type="checkbox" class="checkbox-format" value="1"> Domingo </label>
+						<label for="" class="label-2"><input type="checkbox" class="checkbox-format dias" value="1"> Domingo </label>
 						<br>
 					</div>
 				</div>
@@ -221,7 +228,7 @@
 
 				<div class="grupo-input">
 					<div class="label-form">
-						<p class="label-2">Hora de fin*</p>
+						<p class="label-2">Hora de finalización*</p>
 					</div>
 					<div class="input-form">
 						<input type="time" class="input-format" name="fin" id="fin" placeholder="Ingrese su texto aquí">
@@ -232,6 +239,10 @@
 
 			<!--PARTE CUATRO-->
 			<p class="subtitulo-1"> Áreas</p>
+			<br>
+			<label for="" class="checkbox"><input type="checkbox" id="rh_ck" class="checkbox-format"> Deseo agregar área de Recursos Humanos </label>
+			<br>
+			<br>
 			<p class="label-2">Área de Recursos Humanos</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -241,7 +252,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="rh_nombre" id="rh_nombre" maxlength="40" class="input-format" placeholder="Ingrese el nombre del encargado"
-						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto.">
+						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto." disabled>
 					</div>
 				</div>
 
@@ -251,7 +262,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="rh_paterno" id="rh_paterno" maxlength="20" class="input-format" placeholder="Ingrese el apellido paterno"
-						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -261,7 +272,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="rh_materno" id="rh_materno" maxlength="20" class="input-format" placeholder="Ingrese el apellido materno"
-						title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido materno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -271,7 +282,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="rh_tele" id="rh_tele" maxlength="10"	class="input-format" placeholder="Ingrese el número de teléfono"
-						title="El número de teléfono solo puede contener números.">
+						title="El número de teléfono solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -281,7 +292,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="rh_exten" id="rh_exten" maxlength="3" class="input-format" placeholder="Ingrese la extensión"
-						title="La extensión solo puede contener números.">
+						title="La extensión solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -291,13 +302,17 @@
 					</div>
 					<div class="input-form">
 						<input type="email" name="rh_correo" id="rh_correo" maxlength="40" class="input-format" placeholder="someone@example.com"
-						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
 					</div>
 				</div>
 			</div> 
 			<br>
 
 			<!--PARTE CINCO-->
+
+			<label for="" class="checkbox"><input type="checkbox" id="ti_ck" class="checkbox-format" > Deseo agregar área de TI </label>
+			<br>
+			<br>
 			<p class="label-2">Área de TI</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -307,7 +322,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ti_nombre" id="ti_nombre" maxlength="40" class="input-format" placeholder="Ingrese el nombre del encargado"
-						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto.">
+						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto." disabled>
 					</div>
 				</div>
 
@@ -317,7 +332,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ti_paterno" id="ti_paterno" maxlength="20" class="input-format" placeholder="Ingrese el apellido paterno"
-						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -327,7 +342,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ti_materno" id="ti_materno" maxlength="20" class="input-format" placeholder="Ingrese el apellido materno"
-						title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido materno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -337,7 +352,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ti_tele" id="ti_tele" maxlength="10" class="input-format" placeholder="Ingrese el número de teléfono"
-						title="El número de teléfono solo puede contener números.">
+						title="El número de teléfono solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -347,7 +362,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ti_exten" id="ti_exten" maxlength="3" class="input-format" placeholder="Ingrese la extensión"
-						title="La extensión solo puede contener números.">
+						title="La extensión solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -357,12 +372,15 @@
 					</div>
 					<div class="input-form">
 						<input type="email" name="ti_correo" id="ti_correo" maxlength="40" class="input-format" placeholder="someone@example.com"
-						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
 					</div>
 				</div>
 			</div> 
 			<br>
 			<!--PARTE SEIS-->
+			<label for="" class="checkbox"><input type="checkbox" id="ac_ck" class="checkbox-format"  > Deseo agregar área de Capacitación </label>
+			<br>
+			<br>
 			<p class="label-2">Área de Capacitación</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -372,7 +390,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ac_nombre" id="ac_nombre" maxlength="40" class="input-format" placeholder="Ingrese el nombre del encargado"
-						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto.">
+						title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto." disabled>
 					</div>
 				</div>
 
@@ -382,7 +400,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ac_paterno" id="ac_paterno" maxlength="20" class="input-format" placeholder="Ingrese el apellido paterno"
-						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido paterno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -392,7 +410,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ac_materno" id="ac_materno" maxlength="20" class="input-format" placeholder="Ingrese el apellido materno"
-						title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+						title="El apellido materno solo puede contener letras mayúsculas y minúsculas." disabled>
 					</div>
 				</div>
 
@@ -402,7 +420,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ac_tele" id="ac_tele" maxlength="10" class="input-format" placeholder="Ingrese el número de teléfono"
-						title="El número de teléfono solo puede contener números.">
+						title="El número de teléfono solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -412,7 +430,7 @@
 					</div>
 					<div class="input-form">
 						<input type="text" name="ac_exten" id="ac_exten" maxlength="3" class="input-format" placeholder="Ingrese la extensión"
-						title="La extensión solo puede contener números.">
+						title="La extensión solo puede contener números." disabled>
 					</div>
 				</div>
 
@@ -422,7 +440,7 @@
 					</div>
 					<div class="input-form">
 						<input type="email" name="ac_correo" id="ac_correo" maxlength="40" class="input-format" placeholder="someone@example.com"
-						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+						title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
 					</div>
 				</div>
 			</div> 

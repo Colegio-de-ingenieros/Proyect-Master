@@ -43,8 +43,26 @@ class VerCurso{
 
         return $datos;
     } 
+    function cadasubtema($id){
+        $consulta = "SELECT NomSubT FROM temas, temassub, subtemas WHERE temas.IdTema = $id
+         and temas.IdTema = temassub.IdTema
+        and temassub.IdSubT = subtemas.IdSubT";
+        $datos = $this->bd->mostrar($consulta);
+    }
 
 }
+/* tema
+SELECT DISTINCT NomTema FROM cursos,cursotema,temas 
+        where cursos.ClaveCur = '000000' and cursos.ClaveCur = cursotema.ClaveCur 
+        and cursotema.IdTema = temas.IdTema
+        
+subtema  
+SELECT NomSubT FROM temas, temassub, subtemas WHERE temas.IdTema = $id
+         and temas.IdTema = temassub.IdTema
+        and temassub.IdSubT = subtemas.IdSubT      */
+
+
+
 
 $objeto = new VerCurso();
 $objeto->BD();

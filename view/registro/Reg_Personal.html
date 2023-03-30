@@ -8,6 +8,13 @@
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_registro.css">
+
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
@@ -99,7 +106,7 @@
                         <p class="label-2">Fecha de nacimiento*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format"placeholder="Ingrese su fecha de nacimiento" id="fechaNacPerso" name="fechaNacPerso" required maxlength="20">
+                        <input type="date" class="input-format"placeholder="Ingrese su fecha de nacimiento" id="fechaNacPerso" name="fechaNacPerso" required maxlength="20" max="" >
                     </div>
                 </div>
                 <div class="grupo-input3">
@@ -256,7 +263,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format" placeholder="Ingrese el nombre de la certificación" id="nomCert" name="nomCert"  maxlength="60"
-                        title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales.">
+                        title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales." disabled>
                     </div>
                 </div>
 
@@ -266,7 +273,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format" placeholder="Ingrese la organización de la certificación" id="orgCert" name="orgCert" maxlength="50"
-                        title="El nombre de la organización puede contener letras mayúsculas, minúsculas, números y caracteres especiales.">
+                        title="El nombre de la organización puede contener letras mayúsculas, minúsculas, números y caracteres especiales." disabled>
                     </div>
                 </div>
 
@@ -275,7 +282,7 @@
                         <p class="label-2">Fecha de inicio*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" name="fechaICert" maxlength="60">
+                        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" disabled name="fechaICert" maxlength="60">
                     </div>
                 </div>
 
@@ -284,7 +291,7 @@
                         <p class="label-2">Fecha de fin*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format" placeholder="Ingrese la fecha de fin" id="fechaFCert" name="fechaFCert"  maxlength="50">
+                        <input type="date" class="input-format" placeholder="Ingrese la fecha de fin" id="fechaFCert" name="fechaFCert" disabled  maxlength="50">
                     </div>
                 </div>
 
@@ -336,7 +343,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese la empresa donde labora" id="nomEmpPerso" name="nomEmpPerso"  maxlength="100"
-                        title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales.">
+                        title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales." disabled>
                     </div>
                 </div>
 
@@ -346,7 +353,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su puesto" id="puestoEmpPerso" name="puestoEmpPerso"  maxlength="50"
-                        title="El nombre de puesto puede contener letras mayúsculas, minúsculas, números y caracteres especiales.">
+                        title="El nombre de puesto puede contener letras mayúsculas, minúsculas, números y caracteres especiales." disabled>
                     </div>
                 </div>
 
@@ -356,7 +363,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su correo laboral" id="correoEmpPerso" name="correoEmpPerso"  maxlength="40"
-                        title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+                        title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
                     </div>
                 </div>
 
@@ -366,7 +373,7 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese el teléfono de oficina" id="telFEmpPerso" name="telFEmpPerso"  maxlength="10"
-                        title="El número de teléfono solo puede contener números.">
+                        title="El número de teléfono solo puede contener números." disabled>
                     </div>
                 </div>
 
@@ -376,18 +383,18 @@
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese la extensión" id="ExtTelFEmp" name="ExtTelFEmp"  maxlength="3"
-                        title="La extensión solo puede contener números.">
+                        title="La extensión solo puede contener números." disabled>
                     </div>
                 </div>
 
 
                 <div class="grupo-input">
                     <div class="label-form">
-                        <p class="label-2">Funciones*</p>
+                        <p class="label-2">Función*</p>
                     </div>
                     <div class="input-form">
                         <input type="text" class="input-format"placeholder="Ingrese su función" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60"
-                        title="El nombre de la funcion puede contener letras mayúsculas, minúsculas, números y caracteres especiales.">
+                        title="El nombre de la funcion puede contener letras mayúsculas, minúsculas, números y caracteres especiales." disabled>
                     </div>
                 </div>
                 <div class="grupo-input2">
@@ -495,12 +502,20 @@
         checkbox.addEventListener('click', function() {
         if (checkbox.checked) {
             checkboxoculto.value = "activado";
+        input1.disabled = false;
+        input2.disabled = false;
+        input3.disabled = false;
+        input4.disabled = false;
         input1.setAttribute('required', '');
         input2.setAttribute('required', '');
         input3.setAttribute('required', '');
         input4.setAttribute('required', '');
         } else {
             checkboxoculto.value = "desactivado";
+        input1.disabled = true;
+        input2.disabled = true;
+        input3.disabled = true;
+        input4.disabled = true;
         input1.removeAttribute('required');
         input2.removeAttribute('required');
         input3.removeAttribute('required');
@@ -514,6 +529,7 @@
         const input6 = document.getElementById('puestoEmpPerso');
         const input7 = document.getElementById('correoEmpPerso');
         const input8 = document.getElementById('telFEmpPerso');
+        const input9 = document.getElementById('ExtTelFEmp');
         const input10 = document.getElementById('funcionEmpPerso');
         
         
@@ -521,6 +537,12 @@
         checkbox2.addEventListener('click', function() {
         if (checkbox2.checked) {
             checkboxoculto2.value = "activado";
+        input5.disabled = false;
+        input6.disabled = false;
+        input7.disabled = false;
+        input8.disabled = false;
+        input9.disabled = false;
+        input10.disabled = false;
         input5.setAttribute('required', '');
         input6.setAttribute('required', '');
         input7.setAttribute('required', '');
@@ -528,6 +550,12 @@
         input10.setAttribute('required', '');
         } else {
             checkboxoculto2.value = "desactivado";
+        input5.disabled = true;
+        input6.disabled = true;
+        input7.disabled = true;
+        input8.disabled = true;
+        input9.disabled = true;
+        input10.disabled = true;
         input5.removeAttribute('required');
         input6.removeAttribute('required');
         input7.removeAttribute('required');
@@ -536,6 +564,9 @@
         input10.removeAttribute('required');
         }
         });
+
+        var fechaActual = new Date().toISOString().split("T")[0];
+        document.getElementById("fechaNacPerso").max = fechaActual;
 
       </script>
       <script src="../registro/js/Alertas_personal.js"></script>
