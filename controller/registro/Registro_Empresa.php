@@ -53,7 +53,7 @@ if(
 
         //insertamos las areas it,rh y capacitacion
         $posicion_suma = 0;
-        if($_POST["rh_nombre"] != "" && $_POST["ti_nombre"] != "" &&  $_POST["ac_nombre"] != ""){
+        if($_POST["rh_nombre"] != ""){
             $objeto->insertar_areas($_POST["rh_nombre"],$_POST["rh_paterno"],$_POST["rh_materno"],
                                 $_POST["rh_tele"],$_POST["rh_exten"],$_POST["rh_correo"],1,$rfc_empresa,$posicion_suma);
 

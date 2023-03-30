@@ -44,7 +44,7 @@ let baderas = {
 const expresiones = {
     rfc:/^[A-Z]{3}[0-9]{6}[A-Z0-9]{3}$/,
     nombre:/^[a-zA-ZÁ-Ýá-ý\-\s]{1,100}$/,
-    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+ ([\s#]?)[0-9\s]+([a-zA-Z]?)$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?)?$/,
     email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     password:/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$\#\-_.!*\/+]){1})\S{8,16}$/,
     razon:/^[a-zA-ZÁ-ý\s,\.]{1,100}$/,
@@ -383,7 +383,7 @@ formulario.calle.addEventListener('keyup', (e) => {
 
 	formulario.calle.value = valorInput
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\/\s]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.calle.test(valorInput2)) {
