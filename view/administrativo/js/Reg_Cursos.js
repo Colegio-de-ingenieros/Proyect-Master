@@ -202,19 +202,15 @@ function enviar() {
     let objetivo = document.getElementById("objetivo");
 
     if (nombre_curso.value == "") {
-        alert("El campo nombre del curso no puede estar vacio");
         nombre_curso.style.border = "3px solid red";
     }
     else if (clave_curso.value == "") {
-        alert("El campo clave del curso no puede estar vacio");
         clave_curso.style.border = "3px solid red";
     }
     else if (duracion_curso.value == "") {
-        alert("El campo duración del curso no puede estar vacio");
         duracion_curso.style.border = "3px solid red";
     }
     else if (objetivo.value == "") {
-        alert("El campo objetivo del curso no puede estar vacio");
         objetivo.style.border = "3px solid red";
     }
     else if (lista_temario_completo.length == 0) {
@@ -265,7 +261,7 @@ function enviar() {
             }
         }
         else {
-            alert("El temario no puede estar vacio");
+            campo_titulo.style.border = "3px solid red";
         }
     }
     else {
