@@ -33,8 +33,8 @@ botonRegresar.addEventListener("click", (e) => {
 });
 
 const expresiones = {
-    //rfc: /^([A-Z,Ñ,&]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1])[A-Z|\d]{3})$/,
-    rfc: /^[A-ZÑ&]{4}\d{6}(?:[A-Z\d]{3})?$/,
+    rfc: /^([A-ZÑ&]{3,4}) ?(?:- ?)?(\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])) ?(?:- ?)?([A-Z\d]{2})([A\d])$/,
+    //rfc: /^[A-ZÑ&]{4}\d{6}(?:[A-Z\d]{3})?$/,
     nombre:/^[a-zA-ZÁ-ý.\s]{1,40}$/,
     apellidos:/^[a-zA-ZÁ-ý\s]{1,20}$/,
     apeMa:/^[a-zA-ZÁ-ý\s]{0,20}$/,
@@ -44,9 +44,13 @@ const expresiones = {
 }
 
 formulario.caja_rfc.addEventListener('keyup', (e) => {
+    
+    const guar= document.getElementById('boton_registro');
 	let valorInput = e.target.value;
-    //formulario.caja_rfc.value = valorInput.toLowerCase()
-	formulario.caja_rfc.value = valorInput.toUpperCase()
+    formulario.caja_rfc.value = valorInput
+    //formulario.caja_rfc.value = valorInput
+	//formulario.caja_rfc.value = valorInput.toUpperCase()
+    //alorInput = valorInput.toUpperCase()
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
@@ -56,13 +60,16 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
 	.trim();
 
     if (!expresiones.rfc.test(valorInput)) {
+        console.log("RFC incorrecto");
         caja_rfc.style.border = "3px solid red";
-        guardar.disabled=true;
+        guar.disabled=true;
         bRFC = false
 	}else{
+        console.log("RFC correcto");
         caja_rfc.removeAttribute("style");
         bRFC = true
     }
+    console.log(bRFC)
     validar(bRFC);
 })
 
@@ -234,17 +241,21 @@ const validarPassword2 = () =>{
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
     if(bandera == false ){        
-        //guardar.style.border = "3px solid red";        
+        //guardar.style.border = "3px solid red";
+        console.log("toy bloqueado")        
         guardar.disabled=true;
         //console.log("no pase validacion");
         
     }
-    else{
+    else if (bandera == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
         //console.log("pase validacion");
         
 
+    }
+    else{
+        guardar.disabled=true;
     }
 
 }

@@ -7,25 +7,21 @@ let bandEmail = false
 let bandContra = false
 let bandConfiContra = false
 let bandCedu = true
-let bandTelF = false
+let bandTelF = true
 let bandTelM = false
 
 let bandCP = false
 let bandCalle = false
-let bandColonia = false
-let bandCiudad = false
-let bandEstado = false
 
-let bandCerti = true
-let bandNomCerti = true
-let bandOrgCerti = true
+let bandNomCerti = false
+let bandOrgCerti = false
 
-let bandEmpLab = true
-let bandPuesto = true
-let bandCorreoLab = true
+let bandEmpLab = false
+let bandPuesto = false
+let bandCorreoLab = false
 let bandExtTelMofi = true
-let bandTelMofi = true
-let bandFunciones = true
+let bandTelMofi = false
+let bandFunciones = false
 
 const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý\s.]{1,40}$/,
@@ -36,12 +32,12 @@ const expresiones = {
     telefono:/^[0-9]{10}/,
     codigoP:/^[0-9]{5}/,
     exten:/^[0-9]{3}$/,
-    nombre_c:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,60}$/,
+    nombre_c:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
     nombre_o:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
-    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]?){1,100}$/,
-    nombre_e:/^[a-zA-ZÁ-Ýá-ý\s.,]{1,100}$/,
-    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
-    funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9\s]{1,60}$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]+)([\/\s]*)([0-9a-zA-ZÁ-Ýá-ý\s]*){1,100}$/,
+    nombre_e:/^[a-zA-ZÁ-Ýá-ý0-9.\s]{1,100}$/,
+    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
+    funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
 }
 
 /* Input nombres */
@@ -282,7 +278,7 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 	formulario.callePerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\\/\s]/g, '');
 
     if (!expresiones.calle.test(valorInput)) {
         formulario.callePerso.style.border = "3px solid red";
@@ -358,7 +354,7 @@ formulario.nomEmpPerso.addEventListener('keyup', (e) => {
 	formulario.nomEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s.]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9\.\s.]/g, '');
 
     if (!expresiones.nombre_e.test(valorInput)) {
         formulario.nomEmpPerso.style.border = "3px solid red";
@@ -384,7 +380,7 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
 
     if (!expresiones.puesto_e.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
@@ -498,7 +494,7 @@ formulario.funcionEmpPerso.addEventListener('keyup', (e) => {
     
 	formulario.funcionEmpPerso.value = valorInput
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý0-9\s,.]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý0-9,.\s]/g, '');
 
     if (!expresiones.nombre_c.test(valorInput)) {
         formulario.funcionEmpPerso.style.border = "3px solid red";
@@ -527,8 +523,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.contraPerso.style.border = "3px solid red";
     }else if(bandConfiContra == false){
         formulario.confiContraPerso.style.border = "3px solid red";
-    }else if(bandTelF == false){
-        formulario.telFPerso.style.border = "3px solid red";
     }else if(bandTelM == false){
         formulario.telMPerso.style.border = "3px solid red";
     }else if(bandCP == false){
@@ -545,17 +539,11 @@ boton_enviar.addEventListener("click",(e)=>{
 function validar(bandera){
     const guardar = document.getElementById('boton_registrar');
 
-    if(bandera == false){        
-        guardar.style.border = "3px solid red";        
+    if(bandera == false){              
         guardar.disabled=true;
-        console.log("No pase validacion");
         
     }else{
-        guardar.removeAttribute("style");
         guardar.disabled=false;
-        console.log("pase validacion");
-        
-
     }
 
 }
