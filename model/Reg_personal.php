@@ -401,7 +401,7 @@
         {   
             $remitente = "ColegioCISCIG@outlook.com";
             $asunto = "Bienvenido a CISCIG!!!";
-            $cuerpo = "<p>Hola ".$nombre ." ahora eres asociado del Colegio de Ingenieros en Sistemas Computacionales.Este será tu número inteligente:".$numero_inteligente."</p>";
+            $cuerpo = "<p>Hola ".$nombre ." ahora eres asociado del Colegio de Ingenieros en Sistemas Computacionales.Este será su número inteligente:".$numero_inteligente."</p>";
             //manda el correo electronico
             ini_set( 'display_errors', 1 );
             error_reporting( E_ALL );
