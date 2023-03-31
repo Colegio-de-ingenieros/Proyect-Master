@@ -227,11 +227,6 @@ function enviar() {
                 document.getElementById("subtitulo-curso").value = "";
                 document.getElementById("lista").innerHTML = "";
 
-                nuevo_elemento.innerHTML = "Sin temario añadido";
-                nuevo_elemento.setAttribute("id", "inicial");
-                nuevo_elemento.classList.add("label-3");
-                listado.appendChild(nuevo_elemento);
-
                 leyenda.innerHTML = "Añadir tema*";
                 caja_titulo.style.display = "flex";
                 caja_subtitulo.style.display = "none";
@@ -278,10 +273,6 @@ function enviar() {
                 document.getElementById("subtitulo-curso").value = "";
                 document.getElementById("lista").innerHTML = "";
 
-                /* nuevo_elemento.innerHTML = "Sin temario añadido";
-                nuevo_elemento.setAttribute("id", "inicial");
-                nuevo_elemento.classList.add("label-3");
-                listado.appendChild(nuevo_elemento) */;
 
                 leyenda.innerHTML = "Añadir tema*";
                 caja_titulo.style.display = "flex";
