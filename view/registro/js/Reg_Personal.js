@@ -5,7 +5,6 @@
 let estado = document.getElementById("estadoPerso");
 let ciudad = document.getElementById("ciudadPerso");
 
-
 document.getElementById("cpPerso").addEventListener('blur', (e) => {
     let contenido =  document.getElementById("cpPerso").value;
     
@@ -15,20 +14,23 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("../../controller/registro/codigo_postal.php",
+        fetch("../../controller/registro/Registro_Personal.php",
         {
             method: 'POST',
             body: formulario_data,
         })
         .then(response => response.json())
         .then(data => {
-
-            rellenar_lista(data);
+            if(data.length != 0){
+                rellenar_lista(data);
+            }else{
+                alert("Codigo postal inválido");
+            }
+            
         });
 
     }
   });
-
 
 function rellenar_lista(datos) {
     estado.value = "";
