@@ -14,7 +14,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("../../controller/registro/Registro_Personal.php",
+        fetch("../../controller/registro/codigo_postal.php",
         {
             method: 'POST',
             body: formulario_data,
