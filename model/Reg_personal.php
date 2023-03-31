@@ -159,8 +159,8 @@
             return $numero_nuevo;
         }
 
-        public function insertar_usuaCompleto($idUsua, $nombre, $apeP, $apeM, $correo, $cedula, $telF, $telM, $fecha, $calle, $pasan, $antece, $veridi, $aviso, $password, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp, 
-        $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $gradoEst, $colonia, $consecutivo, $numIntel){
+        public function insertar_usuaCompleto($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
+        $gradoEst, $pasan, $antece, $veridi, $aviso, $consecutivo, $numIntel, $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp){
 
             $this->conexion_bd();
 
