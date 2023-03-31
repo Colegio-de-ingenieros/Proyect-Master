@@ -34,7 +34,8 @@ const expresiones = {
     exten:/^[0-9]{3}$/,
     nombre_c:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
     nombre_o:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
-    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]+)([\/\s]*)([0-9a-zA-ZÁ-Ýá-ý\s]*){1,100}$/,
+    calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?){1,100}$/,
+    ///^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]+)([\/\s]*)([0-9a-zA-ZÁ-Ýá-ý\s]*){1,100}$/,
     nombre_e:/^[a-zA-ZÁ-Ýá-ý0-9.\s]{1,100}$/,
     puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
     funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
@@ -278,7 +279,7 @@ formulario.callePerso.addEventListener('keyup', (e) => {
 	formulario.callePerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\\/\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý0-9#\.\/\s]/g, '');
 
     if (!expresiones.calle.test(valorInput)) {
         formulario.callePerso.style.border = "3px solid red";
