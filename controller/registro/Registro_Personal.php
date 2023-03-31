@@ -68,7 +68,7 @@ $objeto=new Personal();
         $u=$objeto->insertar_normal($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
         $gradoEst, $pasan, $antece, $veridi, $aviso, $consecutivo, $numIntel);
     }
-    else if($checkboxcertificacion == 'activado'){  
+    else if($checkboxcertificacion == 'activado' and $checkboxlaboral=='desactivado'){  
         $certifi=$_POST["nomCert"];
         $orgCert=$_POST["orgCert"];
         $fechaICert=$_POST["fechaICert"];
@@ -76,7 +76,7 @@ $objeto=new Personal();
         $u=$objeto->insertar_conCerti($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
         $gradoEst, $pasan,  $idCertExt, $certifi, $orgCert, $fechaICert, $fechaFCert, $antece, $veridi, $aviso, $consecutivo, $numIntel);
     }
-    else if ($checkboxlaboral=='activado'){
+    else if ($checkboxlaboral=='activado' and $checkboxcertificacion== 'desactivado'){
         $empresaLab=$_POST["nomEmpPerso"];
         $puestoEmp=$_POST["puestoEmpPerso"];
         $correoEmp=$_POST["correoEmpPerso"];
@@ -87,6 +87,7 @@ $objeto=new Personal();
         $gradoEst, $pasan,  $antece, $veridi, $aviso, $consecutivo, $numIntel, $idEmpPerso, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFuncion, $funcionEmp);
     }
     else if ($checkboxcertificacion== 'activado' and $checkboxlaboral=='activado'){
+        //echo json_encode($colonia);
         $certifi=$_POST["nomCert"];
         $orgCert=$_POST["orgCert"];
         $fechaICert=$_POST["fechaICert"];
