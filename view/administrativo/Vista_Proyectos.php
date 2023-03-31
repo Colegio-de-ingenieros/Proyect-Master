@@ -188,7 +188,7 @@
       <div class="article-tablas">
         <article>
           <div class="sub-titulo">
-            <h4 class="subtitulo-1">Visualización / Consulta</h4>
+            <h4 class="subtitulo-1">Mostrar / Consultar</h4>
           </div>
           <hr>
           <div class="grupo-input">
