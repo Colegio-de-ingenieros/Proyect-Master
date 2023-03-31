@@ -24,7 +24,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
             if(data.length != 0){
                 rellenar_lista(data);
             }else{
-                alert("Error");
+                alert("Codigo postal inválido");
             }
             
         });
