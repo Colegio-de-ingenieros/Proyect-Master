@@ -242,7 +242,7 @@ function enviar() {
                 contador_subtemas = 1;
             }
             else if(resultado == false){
-                console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
+                /* console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
                 finalizar_registro_temario()
                 var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
                 var lista = lista_temario_completo;
@@ -286,7 +286,7 @@ function enviar() {
                 lista_temario_completo = [];
                 lista_temario_parcial = [];
                 contador_temas = 1;
-                contador_subtemas = 1;
+                contador_subtemas = 1; */
             }
         }
         else if (flag_almacenar == true){
