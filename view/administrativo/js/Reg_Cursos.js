@@ -11,9 +11,10 @@ const btn_end_proceso = document.getElementById("btn-end-proceso");
 
 const visualizar_listas = document.getElementById("visualizar_modificar");
 const listado = document.getElementById("lista");
-const elemento_inicial = document.getElementById("inicial");
+/* const elemento_inicial = document.getElementById("inicial"); */
 
 let flag_almacenar = false;
+let existencia_inicial = false;
 
 let lista_temario_completo = [];
 let lista_temario_parcial = [];
@@ -38,12 +39,12 @@ function agregar_tema() {
         return;
     }
     else {
-        const elemento_inicial = document.getElementById("inicial");
         const nuevo_elemento = document.createElement("li");
         lista_temario_parcial.push(contenido);
-        elemento_inicial.remove();
 
-        elemento_inicial.display = "none";
+        /* elemento_inicial.style.display = "none"; */
+
+        /* elemento_inicial.display = "none"; */
         console.log("Se ha presionado el boton del tema");
         leyenda.innerHTML = "Añadir subtema";
 
@@ -277,10 +278,10 @@ function enviar() {
                 document.getElementById("subtitulo-curso").value = "";
                 document.getElementById("lista").innerHTML = "";
 
-                nuevo_elemento.innerHTML = "Sin temario añadido";
+                /* nuevo_elemento.innerHTML = "Sin temario añadido";
                 nuevo_elemento.setAttribute("id", "inicial");
                 nuevo_elemento.classList.add("label-3");
-                listado.appendChild(nuevo_elemento);
+                listado.appendChild(nuevo_elemento) */;
 
                 leyenda.innerHTML = "Añadir tema*";
                 caja_titulo.style.display = "flex";
