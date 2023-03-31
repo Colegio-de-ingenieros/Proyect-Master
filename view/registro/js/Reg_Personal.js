@@ -5,30 +5,32 @@
 let estado = document.getElementById("estadoPerso");
 let ciudad = document.getElementById("ciudadPerso");
 
-
 document.getElementById("cpPerso").addEventListener('blur', (e) => {
     let contenido =  document.getElementById("cpPerso").value;
     
     if(contenido.length == 5){
         
         let formulario_data = new FormData();
-        formulario_data.append("cpPerso",contenido);
+        formulario_data.append("codigo_postal",contenido);
         
 
-        fetch("../../controller/registro/codigo_postal.php",
+        fetch("../../controller/registro/Registro_Empresa.php",
         {
             method: 'POST',
             body: formulario_data,
         })
         .then(response => response.json())
         .then(data => {
-
-            rellenar_lista(data);
+            if(data.length != 0){
+                rellenar_lista(data);
+            }else{
+                alert("Error");
+            }
+            
         });
 
     }
   });
-
 
 function rellenar_lista(datos) {
     estado.value = "";
