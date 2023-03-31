@@ -11,10 +11,10 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
     if(contenido.length == 5){
         
         let formulario_data = new FormData();
-        formulario_data.append("codigo_postal",contenido);
+        formulario_data.append("cpPerso",contenido);
         
 
-        fetch("../../controller/registro/Registro_Empresa.php",
+        fetch("../../controller/registro/Registro_Personal.php",
         {
             method: 'POST',
             body: formulario_data,
