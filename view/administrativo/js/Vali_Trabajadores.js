@@ -43,7 +43,7 @@ const expresiones = {
     passw:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])).{8,16}$/,
 }
 
-formulario.caja_rfc.addEventListener('keyup', (e) => {
+/*formulario.caja_rfc.addEventListener('keyup', (e) => {
     
     const guar= document.getElementById('boton_registro');
 	let valorInput = e.target.value;
@@ -71,7 +71,39 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
     }
     console.log(bRFC)
     validar(bRFC);
+})*/
+//funcion para que me valide la caja rfc del html
+formulario.caja_rfc.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+    formulario.caja_rfc.value = valorInput
+        // Eliminar espacios en blanco
+        .replace(/\s/g, '')
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
+        // Eliminar el ultimo espaciado
+        .trim();
+        console.log(valorInput.length)
+    if (valorInput.length == 13) {
+        console.log("Entro a la decision")
+        if (!expresiones.rfc.test(valorInput)) {
+            console.log("RFC incorrecto");
+            caja_rfc.style.border = "3px solid red";
+            bRFC = false
+        }else{
+            console.log("RFC correcto");
+            caja_rfc.removeAttribute("style");
+            bRFC = true
+        }
+    }else{
+        console.log("RFC incorrecto");
+        caja_rfc.style.border = "3px solid red";
+        bRFC = false
+    }
+    console.log(bRFC)
+    validar(bRFC);
 })
+
 
 /* Input del nombre del trabajador*/
 formulario.caja_nombre.addEventListener('keyup', (e) => {
@@ -240,14 +272,14 @@ const validarPassword2 = () =>{
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
-    if(bandera == false ){        
+    if(bandera == false && bRFC == false){        
         //guardar.style.border = "3px solid red";
         console.log("toy bloqueado")        
         guardar.disabled=true;
         //console.log("no pase validacion");
         
     }
-    else if (bandera == true){
+    else if (bandera == true && bRFC == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
         //console.log("pase validacion");
