@@ -57,7 +57,7 @@ class VerCurso{
         WHERE cursos.ClaveCur = '$id' 
         AND cursos.ClaveCur = cursotema.ClaveCur 
         AND cursotema.IdTema = temas.IdTema 
-        ORDER BY temas.IdTema DESC;";
+        ORDER BY temas.IdTema ASC;";
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
