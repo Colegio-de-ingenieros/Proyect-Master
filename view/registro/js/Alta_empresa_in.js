@@ -71,7 +71,7 @@ formulario.addEventListener("submit",(e)=>{
     }else if(time_inicio.value.length == 0){
         alert("Por favor, seleccione una hora de inicio.");
     }else if(time_fin.value.length == 0){
-        alert("Por favor, seleccione una hora de fin.");
+        alert("Por favor, seleccione una hora de finalización.");
     }else if(aviso_privacidad.checked == false){
         alert("Para continuar con el registro, debe aceptar el aviso de privacidad.");
     } 
