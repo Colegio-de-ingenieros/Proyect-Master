@@ -5,6 +5,7 @@ var respuesta = document.getElementById('respuesta');
 //responde cuando hay un click en el boton
 formulario.addEventListener('submit', function (e)
 {
+    e.preventDefault();
     let aviso_privacidad = document.getElementById("avisos1");
     let pasantia1 = document.getElementById("pasantia1");
     let pasantia2 = document.getElementById("pasantia2");
@@ -42,7 +43,6 @@ formulario.addEventListener('submit', function (e)
         }else if(aviso_privacidad.checked == false){
             alert("Para continuar con el registro, debe aceptar el aviso de privacidad");
         }else{
-            e.preventDefault();
             var datos= new FormData(formulario);
             fetch('../../controller/registro/Registro_Personal.php', {
                 method: 'POST',
