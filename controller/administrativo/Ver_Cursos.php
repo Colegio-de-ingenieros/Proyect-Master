@@ -34,62 +34,106 @@ echo $estatus; */
 
 $respuesta .='
 <style>
-		body {
-			font-family: Arial, sans-serif;
-			background-color: #f1f1f1;
-			color: #333;
-			margin: 0;
-			padding: 0;
-            text-align: center;
-		}
-		
-		h1 {
-			margin: 0;
-		}
-		
-		main {
-			max-width: 800px;
-			margin: 0 auto;
-			padding: 20px;
-			background-color: #fff;
-			box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-		}
-		
-		section {
-			margin-bottom: 40px;
-			border-bottom: 1px solid #ccc;
-			padding-bottom: 20px;
-		}
-		
-		h2 {
-			font-size: 24px;
-			margin: 0 0 10px 0;
-		}
-		h3 {
-			text-align: left;
-		}
-		
-		p, ul, ol {
-			margin: 0 0 10px 0;
-			line-height: 1.5;
-		}
-		footer {
-			background-color: #333;
-			color: #fff;
-			padding: 20px;
-			text-align: center;
-		}
-		
-		footer p {
-			margin: 0;
-		}
+	:root{
+		--color-primary: #273544;
+		--color-secondary: #303a6e;
+		--color-tertiary: #3f4552;
+		--color-quaternary: #61a8ab;
+		--color-quinary: #085262;
 
-		li {
-			text-align: left;
-		}
-		p {
-		}
-	</style>
+		--color-white: #ffffff;
+		--color-gray: #dfe3e7;
+		--color-gray-2: #d6dbe0;
+		--color-black: #000000;
+
+		--color-placeholder-1: #93979b;
+		--color-placeholder-2: #7c838a;
+		--color-placeholder-3: #474a57;
+
+		--color-red: #ff0000;
+
+		--radius-1: 15px;
+		--radius-2: 8px;
+
+		--shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+		--shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+	}
+
+	body {
+		font-family: Arial, sans-serif;
+		background-color: #f1f1f1;
+		color: #333;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+	
+	h1 {
+		margin: 0;
+	}
+	
+	main {
+		max-width: 800px;
+		margin: 0 auto;
+		padding: 20px;
+		background-color: #fff;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	}
+
+	section {
+		margin-bottom: 40px;
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+	
+	h2 {
+		font-size: 24px;
+		margin: 0 0 10px 0;
+	}
+
+	h3 {
+		text-align: center;
+		font-size: 1.5rem;
+	}
+	
+	p, ul, ol {
+		margin: 0 0 10px 0;
+		line-height: 1.5;
+	}
+
+	footer {
+		background-color: #333;
+		color: #fff;
+		padding: 20px;
+		text-align: center;
+	}
+	
+	footer p {
+		margin: 0;
+	}
+
+	li {
+		text-align: left;
+	}
+
+	p {
+	}
+
+	.btn-small{
+		font-size: 1rem;
+		font-weight: 600;
+		border-radius: var(--radius-2);
+	
+		padding: 6px 12px;
+		border: none;
+		background: var(--color-primary);
+		color: var(--color-white);
+	}
+</style>
 <body>
 <!DOCTYPE html>
 <html lang="en">
@@ -103,7 +147,6 @@ $respuesta .='
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Visualizacion_Cursos.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -289,6 +332,7 @@ $respuesta .='
 		</section>
 		<section>
 			<h2>Temario</h2>
+			<a href="../../controller/administrativo/Pdf_cursos.php?id='.$id.'" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario</a>
 		</section>
 		<section>
 			<p>';
