@@ -81,6 +81,7 @@ $respuesta .='
 	}
 
 	section {
+		width : 80%;
 		margin-bottom: 40px;
 		border-bottom: 1px solid #ccc;
 		padding-bottom: 20px;
