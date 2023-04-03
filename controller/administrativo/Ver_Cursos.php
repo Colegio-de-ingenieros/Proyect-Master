@@ -103,6 +103,7 @@ $respuesta .='
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Visualizacion_Cursos.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -287,7 +288,7 @@ $respuesta .='
             <h1>'. $duracion .' hrs</h1>
 		</section>
 		<section>
-			<h2>Temas</h2>
+			<h2>Temario</h2>
 		</section>
 		<section>
 			<p>';
@@ -303,14 +304,14 @@ $respuesta .='
 					if ($datoss) {
 						for ($j = 0; $j < count($datoss); $j++) {
 							$te = $datoss[$j]["NomSubT"];
-							$respuesta .= '<h4 style="width: 500px; word-wrap: break-word;">'.$te .'</h4><br>';
+							$respuesta .= '<h4 style="width: 500px;">'.$te .'</h4><br>';
 						}                    
 					}
 				} 
 			}
 			else 
 			{
-				$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">No hay temas registrados</h3><br>';
+				$respuesta .= '<h3 style="width: 500px;">No hay temas registrados</h3><br>';
 			}
 			/* if ($datost) {
 				$rec = '';
