@@ -313,58 +313,6 @@ $respuesta .='
 			{
 				$respuesta .= '<h3 style="width: 500px;">No hay temas registrados</h3><br>';
 			}
-			/* if ($datost) {
-				$rec = '';
-				for ($i = 0; $i < count($datost); $i++) {
-					$tem = $datost[$i]["NomTema"];
-					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
-					// Agregar consulta aquí:
-					$theme = $bd->tema($tem);
-					if ($theme) {
-						for ($j = 0; $j < count($theme); $j++) {
-							$sub = $theme[$j]["NomSubT"];    
-							$respuesta .= '<ul class="tema">
-										  <li class="subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
-										  </ul>';
-						}
-					}
-				}
-			} */
-			/* $b=0;
-            if ($datost){
-				$rec='';
-            for ($i = 0; $i < count($datost); $i++) {
-                $tem = $datost[$i]["NomTema"];
-					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
-						
-					}
-				}
-					
-
-			
-					
-				$theme = $bd->tema($tem);
-					if($theme){
-						for ($i = 0; $i < count($theme); $i++) {
-						$sub = $theme[$i]["NomSubT"];	
-						$respuesta .=
-						'<ul class="tema">
-					  <li class = "subtema" style="width: 500px; word-wrap: break-word;">'. $sub .'</li>
-						</ul>';
-					}
-				}
-			
-                
-            
-            
-			
-        
-		
-		else{
-				$respuesta .= 'No hay temario';
-				$respuesta .=    '</p>';
-			} */
-		
 			$respuesta .= '		</section> 
 	</main>
 

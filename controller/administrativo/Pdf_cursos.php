@@ -95,12 +95,12 @@
     for ($i = 0; $i < count($datost); $i++) {
         $tema = $datost[$i]["NomTema"];
 
-        $pdf->SetFont('Arial','B',14);
+        $pdf->SetFont('Arial','B',16);
         $pdf->Cell(0,10,utf8_decode($tema),0,1,'C');
 
         for ($j = 0; $j < count($datoss); $j++) {
             $subtema = $datoss[$j]["NomSubT"];
-            
+
             $pdf->SetFont('Arial','',14);
             $pdf->Cell(0,10,utf8_decode($subtema),0,1,'C');
         }
