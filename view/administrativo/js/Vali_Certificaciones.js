@@ -3,6 +3,7 @@ let nom = false
 let precioG = false
 let precioA = false
 let desc = false
+let abre = false
 
 //validar()
 
@@ -32,6 +33,10 @@ botonRegistrar.addEventListener("click", (e) =>
     else if (desc == false) {
         descripcion.style.border = "3px solid red";
     }
+        
+    else if (abre == false) {
+        abreviacion.style.border = "3px solid red";
+    }
 
     else {
         validar(true)
@@ -44,8 +49,39 @@ botonRegistrar.addEventListener("click", (e) =>
 const expresiones = {
     name: /^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
-    descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/
+    descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/,
+    abreviacion: /^[a-zA-ZÁ-ý]{4,8}$/
 }
+
+//revisa el campo abreviacion
+formulario.abreviacion.addEventListener('keyup', (e) =>
+{
+    let valorInput = e.target.value;
+    formulario.abreviacion.value = valorInput
+        
+        //elimina los espacios en blanco
+        .replace(/\s+/g, '')
+
+        //elimina caracteres especiales
+        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,.<>\/?]/g, '')
+    
+        //elimina numeros
+        .replace(/[0123456789]/g, '')
+
+        //.toUpperCase()
+
+    //verifica que se cumpla con la expresion correpondiente
+    if (!expresiones.abreviacion.test(valorInput)) {
+        abreviacion.style.border = "3px solid red";
+    }
+
+    else {
+        abreviacion.removeAttribute("style");
+        abre = true;
+    }
+
+    //validar();
+})
 
 //revisa el campo nombre
 formulario.nombre.addEventListener('keyup', (e) =>
