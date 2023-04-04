@@ -1,0 +1,129 @@
+:root{
+    --color-primary: #273544;
+    --color-secondary: #303a6e;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
+
+    --color-white: #ffffff;
+    --color-gray: #dfe3e7;
+    --color-gray-2: #d6dbe0;
+    --color-black: #000000;
+
+    --color-placeholder-1: #93979b;
+    --color-placeholder-2: #7c838a;
+    --color-placeholder-3: #474a57;
+
+    --color-red: #ff0000;
+
+    --radius-1: 15px;
+    --radius-2: 8px;
+
+    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+main {
+    margin-top: 5.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-main{
+    width: 90%;
+}
+
+.cabezera{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+hr{
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.titulo-central{
+    font-size: 42px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 300px;
+    align-items: center;
+    justify-items: center;
+}
+
+.card{
+    background: var(--color-white);
+    border-radius: var(--radius-2);
+    width: 90%;
+    height: 88%;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: var(--shadow-1);
+}
+
+.card-content{
+    background: var(--color-primary);
+    color: var(--color-white);
+    width: 95%;
+    height: 160px;
+    border-radius: var(--radius-2);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-vacante{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.info-1{
+    width: 90%;
+    margin-bottom: 0px;
+}
+
+.info-1 > *{
+    margin-bottom: 10px;
+}
+
+span{
+    font-weight: 700;
+}
+
+.info-2{
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.empresa, .lugar, .tiempo, .salario, .jornada {
+    font-size: 1.1rem;
+}
+
+.divisor{
+    width: 1px;
+    height: 100%;
+    background: var(--color-white);
+
+}
+
+.ti{
+    font-size: 1.4rem;
+}
