@@ -18,6 +18,7 @@ if ($resultado == true) {
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -30,6 +31,7 @@ if ($resultado == true) {
         $logo = $resultado[$i]["LogoCerInt"];
         $nombre = $resultado[$i]["NomCertInt"];
         $desc = $resultado[$i]["DesCerInt"];
+        $status = $resultado[$i]["EstatusCertInt"];
         $precioG = $base->buscarUltimoPrecioG($idc);
         $precioA = $base->buscarUltimoPrecioA($idc);
         $precioG = substr($precioG, 0,  strlen($precioG)-3);
@@ -43,10 +45,11 @@ if ($resultado == true) {
         $salida .= '<td>' . $desc . '</td>';
         $salida .= '<td>$' . $precioG . '</td>';
         $salida .= '<td>$' . $precioA . '</td>';
+        $salida .= '<td>' . $status . '</td>';
         $salida .= '<td> 
         <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
-        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp
+        <a href="../../controller/administrativo/Eliminar_Certificaciones.php?idc=' . $idc . '" class="table_item__link eliminar-elemento" data-idc="<?php echo $idc; ?>">Eliminar</a>&nbsp;&nbsp;&nbsp;
         </td>';
         $salida .= '</tr>';
 
@@ -59,6 +62,7 @@ else {
 }
 
 $salida .= "</tbody></table>";
+$salida .= '<script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script>';
 //echo '<script>alert("si entra al php");</script>';
 
 echo $salida;
