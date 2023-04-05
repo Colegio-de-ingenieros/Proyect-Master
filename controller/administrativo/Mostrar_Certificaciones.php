@@ -15,6 +15,7 @@ if ($resultado == true) {
                 <tr>
                     <th>Logo</th>
                     <th>Nombre</th>
+                    <th>Abreviación</th>
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
@@ -30,6 +31,7 @@ if ($resultado == true) {
         $idc = $resultado[$i]["IdCerInt"];
         $logo = $resultado[$i]["LogoCerInt"];
         $nombre = $resultado[$i]["NomCertInt"];
+        $abre = $resultado[$i]["abrevCertInt"];
         $desc = $resultado[$i]["DesCerInt"];
         $status = $resultado[$i]["EstatusCertInt"];
         $precioG = $base->buscarUltimoPrecioG($idc);
@@ -42,6 +44,7 @@ if ($resultado == true) {
         $salida .= '<tr>';
         $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
         $salida .= '<td>' . $nombre . '</td>';
+        $salida .= '<td>' . $abre . '</td>';
         $salida .= '<td>' . $desc . '</td>';
         $salida .= '<td>$' . $precioG . '</td>';
         $salida .= '<td>$' . $precioA . '</td>';

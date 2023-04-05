@@ -77,12 +77,12 @@
         }
 
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-        function insertar($idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha){
+        function insertar($idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha, $abre){
             //consultas para la tabla de certificaciones internas
-            $q1 = "INSERT INTO certinterna (IdCerInt, LogoCerInt, DesCerInt, NomCertInt, EstatusCertInt)
-            VALUES(:id, :logo, :descripcion, :nombre, :estatus)";
+            $q1 = "INSERT INTO certinterna (IdCerInt, LogoCerInt, DesCerInt, NomCertInt, EstatusCertInt, abrevCertInt)
+            VALUES(:id, :logo, :descripcion, :nombre, :estatus, :abre)";
 
-            $a1 = [":id"=>$idc, ":logo"=>$logo, ":nombre"=>$nombre, ":descripcion"=>$desc, "estatus"=>1];
+            $a1 = [":id"=>$idc, ":logo"=>$logo, ":nombre"=>$nombre, ":descripcion"=>$desc, "estatus"=>1, ":abre"=>$abre];
 
             //consultas para la tabla de historicos
             $q2g = "INSERT INTO historico (Idh, FechaH, PrecioH)

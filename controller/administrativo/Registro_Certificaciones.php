@@ -2,7 +2,7 @@
 include_once('../../model/Reg_Certificaciones.php');
 
 class RegistroCert{
-    private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre;
+    private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre, $abre;
 
     //inicializa los valores que ocupan las demas funciones
     function instancias(){
@@ -15,6 +15,7 @@ class RegistroCert{
         $this->precioG = $_POST["precioGen"];
         $this->precioA = $_POST["precioAsoc"];
         $this->desc = $_POST["descripcion"];
+        $this->abre = $_POST["abreviacion"];
         $this->logo = $_FILES["inputLogo"]['name'];
         $this->validarFoto();
 
@@ -47,7 +48,7 @@ class RegistroCert{
     function insertar(){
         $fecha = date('y-m-d');
         //$idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha
-        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha);
+        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha, $this->abre);
 
         //verifica que los datos se insertarin en la base de datos
         $resultados = $this->obj->buscarPorId($this->idc);
