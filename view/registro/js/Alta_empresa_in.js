@@ -125,6 +125,7 @@ function rellenar_lista(datos) {
     
 }
 function checke() {
+    // ve si hay dias seleccionados
     let lista = [];
     var checked_list = document.querySelectorAll('.dias');
     for(var i=0; checked_list[i]; ++i){
@@ -135,6 +136,7 @@ function checke() {
     }
     return lista;
 }
+
 function limpiar() {
     estado.value = "";
     ciudad.value = "";  

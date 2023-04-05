@@ -37,7 +37,8 @@ if(
     isset($_POST["ac_materno"]) &&
     isset($_POST["ac_tele"]) &&
     isset($_POST["ac_exten"]) &&
-    isset($_POST["ac_correo"])
+    isset($_POST["ac_correo"]) &&
+    isset($_POST["acuerdo"])
 ){ 
     /**se inserta la empresa */ 
     $existe = $objeto->buscar_empresa($_POST["rfc"]);
@@ -47,7 +48,7 @@ if(
         $rfc_empresa = $_POST["rfc"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
         $objeto->insertar_empresa($rfc_empresa,$_POST["nombre"],$_POST["calle"],
-                                    $_POST["inicio"],$_POST["fin"],$_POST["razon"],$_POST["correo"],$password);
+                                    $_POST["inicio"],$_POST["fin"],$_POST["razon"],$_POST["correo"],$password,$_POST["acuerdo"]);
         
         $objeto->insertar_dias_laborales($rfc_empresa,$_POST["dias"]);
 

@@ -20,11 +20,11 @@ class Alta_empresa extends Crud_bd{
         }
     }
 
-    public function insertar_empresa($rfc,$nombre,$calle,$hora_inicio,$hora_fin,$razon,$correo,$contra)
+    public function insertar_empresa($rfc,$nombre,$calle,$hora_inicio,$hora_fin,$razon,$correo,$contra,$acuerdo)
     {
         # esta funcion inserta una empresa en la bd
         
-        $sql = "INSERT INTO usuaemp (RFCUsuaEmp, NomUsuaEmp, CalleUsuaEmp, HrIniUsuaEmp,HrFinUsuaEmp,RazonUsuaEmp,CorreoUsuaEmp,ContraUsuaEmp) VALUES(:rfc,:nombre,:calle,:hrinicio,:hrfin,:razon,:correo,:contra)";
+        $sql = "INSERT INTO usuaemp (RFCUsuaEmp, NomUsuaEmp, CalleUsuaEmp, HrIniUsuaEmp,HrFinUsuaEmp,RazonUsuaEmp,CorreoUsuaEmp,ContraUsuaEmp,acuerdoEmp) VALUES(:rfc,:nombre,:calle,:hrinicio,:hrfin,:razon,:correo,:contra,:acuerdo)";
         $parametros = [
                         ":rfc"=>$rfc,
                         ":nombre"=>$nombre,
@@ -33,7 +33,8 @@ class Alta_empresa extends Crud_bd{
                         ":hrfin"=>$hora_fin,
                         ":razon"=>$razon,
                         ":correo"=>$correo,
-                        ":contra"=>$contra
+                        ":contra"=>$contra,
+                        ":acuerdo"=>$acuerdo
                     ];
         $this->sql[] = $sql;
         $this->parametros[] = $parametros;  
