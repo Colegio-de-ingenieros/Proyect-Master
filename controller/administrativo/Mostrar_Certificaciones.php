@@ -36,8 +36,8 @@ if ($resultado == true) {
         $status = $resultado[$i]["EstatusCertInt"];
         $precioG = $base->buscarUltimoPrecioG($idc);
         $precioA = $base->buscarUltimoPrecioA($idc);
-        $precioG = substr($precioG, 0,  strlen($precioG)-3);
-        $precioA = substr($precioA, 0,  strlen($precioA)-3);
+        //$precioG = substr($precioG, 0,  strlen($precioG)-3);
+        //$precioA = substr($precioA, 0,  strlen($precioA)-3);
         //$extension = getExt($logo);
 
         //escribe los valores en la tabla

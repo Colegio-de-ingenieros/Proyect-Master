@@ -9,5 +9,6 @@ $obj = new EliminarCert();
 $obj->instanciar();
 $obj->cambiaeEtatus($idc);
 
+$obj->eliminar($idc)
 
 ?>
