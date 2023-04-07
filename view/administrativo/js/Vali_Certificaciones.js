@@ -14,7 +14,12 @@ botonRegistrar.addEventListener("click", (e) =>
     //alert(ultimoNum(formulario.precioGen.value) == true);
     if (ultimoNum(formulario.precioGen.value) == true) {
         precioG = false;
-        formulario.precioGen.value = formulario.precioGen.value + '0'
+        formulario.precioGen.value = formulario.precioGen.value + '00'
+    }
+
+    if (ultimoNum(formulario.precioAsoc.value) == true) {
+        precioA = false;
+        formulario.precioAsoc.value = formulario.precioAsoc.value + '00'
     }
 
     if (nom == false) {
@@ -243,7 +248,7 @@ function validar(bandera)
         guardar.disabled = true;
     }
 
-     else if (ultimoNum(formulario.precioAsoc.value) == true) {
+    if (ultimoNum(formulario.precioAsoc.value) == true) {
         precioA = false;
         guardar.disabled = true;
     }

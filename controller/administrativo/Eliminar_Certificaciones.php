@@ -7,8 +7,17 @@ $idc = $_GET["idc"];
 
 $obj = new EliminarCert();
 $obj->instanciar();
-$obj->cambiaeEtatus($idc);
 
-$obj->eliminar($idc)
+//verifica si hay seguimientos de la certificacion
+$seg = $obj->buscarSeg($idc);
+
+if($seg == true){
+    $obj->cambiaeEtatus($idc);
+    echo 'estatus cambiado';
+}
+
+else{
+    $obj->eliminar($idc);
+}
 
 ?>

@@ -9,6 +9,7 @@ class EliminarCert{
         $this->base->conexion_bd();
     }
 
+    //cambia el estatus de lacertificacion a 0
     function cambiaeEtatus($idc){
         $querry = "UPDATE certinterna SET EstatusCertInt = :s WHERE IdCerInt = :idc";
         $array = [":s"=> 0, ":idc"=>$idc];
@@ -16,6 +17,7 @@ class EliminarCert{
         $this->base->insertar_eliminar_actualizar($querry, $array);
     }
 
+    //elimina la certificacion y todos sus precios historicos
     function eliminar($idc){
         //obtener los id historicos
         $querry_idh = "SELECT IdH FROM certh WHERE IdCerInt = :idc";
@@ -53,6 +55,22 @@ class EliminarCert{
         array_push($parametros, $arreCert);
 
         $this->base->insertar_eliminar_actualizar($consultas, $parametros);
+    }
+
+    //busca si hay seguimientos de la certificacion y retorna true si encuentra alguno
+    function buscarSeg($idh){
+        $querry = "SELECT * FROM segcertint WHERE IdCerInt = :idh";
+        $arre = [":idh"=>$idh];
+
+        $resultados = $this->base->mostrar($querry, $arre);
+
+        if(count($resultados)>= 1){
+            return true;
+        }
+
+        else{
+            return false;
+        }
     }
 }
 ?>

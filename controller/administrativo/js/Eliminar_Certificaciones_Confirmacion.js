@@ -19,6 +19,7 @@ function confirmacion(e){
             {
                 // psrocesar la respuesta del servidor en caso de error
                 alert('Error al eliminar el elemento: ' + textStatus);
+                location.href = '../../view/administrativo/Vista_Certificaciones.php';
             }
         });
 
