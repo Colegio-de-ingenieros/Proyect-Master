@@ -36,14 +36,41 @@ main {
     width: 80%;
 }
 
-
-.formulario-principal{
+.formulario-generales, .formulario-experiencia{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
     row-gap: 10px;
 }
 
+.formulario-experiencia{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+}
+
+.formulario-certificaciones{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 0.15fr;
+    column-gap: 20px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+    align-items: end;
+}
+
+.botones-registro{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.divisor{
+    margin-top: 10px;
+}
 /* ***************************************
 *                 INPUTS                 *
 ******************************************/
@@ -102,8 +129,9 @@ main {
     font-weight: 500;
 }
 
-.formulario-extend {
+.formulario-descripcion {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 textarea {
@@ -111,3 +139,32 @@ textarea {
     max-width: 100%;
     min-height: 150px;
 }
+
+/* ***************************************
+*                BOTONES                 *
+******************************************/
+
+.eliminar-item{
+    width: 65%;
+    height: 41px;
+    background: var(--color-white);
+    border: none;
+    border-radius: var(--radius-2);
+    transition: all 300ms;
+}
+
+.eliminar-item:hover{
+    background: var(--color-red);
+}
+
+.ti-trash-x{
+    font-size: 1.5rem;
+    color: var(--color-red);
+    width: 65%;
+    height: 110%;
+}
+
+.ti-trash-x:hover{
+    color: var(--color-white);
+}
+

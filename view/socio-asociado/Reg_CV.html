@@ -14,6 +14,7 @@
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
@@ -103,10 +104,11 @@
     <section class="section-main">
       <div class="cabezera">
         <h3 class="h3">Registro del CV</h2>
+        <p class="subtitulo-1">Datos generales</p>
         <hr>
       </div>
 
-      <div class="formulario-principal">
+      <div class="formulario-generales">
         <!-- Nombre -->
         <div class="campo">
           <label for="" class="label-2">Nombre*</label>
@@ -150,13 +152,88 @@
             <option value="2">Si</option>
           </select>
         </div>
-
+        <!-- Nombre de carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera*</label>
+          <input title="El campo nombre de la carrera solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+        </div>
+        <!-- Organización -->
+        <div class="campo">
+          <label for="" class="label-2">Organización*</label>
+          <input title="El campo organización solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la organización aquí"></input>
+        </div>
       </div>
 
-      <div class="formulario-extend">
-        <label for="" class="label-2">Descripción profesional</label>
+      <div class="formulario-descripcion">
+        <label for="" class="label-2">Descripción profesional*</label>
         <textarea title="Ingrese su descripción profesional." name="" id="" class="input-format-2" placeholder="Ingrese la descripción profesional"></textarea>
       </div>
+
+      <div class="divisor">
+        <p class="subtitulo-1">Experiencia laboral</p>
+        <hr>
+      </div>
+
+      <div class="formulario-certificaciones">
+        <!-- Nombre certificación -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la certificación*</label>
+          <input title="El campo nombre de la certificación solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la certificación aquí"></input>
+        </div>
+        <!-- Fecha de expedición -->
+        <div class="campo">
+          <label for="" class="label-2">Fecha de expedición*</label>
+          <input type="date" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de vencimiento -->
+        <div class="campo">
+          <label for="" class="label-2">Fecha de vencimiento*</label>
+          <input type="date" class="input-format-2"></input>
+        </div>
+        <!-- Eliminar item -->
+        <button class="eliminar-item"><i class="ti ti-trash-x"></i></button>
+      </div>
+
+      <div class="botones-certificaciones">
+        <button class="btn btn-small">Agregar certificación</button>
+      </div>
+
+      <div class="divisor">
+        <p class="subtitulo-1">Experiencia profesional</p>
+        <hr>
+      </div>
+      <div class="formulario-experiencia">
+        <!-- Puesto que desempeñaba -->
+        <div class="campo">
+          <label for="" class="label-2">Puesto que desempeñaba*</label>
+          <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+        </div>
+        <!-- Nombre de la empresa -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la empresa*</label>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la empresa aquí"></input>
+        </div>
+        <!-- Fecha de inicio -->
+        <div class="campo">
+          <label for="" class="label-2">Fecha de inicio*</label>
+          <input type="date" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de fin -->
+        <div class="campo">
+          <label for="" class="label-2">Fecha de fin*</label>
+          <input type="date" class="input-format-2"></input>
+        </div>
+        <!-- Expectativa salarial bruta -->
+        <div class="campo">
+          <label for="" class="label-2">Expectativa salarial bruta*</label>
+          <input title="El campo expectativa salarial bruta solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese su expectativa salarial bruta aquí"></input>
+        </div>
+      </div>
+
+      <div class="botones-registro">
+        <button class="btn btn-medium">Guardar registro</button>
+      </div>
+
     </section>
   </main>
 </body>
