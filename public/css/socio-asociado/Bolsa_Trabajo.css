@@ -139,7 +139,7 @@ span {
     justify-content: center;
     position: fixed;
     pointer-events: none;
-    opacity: 0;
+    opacity: 1;
     top: 0;
     left: 0;
     height: 100vh;
@@ -163,14 +163,12 @@ span {
     pointer-events: all;
 }
 
-.hide {
-    animation: fade-out .5s forwards;
-}
-
 .show {
     display: flex;
     pointer-events: auto;
     animation: fade-in .5s forwards;
+    flex-direction: column;
+    justify-content: center;
 }
 
 @keyframes fade-in {
@@ -185,14 +183,16 @@ span {
     }
 }
 
-@keyframes fade-out {
-    from {
-        opacity: 1;
-        /* La ventana modal es completamente visible */
-    }
+.item{
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
 
-    to {
-        opacity: 0;
-        /* La ventana modal se vuelve completamente invisible */
-    }
+.datos-oferta{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
