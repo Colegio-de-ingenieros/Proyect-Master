@@ -1,4 +1,4 @@
-:root{
+:root {
     --color-primary: #273544;
     --color-secondary: #303a6e;
     --color-tertiary: #3f4552;
@@ -19,7 +19,7 @@
     --radius-1: 15px;
     --radius-2: 8px;
 
-    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-1: 3px 5px 5px 1px rgba(128, 126, 126, 0.553);
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -30,30 +30,30 @@ main {
     justify-content: center;
 }
 
-.section-main{
+.section-main {
     width: 90%;
 }
 
-.cabezera{
+.cabezera {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-hr{
+hr {
     width: 100%;
     margin-top: 0;
     margin-bottom: 0;
 }
 
-.titulo-central{
+.titulo-central {
     font-size: 42px;
     margin-bottom: 15px;
     margin-top: 15px;
 }
 
-.cards{
+.cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 300px;
@@ -61,19 +61,19 @@ hr{
     justify-items: center;
 }
 
-.card{
+.card {
     background: var(--color-white);
     border-radius: var(--radius-2);
     width: 90%;
     height: 88%;
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: var(--shadow-1);
 }
 
-.card-content{
+.card-content {
     background: var(--color-primary);
     color: var(--color-white);
     width: 95%;
@@ -85,27 +85,27 @@ hr{
     align-items: center;
 }
 
-.titulo-vacante{
+.titulo-vacante {
     margin-top: 10px;
     margin-bottom: 20px;
     font-size: 1.5rem;
     font-weight: 700;
 }
 
-.info-1{
+.info-1 {
     width: 90%;
     margin-bottom: 0px;
 }
 
-.info-1 > *{
+.info-1>* {
     margin-bottom: 10px;
 }
 
-span{
+span {
     font-weight: 700;
 }
 
-.info-2{
+.info-2 {
     width: 90%;
     display: flex;
     flex-direction: row;
@@ -113,17 +113,86 @@ span{
     align-items: center;
 }
 
-.empresa, .lugar, .tiempo, .salario, .jornada {
+.empresa,
+.lugar,
+.tiempo,
+.salario,
+.jornada {
     font-size: 1.1rem;
 }
 
-.divisor{
+.divisor {
     width: 1px;
     height: 100%;
     background: var(--color-white);
 
 }
 
-.ti{
+.ti {
     font-size: 1.4rem;
+}
+
+.modal-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    transition: 300ms ease-in-out;
+}
+
+.modal {
+    background: var(--color-white);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-1);
+
+    width: 90%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    pointer-events: all;
+}
+
+.hide {
+    animation: fade-out .5s forwards;
+}
+
+.show {
+    display: flex;
+    pointer-events: auto;
+    animation: fade-in .5s forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        /* La ventana modal es invisible al principio */
+    }
+
+    to {
+        opacity: 1;
+        /* La ventana modal se vuelve completamente visible */
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+        /* La ventana modal es completamente visible */
+    }
+
+    to {
+        opacity: 0;
+        /* La ventana modal se vuelve completamente invisible */
+    }
 }
