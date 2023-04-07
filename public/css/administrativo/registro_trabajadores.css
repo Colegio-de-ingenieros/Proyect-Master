@@ -178,7 +178,7 @@ html{
     gap: 10px;
 }
 .grupo-boton-reg{
-    display: flex;
+    display: block;
     flex-direction: column;
     align-items: center;
     grid-column: span 3;
