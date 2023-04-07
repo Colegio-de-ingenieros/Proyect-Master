@@ -10,7 +10,7 @@ class EliminarCert{
     }
 
     //cambia el estatus de lacertificacion a 0
-    function cambiaeEtatus($idc){
+    function cambiarEtatus($idc){
         $querry = "UPDATE certinterna SET EstatusCertInt = :s WHERE IdCerInt = :idc";
         $array = [":s"=> 0, ":idc"=>$idc];
 

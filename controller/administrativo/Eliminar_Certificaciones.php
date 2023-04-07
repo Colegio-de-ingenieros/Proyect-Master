@@ -12,12 +12,15 @@ $obj->instanciar();
 $seg = $obj->buscarSeg($idc);
 
 if($seg == true){
-    $obj->cambiaeEtatus($idc);
-    echo 'estatus cambiado';
+    $obj->cambiarEtatus($idc);
+    //echo 'estatus cambiado';
 }
 
 else{
     $obj->eliminar($idc);
 }
+
+//echo 'llega hasta el final'
+echo "<script>location.href = '../../view/administrativo/Vista_Certificaciones.php';</script>";
 
 ?>
