@@ -91,6 +91,7 @@
     $pdf->SetFont('Arial','',14);
 
     /* Crea un ciclo en donde se itere el tema y sus subtemas */
+    if ($datost){
     for ($i = 0; $i < count($datost); $i++) {
         $tema = $datost[$i]["NomTema"];
         $ide = $datost[$i]["IdTema"];
@@ -106,6 +107,11 @@
             $pdf->Cell(0,10,utf8_decode($subtema),0,1,'C');
         }
     }
+}
+else {
+    $pdf->SetFont('Arial','',14);
+    $pdf->Cell(0,10,utf8_decode('No hay temas registrados'),0,1,'C');
+}
 
     $pdf->Output();
 ?>
