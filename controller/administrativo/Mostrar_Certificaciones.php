@@ -52,7 +52,7 @@ if ($resultado == true) {
         $salida .= '<td> 
         <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
-        <a href="../../controller/administrativo/Eliminar_Certificaciones.php?idc=' . $idc . '" class="table_item__link eliminar-elemento" data-idc="<?php echo $idc; ?>">Eliminar</a>&nbsp;&nbsp;&nbsp;
+        <a href="#" class="table_item__link eliminar-elemento" data-idc="'. $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
         </td>';
         $salida .= '</tr>';
 
