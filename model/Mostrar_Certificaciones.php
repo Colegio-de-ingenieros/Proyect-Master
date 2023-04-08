@@ -55,7 +55,7 @@ class MostrarCertificaciones{
     function buscarUltimoPrecioA($idc)
     {
         //busca todos los registros de esa certificacion
-        $querry = "SELECT * FROM certh, historico WHERE (certh.IdCerInt = :id AND certh.IdH = historico.IdH);";
+        $querry = "SELECT * FROM certh, historico WHERE (certh.IdCerInt = :id AND certh.IdH = historico.IdH) ORDER BY FechaH;";
 
         $resultados = $this->base->mostrar($querry, [":id" => $idc]);
 
