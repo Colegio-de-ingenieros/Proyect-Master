@@ -12,9 +12,11 @@
   <link rel="stylesheet" href="../../public/css/socio-asociado/Bolsa_Trabajo.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
@@ -102,22 +104,24 @@
   </header>
 
   <main>
+
     <section class="section-main">
       <div class="cabezera">
         <h3 class="h3 titulo-central">Conoce las mejores ofertas de trabajo que tenemos para tí.</h2>
-        <hr>
+          <hr>
       </div>
 
       <article class="cards">
 
-        <div class="card">
+        <div class="card" onclick="mostrar_modal()">
           <img src="../../public/img/bolsa_trabajo/React.png" alt="" class="logo-curso" width="100px">
 
           <div class="card-content">
             <p class="titulo-vacante">Desarrollador React</p>
 
             <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">Oracle</span></p>
+              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
+                  class="nombre-empresa">Oracle</span></p>
               <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
             </div>
 
@@ -132,15 +136,16 @@
             </div>
           </div>
         </div>
-        
-        <div class="card">
+
+        <div class="card" onclick="mostrar_modal()">
           <img src="../../public/img/bolsa_trabajo/React.png" alt="" class="logo-curso" width="100px">
 
           <div class="card-content">
             <p class="titulo-vacante">Desarrollador React</p>
 
             <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">Oracle</span></p>
+              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
+                  class="nombre-empresa">Oracle</span></p>
               <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
             </div>
 
@@ -155,14 +160,16 @@
             </div>
           </div>
         </div>
-        <div class="card">
+
+        <div class="card" onclick="mostrar_modal()">
           <img src="../../public/img/bolsa_trabajo/React.png" alt="" class="logo-curso" width="100px">
 
           <div class="card-content">
             <p class="titulo-vacante">Desarrollador React</p>
 
             <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">Oracle</span></p>
+              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
+                  class="nombre-empresa">Oracle</span></p>
               <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
             </div>
 
@@ -180,8 +187,30 @@
 
       </article>
     </section>
+
+    <div class="modal-container" id="modal-container">
+      <div class="modal">
+        <h1>Datos de la vacante</h1>
+        
+        <div class="datos-oferta">
+        <p class="item nombre">Nombre de la vacante: </p>
+        <p class="item descripcion-empleo">Descrpicion del empleo: </p>
+        <p class="item requisitos-academicos">Requisitos académicos: </p>
+        <p class="item requisitos-tecnicos">Requisitos técnicos: </p>
+        <p class="item anio">Año</p>
+        <p class="item salario-bruto">Salario bruto: </p>
+        <p class="item salario-neto">Salario neto: </p>
+        <p class="item horario-entrada">Hora de entrada: </p>
+        <p class="item horario-salida">Horario de salida: </p>
+        <p class="item jornada">Jornada: </p>
+        <p class="item telefono-empresa">Telefono de contacto: </p>
+        <p class="item direccion-empresa">Dirección de la empresa: </p>
+        </div>
+        <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+      </div>
+    </div>
   </main>
 
 </body>
-
+<script src="/view/socio-asociado/js/modal.js"></script>
 </html>
