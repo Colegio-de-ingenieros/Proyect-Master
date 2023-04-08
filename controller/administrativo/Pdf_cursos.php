@@ -44,8 +44,7 @@
     $bd->BD();
     
     $datos = $bd->cursos_disponibles($id);
-    $datost = $bd->temas($id);
-    $datoss = $bd->tema($id);
+    $datost = $bd->t($id);
 
     for ($i = 0; $i < count($datos); $i++) {
         $clave = $datos[$i]["ClaveCur"];
@@ -94,10 +93,12 @@
     /* Crea un ciclo en donde se itere el tema y sus subtemas */
     for ($i = 0; $i < count($datost); $i++) {
         $tema = $datost[$i]["NomTema"];
+        $ide = $datost[$i]["IdTema"];
 
         $pdf->SetFont('Arial','B',16);
         $pdf->Cell(0,10,utf8_decode($tema),0,1,'C');
 
+        $datoss = $bd->s($tema,$ide);
         for ($j = 0; $j < count($datoss); $j++) {
             $subtema = $datoss[$j]["NomSubT"];
 
