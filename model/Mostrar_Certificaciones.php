@@ -94,6 +94,17 @@ class MostrarCertificaciones{
         return $precio;
     }
 
+    function consultaInteligente($valor){
+        $querry = "SELECT * FROM certinterna 
+        WHERE NomCertInt LIKE :q OR DesCerInt LIKE :q OR EstatusCertInt LIKE :q OR abrevCertInt LIKE :q";
+
+        $arre = [":q"=>'%'.$valor.'%'];
+
+        $resultados = $this->base->mostrar($querry, $arre);
+
+        return $resultados;
+    }
+
     //hace la consulta principal de los datos de las certificaciones
     function getCertificaciones(){
         $querry = "SELECT * FROM certinterna";
