@@ -63,7 +63,7 @@ class VerCurso{
     }
     function s($id,$tes){
 
-        $consulta = "SELECT NomSubT FROM temas, temassub, subtemas 
+        $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
             where  temas.IdTema = '$tes'
             and temas.IdTema = temassub.IdTema
             and temassub.IdSubT = subtemas.IdSubT";

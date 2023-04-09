@@ -339,20 +339,82 @@ $respuesta .='
 			<p>';
 
 
+			$idtemasl = [];
+			$nomtemasl = [];
+
 			$datost = $bd->t($id);
 			if ($datost) {
 				for ($i = 0; $i < count($datost); $i++) {
 					$tem = $datost[$i]["NomTema"];
 					$iden = $datost[$i]["IdTema"];
-					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$tem .'</h3><br>';
-					$datoss = $bd->s($tem,$iden);
+
+
+					array_push($idtemasl, ((int)$iden));
+					array_push($nomtemasl, $tem);
+				}
+
+					//aplica ordenacion burbuja para ordenar los temas en numeros del menor al mayor
+				for ($i = 0; $i < count($idtemasl); $i++) {
+					for ($j = 0; $j < count($idtemasl); $j++) {
+						if ($idtemasl[$i] < $idtemasl[$j]) {
+							$aux = $idtemasl[$i];
+							$aux1 = $nomtemasl[$i];
+							$nomtemasl[$i] = $nomtemasl[$j];
+							$idtemasl[$i] = $idtemasl[$j];
+							$idtemasl[$j] = $aux;
+							$nomtemasl[$j] = $aux1;
+						}
+					}
+				}
+				
+			
+				for ($i = 0; $i < count($idtemasl); $i++) {
+					$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$nomtemasl[$i] .'</h3><br>';
+					$datoss = $bd->s($tem,((string)$idtemasl[$i]));
+					$idsubtemasl = [];
+					$nomsubtemasl = [];
+					if ($datoss) {
+
+						for ($j = 0; $j < count($datoss); $j++) {
+							$te = $datoss[$j]["NomSubT"];
+							$idss = $datoss[$j]["IdSubT"]; 
+							array_push($idsubtemasl, ((int)$idss));
+							array_push($nomsubtemasl, $te);
+						}
+
+						//aplicar burbuja para ordenar los subtemas(id)
+						for ($is = 0; $is < count($idsubtemasl); $is++) {
+							for ($js = 0; $js < count($idsubtemasl); $js++) {
+								if ($idsubtemasl[$is] < $idsubtemasl[$js]) {
+									$aux = $idsubtemasl[$is];
+									$aux1 = $nomsubtemasl[$is];
+									$nomsubtemasl[$is] = $nomsubtemasl[$js];
+									$idsubtemasl[$is] = $idsubtemasl[$js];
+									$idsubtemasl[$js] = $aux;
+									$nomsubtemasl[$js] = $aux1;
+								}
+							}
+						}
+
+						for ($il = 0; $il < count($idsubtemasl); $il++) {
+							$respuesta .= '<h4 style="width: 500px;">'.$nomsubtemasl[$il] .'</h4><br>';
+							/* $respuesta .= '<h4 style="width: 500px;">'.$idsubtemasl[$i] .'</h4><br>'; */
+
+						}
+					                    
+					}
+				}
+		
+
+
+					/* $datoss = $bd->s($tem,$iden);
 					if ($datoss) {
 						for ($j = 0; $j < count($datoss); $j++) {
 							$te = $datoss[$j]["NomSubT"];
 							$respuesta .= '<h4 style="width: 500px;">'.$te .'</h4><br>';
 						}                    
 					}
-				} 
+				}  */
 			}
 			else 
 			{
