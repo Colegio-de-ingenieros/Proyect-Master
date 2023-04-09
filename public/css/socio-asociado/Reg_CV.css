@@ -38,7 +38,7 @@ main {
 
 .formulario-generales, .formulario-experiencia{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
     row-gap: 10px;
 }
@@ -51,9 +51,17 @@ main {
     margin-bottom: 10px;
 }
 
-.formulario-certificaciones{
+.formulario-certificaciones, .formulario-academica{
     display: grid;
-    grid-template-columns: repeat(3, 1fr) 0.15fr;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 20px;
+    row-gap: 10px;
+    margin-bottom: 10px;
+    align-items: end;
+}
+.formulario-academica{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) 0.05fr;
     column-gap: 20px;
     row-gap: 10px;
     margin-bottom: 10px;
@@ -70,6 +78,10 @@ main {
 
 .divisor{
     margin-top: 10px;
+}
+
+.especial{
+    margin-bottom: 3px;
 }
 /* ***************************************
 *                 INPUTS                 *
@@ -151,6 +163,7 @@ textarea {
     border: none;
     border-radius: var(--radius-2);
     transition: all 300ms;
+    margin-top: -5px;
 }
 
 .eliminar-item:hover{
@@ -158,7 +171,7 @@ textarea {
 }
 
 .ti-trash-x{
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     color: var(--color-red);
     width: 65%;
     height: 110%;
