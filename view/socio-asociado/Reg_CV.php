@@ -114,22 +114,22 @@
         <!-- Nombre -->
         <div class="campo">
           <label for="" class="label-2">Nombre*</label>
-          <input type="text" class="input-format-2" readonly></input>
+          <input type="text" class="input-format-2" id="nombre-campo" readonly></input>
         </div>
         <!-- Apellido paterno -->
         <div class="campo">
           <label for="" class="label-2">Apellido Paterno*</label>
-          <input type="text" class="input-format-2" readonly></input>
+          <input type="text" class="input-format-2" id="apellido-paterno-campo" readonly></input>
         </div>
         <!-- Apellido materno -->
         <div class="campo">
           <label for="" class="label-2">Apellido Materno</label>
-          <input type="text" class="input-format-2" readonly></input>
+          <input type="text" class="input-format-2" id="apellido-materno-campo" readonly></input>
         </div>
         <!-- Fecha de nacimiento -->
         <div class="campo">
           <label for="" class="label-2">Fecha de nacimiento*</label>
-          <input type="date" class="input-format-2" readonly></input>
+          <input type="date" class="input-format-2" id="fecha-nacimiento-campo" readonly></input>
         </div>
         <!-- Correo electrónico -->
         <div class="campo">
@@ -147,8 +147,7 @@
         <!-- Domicilio -->
         <div class="campo">
           <label for="" class="label-2">Domicilio*</label>
-          <input title="El campo domicilio solo debe contener letras, numeros " type="text" class="input-format-2"
-            readonly></input>
+          <input type="text" class="input-format-2" id="direccion-campo" readonly></input>
         </div>
         <!-- Cambio de residencia -->
         <div class="campo">
@@ -269,6 +268,8 @@
       </div>
 
     </section>
+    <span id="id-usuario" style="display:none">P0001</span>
+
   </main>
 </body>
 <script src="js/Reg_CV.js"></script>
