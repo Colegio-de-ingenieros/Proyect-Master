@@ -154,7 +154,8 @@ span {
     box-shadow: var(--shadow-1);
 
     width: 90%;
-    height: 80%;
+    min-height: 35rem;
+    max-height: 35rem;
 
     display: flex;
     flex-direction: column;
