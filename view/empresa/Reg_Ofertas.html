@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro ofertas</title>
+    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
+
+
+    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+      sizes="192x192">
+    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+</head>
+<body>
+  <header>
+
+    <div class="menu">
+      <input type="checkbox" id="check__menu">
+      <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
+      <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+      <nav>
+        <ul>
+
+          <!-- Cursos -->
+          <li>
+            <a href="#">
+              <!--               <i class="fa-solid fa-user-tie"></i> -->
+              Cursos
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Cuotas -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-circle-check"></i> -->
+              Cuotas
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Bolsa de trabajo -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-chalkboard-user"></i> -->
+              Bolsa de trabajo
+            </a>
+
+            <ul>
+              <li><a id="" href="../empresa/Reg_Ofertas.html">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-clipboard-list"></i> -->
+              Servicios
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Mi Perfil -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-regular fa-user"></i> -->
+              Mi perfil
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Datos Generales</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="boton-cerrar-session">
+      <button class="btn-cerrar-session btn">Cerrar sesión</button>
+    </div>
+  </header>
+    <main>
+        <section class="section-main">
+          <div class="cabezera">
+            <h3 class="h3">Registro ofertas</h2>
+        <form action="" id="formula">        
+              <p class="subtitulo-1">Datos vacante</p>
+              <hr>
+          </div>
+          <!-- Datos generales avacante -->
+          <div class="formulario-generales">
+            <!-- Nombre -->
+            <div class="campo">
+              <label for="" class="label-2">Nombre de la vacante*</label>
+              <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo letras, espacios intermedios, números y puntos.'
+              maxlength="50">
+            </div>
+            <!-- Requerimientos académicos -->
+            <div class="campo">
+              <label for="" class="label-2">Académicos*</label>
+              <input type="text" class="input-format-2" name="requi_academicos" id="requi_academicos" placeholder="Ingrese el requisito académico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
+              maxlength="50">
+            </div>
+            <!-- Requerimientos técnicos -->
+            <div class="campo">
+              <label for="" class="label-2">Técnicos*</label>
+              <input type="text" class="input-format-2" name="requi_tecnicos" id="requi_tecnicos" placeholder="Ingrese el requisito técnico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
+              maxlength="50">
+            </div>
+            <!-- Expectativa salarial bruta -->
+            </div>
+    
+          <div class="formulario-descripcion">
+            <label for="" class="label-2">Descripción del puesto*</label>
+            <textarea title="Ingrese su descripción del puesto." name="descri_puesto" id="descri_puesto" class="input-format-2"
+              placeholder="Ingrese la descripción del puesto" ></textarea>
+          </div>
+          <!--PARTE DOS-->
+			<p class="subtitulo-1"> Domicilio laboral</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Código postal*</p>
+					</div>
+					<div class="campo">
+						<input type="text" name="codigo_postal" id="codigo_postal" maxlength="5" class="input-format" placeholder="Ingrese su código postal"
+						title="El código postal solo puede contener números.">
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Calle y número*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="calle" id="calle" class="input-format" maxlength="100" placeholder="Ingrese su calle y número"
+						title="La calle y el número solo puenden estar formados por letras mayúsculas, minúsculas y caracteres especiales (., #).">
+					</div>
+				</div>
+				<div class="grupo-input">
+					<div class="label-form">
+					    <p class="label-2">Colonia*</p>
+					</div>
+					<div class="input-form">
+
+						<select name="colonia" id="busqueda_colonia"  maxlength="50" class="input-format">
+							<option value="0">Seleccione su colonia</option>
+						</select>
+					</div>
+			
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Ciudad*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="ciudad" id="ciudad" maxlength="50"	class="input-format" placeholder="Ingrese su ciudad" disabled>
+					</div>
+				</div>
+
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Estado*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="estado" id="estado" maxlength="50" class="input-format" placeholder="Ingrese su estado" disabled>
+					</div>
+				</div>
+				
+				
+			</div>
+          <!-- Datos del trabajo -->
+			<p class="subtitulo-1"> Datos trabajo</p>
+			<hr size="1px" />
+			<div class="contenedor-formulario">
+                <!-- Forma de trabajo  -->
+				<div class="grupo-input">
+					<div class="label-form">
+					    <p class="label-2">Forma de trabajo*</p>
+					</div>
+					<div class="input-form">
+
+						<select name="forma_trabajo" id="forma_trabajo"  maxlength="50" class="input-format">
+							<option value="0">Híbrido</option>
+                            <option value="1">Home oficce</option>
+                            <option value="2">Presencial</option>
+						</select>
+					</div>
+			
+				</div>
+                <!-- Jornada laboral -->
+                <div class="grupo-input">
+					<div class="label-form">
+					    <p class="label-2">Jornada laboral*</p>
+					</div>
+					<div class="input-form">
+
+						<select name="jornada_laboral" id="jornada_laboral"  maxlength="50" class="input-format">
+							<option value="0">Completo</option>
+                            <option value="0">Medio tiempo</option>
+						</select>
+					</div>
+			
+				</div>
+                <!-- Años de experiencia-->
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Años de experiencia*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="experiencia_lab" id="experiencia_lab" maxlength="50"	class="input-format" placeholder="Ingrese sus años de experiencia" 
+                        title="Solo se pueden ingresar números de dos digitos." maxlength="2">
+					</div>
+				</div>
+                <!-- Salario Bruto-->
+				<div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Salario bruto*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="sal_bruto" id="sal_bruto" maxlength="50" class="input-format" placeholder="Ingrese su salario bruto"
+                        title="Solo se pueden ingresar números.">
+					</div>
+				</div>
+				<!-- Salario mensual-->
+                <div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Salario mensual*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="sal_mensual" id="sal_mensual" maxlength="50" class="input-format" placeholder="Ingrese su salario mensual" 
+                        title="Solo se pueden ingresar números.">
+					</div>
+				</div>
+                <br>
+                <!-- Hora inicio -->
+                <div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Hora de inicio*</p>
+					</div>
+					<div class="input-form">
+						<input type="time" class="input-format" name="inicio" id="inicio" placeholder="Ingrese su texto aquí">
+					</div>
+				</div>
+                
+                <!-- Hora final-->
+                <div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Hora de finalización*</p>
+					</div>
+					<div class="input-form">
+						<input type="time" class="input-format" name="final" id="final" placeholder="Ingrese su texto aquí">
+					</div>
+				</div>
+
+                <!-- Telefono -->
+                <div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Teléfono*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="caja_telefono" id="caja_telefono" maxlength="50" class="input-format" placeholder="Ingrese su teléfono"
+                        required title="El número de teléfono solo puede contener números." maxlength="10">
+					</div>
+				</div>
+                 <!-- correo -->
+                 <div class="grupo-input">
+					<div class="label-form">
+						<p class="label-2">Correo electrónico*</p>
+					</div>
+					<div class="input-form">
+						<input type="text" name="caja_correo" id="caja_correo" maxlength="50" class="input-format" placeholder="someone@example.com"
+                        required title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)."
+                        maxlength="40">
+					</div>
+				</div>
+				
+			     </div>
+             <div class="botones-registro">
+                 <button class="btn btn-medium">Guardar registro</button>
+            </div>
+        </form>
+        </section>
+      </main>
+      
+</body>
+</html>
