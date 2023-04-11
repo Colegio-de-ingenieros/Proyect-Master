@@ -115,7 +115,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $status . '</td>';
             $salida .= '<td> 
         <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
-        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
+        <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
         <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
         </td>';
             $salida .= '</tr>';

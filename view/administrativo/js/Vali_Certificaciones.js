@@ -11,36 +11,32 @@ let abre = false
 let botonRegistrar = document.getElementById("registrar");
 botonRegistrar.addEventListener("click", (e) =>
 {
-    //alert(ultimoNum(formulario.precioGen.value) == true);
-    if (ultimoNum(formulario.precioGen.value) == true) {
-        precioG = false;
-        formulario.precioGen.value = formulario.precioGen.value + '00'
-    }
-
-    if (ultimoNum(formulario.precioAsoc.value) == true) {
-        precioA = false;
-        formulario.precioAsoc.value = formulario.precioAsoc.value + '00'
-    }
+    
 
     if (nom == false) {
         nombre.style.border = "3px solid red";
+        e.preventDefault()
     }
 
     else if (precioG == false) {
         precioGen.style.border = "3px solid red";
+        e.preventDefault()
     }
         
     else if (precioA == false) {
         precioAsoc.style.border = "3px solid red";
+        e.preventDefault()
     }
 
 
     else if (desc == false) {
         descripcion.style.border = "3px solid red";
+        e.preventDefault()
     }
         
     else if (abre == false) {
         abreviacion.style.border = "3px solid red";
+        e.preventDefault()
     }
 
     else {

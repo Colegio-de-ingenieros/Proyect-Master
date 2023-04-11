@@ -112,6 +112,17 @@ class MostrarCertificaciones{
 
         return $resultados;
     }
+
+    //hace la consulta principal de los datos de la certificacion con el id que recibe
+    function getCertificacionesId($idc)
+    {
+        $querry = "SELECT * FROM certinterna WHERE IdCerInt = :idc";
+        $arre = [":idc"=>$idc];
+        $resultados = $this->base->mostrar($querry, $arre);
+
+        return $resultados;
+    }
+    
 }
 
 /*$obj = new MostrarCertificaciones();
