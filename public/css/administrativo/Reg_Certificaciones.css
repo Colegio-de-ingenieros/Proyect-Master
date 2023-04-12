@@ -136,6 +136,10 @@
     padding: 15px;
     float: left;
 }
+.photo2 {
+    padding: 5px;
+    float: left;
+}
 
 .prevPhoto {
     color: var(--color-black);
@@ -198,6 +202,9 @@
     background: red;
     right: -10px;
     top: -10px;
+}
+.sep {
+    margin-bottom: 6px;
 }
 @media screen and (max-width: 650px){
     .formulario-de-datos{
