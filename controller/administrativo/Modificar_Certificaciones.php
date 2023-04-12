@@ -71,7 +71,7 @@ class ModificarCert{
         }
     }
 
-    //toma el id de historico que se acaba de generar y genera el siguiente
+    //toma el id de historico que se acaba de generar y genera el siguiente 
     function otroID()
     {
         $id = floatval($this->idhg) + 1;
