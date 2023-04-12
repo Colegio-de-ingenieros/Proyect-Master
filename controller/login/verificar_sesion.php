@@ -10,7 +10,7 @@ if(!isset($_SESSION["token"]) ||
     $respuesta = [0];
 }else{
     if($_COOKIE["token"] != $_SESSION["token"] ||
-    $_POST["acceso_a"] != $_COOKIE["tipo_usuario"]){
+    $_POST["acceso_a"] != $_SESSION["tipo_usuario"]){
         $respuesta = [0];
     }
 }
