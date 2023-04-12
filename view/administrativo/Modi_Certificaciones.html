@@ -1,4 +1,3 @@
-<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,6 +18,13 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+
+    <!--regresa a la vista de todas las certificaciones sin modificar nada-->
+    <script languaje="javascript">
+      function regresar(){
+        location.href = '../../view/administrativo/Vista_Certificaciones.php';
+      }
+    </script>
 
 </head>
 
@@ -189,7 +195,7 @@
     <script src="../../view/administrativo/js/Cargar_Logo.js"></script>
     <section class="section-main">
       <div class="cabezera">
-        <h4 class="h4">Registro de certificaciones</h4>
+        <h4 class="h4">Modificación de certificaciones</h4>
       </div>
       <br>
       <p class="subtitulo-1"> Datos generales</p>
@@ -251,32 +257,36 @@
         </div>
 
         <div class="grupo-input2">
-          <div class="label-form">
-            <p class="label-2">Logo actual</p>
-          </div>
-          <div class="input-form">
-            <img src="" id="logoActual" width="150", height="150">
-          </div>
-        </div>
 
         <div class="label-form">
-          <p class="label-2">Logo*</p>
+          <p class="label-2">Logo actual &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Logo a modificar</p>
+          <div class="sep"></div>
+          <div class="photo2" >
+            <div class="prevPhoto" id="photo">
+              <span class="delPhoto notBlock">X</span>
+              <label for="inputLogo"></label>
+            </div>
+            <div class="upimg" id="upimg">
+              <input type="file" name="inputLogo" id="inputLogo" class="input-format-2" title="El logo no debe pesar más de 1 MB.">
+            </div>
+          </div>
 
-          <div class="photo">
+          <div class="photo2" >
             <div class="prevPhoto">
               <span class="delPhoto notBlock">X</span>
               <label for="inputLogo"></label>
             </div>
-            <div class="upimg">
-              <input type="file" name="inputLogo" id="inputLogo" class="input-format-3" title="El logo no debe pesar más de 1 MB.">
+            <div class="upimg" id="upimg">
+              <input type="file" name="inputLogo" id="inputLogo" class="input-format-2" title="El logo no debe pesar más de 1 MB.">
             </div>
-            <div id="form_alert"></div>
           </div>
+        </div>
         </div>
 
         <div class="grupo-boton-reg">
           <div class="boton_registrar">
-            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Actualizar</button>
+            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Actualizar </button>&nbsp;&nbsp;
+            <button type="button" name="cancelar" id="cancelar" class="btn-medium btn" onclick="regresar()">Cancelar</button>
           </div>
         </div>
 

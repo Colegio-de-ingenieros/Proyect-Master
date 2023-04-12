@@ -34,6 +34,12 @@ $precioA = $base->buscarUltimoPrecioA($idc);
     document.getElementById("precioAsoc").value = "<?php echo $precioA ?>";
     document.getElementById("precioGen").value = "<?php echo $precioG ?>";
 
-    const imagen = document.getElementById("logoActual");
-    imagen.src = " <?php echo 'data:image/jpeg;base64,' . base64_encode($logo) ?>";
+    const logoImg = document.createElement('img');
+    logoImg.src = "<?php echo 'data:image/jpeg;base64,' . base64_encode($logo) ?>";
+    logoImg.width = 100;
+    logoImg.height = 100;
+    const contenedor = document.getElementById('photo');
+    contenedor.appendChild(logoImg);
+
+    //document.getElementById("inputLogo").value = "<?php echo '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="100" height="100">';?>";
 </script>
