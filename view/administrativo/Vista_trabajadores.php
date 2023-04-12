@@ -1,4 +1,4 @@
-<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
