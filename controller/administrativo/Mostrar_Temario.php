@@ -3,8 +3,8 @@ include_once('../../model/Mostrar_Temario.php');
 
 class Curso{
     public $id;
-    public $titulo;
-    public $subtitulos;
+    public $title;
+    public $subtitles;
 
     public function __construct($id, $titulo, $subtitulos){
         $this->id = $id;
@@ -16,11 +16,11 @@ $lista = array();
 $bd = new MostrarTemas();
 $bd->BD();
 
-$ids="000000";
 
 $idtemasl = [];
 $nomtemasl = [];
 
+$ids = $_POST['id'];
 
 $datost = $bd->tema($ids);
 if ($datost) {
@@ -45,7 +45,7 @@ if ($datost) {
             }
         }
     }
-
+    $subtitulo= [];
     for ($i = 0; $i < count($idtemasl); $i++) {
         //$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$nomtemasl[$i] .'</h3><br>';
         $titulo = $nomtemasl[$i];
@@ -76,9 +76,9 @@ if ($datost) {
             }
             $subtitulos = $nomsubtemasl;                   
         }
+        $curso = new Curso($id, $titulo, $subtitulos);
+        array_push($lista, $curso); 
     }
-    $curso = new Curso($id, $titulo, $subtitulos);
-    array_push($lista, $curso); 
 }
-echo var_dump($lista);
+
 
