@@ -9,7 +9,7 @@ fetch("../../controller/login/verificar_sesion.php",
     .then(respuesta => {
         console.log(respuesta);
         if (respuesta[0] == 0) {
-            window.location.href = '../../view/login/400.html';
+            window.location.href = '../../controller/login/logout.php';
         }
 
     });
