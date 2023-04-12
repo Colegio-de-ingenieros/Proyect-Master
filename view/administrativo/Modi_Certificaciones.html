@@ -1,3 +1,4 @@
+<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,6 +23,7 @@
 </head>
 
 <body>
+  
   <header>
     <div class="header_superior">
       <div class="titulo">
@@ -195,6 +197,8 @@
 
       <form class="formulario-de-datos" id="formulario" , name="formulario">
 
+        <input type="hidden" id="idc" name="idc">
+
         <div class="grupo-input">
           <div class="label-form">
             <p class="label-2">Abreviación*</p>
@@ -246,6 +250,15 @@
           </div>
         </div>
 
+        <div class="grupo-input2">
+          <div class="label-form">
+            <p class="label-2">Logo actual</p>
+          </div>
+          <div class="input-form">
+            <img src="" id="logoActual" width="150", height="150">
+          </div>
+        </div>
+
         <div class="label-form">
           <p class="label-2">Logo*</p>
 
@@ -255,7 +268,7 @@
               <label for="inputLogo"></label>
             </div>
             <div class="upimg">
-              <input type="file" name="inputLogo" id="inputLogo" class="input-format-2" title="El logo no debe pesar más de 1 MB.">
+              <input type="file" name="inputLogo" id="inputLogo" class="input-format-3" title="El logo no debe pesar más de 1 MB.">
             </div>
             <div id="form_alert"></div>
           </div>
@@ -272,4 +285,5 @@
   </main>
   <script src="../../view/administrativo/js/Vali_Certificaciones.js"></script>
 </body>
+<script src="js/Modificar_Certificaciones.js"></script>
 </html>

@@ -1,3 +1,4 @@
+<script src="../../view/login/js/verificar_permiso_socio.js"></script>
 <!DOCTYPE html>
 <html lang="es">
 
