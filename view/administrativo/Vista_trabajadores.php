@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<!-- <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script> -->
+	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -205,7 +205,7 @@
       </div>
     </div>
   </main>
-	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
+	<!-- <script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script> -->
 </body>
 <!--<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></>-->
 </html>
