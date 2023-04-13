@@ -40,7 +40,7 @@ class MostrarTemas{
     }
 }
 
-$objeto = new MostrarCurso();
+$objeto = new MostrarTemas();
 $objeto->BD();
 
 ?>

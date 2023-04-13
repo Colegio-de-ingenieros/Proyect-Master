@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostrar_Temario.php');
+include_once('../../model/Mostar_Temario.php');
 
 class Curso{
     public $id;
@@ -8,8 +8,8 @@ class Curso{
 
     public function __construct($id, $titulo, $subtitulos){
         $this->id = $id;
-        $this->titulo = $titulo;
-        $this->subtitulos = $subtitulos;
+        $this->title = $titulo;
+        $this->subtitles = $subtitulos;
     }
 }
 $lista = array();
@@ -76,9 +76,9 @@ if ($datost) {
             }
             $subtitulos = $nomsubtemasl;                   
         }
-        $curso = new Curso($id, $titulo, $subtitulos);
+        $curso = new Curso($id, $titulo, $nomsubtemasl);
         array_push($lista, $curso); 
     }
+    header('Content-Type: application/json');
+    echo json_encode($lista);
 }
-
-

@@ -13,12 +13,12 @@
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Modi_Cursos.css">
 
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
 </head>
 
 <body>
@@ -236,10 +236,14 @@
 
 
     </section>
+    <span id="id-usuario" style="display:none">102030</span>
   </main>
   
 </body>
-<script src="js/Vali_Cursos.js"></script>
-<script src="js/Reg_Cursos.js"></script>
+<!-- <script src="js/Vali_Cursos.js"></script>
+<script src="js/Reg_Cursos.js"></script> -->
 <script src="js/temario.js"></script>
 </html>
+<?php
+  echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
+?>
