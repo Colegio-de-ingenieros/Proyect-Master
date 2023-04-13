@@ -1,9 +1,9 @@
 //declara las variables para los input
-let nom = false
-let precioG = false
-let precioA = false
-let desc = false
-let abre = false
+let nom = true
+let precioG = true
+let precioA = true
+let desc = true
+let abre = true
 
 //validar()
 
@@ -74,6 +74,7 @@ formulario.abreviacion.addEventListener('keyup', (e) =>
     //verifica que se cumpla con la expresion correpondiente
     if (!expresiones.abreviacion.test(valorInput)) {
         abreviacion.style.border = "3px solid red";
+        abre = false
     }
 
     else {
@@ -96,6 +97,7 @@ formulario.nombre.addEventListener('keyup', (e) =>
     //verifica que se cumpla con la expresion correpondiente
     if (!expresiones.name.test(valorInput)) {
         nombre.style.border = "3px solid red";
+        nom = false
     }
 
     else {
@@ -127,6 +129,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
         precioGen.style.border = "3px solid red";
         valorInput = valorInput.substr(0, valorInput.length-1);
         formulario.precioGen.value = valorInput;
+        precioG = false
     }
 
     //elimina el tercer decimal
@@ -142,6 +145,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
         valorInput = valorInput.substr(1, valorInput.length);
         //alert(valorInput.length);
         formulario.precioGen.value = valorInput;
+        precioG = false
     }
 
     //verifica que se cumpla con la expresion correpondiente    
@@ -181,6 +185,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
             precioAsoc.style.border = "3px solid red";
             valorInput = valorInput.substr(0, valorInput.length - 1);
             formulario.precioAsoc.value = valorInput;
+            precioA = false
         }
 
         //elimina el tercer decimal
@@ -196,6 +201,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
             valorInput = valorInput.substr(1, valorInput.length);
             //alert(valorInput.length);
             formulario.precioAsoc.value = valorInput;
+            precioA = false
         }
         //verifica que se cumpla con la expresion correpondiente    
         if (!expresiones.precio.test(valorInput)) {

@@ -1,3 +1,4 @@
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -223,6 +224,14 @@
             </div>
             <div class="grupo-input">
               <div class="label-form">
+                <p class="label-2">RFC</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" id="caja_rfc" name="caja_rfc" readonly>
+              </div>
+            </div>
+            <div class="grupo-input">
+              <div class="label-form">
                 <p class="label-2">Correo electrónico*</p>
               </div>
               <div class="input-form">
@@ -242,15 +251,15 @@
           </div>
           <br>
           <div class="grupo-boton-reg">
-             <button class="btn-medium btn" id="boton_cancelar" type="submit" onclick="location.href = '../administrativo/Vista_trabajadores.php' ">Cancelar</button>
+             <button class="btn-medium btn" id="boton_cancelar" type="submit" onclick="location.href = '../../view/administrativo/Vista_trabajadores.php' ">Cancelar</button>
              <button class="btn-medium btn" id="boton_actualizar" type="submit">Actualizar</button>
           </div>
       </form>
       <br>
     </section>
   </main>
-  <script src="js/Vali_Trabajadores.js"></script>
+  <script src="../../view/administrativo/js/Vali_Mod_Trabajadores.js"></script>
 </body>
-<script src="../../controller/administrativo/js/Registro_Trabajadores.js"></script>
+<script src="js/Modificar_Trabajador.js"></script>
 
 </html>

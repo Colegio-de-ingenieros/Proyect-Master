@@ -1,3 +1,4 @@
+<!--<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,31 +6,29 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modificación de cursos - CISCIG</title>
+  <title>Histórico certificaciones</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Histo_Certificaciones.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Certificaciones.js"></script>
   
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
-
   <header>
     <div class="header_superior">
       <div class="titulo">
 
         <div class="nombre_ventana">
-          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width=".625rem" alt="">
-          <h1 class="nombre_Ventana">Cursos</h1>
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Certificaciones</h1>
         </div>
 
       </div>
@@ -177,7 +176,6 @@
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
               </ul>
             </li>
-
           </ul>
         </nav>
       </div>
@@ -185,28 +183,54 @@
   </header>
 
   <main>
-    <section class="section-main">
-      <div class="cabezera">
-        <h4 class="h4">Modificación de cursos</h4>
-        <h6 class="subtitulo-1">Modificar temas</h6>
+    <div>
+      <div class="article-tablas">
+        <article>
+          <div class="sub-titulo">
+            <h4 class="subtitulo-1">Histórico</h4>
+          </div>
+          <hr>
+          <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
+
+                <!--
+                <div class="table">
+                    <table>
+					<div class="header_table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Precio general</th>
+                                <th>Precio socio/asociado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                              <td>12-04-2023</td>
+                              <td>$5780.56</td>
+                              <td>$4529.66</td>
+                            </tr>
+                            <tr>
+                              <td>13-04-2023</td>
+                              <td>$5890.23</td>
+                              <td>$4612.89</td>
+                            </tr>
+                          </tbody>
+                    </div>
+                </table>
+                </div>
+                -->
+
+            </section>
+          </div>
+        </article>
       </div>
-      <hr>
-
-      <div class="formulario-temas">
-        
-      </div>
-
-      <div class="section-botones-2">
-        <div class="campo botones">
-          <button id="registraform" class="btn-medium btn" onclick="enviar()">Actualizar</button>
-        </div>
-      </div>
-
-
-    </section>
+    </div>
   </main>
-  
+  </div>
 </body>
-<script src="js/Vali_Cursos.js"></script>
-<script src="js/Reg_Cursos.js"></script>
+
+ <!-- <script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script> -->
+
 </html>
