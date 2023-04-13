@@ -17,6 +17,7 @@
     --color-placeholder-3: #474a57;
 
     --color-red: #ff0000;
+    --color-red-2: #8a0000;
 
     --radius-1: 15px;
     --radius-2: 8px;
@@ -25,209 +26,26 @@
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
-    
-}
-
-body{
-    background-color: var(--color-gray);
-}
-
-.section-main{
+#temario{
     display: flex;
     flex-direction: column;
-    width: 80%;
+    width: 50%;
 }
 
-.cabezera{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 1rem;
-    justify-content: center;
-}
-
-hr{
-    margin-top: -13px;
-}
-
-.h4{
-    margin-bottom: 2.125rem;
-}
-
-.campo{
+.row{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-/* *************************************************
-*                      INPUTS                      *
-****************************************************/
-.input-format-2{
-    width: 100%;
-}
-
-.inputs-2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding-top: 10px;
-    gap: 16px;
-    background-color: var(--color-gray);
-}
-
-.input-format-2{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    transition: 300ms all;
+    margin: 10px 0;
 }
 
-.input-format-2:focus{
-    background: var(--color-white);
-    box-shadow: var(--shadow-1);
-    transform: scale(1.02);
+.btn-danger{
+    background: var(--color-red-2);
 }
-
-.input-format-2:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
+.btn-danger:hover{
+    background: var(--color-red);
 }
-
-.input-format-2::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.input-textarea-2{
-    width: 100%;
-    height: 80px;
-    resize: none;
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 300ms all;
-}
-
-.input-textarea-2:focus{
-    box-shadow: var(--shadow-1);
-    transform: scale(1.02);
-}
-
-.input-textarea-2:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.section-botones-2 {
-    width: 100%;
-    height: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.btn-small {
-    padding: 12px 24px;
-}
-
-@media screen and (max-width: 1250px) {
-    main{
-        margin-top: 11.5rem;
-    }
-}
-
-@media screen and (max-width: 700px) {
-    main{
-        margin-top: 11.5rem;
-    }
-    .section-main{
-        width: 80%;
-    }
-
-
-    .hr-2{
-        width: 100%;
-    }
-
-    .h4{
-        align-items: center;
-        font-size: 2rem;
-    }
-    
-    .cabezera{
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .campo {
-        display: flex;
-        flex-direction: column;
-    }
-    .botones{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .titulos-registrados{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .formulario-titulos{
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-gap: 5px;
-    }
-
-    .section-botones, .section-botones-2{
-        margin-top: 2rem;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap: 20px;
-    }
-
-    .btn-small{
-        width: 50%;
-        height: 50px;
-        font-size: 1rem;
-    }
-}
-
-a{
-    text-decoration: none;
-}
-
-.botones{
-    margin-top: 20px;
-}
-
-.ti-trash{
-    font-size: 1.5rem;
+.btn{
+    margin-left: 10px;
 }
