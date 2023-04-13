@@ -66,7 +66,7 @@ if ($datos == true) {
         $respuesta .= '<td> 
         <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../../controller/administrativo/Eliminar_Cursos.php?id='. $clave .'">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </td>';
         $respuesta .= '</tr>';
         $respuesta .= '</div>';
