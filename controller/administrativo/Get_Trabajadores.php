@@ -21,6 +21,7 @@ $telefono=$resultado[0]["TelT"];
 
 <!-- script para poner los valores en los campos correspondientes -->
 <script languaje="javascript">
+    document.getElementById("caja_rfc").value = "<?php echo $rfc ?>";
     document.getElementById("caja_nombre").value = "<?php echo $nombre ?>";
     document.getElementById("caja_ap_paterno").value = "<?php echo $ap_paterno ?>";
     document.getElementById("caja_ap_materno").value = "<?php echo $ap_materno ?>";

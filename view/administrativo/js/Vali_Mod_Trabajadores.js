@@ -1,9 +1,9 @@
-let bRFC = false  
-let bNom = false
-let bAP = false
+let bRFC = true 
+let bNom = true 
+let bAP = true 
 let bAM = true
-let bEmail = false
-let bandTel = false
+let bEmail = true 
+let bandTel = true 
 
 let botonRegresar = document.getElementById("boton_actualizar");
 botonRegresar.addEventListener("click", (e) => {
@@ -77,24 +77,24 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
         .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
         // Eliminar el ultimo espaciado
         .trim();
-        console.log(valorInput.length)
+        //console.log(valorInput.length)
     if (valorInput.length == 13) {
-        console.log("Entro a la decision")
+        //console.log("Entro a la decision")
         if (!expresiones.rfc.test(valorInput)) {
-            console.log("RFC incorrecto");
+            //console.log("RFC incorrecto");
             caja_rfc.style.border = "3px solid red";
             bRFC = false
         }else{
-            console.log("RFC correcto");
+            //console.log("RFC correcto");
             caja_rfc.removeAttribute("style");
             bRFC = true
         }
     }else{
-        console.log("RFC incorrecto");
+        //console.log("RFC incorrecto");
         caja_rfc.style.border = "3px solid red";
         bRFC = false
     }
-    console.log(bRFC)
+    //console.log(bRFC)
     validar(bRFC);
 })
 
@@ -210,7 +210,7 @@ formulario.caja_telefono.addEventListener('keyup', (e) => {
 
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
 function validar(bandera){
-    const guardar = document.getElementById('boton_registro');
+    const guardar = document.getElementById('boton_actualizar');
     if(bandera == false && bRFC == false){        
         //guardar.style.border = "3px solid red";
         console.log("toy bloqueado")        
@@ -221,7 +221,7 @@ function validar(bandera){
     else if (bandera == true && bRFC == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
-        //console.log("pase validacion");
+        console.log("pase validacion");
         
 
     }
