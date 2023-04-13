@@ -4,7 +4,7 @@ $salida = '';
 $base = new MostrarTrabajadores();
 $base->instancias();
 
-
+$rfc=0;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->buscador($busqueda);
@@ -72,7 +72,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -152,7 +153,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" class="table_item__link eliminar-elemento" data-rfc="' . $rfc . '">Eliminar</a></td>';
+            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
             //
             $salida .= '</tr></div>';
@@ -173,6 +174,18 @@ if (isset($_POST['consulta'])) {
 
 
 $salida .= "</tbody></table>";
+echo '<script type="text/javascript">
+
+function confirmDesactiv()
+{
+   var flag = confirm("¿Estás seguro de eliminar al trabajador?");
+   if(flag)
+        window.open("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
+    else
+        window.open("Vista_Trabajadores.php");
+}
+
+</script>';
 //echo '<script>alert("si entra al php");</script>';
 
 echo $salida;

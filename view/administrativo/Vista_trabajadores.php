@@ -198,14 +198,14 @@
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-            <?php include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+            <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </section>
           </div>
         </article>
       </div>
     </div>
   </main>
-	<!-- <script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script> -->
+	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
 </body>
 <!--<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></>-->
 </html>
