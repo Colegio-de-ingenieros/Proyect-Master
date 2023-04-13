@@ -91,7 +91,17 @@ html{
     width: 70%;
     height: 8em;
     margin: 1em auto;
-}  
+}   
+
+.info{
+    text-align: center;
+    align-items: center;
+}
+
+a{
+    text-decoration: none;
+    color: #07a3eb;
+}
 
 .input-format{
     color: var(--color-black);
