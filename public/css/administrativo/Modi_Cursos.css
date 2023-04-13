@@ -43,9 +43,16 @@
 .btn-danger{
     background: var(--color-red-2);
 }
+
 .btn-danger:hover{
     background: var(--color-red);
 }
+
 .btn{
     margin-left: 10px;
+}
+
+.separator{
+
+    margin-top: 5px;
 }

@@ -103,7 +103,11 @@ data.forEach((item, index) => {
 
     list.appendChild(listItem);
   });
-
+  /* Agrega un separador */
+  const separator = document.createElement('hr');
+  separator.classList.add("separator")
+  list.appendChild(separator);
+  
   temario.appendChild(list);
 });
 
