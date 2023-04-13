@@ -91,7 +91,13 @@ html{
     width: 70%;
     height: 8em;
     margin: 1em auto;
-}   
+}
+
+.camposM{
+    width: 80%;
+    height: 8em;
+    margin: 1em auto;
+}
 
 .info{
     text-align: center;
