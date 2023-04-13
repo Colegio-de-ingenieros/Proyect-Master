@@ -15,6 +15,12 @@ class MostrarTrabajadores{
 
         return $resultados;
     }
+    function getTrabajadoresRFC($rfc){
+        $querry = "SELECT * FROM trabajadores WHERE RFCT = :rfc";
+        $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
+
+        return $resultados;
+    }
 }
 
 $obj = new MostrarTrabajadores();
