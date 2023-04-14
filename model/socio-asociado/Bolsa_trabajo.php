@@ -10,7 +10,7 @@
         }
 
         function extraer_datos_bolsa(){
-            $query = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, ReqTecEmpBol, DesEmpBol, AñoEmpBol,SalBrutoEmpBol,SalNetoEmpBol,HrIniEmpBol,HrFinEmpBol,TelEmpBol,CorreoEmpBol, idJor, IdMod FROM `bolsaempresa`, `bolsajornada`, `bolsamodalidades`";
+            $query = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, ReqTecEmpBol, DesEmpBol, AñoEmpBol,SalBrutoEmpBol,SalNetoEmpBol,HrIniEmpBol,HrFinEmpBol,TelEmpBol,CorreoEmpBol, CalleEmpBol, idJor, IdMod FROM `bolsaempresa`, `bolsajornada`, `bolsamodalidades`";
             $resultados = $this->base->mostrar($query);
 
             if ($resultados != null){
