@@ -1,21 +1,24 @@
-window.onload = function() {
-    let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
-    let id = 0;
+let listOfLists = [];
 
-    let form = new FormData();
-    form.append("id", id);
+window.onload = function () {
+  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
+  let id = 0;
 
-    fetch(url, {
-        method: "POST",
-        body: form
-    })
-        .then(response => response.json())
-        .then(data => arrays(data))
-        .catch(error => alert(error));
-    
-    const arrays = (data) => {
-        /* Saca la información de data en sus primeros 14 elementos*/
-        let array = data.slice(0, 14);
-        console.log(array);
-    }
+  let form = new FormData();
+  form.append("id", id);
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+    .then(response => response.json())
+    .then(json => resultado(json))
+    .catch(error => alert(error));
+
+  const resultado = (json) => {
+    listOfLists = json.map(obj => Object.values(obj));
+    listOfLists = listOfLists.map(list => list.slice(0, 14));
+    console.log(listOfLists);
+  }
 }
+
