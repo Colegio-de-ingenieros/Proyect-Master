@@ -4,7 +4,8 @@ include_once('../../model/Eliminar_Cursos.php');
 $bd = new EliminarCurso();
 $bd->BD();
 
-$id = $_GET['id'];
+$id = $_POST['id'];
+$id = str_replace('"', '', $id);
 
 $idtemasl = [];
 $nomtemasl = [];
@@ -12,6 +13,13 @@ $nomtemasl = [];
 $idsubtemasl = [];
 $nomsubtemasl = [];
 
+$estatus = $bd->buscaestatus($id);
+$estacur= $estatus[0]["EstatusCur"];
+
+if ($estacur == "0") {
+    echo "No se puede eliminar un curso activo";
+}
+else{
 $datost = $bd->t($id);
 if ($datost) {
     for ($i = 0; $i < count($datost); $i++) {
@@ -79,5 +87,6 @@ if ($datost) {
 else {
     $bd->eliminarcurso($id);
 }
-
-header("Location: ../../view/administrativo/Vista_Cursos.php");
+echo "el curso se eliminó con éxito, por favor refresque la página";
+/* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
+}

@@ -9,6 +9,12 @@ class EliminarCurso{
         $this->bd->conexion_bd();
     }
 
+    function buscaestatus($id){
+        $consulta = "SELECT EstatusCur FROM cursos
+        WHERE cursos.ClaveCur = '$id';";
+        $datos = $this->bd->mostrar($consulta);
+        return $datos;
+    }
 
     function eliminarcurso($id){
         $q2 = "DELETE FROM cursos WHERE ClaveCur = :id"; 
