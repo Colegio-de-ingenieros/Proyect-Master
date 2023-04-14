@@ -37,8 +37,8 @@ if ($datost) {
 
     for ($i = 0; $i < count($idtemasl); $i++) {
         $datoss = $bd->s($tem,((string)$idtemasl[$i]));
-        $idsubtemasl = [];
-        $nomsubtemasl = [];
+        /* $idsubtemasl = [];
+        $nomsubtemasl = []; */
         if ($datoss) {
 
             for ($j = 0; $j < count($datoss); $j++) {
