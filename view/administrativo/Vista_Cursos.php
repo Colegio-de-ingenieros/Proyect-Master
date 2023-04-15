@@ -216,7 +216,7 @@
     </div>
     </section>
   </main>
-
+<script src="js/busqueda_curso.js"></script>
 </body>
 
 </html>
