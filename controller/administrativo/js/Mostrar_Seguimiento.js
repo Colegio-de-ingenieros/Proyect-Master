@@ -1,11 +1,29 @@
-$(buscar_datos());
+let tipo;
+window.onload = function () {
+    tipo=document.getElementById("oculto").value;
+    console.log("Uno", tipo, "Uno")
+    $(buscar_datos());
+}
+
+const radioButtons = document.querySelectorAll('input[name="radio"]');
+for (const radioButton of radioButtons) {
+  radioButton.addEventListener('change', verSeleccion);
+}
+
+function verSeleccion(e){
+    if (this.checked) {
+        tipo=this.value
+        console.log("Seleccion", tipo, "Seleccion")
+        $(buscar_datos());
+    }
+}
 
 function buscar_datos(consulta){
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Seguimiento.php',
         type: 'POST',
         dataType: 'html',
-        data: { consulta: consulta },
+        data: { consulta: consulta,  tipo:tipo},
     })
 
         .done(function (respuesta)
