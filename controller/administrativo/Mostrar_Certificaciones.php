@@ -114,7 +114,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>$' . $precioA . '</td>';
             $salida .= '<td>' . $status . '</td>';
             $salida .= '<td> 
-        <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
+        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
         <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
         </td>';
