@@ -92,21 +92,13 @@ class ModificarCert{
         $idha = '';
         $fecha = date('y-m-d');
 
-        if($precioAsoc != $this->precioA){
+        if($precioAsoc != $this->precioA or $precioGen != $this->precioG){
             $idha = $this->generarID();
 
            //agregar el precio de asociado
             $this->obj->addHistorial($this->idc, $idha, 1, $fecha, $this->precioA);
-        }
 
-        if ($precioGen != $this->precioG) {
-            if($idha = ''){
-                $idhg = $this->generarID();
-            }
-
-            else{
-                $idhg = $this->otroID();
-            }
+            $idhg = $this->otroID();
 
             //agregar el precio de asociado
             $this->obj->addHistorial($this->idc, $idhg, 5, $fecha, $this->precioG);
