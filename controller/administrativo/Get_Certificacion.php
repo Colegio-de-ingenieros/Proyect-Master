@@ -35,7 +35,7 @@ $precioA = $base->buscarUltimoPrecioA($idc);
     document.getElementById("precioGen").value = "<?php echo $precioG ?>";
 
     /*const logoImg = document.createElement('img');
-    logoImg.src = "<?php echo 'data:image/jpeg;base64,' . base64_encode($logo) ?>";
+    logoImg.src = "<?php //echo 'data:image/jpeg;base64,' . base64_encode($logo) ?>";
     logoImg.width = 100;
     logoImg.height = 100;
     logoImg.id = "inputLog";
