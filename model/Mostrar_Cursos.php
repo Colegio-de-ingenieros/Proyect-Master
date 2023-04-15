@@ -17,6 +17,12 @@ class MostrarCurso{
 
         return $datos;
     }
+    function buscar($busqueda){
+        $querry = "SELECT * FROM cursos WHERE NomCur LIKE :busqueda OR ClaveCur LIKE :busqueda OR DuracionCur <= :busqueda";
+        $resultados = $this->bd->mostrar($querry, [":busqueda" => "%".$busqueda."%"]);
+
+        return $resultados;
+    }
 }
 
 $objeto = new MostrarCurso();
