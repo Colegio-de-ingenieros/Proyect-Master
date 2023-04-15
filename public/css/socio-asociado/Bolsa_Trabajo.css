@@ -65,7 +65,11 @@ hr {
     background: var(--color-white);
     border-radius: var(--radius-2);
     width: 95%;
+    min-width: 95%;
+    max-width: 95%;
     height: 90%;
+    min-height: 90%;
+    max-height: 90%;
 
     display: flex;
     flex-direction: column;
@@ -97,7 +101,7 @@ hr {
     margin-bottom: 0px;
 }
 
-.info-1>* {
+.info-1 > * {
     margin-bottom: 10px;
 }
 
@@ -113,13 +117,6 @@ span {
     align-items: center;
 }
 
-.empresa,
-.lugar,
-.tiempo,
-.salario,
-.jornada {
-    font-size: 1.1rem;
-}
 
 .divisor {
     width: 1px;
@@ -172,6 +169,7 @@ span {
     justify-content: center;
 }
 
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -185,15 +183,65 @@ span {
 }
 
 .item{
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.item-2{
+    font-weight: 400;
     font-size: 1.2rem;
     margin-top: 8px;
     margin-bottom: 8px;
 }
 
 .datos-oferta{
-    width: 90%;
+    width: 88%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overflow-y: scroll;
+} 
+
+.btn-small{
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+
+/*******************************************+
+*                 RESPONSIVE                *
+*********************************************/
+@media screen and (max-width: 1250px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    main{
+        margin-top: 4.3rem;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    .cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    main{
+        margin-top: 4rem;
+    }
+}
+
+
+@media screen and (max-width: 6000px) {
+
+    .titulo-central {
+        font-size: 2rem;
+    }
+    main{
+        margin-top: 3.3rem;
+    }
+    .titulo-vacante{
+        font-size: 1.2rem;
+    }
 }

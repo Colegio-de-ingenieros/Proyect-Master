@@ -21,6 +21,12 @@ class MostrarTrabajadores{
 
         return $resultados;
     }
+    function buscador($busqueda){
+        $querry = "SELECT * FROM trabajadores WHERE RFCT LIKE :busqueda OR NombreT LIKE :busqueda OR ApePT LIKE :busqueda OR ApeMT LIKE :busqueda OR CorreoT LIKE :busqueda";
+        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%"]);
+
+        return $resultados;
+    }
 }
 
 $obj = new MostrarTrabajadores();

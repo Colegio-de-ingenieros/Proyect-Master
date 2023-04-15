@@ -1,4 +1,4 @@
-<script src="../../view/login/js/verificar_permiso_empresa.js"></script>
+<!-- <script src="../../view/login/js/verificar_permiso_empresa.js"></script> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -64,7 +64,7 @@
 
             <ul>
               <li><a id="" href="../empresa/Reg_Ofertas.html">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
+              <li><a id="" href="../empresa/Vista_Ofertas.html">Mostrar</a></li>
             </ul>
           </li>
 
@@ -135,7 +135,7 @@
           <div class="formulario-descripcion">
             <label for="" class="label-2">Descripción del puesto*</label>
             <textarea title="Ingrese su descripción del puesto." name="descri_puesto" id="descri_puesto" class="input-format-2"
-              placeholder="Ingrese la descripción del puesto" ></textarea>
+            maxlength="100" placeholder="Ingrese la descripción del puesto" ></textarea>
           </div>
           <!--PARTE DOS-->
 			<p class="subtitulo-1"> Domicilio laboral</p>
@@ -147,7 +147,7 @@
 						<p class="label-2">Código postal*</p>
 					</div>
 					<div class="campo">
-						<input type="text" name="codigo_postal" id="codigo_postal" maxlength="5" class="input-format" placeholder="Ingrese su código postal"
+						<input type="text" name="cpPerso" id="cpPerso" maxlength="5" class="input-format" placeholder="Ingrese su código postal"
 						title="El código postal solo puede contener números.">
 					</div>
 				</div>
@@ -167,7 +167,7 @@
 					</div>
 					<div class="input-form">
 
-						<select name="colonia" id="busqueda_colonia"  maxlength="50" class="input-format">
+						<select name="colonia" id="colonia"  maxlength="50" class="input-format">
 							<option value="0">Seleccione su colonia</option>
 						</select>
 					</div>
@@ -222,7 +222,7 @@
 
 						<select name="jornada_laboral" id="jornada_laboral"  maxlength="50" class="input-format">
 							<option value="0">Completo</option>
-                            <option value="0">Medio tiempo</option>
+                            <option value="1">Medio tiempo</option>
 						</select>
 					</div>
 			
@@ -233,7 +233,7 @@
 						<p class="label-2">Años de experiencia*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="experiencia_lab" id="experiencia_lab" maxlength="50"	class="input-format" placeholder="Ingrese sus años de experiencia" 
+						<input type="text" name="experiencia_lab" id="experiencia_lab" class="input-format" placeholder="Ingrese sus años de experiencia" 
                         title="Solo se pueden ingresar números de dos digitos." maxlength="2">
 					</div>
 				</div>
@@ -284,7 +284,7 @@
 						<p class="label-2">Teléfono*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="caja_telefono" id="caja_telefono" maxlength="50" class="input-format" placeholder="Ingrese su teléfono"
+						<input type="text" name="caja_telefono" id="caja_telefono" class="input-format" placeholder="Ingrese su teléfono"
                         required title="El número de teléfono solo puede contener números." maxlength="10">
 					</div>
 				</div>
@@ -294,7 +294,7 @@
 						<p class="label-2">Correo electrónico*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="caja_correo" id="caja_correo" maxlength="50" class="input-format" placeholder="someone@example.com"
+						<input type="text" name="caja_correo" id="caja_correo" class="input-format" placeholder="someone@example.com"
                         required title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)."
                         maxlength="40">
 					</div>
@@ -302,11 +302,12 @@
 				
 			     </div>
              <div class="botones-registro">
-                 <button class="btn btn-medium">Guardar registro</button>
+                 <button class="btn btn-medium" id="boton_registro" type="submit">Guardar registro</button>
             </div>
         </form>
         </section>
       </main>
-      
+      <script src="../empresa/js/Vali_Ofertas.js"></script>
+      <script src="../empresa/js/Codigo_Postal.js"></script>
 </body>
 </html>
