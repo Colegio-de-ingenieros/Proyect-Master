@@ -66,7 +66,8 @@ if ($datos == true) {
         $respuesta .= '<td> 
         <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" onclick="eli()">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        
         </td>';
         $respuesta .= '</tr>';
         $respuesta .= '</div>';
@@ -80,7 +81,31 @@ else {
 }
 
 $respuesta .= "</tbody></table>";
+echo '<script type="text/javascript">
+function eli()
+{
+   var flag = confirm("¿Estás seguro de eliminar el curso con temas y subtemas?");
+   if(flag){
+   var formData = new FormData();
+   formData.append("id", JSON.stringify("' . $clave . '"));
 
+
+   var xmlhttp = new XMLHttpRequest();
+   xmlhttp.open("POST", "../../controller/administrativo/Eliminar_Cursos.php");
+
+   xmlhttp.onreadystatechange = function () {
+       if (this.readyState == 4 && this.status == 200) {
+
+           alert(this.responseText);
+       }
+   };
+
+   xmlhttp.send(formData);
+}
+    else{
+        window.location("Vista_Cursos.php");}
+}
+</script>';
 echo $respuesta;
 
 ?>

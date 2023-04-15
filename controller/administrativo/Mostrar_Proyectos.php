@@ -30,11 +30,11 @@ if ($resultado == true) {
     //agrega los resultados de la busqueda
     for ($i = 0; $i < count($resultado); $i++) {
         //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+        $idp= $resultado[$i]["IdPro"];
         $nombre= $resultado[$i]["NomProyecto"];
         $inicio = $resultado1[$i]["IniPro"];
         $fin = $resultado2[$i]["FinPro"];
         $monto = $resultado[$i]["MontoPro"];
-        $monto=substr($monto, 0,  strlen($monto) - 3);
         $objetivo = $resultado[$i]["ObjPro"];
         
 
@@ -45,7 +45,7 @@ if ($resultado == true) {
         $salida .= '<td>' . $fin . '</td>';
         $salida .= '<td>$' . $monto . '</td>';
         $salida .= '<td>' . $objetivo . '</td>';
-        $salida .= '<td>  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        $salida .= '<td>  <a href="../../controller/administrativo/Get_Proyecto.php?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           <a href="#">Eliminar</a></td>';
         $salida .= '</tr>';
 

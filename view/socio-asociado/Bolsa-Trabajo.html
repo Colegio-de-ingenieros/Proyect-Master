@@ -1,4 +1,4 @@
-<script src="../../view/login/js/verificar_permiso_socio.js"></script>
+<!-- <script src="../../view/login/js/verificar_permiso_socio.js"></script> -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -112,102 +112,8 @@
           <hr>
       </div>
 
-      <article class="cards">
+      <article class="cards" id="cards">
 
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="card" onclick="mostrar_modal()">
-
-          <div class="card-content">
-            <p class="titulo-vacante">Desarrollador React</p>
-
-            <div class="info-1">
-              <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span
-                  class="nombre-empresa">Oracle</span></p>
-              <p class="lugar"><i class="ti ti-map-2"></i>Guadalajara Jalisco, México</p>
-
-              <p class="salario"><i class="ti ti-cash"></i>$20,000</p>
-              <p class="jornada"><i class="ti ti-hourglass-empty"></i>Tiempo completo</p>
-            </div>
-          </div>
         </div>
 
       </article>
@@ -218,24 +124,27 @@
         <h1>Datos de la vacante</h1>
         
         <div class="datos-oferta">
-        <p class="item nombre">Nombre de la vacante: </p>
-        <p class="item dias-laborales">Días laborales: </p>
-        <p class="item horario">Horario: </p>
-        <p class="item jornada">Jornada: </p>
-        <p class="item modalidad">Modalidad: </p>
-        <p class="item descripcion-empleo">Descrpicion del empleo: </p>
-        <p class="item requisitos-tecnicos">Requisitos técnicos: </p>
-        <p class="item requisitos-academicos">Requisitos académicos: </p>
-        <p class="item experiencia">Años de experiencia requeridos:</p>
-        <p class="item salario-bruto">Salario bruto: </p>
-        <p class="item salario-neto">Salario neto: </p>
-        <p class="item telefono-empresa">Telefono de contacto: </p>
+          <p class="item">Nombre de la vacante: <span class="item-2" id="nombre-vacante"></span></p>
+          <p class="item">Horario: <span class="item-2" id="horario"></span></p>
+          <p class="item">Jornada: <span class="item-2" id="jornada"></span></p>
+          <p class="item">Modalidad: <span class="item-2" id="modalidad"></span></p>
+          <p class="item">Descrpicion del empleo: <span class="item-2" id="descripcion-vacante"></span></p>
+          <p class="item">Requisitos técnicos: <span class="item-2" id="requisitos-tecnicos"></span></p>
+          <p class="item">Requisitos académicos: <span class="item-2" id="requisitos-academicos"></span></p>
+          <p class="item">Años de experiencia requeridos:<span class="item-2" id="experiencia"></span></p>
+          <p class="item">Salario bruto: <span class="item-2" id="salario-bruto"></span></p>
+          <p class="item">Salario neto: <span class="item-2" id="salario-neto"></span></p>
+          <p class="item">Telefono de contacto: <span class="item-2" id="telefono-empresa"></span></p>
+          <p class="item">Correo empresarial: <span class="item-2" id="correo-empresa"></span></p>
         </div>
-        <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+        <div class="botones">
+          <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+          <a href="#" class="btn btn-small">Aplicar a la vacante</a>
+        </div>
       </div>
     </div>
   </main>
 
 </body>
-<script src="js/modal.js"></script>
+<script src="js/Bolsa_Trabajo.js"></script>
 </html>

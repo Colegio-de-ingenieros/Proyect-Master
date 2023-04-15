@@ -1,6 +1,6 @@
-<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
+<!--<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es">-->
 
 <head>
   <meta charset="UTF-8">
@@ -18,6 +18,13 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+
+    <script languaje="javascript">
+      function regresar(){
+        location.href = '../../view/administrativo/Vista_Certificaciones.php';
+      }
+    </script>
+
 </head>
 
 <body>
@@ -191,6 +198,9 @@
       <hr>
 
       <form class="formulario-de-datos" id="formulario">
+
+        <input type="hidden" id="idp" name="idp">
+
         <div class="grupo-input">
           <div class="label-form">
             <p class="label-2">Nombre del proyecto*</p>
@@ -249,17 +259,19 @@
 
         <div class="grupo-boton-reg">
           <div class="boton_registrar">
-            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Modificar</button>
+            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Modificar</button>&nbsp;&nbsp;
+            <button type="button" name="cancelar" id="cancelar" class="btn-medium btn" onclick="regresar()">Cancelar</button>
           </div>
         </div>
       </form>
     </section>
   </main>
-  <script src="js/Vali_Proyectos.js"></script>
+  <script src="../../view/administrativo/js/Vali_Proyectos.js"></script>
+ 
 
 
 </body>
-<script src="../../controller/administrativo/js/Registro_Proyectos.js"></script>
+<script src="js/Modificar_Proyectos.js"></script>
 
 
 </html>
