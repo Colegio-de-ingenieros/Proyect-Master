@@ -172,16 +172,16 @@ echo '<script type="text/javascript">
 
 function confirmDesactiv()
 {
-   var flag = confirm("¿Estás seguro de eliminar al trabajador?");
+   var flag = confirm("¿Estás seguro de eliminar la oferta?");
    if(flag)
-        window.open("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$id.'");
+        window.location.assign("../../controller/empresa/Eliminar_Oferta.php?id='.$id.'");
     else
-        window.location("Vista_Trabajadores.php");
+        window.location.assign("Vista_Ofertas.html");
 }
 
 </script>';
 //echo '<script>alert("si entra al php");</script>';
 
 echo $salida;
-echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
+//echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
 ?>
