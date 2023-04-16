@@ -32,7 +32,7 @@ $num=intval($anterior)+1;
 //echo $num;
 $num=str_pad($num, 6, "0", STR_PAD_LEFT);
 //echo $num;
-$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac);    
+$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac);    
 //$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $cpVac, $calleVac, $colVac, $modVac, $jorVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $corVac );
 //$obj->insertar_tipo("4,$rfc);
 echo json_encode('exito');
