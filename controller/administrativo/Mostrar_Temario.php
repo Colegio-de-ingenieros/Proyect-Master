@@ -20,8 +20,8 @@ $bd->BD();
 $idtemasl = [];
 $nomtemasl = [];
 
-/* $ids = $_POST['id']; */
-$ids = "000001";
+$ids = $_POST['id'];
+/* $ids = "000001"; */
 /* 
 $lgeneral=[];
 $general = $bd->cursos($ids);
