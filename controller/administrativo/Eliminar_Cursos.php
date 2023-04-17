@@ -87,6 +87,6 @@ if ($datost) {
 else {
     $bd->eliminarcurso($id);
 }
-echo "el curso se eliminó con éxito, por favor refresque la página";
+echo "El curso se eliminó con éxito, por favor refresque la página";
 /* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
 }

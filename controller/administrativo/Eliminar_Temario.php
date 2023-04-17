@@ -1,43 +1,30 @@
 <?php
-include_once('../../model/Mostar_Temario.php');
+include_once('../../model/Eliminar_Cursos.php');
 
-class Curso{
-    public $id;
-    public $title;
-    public $subtitles;
-
-    public function __construct($id, $titulo, $subtitulos){
-        $this->id = $id;
-        $this->title = $titulo;
-        $this->subtitles = $subtitulos;
-    }
-}
-$lista = array();
-$bd = new MostrarTemas();
+$bd = new EliminarCurso();
 $bd->BD();
 
+$id = $_POST['id'];
+$id = str_replace('"', '', $id);
 
 $idtemasl = [];
 $nomtemasl = [];
 
-/* $ids = $_POST['id']; */
-$ids = "000001";
-/* 
-$lgeneral=[];
-$general = $bd->cursos($ids);
+$idsubtemasl = [];
+$nomsubtemasl = [];
 
-array_push($lgeneral, $general[0]["NomCur"]);
-array_push($lgeneral, $general[0]["ClaveCur"]);
-array_push($lgeneral, $general[0]["DuracionCur"]);
-array_push($lgeneral, $general[0]["ObjCur"]); */
+/* $estatus = $bd->buscaestatus($id);
+$estacur= $estatus[0]["EstatusCur"];
 
-
-$datost = $bd->tema($ids);
+if ($estacur == "0") {
+    echo "No se puede eliminar un curso activo";
+}
+else{ */
+$datost = $bd->t($id);
 if ($datost) {
     for ($i = 0; $i < count($datost); $i++) {
         $tem = $datost[$i]["NomTema"];
         $iden = $datost[$i]["IdTema"];
-
 
         array_push($idtemasl, ((int)$iden));
         array_push($nomtemasl, $tem);
@@ -55,14 +42,11 @@ if ($datost) {
             }
         }
     }
-    $subtitulo= [];
+
     for ($i = 0; $i < count($idtemasl); $i++) {
-        //$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$nomtemasl[$i] .'</h3><br>';
-        $titulo = $nomtemasl[$i];
-        $id = $idtemasl[$i];
-        $datoss = $bd->subtema($tem,((string)$idtemasl[$i]));
-        $idsubtemasl = [];
-        $nomsubtemasl = [];
+        $datoss = $bd->s($tem,((string)$idtemasl[$i]));
+        /* $idsubtemasl = [];
+        $nomsubtemasl = []; */
         if ($datoss) {
 
             for ($j = 0; $j < count($datoss); $j++) {
@@ -83,13 +67,26 @@ if ($datost) {
                         $nomsubtemasl[$js] = $aux1;
                     }
                 }
-            }
-            $subtitulos = $nomsubtemasl;                   
+            }          
         }
-        $curso = new Curso($id, $titulo, $nomsubtemasl);
-        array_push($lista, $curso); 
     }
-    header('Content-Type: application/json');
-    echo json_encode($lista);
-    /* echo json_encode($lgeneral);  */
+    $bd->eliminarcursotema($id);
+    $bd->eliminarcurso($id);
+    if ($idtemasl) {
+        for ($p = 0; $p < count($idtemasl); $p++) {
+            $bd->eliminartemasub($idtemasl[$p]);
+            $bd->eliminartema($idtemasl[$p]); 
+        }
+    }
+    if ($idsubtemasl) {
+        for ($p = 0; $p < count($idsubtemasl); $p++) {
+            $bd->eliminarsubtema($idsubtemasl[$p]); 
+        }
+    }
 }
+else {
+    $bd->eliminarcurso($id);
+}
+/* echo "El curso se eliminó con éxito, por favor refresque la página"; */
+/* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
+/* } */
