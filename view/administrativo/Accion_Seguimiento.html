@@ -1,4 +1,4 @@
-<script src="../../view/login/js/verificar_permiso_trabajador.js"></script>
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -183,8 +183,9 @@
 
   <main>
     <section class="section-main">
+      <input type="hidden" name="oculto" id="oculto" value="1">
       <div class="cabezera">
-        <h4 class="h4">Tipo y título</h4>
+        <h4 class="h4" id="encabezado">Tipo y título</h4>
       </div>
       <br>
       <p class="subtitulo-1">Participantes</p>
@@ -235,7 +236,7 @@
       <p class="subtitulo-1">Gastos</p>
       <hr>
 
-      <form class="formulario-de-datos" id="formulario-Gastos">
+      <form class="formulario-de-datos" id="formulario_Gastos">
 
         
         <div class="grupo-input">
@@ -243,7 +244,7 @@
                 <p class="label-2">Participantes</p>
             </div>
             <div class="input-form">
-                <select type="text" class="input-format-2"  id="gastos_participante" name="gastos_participante">
+                <select type="text" class="input-format-2"  id="gastos_participante" name="gastos_participante" required>
                 </select>
             </div>
         </div>
@@ -253,7 +254,7 @@
                 <p class="label-2">Tipo de gasto</p>
             </div>
             <div class="input-form">
-                <select type="text" class="input-format-2"  id="gastos_Tipo_Gasto" name="gastos_Tipo_Gasto">
+                <select type="text" class="input-format-2"  id="gastos_Tipo_Gasto" name="gastos_Tipo_Gasto" required>
                 </select>
             </div>
         </div>
@@ -264,7 +265,7 @@
                 <p class="label-2">Monto</p>
             </div>
             <div class="input-form">
-                <input  type="text"   name="gastos_monto" id="gastos_monto" class="input-format-2" placeholder="Ingrese el monto" required 
+                <input  type="text" name="gastos_monto" id="gastos_monto" class="input-format-2" placeholder="Ingrese el monto" required 
                 title="El monto solo puede contener números y un punto.">
             </div>
         </div>
@@ -284,7 +285,7 @@
                 <p class="label-2">Comprobante</p>
             </div>
             <div class="input-form">
-                <input type="file" class="input-format-2" placeholder="File" id="gastos_comprobante" name="gastos_comprobante">
+                <input type="file" class="input-format-2" placeholder="File" id="gastos_comprobante" name="gastos_comprobante" required>
             </div>
         </div>
 
@@ -299,7 +300,7 @@
       <p class="subtitulo-1">Ingresos</p>
       <hr>
 
-      <form class="formulario-de-datos" id="formulario-">
+      <form class="formulario-de-datos" id="formulario_Ingresos">
 
         <div class="grupo-input">
             <div class="label-form">
@@ -344,15 +345,31 @@
         <article>          
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-                <!-- AQUÍ VA LA TABLA -->
+                <table>
+                  <thead>
+                    <tr>
+                        <th>Participante</th>
+                        <th>Hotel</th>
+                        <th>Transporte</th>
+                        <th>Comida</th>
+                        <th>Oficina</th>
+                        <th>Honorario</th>
+                        <th>Ingresos</th>
+                        <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cuerpo">
 
+                  </tbody>
+                </table>
             </section>
           </div>
         </article>
       </div>
 
   </main>
-
+  <script src="../../view/administrativo/js/Vali_Actividad.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Actividad_Seg.js"></script>
 
 </body>
 
