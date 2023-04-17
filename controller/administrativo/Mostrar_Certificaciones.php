@@ -83,7 +83,7 @@ if (isset($_POST['consulta'])) {
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
-                    <th>Estatus</th>
+                   
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -112,7 +112,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
-            $salida .= '<td>' . $status . '</td>';
+            //$salida .= '<td>' . $status . '</td>';
             $salida .= '<td> 
         <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
