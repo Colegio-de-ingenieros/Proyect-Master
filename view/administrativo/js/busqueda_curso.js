@@ -1,25 +1,30 @@
-let nombrecurso = document.getElementById("busqueda");
-nombrecurso.addEventListener('keyup', (e) => {
-    let valorInput = e.target.value;
 
+$(buscar_datos());
 
-    nombrecurso.value = valorInput
-    console.log(nombrecurso.value)
-    const bus = nombrecurso.value;
-    /* let url = `http://localhost:3000/administrativo/busqueda_curso/${nombrecurso.value}` */
-   if (nombrecurso.value != "") {
+function buscar_datos(consulta){
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Cursos.php',
         type: 'POST',
         dataType: 'html',
-        data: { busca: bus },
+        data: { consulta: consulta },
     })
 
         .done(function (respuesta)
         {
             $("#tablaResultado").html(respuesta);
-        }
-        )
+        })
+        .fail(function ()
+        {
+            console.log("error");
+        })
+}
 
+$(document).on('keyup', '#busqueda', function (){
+    var valorBusqueda = $(this).val();
+    if (valorBusqueda != "") {
+        buscar_datos(valorBusqueda);
+    } else {
+        buscar_datos();
+    }
+})
 
-}})
