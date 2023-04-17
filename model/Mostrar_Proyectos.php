@@ -36,7 +36,7 @@ class MostrarProyectos{
         return $resultados;
     }
     function getIniProId($idp){
-        $querry1 = "SELECT DATE_FORMAT(IniPro, '%d/%m/%Y') IniPro  FROM proyectos Where IdPro=:idp";
+        $querry1 = "SELECT IniPro  FROM proyectos Where IdPro=:idp";
         $resultados1 = $this->base->mostrar($querry1,[":idp"=>$idp]);
 
         return $resultados1;
@@ -46,6 +46,17 @@ class MostrarProyectos{
         $resultados2 = $this->base->mostrar($querry2,[":idp"=>$idp]);
 
         return $resultados2;
+    }
+
+    function consultaInteligente($valor){
+        $querry = "SELECT * FROM proyectos
+        WHERE NomProyecto LIKE :q OR IniPro LIKE :q OR FinPro LIKE :q OR MontoPro LIKE :q";
+
+        $arre = [":q"=>'%'.$valor.'%'];
+
+        $resultados = $this->base->mostrar($querry, $arre);
+
+        return $resultados;
     }
 }
 
