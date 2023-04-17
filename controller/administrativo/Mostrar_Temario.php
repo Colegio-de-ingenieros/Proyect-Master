@@ -24,6 +24,8 @@ $ids = $_POST['id_usuario'];
 
 /* $ids = "000001"; */
 
+$todo = [];
+
 $lgeneral=[];
 $general = $bd->cursos($ids);
 
@@ -90,6 +92,9 @@ if ($datost) {
         array_push($lista, $curso); 
     }
     /* header('Content-Type: application/json'); */
-    echo json_encode($lista);
-    echo json_encode($lgeneral); 
+/*     echo json_encode($lista);
+    echo json_encode($lgeneral);  */
+    array_push($todo, $lgeneral);
+    array_push($todo, $lista); 
+    echo json_encode($todo); 
 }
