@@ -43,21 +43,25 @@ if($valTipo!=""){
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
             if ($valTipo=="curso"){
+                $auxValTipo="Curso";
                 $clave= $resultado[$i]["IdSeg"];
                 $nombre = $resultado[$i]["NomCur"];
             }else if ($valTipo=="proyecto"){
+                $auxValTipo="Proyecto";
                 $clave= $resultado[$i]["IdSeg"];
                 $nombre = $resultado[$i]["NomProyecto"];
             }elseif ($valTipo=="certificacion"){
+                $auxValTipo="Certificacion";
                 $clave= $resultado[$i]["IdSeg"];
                 $nombre = $resultado[$i]["NomCertInt"];
             }
 
+            $actividad=$auxValTipo."=".$clave;
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $clave . '</td>';
             $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>  <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Accion_Seguimiento.html?actividad='.$actividad.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <a href="#">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
@@ -67,7 +71,7 @@ if($valTipo!=""){
     }
 
 } else{
-    $salida .= "No se que mostrar al cargar la pagina";
+    $salida .= "";
 }
 echo $salida;
 
