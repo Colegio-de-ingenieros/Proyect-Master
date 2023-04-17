@@ -58,13 +58,14 @@ class EliminarCert{
     }
 
     //busca si hay seguimientos de la certificacion y retorna true si encuentra alguno
-    function buscarSeg($idh){
-        $querry = "SELECT * FROM segcertint WHERE IdCerInt = :idh";
-        $arre = [":idh"=>$idh];
+    function buscarSeg($idc){
+        $querry = "SELECT * FROM certinterna WHERE IdCerInt = :id";
+        $arre = [":id"=>$idc];
 
         $resultados = $this->base->mostrar($querry, $arre);
 
-        if(count($resultados)>= 1){
+        echo '<script>alert("'. $resultados[0]["EstatusCertInt"]. '")</script>';
+        if($resultados[0]["EstatusCertInt"] == 0){
             return true;
         }
 

@@ -1,6 +1,6 @@
 function confirmacion(e){
 
-    if (confirm("¿Está seguro que desea eliminar esta certificación? Tenga en cuenta que si ya hay un seguimiento existente, la certificación no será eliminada totalmente, y en su lugar su estatus cambiará de 1 a 0")) {
+    if (confirm("¿Está seguro que desea eliminar esta certificación? Tenga en cuenta que si ya hay un seguimiento existente, la certificación no será eliminada")) {
         e.preventDefault();
         var idc = $(this).data('idc');
 
@@ -20,7 +20,7 @@ function confirmacion(e){
             error: function (jqXHR, textStatus, errorThrown)
             {
                 // psrocesar la respuesta del servidor en caso de error
-                alert('Error al eliminar el elemento: ' + textStatus);
+                alert('Error, la certificación tiene un seguimiento');
                 location.href = '../../view/administrativo/Vista_Certificaciones.php';
             }
         });
