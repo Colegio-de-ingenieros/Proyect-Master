@@ -21,6 +21,16 @@ $idtemasl = [];
 $nomtemasl = [];
 
 $ids = $_POST['id'];
+/* $ids = "000001"; */
+/* 
+$lgeneral=[];
+$general = $bd->cursos($ids);
+
+array_push($lgeneral, $general[0]["NomCur"]);
+array_push($lgeneral, $general[0]["ClaveCur"]);
+array_push($lgeneral, $general[0]["DuracionCur"]);
+array_push($lgeneral, $general[0]["ObjCur"]); */
+
 
 $datost = $bd->tema($ids);
 if ($datost) {
@@ -81,4 +91,5 @@ if ($datost) {
     }
     header('Content-Type: application/json');
     echo json_encode($lista);
+    /* echo json_encode($lgeneral);  */
 }

@@ -1,10 +1,10 @@
 <?php
-include_once('../../model/Mostrar_Trabajadores.php');
+include_once('../../model/empresa/Mostrar_Ofertas.php');
 $salida = '';
-$base = new MostrarTrabajadores();
+$base = new MostrarOfertas();
 $base->instancias();
 
-$rfc=0;
+$id=0;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->buscador($busqueda);
@@ -41,12 +41,11 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>RFC</th>
-                                <th>Nombre</th>
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
-                                <th>Correo electrónico</th>
-                                <th>Teléfono</th>
+                                <th>Nombre vacante</th>
+                                <th>Requisitos académicos</th>
+                                <th>Experiencia requerida</th>
+                                <th>Contacto</th>
+                                <th>Numero de Aplicantes</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -56,23 +55,21 @@ if (isset($_POST['consulta'])) {
         for ($i = 0; $i < count($resultado); $i++) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $rfc = $resultado[$i]["RFCT"];
-            $nombre = $resultado[$i]["NombreT"];
-            $apat = $resultado[$i]["ApePT"];
-            $amat = $resultado[$i]["ApeMT"];
-            $correo = $resultado[$i]["CorreoT"];
-            $telefono = $resultado[$i]["TelT"];
+            $id = $resultado[$i]["IdEmpBol"];
+            $nombre = $resultado[$i]["VacEmpBol"];
+            $req = $resultado[$i]["ReqAcaEmpBol"];
+            $exp = $resultado[$i]["AñoEmpBol"];
+            $tel = $resultado[$i]["TelEmpBol"];
             //$extension = getExt($logo);
     
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $rfc. '</td>';
             $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $apat . '</td>';
-            $salida .= '<td>' . $amat . '</td>';
-            $salida .= '<td>' . $correo . '</td>';
-            $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $req . '</td>';
+            $salida .= '<td>' . $exp . '</td>';
+            $salida .= '<td>' . $tel . '</td>';
+            $salida .= '<td>' .'0' . '</td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //
@@ -87,7 +84,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getTrabajadores();
+    $resultado = $base->getOfertas();
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -121,12 +118,11 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>RFC</th>
-                                <th>Nombre</th>
-                                <th>Apellido paterno</th>
-                                <th>Apellido materno</th>
-                                <th>Correo electrónico</th>
-                                <th>Teléfono</th>
+                                <th>Nombre vacante</th>
+                                <th>Requisitos académicos</th>
+                                <th>Experiencia requerida</th>
+                                <th>Contacto</th>
+                                <th>Numero de Aplicantes</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -136,25 +132,23 @@ if (isset($_POST['consulta'])) {
         for ($i = 0; $i < count($resultado); $i++) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $rfc = $resultado[$i]["RFCT"];
-            $nombre = $resultado[$i]["NombreT"];
-            $apat = $resultado[$i]["ApePT"];
-            $amat = $resultado[$i]["ApeMT"];
-            $correo = $resultado[$i]["CorreoT"];
-            $telefono = $resultado[$i]["TelT"];
+            $id = $resultado[$i]["IdEmpBol"];
+            $nombre = $resultado[$i]["VacEmpBol"];
+            $req = $resultado[$i]["ReqAcaEmpBol"];
+            $exp = $resultado[$i]["AñoEmpBol"];
+            $tel = $resultado[$i]["TelEmpBol"];
             //$extension = getExt($logo);
     
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $rfc. '</td>';
             $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $apat . '</td>';
-            $salida .= '<td>' . $amat . '</td>';
-            $salida .= '<td>' . $correo . '</td>';
-            $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $req . '</td>';
+            $salida .= '<td>' . $exp . '</td>';
+            $salida .= '<td>' . $tel . '</td>';
+            $salida .= '<td>' .'0' . '</td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
-            //<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
+            //
             //
             $salida .= '</tr></div>';
     
@@ -178,17 +172,16 @@ echo '<script type="text/javascript">
 
 function confirmDesactiv()
 {
-   var flag = confirm("¿Estás seguro de eliminar al trabajador?");
+   var flag = confirm("¿Estás seguro de eliminar la oferta?");
    if(flag)
-        window.location("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
+        window.location.assign("../../controller/empresa/Eliminar_Oferta.php?id='.$id.'");
     else
-        window.location("Vista_Trabajadores.php");
+        window.location.assign("Vista_Ofertas.html");
 }
 
 </script>';
 //echo '<script>alert("si entra al php");</script>';
 
 echo $salida;
-echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
+//echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
 ?>
-<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>

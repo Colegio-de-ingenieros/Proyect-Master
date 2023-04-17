@@ -1,9 +1,8 @@
-
 $(buscar_datos());
 
 function buscar_datos(consulta){
     $.ajax({
-        url: '../../controller/administrativo/Mostrar_Cursos.php',
+        url: '../../controller/empresa/Mostrar_Ofertas.php',
         type: 'POST',
         dataType: 'html',
         data: { consulta: consulta },
@@ -27,4 +26,3 @@ $(document).on('keyup', '#busqueda', function (){
         buscar_datos();
     }
 })
-

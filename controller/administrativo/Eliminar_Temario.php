@@ -13,13 +13,13 @@ $nomtemasl = [];
 $idsubtemasl = [];
 $nomsubtemasl = [];
 
-$estatus = $bd->buscaestatus($id);
+/* $estatus = $bd->buscaestatus($id);
 $estacur= $estatus[0]["EstatusCur"];
 
 if ($estacur == "0") {
     echo "No se puede eliminar un curso activo";
 }
-else{
+else{ */
 $datost = $bd->t($id);
 if ($datost) {
     for ($i = 0; $i < count($datost); $i++) {
@@ -87,6 +87,6 @@ if ($datost) {
 else {
     $bd->eliminarcurso($id);
 }
-echo "El curso se eliminó con éxito, por favor refresque la página";
+/* echo "El curso se eliminó con éxito, por favor refresque la página"; */
 /* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
-}
+/* } */

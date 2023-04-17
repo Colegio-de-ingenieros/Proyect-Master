@@ -11,8 +11,8 @@ class MostrarTemas{
 
 
     //hace la consulta principal de los datos de las certificaciones
-    function cursos_disponibles(){
-        $consulta = "SELECT ClaveCur, NomCur, DuracionCur FROM cursos";
+    function cursos($id){
+        $consulta = "SELECT ClaveCur, NomCur, DuracionCur,ObjCur FROM cursos WHERE ClaveCur = '$id';";
         $datos = $this->bd->mostrar($consulta);
 
         return $datos;

@@ -7,8 +7,8 @@ $bd->BD();
 
  
 $clave =0;
-if (isset($_POST['busca'])) {
-    $busqueda = $_POST['busca'];
+if (isset($_POST['consulta'])) {
+    $busqueda = $_POST['consulta'];
     $datos = $bd->buscar($busqueda);
     if ($datos == true) {
         $respuesta .= 

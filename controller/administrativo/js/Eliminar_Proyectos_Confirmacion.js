@@ -15,16 +15,15 @@ function confirmacion(e){
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista
-                location.href = '../../view/administrativo/Vista_Proyectos.html';
+                location.href = '../../view/administrativo/Vista_Proyectos.php';
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
                 // psrocesar la respuesta del servidor en caso de error
                 alert('Error al eliminar el elemento: este proyecto se encuentra en un seguimiento ' + textStatus);
-                location.href = '../../view/administrativo/Vista_Proyectos.html';
+                location.href = '../../view/administrativo/Vista_Proyectos.php';
             }
         });
-
 
     } else {
         e.preventDefault();
@@ -35,5 +34,3 @@ var linkDelete = document.querySelectorAll(".table_item__link");
 for (var i = 0; i < linkDelete.length; i++) {
     linkDelete[i].addEventListener('click', confirmacion);
 }
-
-//alert("si entra al js");
