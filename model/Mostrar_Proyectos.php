@@ -42,7 +42,7 @@ class MostrarProyectos{
         return $resultados1;
     }
     function getFinProId($idp){
-        $querry2 = "SELECT DATE_FORMAT(FinPro, '%d/%m/%Y') FinPro  FROM proyectos Where IdPro=:idp";
+        $querry2 = "SELECT  FinPro  FROM proyectos Where IdPro=:idp";
         $resultados2 = $this->base->mostrar($querry2,[":idp"=>$idp]);
 
         return $resultados2;
