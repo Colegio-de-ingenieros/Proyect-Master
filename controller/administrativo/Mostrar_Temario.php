@@ -20,16 +20,17 @@ $bd->BD();
 $idtemasl = [];
 $nomtemasl = [];
 
-$ids = $_POST['id'];
+$ids = $_POST['id_usuario'];
+
 /* $ids = "000001"; */
-/* 
+
 $lgeneral=[];
 $general = $bd->cursos($ids);
 
 array_push($lgeneral, $general[0]["NomCur"]);
 array_push($lgeneral, $general[0]["ClaveCur"]);
 array_push($lgeneral, $general[0]["DuracionCur"]);
-array_push($lgeneral, $general[0]["ObjCur"]); */
+array_push($lgeneral, $general[0]["ObjCur"]);
 
 
 $datost = $bd->tema($ids);
@@ -37,7 +38,6 @@ if ($datost) {
     for ($i = 0; $i < count($datost); $i++) {
         $tem = $datost[$i]["NomTema"];
         $iden = $datost[$i]["IdTema"];
-
 
         array_push($idtemasl, ((int)$iden));
         array_push($nomtemasl, $tem);
@@ -89,7 +89,7 @@ if ($datost) {
         $curso = new Curso($id, $titulo, $nomsubtemasl);
         array_push($lista, $curso); 
     }
-    header('Content-Type: application/json');
+    /* header('Content-Type: application/json'); */
     echo json_encode($lista);
-    /* echo json_encode($lgeneral);  */
+    echo json_encode($lgeneral); 
 }

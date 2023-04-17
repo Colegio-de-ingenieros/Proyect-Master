@@ -223,7 +223,7 @@
 
       <div class="titulos-registrados">
         <p class="subtitulo-1">Temario</p>
-        <hr class="hr-2">
+        <hr class="hr">
       </div>
 
       <div id="temario"></div>
