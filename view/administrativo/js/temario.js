@@ -10,12 +10,26 @@ window.onload = function () {
     body: form
   })
     .then(response => response.json())
-    .then(data => arrays(data))
+    .then(json => respuesta(json))
     .catch(error => alert(error));
 
-  const arrays = (data) => {
+  const respuesta = (json) => {
     const temario = document.getElementById("temario")
 
+    list = json.map(obj => Object.values(obj));
+    
+    datos_generales = list[0]
+    data = list[1]
+
+    const nombre = document.getElementById("nombre-curso");
+    const clave = document.getElementById("clave-curso");
+    const duracion = document.getElementById("duración");
+    const objetivo = document.getElementById("objetivo");
+
+    nombre.value = datos_generales[0];
+    clave.value = datos_generales[1];
+    duracion.value = datos_generales[2];
+    objetivo.value = datos_generales[3];
 
     data.forEach((item, index) => {
       const titleContainer = document.createElement('div');
