@@ -33,10 +33,14 @@ if ($oculto==1){
         $result=$objeto->insert_seg($idSeg);
         if($result == true){
             if ($valTipo=="curso"){
+                $objeto->estatus_cursos($actividad);
                 $result=$objeto->insert_curso($idSeg, $actividad);
             }else if ($valTipo=="proyecto"){
+                $objeto->estatus_proyectos($actividad);
                 $result = $objeto->insert_proyectos($idSeg, $actividad);
+                
             }else{
+                $objeto->estatus_certifica($actividad);
                 $result = $objeto->insert_certificaciones($idSeg, $actividad);
             }
             if($result == true){
@@ -46,13 +50,15 @@ if ($oculto==1){
                 if ($auxSocAso!=""){
                     $sociosAsoc=explode(",", $auxSocAso);
                     for ($i=0;$i<count($sociosAsoc);$i++){
-                        $result = $objeto->insert_socios($idSeg, $sociosAsoc[$i]);
+                        $idP=$objeto->id_parP();
+                        $result = $objeto->insert_socios($idSeg, $sociosAsoc[$i], $idP);
                     }
                 }
                 if ($auxEmp!=""){
                     $empresas=explode(",", $auxEmp);
                     for ($i=0;$i<count($empresas);$i++){
-                        $result = $objeto->insert_empresas($idSeg, $empresas[$i]);
+                        $idE=$objeto->id_parE();
+                        $result = $objeto->insert_empresas($idSeg, $empresas[$i], $idE);
                     }
                 }
                 

@@ -34,7 +34,7 @@
 
         public function buscar_instructores(){
             $this->conexion_bd();
-            $sql = "SELECT ClaveIns, NomIns 
+            $sql = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns
                     FROM instructor";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
@@ -43,16 +43,17 @@
 
         public function buscar_socios(){
             $this->conexion_bd();
-            $sql = "SELECT IdPerso, NomPerso 
+            $sql = "SELECT IdPerso, NomPerso, ApePPerso, ApeMPerso
                     FROM usuaperso";
             $resultado = $this->mostrar($sql);
+        
             $this->cerrar_conexion();
             return $resultado;
         }
 
         public function buscar_empresas(){
             $this->conexion_bd();
-            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp 
+            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp
                     FROM usuaemp";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
@@ -73,6 +74,44 @@
         public function id_seg(){
             $this->conexion_bd();
             $sql = "SELECT MAX(CAST(SUBSTRING(IdSeg, 1) AS INT)) FROM seguimiento";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $idSeg = $this->agregar_ceros($numero, 6);
+        
+            return $idSeg;
+        }
+
+        public function id_parP(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 1) AS INT)) FROM persoparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $idSeg = $this->agregar_ceros($numero, 6);
+        
+            return $idSeg;
+        }
+
+        public function id_parE(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 1) AS INT)) FROM empparticipa";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
 
@@ -178,11 +217,11 @@
             return $ejecucion;
         }
 
-        public function insert_socios($idSeg, $idPerso){
+        public function insert_socios($idSeg, $idPerso, $idpP){
             $this->conexion_bd();
-            $q = "INSERT INTO segperso (IdPerso, IdSeg) VALUES(:idPerso, :idSeg)";
+            $q = "INSERT INTO persoparticipa (IdParP, IdPerso, IdSeg) VALUES(:idP, :idPerso, :idSeg)";
 
-            $a = [":idPerso"=>$idPerso, ":idSeg"=>$idSeg];
+            $a = [":idP"=>$idpP,":idPerso"=>$idPerso, ":idSeg"=>$idSeg];
 
             $querry = [$q];
             $parametros = [$a];
@@ -193,11 +232,11 @@
             return $ejecucion;
         }
 
-        public function insert_empresas($idSeg, $rfc){
+        public function insert_empresas($idSeg, $rfc, $idpE){
             $this->conexion_bd();
-            $q = "INSERT INTO segusuaemp (RFCUsuaEmp, IdSeg) VALUES(:rfc, :idSeg)";
+            $q = "INSERT INTO empparticipa (IdParE, RFCUsuaEmp, IdSeg) VALUES(:idE,:rfc, :idSeg)";
 
-            $a = [":rfc"=>$rfc, ":idSeg"=>$idSeg];
+            $a = [":idE"=>$idpE,":rfc"=>$rfc, ":idSeg"=>$idSeg];
 
             $querry = [$q];
             $parametros = [$a];
@@ -207,6 +246,32 @@
 
             return $ejecucion;
         }
+
+        function estatus_proyectos($idpro){
+            $this->conexion_bd();
+            $querry = "UPDATE proyectos SET EstatusPro=:estatus WHERE IdPro=:id";
+            $arre = [":estatus"=>0, ":id"=>$idpro ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
+        }
+
+        function estatus_certifica($idcert){
+            $this->conexion_bd();
+            $querry = "UPDATE certinternas SET EstatusCertInt:estatus WHERE IdCertInt=:id";
+            $arre = [":estatus"=>0, ":id"=>$idcert ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
+        }
+
+        function estatus_cursos($idcurso){
+            $this->conexion_bd();
+            $querry = "UPDATE cursos SET EstatusCur=:estatus WHERE ClaveCur=:id";
+            $arre = [":estatus"=>0, ":id"=>$idcurso ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
+        }
+
+
 
     }
 
