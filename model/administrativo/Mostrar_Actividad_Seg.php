@@ -53,10 +53,10 @@
             $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso
                     EXCEPT
-                    SELECT usuaperso.IdPerso, usuaperso.NomPerso
+                    SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso, persoparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
-                        persoparticipa.IdPerso = usuaperso.IdPerso";
+                        persoparticipa.IdPerso = usuaperso.IdPerso ";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -83,10 +83,10 @@
             $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
                     FROM instructor
                     EXCEPT
-                    SELECT instructor.ClaveIns, instructor.NomIns
-                    FROM instructor, seginstructor, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = seginstructor.IdSeg AND
-                        seginstructor.ClaveIns = instructor.ClaveIns";
+                    SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
+                    FROM instructor, insparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = insparticipa.IdSeg AND
+                    insparticipa.ClaveIns = instructor.ClaveIns";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -98,7 +98,7 @@
             $sql = "SELECT persoparticipa.IdParP, CONCAT_WS(' ', 'Asoc.', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso, persoparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
-                        persoparticipa.IdPerso = usuaperso.IdPerso";
+                        persoparticipa.IdPerso = usuaperso.IdPerso ORDER BY NomPerso ASC";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -110,7 +110,7 @@
             $sql = "SELECT empparticipa.IdParE, CONCAT_WS(' ', 'Emp.', usuaemp.NomUsuaEmp) as Nombre
                     FROM usuaemp, empparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = empparticipa.IdSeg AND
-                        empparticipa.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
+                        empparticipa.RFCUsuaEmp = usuaemp.RFCUsuaEmp ORDER BY NomUsuaEmp ASC";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -119,10 +119,10 @@
 
         public function buscar_partic_instructores($id){
             $this->conexion_bd();
-            $sql = "SELECT instructor.ClaveIns, instructor.NomIns
-                    FROM instructor, seginstructor, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = seginstructor.IdSeg AND
-                        seginstructor.ClaveIns = instructor.ClaveIns";
+            $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', 'Instr.', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
+                    FROM instructor, insparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = insparticipa.IdSeg AND
+                    insparticipa.ClaveIns = instructor.ClaveIns ORDER BY NomIns ASC";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
