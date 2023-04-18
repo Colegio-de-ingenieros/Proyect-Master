@@ -3,13 +3,16 @@ include_once('../../model/administrativo/Mostrar_Historial.php');
 $idc = $_GET["idc"];
 echo $idc . '<br>';
 
+//manda a hacer la consulta
 $base = new Historial();
 $base->conexion();
 $asociados = $base->historialAsoc($idc);
 $general = $base->historialGen($idc);
 
+//pone la ventana
 include('../../view/administrativo/Historico_Certificaciones.html');
 
+//muestra la tabla
 echo '<div class="table">
                     <table>
 					<div class="header_table">
@@ -22,6 +25,7 @@ echo '<div class="table">
                         </thead>
                         <tbody>';
 
+//muestra los datos de la tabla
 for ($i=0; $i<count($asociados); $i ++){
     echo '<tr>';
     $fecha = date('d-m-y', strtotime($asociados[$i]["FechaH"]));
@@ -30,6 +34,7 @@ for ($i=0; $i<count($asociados); $i ++){
     echo '<th>' . $asociados[$i]["PrecioH"] . '</th>';
 }
 
+//pone el final de la tabla
 echo '</tr>
                           </tbody>
                     </div>

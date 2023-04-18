@@ -1,4 +1,4 @@
-<!-- <!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> --> -->
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> --> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -219,7 +219,5 @@
   </main>
   </div>
 </body>
-
-<!-- <script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script> -->
 
 </html>

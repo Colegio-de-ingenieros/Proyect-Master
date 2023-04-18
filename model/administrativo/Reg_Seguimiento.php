@@ -33,7 +33,7 @@
 
         public function buscar_instructores(){
             $this->conexion_bd();
-            $sql = "SELECT ClaveIns, CONCAT_WS (' ', NomIns, ApePIns, ApeMIns) FROM instructor";
+            $sql = "SELECT ClaveIns, CONCAT_WS (' ', NomIns, ApePIns, ApeMIns)  FROM instructor ORDER BY NomIns ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -41,7 +41,7 @@
 
         public function buscar_socios(){
             $this->conexion_bd();
-            $sql = "SELECT IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso)FROM usuaperso";
+            $sql = "SELECT IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso) FROM usuaperso ORDER BY NomPerso ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -49,7 +49,7 @@
 
         public function buscar_empresas(){
             $this->conexion_bd();
-            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp FROM usuaemp";
+            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp FROM usuaemp ORDER BY NomUsuaEmp ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -102,8 +102,27 @@
             $auxIdP = $this->agregar_ceros($numero, 5);
             $idP = "P".$auxIdP;
             return $idP;
-        
-        
+
+        }
+
+        public function id_parI(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParI, 2) AS INT)) FROM insparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $auxIdI = $this->agregar_ceros($numero, 5);
+            $idI = "I".$auxIdI;
+            return $idI;
+            
         }
 
         public function id_parE(){
@@ -186,6 +205,7 @@
 
         public function insert_certificaciones($idSeg, $idCer){
             $this->conexion_bd();
+            var_dump($idSeg,$idCer);
             $q = "INSERT INTO segcertint (IdSeg, IdCerInt) VALUES(:idSeg, :idCer)";
 
             $a = [":idSeg"=>$idSeg, ":idCer"=>$idCer,];
@@ -199,11 +219,11 @@
             return $ejecucion;
         }
 
-        public function insert_instructores($idSeg, $claveIns){
+        public function insert_instructores($idpI,$idSeg, $claveIns){
             $this->conexion_bd();
-            $q = "INSERT INTO seginstructor (ClaveIns, IdSeg) VALUES(:claveIns, :idSeg)";
+            $q = "INSERT INTO insparticipa (IdParI, ClaveIns, IdSeg) VALUES(:idP, :claveIns, :idSeg)";
 
-            $a = [":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
+            $a = [":idP"=>$idpI,":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
 
             $querry = [$q];
             $parametros = [$a];
@@ -264,6 +284,14 @@
             $this->conexion_bd();
             $querry = "UPDATE cursos SET EstatusCur=:estatus WHERE ClaveCur=:id";
             $arre = [":estatus"=>0, ":id"=>$idcurso ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
+        }
+
+        function estatus_ins($idIns){
+            $this->conexion_bd();
+            $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
+            $arre = [":estatus"=>0, ":id"=>$idIns ];
             $this->insertar_eliminar_actualizar($querry, $arre);
             $this->cerrar_conexion();
         }
