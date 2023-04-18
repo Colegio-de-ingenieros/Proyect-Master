@@ -50,6 +50,7 @@ window.onload = function () {
         titleInput.type = 'text';
         titleInput.value = item.title;
         titleInput.classList.add("input-format-2")
+        titleInput.placeholder = "Nuevo tema"
 
         // Creamos un evento a titleInput para realizar validaciones
         titleInput.addEventListener('keyup', (e) => {
@@ -77,7 +78,7 @@ window.onload = function () {
         addButtonAbove.classList.add("btn-add")
 
         addButtonAbove.addEventListener('click', () => {
-          data.splice(index, 0, { title: 'Nuevo tema', subtitles: ['Nuevo subtema'] });
+          data.splice(index, 0, { title: '', subtitles: [''] });
           render_2();
         });
 
@@ -89,7 +90,7 @@ window.onload = function () {
         addButtonBelow.classList.add("btn-add")
 
         addButtonBelow.addEventListener('click', () => {
-          data.splice(index + 1, 0, { title: 'Nuevo tema', subtitles: ['Nuevo subtema'] });
+          data.splice(index + 1, 0, { title: '', subtitles: [''] });
           render_2();
         });
 
@@ -121,6 +122,7 @@ window.onload = function () {
           input.type = 'text';
           input.value = subtitle;
           input.classList.add("input-format-2")
+          input.placeholder = "Nuevo subtema"
 
           input.addEventListener('keyup', (e) =>{
             let valorInput = e.target.value;
@@ -146,7 +148,7 @@ window.onload = function () {
           addButtonAbove.classList.add("btn-add")
 
           addButtonAbove.addEventListener('click', () => {
-            item.subtitles.splice(index, 0, 'Nuevo subtema');
+            item.subtitles.splice(index, 0, '');
             render_2();
           });
 
@@ -158,7 +160,7 @@ window.onload = function () {
           addButtonBelow.classList.add("btn-add")
 
           addButtonBelow.addEventListener('click', () => {
-            item.subtitles.splice(index + 1, 0, 'Nuevo subtema');
+            item.subtitles.splice(index + 1, 0, '');
             render_2();
           });
 
@@ -181,83 +183,6 @@ window.onload = function () {
           list.appendChild(listItem);
         });
 
-        const render = () => {
-          // Limpiamos la lista de subtítulos
-          while (list.firstChild) {
-            list.removeChild(list.firstChild);
-          }
-
-          // Agregamos cada subtítulo a la lista
-          item.subtitles.forEach((subtitle, index) => {
-            const listItem = document.createElement('li');
-            listItem.classList.add("row")
-
-            const input = document.createElement('input');
-            input.type = 'text';
-            input.value = subtitle;
-            input.classList.add("input-format-2")
-
-            input.addEventListener('keyup', (e) =>{
-              let valorInput = e.target.value;
-              input.value = valorInput.replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
-              subtema = input.value;
-              if (!expresiones.subtema.test(valorInput)) {
-                input.style.border = "3px solid red";
-              } else {
-                  input.removeAttribute("style");
-              }
-            });
-
-            // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
-            input.addEventListener('input', () => {
-              item.subtitles[index] = input.value;
-            });
-
-            // Creamos el botón para agregar un subtítulo arriba del elemento actual
-            const addButtonAbove = document.createElement('button');
-            addButtonAbove.textContent = 'Añadir subtema arriba';
-            addButtonAbove.classList.add("btn")
-            addButtonAbove.classList.add("btn-small")
-            addButtonAbove.classList.add("btn-add")
-
-            addButtonAbove.addEventListener('click', () => {
-              item.subtitles.splice(index, 0, '');
-              render();
-            });
-
-            // Creamos el botón para agregar un subtítulo debajo del elemento actual
-            const addButtonBelow = document.createElement('button');
-            addButtonBelow.textContent = 'Añadir subtema abajo';
-            addButtonBelow.classList.add("btn")
-            addButtonBelow.classList.add("btn-small")
-            addButtonBelow.classList.add("btn-add")
-
-            addButtonBelow.addEventListener('click', () => {
-              item.subtitles.splice(index + 1, 0, '');
-              render();
-            });
-
-            const deleteButton = document.createElement('button');
-            deleteButton.textContent = 'Eliminar';
-            deleteButton.classList.add("btn")
-            deleteButton.classList.add("btn-small")
-            deleteButton.classList.add("btn-danger")
-
-            deleteButton.addEventListener('click', () => {
-              item.subtitles.splice(index, 1);
-              render();
-            });
-
-
-            listItem.appendChild(input);
-            listItem.appendChild(addButtonAbove);
-            listItem.appendChild(addButtonBelow);
-            listItem.appendChild(deleteButton);
-
-            list.appendChild(listItem);
-          });
-        }
-
         const render_2 = () => {
           temario.innerHTML = '';
 
@@ -269,6 +194,7 @@ window.onload = function () {
             titleInput.type = 'text';
             titleInput.value = item.title;
             titleInput.classList.add("input-format-2")
+            titleInput.placeholder = "Nuevo tema"
 
             // Creamos un evento a titleInput para realizar validaciones
             titleInput.addEventListener('keyup', (e) => {
@@ -296,7 +222,7 @@ window.onload = function () {
             addButtonAbove.classList.add("btn-add")
 
             addButtonAbove.addEventListener('click', () => {
-              data.splice(index, 0, { title: 'Nuevo tema', subtitles: ['Nuevo Subtema'] });
+              data.splice(index, 0, { title: '', subtitles: [''] });
               render_2();
             });
 
@@ -308,7 +234,7 @@ window.onload = function () {
             addButtonBelow.classList.add("btn-add")
 
             addButtonBelow.addEventListener('click', () => {
-              data.splice(index + 1, 0, { title: 'Nuevo tema', subtitles: ['Nuevo Subtema'] });
+              data.splice(index + 1, 0, { title: '', subtitles: [''] });
               render_2();
             });
 
@@ -340,6 +266,7 @@ window.onload = function () {
               input.type = 'text';
               input.value = subtitle;
               input.classList.add("input-format-2")
+              input.placeholder = "Nuevo subtema"
 
               input.addEventListener('keyup', (e) =>{
                 let valorInput = e.target.value;
@@ -365,7 +292,7 @@ window.onload = function () {
               addButtonAbove.classList.add("btn-add")
 
               addButtonAbove.addEventListener('click', () => {
-                item.subtitles.splice(index, 0, 'Nuevo Subtema');
+                item.subtitles.splice(index, 0, '');
                 render_2();
               });
 
@@ -377,7 +304,7 @@ window.onload = function () {
               addButtonBelow.classList.add("btn-add")
 
               addButtonBelow.addEventListener('click', () => {
-                item.subtitles.splice(index + 1, 0, 'Nuevo Subtema');
+                item.subtitles.splice(index + 1, 0, '');
                 render_2();
               });
 
