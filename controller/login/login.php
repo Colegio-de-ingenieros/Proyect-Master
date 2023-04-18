@@ -1,5 +1,5 @@
 <?php
-require_once("../../model/login/sesiones.php");
+require_once("../../model/login/Sesiones.php");
 session_start();
 $respuesta = [0,""];
 if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){

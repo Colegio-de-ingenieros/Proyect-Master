@@ -9,7 +9,7 @@ formulario.addEventListener("submit",(e)=>{
     if(campo_usuario.value.length == 0 ){
         alert("Debe escribir su usuario");
     }else{
-        fetch("../../controller/login/existencia_usuario.php",
+        fetch("../../controller/login/Existencia_Usuario.php",
         {
             method:"POST",
             body: formulario_data

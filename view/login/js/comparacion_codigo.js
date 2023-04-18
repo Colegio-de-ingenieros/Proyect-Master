@@ -7,7 +7,7 @@ window.addEventListener("load", (e)=>{
 
     let formulario_data = new FormData();
     formulario_data.append("sesion","nada");
-    fetch("../../controller/login/comparar_codigo.php",
+    fetch("../../controller/login/Comparar_Codigo.php",
     {
         method:"POST",
         body: formulario_data
@@ -30,7 +30,7 @@ window.addEventListener("load", (e)=>{
 boton_reenviar.addEventListener("click",(e)=>{
     let formulario_data = new FormData();
     formulario_data.append("nuevo_codigo","nada");
-    fetch("../../controller/login/comparar_codigo.php",
+    fetch("../../controller/login/Comparar_Codigo.php",
         {
             method:"POST",
             body: formulario_data
@@ -45,7 +45,7 @@ formulario.addEventListener("submit",(e)=>{
     if(campo_codigo.value.length == 0 ){
         alert("Debe escribir el código");
     }else{
-        fetch("../../controller/login/comparar_codigo.php",
+        fetch("../../controller/login/Comparar_Codigo.php",
         {
             method:"POST",
             body: formulario_data

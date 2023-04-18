@@ -1,6 +1,6 @@
 <?php
 # cambia la contraseña de un usuario
-require_once("../../model/login/sesiones.php");
+require_once("../../model/login/Sesiones.php");
 session_start();
 if(isset($_POST["sesion"])){
     $respuesta = [0,"../../view/login/recuperar_Contra1.html"];

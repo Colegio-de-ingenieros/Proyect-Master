@@ -1,5 +1,5 @@
 <?php
-require_once("../../model/login/sesiones.php");
+require_once("../../model/login/Sesiones.php");
 
 if(isset($_POST["usuario"])){
     $usuario = $_POST["usuario"];
