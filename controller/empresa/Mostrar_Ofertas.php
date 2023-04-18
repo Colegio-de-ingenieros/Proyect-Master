@@ -147,6 +147,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' .'0' . '</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //
