@@ -149,7 +149,7 @@ const respuesta = (json) => {
   clave.value = datos_generales[1];
   duracion.value = datos_generales[2];
   objetivo.value = datos_generales[3];
-
+if (data.length > 0) {
   data.forEach((item, index) => {
     const titleContainer = document.createElement('div');
     titleContainer.classList.add("row")
@@ -231,4 +231,10 @@ const respuesta = (json) => {
   const convertirData = (data) => {
     return data.map(item => [item.title, ...item.subtitles]);
   }
+}
+else {
+  //document.getElementById("mensaje").textContent = "No se encontraron datos.";
+  var mensaje = "No hay temario disponible.";
+  document.getElementById("mensaje").innerHTML = "<b style='text-align:center'>" + mensaje + "</b>";
+}
 }

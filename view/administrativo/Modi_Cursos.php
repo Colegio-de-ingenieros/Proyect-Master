@@ -227,7 +227,7 @@
       </div>
 
       <div id="temario"></div>
-
+      <div id="mensaje"></div>
       <div class="section-botones-2">
         <div class="campo botones">
           <button id="update-form" class="btn-medium btn">Actualizar registro</button>

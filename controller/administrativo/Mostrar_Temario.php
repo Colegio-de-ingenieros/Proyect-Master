@@ -98,3 +98,8 @@ if ($datost) {
     array_push($todo, $lista); 
     echo json_encode($todo); 
 }
+else {
+    array_push($todo, $lgeneral);
+    array_push($todo, []);
+    echo json_encode($todo); 
+}
