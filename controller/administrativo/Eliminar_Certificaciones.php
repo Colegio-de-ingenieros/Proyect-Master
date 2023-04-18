@@ -13,7 +13,7 @@ $seg = $obj->buscarSeg($idc);
 
 if($seg == true){
     $obj->cambiarEtatus($idc);
-    http_response_code(500);
+    http_response_code(404);
     //echo 'estatus cambiado';
 }
 
