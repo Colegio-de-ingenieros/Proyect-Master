@@ -1,5 +1,5 @@
 <?php
-require_once("../../model/login/sesiones.php");
+require_once("../../model/login/Sesiones.php");
 session_start();
 $respuesta = [0,""];
 if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
@@ -34,6 +34,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "empresa";
+                
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
     
@@ -50,6 +51,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "socio";
+               
                 setcookie("token",$token,time()+(60*60*8),"/");
                
     
@@ -65,6 +67,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "trabajador";
+                
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
                 $respuesta = [1,"../../view/administrativo/plantilla_menu_admin.html"];

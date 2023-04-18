@@ -114,19 +114,14 @@ function rellenar_tabla(){
     });
 }
 
-function gastos(){
-    console.log('ho9la2')
-}
-
-//responde cuando hay un click en el boton
-formulario_Gastos.addEventListener('submit', function (e)
-{
+//responde cuando hay un click en el boton dos
+formulario_Gastos.addEventListener('submit', function (e){
     e.preventDefault();
-    let valueHidden = 2; 
+    let valueHidden = 2;
 
     let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
 
-    let form = new FormData();
+    let form = new FormData(formulario_Gastos);
     form.append("valueHidden", valueHidden);
     fetch(url, {
     method: "POST",
@@ -134,6 +129,25 @@ formulario_Gastos.addEventListener('submit', function (e)
     })
         .then(response => response.json())
         .then(data => {
-        console.log(data);
+        alert(data);
+    }) 
+})
+
+//responde cuando hay un click en el boton dos
+formulario_Ingresos.addEventListener('submit', function (e){
+    e.preventDefault();
+    let valueHidden = 3;
+
+    let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
+
+    let form = new FormData(formulario_Ingresos);
+    form.append("valueHidden", valueHidden);
+    fetch(url, {
+    method: "POST",
+    body: form
+    })
+        .then(response => response.json())
+        .then(data => {
+        alert(data);
     }) 
 })

@@ -92,7 +92,6 @@
 
         for ($i = 0; $i < count($resultados); $i++) {
             array_push($fechas, $resultados[$i]["FechaH"]);
-            //echo $fechas[$i].'<br>';
         }
 
         sort($fechas, 0);
@@ -117,7 +116,6 @@
         if (count($resultados) >= 1) {
             $precio = strval($resultados[count($resultados) - 1]["PrecioH"]);
         }
-        //echo $precio;
 
         return $precio;
     }
@@ -134,7 +132,6 @@
 
         for ($i = 0; $i < count($resultados); $i++) {
             array_push($fechas, $resultados[$i]["FechaH"]);
-            //echo $fechas[$i].'<br>';
         }
 
         sort($fechas, 0);
@@ -144,7 +141,6 @@
         if (count($fechas) >= 1) {
             $fecha = $fechas[count($fechas) - 1];
         }
-        //echo $fecha;
 
         //busca el precio de la certificacion en la fehca especificada
         $querry = "SELECT * FROM historico, certh, tipousuahis WHERE (certh.IdCerInt = :id AND 
@@ -159,7 +155,6 @@
         if (count($resultados) >= 1) {
             $precio = strval($resultados[count($resultados) - 1]["PrecioH"]);
         }
-        //echo $precio;
 
         return $precio;
     }
