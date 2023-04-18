@@ -74,7 +74,7 @@ $objeto=new Personal();
     $consecutivo=$result[0]; 
     $numIntel =$result[1];
 
-    echo $ceduPersona;
+    //echo $ceduPersona;
     //echo json_encode($checkboxlaboral);
 
     if ($checkboxcertificacion== 'desactivado' and $checkboxlaboral=='desactivado'){
