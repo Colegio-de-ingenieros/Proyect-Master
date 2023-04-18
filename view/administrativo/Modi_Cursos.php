@@ -230,7 +230,7 @@
 
       <div class="section-botones-2">
         <div class="campo botones">
-          <button id="registraform" class="btn-medium btn" onclick="enviar()">Registrar</button>
+          <button id="update-form" class="btn-medium btn">Actualizar registro</button>
         </div>
       </div>
 
