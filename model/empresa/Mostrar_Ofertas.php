@@ -23,6 +23,13 @@ class MostrarOfertas{
 
         return $resultados;
     }
+    function buscadorAplicante($buscar,$id){
+        $querry = "SELECT * FROM bolsaempresa 
+        WHERE VacEmpBol LIKE :busqueda OR TelEmpBol LIKE :busqueda AND IdEmpBol = :id";
+        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%",":id" => $id]);
+
+        return $resultados;
+    }
     function mostrarOferta($id){
         //echo $id;
         $querry = "SELECT * FROM bolsaempresa 
@@ -52,6 +59,24 @@ class MostrarOfertas{
         AND `bolsacvlugares`.`IdEmpBol`= :id";
         $resultados4 = $this->base->mostrar($q3, [":id" => $id]);
         return $resultados4;
+    }
+    function contar($id){
+        $q4 = "SELECT COUNT(*) AS total FROM `bolsaempcv`
+        WHERE `IdEmpBol`= :id";
+        $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
+        return $resultados5;
+    }
+    function mostrarAplicantes($id){
+        $q4 = "SELECT * FROM `bolsaempcv`
+        WHERE `IdEmpBol`= :id";
+        $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
+        return $resultados5;
+    }
+    function getAplicante($id){
+        $q4 = "SELECT * FROM `bolsaempcv`
+        WHERE `IdEmpBol`= :id";
+        $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
+        return $resultados5;
     }
 }
 

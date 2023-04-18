@@ -4,11 +4,8 @@ var formulario = document.getElementById('formula');
 formulario.addEventListener('submit', function (e)
 {
     e.preventDefault();
-    console.log('me diste click');
     var datos= new FormData(formulario);
 
-    //console.log(datos.get('caja_telefono'));
-    //console.log(datos.get('caja_contra'));
     fetch('../../controller/empresa/Registro_Ofertas.php', {
         method: 'POST',
         body: datos

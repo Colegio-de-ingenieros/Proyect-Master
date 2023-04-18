@@ -3,7 +3,8 @@ include_once('../../model/empresa/Mostrar_Ofertas.php');
 $salida = '';
 $base = new MostrarOfertas();
 $base->instancias();
-
+$url= $_GET['id'];
+//echo $url;
 $id=0;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
@@ -57,23 +58,19 @@ if (isset($_POST['consulta'])) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
-            $nombre = $resultado[$i]["VacEmpBol"];
-            $req = $resultado[$i]["ReqAcaEmpBol"];
-            $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TelEmpBol"];
+            $idVAC = $resultado[$i]["IdBolCv"];
             //$extension = getExt($logo);
-            $aplicantes=$base->contar($id);
-            $aplica=$aplicantes[0]["total"];
+    
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $req . '</td>';
-            $salida .= '<td>' . $exp . '</td>';
-            $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . 'a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $id . '</td>';
+            $salida .= '<td>' . $idVAC . '</td>';
+            $salida .= '<td>' . '$exp '. '</td>';
+            $salida .= '<td>' . '$tel' . '</td>';
+            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -87,7 +84,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getOfertas();
+    $resultado = $base->getAplicante($url);
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -136,23 +133,19 @@ if (isset($_POST['consulta'])) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
-            $nombre = $resultado[$i]["VacEmpBol"];
-            $req = $resultado[$i]["ReqAcaEmpBol"];
-            $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TelEmpBol"];
+            $idVAC = $resultado[$i]["IdBolCv"];
             //$extension = getExt($logo);
-            $aplicantes=$base->contar($id);
-            $aplica=$aplicantes[0]["total"];
+    
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $req . '</td>';
-            $salida .= '<td>' . $exp . '</td>';
-            $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $id . '</td>';
+            $salida .= '<td>' . $idVAC . '</td>';
+            $salida .= '<td>' . '$exp '. '</td>';
+            $salida .= '<td>' . '$tel' . '</td>';
+            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
             //
             $salida .= '</tr></div>';
