@@ -20,8 +20,6 @@ $status = $resultado[0]["EstatusCertInt"];
 $precioG = $base->buscarUltimoPrecioG($idc);
 $precioA = $base->buscarUltimoPrecioA($idc);
 
-//echo '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="100" height="100">';
-
 ?>
 
 
@@ -33,14 +31,5 @@ $precioA = $base->buscarUltimoPrecioA($idc);
     document.getElementById("descripcion").value = "<?php echo $desc ?>";
     document.getElementById("precioAsoc").value = "<?php echo $precioA ?>";
     document.getElementById("precioGen").value = "<?php echo $precioG ?>";
-
-    /*const logoImg = document.createElement('img');
-    logoImg.src = "<?php //echo 'data:image/jpeg;base64,' . base64_encode($logo) ?>";
-    logoImg.width = 100;
-    logoImg.height = 100;
-    logoImg.id = "inputLog";
-    const contenedor = document.getElementById('photo');
-    contenedor.appendChild(logoImg);*/
-
     document.getElementById("logoActual").src = "<?php echo 'data:image/jpeg;base64,' . base64_encode($logo);?>";
 </script>

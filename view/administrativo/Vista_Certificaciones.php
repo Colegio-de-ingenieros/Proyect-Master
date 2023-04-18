@@ -1,4 +1,4 @@
-<!-- <!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> --> -->
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> --> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../../public/css/administrativo/Vista_Certificaciones.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="../../controller/administrativo/js/Mostrar_Certificaciones.js"></script>
-  
+
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
@@ -195,6 +195,18 @@
               <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
+
+          <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Certificaciones.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
+
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
@@ -207,7 +219,5 @@
   </main>
   </div>
 </body>
-
- <!-- <script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script> -->
 
 </html>

@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Reg_Trabajadores.php');
+include_once('../../model/administrativo/Reg_Trabajadores.php');
 $rfc = $_POST["caja_rfc"];
 $nombre = $_POST["caja_nombre"];
 $apaterno = $_POST["caja_ap_paterno"];

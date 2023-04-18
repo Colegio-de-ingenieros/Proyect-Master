@@ -8,6 +8,7 @@ $id=0;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->buscador($busqueda);
+    
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -61,15 +62,17 @@ if (isset($_POST['consulta'])) {
             $exp = $resultado[$i]["AñoEmpBol"];
             $tel = $resultado[$i]["TelEmpBol"];
             //$extension = getExt($logo);
-    
+            $aplicantes=$base->contar($id);
+            $aplica=$aplicantes[0]["total"];
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $req . '</td>';
             $salida .= '<td>' . $exp . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .'0' . '</td>';
+            $salida .= '<td>' .$aplica . 'a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //
@@ -138,15 +141,17 @@ if (isset($_POST['consulta'])) {
             $exp = $resultado[$i]["AñoEmpBol"];
             $tel = $resultado[$i]["TelEmpBol"];
             //$extension = getExt($logo);
-    
+            $aplicantes=$base->contar($id);
+            $aplica=$aplicantes[0]["total"];
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $req . '</td>';
             $salida .= '<td>' . $exp . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .'0' . '</td>';
+            $salida .= '<td>' .$aplica . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //

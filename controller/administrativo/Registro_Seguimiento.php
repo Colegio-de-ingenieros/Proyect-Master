@@ -40,12 +40,14 @@ if ($oculto==1){
                 $result = $objeto->insert_proyectos($idSeg, $actividad);
                 
             }else{
-                $objeto->estatus_certifica($actividad);
                 $result = $objeto->insert_certificaciones($idSeg, $actividad);
+                $objeto->estatus_certifica($actividad);
             }
             if($result == true){
                 for ($i=0;$i<count($instructores);$i++){
-                    $result = $objeto->insert_instructores($idSeg, $instructores[$i]);
+                    $idI=$objeto->id_parI();
+                    $result = $objeto->insert_instructores($idI,$idSeg, $instructores[$i]);
+                    $objeto->estatus_ins($instructores[$i]);
                 }
                 if ($auxSocAso!=""){
                     $sociosAsoc=explode(",", $auxSocAso);

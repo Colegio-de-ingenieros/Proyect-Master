@@ -13,24 +13,26 @@
             <img class="img" src="../../public/img/ciscigCompleto.png" alt="">
         </div> 
         <br>
-        <p class="label-2">Código de verificación</p>
+        <p class="label-2">Restablecer contraseña</p>
         <br> 
-        <form action="">
+        <form action="" id="formulario">
+            <p class="label-3">Te hemos enviado un código de verificación a tu correo electronico.</p>
             <div class="campos">
-                <p class="label-3">Escriba el código que le fue enviado a su correo electrónico</p>
-                <input type="text" class="input-format" maxlength="40" placeholder="Escribe el código"> 
-                <br>
-                <p class="label-3">El código expirará en un minuto</p>
+                <input type="text" id="codigo" name="codigo" class="input-format" maxlength="40" placeholder="Escribe el código"> 
             </div> 
+            <div id="Mensaje">
+            </div>
             <div class="boton">
                 <input type="submit" class="btn-medium btn" value="Enviar" >
             </div>
         </form> 
         <br>
         <div class="info">
-            <a href="">Reenviar código</a> 
+            <button id="reenviar">Reenviar código</button>
+            
             <br>
         </div>
     </div>
+    <script src="js/Comparacion_Codigo.js"></script>
 </body>
 </html>

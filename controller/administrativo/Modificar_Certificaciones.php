@@ -1,6 +1,5 @@
 <?php
 include_once('../../model/administrativo/Modificar_Certificaciones.php');
-//include_once('../../model/Mostrar_Certificaciones.php');
 
 class ModificarCert{
     private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre, $abre;
@@ -37,7 +36,6 @@ class ModificarCert{
         for ($i = strlen($ids); $i < 6; $i++) {
             $ids = '0' . $ids;
         }
-        //echo json_encode($tipo . ' ' . $ids);
 
         return $ids;
     }

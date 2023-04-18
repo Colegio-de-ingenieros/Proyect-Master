@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Reg_Certificaciones.php');
+include_once('../../model/administrativo/Reg_Certificaciones.php');
 
 class RegistroCert{
     private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre, $abre;
@@ -39,7 +39,6 @@ class RegistroCert{
         for($i=strlen($ids); $i<6; $i++){
             $ids = '0'.$ids;
         }
-        //echo json_encode($tipo . ' ' . $ids);
 
         return $ids;
     }
@@ -47,7 +46,6 @@ class RegistroCert{
     //manda a llamar al archivo de model para meter los datos a la base
     function insertar(){
         $fecha = date('y-m-d');
-        //$idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha
         $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha, $this->abre);
 
         //verifica que los datos se insertarin en la base de datos
@@ -101,12 +99,6 @@ class RegistroCert{
         return $ids;
     }
 }
-
-/*$base = new NuevaCertificacion();
-$base->conexion();
-$id = $base->buscarUltimoId();
-
-echo($id[0]);*/
 
 $obj = new RegistroCert();
 $obj->instancias();

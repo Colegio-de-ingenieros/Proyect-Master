@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostrar_Certificaciones.php');
+include_once('../../model/administrativo/Mostrar_Certificaciones.php');
 
 $salida = '';
 $base = new MostrarCertificaciones();
@@ -22,7 +22,6 @@ if (isset($_POST['consulta'])) {
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
-                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -39,9 +38,6 @@ if (isset($_POST['consulta'])) {
             $status = $resultado[$i]["EstatusCertInt"];
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
-            //$precioG = substr($precioG, 0,  strlen($precioG)-3);
-            //$precioA = substr($precioA, 0,  strlen($precioA)-3);
-            //$extension = getExt($logo);
 
             //escribe los valores en la tabla
             $salida .= '<tr>';
@@ -51,10 +47,10 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
-            $salida .= '<td>' . $status . '</td>';
-            $salida .= '<td> 
-        <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
-        <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
+            $salida .=
+            '<td> 
+        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
+        <a href="../../controller/administrativo/Get_Certificacion.php?idc=' . $idc . '">Modificar</a>&nbsp;&nbsp;&nbsp
         <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
         </td>';
             $salida .= '</tr>';
@@ -65,9 +61,6 @@ if (isset($_POST['consulta'])) {
 
     $salida .= "</tbody></table>";
 
-    //echo '<script>alert("si entra al php");</script>';
-
-    //echo $salida;
 } else {
     //manda a hacer la busqueda
     $resultado = $base->getCertificaciones();
@@ -100,9 +93,6 @@ if (isset($_POST['consulta'])) {
             $status = $resultado[$i]["EstatusCertInt"];
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
-            //$precioG = substr($precioG, 0,  strlen($precioG)-3);
-            //$precioA = substr($precioA, 0,  strlen($precioA)-3);
-            //$extension = getExt($logo);
 
             //escribe los valores en la tabla
             $salida .= '<tr>';
@@ -126,10 +116,7 @@ if (isset($_POST['consulta'])) {
 
     $salida .= "</tbody></table>";
 
-    //echo '<script>alert("si entra al php");</script>';
-
 }
-//$salida .= '<script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script>';
 echo $salida;
 
 ?>

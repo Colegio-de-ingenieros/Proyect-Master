@@ -5,8 +5,7 @@
         public function buscar_cursos(){
             $this->conexion_bd();
             $sql = "SELECT claveCur, NomCur
-                    FROM cursos
-                    WHERE EstatusCur !=0";
+                    FROM cursos ORDER BY NomCur ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -15,8 +14,7 @@
         public function buscar_proyectos(){
             $this->conexion_bd();
             $sql = "SELECT idPro, NomProyecto
-                    FROM proyectos
-                    WHERE EstatusPro !=0";
+                    FROM proyectos ORDER BY NomProyecto ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -25,8 +23,7 @@
         public function buscar_certificaciones(){
             $this->conexion_bd();
             $sql = "SELECT idCerInt, NomCertInt 
-                    FROM certinterna
-                    WHERE EstatusCertInt !=0";
+                    FROM certinterna ORDER BY NomCertInt ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -34,8 +31,7 @@
 
         public function buscar_instructores(){
             $this->conexion_bd();
-            $sql = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns
-                    FROM instructor";
+            $sql = "SELECT ClaveIns, CONCAT_WS (' ', NomIns, ApePIns, ApeMIns)  FROM instructor ORDER BY NomIns ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -43,18 +39,15 @@
 
         public function buscar_socios(){
             $this->conexion_bd();
-            $sql = "SELECT IdPerso, NomPerso, ApePPerso, ApeMPerso
-                    FROM usuaperso";
+            $sql = "SELECT IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso) FROM usuaperso ORDER BY NomPerso ASC";
             $resultado = $this->mostrar($sql);
-        
             $this->cerrar_conexion();
             return $resultado;
         }
 
         public function buscar_empresas(){
             $this->conexion_bd();
-            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp
-                    FROM usuaemp";
+            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp FROM usuaemp ORDER BY NomUsuaEmp ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -92,7 +85,7 @@
 
         public function id_parP(){
             $this->conexion_bd();
-            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 1) AS INT)) FROM persoparticipa";
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 2) AS INT)) FROM persoparticipa";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
 
@@ -104,14 +97,35 @@
                 $numero++;  
             }
 
-            $idSeg = $this->agregar_ceros($numero, 6);
-        
-            return $idSeg;
+            $auxIdP = $this->agregar_ceros($numero, 5);
+            $idP = "P".$auxIdP;
+            return $idP;
+
+        }
+
+        public function id_parI(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParI, 2) AS INT)) FROM insparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $auxIdI = $this->agregar_ceros($numero, 5);
+            $idI = "I".$auxIdI;
+            return $idI;
+            
         }
 
         public function id_parE(){
             $this->conexion_bd();
-            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 1) AS INT)) FROM empparticipa";
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 2) AS INT)) FROM empparticipa";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
 
@@ -123,9 +137,9 @@
                 $numero++;  
             }
 
-            $idSeg = $this->agregar_ceros($numero, 6);
-        
-            return $idSeg;
+            $auxIdE = $this->agregar_ceros($numero, 5);
+            $idE = "E".$auxIdE;
+            return $idE;
         }
 
         public function agregar_ceros($numero, $lon){
@@ -202,11 +216,11 @@
             return $ejecucion;
         }
 
-        public function insert_instructores($idSeg, $claveIns){
+        public function insert_instructores($idpI,$idSeg, $claveIns){
             $this->conexion_bd();
-            $q = "INSERT INTO seginstructor (ClaveIns, IdSeg) VALUES(:claveIns, :idSeg)";
+            $q = "INSERT INTO insparticipa (IdParI, ClaveIns, IdSeg) VALUES(:idP, :claveIns, :idSeg)";
 
-            $a = [":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
+            $a = [":idP"=>$idpI,":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
 
             $querry = [$q];
             $parametros = [$a];
@@ -257,7 +271,7 @@
 
         function estatus_certifica($idcert){
             $this->conexion_bd();
-            $querry = "UPDATE certinternas SET EstatusCertInt:estatus WHERE IdCertInt=:id";
+            $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
             $arre = [":estatus"=>0, ":id"=>$idcert ];
             $this->insertar_eliminar_actualizar($querry, $arre);
             $this->cerrar_conexion();
@@ -267,6 +281,14 @@
             $this->conexion_bd();
             $querry = "UPDATE cursos SET EstatusCur=:estatus WHERE ClaveCur=:id";
             $arre = [":estatus"=>0, ":id"=>$idcurso ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
+        }
+
+        function estatus_ins($idIns){
+            $this->conexion_bd();
+            $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
+            $arre = [":estatus"=>0, ":id"=>$idIns ];
             $this->insertar_eliminar_actualizar($querry, $arre);
             $this->cerrar_conexion();
         }
