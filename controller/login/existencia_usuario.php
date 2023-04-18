@@ -16,6 +16,7 @@ if(isset($_POST["usuario"])){
         $_SESSION["timeout"] = time()+(60*30);
         $respuesta = [1];
         
+        
         $user->correoConCodigo($usuario,$codigo);
 
         $respuesta = [1,"../../view/login/recuperar_Contra2.html"];
