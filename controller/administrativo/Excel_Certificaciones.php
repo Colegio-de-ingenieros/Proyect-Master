@@ -23,27 +23,38 @@ $hoja = $spreadsheet->getActiveSheet();
 $hoja -> setCellValue('A1', "Nombre") -> setCellValue("B1", "Abreviación") -> setCellValue("C1", "Descripción") ->
     setCellValue("D1", "Precio general") -> setCellValue("E1", "Precio socio/asociado");
 
-$color = new \PhpOffice\PhpSpreadsheet\Style\Color('#4F80BD');
+//$color = new \PhpOffice\PhpSpreadsheet\Style\Color('#4F80BD');
 
-//vambiar el color de las celdas de encabezado
+//cambiar el color de las celdas de encabezado
 $hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('173D9C');
 
 
  //poner los encabezados en negritas y la letra blanca
 $estilo = $hoja->getStyle('A1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+$estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+$estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 
 $estilo = $hoja->getStyle('B1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+$estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+$estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 
 $estilo = $hoja->getStyle('C1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+$estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+$estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 
 $estilo = $hoja->getStyle('D1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+$estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+$estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 
 $estilo = $hoja->getStyle('E1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+$estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+$estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+
 
 //crear un objeto de estilo para ajustar el texto de descripcion
 $style = [
@@ -71,6 +82,27 @@ for($i=0; $i<count($resultados); $i++){
 
     //aplicar el estilo a la descripción
     $hoja->getStyle('C'. $i+2)->applyFromArray($style);
+
+    //centrar el contenido
+    $estilo = $hoja->getStyle('A'. $i+2);
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+
+    $estilo = $hoja->getStyle('B'. $i+2);
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+
+    $estilo = $hoja->getStyle('C'. $i+2);
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_JUSTIFY); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+
+    $estilo = $hoja->getStyle('D'. $i+2);
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+
+    $estilo = $hoja->getStyle('E'. $i+2);
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 }
 
 //definir los tamaños de las columnas
