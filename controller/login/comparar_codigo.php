@@ -7,6 +7,7 @@ if(isset($_POST["sesion"])){
     $respuesta = [0,"../../view/login/recuperar_Contra1.html"];
     if(isset($_SESSION["email"])){
         $respuesta = [1,""];
+        
     }
     header("Content-Type: application/json");
     echo json_encode($respuesta);
