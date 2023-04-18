@@ -244,7 +244,7 @@ const respuesta = (json) => {
           addButtonAbove.classList.add("btn-add")
     
           addButtonAbove.addEventListener('click', () => {
-            data.splice(index, 0, { title: 'Nuevo tema', subtitles: ['Nuebvo Subtema'] });
+            data.splice(index, 0, { title: 'Nuevo tema', subtitles: ['Nuevo Subtema'] });
             render_2();
           });
     
