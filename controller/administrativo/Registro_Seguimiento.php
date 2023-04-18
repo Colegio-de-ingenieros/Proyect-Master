@@ -40,8 +40,8 @@ if ($oculto==1){
                 $result = $objeto->insert_proyectos($idSeg, $actividad);
                 
             }else{
-                $objeto->estatus_certifica($actividad);
                 $result = $objeto->insert_certificaciones($idSeg, $actividad);
+                $objeto->estatus_certifica($actividad);
             }
             if($result == true){
                 for ($i=0;$i<count($instructores);$i++){
