@@ -23,7 +23,29 @@ $hoja = $spreadsheet->getActiveSheet();
 $hoja -> setCellValue('A1', "Nombre") -> setCellValue("B1", "Abreviación") -> setCellValue("C1", "Descripción") ->
     setCellValue("D1", "Precio general") -> setCellValue("E1", "Precio socio/asociado");
 
-//vrear un objeto de estilo para ajustar el texto de descripcion
+$color = new \PhpOffice\PhpSpreadsheet\Style\Color('#4F80BD');
+
+//vambiar el color de las celdas de encabezado
+$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('173D9C');
+
+
+ //poner los encabezados en negritas y la letra blanca
+$estilo = $hoja->getStyle('A1');
+$estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+
+$estilo = $hoja->getStyle('B1');
+$estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+
+$estilo = $hoja->getStyle('C1');
+$estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+
+$estilo = $hoja->getStyle('D1');
+$estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+
+$estilo = $hoja->getStyle('E1');
+$estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
+
+//crear un objeto de estilo para ajustar el texto de descripcion
 $style = [
     'alignment' => [
         'wrapText' => true]];
@@ -52,6 +74,7 @@ for($i=0; $i<count($resultados); $i++){
 }
 
 //definir los tamaños de las columnas
+$spreadsheet->getDefaultStyle()->getFont()->setSize(12);
 $hoja->getColumnDimension('A')->setWidth(27);
 $hoja->getColumnDimension('B')->setWidth(12);
 $hoja->getColumnDimension('C')->setWidth(40);
