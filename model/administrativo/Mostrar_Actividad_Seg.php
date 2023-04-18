@@ -50,13 +50,13 @@
 
         public function buscar_no_socios($id){
             $this->conexion_bd();
-            $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso
+            $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso
                     EXCEPT
                     SELECT usuaperso.IdPerso, usuaperso.NomPerso
-                    FROM usuaperso, segperso, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = segperso.IdSeg AND
-                        segperso.IdPerso = usuaperso.IdPerso";
+                    FROM usuaperso, persoparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
+                        persoparticipa.IdPerso = usuaperso.IdPerso";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -65,13 +65,13 @@
 
         public function buscar_no_empresas($id){
             $this->conexion_bd();
-            $sql = "SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp
+            $sql = "SELECT usuaemp.RFCUsuaEmp, CONCAT_WS(' ', usuaemp.NomUsuaEmp) as Nombre
                     FROM usuaemp
                     EXCEPT
                     SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp
-                    FROM usuaemp, segusuaemp, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = segusuaemp.IdSeg AND
-                        segusuaemp.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
+                    FROM usuaemp, empparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = empparticipa.IdSeg AND
+                        empparticipa.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -80,7 +80,7 @@
 
         public function buscar_no_instructores($id){
             $this->conexion_bd();
-            $sql = "SELECT instructor.ClaveIns, instructor.NomIns
+            $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
                     FROM instructor
                     EXCEPT
                     SELECT instructor.ClaveIns, instructor.NomIns
@@ -95,10 +95,10 @@
 
         public function buscar_partic_socios($id){
             $this->conexion_bd();
-            $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso
-                    FROM usuaperso, segperso, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = segperso.IdSeg AND
-                        segperso.IdPerso = usuaperso.IdPerso";
+            $sql = "SELECT persoparticipa.IdParP, CONCAT_WS(' ', 'Asoc.', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
+                    FROM usuaperso, persoparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
+                        persoparticipa.IdPerso = usuaperso.IdPerso";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -107,10 +107,10 @@
 
         public function buscar_partic_empresas($id){
             $this->conexion_bd();
-            $sql = "SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp
-                    FROM usuaemp, segusuaemp, seguimiento
-                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = segusuaemp.IdSeg AND
-                        segusuaemp.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
+            $sql = "SELECT empparticipa.IdParE, CONCAT_WS(' ', 'Emp.', usuaemp.NomUsuaEmp) as Nombre
+                    FROM usuaemp, empparticipa, seguimiento
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = empparticipa.IdSeg AND
+                        empparticipa.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -138,22 +138,102 @@
             return $resultado;
         }
 
-
-/*         public function insert_gastos(){
+        public function id_gastos(){
             $this->conexion_bd();
-            $q = "INSERT INTO seginstructor (ClaveIns, IdSeg) VALUES(:claveIns, :idSeg)";
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdGas, 1) AS INT)) FROM controlgas";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
 
-            $a = [":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
 
-            $querry = [$q];
-            $parametros = [$a];
+            $idGastos = $this->agregar_ceros($numero, 6);
+        
+            return $idGastos;
+        }
+
+        public function id_ingre(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdIngre, 1) AS INT)) FROM controlingre";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $idIngre = $this->agregar_ceros($numero, 6);
+        
+            return $idIngre;
+        }
+
+        public function agregar_ceros($numero, $lon){
+            $ceros = "";
+            $numero_nuevo="";
+            for ($i=0; $i < $lon ; $i++) { 
+                $numero_nuevo = $ceros . $numero;
+                if(strlen($numero_nuevo) == $lon){
+                    break;
+                }else{
+                    $ceros = $ceros . "0";
+                }
+            }
+            return $numero_nuevo;
+        }
+
+        public function insert_gastos($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
+
+            $a2 = [":IdTipo"=>$tipoGasto, ":Id"=>$idGas];
+
+            $q3 = "INSERT INTO persogastos (IdParP, IdGas) VALUES(:IdPar, :Id)";
+
+            $a3 = [":IdPar"=>$idParP, ":Id"=>$idGas];
+
+            $querry = [$q1, $q2, $q3];
+            $parametros = [$a1, $a2, $a3];
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
             $this->cerrar_conexion();
 
             return $ejecucion;
         }
- */
+
+        public function insert_ingresos($idIngre, $monto, $fecha, $doc, $idParP){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO persoingresos (IdIngre, IdParP) VALUES(:IdIngre, :IdPar)";
+
+            $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParP];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
 
 
     }

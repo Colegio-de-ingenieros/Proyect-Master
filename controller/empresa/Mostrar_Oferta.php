@@ -1,4 +1,41 @@
 <!-- <script src="../../view/login/js/verificar_permiso_empresa.js"></script> -->
+<?php
+$id=$_GET['id'];
+include_once('../../model/empresa/Mostrar_Ofertas.php');
+$base = new MostrarOfertas();
+$base->instancias();
+$resultado = $base->mostrarOferta($id);
+if ($resultado == true) {
+  $sid = $resultado[0]["IdEmpBol"];
+  $nombre = $resultado[0]["VacEmpBol"];
+  $req = $resultado[0]["ReqAcaEmpBol"];
+  $reqtec = $resultado[0]["ReqTecEmpBol"];
+  $desc = $resultado[0]["DesEmpBol"];
+  $bruto = $resultado[0]["SalBrutoEmpBol"];
+  $mens = $resultado[0]["SalNetoEmpBol"];
+  $hin = $resultado[0]["HrIniEmpBol"];
+  $hfin = $resultado[0]["HrFinEmpBol"];
+  $calle = $resultado[0]["CalleEmpBol"];
+  $exp = $resultado[0]["AñoEmpBol"];
+  $tel = $resultado[0]["TelEmpBol"];
+  $cor= $resultado[0]["CorreoEmpBol"];
+}
+$resultado = $base->mostrarJornada($id);
+if ($resultado == true) {
+  $jor=$resultado[0]["TipoJor"];
+}
+$resultado = $base->mostrarModalidad($id);
+if ($resultado == true) {
+  $mod=$resultado[0]["TipoMod"];
+}
+$resultado = $base->mostrarColonia($id);
+if ($resultado == true) {
+  $col=$resultado[0]["nomcolonia"];
+  $cp=$resultado[0]["codpostal"];
+  $mun=$resultado[0]["nommunicipio"];
+  $edo=$resultado[0]["nomestado"];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,8 +100,8 @@
             </a>
 
             <ul>
-              <li><a id="" href="../empresa/Reg_Ofertas.html">Registrar</a></li>
-              <li><a id="" href="../empresa/Vista_Ofertas.html">Mostrar</a></li>
+              <li><a id="" href="../../view/empresa/Reg_Ofertas.html">Registrar</a></li>
+              <li><a id="" href="../../view/empresa/Vista_Ofertas.html">Mostrar</a></li>
             </ul>
           </li>
 
@@ -104,7 +141,7 @@
     <main>
         <section class="section-main">
           <div class="cabezera">
-            <h3 class="h3">Mostrar ofertas</h2>
+            <h3 class="h3">Oferta</h2>
         <form action="" id="formula">        
               <p class="subtitulo-1">Datos vacante</p>
               <hr>
@@ -113,21 +150,25 @@
           <div class="formulario-generales">
             <!-- Nombre -->
             <div class="campo">
-              <label for="" class="label-2">Nombre de la vacante</label>
+              <label for="" class="label-2">Nombre de la vacante:</label>
+              <br><label for="" class="label-4"><?php echo $nombre; ?></label>
               <div class="campo">
                 <br>
-                <label for="" class="label-2">Académicos</label>
+                <label for="" class="label-2"> Requisitos académicos:</label>
+                <br><label for="" class="label-4"><?php echo $req; ?></label>
               </div>
               <br>
               <div class="campo">
-                <label for="" class="label-2">Técnicos</label>
+                <label for="" class="label-2">Requisitos técnicos:</label>
+                <br><label for="" class="label-4"><?php echo $reqtec; ?></label>
               </div>
               <br>
             </div>
             <!-- Expectativa salarial bruta -->
             </div>
           <div class="formulario-descripcion">
-            <label for="" class="label-2">Descripción del puesto</label>
+            <label for="" class="label-2">Descripción del puesto:</label>
+            <br><label for="" class="label-4"><?php echo $desc; ?></label>
           </div>
           <br>
           <!--PARTE DOS-->
@@ -138,22 +179,27 @@
 				<div class="grupo-input">
 					<div class="label-form">
 						<p class="label-2">Código postal</p>
+            <br><label for="" class="label-4"><?php echo $cp; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Calle y número</p>
+            <br><label for="" class="label-4"><?php echo $calle; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 					    <p class="label-2">Colonia</p>
+              <br><label for="" class="label-4"><?php echo $col; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Ciudad</p>
+            <br><label for="" class="label-4"><?php echo $mun; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Estado</p>
+            <br><label for="" class="label-4"><?php echo $edo; ?></label>
 					</div>
 				</div>
 				
@@ -167,38 +213,47 @@
 				<div class="grupo-input">
 					<div class="label-form">
 					    <p class="label-2">Forma de trabajo</p>
+              <br><label for="" class="label-4"><?php echo $mod; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 					    <p class="label-2">Jornada laboral</p>
+              <br><label for="" class="label-4"><?php echo $jor; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Años de experiencia</p>
+            <br><label for="" class="label-4"><?php echo $exp; ?> años</label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Salario bruto</p>
+            <br><label for="" class="label-4">$ <?php echo $bruto; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Salario mensual</p>
+            <br><label for="" class="label-4">$ <?php echo $mens; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Hora de inicio</p>
+            <br><label for="" class="label-4"><?php echo $hin; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Hora de finalización</p>
+            <br><label for="" class="label-4"><?php echo $hfin; ?></label>
 					</div>
                     <br>  
                     <div class="label-form">
 						<p class="label-2">Teléfono</p>
+            <br><label for="" class="label-4"><?php echo $tel; ?></label>
 					</div>
                     <br>
                     <div class="label-form">
 						<p class="label-2">Correo electrónico</p>
+            <br><label for="" class="label-4"><?php echo $cor; ?></label>
 					</div>
 			
 				</div>

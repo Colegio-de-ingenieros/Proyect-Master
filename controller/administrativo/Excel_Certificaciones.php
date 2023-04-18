@@ -16,7 +16,7 @@ $spreadsheet->getProperties()->setTitle("Reporte de certificaciones al " . date(
 ->setCategory("Reporte de Certificaciones")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //establecer la hoja en la que vamos a trabajar
-$spreadsheet->setActiveSheetIndex(0)->setTitle(date('D-M-Y'));
+$spreadsheet->setActiveSheetIndex(0)->setTitle("Certificaciones");
 $hoja = $spreadsheet->getActiveSheet();
 
 //poner los encabezados de las columnas
@@ -26,7 +26,7 @@ $hoja -> setCellValue('A1', "Nombre") -> setCellValue("B1", "Abreviación") -> s
 //$color = new \PhpOffice\PhpSpreadsheet\Style\Color('#4F80BD');
 
 //cambiar el color de las celdas de encabezado
-$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('173D9C');
+$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('085262');
 
 
  //poner los encabezados en negritas y la letra blanca
@@ -34,26 +34,31 @@ $estilo = $hoja->getStyle('A1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+$estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
 $estilo = $hoja->getStyle('B1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+$estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
 $estilo = $hoja->getStyle('C1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+$estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
 $estilo = $hoja->getStyle('D1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+$estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
 $estilo = $hoja->getStyle('E1');
 $estilo->getFont()->setBold(true)->setSize(12)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+$estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
 
 //crear un objeto de estilo para ajustar el texto de descripcion
@@ -87,31 +92,36 @@ for($i=0; $i<count($resultados); $i++){
     $estilo = $hoja->getStyle('A'. $i+2);
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     $estilo = $hoja->getStyle('B'. $i+2);
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     $estilo = $hoja->getStyle('C'. $i+2);
-    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_JUSTIFY); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     $estilo = $hoja->getStyle('D'. $i+2);
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     $estilo = $hoja->getStyle('E'. $i+2);
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 }
 
 //definir los tamaños de las columnas
-$spreadsheet->getDefaultStyle()->getFont()->setSize(12);
-$hoja->getColumnDimension('A')->setWidth(27);
-$hoja->getColumnDimension('B')->setWidth(12);
-$hoja->getColumnDimension('C')->setWidth(40);
-$hoja->getColumnDimension('D')->setWidth(14);
-$hoja->getColumnDimension('E')->setWidth(20);
+//$spreadsheet->getDefaultStyle()->getFont()->setName("Inter', sans-serif")->setSize(20);
+$hoja->getColumnDimension('A')->setWidth(32);
+$hoja->getColumnDimension('B')->setWidth(14);
+$hoja->getColumnDimension('C')->setWidth(45);
+$hoja->getColumnDimension('D')->setWidth(24);
+$hoja->getColumnDimension('E')->setWidth(24);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');

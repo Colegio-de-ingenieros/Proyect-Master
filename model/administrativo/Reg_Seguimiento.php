@@ -15,8 +15,7 @@
         public function buscar_proyectos(){
             $this->conexion_bd();
             $sql = "SELECT idPro, NomProyecto
-                    FROM proyectos
-                    WHERE EstatusPro !=0";
+                    FROM proyectos";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -34,8 +33,7 @@
 
         public function buscar_instructores(){
             $this->conexion_bd();
-            $sql = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns
-                    FROM instructor";
+            $sql = "SELECT ClaveIns, CONCAT_WS (' ', NomIns, ApePIns, ApeMIns) FROM instructor";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -43,18 +41,15 @@
 
         public function buscar_socios(){
             $this->conexion_bd();
-            $sql = "SELECT IdPerso, NomPerso, ApePPerso, ApeMPerso
-                    FROM usuaperso";
+            $sql = "SELECT IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso)FROM usuaperso";
             $resultado = $this->mostrar($sql);
-        
             $this->cerrar_conexion();
             return $resultado;
         }
 
         public function buscar_empresas(){
             $this->conexion_bd();
-            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp
-                    FROM usuaemp";
+            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp FROM usuaemp";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -92,7 +87,7 @@
 
         public function id_parP(){
             $this->conexion_bd();
-            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 1) AS INT)) FROM persoparticipa";
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 2) AS INT)) FROM persoparticipa";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
 
@@ -104,14 +99,16 @@
                 $numero++;  
             }
 
-            $idSeg = $this->agregar_ceros($numero, 6);
+            $auxIdP = $this->agregar_ceros($numero, 5);
+            $idP = "P".$auxIdP;
+            return $idP;
         
-            return $idSeg;
+        
         }
 
         public function id_parE(){
             $this->conexion_bd();
-            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 1) AS INT)) FROM empparticipa";
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 2) AS INT)) FROM empparticipa";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
 
@@ -123,9 +120,9 @@
                 $numero++;  
             }
 
-            $idSeg = $this->agregar_ceros($numero, 6);
-        
-            return $idSeg;
+            $auxIdE = $this->agregar_ceros($numero, 5);
+            $idE = "E".$auxIdE;
+            return $idE;
         }
 
         public function agregar_ceros($numero, $lon){
