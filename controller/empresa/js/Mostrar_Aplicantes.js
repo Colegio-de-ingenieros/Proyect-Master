@@ -1,8 +1,15 @@
 $(buscar_datos());
 
+//console.log(producto);
 function buscar_datos(consulta){
+    const valores = window.location.search;
+    //console.log(valores);
+    const urlParams = new URLSearchParams(valores);
+    //Accedemos a los valores
+    var producto = urlParams.get('id');
+    //console.log(producto);
     $.ajax({
-        url: '../../controller/administrativo/Mostrar_Trabajadores.php',
+        url: '../../controller/empresa/Mostrar_Aplicante.php?id='+producto,
         type: 'POST',
         dataType: 'html',
         data: { consulta: consulta },
@@ -26,4 +33,3 @@ $(document).on('keyup', '#busqueda', function (){
         buscar_datos();
     }
 })
-

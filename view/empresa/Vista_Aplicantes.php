@@ -1,3 +1,6 @@
+<?php
+$id=$_GET['id'];
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,7 @@
     <title>Vista aplicantes</title>
     <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	  <script src="../../controller/empresa/js/Mostrar_Ofertas.js"></script>
+	  <script src="../../controller/empresa/js/Mostrar_Aplicantes.js"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
@@ -116,10 +119,13 @@
               <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
+          <input id="prodId" name="prodId" type="hidden" value=<?php echo $id; ?>>
+          
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-            <?php include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+
+            <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
             </section>
           </div>
         </article>
