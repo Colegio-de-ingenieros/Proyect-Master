@@ -1,16 +1,15 @@
 const contenedor = document.getElementById("Mensaje");
 const campo_usuario = document.getElementById("usuario");
-const campo_pass = document.getElementById("password");
-const formulario = document.getElementById("formulario_login");
+const formulario = document.getElementById("formulario");
 
 formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
     let formulario_data = new FormData(formulario);
-    if(campo_usuario.value.length == 0 || campo_pass.value.length == 0){
-        alert("Debe escribir su usuario y contraseña");
+    if(campo_usuario.value.length == 0 ){
+        alert("Debe escribir su usuario");
     }else{
-        fetch("../../controller/login/login.php",
+        fetch("../../controller/login/existencia_usuario.php",
         {
             method:"POST",
             body: formulario_data
@@ -18,7 +17,7 @@ formulario.addEventListener("submit",(e)=>{
         .then(response => response.json())
         .then(respuesta =>{
             if(respuesta[0] == 0){
-                mostrar_mensaje(respuesta[1]);
+                mostrar_mensaje();
             }else{
                 window.location.href = respuesta[1];
             }
@@ -31,14 +30,14 @@ formulario.addEventListener("submit",(e)=>{
 
 });
 
-function mostrar_mensaje(mensaje) {
+function mostrar_mensaje() {
 
     if(contenedor.hasChildNodes()){
         contenedor.removeChild(contenedor.firstChild)
     }
    
     let etiqueta_p = document.createElement("p");
-    let texto = document.createTextNode(mensaje);
+    let texto = document.createTextNode("El usuario no existe");
     etiqueta_p.appendChild(texto);
     contenedor.appendChild(etiqueta_p);
     

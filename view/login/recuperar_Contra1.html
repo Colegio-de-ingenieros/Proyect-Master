@@ -15,20 +15,26 @@
         <br>
         <p class="label-2">Restablecer contraseña</p>
         <br> 
-        <form action="">
+        <form action="" id="formulario">
+            <p class="label-3">Para recuperar su cuenta, comience ingresando su correo electrónico o nombre de usuario</p>
+
+            
             <div class="campos">
                 
                 <p class="label-3">Usuario</p>
-                <input type="email" class="input-format" maxlength="40" placeholder="someone@example.com"
+                <input type="email" class="input-format" id="usuario" name="usuario" maxlength="40" placeholder="someone@example.com"
                     title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)."> 
                 <br>
-                <p class="label-3">El código de verificación se enviará a este correo</p>
-                </div> 
+            </div> 
                 <br>
+                <div id="Mensaje">
+
+                </div>
             <div class="boton">
-                <input type="submit" class="btn-medium btn" value="Siguiente" >
+                <input type="submit" class="btn-medium btn" value="Enviar" >
             </div>
         </form>
     </div>
+    <script src="js/existencia_usuario.js"></script>
 </body>
 </html>
