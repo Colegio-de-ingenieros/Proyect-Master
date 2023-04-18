@@ -42,6 +42,8 @@ const respuesta = (json) => {
       titleInput.value = item.title;
       titleInput.classList.add("input-format-2")
 
+      titleInput.id = "title-" + index;
+
       // Agregamos el evento 'input' al título para actualizar automáticamente el elemento correspondiente en la lista
       titleInput.addEventListener('input', () => {
         item.title = titleInput.value;
@@ -99,6 +101,8 @@ const respuesta = (json) => {
         input.type = 'text';
         input.value = subtitle;
         input.classList.add("input-format-2")
+        // Agrega el id para validad los campos
+        input.id = "subtitle-" + index;
 
         // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
         input.addEventListener('input', () => {
