@@ -10,7 +10,7 @@ formulario.addEventListener("submit",(e)=>{
     if(campo_usuario.value.length == 0 || campo_pass.value.length == 0){
         alert("Debe escribir su usuario y contraseña");
     }else{
-        fetch("../../controller/login/login.php",
+        fetch("../../controller/login/Login.php",
         {
             method:"POST",
             body: formulario_data

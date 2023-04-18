@@ -243,7 +243,7 @@
 <!-- <script src="js/Vali_Cursos.js"></script>
 <script src="js/Reg_Cursos.js"></script> -->
 <script src="js/temario.js"></script>
-<script src='js/Vali_Modicursos.js'></script>
+<!-- <script src='js/Vali_Modicursos.js'></script> -->
 </html>
 <?php
   echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";

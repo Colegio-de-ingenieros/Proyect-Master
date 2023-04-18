@@ -1,6 +1,6 @@
 //este script se ejecuta al inicio para ver si ya se habia iniciado sesion anteriormente
 //si era asi entonces que lo reedirija, si no, no hace nada
-fetch("../../controller/login/login.php",
+fetch("../../controller/login/Login.php",
     {
         method: "POST"
     })

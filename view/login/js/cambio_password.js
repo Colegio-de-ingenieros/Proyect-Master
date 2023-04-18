@@ -6,7 +6,7 @@ window.addEventListener("load", (e)=>{
 
     let formulario_data = new FormData();
     formulario_data.append("sesion","nada");
-    fetch("../../controller/login/cambio_de_password.php",
+    fetch("../../controller/login/Cambio_De_Password.php",
     {
         method:"POST",
         body: formulario_data
