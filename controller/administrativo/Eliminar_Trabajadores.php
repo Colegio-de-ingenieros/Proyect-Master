@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Eliminar_Trabajadores.php');
+include_once('../../model/administrativo/Eliminar_Trabajadores.php');
 $rfc=$_GET['rfc'];
 //$ban=true;
 $obj = new EliminarTrabajadores();

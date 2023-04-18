@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostrar_Trabajadores.php');
+include_once('../../model/administrativo/Mostrar_Trabajadores.php');
 $salida = '';
 $base = new MostrarTrabajadores();
 $base->instancias();
@@ -180,9 +180,9 @@ function confirmDesactiv()
 {
    var flag = confirm("¿Estás seguro de eliminar al trabajador?");
    if(flag)
-        window.location("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
+        window.location.assign("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
     else
-        window.location("Vista_Trabajadores.php");
+        window.location.assign("Vista_Trabajadores.php");
 }
 
 </script>';
