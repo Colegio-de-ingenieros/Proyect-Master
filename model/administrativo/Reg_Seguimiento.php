@@ -5,8 +5,7 @@
         public function buscar_cursos(){
             $this->conexion_bd();
             $sql = "SELECT claveCur, NomCur
-                    FROM cursos
-                    WHERE EstatusCur !=0";
+                    FROM cursos ORDER BY NomCur ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -15,7 +14,7 @@
         public function buscar_proyectos(){
             $this->conexion_bd();
             $sql = "SELECT idPro, NomProyecto
-                    FROM proyectos";
+                    FROM proyectos ORDER BY NomProyecto ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -24,8 +23,7 @@
         public function buscar_certificaciones(){
             $this->conexion_bd();
             $sql = "SELECT idCerInt, NomCertInt 
-                    FROM certinterna
-                    WHERE EstatusCertInt !=0";
+                    FROM certinterna ORDER BY NomCertInt ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
