@@ -1,28 +1,28 @@
 <!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visualización trabajadores</title>
-    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-    <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualización trabajadores</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/vista_trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
+
 <body>
-<header>
+  <header>
     <div class="header_superior">
       <div class="titulo">
 
@@ -101,11 +101,11 @@
                 Proyectos
               </a>
 
-							<ul>
-								<li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
-							</ul>
-						</li>
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
+              </ul>
+            </li>
 
             <li>
               <a href="#">
@@ -182,7 +182,7 @@
     </div>
   </header>
 
-<main>
+  <main>
     <div>
       <div class="article-tablas">
         <article>
@@ -195,17 +195,31 @@
               <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
+
+          <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Trabajadores.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
+
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
-            <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');?>
+              <?php //include('../../controller/administrativo/Mostrar_Trabajadores.php');
+              ?>
             </section>
           </div>
         </article>
       </div>
     </div>
   </main>
-	<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
+  <script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
 </body>
 <!--<script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></>-->
+
 </html>

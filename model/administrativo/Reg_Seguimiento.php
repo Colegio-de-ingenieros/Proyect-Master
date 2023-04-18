@@ -203,7 +203,6 @@
 
         public function insert_certificaciones($idSeg, $idCer){
             $this->conexion_bd();
-            var_dump($idSeg,$idCer);
             $q = "INSERT INTO segcertint (IdSeg, IdCerInt) VALUES(:idSeg, :idCer)";
 
             $a = [":idSeg"=>$idSeg, ":idCer"=>$idCer,];
@@ -272,7 +271,7 @@
 
         function estatus_certifica($idcert){
             $this->conexion_bd();
-            $querry = "UPDATE certinternas SET EstatusCertInt:estatus WHERE IdCertInt=:id";
+            $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
             $arre = [":estatus"=>0, ":id"=>$idcert ];
             $this->insertar_eliminar_actualizar($querry, $arre);
             $this->cerrar_conexion();
