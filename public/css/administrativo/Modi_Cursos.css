@@ -29,7 +29,7 @@
 #temario{
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
 }
 
 .row{
@@ -50,6 +50,10 @@
 
 .btn{
     margin-left: 10px;
+}
+
+.btn-add{
+    width: 28rem;
 }
 
 .separator{
