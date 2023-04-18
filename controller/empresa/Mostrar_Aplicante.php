@@ -67,9 +67,9 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $idVAC . '</td>';
             $salida .= '<td>' . '$exp '. '</td>';
             $salida .= '<td>' . '$tel' . '</td>';
-            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
+            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
             //
@@ -144,7 +144,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . '$tel' . '</td>';
             $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
             //
