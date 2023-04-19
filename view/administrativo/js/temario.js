@@ -444,6 +444,8 @@ window.onload = function () {
 
           let form = new FormData();
           form.append("id", id)
+          form.append("arrayin", JSON.stringify(datos_generales));
+          form.append("lista", JSON.stringify(lista_temario));
 
           fetch(url,{
             method: 'POST',
@@ -453,11 +455,11 @@ window.onload = function () {
           .then(data => eliminar_temario(data))
           .catch(error => console.log(error))
 
-          const eliminar_temario = (data) => {
+          /* const eliminar_temario = (data) => {
             console.log("Datos eliminados correctamente");
-          }
+          } */
 
-          let url2 = "../../controller/administrativo/Registro_Temario.php";
+          /* let url2 = "../../controller/administrativo/Registro_Temario.php";
           let form2 = new FormData();
 
           form2.append("arrayin", JSON.stringify(datos_generales));
@@ -469,11 +471,11 @@ window.onload = function () {
           })
           .then(response => response.json())
           .then(datos => registro_temario(datos))
-          .catch(error => console.log(error))
+          .catch(error => console.log(error)) */
 
-          const registro_temario = (datos) => {
+          /* const registro_temario = (datos) => {
             console.log("Datos registrados correctamente");
-          }
+          } */
 
         }
         else {
