@@ -2,6 +2,7 @@
 
 require_once('../../model/administrativo/Mostrar_Actividad_Seg.php');
 $objeto=new Actividad_Seguimiento();
+
 $data =[];
 
 $oculto=$_POST["valueHidden"];
@@ -11,6 +12,41 @@ if ($oculto==1){
     $id=$_POST["idAct"];
     $data = $objeto->buscar_datos($tipo, $id);  
 } else if ($oculto==2){
+    $parP=isset($_POST["participante_Socio_Aso"]);
+    $parE=isset($_POST["participante_Empresas"]);
+    $parI=isset($_POST["participante_Instructores"]);
+
+    $idSeg=$_POST["idAct"];
+
+    if ($parP != "") {
+        $parP=$_POST["participante_Socio_Aso"];
+        
+        $idP=$objeto->id_parP();
+
+        $result = $objeto->insert_socios($idSeg, $parP, $idP);
+    }
+    if($parE != "") {
+        $parE=$_POST["participante_Empresas"];
+
+        $idE=$objeto->id_parE();
+
+        $result = $objeto->insert_empresas($idSeg, $parE, $idE);
+    }
+    if ($parI != ""){    
+        $parI=$_POST["participante_Instructores"];
+
+        $idI=$objeto->id_parI();
+
+        $result = $objeto->insert_instructores($idI,$idSeg, $parI);
+    }
+    
+    if($result == true){
+        $data=('Registro exitoso');
+    }
+    else{
+        $data=('Ha ocurrido un error al conectar con la base de datos');
+    }
+} else if ($oculto==3){
     $idPar=$_POST["gastos_participante"];
     $tipoGasto=$_POST["gastos_Tipo_Gasto"];
     $monto=floatval($_POST["gastos_monto"]);
@@ -32,11 +68,10 @@ if ($oculto==1){
     if($result == true){
         $data=('Registro exitoso');
     }
-
     else{
         $data=('Ha ocurrido un error al conectar con la base de datos');
     }
-} else if ($oculto==3){
+} else if ($oculto==4){
     $idPar=$_POST["ingresos_Participante"];
     $monto=floatval($_POST["ingresos_monto"]);
     $fecha=$_POST["ingresos_Fecha"];
@@ -45,9 +80,6 @@ if ($oculto==1){
     $doc = file_get_contents($temp);
 
     $idIngre=$objeto->id_ingre();
-
-    //$idParP="";
-    //$idParE="";
 
     if (strpos($idPar, 'P') !== false) {
         $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idPar);  
@@ -60,7 +92,6 @@ if ($oculto==1){
     if($result == true){
         $data=('Registro exitoso');
     }
-
     else{
         $data=('Ha ocurrido un error al conectar con la base de datos');
     }

@@ -20,7 +20,7 @@ function confirmacion(e){
             error: function (jqXHR, textStatus, errorThrown)
             {
                 // psrocesar la respuesta del servidor en caso de error
-                alert('Error al eliminar el elemento: este proyecto se encuentra en un seguimiento ' + textStatus);
+                alert('Error, el proyecto no puede ser eliminado porque tiene un seguimiento');
                 location.href = '../../view/administrativo/Vista_Proyectos.php';
             }
         });

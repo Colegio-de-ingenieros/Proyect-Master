@@ -22,7 +22,14 @@ class EliminarProyecto{
         $querry1 = "SELECT EstatusPro FROM proyectos WHERE IdPro=:idp";
         $arre1 = [":idp"=>$idp];
         $resultados = $this->base->mostrar($querry1, $arre1);
-        return $resultados;
+        
+        //Tiene un seguimiento el proyecto
+        if ($resultados[0] ["EstatusPro"]==0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     
