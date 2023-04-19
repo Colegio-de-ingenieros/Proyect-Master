@@ -1,6 +1,6 @@
 window.onload = function () {
   let url = "../../controller/administrativo/Mostrar_Temario.php";
-  let id = document.getElementById("id-usuario").textContent;
+  var id = document.getElementById("id-usuario").textContent;
 
   let form = new FormData();
   form.append("id_usuario", id);
@@ -506,11 +506,48 @@ window.onload = function () {
           objetivo.style.border = "3px solid red";
         }
         if (dura === true && nom == true && objetiv == true) {
-          datos_generales = [nombre.value, clave.value, duracion.value, objetivo.value]
+          datos_generales = [clave.value,nombre.value, objetivo.value, duracion.value]
 
           lista_temario = convertirData(data);
+          console.log(datos_generales);
           console.log(lista_temario);
-          alert("Modificado con éxito");
+          alert("Curso modificado con éxito");
+
+          let url = "../../controller/administrativo/Eliminar_Temario.php";
+
+          let form = new FormData();
+          form.append("id", id)
+
+          fetch(url,{
+            method: 'POST',
+            body: form
+          })
+          .then(response => response.json())
+          .then(data => eliminar_temario(data))
+          .catch(error => console.log(error))
+
+          const eliminar_temario = (data) => {
+            console.log("Datos eliminados correctamente");
+          }
+
+          let url2 = "../../controller/administrativo/Registro_Temario.php";
+          let form2 = new FormData();
+
+          form2.append("arrayin", JSON.stringify(datos_generales));
+          form2.append("lista", JSON.stringify(lista_temario));
+
+          fetch(url2,{
+            method: 'POST',
+            body: form2
+          })
+          .then(response => response.json())
+          .then(datos => registro_temario(datos))
+          .catch(error => console.log(error))
+
+          const registro_temario = (datos) => {
+            console.log("Datos registrados correctamente");
+          }
+
         }
         else {
           alert("Asegurese que todos los campos sean correctos");
