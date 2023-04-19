@@ -4,7 +4,6 @@
     class NuevoProyecto{
         private $base;
 
-        //crea un objeto del CRUD para hacer las consultas
         function conexion(){
             $this->base = new Crud_bd();
             $this->base->conexion_bd();
@@ -12,9 +11,7 @@
 
         //retorna true si el id que recibe ya esta en la base y false si no
         function buscarPorId($id){
-            $querry = "SELECT * FROM proyectos
-            WHERE IdPro = :id";
-
+            $querry = "SELECT * FROM proyectos WHERE IdPro = :id";
             $arre = [":id"=>$id];
 
             $resultados = $this->base->mostrar($querry, $arre);
@@ -22,34 +19,41 @@
             if($resultados != null){
                 return true;
             }
-
             else{
                 return false;
             }
         }
 
-        //busca el ultimo id de la tabla certificaciones internas
-        function buscarUltimoIdPro(){
-            $querry = "SELECT * FROM proyectos";
 
-            $resultados = $this->base->mostrar($querry);
+        public function buscarUltimoIdPro(){
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdPro, 1) AS INT)) FROM proyectos";
+            $arreglo = $this->base->mostrar($sql);
 
-            //guarda los valores como flotantes para ordenarlos bien
-            $aux = [];
-
-            for($i=0; $i<count($resultados);$i++){
-                array_push($aux, floatval($resultados[$i]["IdPro"]));
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
             }
 
-            sort($aux, 0);
+            $auxIdPro = $this->agregar_ceros($numero, 6);
+            
+            return $auxIdPro;
+        }
 
-            $id = 0;
-
-            if(count($aux)>= 1){
-                $id = $aux[count($aux) - 1];
+        public function agregar_ceros($numero, $lon){
+            $ceros = "";
+            $numero_nuevo="";
+            for ($i=0; $i < $lon ; $i++) { 
+                $numero_nuevo = $ceros . $numero;
+                if(strlen($numero_nuevo) == $lon){
+                    break;
+                }else{
+                    $ceros = $ceros . "0";
+                }
             }
-
-            return $id;
+            return $numero_nuevo;
         }
 
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
