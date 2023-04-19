@@ -9,9 +9,9 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
         $tipo_usuario = $_SESSION["tipo_usuario"];
 
         if($tipo_usuario == "empresa"){
-            $respuesta = [1,"../../view/empresa/plantilla_menu.html"];
+            $respuesta = [1,"../../view/empresa/Menu_empresa.html"];
         }else if($tipo_usuario == "socio"){
-            $respuesta = [1,"../../view/socio-asociado/plantilla_menu.html"];
+            $respuesta = [1,"../../view/socio-asociado/Menu_socio.html"];
         }else if($tipo_usuario == "trabajador"){
             $respuesta = [1,"../../view/administrativo/plantilla_menu_admin.html"];
         }
@@ -38,7 +38,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
     
-                $respuesta = [1,"../../view/empresa/plantilla_menu.html"];
+                $respuesta = [1,"../../view/empresa/Menu_empresa.html"];
                 
             }else{
                 $respuesta = [0,"Contraseña incorrecta"];
@@ -55,7 +55,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 setcookie("token",$token,time()+(60*60*8),"/");
                
     
-                $respuesta = [1,"../../view/socio-asociado/plantilla_menu.html"];
+                $respuesta = [1,"../../view/socio-asociado/Menu_socio.html"];
             }else{
                 $respuesta = [0,"Contraseña incorrecta"];
             }
