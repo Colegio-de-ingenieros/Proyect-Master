@@ -15,11 +15,9 @@ formulario.addEventListener('submit', function (e)
     let veridico2 = document.getElementById("veridico2");
     let certificaciones = document.getElementById("checkboxcertificacion");
     let laborales = document.getElementById("checkboxlaboral");
-    console.log("hola", fecha_inicio, "hola");
     let bandera = true
 
     if (bandera==true){
-        console.log("no quiere")
         if(pasantia1.checked==false && pasantia2.checked==false){
             alert(" Para continuar con el registro, debe seleccionar la pasantía");
         }else if(antecedente1.checked==false && antecedente2.checked==false){
