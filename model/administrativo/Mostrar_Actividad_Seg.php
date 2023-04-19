@@ -190,7 +190,7 @@
             return $numero_nuevo;
         }
 
-        public function insert_gastos($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
+        public function insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
             $this->conexion_bd();
             $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
@@ -214,7 +214,55 @@
             return $ejecucion;
         }
 
-        public function insert_ingresos($idIngre, $monto, $fecha, $doc, $idParP){
+        public function insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idParE){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
+
+            $a2 = [":IdTipo"=>$tipoGasto, ":Id"=>$idGas];
+
+            $q3 = "INSERT INTO empgastos (IdParE, IdGas) VALUES(:IdPar, :Id)";
+
+            $a3 = [":IdPar"=>$idParE, ":Id"=>$idGas];
+
+            $querry = [$q1, $q2, $q3];
+            $parametros = [$a1, $a2, $a3];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idParI){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
+
+            $a2 = [":IdTipo"=>$tipoGasto, ":Id"=>$idGas];
+
+            $q3 = "INSERT INTO insgastos (IdParI, IdGas) VALUES(:IdPar, :Id)";
+
+            $a3 = [":IdPar"=>$idParI, ":Id"=>$idGas];
+
+            $querry = [$q1, $q2, $q3];
+            $parametros = [$a1, $a2, $a3];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idParP){
             $this->conexion_bd();
             $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
@@ -223,6 +271,46 @@
             $q2 = "INSERT INTO persoingresos (IdIngre, IdParP) VALUES(:IdIngre, :IdPar)";
 
             $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParP];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idParE){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO empingresos (IdIngre, IdParE) VALUES(:IdIngre, :IdPar)";
+
+            $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParE];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idParI){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO insingresos (IdIngre, IdParI) VALUES(:IdIngre, :IdPar)";
+
+            $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParI];
 
             $querry = [$q1, $q2];
             $parametros = [$a1, $a2];

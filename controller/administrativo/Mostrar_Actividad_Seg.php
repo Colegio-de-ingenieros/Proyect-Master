@@ -11,7 +11,7 @@ if ($oculto==1){
     $id=$_POST["idAct"];
     $data = $objeto->buscar_datos($tipo, $id);  
 } else if ($oculto==2){
-    $idParP=$_POST["gastos_participante"];
+    $idPar=$_POST["gastos_participante"];
     $tipoGasto=$_POST["gastos_Tipo_Gasto"];
     $monto=floatval($_POST["gastos_monto"]);
     $fecha=$_POST["gastos_Fecha"];
@@ -21,10 +21,14 @@ if ($oculto==1){
 
     $idGas=$objeto->id_gastos();
 
-    //$idParP="";
-    //$idParE="";
+    if (strpos($idPar, 'P') !== false) {
+        $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);  
+    } else if(strpos($idPar, 'E') !== false) {
+        $result = $objeto->insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+    } else {    
+        $result = $objeto->insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+    }
     
-    $result = $objeto->insert_gastos($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP);  
     if($result == true){
         $data=('Registro exitoso');
     }
@@ -33,7 +37,7 @@ if ($oculto==1){
         $data=('Ha ocurrido un error al conectar con la base de datos');
     }
 } else if ($oculto==3){
-    $idParP=$_POST["ingresos_Participante"];
+    $idPar=$_POST["ingresos_Participante"];
     $monto=floatval($_POST["ingresos_monto"]);
     $fecha=$_POST["ingresos_Fecha"];
     $doc=$_FILES["ingresos_comprobante"]['name'];
@@ -44,8 +48,15 @@ if ($oculto==1){
 
     //$idParP="";
     //$idParE="";
-    
-    $result = $objeto->insert_ingresos($idIngre, $monto, $fecha, $doc, $idParP);  
+
+    if (strpos($idPar, 'P') !== false) {
+        $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idPar);  
+    } else if(strpos($idPar, 'E') !== false) {
+        $result = $objeto->insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idPar);
+    } else {    
+        $result = $objeto->insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idPar);
+    }
+
     if($result == true){
         $data=('Registro exitoso');
     }
