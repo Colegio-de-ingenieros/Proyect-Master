@@ -4,7 +4,7 @@
 use PhpOffice\PhpSpreadsheet\Style\Color;
 
 include_once('../../model/administrativo/Mostrar_Certificaciones.php');
-require '../../config/CrearExcel/vendor/autoload.php';
+require '../../controller/CrearExcel/vendor/autoload.php';
 
 $color = new Color('000000');
 
