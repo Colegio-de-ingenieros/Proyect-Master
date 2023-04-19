@@ -92,32 +92,68 @@ function rellenar_datos(datos) {
 }
 
 function rellenar_tabla(){
+    split=obtener_URL()
+    let idAct=split[2]
+
     const tabla = document.querySelector('#cuerpo'); 
 
-    const opciones = { 
-        method :'POST' 
-    } 
-
-    fetch('../../controller/administrativo/Mostrar_Actividad_Tabla.php',opciones) 
+    let url = "../../controller/administrativo/Mostrar_Actividad_Tabla.php";
+    let form = new FormData();
+    form.append("idAct", idAct);
+    fetch(url, {
+    method: "POST",
+    body: form
+    })
     .then(respuesta => respuesta.json()) 
     .then(resultado =>{ 
+        console.log(resultado)
         resultado.forEach(elemento => { 
             tabla.innerHTML += 
             ` <tr> 
-                <td>${elemento.IdGasto}</td> 
-                <td>${elemento.TipoGas}</td> 
+                <td>${elemento.Nombre}</td> 
+                <td>${"$ 0"}</td> 
+                <td>${"$ 0"}</td> 
+                <td>${"$ 0"}</td> 
+                <td>${"$ 0"}</td> 
+                <td>${"$ 0"}</td> 
                 <td><a href="../../view/administrativo/Vista_Certificaciones.php">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#">Eliminar</a></td></td> 
             </tr> 
             ` 
         }); 
-    });
+    }) 
 }
+
+//responde cuando hay un click en el boton uno
+formulario_participantes.addEventListener('submit', function (e){
+    e.preventDefault();
+    split=obtener_URL()
+    let idAct=split[2]
+    let valueHidden = 2;
+
+    let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
+
+    let form = new FormData(formulario_participantes);
+    form.append("valueHidden", valueHidden);
+    form.append("idAct", idAct);
+    fetch(url, {
+    method: "POST",
+    body: form
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(data);
+        if (data==="Registro exitoso"){
+                obtener_Datos() 
+        }
+
+    }) 
+})
 
 //responde cuando hay un click en el boton dos
 formulario_Gastos.addEventListener('submit', function (e){
     e.preventDefault();
-    let valueHidden = 2;
+    let valueHidden = 3;
 
     let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
 
@@ -129,14 +165,20 @@ formulario_Gastos.addEventListener('submit', function (e){
     })
         .then(response => response.json())
         .then(data => {
-        alert(data);
+            alert(data);
+        if (data==="Registro exitoso"){
+            document.getElementById("gastos_monto").value = "";
+            document.getElementById("gastos_Fecha").value = "";
+            document.getElementById("gastos_comprobante").value = "";
+        }
+
     }) 
 })
 
 //responde cuando hay un click en el boton dos
 formulario_Ingresos.addEventListener('submit', function (e){
     e.preventDefault();
-    let valueHidden = 3;
+    let valueHidden = 4;
 
     let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
 
@@ -149,5 +191,12 @@ formulario_Ingresos.addEventListener('submit', function (e){
         .then(response => response.json())
         .then(data => {
         alert(data);
+        if (data==="Registro exitoso"){
+            document.getElementById("ingresos_monto").value = "";
+            document.getElementById("ingresos_Fecha").value = "";
+            document.getElementById("ingresos_comprobante").value = "";
+            const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+            rellenar_tabla()
+        }
     }) 
 })
