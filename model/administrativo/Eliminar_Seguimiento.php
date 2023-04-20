@@ -1,6 +1,7 @@
 <?php
 include('../../config/Crud_bd.php');
 class EliminarSeguimento{
+    
 
     private $base;
 
