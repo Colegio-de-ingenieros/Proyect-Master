@@ -62,7 +62,7 @@ if($valTipo!=""){
             $salida .= '<td>' . $clave . '</td>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>  <a href="../../view/administrativo/Accion_Seguimiento.html?actividad='.$actividad.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <a href="#">Eliminar</a></td>';
+                            <a href="#" class="table_item__link eliminar-elemento" data-actividad="' . $actividad . '">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
     } 
@@ -76,3 +76,5 @@ if($valTipo!=""){
 echo $salida;
 
 ?>
+
+<script src="../../controller/administrativo/js/Eliminar_Seguimiento_Confirmacion.js"></script>;
