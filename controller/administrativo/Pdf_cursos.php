@@ -8,13 +8,16 @@
         // Cabecera de página
         function Header(){
             // Logo
-            $this->Image('../../public/img/ciscigCompleto.png',10,8,33);
+            $this->Image('../../public/img/ciscigCompleto.png',10,8,50);
             // Arial bold 15
-            $this->SetFont('Arial','B',18);
+            $this->SetFont('Arial','B',16);
             // Movernos a la derecha
-            $this->Cell(80);
+            $this->Cell(83);
             // Título
-            $this->Cell(30,10,utf8_decode('Visualización de Cursos'),0,0,'C');
+            $this->Cell(30,10,utf8_decode('Colegio de Ingenieros'),0,0,'C');
+            $this->Ln(10);
+            $this->Cell(83);
+            $this->Cell(30,10,utf8_decode('en Sistemas Computacionales'),0,0,'C');
             // Salto de línea
             $this->Ln(20);
         }
@@ -58,7 +61,11 @@
     $pdf->AliasNbPages();
     $pdf->AddPage();
 
+    $pdf->SetFont('Arial','B',16);
+    $pdf->Cell(0,10,utf8_decode('Visualización de Cursos'),0,1,'C');
+
     /* CLAVE DEL CURSO*/
+
     $pdf->SetFont('Arial','B',14);
     $pdf->Cell(0,10,utf8_decode('Clave del curso: '),0,1,'C');
     $pdf->SetFont('Arial','',14);

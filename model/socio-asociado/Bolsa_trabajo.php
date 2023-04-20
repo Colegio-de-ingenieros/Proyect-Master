@@ -10,25 +10,7 @@
         }
 
         function extraer_datos_bolsa(){
-            $query = "SELECT bolsaempresa.IdEmpBol, 
-                            VacEmpBol, 
-                            ReqAcaEmpBol, 
-                            ReqTecEmpBol, 
-                            DesEmpBol, 
-                            AñoEmpBol,
-                            SalBrutoEmpBol,
-                            SalNetoEmpBol,
-                            HrIniEmpBol,
-                            HrFinEmpBol,
-                            TelEmpBol,
-                            CorreoEmpBol,
-                            CalleEmpBol,
-                            idJor, 
-                            IdMod 
-                        FROM
-                        `bolsaempresa`, 
-                        `bolsajornada`, 
-                        `bolsamodalidades`";
+            $query = "SELECT bolsaempresa.IdEmpBol, bolsaempresa.VacEmpBol, bolsaempresa.ReqAcaEmpBol, bolsaempresa.ReqTecEmpBol, bolsaempresa.DesEmpBol, bolsaempresa.AñoEmpBol, bolsaempresa.SalBrutoEmpBol, bolsaempresa.SalNetoEmpBol, bolsaempresa.HrIniEmpBol, bolsaempresa.HrFinEmpBol, bolsaempresa.TelEmpBol, bolsaempresa.CalleEmpBol, bolsaempresa.CorreoEmpBol, bolsajornada.IdJor, bolsamodalidades.IdMod, usuaemp.NomUsuaEmp from usuaemp, usuaempbolsa, bolsaempresa, bolsajornada, bolsamodalidades WHERE bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol and usuaempbolsa.RFCUsuaEmp = usuaemp.RFCUsuaEmp and bolsajornada.IdEmpBol = bolsaempresa.IdEmpBol and bolsamodalidades.IdEmpBol = bolsaempresa.IdEmpBol";
                         
             $resultados = $this->base->mostrar($query);
 

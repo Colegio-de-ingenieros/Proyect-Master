@@ -1,27 +1,27 @@
 function confirmacion(e){
 
-    if (confirm("¿Está seguro que desea eliminar este proyecto?")) {
+    if (confirm("¿Está seguro que desea eliminar este seguimiento?")) {
         e.preventDefault();
-        var idp = $(this).data('idp');
+        var actividad = $(this).data('actividad');
 
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
-            url: '../../controller/administrativo/Eliminar_Proyectos.php', 
+            url: '../../controller/administrativo/Eliminar_Seguimiento.php', 
             type: 'GET', 
-            data: {idp: idp}, 
+            data: {actividad: actividad}, 
             success: function (response)
             {
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista
-                location.href = '../../view/administrativo/Vista_Proyectos.php';
+                location.href = '../../view/administrativo/Vista_Seguimiento.html';
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
                 // psrocesar la respuesta del servidor en caso de error
-                alert('Error, el proyecto no puede ser eliminado porque tiene un seguimiento');
-                location.href = '../../view/administrativo/Vista_Proyectos.php';
+                alert('Error al eliminar el elemento: este proyecto se encuentra en un seguimiento ' + textStatus);
+                location.href = '../../view/administrativo/Vista_Seguimiento.html';
             }
         });
 

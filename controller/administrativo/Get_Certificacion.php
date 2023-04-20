@@ -3,7 +3,7 @@
 $idc = $_GET["idc"];
 
 //llamar a los otros archivos que se ocupan
-include_once('../../model/Mostrar_Certificaciones.php');
+include_once('../../model/administrativo/Mostrar_Certificaciones.php');
 include_once('../../view/administrativo/Modi_Certificaciones.html');
 
 //instancias la clase para buscar y traer los datos
