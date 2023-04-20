@@ -333,7 +333,9 @@ $respuesta .='
 		</section>
 		<section>
 			<h2>Temario</h2>
-			<a target="_blank" href="../../controller/administrativo/Pdf_cursos.php?id='.$id.'" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario</a>
+			<a target="_blank" href="../../controller/administrativo/Pdf_cursos.php?id='.$id. '" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en PDF</a>
+			<br>
+			<a target="_blank" href="../../controller/administrativo/Excel_Temario_Cursos.php?id='.$id.'" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en Excel</a>
 		</section>
 		<section>
 			<p>';
