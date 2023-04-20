@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostrar_Cursos.php');
+include_once('../../model/administrativo/Mostrar_Cursos.php');
 
 $respuesta = '';
 $bd = new MostrarCurso();

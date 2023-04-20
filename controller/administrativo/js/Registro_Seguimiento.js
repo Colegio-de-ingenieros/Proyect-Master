@@ -147,7 +147,7 @@ formulario.addEventListener("submit",(e)=>{
             console.log(data)
             //el registro fue exitoso
             if (data[0] === 'correcto') {
-              alert("Registro exitoso");
+              alert("Registro exitoso, su id de seguimiento es " + data[1]);
               location.href = '../../view/administrativo/Reg_Seguimiento.html';
             }
             else {

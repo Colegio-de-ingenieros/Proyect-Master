@@ -5,7 +5,7 @@ $id = $_GET['id'];
 echo "hola"; */
 
 
-include_once('../../model/Ver_Cursos.php');
+include_once('../../model/administrativo/Ver_Cursos.php');
 
 $respuesta = '';
 $bd = new VerCurso();

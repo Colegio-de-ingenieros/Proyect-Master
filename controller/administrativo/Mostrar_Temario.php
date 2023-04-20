@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostar_Temario.php');
+include_once('../../model/administrativo/Mostar_Temario.php');
 
 class Curso{
     public $id;

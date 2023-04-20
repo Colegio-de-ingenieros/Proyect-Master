@@ -102,11 +102,13 @@ hr {
 }
 
 .info-1 > * {
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 }
 
 span {
     font-weight: 700;
+    margin-left: 5px;
 }
 
 .info-2 {
@@ -232,7 +234,7 @@ span {
 }
 
 
-@media screen and (max-width: 6000px) {
+@media screen and (max-width: 600px) {
 
     .titulo-central {
         font-size: 2rem;

@@ -41,7 +41,7 @@ if ($oculto==1){
     }
     
     if($result == true){
-        $data=('Registro exitoso');
+        $data=('Participante añadido exitosamente');
     }
     else{
         $data=('Ha ocurrido un error al conectar con la base de datos');
@@ -51,26 +51,33 @@ if ($oculto==1){
     $tipoGasto=$_POST["gastos_Tipo_Gasto"];
     $monto=floatval($_POST["gastos_monto"]);
     $fecha=$_POST["gastos_Fecha"];
+
     $doc=$_FILES["gastos_comprobante"]['name'];
+    $tipo = $_FILES['gastos_comprobante']['type'];
+    $tamano = $_FILES['gastos_comprobante']['size'];
     $temp = $_FILES['gastos_comprobante']['tmp_name'];
     $doc = file_get_contents($temp);
 
-    $idGas=$objeto->id_gastos();
+    $data = validarDoc($doc, $tipo, $tamano);
+    if ($data==""){
+        $idGas=$objeto->id_gastos();
 
-    if (strpos($idPar, 'P') !== false) {
-        $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);  
-    } else if(strpos($idPar, 'E') !== false) {
-        $result = $objeto->insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
-    } else {    
-        $result = $objeto->insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+        if (strpos($idPar, 'P') !== false) {
+            $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);  
+        } else if(strpos($idPar, 'E') !== false) {
+            $result = $objeto->insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+        } else {    
+            $result = $objeto->insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+        }
+        
+        if($result == true){
+            $data=('Gasto registrado exitosamente');
+        }
+        else{
+            $data=('Ha ocurrido un error al conectar con la base de datos');
+        }
     }
-    
-    if($result == true){
-        $data=('Registro exitoso');
-    }
-    else{
-        $data=('Ha ocurrido un error al conectar con la base de datos');
-    }
+
 } else if ($oculto==4){
     $idPar=$_POST["ingresos_Participante"];
     $monto=floatval($_POST["ingresos_monto"]);
@@ -90,13 +97,28 @@ if ($oculto==1){
     }
 
     if($result == true){
-        $data=('Registro exitoso');
+        $data=('Ingreso registrado exitosamente');
     }
     else{
         $data=('Ha ocurrido un error al conectar con la base de datos');
     }
 }
 
-echo json_encode($data)
+echo json_encode($data);
+
+
+function validarDoc($doc, $tipo, $tamano){
+        //verifica que el archivo sea una imagen
+        if (!(strpos($tipo, "pdf"))) {
+            $data=("El archivo debe estar en un formato pdf");
+        }
+        if(intval($tamano)>1000000){
+            $data=("El tamaño de la imagen debe ser menor a 1 MB");
+        }
+        else{
+           $data="";
+        }
+    return $data;
+}
 
 ?>
