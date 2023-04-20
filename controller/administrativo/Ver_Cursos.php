@@ -32,7 +32,7 @@ echo $duracion;
 echo $objetivo;
 echo $estatus; */
 
-$respuesta .='
+$respuesta .= '
 <style>
 	:root{
 		--color-primary: #273544;
@@ -318,6 +318,13 @@ $respuesta .='
 
 </header>
 
+<!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = "../../controller/administrativo/Excel_Temario_Cursos.php?id=' . $id . '";
+            }
+          </script>
+
 	<main>
 	<section>
 		<h1 style="width: 500px; word-wrap: break-word;">'. $nombre .'</h1>
@@ -335,7 +342,7 @@ $respuesta .='
 			<h2>Temario</h2>
 			<a target="_blank" href="../../controller/administrativo/Pdf_cursos.php?id='.$id. '" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en PDF</a>
 			<br>
-			<a target="_blank" href="../../controller/administrativo/Excel_Temario_Cursos.php?id='.$id.'" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en Excel</a>
+			<a target="_blank" href="#" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);" onclick="generar()">Descargar temario en Excel</a>
 		</section>
 		<section>
 			<p>';
