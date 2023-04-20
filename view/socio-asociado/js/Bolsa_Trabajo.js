@@ -17,11 +17,35 @@ window.onload = function () {
 
   const resultado = (json) => {
     listOfLists = json.map(obj => Object.values(obj));
-    listOfLists = listOfLists.map(list => list.slice(0, 15));
+    listOfLists = listOfLists.map(list => list.slice(0, 16));
     
     let tarjetas = document.getElementById("cards");
 
     for (let i = 0; i < listOfLists.length; i++) {
+      let formato_salario_neto = listOfLists[i][7] + "MXN Mensuales"; 
+
+      let valor_jornada = listOfLists[i][13];
+      let valor_modalidad = listOfLists[i][14];
+      let texto_jornada = "";
+      let texto_modalidad = "";
+      
+      if(valor_jornada === "1"){
+        texto_jornada = "Tiempo Completo";
+      }
+      else if(valor_jornada === "2"){
+        texto_jornada = "Medio Tiempo";
+      }
+
+      if(valor_modalidad === "1"){
+        texto_modalidad = "Híbrido";
+      }
+      else if(valor_modalidad === "2"){
+        texto_modalidad = "Home Office";
+      }
+      else if(valor_modalidad === "3"){
+        texto_modalidad = "Presencial";
+      }
+
       body = `
         <div class="card" onclick="mostrar_modal('${listOfLists[i][0]}')">
 
@@ -29,11 +53,11 @@ window.onload = function () {
           <p class="titulo-vacante">${listOfLists[i][1]}</p>
 
           <div class="info-1">
-            <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">${listOfLists[i][0]}</span></p>
-            <p class="lugar"><i class="ti ti-map-2"></i>${listOfLists[i][12]}</p>
+            <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">${listOfLists[i][15]}</span></p>
+            <p class="lugar"><i class="ti ti-map-2"></i>${listOfLists[i][11]}</p>
 
-            <p class="salario"><i class="ti ti-cash"></i>${listOfLists[i][6]}</p>
-            <p class="jornada"><i class="ti ti-hourglass-empty"></i>${listOfLists[i][13]}</p>
+            <p class="salario"><i class="ti ti-cash"></i>${formato_salario_neto}</p>
+            <p class="jornada"><i class="ti ti-hourglass-empty"></i>${texto_jornada}</p>
           </div>
         </div>
       </div>
@@ -65,7 +89,7 @@ function mostrar_modal(id_vacante) {
 
     const resultado = (json) => {
       let listOfLists2 = json.map(obj => Object.values(obj));
-      listOfLists2 = listOfLists2.map(list => list.slice(0, 15));
+      listOfLists2 = listOfLists2.map(list => list.slice(0, 16));
       console.log(listOfLists2);
       for(let i = 0; i < listOfLists2.length; i++){
         if(listOfLists2[i][0] == id_vacante){
@@ -83,17 +107,41 @@ function mostrar_modal(id_vacante) {
           const correo = document.getElementById('correo-empresa');
 
           let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
+          let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
+          let formato_salario_neto = listOfLists2[i][7] + "MXN Mensuales"; 
+
+          let valor_jornada = listOfLists2[i][13];
+          let valor_modalidad = listOfLists2[i][14];
+          let texto_jornada = "";
+          let texto_modalidad = "";
+          
+          if(valor_jornada === "1"){
+            texto_jornada = "Tiempo Completo";
+          }
+          else if(valor_jornada === "2"){
+            texto_jornada = "Medio Tiempo";
+          }
+
+          if(valor_modalidad === "1"){
+            texto_modalidad = "Híbrido";
+          }
+          else if(valor_modalidad === "2"){
+            texto_modalidad = "Home Office";
+          }
+          else if(valor_modalidad === "3"){
+            texto_modalidad = "Presencial";
+          }
 
           nombre_vacante.innerHTML = listOfLists2[i][1];
           academicos.innerHTML = listOfLists2[i][2];
           tecnicos.innerHTML = listOfLists2[i][3];
           descripcion.innerHTML = listOfLists2[i][4];
           experiencia.innerHTML = listOfLists2[i][5];
-          salario_bruto.innerHTML = listOfLists2[i][6];
-          salario_neto.innerHTML = listOfLists2[i][7];
+          salario_bruto.innerHTML = formato_salario_bruto;
+          salario_neto.innerHTML = formato_salario_neto;
           horario.innerHTML = formato_horario;
-          jornada.innerHTML = listOfLists2[i][13];
-          modalidad.innerHTML = listOfLists2[i][14];
+          jornada.innerHTML = texto_jornada
+          modalidad.innerHTML = texto_modalidad;
           telefono.innerHTML = listOfLists2[i][10];
           correo.innerHTML = listOfLists2[i][11];
         }
