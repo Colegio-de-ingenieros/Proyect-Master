@@ -65,7 +65,7 @@ if ($oculto==1){
                 }
                 
                 if($result == true){
-                    $data=['correcto'];
+                    $data=['correcto', $idSeg];
                 }
             }
             else{

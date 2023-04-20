@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Modificar_Temario.php');
+include_once('../../model/administrativo/Modificar_Temario.php');
 
 
 // Leemos el arreglo enviado desde JavaScript

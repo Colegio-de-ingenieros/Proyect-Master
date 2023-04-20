@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Eliminar_Cursos.php');
+include_once('../../model/administrativo/Eliminar_Cursos.php');
 
 $bd = new EliminarCurso();
 $bd->BD();

@@ -1,6 +1,6 @@
 <?php
 
-include_once('../../model/Reg_Cursos.php');
+include_once('../../model/administrativo/Reg_Cursos.php');
 class RegistroCursos{
     private $obj, $nombre, $objetivo, $duracion, $tema , $subtema;
 
