@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/Mostrar_Proyectos.php');
+include_once('../../model/administrativo/Mostrar_Proyectos.php');
 
 $salida = '';
 $base = new MostrarProyectos();

@@ -3,7 +3,7 @@
 $idp = $_GET["idp"];
 
 //llamar a los otros archivos que se ocupan
-include_once('../../model/Mostrar_Proyectos.php');
+include_once('../../model/administrativo/Mostrar_Proyectos.php');
 include_once('../../view/administrativo/Modi_Proyectos.html');
 
 //instancias la clase para buscar y traer los datos

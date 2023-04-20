@@ -4,8 +4,17 @@ $idp = $_GET["idp"];
 
 $obj = new EliminarProyecto();
 $obj->instanciar();
-$obj->eliminar($idp);
 
-echo "<script>location.href = '../../view/administrativo/Vista_Proyectos.php'</script>";
+$seg = $obj->estatusPro($idp);
+
+if($seg == true){
+    http_response_code(404);
+}
+else{
+    $obj->eliminar($idp);
+}
+
+echo "<script>location.href = '../../view/administrativo/Vista_Certificaciones.php';</script>";
 
 ?>
+
