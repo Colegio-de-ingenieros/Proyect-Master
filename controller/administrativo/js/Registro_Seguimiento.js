@@ -1,6 +1,9 @@
 let tipo;
 window.onload = function () {
   obtener_Participantes() 
+  document.getElementById("radio_cursos").checked=true;
+  nombres_act("curso")
+  
 }
 
 //Llena las secciones de instructores y participantes
@@ -60,25 +63,30 @@ for (const radioButton of radioButtons) {
 function verSeleccion(e) {
   if (this.checked) {
     tipo=this.value
-    let envio=0
-    let valueHidden = document.getElementById("oculto").value; 
-    let url = "../../controller/administrativo/Registro_Seguimiento.php";
-
-    let form = new FormData();
-    form.append("tipo", tipo);
-    form.append("valueHidden", valueHidden);
-    form.append("envio", envio);
-
-    fetch(url, {
-      method: "POST",
-      body: form
-    })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-          rellenar_nombre_tipo(data);
-      })
+    nombres_act(tipo)
   }
+}
+
+function nombres_act(tipo){
+  console.log("ooo")
+  let envio=0
+  let valueHidden = 0; 
+  let url = "../../controller/administrativo/Registro_Seguimiento.php";
+
+  let form = new FormData();
+  form.append("tipo", tipo);
+  form.append("valueHidden", valueHidden);
+  form.append("envio", envio);
+
+  fetch(url, {
+    method: "POST",
+    body: form
+  })
+      .then(response => response.json())
+      .then(data => {
+        console.log("lehbrflheb", data)
+        rellenar_nombre_tipo(data);
+    })
 }
 
 function rellenar_nombre_tipo(datos) {
