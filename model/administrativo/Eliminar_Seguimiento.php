@@ -61,7 +61,15 @@ class EliminarSeguimento{
             $arreIdIngre = [":idIngre"=>$idIngre];
 
             $this->base->insertar_eliminar_actualizar($q_Elim_controlingre, $arreIdIngre);
+
+            //Eliminar en tabla persoparticipa
+            $q_Elim_persoparticipa = "DELETE FROM persoparticipa WHERE IdParP = :idParP";
+            $this->base->insertar_eliminar_actualizar($q_Elim_persoparticipa, $arreIdParp);
         }
+
+         
+
+
 
     }
 }
