@@ -119,7 +119,7 @@
 
         public function buscar_partic_instructores($id){
             $this->conexion_bd();
-            $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', 'Instr.', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
+            $sql = "SELECT insparticipa.IdParI, CONCAT_WS(' ', 'Instr.', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
                     FROM instructor, insparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = insparticipa.IdSeg AND
                     insparticipa.ClaveIns = instructor.ClaveIns ORDER BY NomIns ASC";
@@ -190,7 +190,7 @@
             return $numero_nuevo;
         }
 
-        public function insert_gastos($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
+        public function insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
             $this->conexion_bd();
             $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
@@ -214,7 +214,55 @@
             return $ejecucion;
         }
 
-        public function insert_ingresos($idIngre, $monto, $fecha, $doc, $idParP){
+        public function insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idParE){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
+
+            $a2 = [":IdTipo"=>$tipoGasto, ":Id"=>$idGas];
+
+            $q3 = "INSERT INTO empgastos (IdParE, IdGas) VALUES(:IdPar, :Id)";
+
+            $a3 = [":IdPar"=>$idParE, ":Id"=>$idGas];
+
+            $querry = [$q1, $q2, $q3];
+            $parametros = [$a1, $a2, $a3];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idParI){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
+
+            $a2 = [":IdTipo"=>$tipoGasto, ":Id"=>$idGas];
+
+            $q3 = "INSERT INTO insgastos (IdParI, IdGas) VALUES(:IdPar, :Id)";
+
+            $a3 = [":IdPar"=>$idParI, ":Id"=>$idGas];
+
+            $querry = [$q1, $q2, $q3];
+            $parametros = [$a1, $a2, $a3];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idParP){
             $this->conexion_bd();
             $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
@@ -229,6 +277,162 @@
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
 
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idParE){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO empingresos (IdIngre, IdParE) VALUES(:IdIngre, :IdPar)";
+
+            $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParE];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idParI){
+            $this->conexion_bd();
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+
+            $q2 = "INSERT INTO insingresos (IdIngre, IdParI) VALUES(:IdIngre, :IdPar)";
+
+            $a2 = [":IdIngre"=>$idIngre, ":IdPar"=>$idParI];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function buscar_socios_ingresos($id){
+            $this->conexion_bd();
+            $sql = "SELECT persoparticipa.IdParP, CONCAT_WS(' ', 'Asoc.', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre, controlingre.Idingre, MontoIngre
+                    FROM usuaperso, persoparticipa, seguimiento, persoingresos, controlingre
+                    WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
+                        persoparticipa.IdPerso = usuaperso.IdPerso AND persoparticipa.IdParP = persoingresos.IdParP AND persoingresos.IdIngre = controlingre.IdIngre ORDER BY NomPerso ASC";
+            $arre = [":id"=>$id];
+            $resultado = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultado;
+        }
+
+        public function id_parP(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParP, 2) AS INT)) FROM persoparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $auxIdP = $this->agregar_ceros($numero, 5);
+            $idP = "P".$auxIdP;
+            return $idP;
+
+        }
+
+        public function id_parI(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParI, 2) AS INT)) FROM insparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $auxIdI = $this->agregar_ceros($numero, 5);
+            $idI = "I".$auxIdI;
+            return $idI;
+            
+        }
+
+        public function id_parE(){
+            $this->conexion_bd();
+            $sql = "SELECT MAX(CAST(SUBSTRING(IdParE, 2) AS INT)) FROM empparticipa";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;  
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;  
+            }
+
+            $auxIdE = $this->agregar_ceros($numero, 5);
+            $idE = "E".$auxIdE;
+            return $idE;
+        }
+
+        public function insert_instructores($idpI,$idSeg, $claveIns){
+            $this->conexion_bd();
+            $q = "INSERT INTO insparticipa (IdParI, ClaveIns, IdSeg) VALUES(:idP, :claveIns, :idSeg)";
+
+            $a = [":idP"=>$idpI,":claveIns"=>$claveIns, ":idSeg"=>$idSeg];
+
+            $querry = [$q];
+            $parametros = [$a];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_socios($idSeg, $idPerso, $idpP){
+            $this->conexion_bd();
+            $q = "INSERT INTO persoparticipa (IdParP, IdPerso, IdSeg) VALUES(:idP, :idPerso, :idSeg)";
+
+            $a = [":idP"=>$idpP,":idPerso"=>$idPerso, ":idSeg"=>$idSeg];
+
+            $querry = [$q];
+            $parametros = [$a];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            $this->cerrar_conexion();
+
+            return $ejecucion;
+        }
+
+        public function insert_empresas($idSeg, $rfc, $idpE){
+            $this->conexion_bd();
+            $q = "INSERT INTO empparticipa (IdParE, RFCUsuaEmp, IdSeg) VALUES(:idE,:rfc, :idSeg)";
+
+            $a = [":idE"=>$idpE,":rfc"=>$rfc, ":idSeg"=>$idSeg];
+
+            $querry = [$q];
+            $parametros = [$a];
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
             $this->cerrar_conexion();
 
             return $ejecucion;
