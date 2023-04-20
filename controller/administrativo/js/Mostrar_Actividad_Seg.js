@@ -54,7 +54,7 @@ function rellenar_datos(datos) {
         dato=datos[i]
         if (i==1){
             campo="participante_Socio_Aso"
-            nomCampo="No hay socios / asociados"
+            nomCampo="No hay socios/asociados"
         }else if(i==2){
             campo="participante_Empresas"
             nomCampo="No hay empresas"
@@ -83,7 +83,7 @@ function rellenar_datos(datos) {
         } else {
             var optionElement = document.createElement("option");
             optionElement.value = "Vacio";
-            optionElement.text = "No hay " + nomCampo + " registrados";
+            optionElement.text = nomCampo + " para añadir";
             document.getElementById(campo).appendChild(optionElement);
             document.getElementById(campo).disabled = true;
         } 
@@ -106,48 +106,60 @@ function rellenar_tabla(){
     })
     .then(respuesta => respuesta.json()) 
     .then(resultado =>{ 
+        console.log('tabla')
         console.log(resultado)
-        resultado.forEach(elemento => { 
+        for (var i = 0; i < 6; i++) {
+            dato=resultado[0][i]
+            console.log("DATO", dato)
             tabla.innerHTML += 
             ` <tr> 
-                <td>${elemento.Nombre}</td> 
+                <td>${resultado[0][i]}</td> 
                 <td>${"$ 0"}</td> 
                 <td>${"$ 0"}</td> 
                 <td>${"$ 0"}</td> 
                 <td>${"$ 0"}</td> 
                 <td>${"$ 0"}</td> 
+                <td>${"$0"}</td> 
                 <td><a href="../../view/administrativo/Vista_Certificaciones.php">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a href="#">Eliminar</a></td></td> 
             </tr> 
             ` 
-        }); 
+        }
     }) 
 }
 
 //responde cuando hay un click en el boton uno
 formulario_participantes.addEventListener('submit', function (e){
     e.preventDefault();
-    split=obtener_URL()
-    let idAct=split[2]
-    let valueHidden = 2;
+    let par =document.getElementById("participante_Socio_Aso").value;
+    let emp = document.getElementById("participante_Empresas").value = "";
+    let instr = document.getElementById("participante_Instructores").value = "";
 
-    let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
+    if (par=="" && emp=="" && instr==""){
+        alert("Por favor, seleccione un participante.");
+    }else{
+        split=obtener_URL()
+        let idAct=split[2]
+        let valueHidden = 2;
 
-    let form = new FormData(formulario_participantes);
-    form.append("valueHidden", valueHidden);
-    form.append("idAct", idAct);
-    fetch(url, {
-    method: "POST",
-    body: form
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert(data);
-        if (data==="Registro exitoso"){
-                obtener_Datos() 
-        }
+        let url = "../../controller/administrativo/Mostrar_Actividad_Seg.php";
 
-    }) 
+        let form = new FormData(formulario_participantes);
+        form.append("valueHidden", valueHidden);
+        form.append("idAct", idAct);
+        fetch(url, {
+        method: "POST",
+        body: form
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data);
+            if (data==="Participante añadido exitosamente"){
+                    obtener_Datos() 
+            }
+
+        }) 
+    }
 })
 
 //responde cuando hay un click en el boton dos
@@ -166,7 +178,7 @@ formulario_Gastos.addEventListener('submit', function (e){
         .then(response => response.json())
         .then(data => {
             alert(data);
-        if (data==="Registro exitoso"){
+        if (data==="Gasto registrado exitosamente"){
             document.getElementById("gastos_monto").value = "";
             document.getElementById("gastos_Fecha").value = "";
             document.getElementById("gastos_comprobante").value = "";
@@ -191,7 +203,7 @@ formulario_Ingresos.addEventListener('submit', function (e){
         .then(response => response.json())
         .then(data => {
         alert(data);
-        if (data==="Registro exitoso"){
+        if (data==="Ingreso registrado exitosamente"){
             document.getElementById("ingresos_monto").value = "";
             document.getElementById("ingresos_Fecha").value = "";
             document.getElementById("ingresos_comprobante").value = "";
