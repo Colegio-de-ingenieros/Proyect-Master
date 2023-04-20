@@ -12,6 +12,17 @@ $general = $base->historialGen($idc);
 //pone la ventana
 include('../../view/administrativo/Historico_Certificaciones.html');
 
+echo '<!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = "../../controller/administrativo/Excel_Historico.php?idc='.$idc.'";
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>';
+
 //muestra la tabla
 echo '<div class="table">
                     <table>
