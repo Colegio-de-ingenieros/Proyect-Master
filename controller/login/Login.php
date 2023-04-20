@@ -34,6 +34,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "empresa";
+                $_SESSION["usuario"] = $usuario;
                 
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
@@ -51,6 +52,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "socio";
+                $_SESSION["usuario"] = $usuario;
                
                 setcookie("token",$token,time()+(60*60*8),"/");
                
@@ -67,6 +69,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
                 $_SESSION["tipo_usuario"] = "trabajador";
+                $_SESSION["usuario"] = $usuario;
                 
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
