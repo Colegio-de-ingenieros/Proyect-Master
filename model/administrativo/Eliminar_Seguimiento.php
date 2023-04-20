@@ -1,6 +1,7 @@
 <?php
 include('../../config/Crud_bd.php');
 class EliminarSeguimento{
+    
 
     private $base;
 
@@ -22,7 +23,7 @@ class EliminarSeguimento{
         for ($i=0; $i < count($resultados_IdParP); $i++){
 
             //Consultar el IdGas de la tabla persogastos
-            $idParP = $resultados_IdParP[i];
+            $idParP = $resultados_IdParP[$i];
             $querry_IdGas = "SELECT IdGas FROM persogastos WHERE IdParP = :idParP";
             $arreIdParp = [":idParP"=>$idParP];
 
@@ -44,7 +45,7 @@ class EliminarSeguimento{
             $this->base->insertar_eliminar_actualizar($q_Elim_Persoingresos, $arreIdParp);
 
             //Eliminar en la tabla contipogas con el IdGas que tenemos
-            $idGas = $resultado_IdGas[i];
+            $idGas = $resultado_IdGas[$i];
             $q_Elim_Contipogas = "DELETE FROM contipogas WHERE IdGas = :idGas";
             $arreIdGas = [":idGas"=>$idGas];
 
@@ -56,7 +57,7 @@ class EliminarSeguimento{
             $this->base->insertar_eliminar_actualizar($q_Elim_controlgas, $arreIdGas);
 
             //Eliminar en la tabla controlingre con el IdIngre
-            $idIngre = $resultado_IdIngre[i];
+            $idIngre = $resultado_IdIngre[$i];
             $q_Elim_controlingre = "DELETE FROM controlingre WHERE IdIngre = :idIingre";
             $arreIdIngre = [":idIngre"=>$idIngre];
 
