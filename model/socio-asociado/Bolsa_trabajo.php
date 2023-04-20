@@ -10,8 +10,16 @@
         }
 
         function extraer_datos_bolsa(){
-            $query = "SELECT bolsaempresa.IdEmpBol, bolsaempresa.VacEmpBol, bolsaempresa.ReqAcaEmpBol, bolsaempresa.ReqTecEmpBol, bolsaempresa.DesEmpBol, bolsaempresa.AñoEmpBol, bolsaempresa.SalBrutoEmpBol, bolsaempresa.SalNetoEmpBol, bolsaempresa.HrIniEmpBol, bolsaempresa.HrFinEmpBol, bolsaempresa.TelEmpBol, bolsaempresa.CalleEmpBol, bolsaempresa.CorreoEmpBol, bolsajornada.IdJor, bolsamodalidades.IdMod, usuaemp.NomUsuaEmp from usuaemp, usuaempbolsa, bolsaempresa, bolsajornada, bolsamodalidades WHERE bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol and usuaempbolsa.RFCUsuaEmp = usuaemp.RFCUsuaEmp and bolsajornada.IdEmpBol = bolsaempresa.IdEmpBol and bolsamodalidades.IdEmpBol = bolsaempresa.IdEmpBol";
-                        
+            $query = "SELECT bolsaempresa.IdEmpBol, bolsaempresa.VacEmpBol, bolsaempresa.ReqAcaEmpBol, bolsaempresa.ReqTecEmpBol, bolsaempresa.DesEmpBol, bolsaempresa.AñoEmpBol, bolsaempresa.SalBrutoEmpBol, bolsaempresa.SalNetoEmpBol, bolsaempresa.HrIniEmpBol, bolsaempresa.HrFinEmpBol, bolsaempresa.TelEmpBol, bolsaempresa.CalleEmpBol, bolsaempresa.CorreoEmpBol, bolsajornada.IdJor, bolsamodalidades.IdMod, usuaemp.NomUsuaEmp, municipios.nommunicipio, estados.nomestado 
+            from usuaemp, usuaempbolsa, bolsaempresa, bolsajornada, bolsamodalidades, usuaemplugares, colonias, municipios, estados 
+            WHERE bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol 
+            and usuaempbolsa.RFCUsuaEmp = usuaemp.RFCUsuaEmp 
+            and bolsajornada.IdEmpBol = bolsaempresa.IdEmpBol 
+            and bolsamodalidades.IdEmpBol = bolsaempresa.IdEmpBol 
+            and usuaemp.RFCUsuaEmp = usuaemplugares.RFCUsuaEmp 
+            and usuaemplugares.IdColonia = colonias.IdColonia 
+            and municipios.idmunicipio = colonias.idmunicipio 
+            and estados.idestado = municipios.idestado";
             $resultados = $this->base->mostrar($query);
 
             if ($resultados != null){
