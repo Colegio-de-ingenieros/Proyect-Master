@@ -38,8 +38,8 @@ if (isset($_POST['consulta'])) {
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $idp= $resultado[$i]["IdPro"];
             $nombre= $resultado[$i]["NomProyecto"];
-            $inicio = $resultado1[$i]["IniPro"];
-            $fin = $resultado2[$i]["FinPro"];
+            $inicio = $resultado[$i]["IniPro"];
+            $fin = $resultado[$i]["FinPro"];
             $monto = $resultado[$i]["MontoPro"];
             $objetivo = $resultado[$i]["ObjPro"];
             
