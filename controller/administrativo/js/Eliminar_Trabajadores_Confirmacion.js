@@ -1,6 +1,6 @@
 function confirmacion(e){
     
-    if (confirm("¿Está seguro que desea eliminar el trabajador?")){
+    if (confirm("¿Está seguro que desea eliminar este trabajador?")){
         return true;
     }else{
         e.preventDefault();
