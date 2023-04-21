@@ -19,13 +19,14 @@ class dato{
        }
     }
     function lugar($id){
-        $consulta = "SELECT nomcolonia,nommunicipio,codpostal 
-        FROM usuaperso,persolugares,colonias,municipios
+        $consulta = "SELECT nomcolonia,nommunicipio,nomestado 
+        FROM usuaperso,persolugares,colonias,municipios,estados
         WHERE
         binary(usuaperso.IdPerso) = binary(:id) 
         and usuaperso.IdPerso = persolugares.IdPerso
         and persolugares.IdColonia = colonias.IdColonia
-        and colonias.idmunicipio = municipios.idmunicipio";
+        and colonias.idmunicipio = municipios.idmunicipio
+        and municipios.idestado = estados.idestado";
         $parametros = [":id"=>$id];
         $datos = $this->bd->mostrar($consulta,$parametros);
         return $datos;
