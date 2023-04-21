@@ -30,9 +30,9 @@
       </div>
 
       <div class="boton-cerrar-session">
-		<form action="/view/login/login.html">
-          <input type="submit" value="Login" class="btn-cerrar-session btn">
-		</form>
+	
+        <input type="submit" value="Login" onclick="window.location.href = '../../view/login/login.html' " class="btn-cerrar-session btn">
+		
       </div>
     </div>
 
@@ -449,8 +449,7 @@
 			<br>
 			<legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
 			<div>
-				<input type="checkbox" name="acuerdo" value="1"
-						>
+				<input type="checkbox" name="acuerdo" id="acuerdo" value="1">
 				<label for="huey">Si</label>
 				</div>
 			<br>

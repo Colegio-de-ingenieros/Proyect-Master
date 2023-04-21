@@ -26,7 +26,7 @@ let ac_tele = document.getElementById("ac_tele");
 let ac_exten = document.getElementById("ac_exten");
 let ac_correo = document.getElementById("ac_correo");
 
-
+let acuerdo = document.getElementById("acuerdo");
 
 
 document.getElementById("codigo_postal").addEventListener('blur', (e) => {
@@ -64,7 +64,7 @@ formulario.addEventListener("submit",(e)=>{
     let time_fin = document.getElementById("fin");
     let dias = checke();
 
-
+    
 
     if (dias.length == 0) {
         alert("Por favor, seleccione al menos un día laboral.");
@@ -80,6 +80,9 @@ formulario.addEventListener("submit",(e)=>{
          /** extraemos los datos del formulario */
 
         let formulario_data = new FormData(e.target);
+        if(!acuerdo.checked){
+            formulario_data.append("acuerdo","0");
+        }
         dias.forEach(dia => {
             formulario_data.append("dias[]",dia)
         });
