@@ -172,7 +172,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
             //elimina los espacios en blanco
             .replace(/\s+/g, '')
             //elimina caracteres especiales
-            .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿`´·¨°⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':" \\|,<>\/?]/g, '')
+            .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿`´·¨°⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
 
             //elimina las letras
             .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
@@ -220,10 +220,11 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
 //revisa el campo descripcion
 formulario.descripcion.addEventListener('keyup', (e) =>{
     let valorInput = e.target.value;
+    var enter = '\n'
     formulario.descripcion.value = valorInput
 
         //elimina caracteres especiales
-        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?\n]/g, '')
     
 
     //verifica que se cumpla con la expresion correpondiente

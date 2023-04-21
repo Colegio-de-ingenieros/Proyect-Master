@@ -17,8 +17,8 @@ if (isset($_POST['consulta'])) {
             <thead>
                 <tr>
                     <th>Logo</th>
-                    <th>Nombre</th>
                     <th>Abreviación</th>
+                    <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
@@ -42,13 +42,12 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
-            $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $abre . '</td>';
+            $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
-            $salida .=
-            '<td> 
+            $salida .= '<td> 
         <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="../../controller/administrativo/Get_Certificacion.php?idc=' . $idc . '">Modificar</a>&nbsp;&nbsp;&nbsp
         <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
@@ -71,8 +70,8 @@ if (isset($_POST['consulta'])) {
             <thead>
                 <tr>
                     <th>Logo</th>
-                    <th>Nombre</th>
                     <th>Abreviación</th>
+                    <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
@@ -97,12 +96,11 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
-            $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $abre . '</td>';
+            $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
-            //$salida .= '<td>' . $status . '</td>';
             $salida .= '<td> 
         <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
