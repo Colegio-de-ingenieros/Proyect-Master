@@ -279,7 +279,7 @@ class EliminarSeguimento{
             $resultados = $this->base->mostrar($querry, $arre);
 
             //Elimina el seguimiento
-            eliminar_seg($idSeg);
+            $this->eliminar_seg($idSeg);
             //Busca si tiene mas seguimientos
             $idp=$resultados[0]["IdPro"];
             $querry1 = "SELECT * FROM segproyectos WHERE IdPro=:idp";
@@ -303,7 +303,7 @@ class EliminarSeguimento{
             $resultados = $this->base->mostrar($querry, $arre);
 
             //Elimina el seguimiento
-            eliminar_seg($idSeg);
+            $this->eliminar_seg($idSeg);
             //Busca si tiene mas seguimientos
             $idc=$resultados[0]["ClaveCur"];
             $querry1 = "SELECT * FROM segcursos WHERE ClaveCur=:idc";
@@ -328,7 +328,7 @@ class EliminarSeguimento{
             $resultados = $this->base->mostrar($querry, $arre);
 
             //Elimina el seguimiento
-            eliminar_seg($idSeg);
+            $this->eliminar_seg($idSeg);
             //Busca si tiene mas seguimientos
             $idc=$resultados[0]["IdCerInt"];
             $querry1 = "SELECT * FROM segcertint WHERE IdCerInt=:idc";
