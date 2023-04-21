@@ -8,6 +8,7 @@ $obj->instanciar();
 $obj->eliminarSoc($idSeg);
 $obj->eliminarEmp($idSeg);
 $obj->eliminarIns($idSeg);
+$obj->estatus($idSeg,$actividad);
 //$obj->cerrarCone();
 
 

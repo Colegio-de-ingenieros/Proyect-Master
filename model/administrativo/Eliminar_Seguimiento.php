@@ -241,18 +241,118 @@ class EliminarSeguimento{
                 $q5 = "DELETE FROM controlgas  WHERE IdGas=:idGas";                 
                 $this->base->insertar_eliminar_actualizar($q5, $a4);
             }
+            //Consulta la clave del instructor
+            $querry = "SELECT ClaveIns FROM insparticipa WHERE IdParI=:idParI";
+            $arre = [":idParI"=>$idParI];
+            $resul = $this->base->mostrar($querry, $arre);
 
-            //Eliminar en tabla persoparticipa
+            //Eliminar en tabla insparticipa
             $q6 = "DELETE FROM insparticipa WHERE IdParI = :idParI";
             $a6=[":idParI"=>$idParI];
             $this->base->insertar_eliminar_actualizar($q6, $a6);
+
+            $querry = "SELECT * FROM insparticipa WHERE IdParI=:idParI";
+            $arre = [":idParI"=>$idParI];
+            $resulta = $this->base->mostrar($querry, $arre);
+
+            if ($resulta!=null){
+                return false;
+            }
+            else{
+                //No tiene seguimientos, cambia el estatus 
+                $idIns=$resul[0]["ClaveIns"];
+                $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
+                $arre = [":estatus"=>0, ":id"=>$idIns ];
+                $this->insertar_eliminar_actualizar($querry, $arre);
+            }
+
         }
         
         return 'Eliminado ins';
         
     }
 
+    public function estatus($idSeg, $actividad){
+        if($actividad=='proyecto'){
+            $querry = "SELECT IdPro FROM segproyectos WHERE IdSeg=:idSeg";
+            $arre = [":idSeg"=>$idSeg];
+            $resultados = $this->base->mostrar($querry, $arre);
 
+            //Elimina el seguimiento
+            $this->eliminar_seg($idSeg);
+            //Busca si tiene mas seguimientos
+            $idp=$resultados[0]["IdPro"];
+            $querry1 = "SELECT * FROM segproyectos WHERE IdPro=:idp";
+            $arre1 = [":idp"=>$idp];
+            $res = $this->base->mostrar($querry1, $arre1);
+            
+            //Tiene un seguimiento el proyecto
+            if ($res!=null){
+                return false;
+            }
+            else{
+                //No tiene seguimientos, cambia el estatus 
+                $querry = "UPDATE proyectos SET EstatusPro=:estatus WHERE IdPro=:id";
+                $arre = [":estatus"=>0, ":id"=>$idp ];
+                $this->insertar_eliminar_actualizar($querry, $arre);
+            }
+        }
+        else if($actividad=='curso'){
+            $querry = "SELECT ClaveCur FROM segcursos WHERE IdSeg=:idSeg";
+            $arre = [":idSeg"=>$idSeg];
+            $resultados = $this->base->mostrar($querry, $arre);
+
+            //Elimina el seguimiento
+            $this->eliminar_seg($idSeg);
+            //Busca si tiene mas seguimientos
+            $idc=$resultados[0]["ClaveCur"];
+            $querry1 = "SELECT * FROM segcursos WHERE ClaveCur=:idc";
+            $arre1 = [":idc"=>$idc];
+            $res = $this->base->mostrar($querry1, $arre1);
+            
+            //Tiene un seguimiento el curso
+            if ($res!=null){
+                return false;
+            }
+            else{
+                //No tiene seguimientos, cambia el estatus 
+                $querry = "UPDATE proyectos SET EstatusCur=:estatus WHERE ClaveCur=:id";
+                $arre = [":estatus"=>0, ":id"=>$idc ];
+                $this->insertar_eliminar_actualizar($querry, $arre);
+            }
+
+        }
+        else{
+            $querry = "SELECT IdCerInt FROM segcertint WHERE IdSeg=:idSeg";
+            $arre = [":idSeg"=>$idSeg];
+            $resultados = $this->base->mostrar($querry, $arre);
+
+            //Elimina el seguimiento
+            $this->eliminar_seg($idSeg);
+            //Busca si tiene mas seguimientos
+            $idc=$resultados[0]["IdCerInt"];
+            $querry1 = "SELECT * FROM segcertint WHERE IdCerInt=:idc";
+            $arre1 = [":idc"=>$idc];
+            $res = $this->base->mostrar($querry1, $arre1);
+            
+            //Tiene un seguimiento el curso
+            if ($res!=null){
+                return false;
+            }
+            else{
+                //No tiene seguimientos, cambia el estatus 
+                $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
+                $arre = [":estatus"=>0, ":id"=>$idc ];
+                $this->insertar_eliminar_actualizar($querry, $arre);
+            }
+
+        }
+    }
+    public function eliminar_seg($idSeg){
+        $q1 = "DELETE FROM seguimiento WHERE IdSeg = :idSeg";
+        $a1=[":idSeg"=>$idSeg];
+        $this->base->insertar_eliminar_actualizar($q1, $a1);
+    }
 
 }
 

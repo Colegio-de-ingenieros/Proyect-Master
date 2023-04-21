@@ -224,7 +224,7 @@ formulario.descripcion.addEventListener('keyup', (e) =>{
     formulario.descripcion.value = valorInput
 
         //elimina caracteres especiales
-        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/? \n]/g, '')
+        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?\n]/g, '')
     
 
     //verifica que se cumpla con la expresion correpondiente
