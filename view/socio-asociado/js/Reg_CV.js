@@ -68,6 +68,7 @@ function nueva_carrera_1() {
 }
 
 function cancelar_carrera_1() {
+
   let boton1 = document.getElementById("botones-1");
   let boton2 = document.getElementById("botones-2");
   let formulario2 = document.getElementById("academico-2");
@@ -95,16 +96,33 @@ function nueva_carrera_2() {
 }
 
 function cancelar_carrera_2() {
-  let boton2 = document.getElementById("botones-2");
-  let formulario3 = document.getElementById("academico-3");
-  let carrera3 = document.getElementById("carrera-3");
-  let cedula3 = document.getElementById("cedula-3");
+  if(fila_2 == 1 && fila_3 == 1){
+    let boton2 = document.getElementById("botones-2");
+    let formulario3 = document.getElementById("academico-3");
+    let carrera3 = document.getElementById("carrera-3");
+    let cedula3 = document.getElementById("cedula-3");
 
-  boton2.style.display = "block";
+    boton2.style.display = "block";
 
-  formulario3.style.display = "none";
+    formulario3.style.display = "none";
 
-  carrera3.value = "";
-  cedula3.value = "";
-  fila_3 = 0;
+    carrera3.value = "";
+    cedula3.value = "";
+    fila_3 = 0;
+  }
+  else if(fila_2 == 0 && fila_3 == 1){
+    let boton2 = document.getElementById("botones-2");
+    let formulario3 = document.getElementById("academico-3");
+    let carrera3 = document.getElementById("carrera-3");
+    let cedula3 = document.getElementById("cedula-3");
+
+    boton2.style.display = "none";
+
+    formulario3.style.display = "none";
+
+    carrera3.value = "";
+    cedula3.value = "";
+    fila_3 = 0;
+  }
+  
 }
