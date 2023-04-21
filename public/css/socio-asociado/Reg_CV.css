@@ -35,12 +35,14 @@ main {
 .section-main{
     width: 80%;
 }
-
+.campo{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 .formulario-generales, .formulario-experiencia{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 20px;
-    row-gap: 10px;
 }
 
 .formulario-experiencia{
@@ -51,7 +53,31 @@ main {
     margin-bottom: 10px;
 }
 
-.formulario-certificaciones, .formulario-academica{
+#academico-2{
+    display: none;
+}
+
+#academico-2{
+    display: none;
+}
+
+#botones-2{
+    display: none;
+}
+
+#academico-3{
+    display: none;
+}
+
+#experiencia-2{
+    display: none;
+}
+
+#boton-experiencia-2{
+    display: none;
+}
+
+.formulario-certificaciones{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 20px;
@@ -59,9 +85,10 @@ main {
     margin-bottom: 10px;
     align-items: end;
 }
+
 .formulario-academica{
     display: grid;
-    grid-template-columns: repeat(2, 1fr) 0.05fr;
+    grid-template-columns: repeat(2, 1fr) 0.075fr;
     column-gap: 20px;
     row-gap: 10px;
     margin-bottom: 10px;
@@ -81,7 +108,11 @@ main {
 }
 
 .especial{
-    margin-bottom: 3px;
+    margin-bottom: 7px;
+}
+.especial-2{
+    margin-top: 32px;
+    margin-bottom: 7px;
 }
 /* ***************************************
 *                 INPUTS                 *
@@ -151,6 +182,7 @@ textarea {
     max-width: 100%;
     min-height: 150px;
 }
+
 
 /* ***************************************
 *                BOTONES                 *

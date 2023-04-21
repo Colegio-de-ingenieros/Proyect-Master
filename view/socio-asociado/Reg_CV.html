@@ -6,17 +6,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro CV - CISCIG</title>
+  <title>Registro CV</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
@@ -135,20 +136,12 @@
         <!-- Correo electrónico -->
         <div class="campo">
           <label for="" class="label-2">Correo electrónico*</label>
-          <input
-            title="El email solo puede contener letras mayúsculas, minúsculas, números y los siguientes caracteres especiales (., -, _, @)."
-            type="email" class="input-format-2" placeholder="someone@example.com"></input>
+          <input type="email" class="input-format-2" id="correo-campo" readonly></input>
         </div>
         <!-- Telefono -->
         <div class="campo">
           <label for="" class="label-2">Teléfono*</label>
-          <input title="El número de teléfono solo puede contener números." type="tel" class="input-format-2"
-            placeholder="Ingrese su teléfono aquí"></input>
-        </div>
-        <!-- Codigo postal -->
-        <div class="campo">
-          <label for="" class="label-2">Código postal*</label>
-          <input type="text" class="input-format-2" id="postal-campo" readonly></input>
+          <input type="tel" class="input-format-2" id="telefono-campo" readonly></input>
         </div>
         <!-- Calle y número -->
         <div class="campo">
@@ -164,6 +157,11 @@
         <div class="campo">
           <label for="" class="label-2">Ciudad*</label>
           <input type="text" class="input-format-2" id="ciudad-campo" readonly>
+        </div>
+        <!-- Estado -->
+        <div class="campo">
+          <label for="" class="label-2">Estado*</label>
+          <input type="text" class="input-format-2" id="estado-campo" readonly>
         </div>
         <!-- Cambio de residencia -->
         <div class="campo">
@@ -192,25 +190,62 @@
         <hr>
       </div>
 
-      <div class="formulario-academica">
+      <!-- Formulario académico 1 -->
+      <div class="formulario-academica" id="academico-1">
+        <!-- Nombre de la carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera*</label>
+          <input id="carrera-1" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div class="campo">
+          <label for="" class="label-2">Número de cédula*</label>
+          <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+        </div>
+      </div>
+
+      <div class="botones-academica" id="botones-1">
+        <button class="btn btn-small" onclick="nueva_carrera_1()">Agregar carrera</button>
+      </div>
+
+      <!-- Formulario académico 2 -->
+      <div class="formulario-academica" id="academico-2">
+        <!-- Nombre de la carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera*</label>
+          <input id="carrera-2" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div class="campo">
+          <label for="" class="label-2">Número de cédula*</label>
+          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+        </div>
+
+        <div class="campo especial">
+          <i class="ti ti-trash-x eliminar-item" onclick="cancelar_carrera_1()"></i>
+        </div>
+      </div>
+
+      <div class="botones-academica" id="botones-2">
+        <button class="btn btn-small" onclick="nueva_carrera_2()">Agregar carrera</button>
+      </div>
+
+      <!-- Formulario académico 3 -->
+      <div class="formulario-academica" id="academico-3">
         <!-- Nombre de la carrera -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera*</label>
-          <input title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+          <input id="carrera-3" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
         </div>
         <!-- Número de cédula -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-3" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
         </div>
 
-        <div id="carrera-1"class="campo especial">
-          <i class="ti ti-trash-x eliminar-item" onclick="eliminar_carrera('carrera-1')"></i>
+        <div class="campo especial">
+          <i class="ti ti-trash-x eliminar-item" onclick="cancelar_carrera_2()"></i>
         </div>
-      </div>
-
-      <div class="botones-academica">
-        <button class="btn btn-small">Agregar carrera</button>
       </div>
 
       <!-- Experiencia profesional -->
@@ -219,39 +254,77 @@
         <hr>
       </div>
 
-      <div class="formulario-experiencia">
+      <!-- Formulario experiencia 1 -->
+      <div class="formulario-experiencia" id="experiencia-1">
         <!-- Puesto que desempeñaba -->
         <div class="campo">
           <label for="" class="label-2">Puesto que desempeñaba*</label>
           <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
-            class="input-format-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+            class="input-format-2" id="puesto-antiguo-1" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
         </div>
         <!-- Nombre de la empresa -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la empresa*</label>
-          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" class="input-format-2"
-            placeholder="Ingrese el nombre de la empresa aquí"></input>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-1" placeholder="Ingrese el nombre de la empresa aquí"></input>
         </div>
         <!-- Fecha de inicio -->
         <div class="campo">
-          <label for="" class="label-2">Fecha de inicio*</label>
-          <input type="date" class="input-format-2"></input>
+          <label for="" class="label-2">Periodo de inicio*</label>
+          <input type="date" id="periodo-inicio-antigua-1" class="input-format-2"></input>
         </div>
         <!-- Fecha de fin -->
         <div class="campo">
-          <label for="" class="label-2">Fecha de fin*</label>
-          <input type="date" class="input-format-2"></input>
+          <label for="" class="label-2">Periodo de fin*</label>
+          <input type="date" id="periodo-fin-antigua-1" class="input-format-2"></input>
         </div>
         <!-- Actividades relevantes -->
         <div class="campo">
           <label for="" class="label-2">Actividades relevantes*</label>
-          <textarea title="Ingrese las actividades relevantes." name="" id="" class="input-format-2"
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-1" class="input-format-2"
             placeholder="Ingrese las actividades relevantes aquí"></textarea>
         </div>
+
       </div>
 
-      <div class="botones-experiencia">
-        <button class="btn btn-small">Agregar experiencia</button>
+      <div class="botones-experiencia" id="boton-experiencia-1">
+        <button class="btn btn-small" onclick="nueva_experiencia()">Agregar experiencia</button>
+      </div>
+
+      <!-- Formulario experiencia 2 -->
+      <div class="formulario-experiencia" id="experiencia-2">
+        <!-- Puesto que desempeñaba -->
+        <div class="campo">
+          <label for="" class="label-2">Puesto que desempeñaba*</label>
+          <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
+            class="input-format-2" id="puesto-antiguo-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+        </div>
+        <!-- Nombre de la empresa -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la empresa*</label>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-2" placeholder="Ingrese el nombre de la empresa aquí"></input>
+        </div>
+        <!-- Fecha de inicio -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de inicio*</label>
+          <input type="date"id="periodo-inicio-antigua-2" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de fin -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de fin*</label>
+          <input type="date" id="periodo-fin-antigua-2"class="input-format-2"></input>
+        </div>
+        <!-- Actividades relevantes -->
+        <div class="campo">
+          <label for="" class="label-2">Actividades relevantes*</label>
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-2" class="input-format-2"
+            placeholder="Ingrese las actividades relevantes aquí"></textarea>
+        </div>
+
+        <div class="campo especial-2">
+          <i class="ti ti-trash-x eliminar-item" onclick="cancelar_experiencia()"></i>
+        </div>
       </div>
 
       <!-- Certificaciónes -->
@@ -289,4 +362,5 @@
   </main>
 </body>
 <script src="js/Reg_CV.js"></script>
+<!-- <script src="js/peticion_bolsat.js"></script> -->
 </html>

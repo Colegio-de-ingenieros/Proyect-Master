@@ -1,41 +1,87 @@
-.conteGeneral{
-    height: 32em;
-    width: 90%;
-    border: none;
-    background-color: none; 
-    width: 80%;
-    height: 500px;
-    justify-content: center;
-    margin: 14em auto;
-} 
-
-.parte1{
+.formulario-de-datos{
     padding: 20px 0px 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
-
 }
-
-.h3{
-    color: var(--color-black);
-    font-size: 45px;
-    font-weight: 800;
+article{
+    margin: 20px auto;
+    padding: 10px;
+    width: 1200px;
+    background-color: #dfe3e7;
 }
-
-.grupo-input{
-    display: block;
+.article-tablas article{
+    margin: 20px auto;
+    padding: 10px;
+    width: 1200px;
+    background-color: #dfe3e7;
 }
-
-.grupo-input{
-    display: block;
+.table{
+    padding: 2rem 0 0 0;
 }
-
 .label-form{
     padding-bottom: 10px;
-} 
+}
+.input-format-2{
+    width: 100%;
+}
 
-.input-format{
+.grupo-input2{
+    grid-column: span 2;
+}
+
+.grupo-input3{
+    grid-column: span 3;
+}
+
+.grupo-input4{
+    grid-column: span 3;
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.grupo-boton-reg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: span 3;
+}
+.input-textarea{
+    resize: none;
+    width: 100%;
+    height: 6rem;
+
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.input-textarea:focus{
+    box-shadow: var(--shadow-1);
+    transition: all 300ms;
+}
+
+.input-textarea:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-textarea::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-format-2{
     color: var(--color-black);
     background-color: var(--color-white);
     border-radius: var(--radius-2);
@@ -47,156 +93,79 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: 300ms all;
 }
 
-.input-format:focus{
-    background: var(--color-gray-2);
+.input-format-2:focus{
+    background: var(--color-white);
     box-shadow: var(--shadow-1);
-    transition: all 300ms;
+    transform: scale(1.02);
 }
 
-.input-format:focus::placeholder{
+.input-format-2:focus::placeholder{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
 
-.input-format::placeholder{
+.input-format-2::placeholder{
     color: var(--color-placeholder-1);
     font-size: 1rem;
     font-weight: 400;
-} 
+}
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Manrope';
+}
+.header_table {
+    max-height: 90vh;
+    width: 90%;
+    overflow: auto;
+    border: 1px solid #dddddd;
+}
 
-.boton_registrar{
+.header_table thead th {
+    top: 0;
+    background-color: #085262;
+    color: #e6e7e8;
+    font-size: 1.125rem;
+}
+th,td {
+    max-width: 150px;
+    border-bottom: 1px solid #000000;
+    padding: 10px 20px;
+    font-size: 15px;
+    text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
+    background-color: #dfe3e7;
+}
+tr:hover td {
+    color: #3a42b4;
+    cursor: pointer;
+    background-color: #ffffff;
+}
+p{
+    display: contents;
+}
+.boton-reporte{
     display: flex;
     flex-direction: column;
+    margin-left: 100px;
     align-items: center;}
-
-.input-format{
-    resize: none;
-    width: 100%;
-}
-
-/*--------------------------- Seccion responsive -----------------------------*/
-@media screen and (max-width: 1250px){
-    main{
-        margin-top: 8.5rem;
-    }
-    li.logo_menu{
-        display: none;
-    }
-    h1.nombre_Ventana{
-        color: #FFFF;
-        font-weight: 900;
-        font-size: 30px;
-    }
-    .container_menu{
-        height: fit-content;
-    }
-    .btn-cerrar-session{
-        display: flex;
-    }
-
-    .header_superior{
-        padding: 5px;
-        height: fit-content;
-        width:auto;
-    }
-    .titulo{
-        font-size: 8px;
-    }
-    .logo{
-        width: 125px;
-    }
-
-    nav > ul{
-        font-size: 12px;
-        flex-direction: column;
-        background-color: #fff;
-        position: fixed;
-        left: 0;
-        top: 169px;
-        width: 100%;
-        height: 0px;
-        transition: all 300ms ease;
-        z-index: 100;
-        opacity: 0;
-        *visibility: hidden;
-        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
-    }
-    
-    nav > ul > li > a:hover{
-        transform: scale(1);
-    }
-    
-    nav ul li ul{
-        left: 100px;
-    }
-
-    nav > ul > li:hover ul{
-        top: 20px;
-    }
-
-    nav > ul > li:first-child a{
-        background-position: 20px;
-    }
-
-    #selected{
-        transform: scale(1);
-
-    }
-
-    .icon__menu{
-        display: flex;
-    }
-
-    #check__menu:checked ~ nav > ul{
-        height: 70%;
-        visibility: visible;
-        opacity: 1;
-    }
-    .contenedor-formulario{
-        margin:auto; 
-    }
-    .section-main-trabajadores{
-        display: flex;
-        flex-direction: column;
-        width: 96%;
-    }
-}
-
-@media screen and (max-width: 760px) {
-    .nombre_Ventana{
-        font-size: 1rem;
-    }
-    .section-main-trabajadores{
-        display: flex;
-        flex-direction: column;
-        width: 98%;
-    }
-}
-
 @media screen and (max-width: 650px){
-
-    main{
-        margin-top: 10.5rem;
+    .formulario-de-datos{
+        display: block;
     }
-    img.logo_ciscig{
-        padding-right: 10px;
-        width: 54px;
+    table{
+        width: 130%;
+        border-collapse: collapse;
+        font-family: 'Manrope';
     }
-
-    .titulo{
-        padding: 0 1rem;
-    } 
-
-    .contenedor-formulario{
-        display: flow-root;
-    }
-
-    .section-main-trabajadores{
+    .sub-titulo{
         display: flex;
         flex-direction: column;
-        width: 80%;
+        align-items: flex-start; 
+        margin-left: 25rem;  
     }
-    
 }

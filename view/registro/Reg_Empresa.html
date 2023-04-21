@@ -30,9 +30,9 @@
       </div>
 
       <div class="boton-cerrar-session">
-		<form action="/view/login/login.html">
-          <input type="submit" value="Login" class="btn-cerrar-session btn">
-		</form>
+	
+        <input type="submit" value="Login" onclick="window.location.href = '../../view/login/login.html' " class="btn-cerrar-session btn">
+		
       </div>
     </div>
 
@@ -447,19 +447,14 @@
 				</div>
 			</div>
 			<br>
-			<fieldset>
-				<legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
-				<div>
-					<input type="radio" name="acuerdo" value="1"
-						   >
-					<label for="huey">Si</label>
-				  </div>
-			  
-				  <div>
-					<input type="radio" name="acuerdo" value="0" checked>
-					<label for="dewey"  >No</label>
-				  </div>
-			</fieldset>
+			<legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
+			<div>
+				<input type="checkbox" name="acuerdo" id="acuerdo1" value="1">
+				<label for="huey">Si</label>
+			
+				<input type="checkbox" name="acuerdo" id="acuerdo2" value="0">
+				<label for="huey">No</label>
+			</div>
 			<br>
 			<br>
 			<div class="grupo-input2">
