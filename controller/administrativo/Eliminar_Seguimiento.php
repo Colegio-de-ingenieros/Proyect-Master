@@ -2,15 +2,15 @@
 include_once('../../model/administrativo/Eliminar_Seguimiento.php');
 
 $idSeg = $_GET["clave"];
-$actividad = $_GET["actividad"];
-alert($idSeg + $actividad);
+$actividad = $_GET["tipo"];
 $obj = new EliminarSeguimento();
 $obj->instanciar();
 $obj->eliminarSoc($idSeg);
+$obj->eliminarEmp($idSeg);
 $obj->eliminarIns($idSeg);
-$obj->cerrarCone();
+//$obj->cerrarCone();
 
 
-echo "<script>location.href = '../../view/administrativo/Vista_Seguimento.html'</script>";
+//echo "<script>location.href = '../../view/administrativo/Vista_Seguimento.html'</script>";
 
 ?>

@@ -3,7 +3,10 @@ function confirmacion(e){
 
     if (confirm("¿Está seguro que desea eliminar este seguimiento?")) {
         e.preventDefault();
-        var actividad = $(this).data('actividad');
+        var clave = $(this).data('clave');
+        var tipo = $(this).data('tipo');
+        console.log(clave)
+        console.log(tipo)
 
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
