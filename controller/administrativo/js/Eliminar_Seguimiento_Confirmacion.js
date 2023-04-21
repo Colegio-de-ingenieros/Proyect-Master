@@ -1,19 +1,21 @@
 function confirmacion(e){
+    //../../controller/administrativo/Eliminar_Seguimiento.php
 
     if (confirm("¿Está seguro que desea eliminar este seguimiento?")) {
         e.preventDefault();
         var actividad = $(this).data('actividad');
-
+        console.log("hola", actividad)
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
             url: '../../controller/administrativo/Eliminar_Seguimiento.php', 
+            ///../../controller/administrativo/Eliminar_Proyectos.php
             type: 'GET', 
             data: {actividad: actividad}, 
             success: function (response)
             {
                 // Procesar la respuesta del servidor en caso de éxito
-                alert('Eliminado con éxito');
+                alert(response);
                 // volver a la pagina de vista
                 location.href = '../../view/administrativo/Vista_Seguimiento.html';
             },

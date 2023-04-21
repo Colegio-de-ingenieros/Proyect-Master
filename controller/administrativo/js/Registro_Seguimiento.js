@@ -2,6 +2,7 @@ let tipo;
 window.onload = function () {
   obtener_Participantes() 
   document.getElementById("radio_cursos").checked=true;
+  tipo="curso"
   nombres_act("curso")
   
 }
