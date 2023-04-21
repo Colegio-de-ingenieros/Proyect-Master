@@ -160,7 +160,7 @@ $respuesta .= "</tbody></table>";
 echo '<script type="text/javascript">
 function eli()
 {
-   var flag = confirm("¿Estás seguro de eliminar el curso con temas y subtemas?");
+   var flag = confirm("¿Está seguro de que desea eliminar el curso con temas y subtemas?");
    if(flag){
    var formData = new FormData();
    formData.append("id", JSON.stringify("' . $clave . '"));

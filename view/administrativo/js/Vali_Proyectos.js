@@ -1,23 +1,23 @@
 /* Declara una variable global */
-let bNomPro = false
-let bObjPro = false
-let bMonPro = false  
+let bNomPro = true
+let bObjPro = true
+let bMonPro = true 
 //let bFechaFin = false
 
 /*Detecta cuando el boton fue presionado*/
 let botonRegistrar = document.getElementById("registrar");
 botonRegistrar.addEventListener("click", (e) => {
    /* registrar.disabled=true;*/
-    if (ultimoNum(formulario.monto_proyecto.value) == true) {
-        bMonPro= false;
-        formulario.monto_proyecto.value = formulario.monto_proyecto.value + '0'
-    }
-    else if (bNomPro==false){
+    
+    if (bNomPro==false){
         nom_proyecto.style.border = "3px solid red";
+        e.preventDefault()
     }else if(bObjPro==false){
         obj_proyecto.style.border = "3px solid red";
+        e.preventDefault()
     }else if(bMonPro==false){
         monto_proyecto.style.border = "3px solid red";
+        e.preventDefault()
     }else{
         validar(true);
         /*registrar.disabled=false;*/
@@ -124,8 +124,11 @@ function validar(bandera){
         bMonPro = false;
         registrar.disabled = true;
     }
+    else {
+        registrar.disabled = false;
+    }
 
-    else if(bandera == true){
+    if(bandera == true){
         registrar.disabled=false;
        
     }

@@ -24,9 +24,9 @@ echo '<!-- llama al archivo que genera el excel -->
           </div>';
 
 //muestra la tabla
-echo '<div class="table">
+echo '<div >
                     <table>
-					<div class="header_table">
+					<div class="table">
                         <thead>
                             <tr>
                                 <th>Fecha</th>
@@ -48,7 +48,7 @@ for ($i=0; $i<count($asociados); $i ++){
 //pone el final de la tabla
 echo '</tr>
                           </tbody>
-                    </div>
+                  </div>
                 </table>
                 </div>
             </section>
@@ -57,6 +57,5 @@ echo '</tr>
       </div>
     </div>
   </main>
-  </div>
 </body>';
 ?>

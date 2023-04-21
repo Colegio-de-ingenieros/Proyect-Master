@@ -5,8 +5,8 @@ let bandOrg = false
 let bandHrs = false
 
 const expresiones = {
-    nombre:/^[a-zA-ZÁ-Ýá-ý\s.]{1,40}$/,
-    org:/^[a-zA-ZÁ-Ýá-ý\s]{1,40}$/,
+    nombre:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
+    org:/^[a-zA-ZÁ-Ýá-ý.\s]{1,50}$/,
     horas:/^[0-9]{3}$/,
 }
 
@@ -17,7 +17,7 @@ formulario.nombre.addEventListener('keyup', (e) => {
 	formulario.nombre.value = valorInput
 
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+     .replace(/[^a-zA-ZÁ-Ýá-ý0-9.,\s]/g, '');
    
     if (!expresiones.nombre.test(valorInput)) {
         formulario.nombre.style.border = "3px solid red";
@@ -36,7 +36,7 @@ formulario.organizacion.addEventListener('keyup', (e) => {
     formulario.organizacion.value = valorInput
     
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý.\s]/g, '');
 
     if (!expresiones.org.test(valorInput)) {
         formulario.organizacion.style.border = "3px solid red";
