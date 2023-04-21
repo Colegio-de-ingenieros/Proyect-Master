@@ -177,14 +177,14 @@
         <!-- Expectativa salarial bruta -->
         <div class="campo">
           <label for="" class="label-2">Expectativa salarial bruta*</label>
-          <input title="El campo expectativa salarial bruta solo debe de contener números." type="text"
+          <input id="salario" title="El campo expectativa salarial bruta solo debe de contener números." type="text"
             class="input-format-2" placeholder="Ingrese su expectativa salarial bruta aquí"></input>
         </div>
       </div>
 
       <div class="formulario-descripcion">
         <label for="" class="label-2">Descripción profesional*</label>
-        <textarea title="Ingrese su descripción profesional." name="" id="" class="input-format-2"
+        <textarea title="Ingrese su descripción profesional." name="" id="objetivo" class="input-format-2"
           placeholder="Ingrese la descripción profesional"></textarea>
       </div>
       <!-- Experiencia académica -->
@@ -205,7 +205,7 @@
         <!-- Número de cédula -->
         <div class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
       </div>
       <br>
@@ -223,7 +223,7 @@
         <!-- Número de cédula -->
         <div class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
 
         <div class="campo especial">
@@ -371,4 +371,5 @@
 </body>
 <script src="js/Reg_CV.js"></script>
 <script src="js/peticion_bolsat.js"></script>
+<script src="js/Vali_Reg_CV.js"></script>
 </html>
