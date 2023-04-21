@@ -4,11 +4,11 @@ $salida = '';
 $base = new MostrarOfertas();
 $base->instancias();
 $url= $_GET['id'];
-//echo $url;
 $id=0;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
-    $resultado = $base->buscador($busqueda);
+
+    $resultado = $base->buscadorAplicante($busqueda,$url);
     
     if ($resultado == true) {
         //pone los encabezados de la tabla
@@ -178,8 +178,8 @@ function confirmDesactiv()
 }
 
 </script>';
-//echo '<script>alert("si entra al php");</script>';
+
 
 echo $salida;
-//echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
+
 ?>

@@ -78,4 +78,4 @@ echo $salida;
 
 ?>
 
-<script src="../../controller/administrativo/js/Eliminar_Seguimiento_Confirmacion.js"></script>;
+<script src="../../controller/administrativo/js/Eliminar_Seguimiento_Confirmacion.js"></script>

@@ -179,9 +179,10 @@ echo '<script type="text/javascript">
 function confirmDesactiv()
 {
    var flag = confirm("¿Estás seguro de eliminar al trabajador?");
-   if(flag)
+   if(flag){
         window.location.assign("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
-    else
+        alert("Eliminado con éxito");
+   }else
         window.location.assign("Vista_Trabajadores.php");
 }
 

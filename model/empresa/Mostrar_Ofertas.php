@@ -24,9 +24,9 @@ class MostrarOfertas{
         return $resultados;
     }
     function buscadorAplicante($buscar,$id){
-        $querry = "SELECT * FROM bolsaempresa 
-        WHERE VacEmpBol LIKE :busqueda OR TelEmpBol LIKE :busqueda AND IdEmpBol = :id";
-        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%",":id" => $id]);
+        $querry = "SELECT * FROM bolsaempcv, bolsaempresa
+        WHERE bolsaempresa.VacEmpBol LIKE :busqueda OR TelEmpBol LIKE :busqueda AND bolsaempresa.IdEmpBol = :id";
+        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$buscar."%",":id" => $id]);
 
         return $resultados;
     }

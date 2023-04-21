@@ -68,7 +68,6 @@ function verSeleccion(e) {
 }
 
 function nombres_act(tipo){
-  console.log("ooo")
   let envio=0
   let valueHidden = 0; 
   let url = "../../controller/administrativo/Registro_Seguimiento.php";
@@ -84,21 +83,38 @@ function nombres_act(tipo){
   })
       .then(response => response.json())
       .then(data => {
-        console.log("lehbrflheb", data)
-        rellenar_nombre_tipo(data);
+        rellenar_nombre_tipo(data, tipo);
     })
 }
 
-function rellenar_nombre_tipo(datos) {
+function rellenar_nombre_tipo(datos, tipo) {
   document.getElementById("nombre").innerHTML = "";
+  console.log(datos)
+  console.log(datos.length)
+  if (datos.length==0){
+    if (tipo=="curso"){
+      msj="No hay cursos registrados"
+    }else if(tipo=="proyecto"){
+      msj="No hay proyectos registrados"
+    }else{
+      msj="No hay certificaciones registradas"
+    }
+    var optionElement = document.createElement("option");
+    optionElement.value = "Vacio";
+    optionElement.text = msj;
+    document.getElementById("nombre").appendChild(optionElement)
+    document.getElementById("nombre").disabled = true;
+  } else{
   datos.forEach(registro => {
-      var optionElement = document.createElement("option");
-      optionElement.value = registro[0];
-      optionElement.text = registro[1];
-      document.getElementById("nombre").appendChild(optionElement);
-  });
+        var optionElement = document.createElement("option");
+        optionElement.value = registro[0];
+        optionElement.text = registro[1];
+        document.getElementById("nombre").appendChild(optionElement)
+    });
+  }
   
 }
+
 
 let formulario  = document.getElementById("formulario");
 formulario.addEventListener("submit",(e)=>{
@@ -108,8 +124,8 @@ formulario.addEventListener("submit",(e)=>{
     let instructores = document.getElementById("instructores");
     let socio_asociado =document.getElementById("nom_socio_asociado");
     let empresa = document.getElementById("nom_empresa");
-    if (nombre=="") {
-      alert("Por favor, seleccione el tipo de actividad");
+    if (document.getElementById("nombre").disabled == true) {
+      alert("Por favor, seleccione un tipo de activiadd que si tenga registros");
     } else if (document.getElementById("instructores").disabled == true){
       alert("No se han encontrado instructores registrados")
     } else if(instructores.value.length == 0){

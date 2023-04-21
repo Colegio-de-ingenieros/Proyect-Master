@@ -1,7 +1,10 @@
 let tipo;
 window.onload = function () {
+    console.log("cargar")
+    document.getElementById("radio_proyecto").checked=false;
+    document.getElementById("radio_certificaciones").checked=false;
+    document.getElementById("radio_cursos").checked=true;
     tipo=document.getElementById("oculto").value;
-    console.log("Uno", tipo, "Uno")
     $(buscar_datos());
 }
 
@@ -13,7 +16,6 @@ for (const radioButton of radioButtons) {
 function verSeleccion(e){
     if (this.checked) {
         tipo=this.value
-        console.log("Seleccion", tipo, "Seleccion")
         $(buscar_datos());
     }
 }
@@ -45,28 +47,3 @@ $(document).on('keyup', '#busqueda', function (){
     }
 })
 
-
-/* const radioButtons = document.querySelectorAll('input[name="radio"]');
-for (const radioButton of radioButtons) {
-  radioButton.addEventListener('change', verSeleccion);
-}
-
-function verSeleccion(e) {
-  if (this.checked) {
-    let tipo=this.value
-    //console.log(this.value)
-    let url = '../../controller/administrativo/Mostrar_Seguimiento.php';
-
-    let form = new FormData();
-    form.append("tipo", tipo);
-
-    fetch(url, {
-      method: "POST",
-      body: form
-    })
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
-      })
-  }
-} */
