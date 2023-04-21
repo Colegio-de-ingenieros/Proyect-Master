@@ -62,8 +62,8 @@ class MostrarProyectos{
     }
 
     function consultaInteligente($valor){
-        $querry = "SELECT IdPro, NomProyecto, DATE_FORMAT(IniPro, '%d/%m/%Y') IniPro,DATE_FORMAT(FinPro, '%d/%m/%Y') FinPro, MontoPro, ObjPro FROM proyectos
-        WHERE NomProyecto LIKE :q LIKE :q OR MontoPro LIKE :q or DATE_FORMAT( IniPro, '%d/%m/%Y' ) LIKE :q  or DATE_FORMAT( FinPro, '%d/%m/%Y' ) LIKE :q ";
+        $querry = "SELECT IdPro, NomProyecto, DATE_FORMAT(IniPro, '%d/%m/%Y') IniPro, DATE_FORMAT(FinPro, '%d/%m/%Y') FinPro, MontoPro, ObjPro FROM proyectos
+        WHERE NomProyecto LIKE :q OR MontoPro LIKE :q or DATE_FORMAT( IniPro, '%d/%m/%Y' ) LIKE :q  or DATE_FORMAT( FinPro, '%d/%m/%Y' ) LIKE :q";
 
         $arre = [":q"=>'%'.$valor.'%'];
 
