@@ -26,8 +26,15 @@ let ac_tele = document.getElementById("ac_tele");
 let ac_exten = document.getElementById("ac_exten");
 let ac_correo = document.getElementById("ac_correo");
 
-let acuerdo = document.getElementById("acuerdo");
+let acuerdo_si = document.getElementById("acuerdo1");
+let acuerdo_no = document.getElementById("acuerdo2");
 
+acuerdo_si.addEventListener("click",(e)=>{
+    acuerdo_no.checked = false;
+});
+acuerdo_no.addEventListener("click",(e)=>{
+    acuerdo_si.checked = false;
+})
 
 document.getElementById("codigo_postal").addEventListener('blur', (e) => {
     let contenido =  document.getElementById("codigo_postal").value;
@@ -62,27 +69,27 @@ formulario.addEventListener("submit",(e)=>{
     let aviso_privacidad = document.getElementById("avisos1");
     let time_inicio = document.getElementById("inicio");
     let time_fin = document.getElementById("fin");
+    
     let dias = checke();
 
-    
-
+  
     if (dias.length == 0) {
         alert("Por favor, seleccione al menos un día laboral.");
     }else if(time_inicio.value.length == 0){
         alert("Por favor, seleccione una hora de inicio.");
     }else if(time_fin.value.length == 0){
-        alert("Por favor, seleccione una hora de finalización.");
+        alert("Por favor, seleccione una hora de finalización.");    
+    }else if(acuerdo_si.checked == false && acuerdo_no.checked == false){
+        alert("Por favor, idique si cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales");
     }else if(aviso_privacidad.checked == false){
         alert("Para continuar con el registro, debe aceptar el aviso de privacidad.");
     } 
 
-    if (dias.length > 0 && aviso_privacidad.checked && time_inicio.value.length > 0 && time_fin.value.length > 0 ) {
+    if (dias.length > 0 && aviso_privacidad.checked && time_inicio.value.length > 0 && time_fin.value.length > 0 && (acuerdo_si.checked == true || acuerdo_no.checked == true) ) {
          /** extraemos los datos del formulario */
 
         let formulario_data = new FormData(e.target);
-        if(!acuerdo.checked){
-            formulario_data.append("acuerdo","0");
-        }
+       
         dias.forEach(dia => {
             formulario_data.append("dias[]",dia)
         });

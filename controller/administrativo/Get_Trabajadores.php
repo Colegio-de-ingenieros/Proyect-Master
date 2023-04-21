@@ -3,7 +3,7 @@
 $rfc = $_GET["rfc"];
 
 //llamar a los otros archivos que se ocupan
-include_once('../../model/Mostrar_Trabajadores.php');
+include_once('../../model/administrativo/Mostrar_Trabajadores.php');
 include_once('../../view/administrativo/Modi_Trabajadores.html');
 //instancias la clase para buscar y traer los datos
 $base = new MostrarTrabajadores();
