@@ -1,7 +1,7 @@
 <?php
-include_once('../../model/empresa/Mostrar_Ofertas.php');
+include_once('../../model/empresa/Mostrar_Aplicantes.php');
 $salida = '';
-$base = new MostrarOfertas();
+$base = new MostrarAplicantes();
 $base->instancias();
 $url= $_GET['id'];
 $id=0;
@@ -43,11 +43,11 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre vacante</th>
-                                <th>Requisitos académicos</th>
-                                <th>Experiencia requerida</th>
-                                <th>Contacto</th>
-                                <th>Numero de Aplicantes</th>
+                                <th>Nombre Trabajador</th>
+                                <th>Cédula</th>
+                                <th>Nombre de carrera</th>
+                                <th>Telefono</th>
+                                <th>Salario esperado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -57,18 +57,22 @@ if (isset($_POST['consulta'])) {
         for ($i = 0; $i < count($resultado); $i++) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $id = $resultado[$i]["IdEmpBol"];
-            $idVAC = $resultado[$i]["IdBolCv"];
+            $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
+            $carrera= $resultado[$i]["Carrera"];
+            $cedula= $resultado[$i]["NumCedAca"];
+            $sal= $resultado[$i]["ExpSalCv"];
+            $tel = $resultado[$i]["TelMPerso"];
+            $id = $resultado[$i]["IdBolCv"];
             //$extension = getExt($logo);
     
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $id . '</td>';
-            $salida .= '<td>' . $idVAC . '</td>';
-            $salida .= '<td>' . '$exp '. '</td>';
-            $salida .= '<td>' . '$tel' . '</td>';
-            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $nom . '</td>';
+            $salida .= '<td>' . $cedula . '</td>';
+            $salida .= '<td>' . $carrera . '</td>';
+            $salida .= '<td>' . $tel . '</td>';
+            $salida .= '<td>' . $sal . '</td>';
+            $salida .= '<td><a href="#" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
@@ -84,7 +88,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getAplicante($url);
+    $resultado = $base->getAplicantes($url);
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -118,11 +122,11 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre vacante</th>
-                                <th>Requisitos académicos</th>
-                                <th>Experiencia requerida</th>
-                                <th>Contacto</th>
-                                <th>Numero de Aplicantes</th>
+                                <th>Nombre Trabajador</th>
+                                <th>Cédula</th>
+                                <th>Nombre de carrera</th>
+                                <th>Telefono</th>
+                                <th>Salario esperado</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -132,18 +136,22 @@ if (isset($_POST['consulta'])) {
         for ($i = 0; $i < count($resultado); $i++) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $id = $resultado[$i]["IdEmpBol"];
-            $idVAC = $resultado[$i]["IdBolCv"];
+            $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
+            $carrera= $resultado[$i]["Carrera"];
+            $cedula= $resultado[$i]["NumCedAca"];
+            $sal= $resultado[$i]["ExpSalCv"];
+            $tel = $resultado[$i]["TelMPerso"];
+            $id = $resultado[$i]["IdBolCv"];
             //$extension = getExt($logo);
     
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $id . '</td>';
-            $salida .= '<td>' . $idVAC . '</td>';
-            $salida .= '<td>' . '$exp '. '</td>';
-            $salida .= '<td>' . '$tel' . '</td>';
-            $salida .= '<td>' .'0' . '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.html?id='.$id.'" >Ver Aplicantes</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$id.'" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $nom . '</td>';
+            $salida .= '<td>' . $cedula . '</td>';
+            $salida .= '<td>' . $carrera . '</td>';
+            $salida .= '<td>' . $tel . '</td>';
+            $salida .= '<td>' . $sal . '</td>';
+            $salida .= '<td><a href="#" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
             //
@@ -170,7 +178,7 @@ echo '<script type="text/javascript">
 
 function confirmDesactiv()
 {
-   var flag = confirm("¿Estás seguro de eliminar la oferta?");
+   var flag = confirm("¿Estás seguro de eliminar este oferta?");
    if(flag)
         window.location.assign("../../controller/empresa/Eliminar_Oferta.php?id='.$id.'");
     else
