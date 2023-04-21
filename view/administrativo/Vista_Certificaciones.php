@@ -124,12 +124,12 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-
+        
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-            </li>
+				    </li>
 
             <li>
               <a href="#">
