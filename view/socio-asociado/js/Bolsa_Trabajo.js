@@ -17,33 +17,23 @@ window.onload = function () {
 
   const resultado = (json) => {
     listOfLists = json.map(obj => Object.values(obj));
-    listOfLists = listOfLists.map(list => list.slice(0, 16));
+    listOfLists = listOfLists.map(list => list.slice(0, 18));
     
     let tarjetas = document.getElementById("cards");
 
     for (let i = 0; i < listOfLists.length; i++) {
-      let formato_salario_neto = listOfLists[i][7] + "MXN Mensuales"; 
+      let formato_salario_neto = listOfLists[i][7] + " MXN Mensuales"; 
+      let formato_direccicon = listOfLists[i][16] + ", " + listOfLists[i][17];
+      let formato_nombre_empresa = listOfLists[i][15];
 
       let valor_jornada = listOfLists[i][13];
-      let valor_modalidad = listOfLists[i][14];
       let texto_jornada = "";
-      let texto_modalidad = "";
       
       if(valor_jornada === "1"){
         texto_jornada = "Tiempo Completo";
       }
       else if(valor_jornada === "2"){
         texto_jornada = "Medio Tiempo";
-      }
-
-      if(valor_modalidad === "1"){
-        texto_modalidad = "Híbrido";
-      }
-      else if(valor_modalidad === "2"){
-        texto_modalidad = "Home Office";
-      }
-      else if(valor_modalidad === "3"){
-        texto_modalidad = "Presencial";
       }
 
       body = `
@@ -53,8 +43,8 @@ window.onload = function () {
           <p class="titulo-vacante">${listOfLists[i][1]}</p>
 
           <div class="info-1">
-            <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">${listOfLists[i][15]}</span></p>
-            <p class="lugar"><i class="ti ti-map-2"></i>${listOfLists[i][11]}</p>
+            <p class="empresa"><i class="ti ti-id-badge-2"></i>Ofrecido por: <span class="nombre-empresa">${formato_nombre_empresa}</span></p>
+            <p class="lugar"><i class="ti ti-map-2"></i>${formato_direccicon}</p>
 
             <p class="salario"><i class="ti ti-cash"></i>${formato_salario_neto}</p>
             <p class="jornada"><i class="ti ti-hourglass-empty"></i>${texto_jornada}</p>
@@ -143,7 +133,7 @@ function mostrar_modal(id_vacante) {
           jornada.innerHTML = texto_jornada
           modalidad.innerHTML = texto_modalidad;
           telefono.innerHTML = listOfLists2[i][10];
-          correo.innerHTML = listOfLists2[i][11];
+          correo.innerHTML = listOfLists2[i][12];
         }
       }
     }

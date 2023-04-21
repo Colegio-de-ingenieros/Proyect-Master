@@ -7,13 +7,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro Cursos</title>
+  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <title>Registro de cursos</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cursos.css">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+  
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
@@ -104,8 +104,8 @@
   <main>
     <section class="section-main">
       <div class="cabezera">
-        <h3 class="h3">Registro de cursos</h2>
-        <form action="/upload" method="post" enctype="multipart/form-data">
+        <h3 class="h3">Registro</h2>
+        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
           <p class="subtitulo-1">Datos del curso</p>
           <hr>
       </div>
@@ -114,30 +114,33 @@
         <!-- Nombre -->
         <div class="campo">
           <label for="" class="label-2">Nombre*</label>
-          <input type="text" class="input-format-2" id="nombre-campo" readonly></input>
+          <input type="text" class="input-format-2" id="nombre" name="nombre" required maxlength="40"></input>
         </div>
         <!-- Org -->
         <div class="campo">
           <label for="" class="label-2">Organización*</label>
-          <input type="text" class="input-format-2" id="apellido-paterno-campo" readonly></input>
+          <input type="text" class="input-format-2" id="organizacion" name="organizacion" required maxlength="40"></input>
         </div>
         <!-- HORAS -->
         <div class="campo">
           <label for="" class="label-2">Total de horas</label>
-          <input type="text" class="input-format-2" id="apellido-materno-campo" readonly></input>
+          <input type="text" class="input-format-2" id="totalhoras" name="totalhoras" required maxlength="3"></input>
         </div>
         <!-- PDF -->
         <div class="campo">
-            <label for="archivo">Seleccione un archivo PDF:</label>
-            <input type="file" id="archivo" name="archivo" accept="application/pdf">
+          <label for="" class="label-2">Seleccione un archivo PDF</label>
+            <input type="file" class="input-format-2" id="archivo" name="archivo" accept="application/pdf" required>
             <br><br>
-            <input type="submit" value="Subir archivo">
+            
           </div>
+          <div></div>
+          <div></div>
+          <div></div>
         
         
 
       <div class="botones-registro">
-        <button class="btn btn-medium">Guardar registro</button>
+        <button id="boton_registrar" class="btn btn-medium">Guardar registro</button>
       </div>
 
     </form>
@@ -146,6 +149,9 @@
     <span id="id-usuario" style="display:none">P0001</span>
 
   </main>
+
+  <script src="js/Registro_cursos.js"></script>
+  <script src="js/Vali_cursos.js"></script>
 </body>
 
 </html>

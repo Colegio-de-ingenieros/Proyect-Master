@@ -1,5 +1,5 @@
 <?php
-require_once('../../model/Reg_personalnuevo.php');
+require_once('../../model/Reg_personal.php');
 $objeto=new Personal();
 $data=[];
 if(isset($_POST["cpPerso"])){
