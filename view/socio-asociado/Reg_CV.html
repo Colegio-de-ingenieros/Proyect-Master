@@ -248,46 +248,83 @@
         </div>
       </div>
 
-
       <!-- Experiencia profesional -->
       <div class="divisor">
         <p class="subtitulo-1">Experiencia profesional</p>
         <hr>
       </div>
 
-      <div class="formulario-experiencia">
+      <!-- Formulario experiencia 1 -->
+      <div class="formulario-experiencia" id="experiencia-1">
         <!-- Puesto que desempeñaba -->
         <div class="campo">
           <label for="" class="label-2">Puesto que desempeñaba*</label>
           <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
-            class="input-format-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+            class="input-format-2" id="puesto-antiguo-1" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
         </div>
         <!-- Nombre de la empresa -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la empresa*</label>
-          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" class="input-format-2"
-            placeholder="Ingrese el nombre de la empresa aquí"></input>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-1" placeholder="Ingrese el nombre de la empresa aquí"></input>
         </div>
         <!-- Fecha de inicio -->
         <div class="campo">
-          <label for="" class="label-2">Fecha de inicio*</label>
-          <input type="date" class="input-format-2"></input>
+          <label for="" class="label-2">Periodo de inicio*</label>
+          <input type="date" id="periodo-inicio-antigua-1" class="input-format-2"></input>
         </div>
         <!-- Fecha de fin -->
         <div class="campo">
-          <label for="" class="label-2">Fecha de fin*</label>
-          <input type="date" class="input-format-2"></input>
+          <label for="" class="label-2">Periodo de fin*</label>
+          <input type="date" id="periodo-fin-antigua-1" class="input-format-2"></input>
         </div>
         <!-- Actividades relevantes -->
         <div class="campo">
           <label for="" class="label-2">Actividades relevantes*</label>
-          <textarea title="Ingrese las actividades relevantes." name="" id="" class="input-format-2"
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-1" class="input-format-2"
             placeholder="Ingrese las actividades relevantes aquí"></textarea>
         </div>
+
       </div>
 
-      <div class="botones-experiencia">
-        <button class="btn btn-small">Agregar experiencia</button>
+      <div class="botones-experiencia" id="boton-experiencia-1">
+        <button class="btn btn-small" onclick="nueva_experiencia()">Agregar experiencia</button>
+      </div>
+
+      <!-- Formulario experiencia 2 -->
+      <div class="formulario-experiencia" id="experiencia-2">
+        <!-- Puesto que desempeñaba -->
+        <div class="campo">
+          <label for="" class="label-2">Puesto que desempeñaba*</label>
+          <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
+            class="input-format-2" id="puesto-antiguo-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+        </div>
+        <!-- Nombre de la empresa -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la empresa*</label>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-2" placeholder="Ingrese el nombre de la empresa aquí"></input>
+        </div>
+        <!-- Fecha de inicio -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de inicio*</label>
+          <input type="date"id="periodo-inicio-antigua-2" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de fin -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de fin*</label>
+          <input type="date" id="periodo-fin-antigua-2"class="input-format-2"></input>
+        </div>
+        <!-- Actividades relevantes -->
+        <div class="campo">
+          <label for="" class="label-2">Actividades relevantes*</label>
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-2" class="input-format-2"
+            placeholder="Ingrese las actividades relevantes aquí"></textarea>
+        </div>
+
+        <div class="campo especial-2">
+          <i class="ti ti-trash-x eliminar-item" onclick="cancelar_experiencia()"></i>
+        </div>
       </div>
 
       <!-- Certificaciónes -->

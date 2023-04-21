@@ -69,6 +69,14 @@ main {
     display: none;
 }
 
+#experiencia-2{
+    display: none;
+}
+
+#boton-experiencia-2{
+    display: none;
+}
+
 .formulario-certificaciones{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -100,6 +108,10 @@ main {
 }
 
 .especial{
+    margin-bottom: 7px;
+}
+.especial-2{
+    margin-top: 32px;
     margin-bottom: 7px;
 }
 /* ***************************************

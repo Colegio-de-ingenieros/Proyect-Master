@@ -64,7 +64,6 @@ function nueva_carrera_1() {
     boton2.style.display = "block";
     fila_2 = 1;
   }
-
 }
 
 function cancelar_carrera_1() {
@@ -125,4 +124,31 @@ function cancelar_carrera_2() {
     fila_3 = 0;
   }
   
+}
+
+function nueva_experiencia(){
+  let experiencia_formulario_2 = document.getElementById("experiencia-2");
+  let boton_experiencia_1 = document.getElementById("boton-experiencia-1");
+
+  boton_experiencia_1.style.display = "none";
+  experiencia_formulario_2.style.display = "grid"
+}
+
+function cancelar_experiencia(){
+  let puesto_antiguo_2 = document.getElementById("puesto-antiguo-2");
+  let empresa_antigua_2 = document.getElementById("empresa-antigua-2");
+  let periodo_inicio_2 = document.getElementById("periodo-inicio-antigua-2");
+  let periodo_fin_2 = document.getElementById("periodo-fin-antigua-2");
+  let actividad_antigua_2 = document.getElementById("actividad-antigua-2");
+  let experiencia_formulario_2 = document.getElementById("experiencia-2");
+  let boton_experiencia_1 = document.getElementById("boton-experiencia-1");
+
+  puesto_antiguo_2.value = "";
+  empresa_antigua_2.value = "";
+  periodo_inicio_2.value = '';
+  periodo_fin_2.value = '';
+  actividad_antigua_2.value = '';
+  experiencia_formulario_2.style.display = "none";
+  boton_experiencia_1.style.display = "block"
+
 }
