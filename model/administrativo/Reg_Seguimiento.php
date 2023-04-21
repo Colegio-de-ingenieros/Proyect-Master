@@ -269,7 +269,7 @@
             $this->cerrar_conexion();
         }
 
-        function estatus_certifica($idcert){
+        public function estatus_certifica($idcert){
             $this->conexion_bd();
             $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
             $arre = [":estatus"=>0, ":id"=>$idcert ];
@@ -277,7 +277,7 @@
             $this->cerrar_conexion();
         }
 
-        function estatus_cursos($idcurso){
+        public function estatus_cursos($idcurso){
             $this->conexion_bd();
             $querry = "UPDATE cursos SET EstatusCur=:estatus WHERE ClaveCur=:id";
             $arre = [":estatus"=>0, ":id"=>$idcurso ];
@@ -285,7 +285,7 @@
             $this->cerrar_conexion();
         }
 
-        function estatus_ins($idIns){
+        public function estatus_ins($idIns){
             $this->conexion_bd();
             $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
             $arre = [":estatus"=>0, ":id"=>$idIns ];
