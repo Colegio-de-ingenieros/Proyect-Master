@@ -6,17 +6,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro CV - CISCIG</title>
+  <title>Registro CV</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
@@ -189,7 +190,24 @@
         <hr>
       </div>
 
-      <div class="formulario-academica">
+      <div class="formulario-academica" id="academico-1">
+        <!-- Nombre de la carrera -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Nombre de la carrera*</label>
+          <input title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Número de cédula*</label>
+          <input title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+        </div>
+      </div>
+
+      <div class="botones-academica" id="botones-1">
+        <button class="btn btn-small" onclick="nueva_carrera_1()">Agregar carrera</button>
+      </div>
+
+      <div class="formulario-academica" id="academico-2">
         <!-- Nombre de la carrera -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera*</label>
@@ -206,9 +224,27 @@
         </div>
       </div>
 
-      <div class="botones-academica">
+      <div class="botones-academica" id="botones-2">
         <button class="btn btn-small">Agregar carrera</button>
       </div>
+
+      <div class="formulario-academica" id="academico-3">
+        <!-- Nombre de la carrera -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Nombre de la carrera*</label>
+          <input title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Número de cédula*</label>
+          <input title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+        </div>
+
+        <div id="carrera-1"class="campo especial">
+          <i class="ti ti-trash-x eliminar-item" onclick="eliminar_carrera('carrera-1')"></i>
+        </div>
+      </div>
+
 
       <!-- Experiencia profesional -->
       <div class="divisor">
