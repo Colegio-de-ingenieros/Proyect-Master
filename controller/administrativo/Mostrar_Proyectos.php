@@ -128,4 +128,4 @@ else{
 echo $salida;
 
 ?>
-<script src="../../controller/administrativo/js/Eliminar_Proyectos_Confirmacion.js"></script>;
+<script src="../../controller/administrativo/js/Eliminar_Proyectos_Confirmacion.js"></script>
