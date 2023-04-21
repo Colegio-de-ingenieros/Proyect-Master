@@ -80,7 +80,6 @@ function mostrar_modal(id_vacante) {
     const resultado = (json) => {
       let listOfLists2 = json.map(obj => Object.values(obj));
       listOfLists2 = listOfLists2.map(list => list.slice(0, 16));
-      console.log(listOfLists2);
       for(let i = 0; i < listOfLists2.length; i++){
         if(listOfLists2[i][0] == id_vacante){
           const nombre_vacante = document.getElementById('nombre-vacante');
