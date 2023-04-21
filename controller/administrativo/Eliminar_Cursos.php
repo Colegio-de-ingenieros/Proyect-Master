@@ -17,7 +17,7 @@ $estatus = $bd->buscaestatus($id);
 $estacur= $estatus[0]["EstatusCur"];
 
 if ($estacur == "0") {
-    echo "No se puede eliminar un curso activo";
+    echo "Error, el curso no puede ser eliminado porque tiene un seguimiento";
 }
 else{
 $datost = $bd->t($id);
