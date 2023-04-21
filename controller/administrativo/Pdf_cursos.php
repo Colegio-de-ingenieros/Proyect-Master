@@ -11,6 +11,7 @@
             $this->Image('../../public/img/ciscigCompleto.png',10,8,50);
             // Arial bold 15
             $this->SetFont('Arial','B',16);
+            $this->SetTextColor(33,45,106);
             // Movernos a la derecha
             $this->Cell(83);
             // Título
@@ -38,7 +39,7 @@
 
     $id = $_GET['id'];
 
-    include_once('../../model/Ver_Cursos.php');
+    include_once('../../model/administrativo/Ver_Cursos.php');
 
     $respuesta = '';
     $bd = new VerCurso();
