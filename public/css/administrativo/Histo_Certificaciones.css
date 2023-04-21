@@ -74,6 +74,7 @@ th,td {
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
+    font-weight: normal;
     text-align: center;
     word-wrap: break-word;
     white-space: normal;
