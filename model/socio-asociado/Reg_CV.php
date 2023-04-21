@@ -10,7 +10,22 @@
         }
 
         function extraer_datos_usuario($id){
-            $query = "SELECT usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso, usuaperso.FechaNacPerso, usuaperso.CallePerso, colonias.nomcolonia, municipios.nommunicipio, estados.nomestado FROM usuaperso, persolugares, colonias, municipios, estados WHERE usuaperso.IdPerso = :id and usuaperso.IdPerso = persolugares.IdPerso and persolugares.IdColonia = colonias.IdColonia and colonias.idmunicipio = municipios.idmunicipio and municipios.idestado = estados.idestado";
+            $query = "SELECT usuaperso.NomPerso, 
+                            usuaperso.ApePPerso, 
+                            usuaperso.ApeMPerso, 
+                            usuaperso.FechaNacPerso, 
+                            usuaperso.TelMPerso, 
+                            usuaperso.CallePerso, 
+                            usuaperso.CorreoPerso, 
+                            colonias.nomcolonia, 
+                            municipios.nommunicipio, 
+                            estados.nomestado 
+                        FROM usuaperso, persolugares, colonias, municipios, estados 
+                        WHERE usuaperso.IdPerso = :id 
+                        and usuaperso.IdPerso = persolugares.IdPerso 
+                        and persolugares.IdColonia = colonias.IdColonia 
+                        and colonias.idmunicipio = municipios.idmunicipio 
+                        and municipios.idestado = estados.idestado";
             $array = [":id"=>$id];
             $resultados = $this->base->mostrar($query, $array);
 
