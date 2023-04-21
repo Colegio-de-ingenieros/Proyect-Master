@@ -1,5 +1,6 @@
+<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -8,8 +9,8 @@
   <title>Reportes</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Rep_Individual.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Vista_ReporteIn.css">
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -17,237 +18,291 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-
 </head>
 
 <body>
-    <header>
-        <div class="header_superior">
-            <div class="titulo">
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
 
-            <div class="nombre_ventana">
-                <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-                <h1 class="nombre_Ventana">Reporte individual</h1>
-            </div>
-
-            </div>
-
-            <div class="boton-cerrar-session">
-            <button class="btn-cerrar-session btn">Cerrar sesión</button>
-            </div>
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Reporte individual</h1>
         </div>
 
-        <!-- Menu Desplegable -->
-        <div class="container_menu">
-            <div class="menu">
-            <input type="checkbox" id="check__menu">
-            <label id="label__check" for="check__menu">
-                <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
-            </label>
-            <nav>
-                <ul>
+      </div>
 
-                <li>
-                    <a href="#">
-                    <i class="fa-regular fa-user"></i>
-                    Usuarios
-                    </a>
-
-                    <ul>
-                    <li><a id="menuProducto1" href="#">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-user-tie"></i>
-                    Trabajadores
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-circle-check"></i>
-                    Certificaciones
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-chalkboard-user"></i>
-                    Cursos
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-clipboard-list"></i>
-                    Proyectos
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-person-chalkboard"></i>
-                    Instructores
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="#">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-chart-column"></i>
-                    Seguimiento
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="#">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-file-lines"></i>
-                    Reportes
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Individual</a></li>
-                    <li><a id="menuSucursal2" href="#">General</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-file"></i>
-                    Pólizas
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                    <li><a id="menuSucursal2" href="#">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-user-gear"></i>
-                    Servicios
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Mostrar</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="#">
-                    <i class="fa-solid fa-briefcase"></i>
-                    Bolsa de trabajo
-                    </a>
-
-                    <ul>
-                    <li><a id="menuSucursal1" href="#">Ofertas</a></li>
-                    </ul>
-                </li>
-                </ul>
-            </nav>
-            </div>
-        </div>
-
-    </header>
-    <div class="conteGeneral">
-        <h3 class="h3">Reporte individual</h3>
-        <br>
-        <hr size="1px"/>
-        <br>
-        <p class="label-2">Seleccione una actividad*</p>
-        <div class="parte1">
-            <div class="grupo-input">
-                <div class="label-form">
-                    <input type="radio" value="0">
-					<label class="label-2"  > Cursos</label>
-                </div>
-            </div>
-            <div class="grupo-input">
-                <div class="label-form">
-                    <input type="radio" value="0">
-					<label class="label-2"  > Certificaciones</label>
-                </div>
-            </div>
-            <div class="grupo-input">
-                <div class="label-form">
-                    <input type="radio" value="0">
-					<label class="label-2"  > Proyectos</label>
-                </div>
-            </div>
-            <div class="grupo-input">
-                <div class="label-form">
-                    <p class="label-2"> Nombre*</p>
-                    <select class="input-format">
-                        <option value="0">Seleccione un nombre</option>
-                    </select>
-                </div>
-            </div>
-        </div> 
-
-        <p class="label-2">Modo</p>
-        <hr size="1px"/>
-        <div class="parte1">
-            <div class="grupo-input">
-                <div class="label-form">
-                    <input type="radio" value="0">
-					<label class="label-2"  > Historial completo</label>
-                </div>
-            </div>
-            <div class="grupo-input">
-                <div class="label-form">
-                    <input type="radio" value="0" >
-					<label class="label-2"  > Periodo</label>
-                </div>
-            </div>
-            
-            <div class="grupo-input">
-                <div class="label-form">
-                    <p class="label-2"> Inicio</p>
-                    <input type="date" class="input-format" placeholder="Date">
-            </div>
-            <br>
-            <div class="grupo-input">
-                <div class="label-form">
-                    <p class="label-2"> Fin</p>
-                    <input type="date" class="input-format" placeholder="Date">
-            </div>
-        </div>
-        <br>
-        <div class="boton_registrar">
-            <input type="submit" class="btn-medium btn" value="Generar reporte" >
-        </div>
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+      </div>
     </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Individual</a></li>
+                <li><a id="menuSucursal2" href="#">General</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Ofertas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-main">
+    <h4 class="h4">Datos generales</h4>
+      <hr>
+      <form class="formulario-de-datos" id="formulario">
+        <div class="grupo-input3">
+            <div class="label-form">
+                <p class="label-2">Tipo*</p>
+            </div>
+        </div>
+        <div class="grupo-input">
+            <input type="radio" class="radio-button-format" placeholder="Radio">
+            <b>Cursos</b>
+        </div>
+
+        <div class="grupo-input">
+            <input type="radio" class="radio-button-format" placeholder="Radio" >
+            <b>Certificaciones</b>
+        </div>
+
+        <div class="grupo-input">
+            <input type="radio" class="radio-button-format" placeholder="Radio">
+            <b>Proyecto</b>
+        </div>
+
+        <div class="grupo-input">
+            <div class="label-form">
+                <p class="label-2">Nombre*</p>
+            </div>
+            <div class="input-form">
+                <select type="text" class="input-format-2"  id="nombre" name="nombre">
+                </select>
+            </div>
+        </div>
+
+        <div class="grupo-input3">
+          <br>
+          <p class="subtitulo-1">Tipo de reporte</p>
+          <hr>
+        </div>
+        <div class="grupo-input">
+            <input type="radio" class="radio-button-format" placeholder="Radio">
+            <b>Historial completo</b>
+        </div>
+        <div></div><div></div>
+        <div class="grupo-input">
+            <input type="radio" class="radio-button-format" placeholder="Radio">
+            <b>Periodo</b>
+        </div>
+        <div class="grupo-input">
+            <b>Inicio</b>
+            <input type="date" class="input-format-2" placeholder="Date">
+        </div>
+        <div class="grupo-input">
+            <b>Finalización</b>
+            <input type="date" class="input-format-2" placeholder="Date">
+        </div>
+
+        <div></div><div></div>
+        <div class="boton-reporte">
+            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Generar reporte</button>
+        </div>
+
+        <div class="grupo-input3">
+            <br>
+            <h4 class="h4">Nombre actividad</h4>
+            <p class="subtitulo-1">Periodo</p>
+            <hr>
+            <div class="article-tablas">
+                <article>          
+                  <div class="tablas">
+                    <section class="header_table" id="tablaResultado">
+                        <table>
+                          <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Hotel</th>
+                                <th>Transporte</th>
+                                <th>Comida</th>
+                                <th>Oficina</th>
+                                <th>Honorarios</th>
+                                <th>Subtotal gastos</th>
+                                <th>Ingresos</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cuerpo">
+                            <tr>
+                                <td>Python</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>10</td>
+                                <td>50</td>
+                                <td>100</td>
+                              </tr>
+                              <tr>
+                                  <td>Java</td>
+                                  <td>20</td>
+                                  <td>10</td>
+                                  <td>20</td>
+                                  <td>10</td>
+                                  <td>20</td>
+                                  <td>80</td>
+                                  <td>500</td>
+                              </tr>
+                          </tbody>
+                        </table>
+                    </section>
+                  </div>
+                </article>
+              </div>
+          </div>
+          <div></div><div></div>
+        <div class="boton-reporte">
+            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Descargar reporte</button>
+        </div>
+      </form>
+  </main>
+
+  <script src="../../controller/administrativo/js/Registro_Seguimiento.js"></script>
 </body>
+
+
 </html>
