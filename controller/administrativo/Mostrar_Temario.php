@@ -89,13 +89,11 @@ if ($datost) {
     }
     /* header('Content-Type: application/json'); */
 
-    file_put_contents('../../view/administrativo/js/temario.JSON', json_encode($lista));
     array_push($todo, $lgeneral);
     array_push($todo, $lista); 
     echo json_encode($todo); 
 }
 else {
-    file_put_contents('../../view/administrativo/js/temario.JSON', json_encode([]));
     array_push($todo, $lgeneral);
     array_push($todo, []);
     echo json_encode($todo); 

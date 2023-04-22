@@ -87,14 +87,21 @@ window.onload = function () {
     if (data.length > 0) {
       generarTemario();
     }
-    else{
+    else {
+      sin_temario();
+    }
+
+    function sin_temario() {
+      temario.innerHTML = '';
       const newLabel = document.createElement('label');
       newLabel.classList.add("label-2")
       newLabel.textContent = "No hay temas registrados";
 
       const addButtonEmpty = document.createElement('button');
       addButtonEmpty.classList.add("btn", "btn-small", "btn-add")
-      
+      addButtonEmpty.textContent = "Agregar tema";
+      addButtonEmpty.style.display = "block";
+
       addButtonEmpty.addEventListener('click', () => {
         data.push({ title: '', subtitles: [''] });
         generarTemario();
@@ -166,7 +173,14 @@ window.onload = function () {
 
         deleteTitleButton.addEventListener('click', () => {
           data.splice(index, 1);
-          render_2();
+          let longitud = data.length;
+
+          if (longitud == 0) {
+            sin_temario();
+          }
+          else{
+            render_2();
+          }
         });
 
         titleContainer.appendChild(titleInput);
@@ -216,7 +230,7 @@ window.onload = function () {
             addButtonAbove.appendChild(icon);
 
             addButtonAbove.addEventListener('click', () => {
-              data.splice(index, 0, { title: '', subtitles: [''] });
+              data.splice(index, 0, { title: '', subtitles: [] });
               render_2();
             });
 
@@ -241,7 +255,14 @@ window.onload = function () {
 
             deleteTitleButton.addEventListener('click', () => {
               data.splice(index, 1);
-              render_2();
+              let longitud = data.length;
+
+              if(longitud == 0){
+                sin_temario();
+              }
+              else{
+                render_2();
+              }
             });
 
             titleContainer.appendChild(titleInput);
@@ -253,18 +274,10 @@ window.onload = function () {
 
             const list = document.createElement('ul');
 
-            const separator = document.createElement('hr');
-            separator.classList.add("separator")
-            list.appendChild(separator);
-
             temario.appendChild(list);
 
           });
         }
-
-        const separator = document.createElement('hr');
-        separator.classList.add("separator")
-        list.appendChild(separator);
 
         temario.appendChild(list);
 
