@@ -1,6 +1,17 @@
-let bandNom = false
-let bandOrg = false
-let bandHrs = false
+let puest= false
+let puest2= false
+let empr = false
+let empr2 = false
+let carr = false
+let carr2 = false
+let carr3 = false
+let obj = false
+let sal = false
+let ced = false
+let ced2 = false
+let ced3 = false
+let acti = false
+let acti2 = false
 
 const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
@@ -26,10 +37,10 @@ actividad2.addEventListener('keyup', (e) => {
 
     if (!expresiones.objetivo.test(valorInput)) {
         actividad2.style.border = "3px solid red";
-        Obj = false
+        acti2 = false
     } else {
         actividad2.removeAttribute("style");
-        Obj = true
+        acti2 = true
     }
     /* validar(Obj); */
 })
@@ -46,10 +57,10 @@ actividad.addEventListener('keyup', (e) => {
 
     if (!expresiones.objetivo.test(valorInput)) {
         actividad.style.border = "3px solid red";
-        Obj = false
+        acti = false
     } else {
         actividad.removeAttribute("style");
-        Obj = true
+        acti = true
     }
     /* validar(Obj); */
 })
@@ -66,10 +77,10 @@ puesto1.addEventListener('keyup', (e) => {
 
     if (!expresiones.puesto.test(valorInput)) {
         puesto1.style.border = "3px solid red";
-        Obj = false
+        puest2 = false
     } else {
         puesto1.removeAttribute("style");
-        Obj = true
+        puest2 = true
     }
     /* validar(Obj); */
 })
@@ -86,10 +97,10 @@ puesto.addEventListener('keyup', (e) => {
 
     if (!expresiones.puesto.test(valorInput)) {
         puesto.style.border = "3px solid red";
-        Obj = false
+        puest = false
     } else {
         puesto.removeAttribute("style");
-        Obj = true
+        puest = true
     }
     /* validar(Obj); */
 })
@@ -103,10 +114,10 @@ empresa2.addEventListener('keyup', (e) => {
 
     if (!expresiones.empresa.test(valorInput)) {
         empresa2.style.border = "3px solid red";
-        bandEmpLab = false;
+        empr2 = false;
 	}else{
         empresa2.removeAttribute("style");
-        bandEmpLab = true;
+        empr2 = true;
     }
     /* validar(bandEmpLab); */
     }/* else{
@@ -123,10 +134,37 @@ empresa.addEventListener('keyup', (e) => {
 
     if (!expresiones.empresa.test(valorInput)) {
         empresa.style.border = "3px solid red";
-        bandEmpLab = false;
+        empr = false;
 	}else{
         empresa.removeAttribute("style");
-        bandEmpLab = true;
+        empr = true;
+    }
+    /* validar(bandEmpLab); */
+    }/* else{
+        validar(true);
+    } */
+);
+
+let carrera3 = document.getElementById("carrera-3");
+carrera3.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+    /* let laboral=document.getElementById('checkboxlaboral');
+
+    if(valorInput !="" && laboral.checked){
+
+    
+	carrera.value = valorInput */
+
+    // Eliminar caracteres especiales
+    carrera3.value = valorInput
+    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+    if (!expresiones.nombre_carrera.test(valorInput)) {
+        carrera3.style.border = "3px solid red";
+        carr3 = false;
+	}else{
+        carrera3.removeAttribute("style");
+        carr3 = true;
     }
     /* validar(bandEmpLab); */
     }/* else{
@@ -150,10 +188,10 @@ carrera1.addEventListener('keyup', (e) => {
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera1.style.border = "3px solid red";
-        bandEmpLab = false;
+        carr2 = false;
 	}else{
         carrera1.removeAttribute("style");
-        bandEmpLab = true;
+        carr2 = true;
     }
     /* validar(bandEmpLab); */
     }/* else{
@@ -178,19 +216,16 @@ carrera.addEventListener('keyup', (e) => {
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera.style.border = "3px solid red";
-        bandEmpLab = false;
+        carr = false;
 	}else{
         carrera.removeAttribute("style");
-        bandEmpLab = true;
+        carr = true;
     }
     /* validar(bandEmpLab); */
     }/* else{
         validar(true);
     } */
 );
-
-
-
 
 let objetivo = document.getElementById("objetivo");
 objetivo.addEventListener('keyup', (e) => {
@@ -204,10 +239,10 @@ objetivo.addEventListener('keyup', (e) => {
 
     if (!expresiones.objetivo.test(valorInput)) {
         objetivo.style.border = "3px solid red";
-        Obj = false
+        obj = false
     } else {
         objetivo.removeAttribute("style");
-        Obj = true
+        obj = true
     }
     /* validar(Obj); */
 })
@@ -233,7 +268,7 @@ salario.addEventListener('keyup', (e) =>{
         salario.style.border = "3px solid red";
         valorInput = valorInput.substr(0, valorInput.length-1);
         salario.value = valorInput;
-        precioG = false
+        sal = false
     }
 
     //elimina el tercer decimal
@@ -249,18 +284,18 @@ salario.addEventListener('keyup', (e) =>{
         valorInput = valorInput.substr(1, valorInput.length);
         //alert(valorInput.length);
         salario.value = valorInput;
-        precioG = false
+        sal = false
     }
 
     //verifica que se cumpla con la expresion correpondiente    
     if (!expresiones.precio.test(valorInput)) {
         salario.style.border = "3px solid red";
-        precioG = false
+        sal = false
         
     }
     else {
         salario.removeAttribute("style");
-        precioG = true;
+        sal = true;
     }
 
    /*  validar(precioG) */
@@ -281,10 +316,10 @@ cedulas.addEventListener('keyup', (e) => {
 
     if (!expresiones.cedula.test(valorInput)) {
         cedulas.style.border = "3px solid red";
-        bandCedu = false;
+        ced = false;
 	}else{ 
         cedulas.removeAttribute("style");
-        bandCedu = true;
+        ced = true;
     }
  /*    validar(bandCedu); */
     }
@@ -304,10 +339,33 @@ cedulas2.addEventListener('keyup', (e) => {
 
     if (!expresiones.cedula.test(valorInput)) {
         cedulas2.style.border = "3px solid red";
-        bandCedu = false;
+        ced2 = false;
 	}else{ 
         cedulas2.removeAttribute("style");
-        bandCedu = true;
+        ced2 = true;
+    }
+ /*    validar(bandCedu); */
+    }
+});
+
+let cedulas3 = document.getElementById("cedula-3");
+cedulas3.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+    if(valorInput !==""){
+	cedulas3.value = valorInput
+    // Eliminar espacios en blanco
+	.replace(/\s/g, '')
+    // Eliminar caracteres especiales
+   .replace(/[^0-9]/g, '')
+    // Eliminar el ultimo espaciado
+   .trim();
+
+    if (!expresiones.cedula.test(valorInput)) {
+        cedulas3.style.border = "3px solid red";
+        ced3 = false;
+	}else{ 
+        cedulas3.removeAttribute("style");
+        ced3= true;
     }
  /*    validar(bandCedu); */
     }
@@ -326,7 +384,58 @@ cedulas2.addEventListener('keyup', (e) => {
 } */
 
 
+function datos(){
+    if (sal == false){
+        salario.style.border = "3px solid red";
+    }
+    else if (obj == false){
+        objetivo.style.border = "3px solid red";
+    }
+    else if (carr == false){
+        carrera.style.border = "3px solid red";
+    }
+    else if (ced == false){
+        cedulas.style.border = "3px solid red";
+    }
+    else if (carr2 == false){
+        carrera1.style.border = "3px solid red";
+    }
+    else if (ced2 == false){
+        cedulas2.style.border = "3px solid red"
+    }
+    else if (carr3 == false){
+        carrera3.style.border = "3px solid red";
+    }
+    else if (ced3 == false){
+        cedulas3.style.border = "3px solid red";
+    }
+    else if (puest == false){
+        puesto.style.border = "3px solid red";
+    }
+    else if (empr == false){
+        empresa.style.border = "3px solid red";
+    }
+    else if (acti == false){
+        actividad.style.border = "3px solid red";
+    }
+    else if (puest2 == false){
+        puesto1.style.border = "3px solid red";
+    }
+    else if (empr2 == false){
+        empresa2.style.border = "3px solid red";
+    }
+    else if (acti2 == false){
+        actividad2.style.border = "3px solid red";
+    }
+    else {
+        console.log("todo bien");
+    }
 
+
+    //ibtener el datos de la combo box con id = residencia-campo
+    /* var combo = document.getElementById("residencia-campo").value;
+    console.log(combo); */
+}
 
 
 
