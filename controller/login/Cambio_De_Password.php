@@ -34,14 +34,14 @@ if(isset($_POST["password"]) && isset($_POST["password_confirmacion"])){
 
     if($respuesta){
 
-        $respuesta = ["../../view/login/recuperar_Contra4.html"];
+        $direccion = ["../../view/login/recuperar_Contra4.html"];
     }else{
-        $respuesta = [""];
+        $direccion = [""];
     }
     session_destroy();
 
     header("Content-Type: application/json");
-    echo json_encode($respuesta);
+    echo json_encode($direccion);
 }
 
 

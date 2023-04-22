@@ -43,7 +43,7 @@ if(isset($_POST["nuevo_codigo"])){
     $codigo = mt_rand(10000, 99999);
     $_SESSION["codigo"] = $codigo;
     $_SESSION["timeout"] = time()+(60*30); # vence en 30 minutos
-
+    $usuario = $_SESSION["email"];
     $user->correoConCodigo($usuario,$codigo);
 
     
