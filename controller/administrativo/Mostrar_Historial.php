@@ -1,7 +1,7 @@
 <?php
 include_once('../../model/administrativo/Mostrar_Historial.php');
 $idc = $_GET["idc"];
-echo $idc . '<br>';
+
 
 //manda a hacer la consulta
 $base = new Historial();
