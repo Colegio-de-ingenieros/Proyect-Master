@@ -61,6 +61,7 @@ table{
     width: 100%;
     overflow: auto;
     border: 1px solid #dddddd;
+    font-weight: bold;
 }
 
 .header_table thead th {
@@ -68,6 +69,7 @@ table{
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
+    font-weight: bold;
 }
 th,td {
     max-width: 100px;

@@ -24,9 +24,9 @@ echo '<!-- llama al archivo que genera el excel -->
           </div>';
 
 //muestra la tabla
-echo '<div >
+echo '<div class="table">
                     <table>
-					<div class="table">
+					<div class="header_table">
                         <thead>
                             <tr>
                                 <th>Fecha</th>
