@@ -9,8 +9,158 @@ const expresiones = {
     objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
     cedula:/^[0-9]{7,8}/,
-    nombre_carrera:/^[0-9a-zA-ZÁ-Ýá-ý0-9.\s]{1,40}$/,
+    nombre_carrera:/^[0-9a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
+    empresa:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,100}$/,
+    puesto: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,50}/,
 }
+
+let actividad2 = document.getElementById("actividad-antigua-2");
+actividad2.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+
+    actividad2.value = valorInput
+
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+
+    if (!expresiones.objetivo.test(valorInput)) {
+        actividad2.style.border = "3px solid red";
+        Obj = false
+    } else {
+        actividad2.removeAttribute("style");
+        Obj = true
+    }
+    /* validar(Obj); */
+})
+
+let actividad = document.getElementById("actividad-antigua-1");
+actividad.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+
+    actividad.value = valorInput
+
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+
+    if (!expresiones.objetivo.test(valorInput)) {
+        actividad.style.border = "3px solid red";
+        Obj = false
+    } else {
+        actividad.removeAttribute("style");
+        Obj = true
+    }
+    /* validar(Obj); */
+})
+
+let puesto1 = document.getElementById("puesto-antiguo-2");
+puesto1.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+
+    puesto1.value = valorInput
+
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+
+    if (!expresiones.puesto.test(valorInput)) {
+        puesto1.style.border = "3px solid red";
+        Obj = false
+    } else {
+        puesto1.removeAttribute("style");
+        Obj = true
+    }
+    /* validar(Obj); */
+})
+
+let puesto = document.getElementById("puesto-antiguo-1");
+puesto.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+
+    puesto.value = valorInput
+
+        // Eliminar caracteres especiales
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+
+    if (!expresiones.puesto.test(valorInput)) {
+        puesto.style.border = "3px solid red";
+        Obj = false
+    } else {
+        puesto.removeAttribute("style");
+        Obj = true
+    }
+    /* validar(Obj); */
+})
+
+let empresa2 = document.getElementById("empresa-antigua-2");
+empresa2.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+   
+    empresa2.value = valorInput
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+    if (!expresiones.empresa.test(valorInput)) {
+        empresa2.style.border = "3px solid red";
+        bandEmpLab = false;
+	}else{
+        empresa2.removeAttribute("style");
+        bandEmpLab = true;
+    }
+    /* validar(bandEmpLab); */
+    }/* else{
+        validar(true);
+    } */
+);
+
+let empresa = document.getElementById("empresa-antigua-1");
+empresa.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+   
+    empresa.value = valorInput
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+    if (!expresiones.empresa.test(valorInput)) {
+        empresa.style.border = "3px solid red";
+        bandEmpLab = false;
+	}else{
+        empresa.removeAttribute("style");
+        bandEmpLab = true;
+    }
+    /* validar(bandEmpLab); */
+    }/* else{
+        validar(true);
+    } */
+);
+
+let carrera1 = document.getElementById("carrera-2");
+carrera1.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+    /* let laboral=document.getElementById('checkboxlaboral');
+
+    if(valorInput !="" && laboral.checked){
+
+    
+	carrera.value = valorInput */
+
+    // Eliminar caracteres especiales
+    carrera1.value = valorInput
+    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+
+    if (!expresiones.nombre_carrera.test(valorInput)) {
+        carrera1.style.border = "3px solid red";
+        bandEmpLab = false;
+	}else{
+        carrera1.removeAttribute("style");
+        bandEmpLab = true;
+    }
+    /* validar(bandEmpLab); */
+    }/* else{
+        validar(true);
+    } */
+);
+
 
 let carrera = document.getElementById("carrera-1");
 carrera.addEventListener('keyup', (e) => {
@@ -23,7 +173,8 @@ carrera.addEventListener('keyup', (e) => {
 	carrera.value = valorInput */
 
     // Eliminar caracteres especiales
-    carrera.value = valorInput.replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    carrera.value = valorInput
+    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera.style.border = "3px solid red";
