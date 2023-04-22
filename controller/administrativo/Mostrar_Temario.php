@@ -16,13 +16,10 @@ $lista = array();
 $bd = new MostrarTemas();
 $bd->BD();
 
-
 $idtemasl = [];
 $nomtemasl = [];
 
 $ids = $_POST['id_usuario'];
-
-/* $ids = "000001"; */
 
 $todo = [];
 
@@ -33,7 +30,6 @@ array_push($lgeneral, $general[0]["NomCur"]);
 array_push($lgeneral, $general[0]["ClaveCur"]);
 array_push($lgeneral, $general[0]["DuracionCur"]);
 array_push($lgeneral, $general[0]["ObjCur"]);
-
 
 $datost = $bd->tema($ids);
 if ($datost) {
@@ -92,13 +88,14 @@ if ($datost) {
         array_push($lista, $curso); 
     }
     /* header('Content-Type: application/json'); */
-/*     echo json_encode($lista);
-    echo json_encode($lgeneral);  */
+
+    file_put_contents('../../view/administrativo/js/temario.JSON', json_encode($lista));
     array_push($todo, $lgeneral);
     array_push($todo, $lista); 
     echo json_encode($todo); 
 }
 else {
+    file_put_contents('../../view/administrativo/js/temario.JSON', json_encode([]));
     array_push($todo, $lgeneral);
     array_push($todo, []);
     echo json_encode($todo); 
