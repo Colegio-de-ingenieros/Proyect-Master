@@ -4,7 +4,7 @@ $claveCurso = $_GET["id"];
 //importar los archivos necesarios
 use PhpOffice\PhpSpreadsheet\Style\Color;
 
-include_once('../../model/Mostar_Temario.php');
+include_once('../../model/administrativo/Mostar_Temario.php');
 require '../../controller/CrearExcel/vendor/autoload.php';
 
 $negro = new Color('000000');
