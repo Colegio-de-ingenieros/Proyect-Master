@@ -197,6 +197,16 @@
               <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
+           <!-- llama al archivo que genera el excel -->
+           <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Proyectos.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
