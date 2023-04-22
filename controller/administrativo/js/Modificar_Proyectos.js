@@ -19,6 +19,10 @@ formulario.addEventListener('submit', function (e)
                 location.href = '../../view/administrativo/Vista_Proyectos.php';
             }
 
+            else if (data === 'Fechas') {
+                alert("La fecha de finalización debe ser posterior a la de inicio")
+            }
+
             else {
                 alert("Error al acutualizar el proyecto");
             }

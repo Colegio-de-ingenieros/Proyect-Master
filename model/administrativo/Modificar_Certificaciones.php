@@ -101,7 +101,7 @@
         if (count($fechas) >= 1) {
             $fecha = $fechas[count($fechas) - 1];
         }
-        //echo $fecha;
+        
 
         //busca el precio de la certificacion en la fehca especificada
         $querry = "SELECT * FROM historico, certh, tipousuahis WHERE (certh.IdCerInt = :id AND 
