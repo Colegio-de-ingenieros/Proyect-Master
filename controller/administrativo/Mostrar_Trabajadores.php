@@ -182,7 +182,7 @@ function confirmDesactiv()
         window.location.assign("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
         alert("Eliminado con éxito");
    }else
-        window.location.assign("Vista_Trabajadores.php");
+        window.location.assign("Vista_trabajadores.php");
 }
 
 </script>';
