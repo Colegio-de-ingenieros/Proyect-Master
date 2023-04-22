@@ -83,7 +83,7 @@ window.onload = function () {
       }
     });
 
-    /* Generación del  */
+    /* Generación del temario  */
     if (data.length > 0) {
       generarTemario();
     }
@@ -189,7 +189,7 @@ window.onload = function () {
 
         linkSubtemas.addEventListener('click', () => {
           alert("Se abrirá una nueva ventana");
-          window.location.href = "../../../../CISCIG/view/administrativo/Modi_subtemas.php?index=" + index + "&id=" + id;
+          window.location.href = "../../../../CISCIG/view/administrativo/Modi_Subtemas.php?index=" + index + "&id=" + id;
         });
 
         titleContainer.appendChild(titleInput);
@@ -281,7 +281,7 @@ window.onload = function () {
 
             linkSubtemas.addEventListener('click', () => {
               alert("Se abrirá una nueva ventana");
-              window.location.href = "../../../../CISCIG/view/administrativo/Modi_subtemas.php?index=" + index + "&id=" + id;
+              window.location.href = "../../../../CISCIG/view/administrativo/Modi_Subtemas.php?index=" + index + "&id=" + id;
             });
 
             titleContainer.appendChild(titleInput);
