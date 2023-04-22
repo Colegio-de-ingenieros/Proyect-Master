@@ -21,7 +21,7 @@ formulario.addEventListener('submit', function (e)
             const form= document.getElementById('formulario');
             form.reset();
             alert("Actualización exitosa");
-            location.href = '../../view/administrativo/Vista_Trabajadores.php';
+            location.href = '../../view/administrativo/Vista_trabajadores.php';
             
         }
         //los datos no pasaron alguna validacion

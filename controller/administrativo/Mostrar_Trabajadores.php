@@ -72,8 +72,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -152,8 +151,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            
             //<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
             //
             $salida .= '</tr></div>';

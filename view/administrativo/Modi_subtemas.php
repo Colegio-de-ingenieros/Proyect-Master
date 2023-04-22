@@ -189,63 +189,22 @@
     <section class="section-main">
       <div class="cabezera">
         <h4 class="h4">Modificación de cursos</h4>
-        <h6 class="subtitulo-1">Datos generales</h6>
+        <h6 class="subtitulo-1">Subtemas</h6>
       </div>
       <hr>
 
-      <div class="formulario-cursos">
-
-        <div class="campo">
-          <label for="nombre-curso" class="label-2 nombre">Nombre del curso*</label>
-          <input title="El nombre solo puede contener letras, números, puntos y comas." type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Ingrese el nombre"
-            minlength="1" maxlength="40" required>
-        </div>
-
-        <div class="campo">
-          <label for="clave-curso" class="label-2 clave">Clave del curso*</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" readonly required>
-        </div>
-
-        <div class="campo">
-          <label for="duración" class="label-2 duracion">Duración del curso*</label>
-          
-          <input title="La duración solo puede contener 3 números como máximo." type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración en hrs" maxlength="3"
-            required>
-        </div>
-
-        <div class="campo-wide">
-          <label for="objetivo" class="label-2 objetivo">Objetivo*</label>
-          <input title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
-            placeholder="Ingrese el objetivo" required>
-        </div>
-
-      </div>
-
-
-      <div class="titulos-registrados">
-        <p class="subtitulo-1">Temario</p>
-        <hr class="hr">
-      </div>
-
-      <div id="temario"></div>
-
-      <div class="section-botones-2">
-        <div class="campo botones">
-          <button id="update-form" class="btn-medium btn">Actualizar registro</button>
-        </div>
-      </div>
-
-
     </section>
     <span id="id-usuario" style="display:none"></span>
+    <span id="index-curso" style="display:none"></span>
   </main>
   
 </body>
 <!-- <script src="js/Vali_Cursos.js"></script>
 <script src="js/Reg_Cursos.js"></script> -->
-<script src="js/temario.js"></script>
+<!-- <script src="js/temario.js"></script> -->
 <!-- <script src='js/Vali_Modicursos.js'></script> -->
 </html>
 <?php
   echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
+  echo "<script>document.getElementById('index-curso').innerHTML = '".$_GET['index']."'</script>";
 ?>

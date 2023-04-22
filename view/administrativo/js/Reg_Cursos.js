@@ -190,11 +190,11 @@ function enviar() {
     else {
         console.log("Entramos a enviar los datos")
         if (flag_almacenar == false) {
-            let resultado = confirm("¿Desea continuar con el registro? Si es así, el temario se perderá");
+            /* let resultado = confirm("¿Desea continuar con el registro? Si es así, el temario se perderá"); */
             console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
-            console.log("El contenido de resultado es: " + resultado + "");
+            /* console.log("El contenido de resultado es: " + resultado + ""); */
 
-            if (resultado == true) {
+           /*  if (resultado == true) { */
                 console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
                 var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
                 var lista = [[]];
@@ -240,8 +240,8 @@ function enviar() {
                 lista_temario_parcial = [];
                 contador_temas = 1;
                 contador_subtemas = 1;
-            }
-            else if(resultado == false){
+            /* } */
+           /*  else if(resultado == false){ */
                 /* console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
                 finalizar_registro_temario()
                 var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
@@ -287,7 +287,7 @@ function enviar() {
                 lista_temario_parcial = [];
                 contador_temas = 1;
                 contador_subtemas = 1; */
-            }
+            /* } */
         }
         else if (flag_almacenar == true){
             console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
