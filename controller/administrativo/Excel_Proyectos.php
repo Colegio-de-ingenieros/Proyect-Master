@@ -22,7 +22,7 @@ $spreadsheet->getProperties()->setTitle("Reporte de proyectos al " . date('d-m-Y
 ->setCategory("Reporte de Proyectos")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //establecer la hoja en la que vamos a trabajar
-$spreadsheet->setActiveSheetIndex(0)->setTitle("Certificaciones");
+$spreadsheet->setActiveSheetIndex(0)->setTitle("Proyectos");
 $hoja = $spreadsheet->getActiveSheet();
 
 //poner los encabezados de las columnas
