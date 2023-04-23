@@ -13,6 +13,13 @@ let ced3 = false
 let acti = false
 let acti2 = false
 
+let segunda_carrera = 0;
+let tercer_carrera = 0;
+
+let segundo_puesto = 0;
+
+
+
 const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
     org:/^[a-zA-ZÁ-Ýá-ý.\s]{1,50}$/,
@@ -38,6 +45,9 @@ actividad2.addEventListener('keyup', (e) => {
     if (!expresiones.objetivo.test(valorInput)) {
         actividad2.style.border = "3px solid red";
         acti2 = false
+        if (actividad2.value==="") {
+            actividad2.removeAttribute("style");
+        }
     } else {
         actividad2.removeAttribute("style");
         acti2 = true
@@ -78,6 +88,9 @@ puesto1.addEventListener('keyup', (e) => {
     if (!expresiones.puesto.test(valorInput)) {
         puesto1.style.border = "3px solid red";
         puest2 = false
+        if (puesto1.value==="") {
+            puesto1.removeAttribute("style");
+        }
     } else {
         puesto1.removeAttribute("style");
         puest2 = true
@@ -115,6 +128,9 @@ empresa2.addEventListener('keyup', (e) => {
     if (!expresiones.empresa.test(valorInput)) {
         empresa2.style.border = "3px solid red";
         empr2 = false;
+        if (empresa2.value==="") {
+            empresa2.removeAttribute("style");
+        }
 	}else{
         empresa2.removeAttribute("style");
         empr2 = true;
@@ -162,6 +178,9 @@ carrera3.addEventListener('keyup', (e) => {
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera3.style.border = "3px solid red";
         carr3 = false;
+        if (carrera3.value==="") {
+            carrera3.removeAttribute("style");
+        }
 	}else{
         carrera3.removeAttribute("style");
         carr3 = true;
@@ -189,6 +208,9 @@ carrera1.addEventListener('keyup', (e) => {
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera1.style.border = "3px solid red";
         carr2 = false;
+        if (carrera1.value==="") {
+            carrera1.removeAttribute("style");
+        }
 	}else{
         carrera1.removeAttribute("style");
         carr2 = true;
@@ -338,8 +360,11 @@ cedulas2.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.cedula.test(valorInput)) {
-        cedulas2.style.border = "3px solid red";
+        /* cedulas2.style.border = "3px solid red"; */
         ced2 = false;
+        if (cedulas2.value==="") {
+            cedulas2.removeAttribute("style");
+        }
 	}else{ 
         cedulas2.removeAttribute("style");
         ced2 = true;
@@ -361,8 +386,11 @@ cedulas3.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.cedula.test(valorInput)) {
-        cedulas3.style.border = "3px solid red";
+        /* cedulas3.style.border = "3px solid red"; */
         ced3 = false;
+        if (cedulas3.value==="") {
+            cedulas3.removeAttribute("style");
+        }
 	}else{ 
         cedulas3.removeAttribute("style");
         ced3= true;
@@ -397,17 +425,21 @@ function datos(){
     else if (ced == false){
         cedulas.style.border = "3px solid red";
     }
-    else if (carr2 == false){
-        carrera1.style.border = "3px solid red";
+    else if ((document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value === "")
+    ||(document.getElementById("carrera-2").value === "" && document.getElementById("cedula-2").value !== "")){
+    alert("llene los campos de la segunda carrera");
     }
-    else if (ced2 == false){
-        cedulas2.style.border = "3px solid red"
+    else if ((document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value === "")
+    ||(document.getElementById("carrera-3").value === "" && document.getElementById("cedula-3").value !== "")){
+    alert("llene los campos de la tercera carrera");
     }
-    else if (carr3 == false){
-        carrera3.style.border = "3px solid red";
-    }
-    else if (ced3 == false){
-        cedulas3.style.border = "3px solid red";
+    else if ((document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value === "")
+    ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value === "")
+    ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value !== "")
+    ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value !== "")
+    ||(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value !== "")
+    ||(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value === "")){
+    alert("llene los campos de la segunda experiencia laboral");
     }
     else if (puest == false){
         puesto.style.border = "3px solid red";
@@ -418,17 +450,124 @@ function datos(){
     else if (acti == false){
         actividad.style.border = "3px solid red";
     }
-    else if (puest2 == false){
-        puesto1.style.border = "3px solid red";
-    }
-    else if (empr2 == false){
-        empresa2.style.border = "3px solid red";
-    }
-    else if (acti2 == false){
-        actividad2.style.border = "3px solid red";
-    }
     else {
+        if (document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value !== ""){
+            segunda_carrera = 1;
+        }
+        if (document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value !== ""){
+            tercer_carrera = 1;
+        }
+        if(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value !== ""){
+            segundo_puesto= 1;
+        }
+
+        // Seleccionar el elemento del tipo "date" por su id
+        const date_inicio1 = document.getElementById('periodo-inicio-antigua-1').value;
+        const date_fin1 = document.getElementById('periodo-fin-antigua-1').value;
+        // Verificar si el elemento existe
+        if ((date_inicio1  === "" && date_fin1 !== "") || (date_inicio1  !== "" && date_fin1  === "") || (date_inicio1  === "" && date_fin1  === "")) {
+        // El elemento existe y es de tipo "date"
+        alert('Indique periodo de inicio y fin de la primera experiencia profesional');
+        } 
+        else{
+
+        const date_inicio2 = document.getElementById('periodo-inicio-antigua-2').value;
+        const date_fin2 = document.getElementById('periodo-fin-antigua-2').value;
+
+        if (((date_inicio2  === "" && date_fin2 !== "") || (date_inicio2  !== "" && date_fin2  === "") || (date_inicio2  === "" && date_fin2  === "")) && segundo_puesto == 1) {
+        alert('Indique periodo de inicio y fin de la segunda experiencia profesional');
+        } 
+        else{
+
         console.log("todo bien");
+        datos_generales = [];
+        experiencia_academica_general = [];
+        experiencia_profesional_general = [];
+
+        experiencia_academica_particular = [];
+        experiencia_profesional_particular = [];
+
+        var combo = document.getElementById("residencia-campo").value;
+
+        datos_generales.push(combo);
+        datos_generales.push(document.getElementById("salario").value);
+        datos_generales.push(document.getElementById("objetivo").value);
+
+        experiencia_academica_particular.push(document.getElementById("carrera-1").value);
+        experiencia_academica_particular.push(document.getElementById("cedula-1").value);
+        experiencia_academica_general.push(experiencia_academica_particular);
+
+        if (segunda_carrera == 1){
+            experiencia_academica_particular = [];
+            experiencia_academica_particular.push(document.getElementById("carrera-2").value);
+            experiencia_academica_particular.push(document.getElementById("cedula-2").value);
+            experiencia_academica_general.push(experiencia_academica_particular);
+        }
+        if (tercer_carrera == 1){
+            experiencia_academica_particular = [];
+            experiencia_academica_particular.push(document.getElementById("carrera-3").value);
+            experiencia_academica_particular.push(document.getElementById("cedula-3").value);
+            experiencia_academica_general.push(experiencia_academica_particular);
+        }
+
+        experiencia_profesional_particular.push(document.getElementById("puesto-antiguo-1").value);
+        experiencia_profesional_particular.push(document.getElementById("empresa-antigua-1").value);
+        experiencia_profesional_particular.push(document.getElementById('periodo-inicio-antigua-1').value);
+        experiencia_profesional_particular.push(document.getElementById('periodo-fin-antigua-1').value);
+        experiencia_profesional_particular.push(document.getElementById("actividad-antigua-1").value);
+        experiencia_profesional_general.push(experiencia_profesional_particular);
+
+        if (segundo_puesto == 1){
+            experiencia_profesional_particular = [];
+            experiencia_profesional_particular.push(document.getElementById("puesto-antiguo-2").value);
+            experiencia_profesional_particular.push(document.getElementById("empresa-antigua-2").value);
+            experiencia_profesional_particular.push(document.getElementById('periodo-inicio-antigua-2').value);
+        experiencia_profesional_particular.push(document.getElementById('periodo-fin-antigua-2').value);
+            experiencia_profesional_particular.push(document.getElementById("actividad-antigua-2").value);
+            experiencia_profesional_general.push(experiencia_profesional_particular);
+        }
+
+        console.log(datos_generales);
+        console.log(experiencia_academica_general);
+        console.log(experiencia_profesional_general);
+
+        // Crear un objeto FormData
+        const datos = new FormData();
+
+        // Agregar variables al objeto FormData
+        datos.append('datos_generales',JSON.stringify(datos_generales));
+        datos.append('experiencia_academica_general', JSON.stringify(experiencia_academica_general));
+        datos.append('experiencia_profesional_general', JSON.stringify(experiencia_profesional_general));
+
+        fetch('../../controller/socio-asociado/Reg_CV.php', {
+            method: 'POST',
+            body: datos
+        })
+            .then(res => res.json())
+            .then(data =>
+            {
+                if (data == 'Fechas'){
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio");
+                }
+                else{
+                alert(data);
+                }
+                
+                /* if (data === 'Correcto') {
+                    alert("Registro exitoso");
+                    location.href = '../../view/administrativo/Reg_Proyectos.html';
+                }
+                
+                else if (data === 'Fechas') {
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio");
+                }
+                else {
+                    alert(data);
+                } */
+            })
+
+        }        
+        }
     }
 
 
