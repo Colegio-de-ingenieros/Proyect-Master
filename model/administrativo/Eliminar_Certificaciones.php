@@ -35,7 +35,7 @@ class EliminarCert{
 
             $qCerth = "DELETE FROM certh WHERE IdH = :idh";
 
-            $qhistorico = "DELETE FROM tipousuahis WHERE IdH = :idh";
+            $qhistorico = "DELETE FROM historico WHERE IdH = :idh";
 
             //agregarr las consultas para eliminar por id historico
             array_push($consultas, $qTipoUsua);

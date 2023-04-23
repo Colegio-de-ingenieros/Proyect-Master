@@ -113,8 +113,8 @@ class User extends Crud_bd {
     {
         
         $remitente = "ColegioCISCIG@outlook.com";
-        $asunto = "Cambio de copntraseña";
-        $cuerpo = "<p>Este es tu código <b>".$codigo."</b> que expira en 30 minutos </p>";
+        $asunto = "Cambio de contraseña";
+        $cuerpo = "<p>Este es tu código <b>".$codigo."</b> que expirará en 30 minutos </p>";
         //manda el correo electronico
         ini_set( 'display_errors', 1 );
         error_reporting( E_ALL );

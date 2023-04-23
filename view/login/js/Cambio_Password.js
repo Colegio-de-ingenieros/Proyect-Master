@@ -42,7 +42,7 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let formulario_data = new FormData(formulario);
     if(baderas.bcontra && baderas.bcontra_conf){
-        fetch("../../controller/login/cambio_de_password.php",
+        fetch("../../controller/login/Cambio_De_Password.php",
         {
             method:"POST",
             body: formulario_data

@@ -1,3 +1,31 @@
+<?php
+$id=$_GET['id'];
+include_once('../../model/empresa/Mostrar_Aplicantes.php');
+echo $id;
+$base = new MostrarAplicantes();
+$base->instancias();
+$resultado = $base->getAplicantes($id);
+if ($resultado == true) {
+  $identificador=$resultado[0]["IdPerso"];
+  $nombre=$resultado[0]["NomPerso"];
+  $apeP=$resultado[0]["ApePPerso"];
+  $apeM=$resultado[0]["ApeMPerso"];
+  $calle=$resultado[0]["CallePerso"];
+  $tel=$resultado[0]["TelMPerso"];
+  $fecha=$resultado[0]["FechaNacPerso"];
+  $correo=$resultado[0]["CorreoPerso"];
+  $desc=$resultado[0]["DesProCv"];
+  $salEsp=$resultado[0]["ExpSalCv"];
+  $cedula=$resultado[0]["NumCedAca"];
+  $carrera=$resultado[0]["Carrera"];
+}
+$resultado=$base->mostrarColonia($identificador);
+if ($resultado == true) {
+  $colonia=$resultado[0]["nomcolonia"];
+  $municipio=$resultado[0]["nommunicipio"];
+  $estado=$resultado[0]["nomestado"];
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -114,14 +142,23 @@
         <!-- Nombre -->
         <div class="campo">
           <label for="" class="label-2">Nombre</label> <br> <br>
+          <label for="" class="label-4"><?php echo $nombre ?></label> <br> <br>
           <label for="" class="label-2">Apellido Paterno</label><br><br>
+          <label for="" class="label-4"><?php echo $apeP?></label> <br> <br>
           <label for="" class="label-2">Apellido Materno</label><br><br>
+          <label for="" class="label-4"><?php echo $apeM?></label> <br> <br>
           <label for="" class="label-2">Fecha de nacimiento</label><br><br>
+          <label for="" class="label-4"><?php echo $fecha?></label> <br> <br>
           <label for="" class="label-2">Correo electrónico</label><br><br>
+          <label for="" class="label-4"><?php echo $correo?></label> <br> <br>
           <label for="" class="label-2">Teléfono</label><br><br>
+          <label for="" class="label-4"><?php echo $tel?></label> <br> <br>
           <label for="" class="label-2">Domicilio</label><br><br>
+          <label for="" class="label-4"><?php echo $calle." ".$colonia.", ".$municipio.", ".$estado?></label> <br> <br>
           <label for="" class="label-2">Expectativa salarial bruta</label><br><br>
+          <label for="" class="label-4">$ <?php echo $salEsp?></label> <br> <br>
           <label for="" class="label-2">Descripción profesional</label><br><br>
+          <label for="" class="label-4"> <?php echo $desc?></label> <br> <br>
         </div>
       </div>
       <!-- Experiencia académica -->
@@ -134,7 +171,9 @@
         <!-- Nombre de la carrera -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera</label><br><br>
-          <label for="" class="label-2">Número de cédula</label>
+          <label for="" class="label-4"> <?php echo $carrera?></label> <br> <br>
+          <label for="" class="label-2">Número de cédula</label><br> <br>
+          <label for="" class="label-4"> <?php echo $cedula?></label> <br> <br>          
         </div>
       </div>
       <!-- Experiencia profesional -->
@@ -142,17 +181,36 @@
         <p class="subtitulo-1">Experiencia profesional</p>
         <hr>
       </div>
-
+      
       <div class="formulario-experiencia">
         <!-- Puesto que desempeñaba -->
-        <div class="campo">
+        <?php $resultado=$base->mostrarLaboral($id);
+        if ($resultado == true) {
+          $salida='';
+          for ($i = 0; $i < count($resultado); $i++) {
+          // IdBolCv 	IdExpP 	EmpExpP 	IniExpP 	FinExpP 	PuestoExpP 	ActExpP 	IdExpP 	
+          $puesto=$resultado[$i]['PuestoExpP'];
+          $empresa=$resultado[$i]['EmpExpP'];
+          $inicio=$resultado[$i]['IniExpP'];
+          $fin=$resultado[$i]['FinExpP'];
+          $act1=$resultado[$i]['ActExpP'];
+          $num=$i+1;
+        
+        $salida.='<div class="campo">
+          <label for="" class="label-1">Experiencia '.$num.'</label><br><br>
           <label for="" class="label-2">Puesto que desempeñaba</label><br><br>
+          <label for="" class="label-4">'.$puesto.'</label> <br> <br>
           <label for="" class="label-2">Nombre de la empresa</label><br><br>
+          <label for="" class="label-4">'.$empresa.'</label><br><br>
           <label for="" class="label-2">Fecha de inicio</label><br><br>
+          <label for="" class="label-4">'.$inicio.'</label><br><br>
           <label for="" class="label-2">Fecha de fin</label><br><br>
+          <label for="" class="label-4">'.$fin.'</label><br><br>
           <label for="" class="label-2">Actividades relevantes</label><br><br>
-          <label for="" class="label-2">Actividades relevantes</label>
-        </div>
+          <label for="" class="label-4">'.$act1.'</label><br><br> 
+        </div>';}};
+        echo $salida;
+        ?>
       </div>  
       <!-- Certificaciónes -->
       <div class="divisor">
@@ -162,11 +220,18 @@
 
       <div class="formulario-certificaciones">
         <!-- Nombre certificación -->
-        <div class="campo">
+        <?php $resultado=$base->mostrarCertificaciones($id);
+        if ($resultado == true) {
+          $salida='';
+          for ($i = 0; $i < count($resultado); $i++) {
+            
+         $salida.='<div class="campo">
           <label for="" class="label-2">Nombre de la certificación</label><br><br>
           <label for="" class="label-2">Institución emismora</label><br><br>
           <label for="" class="label-2">Institución emismora</label>
-        </div>
+        </div>';}}; 
+        echo $salida;
+        ?>
       </div>
 
     </section>

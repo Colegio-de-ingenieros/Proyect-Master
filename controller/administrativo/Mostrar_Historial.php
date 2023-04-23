@@ -1,7 +1,7 @@
 <?php
 include_once('../../model/administrativo/Mostrar_Historial.php');
 $idc = $_GET["idc"];
-echo $idc . '<br>';
+
 
 //manda a hacer la consulta
 $base = new Historial();
@@ -48,7 +48,7 @@ for ($i=0; $i<count($asociados); $i ++){
 //pone el final de la tabla
 echo '</tr>
                           </tbody>
-                    </div>
+                  </div>
                 </table>
                 </div>
             </section>
@@ -57,6 +57,5 @@ echo '</tr>
       </div>
     </div>
   </main>
-  </div>
 </body>';
 ?>

@@ -140,7 +140,7 @@ if ($datos == true) {
         $respuesta .= '<td>' . $nombre . '</td>';
         $respuesta .= '<td>' . $duracion . ' hrs </td>';
         $respuesta .= '<td> 
-        <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="#" onclick="eli()">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
@@ -160,7 +160,7 @@ $respuesta .= "</tbody></table>";
 echo '<script type="text/javascript">
 function eli()
 {
-   var flag = confirm("¿Estás seguro de eliminar el curso con temas y subtemas?");
+   var flag = confirm("¿Está seguro de que desea eliminar el curso con temas y subtemas?");
    if(flag){
    var formData = new FormData();
    formData.append("id", JSON.stringify("' . $clave . '"));

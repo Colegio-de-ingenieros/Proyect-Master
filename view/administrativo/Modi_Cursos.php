@@ -19,6 +19,7 @@
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
@@ -227,7 +228,7 @@
       </div>
 
       <div id="temario"></div>
-      <div id="mensaje"></div>
+
       <div class="section-botones-2">
         <div class="campo botones">
           <button id="update-form" class="btn-medium btn">Actualizar registro</button>
@@ -236,7 +237,7 @@
 
 
     </section>
-    <span id="id-usuario" style="display:none">102030</span>
+    <span id="id-usuario" style="display:none"></span>
   </main>
   
 </body>

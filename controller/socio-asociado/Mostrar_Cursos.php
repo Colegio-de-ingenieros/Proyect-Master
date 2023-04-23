@@ -1,8 +1,8 @@
 <?php
-include_once('../../model/administrativo/Mostrar_Certificaciones.php');
+include_once('../../model/socio-asociado/Mostrar_Cursos.php');
 
 $salida = '';
-$base = new MostrarCertificaciones();
+$base = new MostrarCursos();
 $base->instancias();
 
 if (isset($_POST['consulta'])) {
@@ -16,12 +16,10 @@ if (isset($_POST['consulta'])) {
         $salida .= '<table>
             <thead>
                 <tr>
-                    <th>Logo</th>
-                    <th>Abreviación</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Precio general</th>
-                    <th>Precio socio/asociado</th>
+                    <th>Organización</th>
+                    <th>Total de horas</th>
+                    <th>PDF</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -69,13 +67,10 @@ if (isset($_POST['consulta'])) {
         $salida .= '<table>
             <thead>
                 <tr>
-                    <th>Logo</th>
-                    <th>Abreviación</th>
                     <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Precio general</th>
-                    <th>Precio socio/asociado</th>
-                   
+                    <th>Organización</th>
+                    <th>Total de horas</th>
+                    <th>PDF</th>   
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -118,4 +113,3 @@ if (isset($_POST['consulta'])) {
 echo $salida;
 
 ?>
-<script src="../../controller/administrativo/js/Eliminar_Certificaciones_Confirmacion.js"></script>

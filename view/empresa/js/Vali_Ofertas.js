@@ -10,6 +10,7 @@ let bestado= true
 let bExp= false 
 let bBruto = false
 let bMensual = false
+let bandTel = false
 console.log("entro a validar");
 let botonRegresar = document.getElementById("boton_registro");
 botonRegresar.addEventListener("click", (e) => {
@@ -20,9 +21,9 @@ botonRegresar.addEventListener("click", (e) => {
     }else if(bAcad==false){
         requi_academicos.style.border = "3px solid red";
     }else if(bTech==false){
-        requi_academicos.style.border = "3px solid red";
+        requi_tecnicos.style.border = "3px solid red";
     }else if(bDesc==false){
-        requi_academicos.style.border = "3px solid red";
+        descri_puesto.style.border = "3px solid red";
     }else if(bcodigo_postal==false){
         cpPerso.style.border = "3px solid red";
     }else if(bcalle==false){
@@ -34,9 +35,9 @@ botonRegresar.addEventListener("click", (e) => {
     }else if(bExp==false){
         experiencia_lab.style.border = "3px solid red";
     }else if(bBruto==false){
-        experiencia_lab.style.border = "3px solid red";
+        sal_bruto.style.border = "3px solid red";
     }else if(bMensual==false){
-        experiencia_lab.style.border = "3px solid red";
+        sal_mensual.style.border = "3px solid red";
     }else if(bandTel==false){
         caja_telefono.style.border = "3px solid red";
     }else if(bEmail==false){
@@ -48,6 +49,7 @@ botonRegresar.addEventListener("click", (e) => {
 
 const expresiones = {
     cadenasGeneral:/^[a-zA-ZÁ-ý 0-9.\s]{1,50}$/,
+    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,50}$/,
     cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
@@ -86,9 +88,9 @@ formula.requi_academicos.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
-    if (!expresiones.cadenasGeneral.test(valorInput)) {
+    if (!expresiones.cadenasAcademicos.test(valorInput)) {
         requi_academicos.style.border = "3px solid red";
         bAcad = false
 	}else{
@@ -157,6 +159,35 @@ formula.cpPerso.addEventListener('keyup', (e) => {
         bestado = true;
         bciudad = true;
     }
+    document.getElementById("cpPerso").addEventListener('blur', (e) => {
+        let contenido =  document.getElementById("cpPerso").value;
+        
+        if(contenido.length == 5){
+            //console.log(contenido);
+            let formulario_data = new FormData();
+            formulario_data.append("cpPerso",contenido);
+            
+    
+            fetch("../../controller/registro/codigo_postal.php",
+            {
+                method: 'POST',
+                body: formulario_data,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if(data.length != 0){
+                    cpPerso.removeAttribute("style");
+                    bcodigo_postal = true;
+                }else{
+                    formula.cpPerso.style.border = "3px solid red";
+                    bcodigo_postal = false;
+                    contenido.value="";
+                }
+                
+            });
+    
+        }
+      });
     validar(bcodigo_postal);
 })
 formula.calle.addEventListener('keyup', (e) => {
@@ -311,7 +342,7 @@ formula.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜñÑ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
     // Eliminar el ultimo espaciado
     //condicional para que no inice con un numero
     .replace(/^[0-9]/g, '')
@@ -352,17 +383,12 @@ formula.caja_telefono.addEventListener('keyup', (e) => {
 })
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
-    if(bandera == false){        
-        //guardar.style.border = "3px solid red";
-        console.log("toy bloqueado")        
+    if(bandera == false){              
         guardar.disabled=true;
-        //console.log("no pase validacion");
         
     }
     else if (bandera == true){
-        //guardar.removeAttribute("style");
         guardar.disabled=false;
-        //console.log("pase validacion");
         
 
     }

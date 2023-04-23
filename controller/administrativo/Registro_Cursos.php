@@ -25,7 +25,7 @@ class RegistroCursos{
        $resultados = $this->obj->buscarClave($this->clave);
 
         if($resultados == true){
-            echo('Ya se encuentra registrada la clave del curso');
+            echo json_encode('Ya se encuentra registrada la clave del curso');
         }
 
         else{
@@ -80,7 +80,7 @@ class RegistroCursos{
 
               
                }
-            echo ('Registro exitoso');
+            echo json_encode('Registro exitoso');
         }
         
 

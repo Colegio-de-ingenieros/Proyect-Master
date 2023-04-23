@@ -108,10 +108,13 @@
     <section class="section-main">
       <div class="cabezera">
         <h3 class="h3">Registro del CV</h2>
+          <br>
           <p class="subtitulo-1">Datos generales</p>
+          <br>
           <hr>
       </div>
       <!-- Datos generales -->
+      <br>
       <div class="formulario-generales">
         <!-- Nombre -->
         <div class="campo">
@@ -174,51 +177,53 @@
         <!-- Expectativa salarial bruta -->
         <div class="campo">
           <label for="" class="label-2">Expectativa salarial bruta*</label>
-          <input title="El campo expectativa salarial bruta solo debe de contener números." type="text"
+          <input id="salario" title="El campo expectativa salarial bruta solo debe de contener números." type="text"
             class="input-format-2" placeholder="Ingrese su expectativa salarial bruta aquí"></input>
         </div>
       </div>
 
       <div class="formulario-descripcion">
         <label for="" class="label-2">Descripción profesional*</label>
-        <textarea title="Ingrese su descripción profesional." name="" id="" class="input-format-2"
+        <textarea title="Ingrese su descripción profesional." name="" id="objetivo" class="input-format-2"
           placeholder="Ingrese la descripción profesional"></textarea>
       </div>
       <!-- Experiencia académica -->
+      <br>
       <div class="divisor">
         <p class="subtitulo-1">Experiencia académica</p>
+        <br>
         <hr>
       </div>
-
+      <br>
       <!-- Formulario académico 1 -->
       <div class="formulario-academica" id="academico-1">
         <!-- Nombre de la carrera -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la carrera*</label>
-          <input id="carrera-1" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+          <input id="carrera-1" title="El campo nombre solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
         </div>
         <!-- Número de cédula -->
         <div class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
       </div>
-
+      <br>
       <div class="botones-academica" id="botones-1">
         <button class="btn btn-small" onclick="nueva_carrera_1()">Agregar carrera</button>
       </div>
-
+      <br>
       <!-- Formulario académico 2 -->
       <div class="formulario-academica" id="academico-2">
         <!-- Nombre de la carrera -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la carrera*</label>
-          <input id="carrera-2" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+          <input id="carrera-2" title="El campo nombre solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
         </div>
         <!-- Número de cédula -->
         <div class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
 
         <div class="campo especial">
@@ -235,12 +240,12 @@
         <!-- Nombre de la carrera -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera*</label>
-          <input id="carrera-3" title="El campo nombresolo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí"></input>
+          <input id="carrera-3" title="El campo nombre solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
         </div>
         <!-- Número de cédula -->
         <div id="carrera-1"class="campo">
           <label for="" class="label-2">Número de cédula*</label>
-          <input id="cedula-3" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí"></input>
+          <input id="cedula-3" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
 
         <div class="campo especial">
@@ -251,22 +256,23 @@
       <!-- Experiencia profesional -->
       <div class="divisor">
         <p class="subtitulo-1">Experiencia profesional</p>
+        <br>
         <hr>
       </div>
-
+      <br>
       <!-- Formulario experiencia 1 -->
       <div class="formulario-experiencia" id="experiencia-1">
         <!-- Puesto que desempeñaba -->
         <div class="campo">
           <label for="" class="label-2">Puesto que desempeñaba*</label>
           <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
-            class="input-format-2" id="puesto-antiguo-1" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+            class="input-format-2" id="puesto-antiguo-1" placeholder="Ingrese el puesto que desempeñaba aquí" maxlength="50"></input>
         </div>
         <!-- Nombre de la empresa -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la empresa*</label>
           <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
-          class="input-format-2" id="empresa-antigua-1" placeholder="Ingrese el nombre de la empresa aquí"></input>
+          class="input-format-2" id="empresa-antigua-1" placeholder="Ingrese el nombre de la empresa aquí" maxlength="100"></input>
         </div>
         <!-- Fecha de inicio -->
         <div class="campo">
@@ -286,24 +292,24 @@
         </div>
 
       </div>
-
+      <br>
       <div class="botones-experiencia" id="boton-experiencia-1">
         <button class="btn btn-small" onclick="nueva_experiencia()">Agregar experiencia</button>
       </div>
-
+      <br>
       <!-- Formulario experiencia 2 -->
       <div class="formulario-experiencia" id="experiencia-2">
         <!-- Puesto que desempeñaba -->
         <div class="campo">
           <label for="" class="label-2">Puesto que desempeñaba*</label>
           <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
-            class="input-format-2" id="puesto-antiguo-2" placeholder="Ingrese el puesto que desempeñaba aquí"></input>
+            class="input-format-2" id="puesto-antiguo-2" placeholder="Ingrese el puesto que desempeñaba aquí" maxlength="50"></input>
         </div>
         <!-- Nombre de la empresa -->
         <div class="campo">
           <label for="" class="label-2">Nombre de la empresa*</label>
           <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
-          class="input-format-2" id="empresa-antigua-2" placeholder="Ingrese el nombre de la empresa aquí"></input>
+          class="input-format-2" id="empresa-antigua-2" placeholder="Ingrese el nombre de la empresa aquí" maxlength="100"></input>
         </div>
         <!-- Fecha de inicio -->
         <div class="campo">
@@ -329,31 +335,33 @@
 
       <!-- Certificaciónes -->
       <div class="divisor">
-        <p class="subtitulo-1">Certificaciónes</p>
+        <p class="subtitulo-1">Certificaciones</p>
+        <br>
         <hr>
+        <br>
       </div>
 
-      <div class="formulario-certificaciones">
+      <div id="formulario-certificaciones" class="formulario-certificaciones">
         <!-- Nombre certificación -->
         <div class="campo">
-          <label for="" class="label-2">Nombre de la certificación*</label>
-          <input title="El campo nombre de la certificación solo debe de contener letras." type="text"
-            class="input-format-2" placeholder="Ingrese el nombre de la certificación aquí"></input>
+          <label for="" class="label-2">Nombre de la certificación</label>
+         <!--  <input title="El campo nombre de la certificación solo debe de contener letras." type="text"
+            class="input-format-2" placeholder="Ingrese el nombre de la certificación aquí"></input> -->
         </div>
         <!-- Organismo que expidió -->
         <div class="campo">
-          <label for="" class="label-2">Institución emismora*</label>
-          <input title="El campo institución solo debe de contener letras." type="text" class="input-format-2"
-            placeholder="Ingrese la institución aquí"></input>
+          <label for="" class="label-2">Institución emismora</label>
+          <!-- <input title="El campo institución solo debe de contener letras." type="text" class="input-format-2"
+            placeholder="Ingrese la institución aquí"></input> -->
         </div>
       </div>
 
-      <div class="botones-certificaciones">
+      <!-- <div class="botones-certificaciones">
         <button class="btn btn-small">Agregar certificación</button>
-      </div>
-
+      </div> -->
+      <br>
       <div class="botones-registro">
-        <button class="btn btn-medium">Guardar registro</button>
+        <button class="btn btn-medium" onclick="datos()">Guardar registro</button>
       </div>
 
     </section>
@@ -362,5 +370,6 @@
   </main>
 </body>
 <script src="js/Reg_CV.js"></script>
-<!-- <script src="js/peticion_bolsat.js"></script> -->
+<script src="js/peticion_bolsat.js"></script>
+<script src="js/Vali_Reg_CV.js"></script>
 </html>

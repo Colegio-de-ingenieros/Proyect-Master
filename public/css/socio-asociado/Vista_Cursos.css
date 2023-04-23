@@ -52,7 +52,7 @@ article{
     font-weight: 500;
 }
 table{
-    width: 100%;
+    width: 130%;
     border-collapse: collapse;
     font-family: 'Manrope';
 }
@@ -61,7 +61,6 @@ table{
     width: 100%;
     overflow: auto;
     border: 1px solid #dddddd;
-    font-weight: bold;
 }
 
 .header_table thead th {
@@ -69,14 +68,12 @@ table{
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
-    font-weight: bold;
 }
 th,td {
-    max-width: 100px;
+    max-width: 150px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
-    font-weight: normal;
     text-align: center;
     word-wrap: break-word;
     white-space: normal;

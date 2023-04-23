@@ -6,29 +6,31 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Histórico de certificaciones</title>
+  <title>Modificación de cursos</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Histo_Certificaciones.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- <script src="../../controller/administrativo/js/Mostrar_Certificaciones.js"></script> -->
-  
-
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+  <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Cursos.css">
+  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
+
   <header>
     <div class="header_superior">
       <div class="titulo">
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Certificaciones</h1>
+          <h1 class="nombre_Ventana">Cursos</h1>
         </div>
 
       </div>
@@ -129,7 +131,7 @@
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-            </li>
+				    </li>
 
             <li>
               <a href="#">
@@ -176,6 +178,7 @@
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
               </ul>
             </li>
+
           </ul>
         </nav>
       </div>
@@ -183,16 +186,25 @@
   </header>
 
   <main>
-    <div>
-      <div class="article-tablas">
-        <article>
-          <div class="sub-titulo">
-            <h4 class="subtitulo-1">Histórico de precios</h4>
-          </div>
-          <hr>
-          <br>
+    <section class="section-main">
+      <div class="cabezera">
+        <h4 class="h4">Modificación de cursos</h4>
+        <h6 class="subtitulo-1">Subtemas</h6>
+      </div>
+      <hr>
 
-          <div class="tablas">
-            <section class="header_table" id="tablaResultado">
-              
+    </section>
+    <span id="id-usuario" style="display:none"></span>
+    <span id="index-curso" style="display:none"></span>
+  </main>
+  
+</body>
+<!-- <script src="js/Vali_Cursos.js"></script>
+<script src="js/Reg_Cursos.js"></script> -->
+<!-- <script src="js/temario.js"></script> -->
+<!-- <script src='js/Vali_Modicursos.js'></script> -->
 </html>
+<?php
+  echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
+  echo "<script>document.getElementById('index-curso').innerHTML = '".$_GET['index']."'</script>";
+?>
