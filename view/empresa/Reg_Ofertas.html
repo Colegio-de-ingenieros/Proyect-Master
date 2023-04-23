@@ -114,19 +114,19 @@
             <!-- Nombre -->
             <div class="campo">
               <label for="" class="label-2">Nombre de la vacante*</label>
-              <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo letras, espacios intermedios, números y puntos.'
+              <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" required placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo letras, espacios intermedios, números y puntos.'
               maxlength="50">
             </div>
             <!-- Requerimientos académicos -->
             <div class="campo">
               <label for="" class="label-2">Académicos*</label>
-              <input type="text" class="input-format-2" name="requi_academicos" id="requi_academicos" placeholder="Ingrese el requisito académico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
+              <input type="text" class="input-format-2" name="requi_academicos"  id="requi_academicos" required placeholder="Ingrese el requisito académico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
               maxlength="50">
             </div>
             <!-- Requerimientos técnicos -->
             <div class="campo">
               <label for="" class="label-2">Técnicos*</label>
-              <input type="text" class="input-format-2" name="requi_tecnicos" id="requi_tecnicos" placeholder="Ingrese el requisito técnico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
+              <input type="text" class="input-format-2" name="requi_tecnicos" id="requi_tecnicos" required placeholder="Ingrese el requisito técnico" title='El academico solo  letras, espacios intermedios, números, comas y puntos.'
               maxlength="50">
             </div>
             <!-- Expectativa salarial bruta -->
@@ -135,7 +135,7 @@
           <div class="formulario-descripcion">
             <label for="" class="label-2">Descripción del puesto*</label>
             <textarea title="Ingrese su descripción del puesto." name="descri_puesto" id="descri_puesto" class="input-format-2"
-            maxlength="100" placeholder="Ingrese la descripción del puesto" ></textarea>
+            maxlength="100" required placeholder="Ingrese la descripción del puesto" ></textarea>
           </div>
           <!--PARTE DOS-->
 			<p class="subtitulo-1"> Domicilio laboral</p>
@@ -147,7 +147,7 @@
 						<p class="label-2">Código postal*</p>
 					</div>
 					<div class="campo">
-						<input type="text" name="cpPerso" id="cpPerso" maxlength="5" class="input-format" placeholder="Ingrese su código postal"
+						<input type="text" name="cpPerso" id="cpPerso" maxlength="5" class="input-format" required placeholder="Ingrese su código postal"
 						title="El código postal solo puede contener números.">
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 						<p class="label-2">Calle y número*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="calle" id="calle" class="input-format" maxlength="100" placeholder="Ingrese su calle y número"
+						<input type="text" name="calle" id="calle" class="input-format" maxlength="100" required placeholder="Ingrese su calle y número"
 						title="La calle y el número solo puenden estar formados por letras mayúsculas, minúsculas y caracteres especiales (., #).">
 					</div>
 				</div>
@@ -167,7 +167,7 @@
 					</div>
 					<div class="input-form">
 
-						<select name="colonia" id="colonia"  maxlength="50" class="input-format">
+						<select name="colonia" id="colonia" required  maxlength="50" class="input-format">
 							<option value="0">Seleccione su colonia</option>
 						</select>
 					</div>
@@ -233,7 +233,7 @@
 						<p class="label-2">Años de experiencia*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="experiencia_lab" id="experiencia_lab" class="input-format" placeholder="Ingrese sus años de experiencia" 
+						<input type="text" name="experiencia_lab" id="experiencia_lab" class="input-format" required placeholder="Ingrese sus años de experiencia" 
                         title="Solo se pueden ingresar números de dos digitos." maxlength="2">
 					</div>
 				</div>
@@ -243,7 +243,7 @@
 						<p class="label-2">Salario bruto*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="sal_bruto" id="sal_bruto" maxlength="50" class="input-format" placeholder="Ingrese su salario bruto"
+						<input type="text" name="sal_bruto" id="sal_bruto" maxlength="50" class="input-format" required placeholder="Ingrese su salario bruto"
                         title="Solo se pueden ingresar números.">
 					</div>
 				</div>
@@ -253,7 +253,7 @@
 						<p class="label-2">Salario mensual*</p>
 					</div>
 					<div class="input-form">
-						<input type="text" name="sal_mensual" id="sal_mensual" maxlength="50" class="input-format" placeholder="Ingrese su salario mensual" 
+						<input type="text" name="sal_mensual" id="sal_mensual" maxlength="50" class="input-format" required placeholder="Ingrese su salario mensual" 
                         title="Solo se pueden ingresar números.">
 					</div>
 				</div>
@@ -264,7 +264,7 @@
 						<p class="label-2">Hora de inicio*</p>
 					</div>
 					<div class="input-form">
-						<input type="time" class="input-format" name="inicio" id="inicio" placeholder="Ingrese su texto aquí">
+						<input type="time" class="input-format" name="inicio" id="inicio" required placeholder="Ingrese su texto aquí">
 					</div>
 				</div>
                 
@@ -274,7 +274,7 @@
 						<p class="label-2">Hora de finalización*</p>
 					</div>
 					<div class="input-form">
-						<input type="time" class="input-format" name="final" id="final" placeholder="Ingrese su texto aquí">
+						<input type="time" class="input-format" name="final" id="final" required placeholder="Ingrese su texto aquí">
 					</div>
 				</div>
 
