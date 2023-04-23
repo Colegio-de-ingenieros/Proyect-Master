@@ -36,8 +36,8 @@ main {
     width: 80%;
 }
 .campo{
-    margin-top: 5px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 .formulario-generales, .formulario-experiencia{
     display: grid;
@@ -108,7 +108,7 @@ main {
 }
 
 .especial{
-    margin-bottom: 7px;
+    margin-bottom: 15px;
 }
 .especial-2{
     margin-top: 32px;
