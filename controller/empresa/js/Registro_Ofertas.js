@@ -17,6 +17,11 @@ formulario.addEventListener('submit', function (e)
         if (data === 'exito') {
             const form= document.getElementById('formula');
             form.reset();
+            const select = document.getElementById("colonia");
+                    for (let i = select.options.length; i >= 0; i--) {
+                      select.remove(i);
+                    }
+                select.appendChild(new Option("Seleccione su colonia", ""));
             alert("Registro exitoso");
             
         }

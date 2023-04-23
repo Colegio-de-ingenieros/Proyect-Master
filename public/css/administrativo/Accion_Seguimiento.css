@@ -4,6 +4,9 @@
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;
 }
+.h4{
+    font-size: 36px;
+}
 .label-form{
     padding-bottom: 10px;
 }
@@ -26,6 +29,18 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+.grupo-input5{
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.grupo-input6{
+    grid-column: span 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
 .grupo-boton-reg{
     display: flex;
@@ -38,6 +53,14 @@
     flex-direction: column;
     align-items: end;
     grid-column: 3;
+}
+
+.grupo-boton-añadir2{
+    grid: span 3;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    
 }
 .input-textarea{
     resize: none;

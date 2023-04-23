@@ -148,8 +148,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $req . '</td>';
             $salida .= '<td>' . $exp . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . '&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver aplicantes</a>&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >ver Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td>' .$aplica . '</td>';
+            $salida .= '<td><a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
             $salida .= '</tr></div>';
     
             

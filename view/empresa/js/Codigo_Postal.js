@@ -27,6 +27,11 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
                 alert("Codigo postal inválido");
                 estado.value = "";
                 ciudad.value = "";
+                const select = document.getElementById("colonia");
+                    for (let i = select.options.length; i >= 0; i--) {
+                      select.remove(i);
+                    }
+                select.appendChild(new Option("Seleccione su colonia", ""));
             }
             
         });
