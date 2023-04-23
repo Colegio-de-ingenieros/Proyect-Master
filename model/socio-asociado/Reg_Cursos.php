@@ -39,7 +39,17 @@
             return $idCurso;
         }
 
-        public function insertar_cursos($id_curso, $nombre, $organizacion, $horas, $archivo){
+        public function usuario($correo){
+            $this->conexion_bd();
+            
+            $consulta = "SELECT IdPerso FROM usuaperso WHERE binary(CorreoPerso) =  binary(:user)";
+            $parametros = [":user"=>$correo];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function insertar_cursos($id_curso, $nombre, $organizacion, $horas, $archivo, $id_perso){
             $this->conexion_bd();
 
             //consultas para la tabla de usuaperso
@@ -48,12 +58,37 @@
 
             $a1 = [":idCurso"=>$id_curso, ":nomCurso"=>$nombre, ":hraCurso"=>$horas, ":docCurso"=>$archivo, ":orgCurso"=>$organizacion];
 
+            //consultas para la tabla de usuaperso
+            $q2 = "INSERT INTO persoaltacur (IdPerso ,IdCurPerso) 
+            VALUES (:idPerso, :idCurso)";
+
+            $a2 = [":idPerso"=>$id_perso, ":idCurso"=>$id_curso];
+
+            $querry = [$q1, $q2];
+            $parametros = [$a1, $a2];
+            //acomoda todo en arreglos para mandarlos al CRUD
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+        }
+
+/*
+        public function insertar_relacion($id_persona){
+            $this->conexion_bd();
+            $idcurso=$this->id_curso($id_curso2);
+
+            //consultas para la tabla de usuaperso
+            $q1 = "INSERT INTO persoaltacur (IdPerso ,IdCurPerso) 
+            VALUES (:idPerso, :idCurso)";
+
+            $a1 = [":idPerso"=>$id_persona, ":idCurso"=>$idcurso];
+
             $querry = [$q1];
             $parametros = [$a1];
             //acomoda todo en arreglos para mandarlos al CRUD
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
             return $ejecucion;
-        }
+        }*/
     }
     ?>
