@@ -71,24 +71,5 @@
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
             return $ejecucion;
         }
-
-/*
-        public function insertar_relacion($id_persona){
-            $this->conexion_bd();
-            $idcurso=$this->id_curso($id_curso2);
-
-            //consultas para la tabla de usuaperso
-            $q1 = "INSERT INTO persoaltacur (IdPerso ,IdCurPerso) 
-            VALUES (:idPerso, :idCurso)";
-
-            $a1 = [":idPerso"=>$id_persona, ":idCurso"=>$idcurso];
-
-            $querry = [$q1];
-            $parametros = [$a1];
-            //acomoda todo en arreglos para mandarlos al CRUD
-
-            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
-            return $ejecucion;
-        }*/
     }
-    ?>
+?>
