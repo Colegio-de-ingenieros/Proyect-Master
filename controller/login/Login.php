@@ -1,7 +1,9 @@
 <?php
 require_once("../../model/login/Sesiones.php");
 session_start();
+
 $respuesta = [0,""];
+
 if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
 
     if($_SESSION["token"] == $_COOKIE["token"]){
@@ -19,6 +21,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
     }
 
 }else{
+    
     if(isset($_POST["usuario"]) && isset($_POST["password"])){
 
         $usuario = $_POST["usuario"];

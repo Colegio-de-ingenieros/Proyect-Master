@@ -2,6 +2,7 @@
 require_once("../../model/login/Sesiones.php");
 
 if(isset($_POST["usuario"])){
+
     $usuario = $_POST["usuario"];
     $user = new User();
 
@@ -51,6 +52,7 @@ if(isset($_POST["usuario"])){
         $respuesta = [1,"../../view/login/recuperar_Contra2.html"];
 
     }else{
+        
         $respuesta = [0];
 
     }
