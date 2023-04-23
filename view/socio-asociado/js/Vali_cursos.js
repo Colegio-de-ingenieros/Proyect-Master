@@ -7,7 +7,7 @@ let bandHrs = false
 const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
     org:/^[a-zA-ZÁ-Ýá-ý.\s]{1,50}$/,
-    horas:/^[0-9]{3}$/,
+    horas:/^[0-9]{1,3}$/,
 }
 
 /* Input nombres */

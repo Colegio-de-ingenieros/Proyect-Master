@@ -161,6 +161,7 @@ function finalizar_registro_temario() {
         console.log(lista_temario_completo[i]);
     }
     flag_almacenar = true;
+    document.getElementById("btn_tema-add").disabled = true;
 }
 
 
@@ -204,30 +205,75 @@ function enviar() {
                 formData.append("lista", JSON.stringify(lista));
 
 
-                var xmlhttp = new XMLHttpRequest();
+                fetch('../../controller/administrativo/Registro_Cursos.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(res => res.json())
+                    .then(data =>
+                    {
+                        if (data === 'Ya se encuentra registrada la clave del curso') {
+                            alert("Ya se encuentra registrada la clave del curso");
+                           
+                        }
+                        else {
+                            alert(data);
+                            document.getElementById("nombre-curso").value = "";
+                            document.getElementById("clave-curso").value = "";
+                            document.getElementById("duración").value = "";
+                            document.getElementById("objetivo").value = "";
+                            document.getElementById("titulo-curso").value = "";
+                            document.getElementById("subtitulo-curso").value = "";
+                            document.getElementById("lista").innerHTML = "";
+
+                            const nuevo_elemento = document.createElement("li");
+
+              
+
+                            leyenda.innerHTML = "Añadir tema*";
+                            caja_titulo.style.display = "flex";
+                            caja_subtitulo.style.display = "none";
+
+                            btn_add_tema.style.display = "flex";
+                            btn_add_subtema.style.display = "none";
+                            btn_add_new_tema.style.display = "none";
+                            btn_end_proceso.style.display = "none";
+
+                            lista_temario_completo = [];
+                            lista_temario_parcial = [];
+                            contador_temas = 1;
+                            contador_subtemas = 1;
+
+                            document.getElementById("btn_tema-add").disabled = false;
+                        }
+                    })
+               /*  var xmlhttp = new XMLHttpRequest();
                 xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
 
                 xmlhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {
 
-                        alert(this.responseText);
+                        
+                        if (this.responseText === 'Ya se encuentra registrada la clave del curso') {
+                            alert("El curso se ha registrado correctamente");
+                        }
                     }
-                };
+                }; */
 
 
-                xmlhttp.send(formData);
+                /* xmlhttp.send(formData); */
 
-                const nuevo_elemento = document.createElement("li");
+                /* const nuevo_elemento = document.createElement("li"); */
 
-                document.getElementById("nombre-curso").value = "";
+                /* document.getElementById("nombre-curso").value = "";
                 document.getElementById("clave-curso").value = "";
                 document.getElementById("duración").value = "";
                 document.getElementById("objetivo").value = "";
                 document.getElementById("titulo-curso").value = "";
                 document.getElementById("subtitulo-curso").value = "";
-                document.getElementById("lista").innerHTML = "";
+                document.getElementById("lista").innerHTML = ""; */
 
-                leyenda.innerHTML = "Añadir tema*";
+               /*  leyenda.innerHTML = "Añadir tema*";
                 caja_titulo.style.display = "flex";
                 caja_subtitulo.style.display = "none";
 
@@ -239,7 +285,7 @@ function enviar() {
                 lista_temario_completo = [];
                 lista_temario_parcial = [];
                 contador_temas = 1;
-                contador_subtemas = 1;
+                contador_subtemas = 1; */
             /* } */
            /*  else if(resultado == false){ */
                 /* console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
@@ -298,8 +344,48 @@ function enviar() {
             formData.append("arrayin", JSON.stringify(arrayin));
             formData.append("lista", JSON.stringify(lista));
 
+            fetch('../../controller/administrativo/Registro_Cursos.php', {
+                method: 'POST',
+                body: formData
+            })
+                .then(res => res.json())
+                .then(data =>
+                {
+                    if (data === 'Ya se encuentra registrada la clave del curso') {
+                        alert("Ya se encuentra registrada la clave del curso");
+                       
+                    }
+                    else {
+                        alert(data);
+                        document.getElementById("nombre-curso").value = "";
+                        document.getElementById("clave-curso").value = "";
+                        document.getElementById("duración").value = "";
+                        document.getElementById("objetivo").value = "";
+                        document.getElementById("titulo-curso").value = "";
+                        document.getElementById("subtitulo-curso").value = "";
+                        document.getElementById("lista").innerHTML = "";
+                        const nuevo_elemento = document.createElement("li");
+             
+                         leyenda.innerHTML = "Añadir tema*";
+                         caja_titulo.style.display = "flex";
+                         caja_subtitulo.style.display = "none";
+             
+                         btn_add_tema.style.display = "flex";
+                         btn_add_subtema.style.display = "none";
+                         btn_add_new_tema.style.display = "none";
+                         btn_end_proceso.style.display = "none";
+                         
+                         lista_temario_completo = [];
+                         lista_temario_parcial = [];
+                         contador_temas = 1;
+                         contador_subtemas = 1;
 
-            var xmlhttp = new XMLHttpRequest();
+                         document.getElementById("btn_tema-add").disabled = false;
+                    }
+                })
+
+
+            /* var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "../../controller/administrativo/Registro_Cursos.php");
 
             xmlhttp.onreadystatechange = function () {
@@ -310,24 +396,24 @@ function enviar() {
             };
 
 
-            xmlhttp.send(formData);
+            xmlhttp.send(formData); */
 
-            const nuevo_elemento = document.createElement("li");
-
-            document.getElementById("nombre-curso").value = "";
+           /*  const nuevo_elemento = document.createElement("li");
+ */
+           /*  document.getElementById("nombre-curso").value = "";
             document.getElementById("clave-curso").value = "";
             document.getElementById("duración").value = "";
             document.getElementById("objetivo").value = "";
             document.getElementById("titulo-curso").value = "";
             document.getElementById("subtitulo-curso").value = "";
-            document.getElementById("lista").innerHTML = "";
+            document.getElementById("lista").innerHTML = ""; */
 
             /* nuevo_elemento.innerHTML = "Sin temario añadido";
             nuevo_elemento.setAttribute("id", "inicial");
             nuevo_elemento.classList.add("label-3");
             listado.appendChild(nuevo_elemento); */
 
-            leyenda.innerHTML = "Añadir tema*";
+            /* leyenda.innerHTML = "Añadir tema*";
             caja_titulo.style.display = "flex";
             caja_subtitulo.style.display = "none";
 
@@ -339,7 +425,7 @@ function enviar() {
             lista_temario_completo = [];
             lista_temario_parcial = [];
             contador_temas = 1;
-            contador_subtemas = 1;
+            contador_subtemas = 1; */
         }
     }
 }

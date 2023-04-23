@@ -263,7 +263,7 @@ class EliminarSeguimento{
                 $idIns=$resul[0]["ClaveIns"];
                 $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
                 $arre = [":estatus"=>0, ":id"=>$idIns ];
-                $this->insertar_eliminar_actualizar($querry, $arre);
+                $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
 
         }
@@ -273,11 +273,15 @@ class EliminarSeguimento{
     }
 
     public function estatus($idSeg, $actividad){
-        if($actividad=='proyecto'){
+        if($actividad=='Proyecto'){
             $querry = "SELECT IdPro FROM segproyectos WHERE IdSeg=:idSeg";
             $arre = [":idSeg"=>$idSeg];
             $resultados = $this->base->mostrar($querry, $arre);
 
+            //Elimina el seguimiento en segproyectos
+            $q1 = "DELETE FROM segproyectos WHERE IdSeg = :idSeg";
+            $a1=[":idSeg"=>$idSeg];
+            $this->base->insertar_eliminar_actualizar($q1, $a1);
             //Elimina el seguimiento
             $this->eliminar_seg($idSeg);
             //Busca si tiene mas seguimientos
@@ -294,39 +298,46 @@ class EliminarSeguimento{
                 //No tiene seguimientos, cambia el estatus 
                 $querry = "UPDATE proyectos SET EstatusPro=:estatus WHERE IdPro=:id";
                 $arre = [":estatus"=>0, ":id"=>$idp ];
-                $this->insertar_eliminar_actualizar($querry, $arre);
+                $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
         }
-        else if($actividad=='curso'){
+        else if($actividad=='Curso'){
+            //echo "ENTRE AQUI";
             $querry = "SELECT ClaveCur FROM segcursos WHERE IdSeg=:idSeg";
             $arre = [":idSeg"=>$idSeg];
             $resultados = $this->base->mostrar($querry, $arre);
 
+            //Elimina el seguimiento en segcursos
+            $q1 = "DELETE FROM segcursos WHERE IdSeg = :idSeg";
+            $a1=[":idSeg"=>$idSeg];
+            $this->base->insertar_eliminar_actualizar($q1, $a1);
             //Elimina el seguimiento
             $this->eliminar_seg($idSeg);
+
             //Busca si tiene mas seguimientos
             $idc=$resultados[0]["ClaveCur"];
+            
             $querry1 = "SELECT * FROM segcursos WHERE ClaveCur=:idc";
             $arre1 = [":idc"=>$idc];
             $res = $this->base->mostrar($querry1, $arre1);
             
             //Tiene un seguimiento el curso
-            if ($res!=null){
-                return false;
-            }
-            else{
+            if ($res==null){
                 //No tiene seguimientos, cambia el estatus 
-                $querry = "UPDATE proyectos SET EstatusCur=:estatus WHERE ClaveCur=:id";
-                $arre = [":estatus"=>0, ":id"=>$idc ];
-                $this->insertar_eliminar_actualizar($querry, $arre);
-            }
+                $querry = "UPDATE cursos SET EstatusCur=:estatus WHERE ClaveCur=:id";
+                $arre = [":estatus"=>1, ":id"=>$idc ];
+                $this->base->insertar_eliminar_actualizar($querry, $arre);
+            } 
 
         }
         else{
             $querry = "SELECT IdCerInt FROM segcertint WHERE IdSeg=:idSeg";
             $arre = [":idSeg"=>$idSeg];
             $resultados = $this->base->mostrar($querry, $arre);
-
+            //Elimina el seguimiento en segcert
+            $q1 = "DELETE FROM segcertint WHERE IdSeg = :idSeg";
+            $a1=[":idSeg"=>$idSeg];
+            $this->base->insertar_eliminar_actualizar($q1, $a1);
             //Elimina el seguimiento
             $this->eliminar_seg($idSeg);
             //Busca si tiene mas seguimientos
@@ -343,7 +354,7 @@ class EliminarSeguimento{
                 //No tiene seguimientos, cambia el estatus 
                 $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
                 $arre = [":estatus"=>0, ":id"=>$idc ];
-                $this->insertar_eliminar_actualizar($querry, $arre);
+                $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
 
         }
