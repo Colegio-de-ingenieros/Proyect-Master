@@ -1,115 +1,112 @@
 <?php
 include_once('../../model/socio-asociado/Mostrar_Cursos.php');
+session_start();
+if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
+    $usuario = $_SESSION['usuario'];
+    $tipo_usuario = $_SESSION['tipo_usuario'];
 
-$salida = '';
-$base = new MostrarCursos();
-$base->instancias();
+    $salida = '';
+    $base = new mostrarCursos();
 
-if (isset($_POST['consulta'])) {
-    //echo($_POST['consulta']);
-    $busqueda = $_POST['consulta'];
+    $id_perso=$base->usuario($usuario);
+    $idperso=$id_perso[0]['IdPerso'];
+    $id_final=$idperso;
+    $cursos=$base->tabla_completa($id_final);
 
-    $resultado = $base->consultaInteligente($busqueda);
+    if (isset($_POST['consulta'])) {
+        //echo($_POST['consulta']);
+        $busqueda = $_POST['consulta'];
 
-    if ($resultado == true) {
-        //pone los encabezados de la tabla
-        $salida .= '<table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Organización</th>
-                    <th>Total de horas</th>
-                    <th>PDF</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>';
+        $resultado = $base->inteligente($id_final, $busqueda);
 
-        //agrega los resultados de la busqueda
-        for ($i = 0; $i < count($resultado); $i++) {
-            //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $idc = $resultado[$i]["IdCerInt"];
-            $logo = $resultado[$i]["LogoCerInt"];
-            $nombre = $resultado[$i]["NomCertInt"];
-            $abre = $resultado[$i]["abrevCertInt"];
-            $desc = $resultado[$i]["DesCerInt"];
-            $status = $resultado[$i]["EstatusCertInt"];
-            $precioG = $base->buscarUltimoPrecioG($idc);
-            $precioA = $base->buscarUltimoPrecioA($idc);
+        if ($resultado == true) {
+            //pone los encabezados de la tabla
+            $salida .= '<table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Organización</th>
+                        <th>Total de horas</th>
+                        <th>PDF</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>';
 
-            //escribe los valores en la tabla
-            $salida .= '<tr>';
-            $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
-            $salida .= '<td>' . $abre . '</td>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $desc . '</td>';
-            $salida .= '<td>$' . $precioG . '</td>';
-            $salida .= '<td>$' . $precioA . '</td>';
-            $salida .= '<td> 
-        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
-        <a href="../../controller/administrativo/Get_Certificacion.php?idc=' . $idc . '">Modificar</a>&nbsp;&nbsp;&nbsp
-        <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
-        </td>';
-            $salida .= '</tr>';
+            //agrega los resultados de la busqueda
+            for ($i = 0; $i < count($resultado); $i++) {
+                //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+                $idc = $resultado[$i]["IdCurPerso"];
+                $nombre = $resultado[$i]["NomCurPerso"];
+                $orga = $resultado[$i]["OrgCurPerso"];
+                $hrs = $resultado[$i]["HraCurPerso"];
+                $pdf = $resultado[$i]["DocCurPerso"];
+
+                //escribe los valores en la tabla
+                $salida .= '<tr>';
+                $salida .= '<td>' . $nombre . '</td>';
+                $salida .= '<td>' . $orga . '</td>';
+                $salida .= '<td>' . $hrs . '</td>';
+                $salida .= '<td>$' . $pdf . '</td>';
+                $salida .= '<td> 
+            <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
+            <a href="../../controller/administrativo/Get_Certificacion.php?idc=' . $idc . '">Modificar</a>&nbsp;&nbsp;&nbsp
+            <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+            </td>';
+                $salida .= '</tr>';
+            }
+        } else {
+            $salida .= 'No se encontraron resultados';
         }
+
+        $salida .= "</tbody></table>";
+
     } else {
-        $salida .= 'No se encontraron resultados';
-    }
+        //manda a hacer la busqueda
 
-    $salida .= "</tbody></table>";
+        if ($cursos == true) {
+            //pone los encabezados de la tabla
+            $salida .= '<table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Organización</th>
+                        <th>Total de horas</th>
+                        <th>PDF</th>   
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>';
 
-} else {
-    //manda a hacer la busqueda
-    $resultado = $base->getCertificaciones();
+            //agrega los resultados de la busqueda
+            for ($i = 0; $i < count($cursos); $i++) {
+                //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+                $idc = $cursos[$i]["IdCurPerso"];
+                $nombre = $cursos[$i]["NomCurPerso"];
+                $orga = $cursos[$i]["OrgCurPerso"];
+                $hrs = $cursos[$i]["HraCurPerso"];
+                $pdf = $cursos[$i]["DocCurPerso"];
 
-    if ($resultado == true) {
-        //pone los encabezados de la tabla
-        $salida .= '<table>
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Organización</th>
-                    <th>Total de horas</th>
-                    <th>PDF</th>   
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>';
-
-        //agrega los resultados de la busqueda
-        for ($i = 0; $i < count($resultado); $i++) {
-            //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-            $idc = $resultado[$i]["IdCerInt"];
-            $logo = $resultado[$i]["LogoCerInt"];
-            $nombre = $resultado[$i]["NomCertInt"];
-            $abre = $resultado[$i]["abrevCertInt"];
-            $desc = $resultado[$i]["DesCerInt"];
-            $status = $resultado[$i]["EstatusCertInt"];
-            $precioG = $base->buscarUltimoPrecioG($idc);
-            $precioA = $base->buscarUltimoPrecioA($idc);
-
-            //escribe los valores en la tabla
-            $salida .= '<tr>';
-            $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
-            $salida .= '<td>' . $abre . '</td>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $desc . '</td>';
-            $salida .= '<td>$' . $precioG . '</td>';
-            $salida .= '<td>$' . $precioA . '</td>';
-            $salida .= '<td> 
-        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
-        <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
-        <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
-        </td>';
-            $salida .= '</tr>';
+                //escribe los valores en la tabla
+                $salida .= '<tr>';
+                $salida .= '<td>' . $nombre . '</td>';
+                $salida .= '<td>' . $orga . '</td>';
+                $salida .= '<td>' . $hrs . '</td>';
+                $salida .= '<td>$' . $pdf . '</td>';
+                $salida .= '<td> 
+            <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
+            <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
+            <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+            </td>';
+                $salida .= '</tr>';
+            }
+        } else {
+            $salida .= 'No se encontraron resultados';
         }
-    } else {
-        $salida .= 'No se encontraron resultados';
+
+        $salida .= "</tbody></table>";
+
     }
-
-    $salida .= "</tbody></table>";
-
+    echo $salida;
 }
-echo $salida;
-
 ?>
