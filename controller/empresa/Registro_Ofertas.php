@@ -46,16 +46,23 @@ if (isset($_POST['c7'])) {
    $c7 = 7;
 }
 
+session_start();
+$username = $_SESSION['usuario'];
+
 //$ban=true;
 $obj = new NuevaOferta();
 $obj->conexion();
+$rfccorreo1=$obj->rfccorreo($username);
+
+$rfce=$rfccorreo1[0][0];
+//echo json_encode($rfccorreo[0]);
 $anterior=$obj->obtenerId();
 if ($anterior==null){
     $anterior="000000";
 }
 $num=intval($anterior)+1;
 $num=str_pad($num, 6, "0", STR_PAD_LEFT);
-$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac,$c1, $c2, $c3, $c4, $c5, $c6, $c7);    
+$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac,$c1, $c2, $c3, $c4, $c5, $c6, $c7,$rfce);    
 
 echo json_encode('exito');
 

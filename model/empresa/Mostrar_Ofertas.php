@@ -9,17 +9,23 @@ class MostrarOfertas{
         $this->base->conexion_bd();
     }
     //hace la consulta principal de los datos de las certificaciones
-    function getOfertas(){
-        $querry = "SELECT IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol FROM bolsaempresa";
-        $resultados = $this->base->mostrar($querry);
+    function getOfertas($rfc){
+        $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol 
+        FROM bolsaempresa, usuaempbolsa 
+        WHERE bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and usuaempbolsa.RFCUsuaEmp=:rfc";
+        $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
 
         return $resultados;
     }
-
-    function buscador($busqueda){
-        $querry = "SELECT IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol FROM bolsaempresa 
-        WHERE VacEmpBol LIKE :busqueda OR TelEmpBol LIKE :busqueda";
-        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%"]);
+    function rfccorreo($correo){
+        $querry = "SELECT RFCUsuaEmp FROM usuaemp WHERE CorreoUsuaEmp = :correo";
+        $resultados = $this->base->mostrar($querry, [":correo" => $correo]);
+        return $resultados;
+    }
+    function buscador($busqueda,$rfce){
+        $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol FROM bolsaempresa ,usuaempbolsa
+        WHERE (bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and usuaempbolsa.RFCUsuaEmp=:rfc) and VacEmpBol LIKE :busqueda OR TelEmpBol LIKE :busqueda";
+        $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%",":rfc" => $rfce]);
 
         return $resultados;
     }
@@ -78,6 +84,7 @@ class MostrarOfertas{
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
     }
+
 }
 
 $obj = new MostrarOfertas();
