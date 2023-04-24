@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Vista_Cv.css">
-  <link rel="icon" href="public/img/ciscig-notch.png" sizes="32x32">
+  <!-- <link rel="icon" href="public/img/ciscig-notch.png" sizes="32x32"> -->
   <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
