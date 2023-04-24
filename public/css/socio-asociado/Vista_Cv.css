@@ -114,6 +114,10 @@ main {
     margin-top: 32px;
     margin-bottom: 7px;
 }
+
+.campo-textarea{
+    grid-column: span 2;
+}
 /* ***************************************
 *                 INPUTS                 *
 ******************************************/
