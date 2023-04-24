@@ -3,6 +3,7 @@ const btn_certificaciones = document.getElementById("certificaciones");
 const btn_proyectos = document.getElementById("proyectos");
 const formulario = document.getElementById("formulario");
 const cuerpo_tabla = document.getElementById("cuerpo");
+const totales = document.getElementById("datos");
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
@@ -18,6 +19,7 @@ function peticion_nombres(tipo){
 
     let tipo_nombre = new FormData();
     tipo_nombre.append("tipo",tipo);
+    tipo_nombre.append("bandera", true);
 
     fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
         method:"POST",
@@ -33,8 +35,11 @@ function peticion_nombres(tipo){
 formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
-    
+
+    let numero = document.getElementById("nombres").value.split(" ");
+ 
     let form_data = new FormData(formulario);
+    form_data.append("numero_seguimiento",numero[0]);
 
     fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
         method:"POST",
@@ -42,8 +47,8 @@ formulario.addEventListener("submit",(e)=>{
     }).then(respuesta=> respuesta.json())
       .then(datos=>{
 
+        console.log(datos);
         rellenar_tabla(datos);
-
     });
 
 });
@@ -64,16 +69,150 @@ function rellenar_lista(datos) {
 
 //rellenamos el combo nombres
 function rellenar_tabla(datos) {
-
+    //limpiamos la tabla primero
+   
     cuerpo_tabla.innerHTML = "";
-
-    datos.forEach(registro => {
-        var fila = document.createElement("option");
-        optionElement.value = registro[0] + " " + registro[2];
-        optionElement.text = registro[0] + " " + registro[1];
-        cuerpo_tabla.appendChild(optionElement);
-    });
+    totales.innerHTML = "";
     
+    sub_hotel = 0;
+    sub_transporte = 0;
+    sub_comida = 0;
+    sub_oficina = 0;
+    sub_honorarios = 0;
+    sub_sub_gastos  = 0;
+    sub_ingresos = 0;
+   
+    for (let i = 0; i < datos.length; i++) {
+        
+        
+        if(datos[i][0].length == 0){
+
+            continue
+        }else{
+            
+            
+
+            for (let j = 0; j < datos[i][0].length; j++) {
+
+                var row = document.createElement('tr');
+                var nombre_col = document.createElement('td');
+                var hotel_col = document.createElement('td');
+                var transporte_col = document.createElement('td');
+                var comida_col = document.createElement('td');
+                var oficina_col = document.createElement('td');
+                var honorarios_col = document.createElement('td');
+                var sub_gastos_col = document.createElement('td');
+                var ingresos_col = document.createElement('td'); 
+
+                hotel_col.innerText = "$ 0";
+                transporte_col.innerText = "$ 0";
+                comida_col.innerText = "$ 0";
+                oficina_col.innerText = "$ 0";
+                honorarios_col.innerText = "$ 0";
+                sub_gastos_col.innerText = "$ 0";
+                ingresos_col.innerText = "$ 0";
+
+                //nombres
+                nombre_col.innerText = datos[i][0][j]["nombre"];
+                identificador = datos[i][0][j]["id"]; 
+                
+                // gastos
+                console.log(datos[i][1]);
+                sub_gastos = 0;
+                //agregaremos 6 celdas a la tabla si estan
+                for (let k = 0; k < datos[i][1].length ; k++) {
+                    if(datos[i][1][k]["id"] === identificador){
+
+                        if(datos[i][1][k][2] == "Hotel"){
+                            sub_hotel += parseFloat(datos[i][1][k][1]);
+                            hotel_col.innerText = "$ "+datos[i][1][k][1];
+                        }else if(datos[i][1][k][2] == "Transporte"){
+                            sub_transporte += parseFloat(datos[i][1][k][1]);
+                            transporte_col.innerText = "$ "+datos[i][1][k][1];
+                        }else if(datos[i][1][k][2] == "Comida"){
+                            sub_comida += parseFloat(datos[i][1][k][1]);
+                            comida_col.innerText = "$ "+datos[i][1][k][1];
+                        }else if(datos[i][1][k][2] == "Oficina"){
+                            sub_oficina += parseFloat(datos[i][1][k][1]);
+                            oficina_col.innerText = "$ "+datos[i][1][k][1];
+                        }else if(datos[i][1][k][2] == "Honorario"){
+                            sub_honorarios += parseFloat(datos[i][1][k][1]);
+                            honorarios_col.innerText = "$ "+datos[i][1][k][1];
+                        }
+                        sub_gastos += parseFloat(datos[i][1][k][1]);
+                    }
+                    
+                }
+
+                sub_sub_gastos += sub_gastos;
+                sub_gastos_col.innerText = "$ "+sub_gastos;
+                
+                // ingresos
+                if(datos[i][2].length != 0){
+                    ingresos_col.innerText = "$ "+ datos[i][2][j][1];
+                    sub_ingresos += parseFloat(datos[i][2][j][1]);
+                }
+
+                row.appendChild(nombre_col);
+                row.appendChild(hotel_col);
+                row.appendChild(transporte_col);
+                row.appendChild(comida_col);
+                row.appendChild(oficina_col);
+                row.appendChild(honorarios_col);
+                row.appendChild(sub_gastos_col);
+                row.appendChild(ingresos_col);
+                cuerpo_tabla.appendChild(row);
+            }
+
+
+            
+        }
+        
+        
+        
+    }
+
+    var row = document.createElement('tr');
+    var sub_col = document.createElement('td');
+    var hotel_col = document.createElement('td');
+    var transporte_col = document.createElement('td');
+    var comida_col = document.createElement('td');
+    var oficina_col = document.createElement('td');
+    var honorarios_col = document.createElement('td');
+    var sub_gastos_col = document.createElement('td');
+    var ingresos_col = document.createElement('td'); 
+
+    sub_col.innerText = "Subtotal";
+    hotel_col.innerText = "$ " + sub_hotel;
+    transporte_col.innerText = "$ " + sub_transporte;
+    comida_col.innerText = "$ " + sub_comida;
+    oficina_col.innerText = "$ " + sub_oficina;
+    honorarios_col.innerText = "$ " + sub_honorarios;
+    sub_gastos_col.innerText = "$ " + sub_sub_gastos;
+    ingresos_col.innerText = "$ " + sub_ingresos;
+
+    row.appendChild(sub_col);
+    row.appendChild(hotel_col);
+    row.appendChild(transporte_col);
+    row.appendChild(comida_col);
+    row.appendChild(oficina_col);
+    row.appendChild(honorarios_col);
+    row.appendChild(sub_gastos_col);
+    row.appendChild(ingresos_col);
+    cuerpo_tabla.appendChild(row);
+
+    let gastos_totales = document.createElement('div');
+    let ingresos_totales = document.createElement('div');
+    let total_final = document.createElement('div');
+
+    gastos_totales.innerText = "Gastos totales: $ " + sub_sub_gastos ;
+    ingresos_totales.innerText = "Ingresos totales: $ " + sub_ingresos;
+    total_final.innerText = "Total final: $" + (sub_ingresos-sub_sub_gastos);
+
+    totales.appendChild(gastos_totales);
+    totales.appendChild(ingresos_totales);
+    totales.appendChild(total_final);
+
 }
 
 

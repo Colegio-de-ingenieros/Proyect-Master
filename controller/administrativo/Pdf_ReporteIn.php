@@ -13,15 +13,15 @@ function Header()
     // Movernos a la derecha
     $this->Cell(80);
     // Título
-    $this->Text(250,15, 'DD/MM/AAAA');
+    $this->Text(250,15, 'DD/MM/AAAA'); //Aqui la variable de la fecha de emision del reporte 
     // Salto de línea
     $this->Ln(20);
     $this->Cell(280,10,'Colegio de Ingenieros en Sistemas Computacionales',0,1,'C');
     $this->Ln(10);
     $this->Cell(280,10,'Reporte individual',0,1,'C');
     $this->Ln(10);
-    $this->Cell(60,10,'Nombre de la actividad',0,1,'L');
-    $this->Cell(60,10,'Periodo',0,1,'L');
+    $this->Cell(60,10,'Nombre de la actividad',0,1,'L'); // Aqui el nombre de la actividad 
+    $this->Cell(60,10,'Periodo',0,1,'L'); //Aqui el periodo que se eligio 
 } 
 
 function TablaBasica($header)
@@ -51,10 +51,14 @@ function TablaBasica($header)
         $this->Cell(35,7,"Hola",1);
     }
     $this->Ln();
-    for ($i = 1; $i <= 8; $i++)
+    //Ultima fila 
+    $this->Cell(35,7,"Subtotal",1);
+
+    for ($i = 2; $i <= 8; $i++)
     {
-        $this->Cell(35,7,"Hola",1);
+        $this->Cell(35,7,"10",1);
     }
+
     $this->SetFont('Arial','B',15);
     $this->Ln(10);
     $this->Cell(70,10,'Total de gastos = ',0,1,'L');
