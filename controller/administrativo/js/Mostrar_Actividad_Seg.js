@@ -109,6 +109,7 @@ function rellenar_tabla(){
         console.log('tabla')
         console.log(resultado)
         for (var i = 0; i < resultado[0].length; i++) {
+
             dato=resultado[0][i]
             console.log("DATO", dato)
             tabla.innerHTML += 
@@ -121,7 +122,7 @@ function rellenar_tabla(){
                 <td>${resultado[6][i]}</td> 
                 <td>${resultado[7][i]}</td> 
                 <td><a href="../../view/administrativo/Vista_Certificaciones.php">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#">Eliminar</a></td></td> 
+                <a  href="<script src="../../controller/administrativo/js/Eliminar_Participante_Confirmacion.js"></script> ">Eliminar</a></td></td> 
             </tr> 
             ` 
         }
