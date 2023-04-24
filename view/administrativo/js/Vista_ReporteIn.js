@@ -1,12 +1,20 @@
 const btn_cursos = document.getElementById("cursos");
 const btn_certificaciones = document.getElementById("certificaciones");
 const btn_proyectos = document.getElementById("proyectos");
+
 const formulario = document.getElementById("formulario");
+
 const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
 const titulo = document.getElementById("nombre_actividad");
+
 const fecha_inicio = document.getElementById("inicio");
 const fecha_fin = document.getElementById("fin");
+const fechas_titulo = document.getElementById("fechas_titulo");
+
+const contenedor_tabla = document.getElementById("contenedor_tabla");
+const btn_descargar_reportes = document.getElementById("boton_descargar_reporte");
+
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
@@ -39,20 +47,24 @@ formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
 
+    let fecha1 = fecha_inicio.value;
+    let fecha2 = fecha_fin.value;
+
     if(btn_cursos.checked == false && 
        btn_certificaciones.checked == false && 
        btn_proyectos.checked == false){
 
         alert("Debe seleccionar un nombre de actividad");
 
-    }else if((fecha_inicio.value == "" || fecha_fin.value == "") && document.getElementById("periodo").checked ){
+    }else if((fecha1 == "" || fecha2 == "") && document.getElementById("periodo").checked ){
         alert("Debe seleccionar una fecha de inicio y una fecha de Finalización");
     }else{
+        
 
-        const fecha_inicio1 = new Date(fecha_inicio.value);
-        const fecha_fin1 = new Date(fecha_fin.value);
+        let fecha_inicio1 = new Date(fecha1);
+        let fecha_fin1 = new Date(fecha2);
 
-        if(fecha_inicio1 > fecha_fin1){
+        if((fecha_inicio1 > fecha_fin1) && document.getElementById("periodo").checked){
             alert("La fecha de inicio no debe ser mayor a la fecha de Finalización");
         }else{
 
@@ -68,7 +80,12 @@ formulario.addEventListener("submit",(e)=>{
                 body: form_data
             }).then(respuesta=> respuesta.json())
             .then(datos=>{
-                console.log(datos);
+
+                if(document.getElementById("periodo").checked){
+                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
+                }else{
+                    fechas_titulo.innerText = "";
+                }
                 titulo.innerText = nombre;
                 rellenar_tabla(datos);
             });
@@ -85,6 +102,9 @@ formulario.addEventListener("submit",(e)=>{
 
 //rellenamos el combo nombres
 function rellenar_lista(datos) {
+
+    contenedor_tabla.hidden = false;
+    btn_descargar_reportes.hidden = false;
 
     document.getElementById("nombres").innerHTML = "";
 
