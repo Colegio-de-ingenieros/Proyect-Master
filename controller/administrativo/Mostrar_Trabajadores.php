@@ -5,6 +5,7 @@ $base = new MostrarTrabajadores();
 $base->instancias();
 
 $rfc=0;
+
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->buscador($busqueda);
