@@ -17,6 +17,7 @@ window.onload = function () {
       console.log("Datos academicos: ",  datos_academicos);
       console.log("Datos laborales: ", datos_laborales);
 
+      let clave = continuacion_datos_generales[0]
       let nombre = datos_generales[1];
       let apellido_paterno = datos_generales[2];
       let apellido_materno = datos_generales[3];
@@ -31,6 +32,7 @@ window.onload = function () {
       let residencia = continuacion_datos_generales[2];
       let expectativa_salarial = continuacion_datos_generales[3];
 
+      document.getElementById("id-usuario").innerHTML = clave;
       document.getElementById("nombre-campo").value = nombre;
       document.getElementById("apellido-paterno-campo").value = apellido_paterno;
       document.getElementById("apellido-materno-campo").value = apellido_materno;
@@ -44,6 +46,7 @@ window.onload = function () {
       document.getElementById("residencia-campo").value = residencia;
       document.getElementById("salarial-campo").value = expectativa_salarial;
       document.getElementById("objetivo").value = descripcion;
+      document.getElementById("objetivo").style.overflowY = "scroll";
 
       /* Generación de carreras */
       const formulario_academico = document.getElementById("academico-1");
@@ -143,6 +146,7 @@ window.onload = function () {
 
         const div5 = document.createElement("div");
         div5.classList.add("campo");
+        div5.classList.add("campo-textarea");
 
         const label_actividades = document.createElement("label");
         label_actividades.classList.add("label-2");
@@ -153,6 +157,7 @@ window.onload = function () {
         input_actividades.id = "actividad-antigua-"+i;
         input_actividades.readOnly = true;
         input_actividades.value = datos_laborales[i][4];
+        input_actividades.style.overflowY = "scroll";
 
         div1.appendChild(label_puesto);
         div1.appendChild(input_puesto);
@@ -232,4 +237,36 @@ window.onload = function () {
         formulario_certificaciones.appendChild(label_sin_certificaciones);
       }
     });
+}
+
+function aplicar(){
+  const id_bolsa = document.getElementById("id-bolsa");
+  const id_usuario = document.getElementById("id-usuario");
+
+  let valor_id_bolsa = id_bolsa.textContent;
+  let valor_id_usuario = id_usuario.textContent;
+
+  let url = "../../controller/socio-asociado/Enviar_Vacante.php"
+  let form = new FormData()
+
+  form.append("id_bolsa", valor_id_bolsa)
+  form.append("id_usuario", valor_id_usuario)
+
+  fetch(url,{
+    method: "POST",
+    body: form
+  })
+  .then(response => response.json())
+  .then(JSON => resultados(JSON))
+  .catch(error => console.log(error))
+
+  function resultados(JSON){
+    if(JSON == true){
+      alert("Se ha aplicado a la vacante");
+      window.location.href = "Bolsa-Trabajo.html";
+    }
+    else{
+      alert("No se ha podido aplicar a la vacante");
+    }
+  }
 }
