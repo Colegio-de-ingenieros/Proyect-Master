@@ -33,10 +33,13 @@ function rellenar_participantes(datos) {
     dato=datos[i]
     if (i==0){
       campo="instructores"
+      msj="No hay instructores registrados"
     }else if(i==1){
       campo="nom_socio_asociado"
+      msj="No hay socios / asociados registrados"
     }else{
       campo="nom_empresa"
+      msj="No hay empresas registradas"
     }
     if (dato.length != 0){
         dato.forEach(registro => {
@@ -48,7 +51,7 @@ function rellenar_participantes(datos) {
       } else {
         var optionElement = document.createElement("option");
         optionElement.value = "Vacio";
-        optionElement.text = "No hay " + campo + " registrados";
+        optionElement.text = msj;
         document.getElementById(campo).appendChild(optionElement);
         document.getElementById(campo).disabled = true;
       } 
