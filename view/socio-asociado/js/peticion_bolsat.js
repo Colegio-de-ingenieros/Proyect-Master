@@ -2,7 +2,7 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
    .then(response => response.json())
    .then(respuesta => {
       console.log(respuesta); 
-       
+      localStorage.setItem('miVariable', respuesta[0]['IdPerso']);
       let nombre = respuesta[0]['NomPerso'];
       let apellido_paterno = respuesta[0]['ApePPerso'];
       let apellido_materno = respuesta[0]['ApeMPerso'];

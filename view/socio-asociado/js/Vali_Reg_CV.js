@@ -488,7 +488,9 @@ function datos(){
         experiencia_profesional_particular = [];
 
         var combo = document.getElementById("residencia-campo").value;
-
+        combo = combo-1;
+        var miVariable = localStorage.getItem('miVariable');
+        datos_generales.push(miVariable);
         datos_generales.push(combo);
         datos_generales.push(document.getElementById("salario").value);
         datos_generales.push(document.getElementById("objetivo").value);
@@ -547,7 +549,10 @@ function datos(){
             .then(data =>
             {
                 if (data == 'Fechas'){
-                    alert("Fecha de finalización debe ser posterior a fecha de inicio");
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio en la primera experiencia profesional");
+                }
+                else if (data == 'Fechas2'){
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio en la segunda experiencia profesional");
                 }
                 else{
                 alert(data);
