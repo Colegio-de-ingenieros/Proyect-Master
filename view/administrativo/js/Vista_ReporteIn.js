@@ -4,6 +4,9 @@ const btn_proyectos = document.getElementById("proyectos");
 const formulario = document.getElementById("formulario");
 const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
+const titulo = document.getElementById("nombre_actividad");
+const fecha_inicio = document.getElementById("inicio");
+const fecha_fin = document.getElementById("fin");
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
@@ -36,20 +39,47 @@ formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
 
-    let numero = document.getElementById("nombres").value.split(" ");
- 
-    let form_data = new FormData(formulario);
-    form_data.append("numero_seguimiento",numero[0]);
+    if(btn_cursos.checked == false && 
+       btn_certificaciones.checked == false && 
+       btn_proyectos.checked == false){
 
-    fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
-        method:"POST",
-        body: form_data
-    }).then(respuesta=> respuesta.json())
-      .then(datos=>{
+        alert("Debe seleccionar un nombre de actividad");
 
-        console.log(datos);
-        rellenar_tabla(datos);
-    });
+    }else if((fecha_inicio.value == "" || fecha_fin.value == "") && document.getElementById("periodo").checked ){
+        alert("Debe seleccionar una fecha de inicio y una fecha de Finalización");
+    }else{
+
+        const fecha_inicio1 = new Date(fecha_inicio.value);
+        const fecha_fin1 = new Date(fecha_fin.value);
+
+        if(fecha_inicio1 > fecha_fin1){
+            alert("La fecha de inicio no debe ser mayor a la fecha de Finalización");
+        }else{
+
+            let nombre = document.getElementById("nombres").textContent.split(" ")[1];
+            let numero = document.getElementById("nombres").value.split(" ");
+    
+            let form_data = new FormData(formulario);
+            form_data.append("numero_seguimiento",numero[0]);
+            form_data.append("nombre_titulo", nombre);
+
+            fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
+                method:"POST",
+                body: form_data
+            }).then(respuesta=> respuesta.json())
+            .then(datos=>{
+                console.log(datos);
+                titulo.innerText = nombre;
+                rellenar_tabla(datos);
+            });
+
+        }
+
+        
+
+    }
+
+    
 
 });
 
@@ -117,7 +147,6 @@ function rellenar_tabla(datos) {
                 identificador = datos[i][0][j]["id"]; 
                 
                 // gastos
-                console.log(datos[i][1]);
                 sub_gastos = 0;
                 //agregaremos 6 celdas a la tabla si estan
                 for (let k = 0; k < datos[i][1].length ; k++) {
@@ -148,9 +177,16 @@ function rellenar_tabla(datos) {
                 sub_gastos_col.innerText = "$ "+sub_gastos;
                 
                 // ingresos
+                //console.log(datos[i][2]);
                 if(datos[i][2].length != 0){
-                    ingresos_col.innerText = "$ "+ datos[i][2][j][1];
-                    sub_ingresos += parseFloat(datos[i][2][j][1]);
+
+                    //checa si todavia hay ingresos, si hay se mete si no no
+                    if( j < datos[i][2].length){
+                        
+                        ingresos_col.innerText = "$ "+ datos[i][2][j][1];
+                        sub_ingresos += parseFloat(datos[i][2][j][1]);
+                    }
+                    
                 }
 
                 row.appendChild(nombre_col);
@@ -205,13 +241,14 @@ function rellenar_tabla(datos) {
     let ingresos_totales = document.createElement('div');
     let total_final = document.createElement('div');
 
-    gastos_totales.innerText = "Gastos totales: $ " + sub_sub_gastos ;
-    ingresos_totales.innerText = "Ingresos totales: $ " + sub_ingresos;
-    total_final.innerText = "Total final: $" + (sub_ingresos-sub_sub_gastos);
+    gastos_totales.innerText = "Total de gastos: $ " + sub_sub_gastos ;
+    ingresos_totales.innerText = "Total de ingresos: $ " + sub_ingresos;
+    total_final.innerText = "Total: $" + (sub_ingresos-sub_sub_gastos);
 
     totales.appendChild(gastos_totales);
     totales.appendChild(ingresos_totales);
     totales.appendChild(total_final);
+
 
 }
 
