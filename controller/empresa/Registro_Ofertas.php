@@ -16,7 +16,7 @@ $hinVac = $_POST["inicio"];
 $hfinVac = $_POST["final"];
 $telVac = $_POST["caja_telefono"];
 $corVac = $_POST["caja_correo"];
-$active = []; 
+
 $c1=0;
 $c2=0;
 $c3=0;
@@ -28,22 +28,22 @@ if (isset($_POST['c1'])) {
    $c1 = 1;
 }
 if (isset($_POST['c2'])) {
-   $c2 = 1;
+   $c2 = 2;
 }
 if (isset($_POST['c3'])) {
-   $c3 = 1;
+   $c3 = 3;
 }
 if (isset($_POST['c4'])) {
-   $c4 = 1;
+   $c4 = 4;
 }
 if (isset($_POST['c5'])) {
-   $c5 = 1;
+   $c5 = 5;
 }
 if (isset($_POST['c6'])) {
-   $c6 = 1;
+   $c6 = 6;
 }
 if (isset($_POST['c7'])) {
-   $c7 = 1;
+   $c7 = 7;
 }
 
 //$ban=true;
@@ -55,7 +55,7 @@ if ($anterior==null){
 }
 $num=intval($anterior)+1;
 $num=str_pad($num, 6, "0", STR_PAD_LEFT);
-$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac);    
+$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac,$c1, $c2, $c3, $c4, $c5, $c6, $c7);    
 
 echo json_encode('exito');
 
