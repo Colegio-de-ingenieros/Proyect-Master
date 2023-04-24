@@ -4,7 +4,7 @@ $salida = '';
 $base = new MostrarOfertas();
 $base->instancias();
 
-$id=0;
+$id=000000;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->buscador($busqueda);
@@ -70,9 +70,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $req . '</td>';
             $salida .= '<td>' . $exp . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . '&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Ver aplicantes</a>&nbsp;&nbsp;&nbsp;</td>';
-            $salida .= '<td>
-            <a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Completa</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td>' .$aplica . '</td>';
+            $salida .= '<td><a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -143,13 +142,16 @@ if (isset($_POST['consulta'])) {
             $aplicantes=$base->contar($id);
             $aplica=$aplicantes[0]["total"];
             //escribe los valores en la tabla
+            $sid="s".$id;
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $req . '</td>';
             $salida .= '<td>' . $exp . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . '</td>';
-            $salida .= '<td><a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td>' .$aplica. '</td>';
+            
+            
+            $salida .= '<td><a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             $salida .= '</tr></div>';
     
             
@@ -162,19 +164,21 @@ if (isset($_POST['consulta'])) {
     }
 }
 //manda a hacer la busqueda
-//$resultado = $base->getTrabajadores();
-//echo '<script>alert("si entra al php");</script>';
-//echo "si entra al php";
 
 
 $salida .= "</tbody></table>";
 echo '<script type="text/javascript">
 
-function confirmDesactiv()
+function confirmDesactiv(dato)
 {
+   var cadena="../../controller/empresa/Eliminar_Oferta.php?id="+dato;
+   //console.log(cadena);
    var flag = confirm("¿Estás seguro de eliminar la oferta?");
    if(flag)
-        window.location.assign("../../controller/empresa/Eliminar_Oferta.php?id='.$id.'");
+   {
+        alert("Eliminada con éxito");
+        window.location.assign(cadena);
+   }
     else
         window.location.assign("Vista_Ofertas.html");
 }
