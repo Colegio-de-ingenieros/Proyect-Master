@@ -15,15 +15,25 @@ const fechas_titulo = document.getElementById("fechas_titulo");
 const contenedor_tabla = document.getElementById("contenedor_tabla");
 const btn_descargar_reportes = document.getElementById("boton_descargar_reporte");
 
+contenedor_tabla.style.display = 'none';
+btn_descargar_reportes.style.display = 'none';
+
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
+
 });
 btn_certificaciones.addEventListener("click",(e)=>{
     peticion_nombres("certificaciones");
 });
 btn_proyectos.addEventListener("click",(e)=>{
     peticion_nombres("proyectos");
+});
+
+btn_descargar_reportes.addEventListener("click",(e)=>{
+
+    window.open("../../controller/administrativo/Pdf_ReporteIn.php");
+
 });
 
 function peticion_nombres(tipo){
@@ -86,6 +96,8 @@ formulario.addEventListener("submit",(e)=>{
                 }else{
                     fechas_titulo.innerText = "";
                 }
+                contenedor_tabla.style.display = 'block';
+                btn_descargar_reportes.style.display = 'block';
                 titulo.innerText = nombre;
                 rellenar_tabla(datos);
             });
@@ -102,9 +114,8 @@ formulario.addEventListener("submit",(e)=>{
 
 //rellenamos el combo nombres
 function rellenar_lista(datos) {
-
-    contenedor_tabla.hidden = false;
-    btn_descargar_reportes.hidden = false;
+    
+    
 
     document.getElementById("nombres").innerHTML = "";
 
