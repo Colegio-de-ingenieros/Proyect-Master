@@ -94,8 +94,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td>$' . $pdf . '</td>';
                 $salida .= '<td> 
-            <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
-            <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
+            <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
+            <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
             <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
             </td>';
                 $salida .= '</tr>';
