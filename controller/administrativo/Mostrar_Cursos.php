@@ -142,7 +142,7 @@ if ($datos == true) {
         $respuesta .= '<td> 
         <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" onclick="eli()">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
         </td>';
         $respuesta .= '</tr>';
@@ -158,12 +158,13 @@ else {
 }
 $respuesta .= "</tbody></table>";
 echo '<script type="text/javascript">
-function eli()
+function eli(dato)
 {
+    console.log(dato);
    var flag = confirm("¿Está seguro de que desea eliminar el curso con temas y subtemas?");
    if(flag){
    var formData = new FormData();
-   formData.append("id", JSON.stringify("' . $clave . '"));
+   formData.append("id", dato);
 
 
    var xmlhttp = new XMLHttpRequest();
@@ -172,7 +173,10 @@ function eli()
    xmlhttp.onreadystatechange = function () {
        if (this.readyState == 4 && this.status == 200) {
 
-           alert(this.responseText);
+           
+           if (this.responseText == "El curso se eliminó con éxito, por favor refresque la página") {
+            location.reload();
+           }
        }
    };
 
