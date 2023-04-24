@@ -119,7 +119,7 @@
             <p class="label-2">Nombre*</p>
           </div>
           <div class="input-form">
-            <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo puede contener letras, espacios intermedios, números y puntos.'
+            <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" required placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo puede contener letras, espacios intermedios, números y puntos.'
                          maxlength="50">
           </div>
         </div>
@@ -129,7 +129,7 @@
             <p class="label-2">Años de experiencia*</p>
          </div>
          <div class="input-form">
-            <input type="text" name="experiencia_lab" id="experiencia_lab" class="input-format-2" placeholder="Ingrese los años de experiencia requeridos" 
+            <input type="text" name="experiencia_lab" id="experiencia_lab" class="input-format-2" required placeholder="Ingrese los años de experiencia requeridos" 
             title="Solo puede ingresar números de dos dígitos." maxlength="2">
           </div>
       </div>
@@ -140,7 +140,7 @@
           </div>
           <div class="input-form">
             <textarea  name="requi_academicos" id="requi_academicos" class="input-textarea-2"
-               placeholder="Ingrese el requisito académico" title="Los requisitos académicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
+            required placeholder="Ingrese el requisito académico" title="Los requisitos académicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
           </div>
         </div>
         <div class="grupo-input">
@@ -149,7 +149,7 @@
           </div>
           <div class="input-form">
             <textarea name="requi_tecnicos" id="requi_tecnicos" class="input-textarea-2"
-               placeholder="Ingrese el requisito técnico" title="Los requisitos técnicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
+            required placeholder="Ingrese el requisito técnico" title="Los requisitos técnicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
           </div>
         </div>
       </div>
@@ -160,7 +160,7 @@
         </div>
         <div class="input-form">
           <textarea  name="descri_puesto" id="descri_puesto" class="input-textarea-2"
-               placeholder="Ingrese la descripción del puesto" title="Ingrese la descripción del puesto." ></textarea>
+          required placeholder="Ingrese la descripción del puesto" title="Ingrese la descripción del puesto." ></textarea>
         </div>
       </div>
       <br>
@@ -226,7 +226,7 @@
         <p class="label-2">Hora de inicio*</p>
       </div>
       <div class="input-form">
-        <input type="time" class="input-format-2" name="inicio" id="inicio" placeholder="Ingrese su texto aquí">
+        <input type="time" class="input-format-2" name="inicio" id="inicio" required placeholder="Ingrese su texto aquí">
       </div>
     </div>
             
@@ -236,7 +236,7 @@
         <p class="label-2">Hora de finalización*</p>
       </div>
       <div class="input-form">
-        <input type="time" class="input-format-2" name="final" id="final" placeholder="Ingrese su texto aquí">
+        <input type="time" class="input-format-2" name="final" id="final" required placeholder="Ingrese su texto aquí">
       </div>
     </div>
 
@@ -247,7 +247,7 @@
         <p class="label-2">Salario bruto mensual*</p>
       </div>
       <div class="input-form">
-        <input type="text" name="sal_bruto" id="sal_bruto" maxlength="50" class="input-format-2" placeholder="Ingrese el salario en pesos mexicanos"
+        <input type="text" name="sal_bruto" id="sal_bruto" maxlength="50" class="input-format-2" required placeholder="Ingrese el salario en pesos mexicanos"
         title="El salario solo puede contener números y un punto.">
       </div>
     </div>
@@ -257,7 +257,7 @@
         <p class="label-2">Salario neto mensual*</p>
       </div>
       <div class="input-form">
-        <input type="text" name="sal_mensual" id="sal_mensual" maxlength="50" class="input-format-2" placeholder="Ingrese el salario en pesos mexicanos" 
+        <input type="text" name="sal_mensual" id="sal_mensual" maxlength="50" class="input-format-2" required placeholder="Ingrese el salario en pesos mexicanos" 
         title="El salario solo puede contener números y un punto.">
       </div>
     </div>
@@ -296,7 +296,7 @@
         <p class="label-2">Código postal*</p>
       </div>
       <div class="campo">
-        <input type="text" name="cpPerso" id="cpPerso" maxlength="5" class="input-format" placeholder="Ingrese su código postal"
+        <input type="text" name="cpPerso" id="cpPerso" maxlength="5" class="input-format" required placeholder="Ingrese su código postal"
         title="El código postal solo puede contener números.">
       </div>
     </div>
@@ -306,7 +306,7 @@
         <p class="label-2">Calle y número*</p>
       </div>
       <div class="input-form">
-        <input type="text" name="calle" id="calle" class="input-format" maxlength="100" placeholder="Ingrese su calle y número"
+        <input type="text" name="calle" id="calle" class="input-format" maxlength="100" required placeholder="Ingrese su calle y número"
         title="La calle y el número solo puenden estar formados por letras mayúsculas, minúsculas y caracteres especiales (., #).">
       </div>
     </div>
