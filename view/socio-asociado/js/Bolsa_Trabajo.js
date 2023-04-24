@@ -94,6 +94,7 @@ function mostrar_modal(id_vacante) {
           const salario_neto = document.getElementById('salario-neto');
           const telefono = document.getElementById('telefono-empresa');
           const correo = document.getElementById('correo-empresa');
+          const link = document.getElementById('link-ventana')
 
           let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
           let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
@@ -133,6 +134,7 @@ function mostrar_modal(id_vacante) {
           modalidad.innerHTML = texto_modalidad;
           telefono.innerHTML = listOfLists2[i][10];
           correo.innerHTML = listOfLists2[i][12];
+          link.href = "Aplicar_Vacante.php?id="+listOfLists[i][0]
         }
       }
     }

@@ -1,9 +1,20 @@
 const btn_cursos = document.getElementById("cursos");
 const btn_certificaciones = document.getElementById("certificaciones");
 const btn_proyectos = document.getElementById("proyectos");
+
 const formulario = document.getElementById("formulario");
+
 const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
+const titulo = document.getElementById("nombre_actividad");
+
+const fecha_inicio = document.getElementById("inicio");
+const fecha_fin = document.getElementById("fin");
+const fechas_titulo = document.getElementById("fechas_titulo");
+
+const contenedor_tabla = document.getElementById("contenedor_tabla");
+const btn_descargar_reportes = document.getElementById("boton_descargar_reporte");
+
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
@@ -36,25 +47,64 @@ formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
 
-    let numero = document.getElementById("nombres").value.split(" ");
- 
-    let form_data = new FormData(formulario);
-    form_data.append("numero_seguimiento",numero[0]);
+    let fecha1 = fecha_inicio.value;
+    let fecha2 = fecha_fin.value;
 
-    fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
-        method:"POST",
-        body: form_data
-    }).then(respuesta=> respuesta.json())
-      .then(datos=>{
+    if(btn_cursos.checked == false && 
+       btn_certificaciones.checked == false && 
+       btn_proyectos.checked == false){
 
-        console.log(datos);
-        rellenar_tabla(datos);
-    });
+        alert("Debe seleccionar un nombre de actividad");
+
+    }else if((fecha1 == "" || fecha2 == "") && document.getElementById("periodo").checked ){
+        alert("Debe seleccionar una fecha de inicio y una fecha de Finalización");
+    }else{
+        
+
+        let fecha_inicio1 = new Date(fecha1);
+        let fecha_fin1 = new Date(fecha2);
+
+        if((fecha_inicio1 > fecha_fin1) && document.getElementById("periodo").checked){
+            alert("La fecha de inicio no debe ser mayor a la fecha de Finalización");
+        }else{
+
+            let nombre = document.getElementById("nombres").textContent.split(" ")[1];
+            let numero = document.getElementById("nombres").value.split(" ");
+    
+            let form_data = new FormData(formulario);
+            form_data.append("numero_seguimiento",numero[0]);
+            form_data.append("nombre_titulo", nombre);
+
+            fetch("../../controller/administrativo/Mostrar_ReporteIn.php",{
+                method:"POST",
+                body: form_data
+            }).then(respuesta=> respuesta.json())
+            .then(datos=>{
+
+                if(document.getElementById("periodo").checked){
+                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
+                }else{
+                    fechas_titulo.innerText = "";
+                }
+                titulo.innerText = nombre;
+                rellenar_tabla(datos);
+            });
+
+        }
+
+        
+
+    }
+
+    
 
 });
 
 //rellenamos el combo nombres
 function rellenar_lista(datos) {
+
+    contenedor_tabla.hidden = false;
+    btn_descargar_reportes.hidden = false;
 
     document.getElementById("nombres").innerHTML = "";
 
@@ -117,7 +167,6 @@ function rellenar_tabla(datos) {
                 identificador = datos[i][0][j]["id"]; 
                 
                 // gastos
-                console.log(datos[i][1]);
                 sub_gastos = 0;
                 //agregaremos 6 celdas a la tabla si estan
                 for (let k = 0; k < datos[i][1].length ; k++) {
@@ -148,9 +197,16 @@ function rellenar_tabla(datos) {
                 sub_gastos_col.innerText = "$ "+sub_gastos;
                 
                 // ingresos
+                //console.log(datos[i][2]);
                 if(datos[i][2].length != 0){
-                    ingresos_col.innerText = "$ "+ datos[i][2][j][1];
-                    sub_ingresos += parseFloat(datos[i][2][j][1]);
+
+                    //checa si todavia hay ingresos, si hay se mete si no no
+                    if( j < datos[i][2].length){
+                        
+                        ingresos_col.innerText = "$ "+ datos[i][2][j][1];
+                        sub_ingresos += parseFloat(datos[i][2][j][1]);
+                    }
+                    
                 }
 
                 row.appendChild(nombre_col);
@@ -205,13 +261,14 @@ function rellenar_tabla(datos) {
     let ingresos_totales = document.createElement('div');
     let total_final = document.createElement('div');
 
-    gastos_totales.innerText = "Gastos totales: $ " + sub_sub_gastos ;
-    ingresos_totales.innerText = "Ingresos totales: $ " + sub_ingresos;
-    total_final.innerText = "Total final: $" + (sub_ingresos-sub_sub_gastos);
+    gastos_totales.innerText = "Total de gastos: $ " + sub_sub_gastos ;
+    ingresos_totales.innerText = "Total de ingresos: $ " + sub_ingresos;
+    total_final.innerText = "Total: $" + (sub_ingresos-sub_sub_gastos);
 
     totales.appendChild(gastos_totales);
     totales.appendChild(ingresos_totales);
     totales.appendChild(total_final);
+
 
 }
 
