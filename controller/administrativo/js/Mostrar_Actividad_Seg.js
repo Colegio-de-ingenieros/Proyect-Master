@@ -108,20 +108,21 @@ function rellenar_tabla(){
     .then(resultado =>{ 
         console.log('tabla')
         console.log(resultado)
-        for (var i = 0; i < 6; i++) {
+        for (var i = 0; i < resultado[0].length; i++) {
+
             dato=resultado[0][i]
             console.log("DATO", dato)
             tabla.innerHTML += 
             ` <tr> 
-                <td>${resultado[0][i]}</td> 
-                <td>${"$ 0"}</td> 
-                <td>${"$ 0"}</td> 
-                <td>${"$ 0"}</td> 
-                <td>${"$ 0"}</td> 
-                <td>${"$ 0"}</td> 
-                <td>${"$0"}</td> 
+                <td>${resultado[1][i]}</td> 
+                <td>${resultado[2][i]}</td> 
+                <td>${resultado[3][i]}</td> 
+                <td>${resultado[4][i]}</td> 
+                <td>${resultado[5][i]}</td> 
+                <td>${resultado[6][i]}</td> 
+                <td>${resultado[7][i]}</td> 
                 <td><a href="../../view/administrativo/Vista_Certificaciones.php">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="#">Eliminar</a></td></td> 
+                <a  href="<script src="../../controller/administrativo/js/Eliminar_Participante_Confirmacion.js"></script> ">Eliminar</a></td></td> 
             </tr> 
             ` 
         }
@@ -132,8 +133,8 @@ function rellenar_tabla(){
 formulario_participantes.addEventListener('submit', function (e){
     e.preventDefault();
     let par =document.getElementById("participante_Socio_Aso").value;
-    let emp = document.getElementById("participante_Empresas").value = "";
-    let instr = document.getElementById("participante_Instructores").value = "";
+    let emp = document.getElementById("participante_Empresas").value;
+    let instr = document.getElementById("participante_Instructores").value;
 
     if (par=="" && emp=="" && instr==""){
         alert("Por favor, seleccione un participante.");
@@ -156,6 +157,8 @@ formulario_participantes.addEventListener('submit', function (e){
                 alert(data);
             if (data==="Participante añadido exitosamente"){
                     obtener_Datos() 
+                    const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+                    rellenar_tabla()
             }
 
         }) 
@@ -182,6 +185,8 @@ formulario_Gastos.addEventListener('submit', function (e){
             document.getElementById("gastos_monto").value = "";
             document.getElementById("gastos_Fecha").value = "";
             document.getElementById("gastos_comprobante").value = "";
+            const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+            rellenar_tabla()
         }
 
     }) 

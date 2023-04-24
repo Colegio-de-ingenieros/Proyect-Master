@@ -18,22 +18,14 @@ botonRegresar.addEventListener("click", (e) => {
 
     if(bNom==false){
         nom_vacante.style.border = "3px solid red";
+    }else if(bExp==false){
+        experiencia_lab.style.border = "3px solid red";
     }else if(bAcad==false){
         requi_academicos.style.border = "3px solid red";
     }else if(bTech==false){
         requi_tecnicos.style.border = "3px solid red";
     }else if(bDesc==false){
         descri_puesto.style.border = "3px solid red";
-    }else if(bcodigo_postal==false){
-        cpPerso.style.border = "3px solid red";
-    }else if(bcalle==false){
-        calle.style.border = "3px solid red";
-    }else if(bciudad==false){
-        ciudad.style.border = "3px solid red";
-    }else if(bestado==false){
-        estado.style.border = "3px solid red";
-    }else if(bExp==false){
-        experiencia_lab.style.border = "3px solid red";
     }else if(bBruto==false){
         sal_bruto.style.border = "3px solid red";
     }else if(bMensual==false){
@@ -42,6 +34,15 @@ botonRegresar.addEventListener("click", (e) => {
         caja_telefono.style.border = "3px solid red";
     }else if(bEmail==false){
         caja_correo.style.border = "3px solid red";
+    }else if(bcodigo_postal==false){
+        cpPerso.style.border = "3px solid red";
+    }else if(bcalle==false){
+        calle.style.border = "3px solid red";
+    }else if(bciudad==false){
+        ciudad.style.border = "3px solid red";
+    }else if(bestado==false){
+        estado.style.border = "3px solid red";
+    
     }else{
         validar(true);
     }

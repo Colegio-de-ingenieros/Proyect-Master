@@ -5,7 +5,7 @@ $bd = new EliminarCurso();
 $bd->BD();
 
 $id = $_POST['id'];
-$id = str_replace('"', '', $id);
+$id = $bd->agregar_ceros($id, 6);
 
 $idtemasl = [];
 $nomtemasl = [];

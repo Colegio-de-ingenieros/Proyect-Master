@@ -131,7 +131,7 @@
         
         public function buscar_tipos_gastos(){
             $this->conexion_bd();
-            $sql = "SELECT*
+            $sql = "SELECT *
                     FROM tipogastos";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
@@ -192,7 +192,7 @@
 
         public function insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
@@ -216,7 +216,7 @@
 
         public function insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
@@ -240,7 +240,7 @@
 
         public function insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
@@ -425,43 +425,6 @@
 
             return $ejecucion;
         }
-
-//CONSULTAS PARA  MOSTRAR GASTOS E INGRESOS EN LA TABLA
-
-        public function consul_datos_tabla($id){
-            $lista=[];
-            $particSocios=$this->buscar_partic_socios($id);
-            $particEmp=$this->buscar_partic_empresas($id);
-            $particIns=$this->buscar_partic_instructores($id);
-            $resUno = array_merge($particSocios, $particEmp);
-            $resDos = array_merge($resUno, $particIns);
-            $id=[];
-            $nombre=[];
-
-            for ($i=0;$i<count($resDos);$i++){
-                array_push($id, $resDos[$i][0]);
-                array_push($nombre, $resDos[$i][1]);
-            }
-            $lista[0]=$id;
-            $lista[0]=$nombre;
-            return $lista;
-        }
-
-        public function buscar_socios_ingresos($id){
-            $this->conexion_bd();
-            $sql = "SELECT persoparticipa.IdParP, CONCAT_WS(' ', 'Asoc.', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre, controlingre.Idingre, sum(MontoIngre) as TotalIngre
-            FROM usuaperso, persoparticipa, seguimiento, persoingresos, controlingre
-            WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND persoparticipa.IdPerso = usuaperso.IdPerso AND persoparticipa.IdParP = persoingresos.IdParP AND persoingresos.IdIngre = controlingre.IdIngre     
-            GROUP BY (persoparticipa.IdParP)
-            ORDER BY (usuaperso.NomPerso)";
-            $arre = [":id"=>$id];
-            $resultado = $this->mostrar($sql, $arre);
-            $this->cerrar_conexion();
-            return $resultado;
-        }
-
-
-
     }
 
 ?>

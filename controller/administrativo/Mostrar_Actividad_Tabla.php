@@ -1,7 +1,7 @@
 <?php
 
-require_once('../../model/administrativo/Mostrar_Actividad_Seg.php');
-$objeto=new Actividad_Seguimiento();
+require_once('../../model/administrativo/Mostrar_Actividad_Tabla.php');
+$objeto=new Actividad_Seg_Tabla();
 $data =[];
 
 $id=$_POST["idAct"];

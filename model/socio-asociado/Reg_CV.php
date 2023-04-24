@@ -9,6 +9,173 @@
             $this->base->conexion_bd();
         }
 
+        function insertar_expprocv($ide, $idb){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO expprocv (IdExpP, IdBolCv)
+            VALUES(:ide, :idb)";
+
+            $a1 = [":ide"=>$ide, ":idb"=>$idb];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function insertar_persobolsa($idp, $idb){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO persobolsacv (IdPerso, IdBolCv)
+            VALUES(:idp, :idb)";
+
+            $a1 = [":idp"=>$idp, ":idb"=>$idb];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function insertar_expacacv($ide, $idb){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO expacacv (IdExpAca, IdBolCv)
+            VALUES(:ide, :idb)";
+
+            $a1 = [":ide"=>$ide, ":idb"=>$idb];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function insertar_exppro($idb, $empresa, $inicio, $fin, $puesto, $actividades){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO expprofesional (IdExpP, EmpExpP, IniExpP, FinExpP, PuestoExpP, ActExpP)
+            VALUES(:id, :empresa, :inicio, :fin, :puesto, :actividades)";
+
+            $a1 = [":id"=>$idb, ":empresa"=>$empresa, ":inicio"=>$inicio, ":fin"=>$fin, ":puesto"=>$puesto, ":actividades"=>$actividades];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function insertar_expaca($idb, $carrera, $cedula){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO expacademica (IdExpAca, Carrera, NumCedAca)
+            VALUES(:id, :carrera, :cedula)";
+
+            $a1 = [":id"=>$idb, ":carrera"=>$carrera, ":cedula"=>$cedula];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function insertar_bolsacv($idb, $descripcion, $residencia, $salario){
+            //consultas para la tabla de certificaciones internas
+            $q1 = "INSERT INTO bolsacv (IdBolCv, DesProCv, ResidenciaCv, ExpSalCv)
+            VALUES(:id, :descripcion, :residencia, :salario)";
+
+            $a1 = [":id"=>$idb, ":descripcion"=>$descripcion, ":residencia"=>$residencia, ":salario"=>$salario];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+
+        function agregar_ceros($numero, $lon){
+            $ceros = "";
+            $numero_nuevo="";
+            for ($i=0; $i < $lon ; $i++) { 
+                $numero_nuevo = $ceros . $numero;
+                if(strlen($numero_nuevo) == $lon){
+                    break;
+                }else{
+                    $ceros = $ceros . "0";
+                }
+            }
+            return $numero_nuevo;
+        }
+
+        function buscarUltimoIdexpprofesional(){
+            $querry = "SELECT * FROM expprofesional";
+
+            $resultados = $this->base->mostrar($querry);
+
+            //guarda los valores como flotantes para ordenarlos bien
+            $aux = [];
+
+            for($i=0; $i<count($resultados);$i++){
+                array_push($aux, floatval($resultados[$i]["IdExpP"]));
+            }
+
+            sort($aux, 0);
+
+            $id = 0;
+
+            if(count($aux)>= 1){
+                $id = $aux[count($aux) - 1];
+            }
+            $id = $id + 1;
+            return $id;
+        }
+
+        function buscarUltimoIdexpacademica(){
+            $querry = "SELECT * FROM expacademica";
+
+            $resultados = $this->base->mostrar($querry);
+
+            //guarda los valores como flotantes para ordenarlos bien
+            $aux = [];
+
+            for($i=0; $i<count($resultados);$i++){
+                array_push($aux, floatval($resultados[$i]["IdExpAca"]));
+            }
+
+            sort($aux, 0);
+
+            $id = 0;
+
+            if(count($aux)>= 1){
+                $id = $aux[count($aux) - 1];
+            }
+            $id = $id + 1;
+            return $id;
+        }
+
+        function buscarUltimoIdbolsacv(){
+            $querry = "SELECT * FROM bolsacv";
+
+            $resultados = $this->base->mostrar($querry);
+
+            //guarda los valores como flotantes para ordenarlos bien
+            $aux = [];
+
+            for($i=0; $i<count($resultados);$i++){
+                array_push($aux, floatval($resultados[$i]["IdBolCv"]));
+            }
+
+            sort($aux, 0);
+
+            $id = 0;
+
+            if(count($aux)>= 1){
+                $id = $aux[count($aux) - 1];
+            }
+            $id = $id + 1;
+            return $id;
+        }
+
         function extraer_datos_usuario($id){
             $query = "SELECT usuaperso.NomPerso, 
                             usuaperso.ApePPerso, 

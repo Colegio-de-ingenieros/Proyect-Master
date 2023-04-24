@@ -8,6 +8,19 @@ class EliminarCurso{
         $this->bd = new Crud_bd();
         $this->bd->conexion_bd();
     }
+    function agregar_ceros($numero, $lon){
+        $ceros = "";
+        $numero_nuevo="";
+        for ($i=0; $i < $lon ; $i++) { 
+            $numero_nuevo = $ceros . $numero;
+            if(strlen($numero_nuevo) == $lon){
+                break;
+            }else{
+                $ceros = $ceros . "0";
+            }
+        }
+        return $numero_nuevo;
+    }
 
     function buscaestatus($id){
         $consulta = "SELECT EstatusCur FROM cursos

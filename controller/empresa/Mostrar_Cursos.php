@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/socio-asociado/Mostrar_Cursos.php');
+include_once('../../model/empresa/Mostrar_Cursos.php');
 session_start();
 if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $usuario = $_SESSION['usuario'];
@@ -9,7 +9,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $base = new mostrarCursos();
 
     $id_perso=$base->usuario($usuario);
-    $idperso=$id_perso[0]['IdPerso'];
+    $idperso=$id_perso[0]['RFCUsuaEmp'];
     $id_final=$idperso;
     $cursos=$base->tabla_completa($id_final);
 
@@ -94,10 +94,10 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td>$' . $pdf . '</td>';
                 $salida .= '<td> 
-                <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
-                <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
-                </td>';
+            <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
+            <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
+            <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+            </td>';
                 $salida .= '</tr>';
             }
         } else {

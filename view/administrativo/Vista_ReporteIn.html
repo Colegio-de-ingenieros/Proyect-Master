@@ -232,11 +232,11 @@
         </div>
         <div class="grupo-input">
             <b>Inicio</b>
-            <input type="date" class="input-format-2" placeholder="Date">
+            <input type="date" name="inicio" class="input-format-2" placeholder="Date">
         </div>
         <div class="grupo-input">
             <b>Finalización</b>
-            <input type="date" class="input-format-2" placeholder="Date">
+            <input type="date" name="fin" class="input-format-2" placeholder="Date">
         </div>
 
         <div></div><div></div>
@@ -253,7 +253,7 @@
                 <article>          
                   <div class="tablas">
                     <section class="header_table" id="tablaResultado">
-                        <table>
+                        <table >
                           <thead>
                             <tr>
                                 <th>Nombre</th>
@@ -266,27 +266,8 @@
                                 <th>Ingresos</th>
                             </tr>
                           </thead>
-                          <tbody id="cuerpo">
-                            <tr>
-                                <td>Python</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>10</td>
-                                <td>50</td>
-                                <td>100</td>
-                              </tr>
-                              <tr>
-                                  <td>Java</td>
-                                  <td>20</td>
-                                  <td>10</td>
-                                  <td>20</td>
-                                  <td>10</td>
-                                  <td>20</td>
-                                  <td>80</td>
-                                  <td>500</td>
-                              </tr>
+                          <tbody id="cuerpo" >
+                           
                           </tbody>
                         </table>
                     </section>
@@ -294,9 +275,15 @@
                 </article>
               </div>
           </div>
-          <div></div><div></div>
-        <div class="boton-reporte">
-            <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Descargar reporte</button>
+          <div id="datos">
+            
+          </div>
+          <div>
+
+          </div>
+
+        <div class="boton-reporte"  >
+            <button type="submit" name="registrar" id="registrar" class="btn-medium btn" id="boton_descargar_reporte" >Descargar reporte</button>
         </div>
       
   </main>
