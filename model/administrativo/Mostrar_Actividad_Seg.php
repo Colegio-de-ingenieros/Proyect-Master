@@ -131,7 +131,7 @@
         
         public function buscar_tipos_gastos(){
             $this->conexion_bd();
-            $sql = "SELECT*
+            $sql = "SELECT *
                     FROM tipogastos";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
@@ -192,7 +192,7 @@
 
         public function insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
@@ -216,7 +216,7 @@
 
         public function insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
@@ -240,7 +240,7 @@
 
         public function insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlGas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
 
