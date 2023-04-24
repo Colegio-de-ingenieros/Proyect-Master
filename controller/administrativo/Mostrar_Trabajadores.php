@@ -181,8 +181,9 @@ function confirmDesactiv(dato)
     var cadena="../../controller/administrativo/Eliminar_Trabajadores.php?rfc="+dato;
    var flag = confirm("¿Está seguro de eliminar este trabajador?");
    if(flag){
-        window.location.assign(cadena);
         alert("Eliminado con éxito");
+        window.location.assign(cadena);
+        
    }else
         window.location.assign("Vista_trabajadores.php");
 }
