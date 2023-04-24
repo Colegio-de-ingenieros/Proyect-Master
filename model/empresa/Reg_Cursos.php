@@ -42,7 +42,7 @@
         public function usuario($correo){
             $this->conexion_bd();
             
-            $consulta = "SELECT IdPerso FROM usuaperso WHERE binary(CorreoPerso) =  binary(:user)";
+            $consulta = "SELECT RFCUsuaEmp FROM usuaemp WHERE binary(CorreoUsuaEmp) =  binary(:user)";
             $parametros = [":user"=>$correo];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
@@ -59,10 +59,10 @@
             $a1 = [":idCurso"=>$id_curso, ":nomCurso"=>$nombre, ":hraCurso"=>$horas, ":docCurso"=>$archivo, ":orgCurso"=>$organizacion];
 
             //consultas para la tabla de usuaperso
-            $q2 = "INSERT INTO persoaltacur (IdPerso ,IdCurPerso) 
-            VALUES (:idPerso, :idCurso)";
+            $q2 = "INSERT INTO empaltacur (IdCurPerso ,RFCUsuaEmp) 
+            VALUES (:idCurso, :rfc)";
 
-            $a2 = [":idPerso"=>$id_perso, ":idCurso"=>$id_curso];
+            $a2 = [":idCurso"=>$id_curso, ":rfc"=>$id_perso];
 
             $querry = [$q1, $q2];
             $parametros = [$a1, $a2];

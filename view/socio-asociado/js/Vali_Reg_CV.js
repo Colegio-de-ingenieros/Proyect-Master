@@ -43,7 +43,7 @@ actividad2.addEventListener('keyup', (e) => {
 
 
     if (!expresiones.objetivo.test(valorInput)) {
-        actividad2.style.border = "3px solid red";
+       /*  actividad2.style.border = "3px solid red"; */
         acti2 = false
         if (actividad2.value==="") {
             actividad2.removeAttribute("style");
@@ -86,7 +86,7 @@ puesto1.addEventListener('keyup', (e) => {
 
 
     if (!expresiones.puesto.test(valorInput)) {
-        puesto1.style.border = "3px solid red";
+        /* puesto1.style.border = "3px solid red"; */
         puest2 = false
         if (puesto1.value==="") {
             puesto1.removeAttribute("style");
@@ -126,7 +126,7 @@ empresa2.addEventListener('keyup', (e) => {
     .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.empresa.test(valorInput)) {
-        empresa2.style.border = "3px solid red";
+        /* empresa2.style.border = "3px solid red"; */
         empr2 = false;
         if (empresa2.value==="") {
             empresa2.removeAttribute("style");
@@ -176,7 +176,7 @@ carrera3.addEventListener('keyup', (e) => {
     .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
-        carrera3.style.border = "3px solid red";
+        /* carrera3.style.border = "3px solid red"; */
         carr3 = false;
         if (carrera3.value==="") {
             carrera3.removeAttribute("style");
@@ -206,7 +206,7 @@ carrera1.addEventListener('keyup', (e) => {
     .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
-        carrera1.style.border = "3px solid red";
+        /* carrera1.style.border = "3px solid red"; */
         carr2 = false;
         if (carrera1.value==="") {
             carrera1.removeAttribute("style");
@@ -488,7 +488,9 @@ function datos(){
         experiencia_profesional_particular = [];
 
         var combo = document.getElementById("residencia-campo").value;
-
+        combo = combo-1;
+        var miVariable = localStorage.getItem('miVariable');
+        datos_generales.push(miVariable);
         datos_generales.push(combo);
         datos_generales.push(document.getElementById("salario").value);
         datos_generales.push(document.getElementById("objetivo").value);
@@ -547,7 +549,10 @@ function datos(){
             .then(data =>
             {
                 if (data == 'Fechas'){
-                    alert("Fecha de finalización debe ser posterior a fecha de inicio");
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio en la primera experiencia profesional");
+                }
+                else if (data == 'Fechas2'){
+                    alert("Fecha de finalización debe ser posterior a fecha de inicio en la segunda experiencia profesional");
                 }
                 else{
                 alert(data);

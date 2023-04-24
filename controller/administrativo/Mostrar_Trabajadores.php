@@ -72,7 +72,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -151,7 +151,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv()" class="table_item__link">Eliminar</a></td>';
+            $rfcc="'".$rfc."'";
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv(String('.$rfcc.'))" class="table_item__link">Eliminar</a></td>';
             
             //<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
             //
@@ -175,11 +176,13 @@ if (isset($_POST['consulta'])) {
 $salida .= "</tbody></table>";
 echo '<script type="text/javascript">
 
-function confirmDesactiv()
+function confirmDesactiv(dato)
 {
+    var cadena="../../controller/administrativo/Eliminar_Trabajadores.php?rfc="+dato;
+    console.log(cadena);
    var flag = confirm("¿Está seguro de eliminar este trabajador?");
    if(flag){
-        window.location.assign("../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'");
+        window.location.assign(cadena);
         alert("Eliminado con éxito");
    }else
         window.location.assign("Vista_trabajadores.php");

@@ -1,0 +1,339 @@
+<script src="../../view/login/js/verificar_permiso_socio.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplicar a la Vacante</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
+  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
+</head>
+
+<body>
+  <header>
+
+    <div class="menu">
+      <input type="checkbox" id="check__menu">
+      <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
+      <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+      <nav>
+        <ul>
+
+          <!-- Cursos -->
+          <li>
+            <a href="#">
+              <!--               <i class="fa-solid fa-user-tie"></i> -->
+              Cursos
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Cuotas -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-circle-check"></i> -->
+              Cuotas
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Bolsa de trabajo -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-chalkboard-user"></i> -->
+              Bolsa de trabajo
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Ofertas de trabajo</a></li>
+              <li><a id="" href="Reg_CV.html">Mi CV</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-solid fa-clipboard-list"></i> -->
+              Servicios
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Mi Perfil -->
+          <li>
+            <a href="#">
+              <!-- <i class="fa-regular fa-user"></i> -->
+              Mi perfil
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Datos Generales</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="boton-cerrar-session">
+      <button class="btn-cerrar-session btn"
+        onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section-main">
+      <div class="cabezera">
+        <h3 class="h3">Mostrar CV</h2>
+          
+          <p class="subtitulo-1">Datos generales</p>
+          
+          <hr>
+      </div>
+      <!-- Datos generales -->
+      
+      <div class="formulario-generales">
+        <!-- Nombre -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre</label>
+          <input type="text" class="input-format-2" id="nombre-campo" readonly></input>
+        </div>
+        <!-- Apellido paterno -->
+        <div class="campo">
+          <label for="" class="label-2">Apellido Paterno</label>
+          <input type="text" class="input-format-2" id="apellido-paterno-campo" readonly></input>
+        </div>
+        <!-- Apellido materno -->
+        <div class="campo">
+          <label for="" class="label-2">Apellido Materno</label>
+          <input type="text" class="input-format-2" id="apellido-materno-campo" readonly></input>
+        </div>
+        <!-- Fecha de nacimiento -->
+        <div class="campo">
+          <label for="" class="label-2">Fecha de nacimiento</label>
+          <input type="date" class="input-format-2" id="fecha-nacimiento-campo" readonly></input>
+        </div>
+        <!-- Correo electrónico -->
+        <div class="campo">
+          <label for="" class="label-2">Correo electrónico</label>
+          <input type="email" class="input-format-2" id="correo-campo" readonly></input>
+        </div>
+        <!-- Telefono -->
+        <div class="campo">
+          <label for="" class="label-2">Teléfono</label>
+          <input type="tel" class="input-format-2" id="telefono-campo" readonly></input>
+        </div>
+        <!-- Calle y número -->
+        <div class="campo">
+          <label for="" class="label-2">Calle y número</label>
+          <input type="text" class="input-format-2" id="calle-campo" readonly></input>
+        </div>
+        <!-- Colonia -->
+        <div class="campo">
+          <label for="" class="label-2">Colonia</label>
+          <input type="text" class="input-format-2" id="colonia-campo" readonly>
+        </div>
+        <!-- Ciudad -->
+        <div class="campo">
+          <label for="" class="label-2">Ciudad</label>
+          <input type="text" class="input-format-2" id="ciudad-campo" readonly>
+        </div>
+        <!-- Estado -->
+        <div class="campo">
+          <label for="" class="label-2">Estado</label>
+          <input type="text" class="input-format-2" id="estado-campo" readonly>
+        </div>
+        <!-- Cambio de residencia -->
+        <div class="campo">
+          <label for="" class="label-2">¿Puede cambiar de residencia?</label>
+          <input type="text" class="input-format-2" id="residencia-campo" readonly>
+        </div>
+        <!-- Expectativa salarial bruta -->
+        <div class="campo">
+          <label for="" class="label-2">Expectativa salarial bruta</label>
+          <input id="salarial-campo" type="text"class="input-format-2" readonly></input>
+        </div>
+      </div>
+
+      <div class="formulario-descripcion">
+        <label for="" class="label-2">Descripción profesional</label>
+        <textarea  id="objetivo" class="input-format-2"></textarea>
+      </div>
+      <!-- Experiencia académica -->
+      <div class="divisor">
+        <p class="subtitulo-1">Experiencia académica</p>
+        <hr>
+      </div>
+      
+      <!-- Formulario académico 1 -->
+      <div class="formulario-academica" id="academico-1">
+        <!-- Nombre de la carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera</label>
+          <input id="carrera-1"  type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div class="campo">
+          <label for="" class="label-2">Número de cédula</label>
+          <input id="cedula-1" type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
+        </div>
+      </div>
+      
+      
+      <!-- Formulario académico 2 -->
+      <div class="formulario-academica" id="academico-2">
+        <!-- Nombre de la carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera</label>
+          <input id="carrera-2" title="El campo nombre solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div class="campo">
+          <label for="" class="label-2">Número de cédula</label>
+          <input id="cedula-2" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
+        </div>
+
+      </div>
+
+      <!-- Formulario académico 3 -->
+      <div class="formulario-academica" id="academico-3">
+        <!-- Nombre de la carrera -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Nombre de la carrera</label>
+          <input id="carrera-3" title="El campo nombre solo debe de contener letras." type="text" class="input-format-2" placeholder="Ingrese el nombre de la carrera aquí" maxlength="40"></input>
+        </div>
+        <!-- Número de cédula -->
+        <div id="carrera-1"class="campo">
+          <label for="" class="label-2">Número de cédula</label>
+          <input id="cedula-3" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
+        </div>
+
+      </div>
+
+      <!-- Experiencia profesional -->
+      <div class="divisor">
+        <p class="subtitulo-1">Experiencia profesional</p>
+        <hr>
+      </div>
+      
+      <!-- Formulario experiencia 1 -->
+      <div class="formulario-experiencia" id="experiencia-1">
+        <!-- Puesto que desempeñaba -->
+        <div class="campo">
+          <label for="" class="label-2">Puesto que desempeñaba</label>
+          <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
+            class="input-format-2" id="puesto-antiguo-1" placeholder="Ingrese el puesto que desempeñaba aquí" maxlength="50"></input>
+        </div>
+        <!-- Nombre de la empresa -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la empresa</label>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-1" placeholder="Ingrese el nombre de la empresa aquí" maxlength="100"></input>
+        </div>
+        <!-- Fecha de inicio -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de inicio</label>
+          <input type="date" id="periodo-inicio-antigua-1" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de fin -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de fin</label>
+          <input type="date" id="periodo-fin-antigua-1" class="input-format-2"></input>
+        </div>
+        <!-- Actividades relevantes -->
+        <div class="campo">
+          <label for="" class="label-2">Actividades relevantes</label>
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-1" class="input-format-2"
+            placeholder="Ingrese las actividades relevantes aquí"></textarea>
+        </div>
+
+      </div>
+      
+      <!-- Formulario experiencia 2 -->
+      <div class="formulario-experiencia" id="experiencia-2">
+        <!-- Puesto que desempeñaba -->
+        <div class="campo">
+          <label for="" class="label-2">Puesto que desempeñaba</label>
+          <input title="El campo puesto que desempeñaba solo debe de contener letras." type="text"
+            class="input-format-2" id="puesto-antiguo-2" placeholder="Ingrese el puesto que desempeñaba aquí" maxlength="50"></input>
+        </div>
+        <!-- Nombre de la empresa -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la empresa</label>
+          <input title="El campo nombre de la empresa solo debe de contener letras." type="text" 
+          class="input-format-2" id="empresa-antigua-2" placeholder="Ingrese el nombre de la empresa aquí" maxlength="100"></input>
+        </div>
+        <!-- Fecha de inicio -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de inicio</label>
+          <input type="date"id="periodo-inicio-antigua-2" class="input-format-2"></input>
+        </div>
+        <!-- Fecha de fin -->
+        <div class="campo">
+          <label for="" class="label-2">Periodo de fin</label>
+          <input type="date" id="periodo-fin-antigua-2"class="input-format-2"></input>
+        </div>
+        <!-- Actividades relevantes -->
+        <div class="campo">
+          <label for="" class="label-2">Actividades relevantes</label>
+          <textarea title="Ingrese las actividades relevantes." name="" id="actividad-antigua-2" class="input-format-2"
+            placeholder="Ingrese las actividades relevantes aquí"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Certificaciónes -->
+      <div class="divisor">
+        <p class="subtitulo-1">Certificaciones</p>
+        <hr>
+      </div>
+
+      <div id="formulario-certificaciones" class="formulario-certificaciones">
+        <!-- Nombre certificación -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la certificación</label>
+          <!--  <input title="El campo nombre de la certificación solo debe de contener letras." type="text"
+            class="input-format-2" placeholder="Ingrese el nombre de la certificación aquí"></input> -->
+        </div>
+        <!-- Organismo que expidió -->
+        <div class="campo">
+          <label for="" class="label-2">Institución emismora</label>
+          <!-- <input title="El campo institución solo debe de contener letras." type="text" class="input-format-2"
+            placeholder="Ingrese la institución aquí"></input> -->
+        </div>
+      </div>
+
+      <!-- <div class="botones-certificaciones">
+        <button class="btn btn-small">Agregar certificación</button>
+      </div> -->
+      
+      <div class="botones-registro">
+        <button class="btn btn-medium" onclick="datos()">Guardar registro</button>
+      </div>
+
+    </section>
+  </main>
+</body>
+<script src="js/Aplicar_Vacante.js"></script>
+</html>
