@@ -297,7 +297,7 @@ class EliminarSeguimento{
             else{
                 //No tiene seguimientos, cambia el estatus 
                 $querry = "UPDATE proyectos SET EstatusPro=:estatus WHERE IdPro=:id";
-                $arre = [":estatus"=>0, ":id"=>$idp ];
+                $arre = [":estatus"=>1, ":id"=>$idp ];
                 $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
         }
@@ -353,7 +353,7 @@ class EliminarSeguimento{
             else{
                 //No tiene seguimientos, cambia el estatus 
                 $querry = "UPDATE certinterna SET EstatusCertInt=:estatus WHERE IdCerInt=:id";
-                $arre = [":estatus"=>0, ":id"=>$idc ];
+                $arre = [":estatus"=>1, ":id"=>$idc ];
                 $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
 
