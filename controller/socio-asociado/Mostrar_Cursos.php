@@ -94,7 +94,6 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td> <a href="'.$pdf.'">Historial</a>&nbsp;&nbsp;&nbsp</td>';
                 $salida .= '<td> 
-                <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
                 <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
                 </td>';
