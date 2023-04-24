@@ -2,13 +2,20 @@ window.onload = function () {
   fetch("../../controller/socio-asociado/Aplicar_Vacante.php")
     .then(response => response.json())
     .then(respuesta => {
-      console.log(respuesta);
-      let datos_generales = respuesta[0];
-      let datos_direccion = respuesta[1];
-      let datos_certificaciones = respuesta[2];
-      let continuacion_datos_generales = respuesta[3];
-      let datos_academicos = respuesta[3];
-      let datos_laborales = respuesta[4];
+      /* console.log(respuesta); */
+      let datos_generales = Object.values(respuesta[0][0]);
+      let datos_direccion = Object.values(respuesta[1][0]);
+      let datos_certificaciones = Object.values(respuesta[2][0]);
+      let continuacion_datos_generales = Object.values(respuesta[3][0]);
+      let datos_academicos = Object.values(respuesta[4]);
+      let datos_laborales = Object.values(respuesta[5]);
+
+      console.log("Datos generales: ", datos_generales);
+      console.log("Datos direccion: ", datos_direccion);
+      console.log("Datos certificaciones: ", datos_certificaciones);
+      console.log("Datos continuacion: ", continuacion_datos_generales);
+      console.log("Datos academicos: ",  datos_academicos);
+      console.log("Datos laborales: ", datos_laborales);
 
       let nombre = datos_generales[1];
       let apellido_paterno = datos_generales[2];
@@ -39,43 +46,43 @@ window.onload = function () {
       document.getElementById("salarial-campo").value = expectativa_salarial;
       document.getElementById("objetivo").value = descripcion;
 
-      console.log(respuesta.length);
+      const formulario_academico = document.getElementById("academico-1");
 
-      // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
-      const contenedor = document.getElementById('formulario-certificaciones');
+      for (let i = 0; i < datos_academicos.length; i++) {
+        const div1 = document.createElement("div");
+        div1.classList.add("campo");
 
-      if (respuesta.length > 2) {
-        for (let i = 2; i < respuesta.length; i++) {
-          // Crear una nueva caja de texto
-          const nuevaCajaTexto = document.createElement('input');
+        const label_carrera = document.createElement("label");
+        label_carrera.classList.add("label-2");
+        label_carrera.textContent = "Nombre de la carrera";
 
-          // Establecer los atributos de la nueva caja de texto
-          nuevaCajaTexto.type = 'text';
-          nuevaCajaTexto.name = 'nuevo-input';
-          nuevaCajaTexto.classList = 'input-format-2';
-          let certificacion = respuesta[i]['NomCerExt'];
-          nuevaCajaTexto.value = certificacion;
-          nuevaCajaTexto.readOnly = true;
+        const input_carrera = document.createElement("input");
+        input_carrera.classList.add("input-format-2");
+        input_carrera.id = "carrera-"+i;
+        input_carrera.readOnly = true;
+        input_carrera.value = datos_academicos[i][0];
 
-          // Añadir la nueva caja de texto al contenedor
-          contenedor.appendChild(nuevaCajaTexto);
+        const div2 = document.createElement("div");
+        div2.classList.add("campo");
 
-          const CajaTexto = document.createElement('input');
+        const label_cedula = document.createElement("label");
+        label_cedula.classList.add("label-2");
+        label_cedula.textContent = "Número de cédula";
 
-          // Establecer los atributos de la nueva caja de texto
-          CajaTexto.type = 'text';
-          CajaTexto.name = 'nuevo-input';
-          CajaTexto.classList = 'input-format-2';
-          let empresa = respuesta[i]['OrgCerExt'];
-          CajaTexto.value = empresa;
-          CajaTexto.readOnly = true;
+        const input_cedula = document.createElement("input");
+        input_cedula.classList.add("input-format-2");
+        input_cedula.id = "cedula-"+i;
+        input_cedula.readOnly = true;
+        input_cedula.value = datos_academicos[i][1];
 
-          // Añadir la nueva caja de texto al contenedor
-          contenedor.appendChild(CajaTexto);
-        }
-      }
-      else {
-        contenedor.textContent = 'No se encontraron certificaciones';
+        div1.appendChild(label_carrera);
+        div1.appendChild(input_carrera);
+
+        div2.appendChild(label_cedula);
+        div2.appendChild(input_cedula);
+
+        formulario_academico.appendChild(div1);
+        formulario_academico.appendChild(div2);
       }
     });
 }
