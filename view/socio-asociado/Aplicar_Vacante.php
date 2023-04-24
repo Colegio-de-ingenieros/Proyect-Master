@@ -214,11 +214,17 @@
 
       
       <div class="botones-registro">
-        <button class="btn btn-medium" onclick="">Aplicar a la vacante</button>
+        <button class="btn btn-medium" onclick="aplicar()">Aplicar a la vacante</button>
       </div>
 
     </section>
   </main>
+  <span id="id-bolsa" style="display:none"></span>
+  <span id="id-usuario" style="display:none"></span>
 </body>
 <script src="js/Aplicar_Vacante.js"></script>
 </html>
+
+<?php
+  echo "<script>document.getElementById('id-bolsa').innerHTML = '".$_GET['id']."'</script>";
+?>
