@@ -5,6 +5,7 @@ $base = new MostrarAplicantes();
 $base->instancias();
 $url= $_GET['id'];
 $id=0;
+
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
 

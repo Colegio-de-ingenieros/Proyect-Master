@@ -19,9 +19,13 @@
                 return $resultados[0]['IdEmpBol'];
             }
         }
-
+        function rfccorreo($correo){
+            $querry = "SELECT RFCUsuaEmp FROM usuaemp WHERE CorreoUsuaEmp = :correo";
+            $resultados = $this->base->mostrar($querry, [":correo" => $correo]);
+            return $resultados;
+        }
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-        function insertar($id, $nom, $aca, $tec, $descr, $exp, $bruto, $mensual, $ini, $fin, $tel, $calle, $correo, $jornada, $colonia, $modalidad, $c1, $c2, $c3, $c4, $c5, $c6, $c7){
+        function insertar($id, $nom, $aca, $tec, $descr, $exp, $bruto, $mensual, $ini, $fin, $tel, $calle, $correo, $jornada, $colonia, $modalidad, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $rfce){
             //consultas para la tabla de certificaciones internas
             $q1 = "INSERT INTO bolsaempresa (IdEmpBol,VacEmpBol,ReqAcaEmpBol,ReqTecEmpBol,DesEmpBol,
             AñoEmpBol,SalBrutoEmpBol,SalNetoEmpBol,	HrIniEmpBol,HrFinEmpBol,TelEmpBol,CalleEmpBol,CorreoEmpBol)
@@ -38,8 +42,10 @@
             $q4= "INSERT INTO bolsamodalidades (IdEmpBol,IdMod)
             Values (:id, :modalidad)";
             $a4= [":id"=>$id,":modalidad"=>$modalidad];
-            $querry = [$q1,$q2,$q3,$q4];
-            $parametros = [$a1,$a2,$a3,$a4];
+            $q5="INSERT INTO usuaempbolsa (RFCUsuaEmp,IdEmpBol) Values (:rfc, :id)";
+            $a5= [":rfc"=>$rfce,":id"=>$id];
+            $querry = [$q1,$q2,$q3,$q4,$q5];
+            $parametros = [$a1,$a2,$a3,$a4,$a5];
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
 
             //Para insertar los dias

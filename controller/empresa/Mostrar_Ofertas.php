@@ -5,9 +5,15 @@ $base = new MostrarOfertas();
 $base->instancias();
 
 $id=000000;
+session_start();
+$username = $_SESSION['usuario'];
+$rfccorreo1=$obj->rfccorreo($username);
+
+$rfce=$rfccorreo1[0][0];
+//echo $rfce;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
-    $resultado = $base->buscador($busqueda);
+    $resultado = $base->buscador($busqueda,$rfce);
     
     if ($resultado == true) {
         //pone los encabezados de la tabla
@@ -85,7 +91,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getOfertas();
+    $resultado = $base->getOfertas($rfce);
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
