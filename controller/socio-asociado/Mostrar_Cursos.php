@@ -92,7 +92,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
-                $salida .= '<td>$' . $pdf . '</td>';
+                $salida .= '<td> <a href="'.$pdf.'">Historial</a>&nbsp;&nbsp;&nbsp</td>';
                 $salida .= '<td> 
                 <a href="#">Historial</a>&nbsp;&nbsp;&nbsp
                 <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp

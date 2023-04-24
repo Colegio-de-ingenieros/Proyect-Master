@@ -38,7 +38,7 @@
             
             $consulta = "SELECT altacursos.IdCurPerso, NomCurPerso, HraCurPerso, DocCurPerso, OrgCurPerso FROM altacursos, persoaltacur WHERE persoaltacur.IdCurPerso=altacursos.IdCurPerso and persoaltacur.IdPerso = :user and 
             (NomCurPerso LIKE :busqueda or HraCurPerso LIKE :busqueda or OrgCurPerso LIKE :busqueda)";
-            $parametros = [":user"=>$id_curso, ":busqueda"=>$busqueda];
+            $parametros = [":user"=>$id_curso, ":busqueda"=>"%".$busqueda."%"];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
             return $datos;
