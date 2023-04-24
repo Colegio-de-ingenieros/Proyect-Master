@@ -16,7 +16,7 @@
         public function tabla_completa($id_curso){
             $this->conexion_bd();
             
-            $consulta = "SELECT altacursos.IdCurPerso, NomCurPerso, HraCurPerso,DocCurPerso, OrgCurPerso FROM altacursos, empaltacur WHERE empaltacur.IdCurPerso=altacursos.IdCurPerso and empaltacur.IdPerso = :user";
+            $consulta = "SELECT altacursos.IdCurPerso, NomCurPerso, HraCurPerso,DocCurPerso, OrgCurPerso FROM altacursos, empaltacur WHERE empaltacur.IdCurPerso=altacursos.IdCurPerso and empaltacur.RFCUsuaEmp = :user";
             $parametros = [":user"=>$id_curso];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
@@ -26,7 +26,7 @@
         public function inteligente($id_curso, $busqueda){
             $this->conexion_bd();
             
-            $consulta = "SELECT altacursos.IdCurPerso, NomCurPerso, HraCurPerso, DocCurPerso, OrgCurPerso FROM altacursos, empaltacur WHERE empaltacur.IdCurPerso=altacursos.IdCurPerso and empaltacur.IdPerso = :user and 
+            $consulta = "SELECT altacursos.IdCurPerso, NomCurPerso, HraCurPerso, DocCurPerso, OrgCurPerso FROM altacursos, empaltacur WHERE empaltacur.IdCurPerso=altacursos.IdCurPerso and empaltacur.RFCUsuaEmp = :user and 
             (NomCurPerso LIKE :busqueda or HraCurPerso LIKE :busqueda or OrgCurPerso LIKE :busqueda)";
             $parametros = [":user"=>$id_curso, ":busqueda"=>$busqueda];
             $datos = $this->mostrar($consulta,$parametros);
