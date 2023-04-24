@@ -179,7 +179,6 @@ echo '<script type="text/javascript">
 function confirmDesactiv(dato)
 {
     var cadena="../../controller/administrativo/Eliminar_Trabajadores.php?rfc="+dato;
-    console.log(cadena);
    var flag = confirm("¿Está seguro de eliminar este trabajador?");
    if(flag){
         window.location.assign(cadena);

@@ -38,6 +38,7 @@
             $q4= "INSERT INTO bolsamodalidades (IdEmpBol,IdMod)
             Values (:id, :modalidad)";
             $a4= [":id"=>$id,":modalidad"=>$modalidad];
+            $q5=
             $querry = [$q1,$q2,$q3,$q4];
             $parametros = [$a1,$a2,$a3,$a4];           ;
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
