@@ -103,12 +103,38 @@ window.onload = function () {
       addButtonEmpty.style.display = "block";
 
       addButtonEmpty.addEventListener('click', () => {
-        data.push({ title: '', subtitles: [''] });
+        data.push({ title: 'Prueba de envio y registro', subtitles: ['Subtitulo de prueba'] });
+
         generarTemario();
+
+        const convertirData = (data) => {
+          return data.map(item => [item.title, ...item.subtitles]);
+        }
+
+        temario = convertirData(data);
+
+        console.log(temario);
+
+        enviarBase(temario);
       });
 
       temario.appendChild(newLabel);
       temario.appendChild(addButtonEmpty);
+    }
+
+    function enviarBase(temario) {
+      let url = "../../controller/administrativo/Eliminar_Temario_2.php";
+      let form = new FormData();
+
+      form.append("id_curso", JSON.stringify(id));
+      form.append('temario', JSON.stringify(temario));
+
+      fetch(url, {
+        method: "POST",
+        body: form
+      }).then(response => response.json())
+        .then(json => respuesta(json))
+        .catch(error => alert(error));
     }
 
     function generarTemario() {
@@ -149,6 +175,7 @@ window.onload = function () {
 
         addButtonAbove.addEventListener('click', () => {
           data.splice(index, 0, { title: '', subtitles: [''] });
+          
           render_2();
         });
 
@@ -178,7 +205,7 @@ window.onload = function () {
           if (longitud == 0) {
             sin_temario();
           }
-          else{
+          else {
             render_2();
           }
         });
@@ -186,11 +213,9 @@ window.onload = function () {
         const linkSubtemas = document.createElement('Button');
         linkSubtemas.classList.add("btn", "btn-small", "btn-link")
         linkSubtemas.textContent = "Subtemas";
-
-        linkSubtemas.addEventListener('click', () => {
-          alert("Se abrirá una nueva ventana");
-          window.location.href = "../../../../CISCIG/view/administrativo/Modi_Subtemas.php?index=" + index + "&id=" + id;
-        });
+        linkSubtemas.onclick = function () {
+          modal.classList.add('show');
+        };
 
         titleContainer.appendChild(titleInput);
         titleContainer.appendChild(addButtonAbove);
@@ -267,10 +292,10 @@ window.onload = function () {
               data.splice(index, 1);
               let longitud = data.length;
 
-              if(longitud == 0){
+              if (longitud == 0) {
                 sin_temario();
               }
-              else{
+              else {
                 render_2();
               }
             });
@@ -278,11 +303,9 @@ window.onload = function () {
             const linkSubtemas = document.createElement('Button');
             linkSubtemas.classList.add("btn", "btn-small", "btn-link")
             linkSubtemas.textContent = "Subtemas";
-
-            linkSubtemas.addEventListener('click', () => {
-              alert("Se abrirá una nueva ventana");
-              window.location.href = "../../../../CISCIG/view/administrativo/Modi_Subtemas.php?index=" + index + "&id=" + id;
-            });
+            linkSubtemas.onclick = function () {
+              modal.classList.add('show');
+            };
 
             titleContainer.appendChild(titleInput);
             titleContainer.appendChild(addButtonAbove);
@@ -300,5 +323,6 @@ window.onload = function () {
         temario.appendChild(list);
       });
     }
+
   }
 }
