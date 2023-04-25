@@ -14,7 +14,8 @@ class MostrarAplicantes{
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
-         AND bolsaempresa.IdEmpBol=:id";
+         AND bolsaempresa.IdEmpBol=:id
+         GROUP BY bolsacv.IdBolCv";
         $resultados = $this->base->mostrar($querry, [":id" => $id]);
 
         return $resultados;
@@ -37,9 +38,9 @@ class MostrarAplicantes{
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
-         AND bolsacv.IdBolCv=:id";
+         AND bolsacv.IdBolCv=:id
+         GROUP BY bolsacv.IdBolCv";
         $resultados = $this->base->mostrar($querry, [":id" => $id]);
-
         return $resultados;
     }
     function mostrarColonia($id){
@@ -77,4 +78,6 @@ class MostrarAplicantes{
 
 $obj = new MostrarAplicantes();
 $obj->instancias();
+//$z=$obj->getAplicante('000001');
+//var_dump($z)
 ?>
