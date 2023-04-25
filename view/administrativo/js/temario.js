@@ -7,14 +7,15 @@ window.onload = function () {
 
   fetch(url, {
     method: "POST",
-    body: form
-  }).then(response => response.json())
-    .then(json => respuesta(json))
-    .catch(error => alert(error));
+    body: form,
+  })
+    .then((response) => response.json())
+    .then((json) => respuesta(json))
+    .catch((error) => alert(error));
 
   const respuesta = (json) => {
     /* Validación de los campos generales */
-    list = json.map(obj => Object.values(obj));
+    list = json.map((obj) => Object.values(obj));
 
     var datos_generales = list[0];
     var data = list[1];
@@ -37,79 +38,91 @@ window.onload = function () {
       objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
       tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
       subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
-    }
+    };
 
-    nombre.addEventListener('keyup', (e) => {
+    nombre.addEventListener("keyup", (e) => {
       let valorInput = e.target.value;
 
-      nombre.value = valorInput
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+      nombre.value = valorInput.replace(
+        /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+        ""
+      );
 
       if (!expresiones.nombres.test(valorInput)) {
         nombre.style.border = "3px solid red";
-        nom = false
+        nom = false;
       } else {
         nombre.removeAttribute("style");
-        nom = true
+        nom = true;
       }
     });
 
-    objetivo.addEventListener('keyup', (e) => {
+    objetivo.addEventListener("keyup", (e) => {
       let valorInput = e.target.value;
 
-      objetivo.value = valorInput
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
-
+      objetivo.value = valorInput.replace(
+        /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+        ""
+      );
 
       if (!expresiones.objetivo.test(valorInput)) {
         objetivo.style.border = "3px solid red";
-        objetiv = false
+        objetiv = false;
       } else {
         objetivo.removeAttribute("style");
-        objetiv = true
+        objetiv = true;
       }
     });
 
-    duracion.addEventListener('keyup', (e) => {
+    duracion.addEventListener("keyup", (e) => {
       let valorInput = e.target.value;
-      duracion.value = valorInput.replace(/\s/g, '').replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '').replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '').trim();
+      duracion.value = valorInput
+        .replace(/\s/g, "")
+        .replace(
+          /[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g,
+          ""
+        )
+        .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, "")
+        .trim();
 
       if (!expresiones.duracion.test(valorInput)) {
         duracion.style.border = "3px solid red";
-        dura = false
+        dura = false;
       } else {
         duracion.removeAttribute("style");
-        dura = true
+        dura = true;
       }
     });
 
     /* Generación del temario  */
     if (data.length > 0) {
       generarTemario();
-    }
-    else {
+    } else {
       sin_temario();
     }
 
     function sin_temario() {
-      temario.innerHTML = '';
-      const newLabel = document.createElement('label');
-      newLabel.classList.add("label-2")
+      temario.innerHTML = "";
+      const newLabel = document.createElement("label");
+      newLabel.classList.add("label-2");
       newLabel.textContent = "No hay temas registrados";
 
-      const addButtonEmpty = document.createElement('button');
-      addButtonEmpty.classList.add("btn", "btn-small", "btn-add")
+      const addButtonEmpty = document.createElement("button");
+      addButtonEmpty.classList.add("btn", "btn-small", "btn-add");
       addButtonEmpty.textContent = "Agregar tema";
       addButtonEmpty.style.display = "block";
 
-      addButtonEmpty.addEventListener('click', () => {
-        data.push({ title: 'Prueba de envio y registro', subtitles: ['Subtitulo de prueba'] });
+      addButtonEmpty.addEventListener("click", () => {
+        data.push({
+          title: "Prueba de envio y registro",
+          subtitles: ["Subtitulo de prueba"],
+        });
 
         generarTemario();
 
         const convertirData = (data) => {
-          return data.map(item => [item.title, ...item.subtitles]);
-        }
+          return data.map((item) => [item.title, ...item.subtitles]);
+        };
 
         temario = convertirData(data);
 
@@ -127,32 +140,36 @@ window.onload = function () {
       let form = new FormData();
 
       form.append("id_curso", JSON.stringify(id));
-      form.append('temario', JSON.stringify(temario));
+      form.append("temario", JSON.stringify(temario));
 
       fetch(url, {
         method: "POST",
-        body: form
-      }).then(response => response.json())
-        .then(json => respuesta(json))
-        .catch(error => alert(error));
+        body: form,
+      })
+        .then((response) => response.json())
+        .then((json) => respuesta(json))
+        .catch((error) => alert(error));
     }
 
     function generarTemario() {
-      temario.innerHTML = '';
+      temario.innerHTML = "";
       data.forEach((item, index) => {
-        const titleContainer = document.createElement('div');
-        titleContainer.classList.add("row")
+        const titleContainer = document.createElement("div");
+        titleContainer.classList.add("row");
 
-        const titleInput = document.createElement('input');
-        titleInput.type = 'text';
+        const titleInput = document.createElement("input");
+        titleInput.type = "text";
         titleInput.value = item.title;
-        titleInput.classList.add("input-format-2")
-        titleInput.placeholder = "Nuevo tema"
+        titleInput.classList.add("input-format-2");
+        titleInput.placeholder = "Nuevo tema";
         titleInput.maxLength = 40;
 
-        titleInput.addEventListener('keyup', (e) => {
+        titleInput.addEventListener("keyup", (e) => {
           let valorInput = e.target.value;
-          titleInput.value = valorInput.replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+          titleInput.value = valorInput.replace(
+            /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+            ""
+          );
           tema = titleInput.value;
 
           if (!expresiones.tema.test(valorInput)) {
@@ -162,59 +179,57 @@ window.onload = function () {
           }
         });
 
-        titleInput.addEventListener('input', () => {
+        titleInput.addEventListener("input", () => {
           item.title = titleInput.value;
         });
 
-        const addButtonAbove = document.createElement('button');
-        addButtonAbove.classList.add("btn", "btn-small", "btn-add")
+        const addButtonAbove = document.createElement("button");
+        addButtonAbove.classList.add("btn", "btn-small", "btn-add");
 
-        const icon = document.createElement('i');
+        const icon = document.createElement("i");
         icon.classList.add("ti", "ti-arrow-big-up-line-filled");
         addButtonAbove.appendChild(icon);
 
-        addButtonAbove.addEventListener('click', () => {
-          data.splice(index, 0, { title: '', subtitles: [''] });
-          
+        addButtonAbove.addEventListener("click", () => {
+          data.splice(index, 0, { title: "", subtitles: [""] });
           render_2();
         });
 
-        const addButtonBelow = document.createElement('button');
-        addButtonBelow.classList.add("btn", "btn-small", "btn-add")
+        const addButtonBelow = document.createElement("button");
+        addButtonBelow.classList.add("btn", "btn-small", "btn-add");
 
-        const icon2 = document.createElement('i');
+        const icon2 = document.createElement("i");
         icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
         addButtonBelow.appendChild(icon2);
 
-        addButtonBelow.addEventListener('click', () => {
-          data.splice(index + 1, 0, { title: '', subtitles: [''] });
+        addButtonBelow.addEventListener("click", () => {
+          data.splice(index + 1, 0, { title: "", subtitles: [""] });
           render_2();
         });
 
-        const deleteTitleButton = document.createElement('button');
-        deleteTitleButton.classList.add("btn", "btn-small", "btn-danger")
+        const deleteTitleButton = document.createElement("button");
+        deleteTitleButton.classList.add("btn", "btn-small", "btn-danger");
 
-        const icon3 = document.createElement('i');
+        const icon3 = document.createElement("i");
         icon3.classList.add("ti", "ti-backspace-filled");
         deleteTitleButton.appendChild(icon3);
 
-        deleteTitleButton.addEventListener('click', () => {
+        deleteTitleButton.addEventListener("click", () => {
           data.splice(index, 1);
           let longitud = data.length;
 
           if (longitud == 0) {
             sin_temario();
-          }
-          else {
+          } else {
             render_2();
           }
         });
 
-        const linkSubtemas = document.createElement('Button');
-        linkSubtemas.classList.add("btn", "btn-small", "btn-link")
+        const linkSubtemas = document.createElement("Button");
+        linkSubtemas.classList.add("btn", "btn-small", "btn-link");
         linkSubtemas.textContent = "Subtemas";
         linkSubtemas.onclick = function () {
-          modal.classList.add('show');
+          modal.classList.add("show");
         };
 
         titleContainer.appendChild(titleInput);
@@ -225,25 +240,28 @@ window.onload = function () {
 
         temario.appendChild(titleContainer);
 
-        const list = document.createElement('ul');
+        const list = document.createElement("ul");
 
         const render_2 = () => {
-          temario.innerHTML = '';
+          temario.innerHTML = "";
 
           data.forEach((item, index) => {
-            const titleContainer = document.createElement('div');
-            titleContainer.classList.add("row")
+            const titleContainer = document.createElement("div");
+            titleContainer.classList.add("row");
 
-            const titleInput = document.createElement('input');
-            titleInput.type = 'text';
+            const titleInput = document.createElement("input");
+            titleInput.type = "text";
             titleInput.value = item.title;
-            titleInput.classList.add("input-format-2")
-            titleInput.placeholder = "Nuevo tema"
+            titleInput.classList.add("input-format-2");
+            titleInput.placeholder = "Nuevo tema";
             titleInput.maxLength = 40;
 
-            titleInput.addEventListener('keyup', (e) => {
+            titleInput.addEventListener("keyup", (e) => {
               let valorInput = e.target.value;
-              titleInput.value = valorInput.replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+              titleInput.value = valorInput.replace(
+                /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+                ""
+              );
               tema = titleInput.value;
 
               if (!expresiones.tema.test(valorInput)) {
@@ -253,58 +271,57 @@ window.onload = function () {
               }
             });
 
-            titleInput.addEventListener('input', () => {
+            titleInput.addEventListener("input", () => {
               item.title = titleInput.value;
             });
 
-            const addButtonAbove = document.createElement('button');
-            addButtonAbove.classList.add("btn", "btn-small", "btn-add")
+            const addButtonAbove = document.createElement("button");
+            addButtonAbove.classList.add("btn", "btn-small", "btn-add");
 
-            const icon = document.createElement('i');
+            const icon = document.createElement("i");
             icon.classList.add("ti", "ti-arrow-big-up-line-filled");
             addButtonAbove.appendChild(icon);
 
-            addButtonAbove.addEventListener('click', () => {
-              data.splice(index, 0, { title: '', subtitles: [] });
+            addButtonAbove.addEventListener("click", () => {
+              data.splice(index, 0, { title: "", subtitles: [] });
               render_2();
             });
 
-            const addButtonBelow = document.createElement('button');
-            addButtonBelow.classList.add("btn", "btn-small", "btn-add")
+            const addButtonBelow = document.createElement("button");
+            addButtonBelow.classList.add("btn", "btn-small", "btn-add");
 
-            const icon2 = document.createElement('i');
+            const icon2 = document.createElement("i");
             icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
             addButtonBelow.appendChild(icon2);
 
-            addButtonBelow.addEventListener('click', () => {
-              data.splice(index + 1, 0, { title: '', subtitles: [''] });
+            addButtonBelow.addEventListener("click", () => {
+              data.splice(index + 1, 0, { title: "", subtitles: [""] });
               render_2();
             });
 
-            const deleteTitleButton = document.createElement('button');
-            deleteTitleButton.classList.add("btn", "btn-small", "btn-danger")
+            const deleteTitleButton = document.createElement("button");
+            deleteTitleButton.classList.add("btn", "btn-small", "btn-danger");
 
-            const icon3 = document.createElement('i');
+            const icon3 = document.createElement("i");
             icon3.classList.add("ti", "ti-backspace-filled");
             deleteTitleButton.appendChild(icon3);
 
-            deleteTitleButton.addEventListener('click', () => {
+            deleteTitleButton.addEventListener("click", () => {
               data.splice(index, 1);
               let longitud = data.length;
 
               if (longitud == 0) {
                 sin_temario();
-              }
-              else {
+              } else {
                 render_2();
               }
             });
 
-            const linkSubtemas = document.createElement('Button');
-            linkSubtemas.classList.add("btn", "btn-small", "btn-link")
+            const linkSubtemas = document.createElement("Button");
+            linkSubtemas.classList.add("btn", "btn-small", "btn-link");
             linkSubtemas.textContent = "Subtemas";
             linkSubtemas.onclick = function () {
-              modal.classList.add('show');
+              modal.classList.add("show");
             };
 
             titleContainer.appendChild(titleInput);
@@ -315,14 +332,13 @@ window.onload = function () {
 
             temario.appendChild(titleContainer);
 
-            const list = document.createElement('ul');
+            const list = document.createElement("ul");
 
             temario.appendChild(list);
           });
-        }
+        };
         temario.appendChild(list);
       });
     }
-
-  }
-}
+  };
+};
