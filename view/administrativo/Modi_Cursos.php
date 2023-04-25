@@ -231,7 +231,8 @@
 
       <div class="section-botones-2">
         <div class="campo botones">
-          <button id="update-form" class="btn-medium btn">Actualizar registro</button>
+          <button id="update-form" class="btn-medium btn">Actualizar</button>
+          <button id="delete-form" class="btn-medium btn">Cancelar</button>
         </div>
       </div>
 

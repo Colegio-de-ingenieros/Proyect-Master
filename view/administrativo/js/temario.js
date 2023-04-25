@@ -98,7 +98,7 @@ window.onload = function () {
     });
 
     /* Generación del temario  */
-    if (data.length > 0) {
+    if (DataGlobal.length > 0) {
       generarTemario();
     } else {
       sin_temario();
@@ -116,22 +116,13 @@ window.onload = function () {
       addButtonEmpty.style.display = "block";
 
       addButtonEmpty.addEventListener("click", () => {
-        data.push({
+        DataGlobal.push({
           title: "",
           subtitles: [],
         });
 
         generarTemario();
 
-        const convertirData = (data) => {
-          return data.map((item) => [item.title, ...item.subtitles]);
-        };
-
-        temario = convertirData(data);
-
-        console.log(temario);
-
-        enviarBase(temario);
       });
 
       temario.appendChild(newLabel);
@@ -140,8 +131,8 @@ window.onload = function () {
 
     function generarTemario() {
       temario.innerHTML = "";
-      data.forEach((item, index) => {
-        console.log(data);
+      DataGlobal.forEach((item, index) => {
+        
         const titleContainer = document.createElement("div");
         titleContainer.classList.add("row");
 
@@ -231,7 +222,7 @@ window.onload = function () {
         const render_2 = () => {
           temario.innerHTML = "";
 
-          data.forEach((item, index) => {
+          DataGlobal.forEach((item, index) => {
             const titleContainer = document.createElement("div");
             titleContainer.classList.add("row");
 
@@ -293,7 +284,7 @@ window.onload = function () {
             deleteTitleButton.appendChild(icon3);
 
             deleteTitleButton.addEventListener("click", () => {
-              data.splice(index, 1);
+              DataGlobal.splice(index, 1);
               let longitud = data.length;
 
               if (longitud == 0) {
@@ -340,13 +331,25 @@ function mostrar_modal(position) {
   modalContainer.innerHTML = "";
   modal.classList.add("show");
 
+  var expresiones = {
+    clave: /^[0-9]{6}$/,
+    duracion: /^[0-9]{0,3}$/,
+    nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
+    objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
+    tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+    subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
+  };
+
   DataGlobal.forEach((item, index) => {
     const modalContainer = document.getElementById("modal");
     const list = document.createElement("ul");
 
     if (index == position) {
       /* Verifica que la cantidad de subtitulos sea superior a 1 */
-      if (item.subtitles.length > 1) {
+      let longitud_subtemas = item.subtitles.length;
+
+      if (longitud_subtemas >= 1) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         item.subtitles.forEach((subtitle, index) => {
@@ -452,7 +455,8 @@ function mostrar_modal(position) {
         });
         /* Crear los elementos en el DOM */
         modalContainer.appendChild(list);
-      } else {
+      } 
+      else if(longitud_subtemas == 0) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
@@ -601,3 +605,16 @@ function mostrar_modal(position) {
 function ocultar_modal() {
   modal.classList.remove("show");
 }
+
+const enviar = document.getElementById("update-form");
+const regresar = document.getElementById("delete-form");
+
+enviar.addEventListener("click", (e) => {
+  console.log("DataGlobal: ", DataGlobal);
+  console.log("Data: ", Data);
+});
+
+
+const convertirData = (data) => {
+  return data.map((item) => [item.title, ...item.subtitles]);
+};
