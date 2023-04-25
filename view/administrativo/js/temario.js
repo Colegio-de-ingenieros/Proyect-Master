@@ -420,6 +420,8 @@ function mostrar_modal(position) {
               const newLabelSubtema = document.createElement("label");
               newLabelSubtema.classList.add("label-2");
               newLabelSubtema.textContent = "No hay subtemas registrados";
+              newLabelSubtema.style.marginBottom = "10px";
+              newLabelSubtema.style.marginTop = "10px";
 
               const addButtonSubtitleEmpty = document.createElement("button");
               addButtonSubtitleEmpty.classList.add(
@@ -457,10 +459,14 @@ function mostrar_modal(position) {
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
         newLabelSubtema.textContent = "No hay subtemas registrados";
+        newLabelSubtema.style.marginBottom = "10px";
+        newLabelSubtema.style.marginTop = "10px";
+        newLabelSubtema.style.marginLeft = "10px";
 
         const addButtonSubtitleEmpty = document.createElement("button");
         addButtonSubtitleEmpty.classList.add("btn", "btn-small", "btn-add");
         addButtonSubtitleEmpty.textContent = "Agregar subtema";
+        addButtonSubtitleEmpty.style.marginLeft = "10px";
 
         addButtonSubtitleEmpty.addEventListener("click", () => {
           item.subtitles.splice(index, 0, "");
@@ -553,6 +559,9 @@ function mostrar_modal(position) {
               const newLabelSubtema = document.createElement("label");
               newLabelSubtema.classList.add("label-2");
               newLabelSubtema.textContent = "No hay subtemas registrados";
+              newLabelSubtema.style.marginBottom = "10px";
+              newLabelSubtema.style.marginTop = "10px";
+              newLabelSubtema.style.marginLeft = "10px";
 
               const addButtonSubtitleEmpty = document.createElement("button");
               addButtonSubtitleEmpty.classList.add(
@@ -561,6 +570,7 @@ function mostrar_modal(position) {
                 "btn-add"
               );
               addButtonSubtitleEmpty.textContent = "Agregar subtema";
+              addButtonSubtitleEmpty.style.marginLeft = "10px";
 
               addButtonSubtitleEmpty.addEventListener("click", () => {
                 item.subtitles.splice(index, 0, "");
