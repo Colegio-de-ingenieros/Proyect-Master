@@ -24,6 +24,7 @@
 
     --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    --shadow-3: inset 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 #temario{
@@ -98,13 +99,23 @@
     justify-content: center;
 }
 
-.list-items{
-    width: 80%;
-    height: 80%;
-}
-
 .container-subtemas{
     overflow-y: scroll;
+    overflow-x: initial;
+    width: 95%;
+    height: 80%;
+
+}
+
+.subtitulos-registrados{
+    width: 95%;
+}
+
+.row-s{
+    display: grid;
+    grid-template-columns: 2fr 0.1fr 0.1fr 0.1fr;
+    column-gap: 10px;
+    margin-top: 10px;
 }
 @keyframes fade-in {
     from {
@@ -116,4 +127,9 @@
         opacity: 1;
         /* La ventana modal se vuelve completamente visible */
     }
+}
+
+#close{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

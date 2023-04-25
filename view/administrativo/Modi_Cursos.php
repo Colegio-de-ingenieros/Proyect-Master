@@ -240,18 +240,19 @@
 
     <div class="modal-container" id="modal-container">
       <div class="modal">
-        <div class="titulos-registrados">
-          <p class="subtitulo-1">Subtemas</p>
+        <div class="subtitulos-registrados">
+          <p class="subtitulo-1">Subtemas:</p>
+          <p class="subtitulo-2" id="modal-title"></p>
           <hr class="hr">
         </div>
         <div class="container-subtemas" id="modal">
 
         </div>
-      </div> 
-      <div class="botones">
+        <div class="botones">
           <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
         </div>
       </div>
+      </div> 
     </div>
 
     <span id="id-usuario" style="display:none"></span>

@@ -334,6 +334,7 @@ const abrir_modal = document.getElementById("open");
 const cerrar_modal = document.getElementById("close");
 const modal = document.getElementById("modal-container");
 const modalContainer = document.getElementById("modal");
+const modalTitle = document.getElementById("modal-title");
 
 function mostrar_modal(position) {
   modalContainer.innerHTML = "";
@@ -344,10 +345,12 @@ function mostrar_modal(position) {
 
     if (index == position) {
       const list = document.createElement("ul");
+      list.classList.add("list-items");
+      modalTitle.textContent = item.title;
 
       item.subtitles.forEach((subtitle, index) => {
         const listItem = document.createElement("li");
-        listItem.classList.add("row");
+        listItem.classList.add("row-s");
 
         const input = document.createElement("input");
         input.type = "text";
@@ -419,6 +422,8 @@ function mostrar_modal(position) {
 
         list.appendChild(listItem);
       });
+      /* Crear los elementos en el DOM */
+      modalContainer.appendChild(list);
 
       /* Función para la destrucción y nueva renderizacion de subtemas */
       const render_subtemas = () => {
@@ -426,11 +431,10 @@ function mostrar_modal(position) {
 
         DataGlobal.forEach((item, index) => {
           const list = document.createElement("ul");
-          list.classList.add("list-items");
 
           item.subtitles.forEach((subtitle, index) => {
             const listItem = document.createElement("li");
-            listItem.classList.add("row");
+            listItem.classList.add("row-s");
 
             const input = document.createElement("input");
             input.type = "text";
@@ -507,8 +511,7 @@ function mostrar_modal(position) {
         });
       };
 
-      /* Crear los elementos en el DOM */
-      modalContainer.appendChild(list);
+      
     } else {
     }
   });
