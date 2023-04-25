@@ -20,12 +20,12 @@ formulario.codigo.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
-    if (!expresiones.postal.test(valorInput2)) {
+    if (!expresiones.codigo.test(valorInput2)) {
         formulario.codigo.style.border = "3px solid red";
-        baderas.bcodigo = false;
+        banderas.bcodigo = false;
 	}else{
         formulario.codigo.removeAttribute("style");
-        baderas.bcodigo = true;
+        banderas.bcodigo = true;
     }
     
 });
@@ -71,7 +71,7 @@ formulario.addEventListener("submit",(e)=>{
     if(campo_codigo.value.length == 0 ){
         alert("Debe escribir el código");
     }else{
-        if(baderas.bcodigo == false){
+        if(banderas.bcodigo == false){
             fetch("../../controller/login/Comparar_Codigo.php",
             {
                 method:"POST",
