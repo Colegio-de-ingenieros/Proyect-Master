@@ -33,7 +33,7 @@ class MostrarAplicantes{
         return $resultados;
     }
     function getAplicante($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera 
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera, CorreoPerso, FechaNacPerso, CallePerso, DesProCv 
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
@@ -68,8 +68,8 @@ class MostrarAplicantes{
         return $resultados4;
     }
     function mostrarCertificaciones($id){
-        $q3 = "SELECT * FROM certicv,certificaciones
-        WHERE certicv.IdCert=certificaciones.IdCert AND IdBolCv= :id";
+        $q3 = "SELECT * FROM persocertexterna,certexterna
+        WHERE persocertexterna.IdCertExt=certexterna.IdCerExt AND IdPerso = :id";
         $resultados4 = $this->base->mostrar($q3, [":id" => $id]);
         return $resultados4;
     }

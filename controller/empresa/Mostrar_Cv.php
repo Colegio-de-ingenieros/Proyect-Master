@@ -1,10 +1,10 @@
 <?php
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Aplicantes.php');
-echo $id;
+//echo $id;
 $base = new MostrarAplicantes();
 $base->instancias();
-$resultado = $base->getAplicantes($id);
+$resultado = $base->getAplicante($id);
 if ($resultado == true) {
   $identificador=$resultado[0]["IdPerso"];
   $nombre=$resultado[0]["NomPerso"];
@@ -169,12 +169,21 @@ if ($resultado == true) {
 
       <div class="formulario-academica">
         <!-- Nombre de la carrera -->
-        <div id="carrera-1"class="campo">
+        <?php $resultado=$base->mostrarAcademica($id);
+        if ($resultado == true) {
+          $salida='';
+          for ($i = 0; $i < count($resultado); $i++) {
+            $puesto=$resultado[$i]['Carrera'];
+            $ced=$resultado[$i]['NumCedAca'];
+         $salida.='<div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera</label><br><br>
-          <label for="" class="label-4"> <?php echo $carrera?></label> <br> <br>
+          <label for="" class="label-4">'.$puesto.' </label> <br> <br>
           <label for="" class="label-2">Número de cédula</label><br> <br>
-          <label for="" class="label-4"> <?php echo $cedula?></label> <br> <br>          
+          <label for="" class="label-4">'.$ced.' </label> <br> <br>          
         </div>
+      ';}}
+      echo $salida;
+      ?>
       </div>
       <!-- Experiencia profesional -->
       <div class="divisor">
@@ -197,7 +206,7 @@ if ($resultado == true) {
           $num=$i+1;
         
         $salida.='<div class="campo">
-          <label for="" class="label-1">Experiencia '.$num.'</label><br><br>
+          <label for="" class="label-2">Experiencia '.$num.'</label><br><br>
           <label for="" class="label-2">Puesto que desempeñaba</label><br><br>
           <label for="" class="label-4">'.$puesto.'</label> <br> <br>
           <label for="" class="label-2">Nombre de la empresa</label><br><br>
@@ -220,15 +229,17 @@ if ($resultado == true) {
 
       <div class="formulario-certificaciones">
         <!-- Nombre certificación -->
-        <?php $resultado=$base->mostrarCertificaciones($id);
+        <?php $resultado=$base->mostrarCertificaciones($identificador);
         if ($resultado == true) {
           $salida='';
           for ($i = 0; $i < count($resultado); $i++) {
-            
+          $nomCert=$resultado[$i]['NomCerExt'];
+          $inst=$resultado[$i]['OrgCerExt'];  
          $salida.='<div class="campo">
           <label for="" class="label-2">Nombre de la certificación</label><br><br>
+          <label for="" class="label-4">'.$nomCert.'</label><br><br> 
           <label for="" class="label-2">Institución emismora</label><br><br>
-          <label for="" class="label-2">Institución emismora</label>
+          <label for="" class="label-4">'.$inst.'</label><br><br> 
         </div>';}}; 
         echo $salida;
         ?>
