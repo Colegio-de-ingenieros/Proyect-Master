@@ -32,9 +32,80 @@ btn_proyectos.addEventListener("click",(e)=>{
 
 btn_descargar_reportes.addEventListener("click",(e)=>{
 
-    window.open("../../controller/administrativo/Pdf_ReporteIn.php");
+    let nombre = titulo.textContent;
+    let periodo =  fechas_titulo.textContent;
+    let gastos = document.getElementById("gastos").textContent;
+    let ingresos = document.getElementById("ingresos").textContent;
+    let total  = document.getElementById("total").textContent;
+    let cells = document.querySelectorAll("#cuerpo td");
+    var fila = "";
+    let datos_tabla = ""
+    let contador = 0;
+
+    cells.forEach(cell =>{
+        
+        if(contador == 8){
+            if(datos_tabla.length == 0){
+                datos_tabla =  fila;
+            }else{
+                datos_tabla = datos_tabla + ":" + fila;
+            }
+            
+            fila = ""
+            contador = 0;
+        }
+        if(fila.length == 0){
+            fila = cell.textContent;
+        }else{
+            fila = fila + "," +cell.textContent;
+        }
+        
+        contador++;
+        
+    });
+    datos_tabla = datos_tabla + ":" + fila;
+   
+
+    var datos_totales = {
+        nombre: nombre,
+        periodo: periodo,
+        gastos: gastos,
+        ingresos: ingresos,
+        total: total,
+        array_datos: datos_tabla
+    };
+    
+    
+    postForm("../../controller/administrativo/Pdf_ReporteIn.php", datos_totales);
+   
 
 });
+function postForm(path, params, method) {
+    //hace un formulario oculto para
+    // asi mandar los datos al lugar donde descargaremos la info
+    //todo es un input
+    method = method || 'post';
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', path);
+
+
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
 
 function peticion_nombres(tipo){
 
@@ -271,10 +342,25 @@ function rellenar_tabla(datos) {
     let gastos_totales = document.createElement('div');
     let ingresos_totales = document.createElement('div');
     let total_final = document.createElement('div');
+    let cantidad1 = document.createElement("span")
+    let cantidad2 = document.createElement("span")
+    let cantidad3 = document.createElement("span")
+    
+    cantidad1.setAttribute("id","gastos");
+    cantidad2.setAttribute("id","ingresos");
+    cantidad3.setAttribute("id","total");
 
-    gastos_totales.innerText = "Total de gastos: $ " + sub_sub_gastos ;
-    ingresos_totales.innerText = "Total de ingresos: $ " + sub_ingresos;
-    total_final.innerText = "Total: $" + (sub_ingresos-sub_sub_gastos);
+    cantidad1.textContent = "$ " + sub_sub_gastos;
+    cantidad2.textContent = "$ " + sub_ingresos;
+    cantidad3.textContent = "$ " + (sub_ingresos-sub_sub_gastos);
+
+    gastos_totales.innerText = "Total de gastos: "  ;
+    ingresos_totales.innerText = "Total de ingresos: " ;
+    total_final.innerText = "Total: " ;
+
+    gastos_totales.appendChild(cantidad1);
+    ingresos_totales.appendChild(cantidad2);
+    total_final.appendChild(cantidad3);
 
     totales.appendChild(gastos_totales);
     totales.appendChild(ingresos_totales);
