@@ -1,3 +1,5 @@
+var DataGlobal;
+
 window.onload = function () {
   let url = "../../controller/administrativo/Mostrar_Temario.php";
   var id = document.getElementById("id-usuario").textContent;
@@ -19,6 +21,7 @@ window.onload = function () {
 
     var datos_generales = list[0];
     var data = list[1];
+    DataGlobal = list[1];
 
     const nombre = document.getElementById("nombre-curso");
     const clave = document.getElementById("clave-curso");
@@ -114,8 +117,8 @@ window.onload = function () {
 
       addButtonEmpty.addEventListener("click", () => {
         data.push({
-          title: "Prueba de envio y registro",
-          subtitles: ["Subtitulo de prueba"],
+          title: "",
+          subtitles: [],
         });
 
         generarTemario();
@@ -135,25 +138,10 @@ window.onload = function () {
       temario.appendChild(addButtonEmpty);
     }
 
-    function enviarBase(temario) {
-      let url = "../../controller/administrativo/Eliminar_Temario_2.php";
-      let form = new FormData();
-
-      form.append("id_curso", JSON.stringify(id));
-      form.append("temario", JSON.stringify(temario));
-
-      fetch(url, {
-        method: "POST",
-        body: form,
-      })
-        .then((response) => response.json())
-        .then((json) => respuesta(json))
-        .catch((error) => alert(error));
-    }
-
     function generarTemario() {
       temario.innerHTML = "";
       data.forEach((item, index) => {
+        console.log(data);
         const titleContainer = document.createElement("div");
         titleContainer.classList.add("row");
 
@@ -228,9 +216,7 @@ window.onload = function () {
         const linkSubtemas = document.createElement("Button");
         linkSubtemas.classList.add("btn", "btn-small", "btn-link");
         linkSubtemas.textContent = "Subtemas";
-        linkSubtemas.onclick = function () {
-          modal.classList.add("show");
-        };
+        linkSubtemas.setAttribute("onclick", "mostrar_modal('" + index + "')");
 
         titleContainer.appendChild(titleInput);
         titleContainer.appendChild(addButtonAbove);
@@ -320,9 +306,10 @@ window.onload = function () {
             const linkSubtemas = document.createElement("Button");
             linkSubtemas.classList.add("btn", "btn-small", "btn-link");
             linkSubtemas.textContent = "Subtemas";
-            linkSubtemas.onclick = function () {
-              modal.classList.add("show");
-            };
+            linkSubtemas.setAttribute(
+              "onclick",
+              "mostrar_modal(" + index + ")"
+            );
 
             titleContainer.appendChild(titleInput);
             titleContainer.appendChild(addButtonAbove);
@@ -342,3 +329,357 @@ window.onload = function () {
     }
   };
 };
+
+const abrir_modal = document.getElementById("open");
+const cerrar_modal = document.getElementById("close");
+const modal = document.getElementById("modal-container");
+const modalContainer = document.getElementById("modal");
+
+function mostrar_modal(position) {
+  modalContainer.innerHTML = "";
+  modal.classList.add("show");
+
+  DataGlobal.forEach((item, index) => {
+    const modalContainer = document.getElementById("modal");
+
+    if (index == position) {
+      const list = document.createElement("ul");
+
+      item.subtitles.forEach((subtitle, index) => {
+        const listItem = document.createElement("li");
+        listItem.classList.add("row");
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = subtitle;
+        input.classList.add("input-format-2");
+        input.placeholder = "Nuevo subtema";
+
+        input.addEventListener("keyup", (e) => {
+          let valorInput = e.target.value;
+          input.value = valorInput.replace(
+            /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+            ""
+          );
+          subtema = input.value;
+          if (!expresiones.subtema.test(valorInput)) {
+            input.style.border = "3px solid red";
+          } else {
+            input.removeAttribute("style");
+          }
+        });
+
+        // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
+        input.addEventListener("input", () => {
+          item.subtitles[index] = input.value;
+        });
+
+        // Creamos el botón para agregar un subtítulo arriba del elemento actual
+        const addButtonAbove = document.createElement("button");
+        addButtonAbove.classList.add("btn", "btn-small", "btn-add");
+
+        const icon = document.createElement("i");
+        icon.classList.add("ti", "ti-arrow-big-up-line-filled");
+        addButtonAbove.appendChild(icon);
+
+        addButtonAbove.addEventListener("click", () => {
+          item.subtitles.splice(index, 0, "");
+          render_subtemas();
+        });
+
+        // Creamos el botón para agregar un subtítulo debajo del elemento actual
+        const addButtonBelow = document.createElement("button");
+        addButtonBelow.classList.add("btn", "btn-small", "btn-add");
+
+        const icon2 = document.createElement("i");
+        icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
+        addButtonBelow.appendChild(icon2);
+
+        addButtonBelow.addEventListener("click", () => {
+          item.subtitles.splice(index + 1, 0, "");
+          render_subtemas();
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("btn", "btn-small", "btn-danger");
+
+        const icon3 = document.createElement("i");
+        icon3.classList.add("ti", "ti-backspace-filled");
+        deleteButton.appendChild(icon3);
+
+        deleteButton.addEventListener("click", () => {
+          item.subtitles.splice(index, 1);
+          render_subtemas();
+        });
+
+        listItem.appendChild(input);
+        listItem.appendChild(addButtonAbove);
+        listItem.appendChild(addButtonBelow);
+        listItem.appendChild(deleteButton);
+
+        list.appendChild(listItem);
+      });
+
+      /* Función para la destrucción y nueva renderizacion de subtemas */
+      const render_subtemas = () => {
+        modalContainer.innerHTML = "";
+
+        DataGlobal.forEach((item, index) => {
+          const list = document.createElement("ul");
+          list.classList.add("list-items");
+
+          item.subtitles.forEach((subtitle, index) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("row");
+
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = subtitle;
+            input.classList.add("input-format-2");
+            input.placeholder = "Nuevo subtema";
+
+            input.addEventListener("keyup", (e) => {
+              let valorInput = e.target.value;
+              input.value = valorInput.replace(
+                /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+                ""
+              );
+              subtema = input.value;
+              if (!expresiones.subtema.test(valorInput)) {
+                input.style.border = "3px solid red";
+              } else {
+                input.removeAttribute("style");
+              }
+            });
+
+            // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
+            input.addEventListener("input", () => {
+              item.subtitles[index] = input.value;
+            });
+
+            // Creamos el botón para agregar un subtítulo arriba del elemento actual
+            const addButtonAbove = document.createElement("button");
+            addButtonAbove.classList.add("btn", "btn-small", "btn-add");
+            
+            const icon = document.createElement("i");
+            icon.classList.add("ti", "ti-arrow-big-up-line-filled");
+            addButtonAbove.appendChild(icon);
+
+            addButtonAbove.addEventListener("click", () => {
+              item.subtitles.splice(index, 0, "");
+              render_subtemas();
+            });
+
+            // Creamos el botón para agregar un subtítulo debajo del elemento actual
+            const addButtonBelow = document.createElement("button");
+            addButtonBelow.classList.add("btn", "btn-small", "btn-add");
+
+            const icon2 = document.createElement("i");
+            icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
+            addButtonBelow.appendChild(icon2);
+
+            addButtonBelow.addEventListener("click", () => {
+              item.subtitles.splice(index + 1, 0, "");
+              render_subtemas();
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("btn", "btn-small", "btn-danger");
+
+            const icon3 = document.createElement("i");
+            icon3.classList.add("ti", "ti-backspace-filled");
+            deleteButton.appendChild(icon3);
+
+            deleteButton.addEventListener("click", () => {
+              item.subtitles.splice(index, 1);
+              render_subtemas();
+            });
+
+            listItem.appendChild(input);
+            listItem.appendChild(addButtonAbove);
+            listItem.appendChild(addButtonBelow);
+            listItem.appendChild(deleteButton);
+
+            list.appendChild(listItem);
+          });
+
+          modalContainer.appendChild(list);
+        });
+      };
+
+      /* Crear los elementos en el DOM */
+      modalContainer.appendChild(list);
+    } else {
+    }
+  });
+}
+
+function ocultar_modal() {
+  modal.classList.remove("show");
+}
+
+function generarSubtemas(position) {
+  DataGlobal.forEach((item, index) => {
+    const modalContainer = document.getElementById("modal");
+    if (index == position) {
+      const list = document.createElement("ul");
+
+      item.subtitles.forEach((subtitle, index) => {
+        const listItem = document.createElement("li");
+        listItem.classList.add("row");
+
+        const input = document.createElement("input");
+        input.type = "text";
+        input.value = subtitle;
+        input.classList.add("input-format-2");
+        input.placeholder = "Nuevo subtema";
+
+        input.addEventListener("keyup", (e) => {
+          let valorInput = e.target.value;
+          input.value = valorInput.replace(
+            /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+            ""
+          );
+          subtema = input.value;
+          if (!expresiones.subtema.test(valorInput)) {
+            input.style.border = "3px solid red";
+          } else {
+            input.removeAttribute("style");
+          }
+        });
+
+        // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
+        input.addEventListener("input", () => {
+          item.subtitles[index] = input.value;
+        });
+
+        // Creamos el botón para agregar un subtítulo arriba del elemento actual
+        const addButtonAbove = document.createElement("button");
+        addButtonAbove.textContent = "Añadir subtema arriba";
+        addButtonAbove.classList.add("btn");
+        addButtonAbove.classList.add("btn-small");
+        addButtonAbove.classList.add("btn-add");
+
+        addButtonAbove.addEventListener("click", () => {
+          item.subtitles.splice(index, 0, "");
+          render_subtemas();
+        });
+
+        // Creamos el botón para agregar un subtítulo debajo del elemento actual
+        const addButtonBelow = document.createElement("button");
+        addButtonBelow.textContent = "Añadir subtema abajo";
+        addButtonBelow.classList.add("btn");
+        addButtonBelow.classList.add("btn-small");
+        addButtonBelow.classList.add("btn-add");
+
+        addButtonBelow.addEventListener("click", () => {
+          item.subtitles.splice(index + 1, 0, "");
+          render_subtemas();
+        });
+
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Eliminar";
+        deleteButton.classList.add("btn");
+        deleteButton.classList.add("btn-small");
+        deleteButton.classList.add("btn-danger");
+
+        deleteButton.addEventListener("click", () => {
+          item.subtitles.splice(index, 1);
+          render_subtemas();
+        });
+
+        listItem.appendChild(input);
+        listItem.appendChild(addButtonAbove);
+        listItem.appendChild(addButtonBelow);
+        listItem.appendChild(deleteButton);
+
+        list.appendChild(listItem);
+      });
+
+      const render_subtemas = () => {
+        modalContainer.innerHTML = "";
+
+        DataGlobal.forEach((item, index) => {
+          const list = document.createElement("ul");
+
+          item.subtitles.forEach((subtitle, index) => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("row");
+
+            const input = document.createElement("input");
+            input.type = "text";
+            input.value = subtitle;
+            input.classList.add("input-format-2");
+            input.placeholder = "Nuevo subtema";
+
+            input.addEventListener("keyup", (e) => {
+              let valorInput = e.target.value;
+              input.value = valorInput.replace(
+                /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+                ""
+              );
+              subtema = input.value;
+              if (!expresiones.subtema.test(valorInput)) {
+                input.style.border = "3px solid red";
+              } else {
+                input.removeAttribute("style");
+              }
+            });
+
+            // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
+            input.addEventListener("input", () => {
+              item.subtitles[index] = input.value;
+            });
+
+            // Creamos el botón para agregar un subtítulo arriba del elemento actual
+            const addButtonAbove = document.createElement("button");
+            addButtonAbove.textContent = "Añadir subtema arriba";
+            addButtonAbove.classList.add("btn");
+            addButtonAbove.classList.add("btn-small");
+            addButtonAbove.classList.add("btn-add");
+
+            addButtonAbove.addEventListener("click", () => {
+              item.subtitles.splice(index, 0, "");
+              render_subtemas();
+            });
+
+            // Creamos el botón para agregar un subtítulo debajo del elemento actual
+            const addButtonBelow = document.createElement("button");
+            addButtonBelow.textContent = "Añadir subtema abajo";
+            addButtonBelow.classList.add("btn");
+            addButtonBelow.classList.add("btn-small");
+            addButtonBelow.classList.add("btn-add");
+
+            addButtonBelow.addEventListener("click", () => {
+              item.subtitles.splice(index + 1, 0, "");
+              render_subtemas();
+            });
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Eliminar";
+            deleteButton.classList.add("btn");
+            deleteButton.classList.add("btn-small");
+            deleteButton.classList.add("btn-danger");
+
+            deleteButton.addEventListener("click", () => {
+              item.subtitles.splice(index, 1);
+              render_subtemas();
+            });
+
+            listItem.appendChild(input);
+            listItem.appendChild(addButtonAbove);
+            listItem.appendChild(addButtonBelow);
+            listItem.appendChild(deleteButton);
+
+            list.appendChild(listItem);
+          });
+
+          modalContainer.appendChild(list);
+        });
+      };
+      modalContainer.appendChild(list);
+    } else {
+      console.log(item);
+    }
+  });
+}

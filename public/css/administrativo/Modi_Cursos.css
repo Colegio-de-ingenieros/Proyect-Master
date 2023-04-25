@@ -74,7 +74,7 @@
 }
 
 .modal {
-    background: var(--color-white);
+    background: var(--color-gray);
     border-radius: var(--radius-2);
     box-shadow: var(--shadow-1);
 
@@ -87,6 +87,7 @@
     align-items: center;
 
     pointer-events: all;
+
 }
 
 .show {
@@ -97,6 +98,14 @@
     justify-content: center;
 }
 
+.list-items{
+    width: 80%;
+    height: 80%;
+}
+
+.container-subtemas{
+    overflow-y: scroll;
+}
 @keyframes fade-in {
     from {
         opacity: 0;

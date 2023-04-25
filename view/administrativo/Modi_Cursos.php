@@ -239,7 +239,15 @@
     </section>
 
     <div class="modal-container" id="modal-container">
-      <div class="modal"> 
+      <div class="modal">
+        <div class="titulos-registrados">
+          <p class="subtitulo-1">Subtemas</p>
+          <hr class="hr">
+        </div>
+        <div class="container-subtemas" id="modal">
+
+        </div>
+      </div> 
       <div class="botones">
           <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
         </div>
@@ -252,7 +260,7 @@
 </body>
 
 <script src="js/temario.js"></script>
-<script src="js/Ventana_Modal.js"></script>
+<!-- <script src="js/Ventana_Modal.js"></script> -->
 </html>
 <?php
   echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
