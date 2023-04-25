@@ -179,7 +179,7 @@ window.onload = function () {
         addButtonAbove.appendChild(icon);
 
         addButtonAbove.addEventListener("click", () => {
-          data.splice(index, 0, { title: "", subtitles: [""] });
+          data.splice(index, 0, { title: "", subtitles: [] });
           render_2();
         });
 
@@ -191,7 +191,7 @@ window.onload = function () {
         addButtonBelow.appendChild(icon2);
 
         addButtonBelow.addEventListener("click", () => {
-          data.splice(index + 1, 0, { title: "", subtitles: [""] });
+          data.splice(index + 1, 0, { title: "", subtitles: [] });
           render_2();
         });
 
@@ -281,7 +281,7 @@ window.onload = function () {
             addButtonBelow.appendChild(icon2);
 
             addButtonBelow.addEventListener("click", () => {
-              data.splice(index + 1, 0, { title: "", subtitles: [""] });
+              data.splice(index + 1, 0, { title: "", subtitles: [] });
               render_2();
             });
 
@@ -342,89 +342,134 @@ function mostrar_modal(position) {
 
   DataGlobal.forEach((item, index) => {
     const modalContainer = document.getElementById("modal");
+    const list = document.createElement("ul");
 
     if (index == position) {
-      const list = document.createElement("ul");
-      list.classList.add("list-items");
-      modalTitle.textContent = item.title;
+      /* Verifica que la cantidad de subtitulos sea superior a 1 */
+      if (item.subtitles.length > 1) {
+        list.classList.add("list-items");
+        modalTitle.textContent = item.title;
+        item.subtitles.forEach((subtitle, index) => {
+          const listItem = document.createElement("li");
+          listItem.classList.add("row-s");
 
-      item.subtitles.forEach((subtitle, index) => {
-        const listItem = document.createElement("li");
-        listItem.classList.add("row-s");
+          const input = document.createElement("input");
+          input.type = "text";
+          input.value = subtitle;
+          input.classList.add("input-format-2");
+          input.placeholder = "Nuevo subtema";
 
-        const input = document.createElement("input");
-        input.type = "text";
-        input.value = subtitle;
-        input.classList.add("input-format-2");
-        input.placeholder = "Nuevo subtema";
+          input.addEventListener("keyup", (e) => {
+            let valorInput = e.target.value;
+            input.value = valorInput.replace(
+              /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
+              ""
+            );
+            subtema = input.value;
+            if (!expresiones.subtema.test(valorInput)) {
+              input.style.border = "3px solid red";
+            } else {
+              input.removeAttribute("style");
+            }
+          });
 
-        input.addEventListener("keyup", (e) => {
-          let valorInput = e.target.value;
-          input.value = valorInput.replace(
-            /[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g,
-            ""
-          );
-          subtema = input.value;
-          if (!expresiones.subtema.test(valorInput)) {
-            input.style.border = "3px solid red";
-          } else {
-            input.removeAttribute("style");
-          }
+          // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
+          input.addEventListener("input", () => {
+            item.subtitles[index] = input.value;
+          });
+
+          // Creamos el botón para agregar un subtítulo arriba del elemento actual
+          const addButtonAbove = document.createElement("button");
+          addButtonAbove.classList.add("btn", "btn-small", "btn-add");
+
+          const icon = document.createElement("i");
+          icon.classList.add("ti", "ti-arrow-big-up-line-filled");
+          addButtonAbove.appendChild(icon);
+
+          addButtonAbove.addEventListener("click", () => {
+            item.subtitles.splice(index, 0, "");
+            render_subtemas();
+          });
+
+          // Creamos el botón para agregar un subtítulo debajo del elemento actual
+          const addButtonBelow = document.createElement("button");
+          addButtonBelow.classList.add("btn", "btn-small", "btn-add");
+
+          const icon2 = document.createElement("i");
+          icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
+          addButtonBelow.appendChild(icon2);
+
+          addButtonBelow.addEventListener("click", () => {
+            item.subtitles.splice(index + 1, 0, "");
+            render_subtemas();
+          });
+
+          const deleteButton = document.createElement("button");
+          deleteButton.classList.add("btn", "btn-small", "btn-danger");
+
+          const icon3 = document.createElement("i");
+          icon3.classList.add("ti", "ti-backspace-filled");
+          deleteButton.appendChild(icon3);
+
+          deleteButton.addEventListener("click", () => {
+            item.subtitles.splice(index, 1);
+            let longitud_subtemas = item.subtitles.length;
+
+            if (longitud_subtemas == 0) {
+              modalContainer.innerHTML = "";
+              const newLabelSubtema = document.createElement("label");
+              newLabelSubtema.classList.add("label-2");
+              newLabelSubtema.textContent = "No hay subtemas registrados";
+
+              const addButtonSubtitleEmpty = document.createElement("button");
+              addButtonSubtitleEmpty.classList.add(
+                "btn",
+                "btn-small",
+                "btn-add"
+              );
+              addButtonSubtitleEmpty.textContent = "Agregar subtema";
+
+              addButtonSubtitleEmpty.addEventListener("click", () => {
+                item.subtitles.splice(index, 0, "");
+                render_subtemas();
+              });
+
+              modalContainer.appendChild(newLabelSubtema);
+              modalContainer.appendChild(addButtonSubtitleEmpty);
+            } else {
+              render_subtemas();
+            }
+          });
+
+          listItem.appendChild(input);
+          listItem.appendChild(addButtonAbove);
+          listItem.appendChild(addButtonBelow);
+          listItem.appendChild(deleteButton);
+
+          list.appendChild(listItem);
         });
+        /* Crear los elementos en el DOM */
+        modalContainer.appendChild(list);
+      } else {
+        list.classList.add("list-items");
+        modalTitle.textContent = item.title;
+        modalContainer.innerHTML = "";
+        const newLabelSubtema = document.createElement("label");
+        newLabelSubtema.classList.add("label-2");
+        newLabelSubtema.textContent = "No hay subtemas registrados";
 
-        // Agregamos el evento 'input' al subtítulo para actualizar automáticamente el elemento correspondiente en la lista
-        input.addEventListener("input", () => {
-          item.subtitles[index] = input.value;
-        });
+        const addButtonSubtitleEmpty = document.createElement("button");
+        addButtonSubtitleEmpty.classList.add("btn", "btn-small", "btn-add");
+        addButtonSubtitleEmpty.textContent = "Agregar subtema";
 
-        // Creamos el botón para agregar un subtítulo arriba del elemento actual
-        const addButtonAbove = document.createElement("button");
-        addButtonAbove.classList.add("btn", "btn-small", "btn-add");
-
-        const icon = document.createElement("i");
-        icon.classList.add("ti", "ti-arrow-big-up-line-filled");
-        addButtonAbove.appendChild(icon);
-
-        addButtonAbove.addEventListener("click", () => {
+        addButtonSubtitleEmpty.addEventListener("click", () => {
           item.subtitles.splice(index, 0, "");
           render_subtemas();
         });
 
-        // Creamos el botón para agregar un subtítulo debajo del elemento actual
-        const addButtonBelow = document.createElement("button");
-        addButtonBelow.classList.add("btn", "btn-small", "btn-add");
-
-        const icon2 = document.createElement("i");
-        icon2.classList.add("ti", "ti-arrow-big-down-line-filled");
-        addButtonBelow.appendChild(icon2);
-
-        addButtonBelow.addEventListener("click", () => {
-          item.subtitles.splice(index + 1, 0, "");
-          render_subtemas();
-        });
-
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("btn", "btn-small", "btn-danger");
-
-        const icon3 = document.createElement("i");
-        icon3.classList.add("ti", "ti-backspace-filled");
-        deleteButton.appendChild(icon3);
-
-        deleteButton.addEventListener("click", () => {
-          item.subtitles.splice(index, 1);
-          render_subtemas();
-        });
-
-        listItem.appendChild(input);
-        listItem.appendChild(addButtonAbove);
-        listItem.appendChild(addButtonBelow);
-        listItem.appendChild(deleteButton);
-
-        list.appendChild(listItem);
-      });
-      /* Crear los elementos en el DOM */
-      modalContainer.appendChild(list);
-    } else {
+        modalContainer.appendChild(newLabelSubtema);
+        modalContainer.appendChild(addButtonSubtitleEmpty);
+      }
     }
   });
 
@@ -435,7 +480,7 @@ function mostrar_modal(position) {
     DataGlobal.forEach((item, index) => {
       const list = document.createElement("ul");
       list.classList.add("list-items");
-      
+
       if (index == position) {
         item.subtitles.forEach((subtitle, index) => {
           const listItem = document.createElement("li");
@@ -501,7 +546,32 @@ function mostrar_modal(position) {
 
           deleteButton.addEventListener("click", () => {
             item.subtitles.splice(index, 1);
-            render_subtemas();
+            let longitud_subtemas = item.subtitles.length;
+
+            if (longitud_subtemas == 0) {
+              modalContainer.innerHTML = "";
+              const newLabelSubtema = document.createElement("label");
+              newLabelSubtema.classList.add("label-2");
+              newLabelSubtema.textContent = "No hay subtemas registrados";
+
+              const addButtonSubtitleEmpty = document.createElement("button");
+              addButtonSubtitleEmpty.classList.add(
+                "btn",
+                "btn-small",
+                "btn-add"
+              );
+              addButtonSubtitleEmpty.textContent = "Agregar subtema";
+
+              addButtonSubtitleEmpty.addEventListener("click", () => {
+                item.subtitles.splice(index, 0, "");
+                render_subtemas();
+              });
+
+              modalContainer.appendChild(newLabelSubtema);
+              modalContainer.appendChild(addButtonSubtitleEmpty);
+            } else {
+              render_subtemas();
+            }
           });
 
           listItem.appendChild(input);
@@ -513,7 +583,6 @@ function mostrar_modal(position) {
         });
 
         modalContainer.appendChild(list);
-      } else {
       }
     });
   };
@@ -522,4 +591,3 @@ function mostrar_modal(position) {
 function ocultar_modal() {
   modal.classList.remove("show");
 }
-
