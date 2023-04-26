@@ -626,15 +626,16 @@ enviar.addEventListener("click", (e) => {
   console.log("Basicos: ", basicos);
   console.log("Temario: ", temario);
 
-  form.append("arrayin", basicos);
-  form.append("lista", temario);
+  form.append("arrayin", JSON.stringify(basicos));
+  form.append("lista", JSON.stringify(temario));
   fetch(url, {
     method: "POST",
     body: form,
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
+      /* console.log(data); */
+      alert(data);
     });
 
 });
