@@ -44,9 +44,9 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre Trabajador</th>
-                                <th>Cédula</th>
-                                <th>Nombre de carrera</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Correo</th>
                                 <th>Telefono</th>
                                 <th>Salario esperado</th>
                                 <th>Acciones</th>
@@ -59,8 +59,8 @@ if (isset($_POST['consulta'])) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
-            $carrera= $resultado[$i]["Carrera"];
-            $cedula= $resultado[$i]["NumCedAca"];
+            $carrera= $resultado[$i]["DesProCv"];
+            $cedula= $resultado[$i]["CorreoPerso"];
             $sal= $resultado[$i]["ExpSalCv"];
             $tel = $resultado[$i]["TelMPerso"];
             $id = $resultado[$i]["IdBolCv"];
@@ -69,13 +69,11 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nom . '</td>';
-            $salida .= '<td>' . $cedula . '</td>';
             $salida .= '<td>' . $carrera . '</td>';
+            $salida .= '<td>' . $cedula . '</td>';
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $sal . '</td>';
-            $salida .= '<td><a href="#" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
+            $salida .= '<td> <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -123,9 +121,9 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre Trabajador</th>
-                                <th>Cédula</th>
-                                <th>Nombre de carrera</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Correo</th>
                                 <th>Telefono</th>
                                 <th>Salario esperado</th>
                                 <th>Acciones</th>
@@ -138,8 +136,8 @@ if (isset($_POST['consulta'])) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
-            $carrera= $resultado[$i]["Carrera"];
-            $cedula= $resultado[$i]["NumCedAca"];
+            $carrera= $resultado[$i]["DesProCv"];
+            $cedula= $resultado[$i]["CorreoPerso"];
             $sal= $resultado[$i]["ExpSalCv"];
             $tel = $resultado[$i]["TelMPerso"];
             $id = $resultado[$i]["IdBolCv"];
@@ -148,13 +146,11 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nom . '</td>';
-            $salida .= '<td>' . $cedula . '</td>';
             $salida .= '<td>' . $carrera . '</td>';
+            $salida .= '<td>' . $cedula . '</td>';
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $sal . '</td>';
-            $salida .= '<td><a href="#" >Aceptar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="confirmDesactiv()" class="table_item__link">Rechazar</a></td>';
+            $salida .= '<td> <a href="../../controller/empresa/Mostrar_Cv.php?id='.$id.'" >Ver más</a></td>';
             //
             //
             $salida .= '</tr></div>';

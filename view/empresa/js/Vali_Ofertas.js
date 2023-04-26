@@ -51,7 +51,7 @@ botonRegresar.addEventListener("click", (e) => {
     }else if(bestado==false){
         estado.style.border = "3px solid red";
     }else if(bc1==false && bc2==false && bc3==false && bc4==false && bc5==false && bc6==false && bc7==false){
-        alert("Debe seleccionar al menos una categoria");
+        alert("Debe seleccionar al menos un día laboral");
     
     }else{
         validar(true);
