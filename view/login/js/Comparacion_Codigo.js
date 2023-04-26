@@ -3,16 +3,16 @@ const campo_codigo = document.getElementById("codigo");
 const formulario = document.getElementById("formulario");
 const boton_reenviar = document.getElementById("reenviar");
 
-let banderas  = {bcodigo:false};
+let banderas  = {bcodigo:true}
 const expresiones = {
     codigo:/^[0-9]{5}$/
 }
 
 /**codigo postal */
-formulario.codigo.addEventListener('keyup', (e) => {
+campo_codigo.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.codigo.value = valorInput
+	campo_codigo.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
@@ -21,10 +21,10 @@ formulario.codigo.addEventListener('keyup', (e) => {
 	.trim();
     let valorInput2 = e.target.value;
     if (!expresiones.codigo.test(valorInput2)) {
-        formulario.codigo.style.border = "3px solid red";
+        campo_codigo.style.border = "3px solid red";
         banderas.bcodigo = false;
 	}else{
-        formulario.codigo.removeAttribute("style");
+        campo_codigo.removeAttribute("style");
         banderas.bcodigo = true;
     }
     
@@ -71,7 +71,7 @@ formulario.addEventListener("submit",(e)=>{
     if(campo_codigo.value.length == 0 ){
         alert("Debe escribir el código");
     }else{
-        if(banderas.bcodigo == false){
+        if(banderas.bcodigo){
             fetch("../../controller/login/Comparar_Codigo.php",
             {
                 method:"POST",
