@@ -35,17 +35,7 @@ $id=$_GET['id'];
         <ul>
 
           <!-- Cursos -->
-          <li>
-            <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
-              Cursos
-            </a>
-
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+          
 
           <!-- Cuotas -->
           <li>
@@ -116,7 +106,7 @@ $id=$_GET['id'];
           <hr>
           <div class="grupo-input">
             <div class="input-form">
-              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
           <input id="prodId" name="prodId" type="hidden" value=<?php echo $id; ?>>
