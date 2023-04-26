@@ -11,6 +11,14 @@ let bExp= false
 let bBruto = false
 let bMensual = false
 let bandTel = false
+let bc1 = false
+let bc2 = false
+let bc3 = false
+let bc4 = false
+let bc5 = false
+let bc6 = false
+let bc7 = false
+
 console.log("entro a validar");
 let botonRegresar = document.getElementById("boton_registro");
 botonRegresar.addEventListener("click", (e) => {
@@ -42,6 +50,8 @@ botonRegresar.addEventListener("click", (e) => {
         ciudad.style.border = "3px solid red";
     }else if(bestado==false){
         estado.style.border = "3px solid red";
+    }else if(bc1==false && bc2==false && bc3==false && bc4==false && bc5==false && bc6==false && bc7==false){
+        alert("Debe seleccionar al menos una categoria");
     
     }else{
         validar(true);
@@ -50,14 +60,14 @@ botonRegresar.addEventListener("click", (e) => {
 
 const expresiones = {
     cadenasGeneral:/^[a-zA-ZÁ-ý 0-9.\s]{1,50}$/,
-    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,50}$/,
+    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
     cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?)?$/,
     experiencia:/^[0-9]{1,2}$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
-    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
+    email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     telefono:/^[0-9]{10}$/,
     passw:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])).{8,16}$/,
 }
@@ -108,9 +118,9 @@ formula.requi_tecnicos.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
-    if (!expresiones.cadenasGeneral.test(valorInput)) {
+    if (!expresiones.cadenasAcademicos.test(valorInput)) {
         requi_tecnicos.style.border = "3px solid red";
         bTech = false
 	}else{
@@ -122,8 +132,6 @@ formula.requi_tecnicos.addEventListener('keyup', (e) => {
 //validar descripcion
 formula.descri_puesto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-    //console.log(valorInput);
-    console.log(valorInput.length);
 	formula.descri_puesto.value = valorInput
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
@@ -336,6 +344,76 @@ formula.sal_mensual.addEventListener('keyup', (e) =>{
     validar(bMensual);
 
 })
+
+
+var checkbox1 = document.getElementById("c7");
+checkbox1.addEventListener("change", function() {
+    if(this.checked) {
+      bc1=true;
+    } else {
+      bc1=false;
+    }
+    //validar(bc1)
+  });
+  
+var checkbox2 = document.getElementById("c2");
+
+// Verificar si la checkbox está seleccionada
+
+checkbox2.addEventListener("change", function() {
+    if(this.checked) {
+      bc2=true;
+    } else {
+      bc2=false;
+    }
+    
+  });
+  //validar(bc2)
+var checkbox3 = document.getElementById("c3");
+checkbox3.addEventListener("change", function() {
+if(this.checked) {
+    bc3=true;
+} else {
+    bc3=false;
+}
+});
+//validar(bc3)
+var checkbox4 = document.getElementById("c4");
+checkbox4.addEventListener("change", function() {
+if(this.checked) {
+    bc4=true;
+} else {
+    bc4=false;
+}
+});
+//validar(bc4)
+var checkbox5 = document.getElementById("c5");
+checkbox5.addEventListener("change", function() {
+    if(this.checked) {
+        bc5=true;
+    } else {
+        bc5=false;
+    }
+    });
+    //validar(bc5)
+var checkbox6 = document.getElementById("c6");
+checkbox6.addEventListener("change", function() {
+    if(this.checked) {
+        bc6=true;
+    } else {
+        bc6=false;
+    }
+
+    });
+    //validar(bc6)
+var checkbox7 = document.getElementById("c7");
+checkbox7.addEventListener("change", function() {
+    if(this.checked) {
+      bc7=true;
+    } else {
+      bc7=false;
+    }
+  });
 formula.caja_correo.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -343,7 +421,7 @@ formula.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜñÑ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
     // Eliminar el ultimo espaciado
     //condicional para que no inice con un numero
     .replace(/^[0-9]/g, '')

@@ -2,14 +2,11 @@ function confirmacion(e){
 
     if (confirm("¿Está seguro que desea eliminar este participante?")) {
         e.preventDefault();
-    
-
-        
-
+        var participante = $(this).data('idp');
         $.ajax({
             url: '../../controller/administrativo/Eliminar_Participante.php', 
             type: 'GET', 
-            data: {idAct: idAct}, 
+            data: {participante: participante}, 
             
             success: function (response)
             {

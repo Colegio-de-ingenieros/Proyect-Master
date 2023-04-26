@@ -10,10 +10,10 @@ class EliminarParticipante{
         $this->base->conexion_bd();
     }
 
-    public function eliminar_GasIngre($idPar){
-        $idPar=$_POST["ingresos_Participante"];
+    public function eliminar_GasIngre($idParP){
+        //$idPar=$_POST["ingresos_Participante"];
 
-        if (strpos($idPar, 'P') !== false) {
+        if (strpos($idParP, 'P') !== false) {
             //Elimina Ingresos de UN ASOCIADOS
             $q="SELECT IdIngre FROM persoingresos WHERE IdParP=:idParP";
             $a=[":idParP"=>$idParP];
@@ -50,7 +50,7 @@ class EliminarParticipante{
             $q7 = "DELETE FROM persoparticipa WHERE IdParP = :idParP";
             $this->base->insertar_eliminar_actualizar($q7, $a);
 
-        } else if(strpos($idPar, 'E') !== false) {
+        } else if(strpos($idParP, 'E') !== false) {
              //Elimina Ingresos de UNA EMPRESA
              $q="SELECT IdIngre FROM empingresos WHERE IdParP=:idParP";
              $a=[":idParP"=>$idParP];
