@@ -620,8 +620,11 @@ enviar.addEventListener("click", (e) => {
 
   let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
 
-  let url = "../../../controller/administrativo/Eliminar_Temario.php";
+  let url = "../../controller/administrativo/Eliminar_Temario.php";
   let form = new FormData()
+
+  console.log("Basicos: ", basicos);
+  console.log("Temario: ", temario);
 
   form.append("arrayin", basicos);
   form.append("lista", temario);
