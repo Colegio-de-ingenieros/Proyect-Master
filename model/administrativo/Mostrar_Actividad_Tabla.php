@@ -60,7 +60,7 @@
                 if ($auxIngresos[0][0]==NULL){
                     array_push($ingreSocio, "$ 0"); 
                 }else{
-                    array_push($ingreSocio, $auxIngresos[0][0]); 
+                    array_push($ingreSocio, "$ ".$auxIngresos[0][0]); 
                 }
                 $temporalGastos=[];
                 for ($x=1; $x<6;$x++){
@@ -69,7 +69,7 @@
                     if ($auxGastos[0][0]==NULL){
                         array_push($temporalGastos, "$ 0"); 
                     }else{
-                        array_push($temporalGastos, $auxGastos[0][0]); 
+                        array_push($temporalGastos, "$ ".$auxGastos[0][0]); 
                     }   
                 }
                 array_push($gastosHotelSocio, $temporalGastos[0]); 
@@ -79,7 +79,7 @@
                 array_push($gastosHonoSocio, $temporalGastos[4]); 
             }
             
-            //Ingresos por cada empresa
+            //Gastos por cada empresa
             $ingreEmp=[];
             $gastosHotelEmp=[];
             $gastosTransEmp=[];
@@ -92,7 +92,7 @@
                 if ($auxIngresos[0][0]==NULL){
                     array_push($ingreEmp, "$ 0"); 
                 }else{
-                    array_push($ingreEmp, $auxIngresos[0][0]); 
+                    array_push($ingreEmp, "$ ".$auxIngresos[0][0]); 
                 }
                 $temporalGastos=[];
                 for ($x=1; $x<6;$x++){
@@ -101,7 +101,7 @@
                     if ($auxGastos[0][0]==NULL){
                         array_push($temporalGastos, "$ 0"); 
                     }else{
-                        array_push($temporalGastos, $auxGastos[0][0]); 
+                        array_push($temporalGastos, "$ ".$auxGastos[0][0]); 
                     }   
                 }
                 array_push($gastosHotelEmp, $temporalGastos[0]); 
@@ -111,7 +111,7 @@
                 array_push($gastosHonoEmp, $temporalGastos[4]); 
             }
 
-            //Ingresos por cada instructor
+            //Gastos por cada instructor
             $ingreInstr=[];
             $gastosHotelInstr=[];
             $gastosTransInstr=[];
@@ -124,7 +124,7 @@
                 if ($auxIngresos[0][0]==NULL){
                     array_push($ingreInstr, "$ 0"); 
                 }else{
-                    array_push($ingreInstr, $auxIngresos[0][0]); 
+                    array_push($ingreInstr, "$ "+$auxIngresos[0][0]); 
                 }
                 $temporalGastos=[];
                 for ($x=1; $x<6;$x++){
@@ -133,7 +133,7 @@
                     if ($auxGastos[0][0]==NULL){
                         array_push($temporalGastos, "$ 0"); 
                     }else{
-                        array_push($temporalGastos, $auxGastos[0][0]); 
+                        array_push($temporalGastos, "$ ".$auxGastos[0][0]); 
                     }   
                 }
                 array_push($gastosHotelInstr, $temporalGastos[0]); 
