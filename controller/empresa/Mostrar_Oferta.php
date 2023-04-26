@@ -36,16 +36,95 @@ if ($resultado == true) {
   $mun=$resultado[0]["nommunicipio"];
   $edo=$resultado[0]["nomestado"];
 }
-echo $sid;
+$resultado = $base->getDias($id);
+if ($resultado == true) {
+  $dias="";
+  for ($i = 0; $i < count($resultado); $i++) {
+  $dias.=" ".$resultado[$i]["Dia"].",";
+
+  }
+}
+$dias=trim($dias,",");
 ?>
 <script languaje="javascript">
     var parrafo = document.getElementById("nombreOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
 
   var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $dias; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $req; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $reqtec; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $desc; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $exp; ?>";
 var parrafo = document.createElement("p");
 
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
 // Agregar texto al párrafo
 var texto = document.createTextNode("Este es mi texto en el párrafo.");
 parrafo.appendChild(texto);
