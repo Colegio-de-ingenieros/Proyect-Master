@@ -1,6 +1,7 @@
 <?php
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Aplicantes.php');
+include_once('../..//view/empresa/Mostrar_Cvindividual.html');
 //echo $id;
 $base = new MostrarAplicantes();
 $base->instancias();
@@ -18,6 +19,12 @@ if ($resultado == true) {
   $salEsp=$resultado[0]["ExpSalCv"];
   $cedula=$resultado[0]["NumCedAca"];
   $carrera=$resultado[0]["Carrera"];
+  $cambio=$resultado[0]["ResidenciaCv"];
+}
+if ($cambio==1) {
+  $cambio="Si";
+}else{
+  $cambio="No";
 }
 $resultado=$base->mostrarColonia($identificador);
 if ($resultado == true) {
@@ -26,147 +33,85 @@ if ($resultado == true) {
   $estado=$resultado[0]["nomestado"];
 }
 ?>
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mostrar CV</title>
-  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../../public/css/style.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
-</head>
+<script languaje="javascript">
+  var parrafo = document.getElementById("nombreAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
 
-<body>
-  <header>
+  var parrafo = document.getElementById("appelido_paternoAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $apeP; ?>";
+var parrafo = document.createElement("p");
 
-    <div class="menu">
-      <input type="checkbox" id="check__menu">
-      <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
-      <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-      <nav>
-        <ul>
+var parrafo = document.getElementById("apellido_maternoAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $apeM; ?>";
+var parrafo = document.createElement("p");
 
-          <!-- Cursos -->
-          <li>
-            <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
-              Cursos
-            </a>
+var parrafo = document.getElementById("fecha_nacimientoAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $fecha; ?>";
+var parrafo = document.createElement("p");
 
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+var parrafo = document.getElementById("correo_electroAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $correo; ?>";
+var parrafo = document.createElement("p");
 
-          <!-- Cuotas -->
-          <li>
-            <a href="#">
-              <!-- <i class="fa-solid fa-circle-check"></i> -->
-              Cuotas
-            </a>
+var parrafo = document.getElementById("telefonoAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $tel; ?>";
+var parrafo = document.createElement("p");
 
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+var parrafo = document.getElementById("calle_numeroAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $calle; ?>";
+var parrafo = document.createElement("p");
 
-          <!-- Bolsa de trabajo -->
-          <li>
-            <a href="#">
-              <!-- <i class="fa-solid fa-chalkboard-user"></i> -->
-              Bolsa de trabajo
-            </a>
+var parrafo = document.getElementById("coloniaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $colonia; ?>";
+var parrafo = document.createElement("p");
 
-            <ul>
-              <li><a id="" href="#">Ofertas de trabajo</a></li>
-              <li><a id="" href="#">Mi CV</a></li>
-            </ul>
-          </li>
+var parrafo = document.getElementById("ciudadAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $municipio; ?>";
+var parrafo = document.createElement("p");
 
-          <!-- Servicios -->
-          <li>
-            <a href="#">
-              <!-- <i class="fa-solid fa-clipboard-list"></i> -->
-              Servicios
-            </a>
+var parrafo = document.getElementById("estadoAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $estado; ?>";
+var parrafo = document.createElement("p");
 
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+var parrafo = document.getElementById("cambio_residenciaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cambio; ?>";
+var parrafo = document.createElement("p");
 
-          <!-- Mi Perfil -->
-          <li>
-            <a href="#">
-              <!-- <i class="fa-regular fa-user"></i> -->
-              Mi perfil
-            </a>
+var parrafo = document.getElementById("expe_salarial_brutaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $salEsp; ?>";
+var parrafo = document.createElement("p");
 
-            <ul>
-              <li><a id="" href="#">Datos Generales</a></li>
-            </ul>
-          </li>
-
-        </ul>
-      </nav>
-    </div>
-
-    <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn">Cerrar sesión</button>
-    </div>
-  </header>
-
-  <main>
-    <section class="section-main">
-      <div class="cabezera">
-        <h3 class="h3">Mostrar CV</h2>
-          <p class="subtitulo-1">Datos generales</p>
-          <hr>
-      </div>
-      <!-- Datos generales -->
-      <div class="formulario-generales">
-        <!-- Nombre -->
-        <div class="campo">
-          <label for="" class="label-2">Nombre</label> <br> <br>
-          <label for="" class="label-4"><?php echo $nombre ?></label> <br> <br>
-          <label for="" class="label-2">Apellido Paterno</label><br><br>
-          <label for="" class="label-4"><?php echo $apeP?></label> <br> <br>
-          <label for="" class="label-2">Apellido Materno</label><br><br>
-          <label for="" class="label-4"><?php echo $apeM?></label> <br> <br>
-          <label for="" class="label-2">Fecha de nacimiento</label><br><br>
-          <label for="" class="label-4"><?php echo $fecha?></label> <br> <br>
-          <label for="" class="label-2">Correo electrónico</label><br><br>
-          <label for="" class="label-4"><?php echo $correo?></label> <br> <br>
-          <label for="" class="label-2">Teléfono</label><br><br>
-          <label for="" class="label-4"><?php echo $tel?></label> <br> <br>
-          <label for="" class="label-2">Domicilio</label><br><br>
-          <label for="" class="label-4"><?php echo $calle." ".$colonia.", ".$municipio.", ".$estado?></label> <br> <br>
-          <label for="" class="label-2">Expectativa salarial bruta</label><br><br>
-          <label for="" class="label-4">$ <?php echo $salEsp?></label> <br> <br>
-          <label for="" class="label-2">Descripción profesional</label><br><br>
-          <label for="" class="label-4"> <?php echo $desc?></label> <br> <br>
-        </div>
-      </div>
-      <!-- Experiencia académica -->
+var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $desc; ?>";
+var parrafo = document.createElement("p");
+</script>
+<!-- Experiencia académica -->
+<br>
       <div class="divisor">
         <p class="subtitulo-1">Experiencia académica</p>
+       
+        <br>
         <hr>
       </div>
-
+      <br>
+      <!-- Formulario académico 1 -->
+      <div class="formulario-academica" id="academico-1">
+        <!-- Nombre de la carrera -->
+        <div class="campo">
+          <label for="" class="label-2">Nombre de la carrera:</label>
+          <p class="label-4" id="nombre_carreraAP">Pruebas de como se ve el texto</p>
+          
+        </div>
+        <!-- Número de cédula -->
+        <div class="campo">
+          <label for="" class="label-2">Número de cédula:</label>
+          <p class="label-4" id="num_cedulaAP">Pruebas de como se ve el texto</p>
+          
+        </div>
+      </div>
+      <br>
+      <br>
       <div class="formulario-academica">
         <!-- Nombre de la carrera -->
         <?php $resultado=$base->mostrarAcademica($id);

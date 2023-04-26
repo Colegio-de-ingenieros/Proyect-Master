@@ -48,22 +48,25 @@ if (isset($_POST['c7'])) {
 
 session_start();
 $username = $_SESSION['usuario'];
-
-//$ban=true;
-$obj = new NuevaOferta();
-$obj->conexion();
-$rfccorreo1=$obj->rfccorreo($username);
-
-$rfce=$rfccorreo1[0][0];
-//echo json_encode($rfccorreo[0]);
-$anterior=$obj->obtenerId();
-if ($anterior==null){
-    $anterior="000000";
+if ($c1 == 0 && $c2 == 0 && $c3 == 0 && $c4 == 0 && $c5 == 0 && $c6 == 0 && $c7 == 0) {
+    echo json_encode('error');
 }
-$num=intval($anterior)+1;
-$num=str_pad($num, 6, "0", STR_PAD_LEFT);
-$obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac,$c1, $c2, $c3, $c4, $c5, $c6, $c7,$rfce);    
+else{
+   //$ban=true;
+   $obj = new NuevaOferta();
+   $obj->conexion();
+   $rfccorreo1=$obj->rfccorreo($username);
 
-echo json_encode('exito');
+   $rfce=$rfccorreo1[0][0];
+   //echo json_encode($rfccorreo[0]);
+   $anterior=$obj->obtenerId();
+   if ($anterior==null){
+      $anterior="000000";
+   }
+   $num=intval($anterior)+1;
+   $num=str_pad($num, 6, "0", STR_PAD_LEFT);
+   $obj->insertar($num, $nomVac, $acaVac, $tecVac, $descVac, $expVac, $brutVac, $menVac, $hinVac, $hfinVac, $telVac, $calleVac, $corVac, $jorVac, $colVac, $modVac,$c1, $c2, $c3, $c4, $c5, $c6, $c7,$rfce);    
 
+   echo json_encode('exito');
+}
     

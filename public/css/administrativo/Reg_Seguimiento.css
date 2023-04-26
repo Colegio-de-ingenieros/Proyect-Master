@@ -80,6 +80,9 @@
     justify-content: center;
     transition: 300ms all;
 }
+.input-format-2:hover{
+    cursor:text;
+}
 
 .input-format-2:focus{
     background: var(--color-white);

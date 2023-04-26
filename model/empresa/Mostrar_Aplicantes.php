@@ -9,7 +9,7 @@ class MostrarAplicantes{
         $this->base->conexion_bd();
     }
     function getAplicantes($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca,ResidenciaCv, ExpSalCv,Carrera, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
@@ -33,7 +33,7 @@ class MostrarAplicantes{
         return $resultados;
     }
     function getAplicante($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera, CorreoPerso, FechaNacPerso, CallePerso, DesProCv 
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera, CorreoPerso, FechaNacPerso, CallePerso, DesProCv,ResidenciaCv 
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
