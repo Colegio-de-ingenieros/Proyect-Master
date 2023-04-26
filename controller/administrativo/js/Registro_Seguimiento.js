@@ -109,7 +109,8 @@ function rellenar_nombre_tipo(datos, tipo) {
     document.getElementById("nombre").appendChild(optionElement)
     document.getElementById("nombre").disabled = true;
   } else{
-  datos.forEach(registro => {
+    document.getElementById("nombre").disabled = false;
+    datos.forEach(registro => {
         var optionElement = document.createElement("option");
         optionElement.value = registro[0];
         optionElement.text = registro[1];

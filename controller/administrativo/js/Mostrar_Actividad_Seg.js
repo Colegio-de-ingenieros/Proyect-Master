@@ -91,7 +91,7 @@ function rellenar_datos(datos) {
     valueHidden = 0; 
 }
 
-function rellenar_tabla(){
+function rellenar_tablaExtra(){
     split=obtener_URL()
     let idAct=split[2]
 
@@ -129,15 +129,43 @@ function rellenar_tabla(){
     }) 
 }
 
+function rellenar_tabla(){
+    split=obtener_URL()
+    let idAct=split[2]
+
+    $.ajax({
+        url: '../../controller/administrativo/Mostrar_Actividad_Tabla.php',
+        type: 'POST',
+        dataType: 'html',
+        data: { idAct: idAct},
+    })
+
+        .done(function (respuesta)
+        {
+            $("#tablaResultado").html(respuesta);
+        })
+        .fail(function ()
+        {
+            console.log("error");
+        })
+}
+
 //responde cuando hay un click en el boton uno
 formulario_participantes.addEventListener('submit', function (e){
     e.preventDefault();
     let par =document.getElementById("participante_Socio_Aso").value;
     let emp = document.getElementById("participante_Empresas").value;
     let instr = document.getElementById("participante_Instructores").value;
-
     if (par=="" && emp=="" && instr==""){
         alert("Por favor, seleccione un participante.");
+    }else if (par=="" && (document.getElementById("participante_Empresas").disabled == true) && (document.getElementById("participante_Instructores").disabled == true)){
+        alert("Por favor, seleccione un participante.");
+    }else if (emp=="" && (document.getElementById("participante_Socio_Aso").disabled == true) && (document.getElementById("participante_Instructores").disabled == true)){
+        alert("Por favor, seleccione un participante.");
+    }else if (instr=="" && (document.getElementById("participante_Empresas").disabled == true) && (document.getElementById("participante_Socio_Aso").disabled == true)){
+        alert("Por favor, seleccione un participante.");
+    }else if ((document.getElementById("participante_Socio_Aso").disabled == true) && (document.getElementById("participante_Empresas").disabled == true) && (document.getElementById("participante_Instructores").disabled == true)){
+        alert("No hay más participantes para añadir");
     }else{
         split=obtener_URL()
         let idAct=split[2]
@@ -157,7 +185,7 @@ formulario_participantes.addEventListener('submit', function (e){
                 alert(data);
             if (data==="Participante añadido exitosamente"){
                     obtener_Datos() 
-                    const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+                    //const tabla = document.querySelector('#cuerpo').innerHTML=""; 
                     rellenar_tabla()
             }
 
@@ -185,14 +213,14 @@ formulario_Gastos.addEventListener('submit', function (e){
             document.getElementById("gastos_monto").value = "";
             document.getElementById("gastos_Fecha").value = "";
             document.getElementById("gastos_comprobante").value = "";
-            const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+            //const tabla = document.querySelector('#cuerpo').innerHTML=""; 
             rellenar_tabla()
         }
 
     }) 
 })
 
-//responde cuando hay un click en el boton dos
+//responde cuando hay un click en el boton tres
 formulario_Ingresos.addEventListener('submit', function (e){
     e.preventDefault();
     let valueHidden = 4;
@@ -212,7 +240,7 @@ formulario_Ingresos.addEventListener('submit', function (e){
             document.getElementById("ingresos_monto").value = "";
             document.getElementById("ingresos_Fecha").value = "";
             document.getElementById("ingresos_comprobante").value = "";
-            const tabla = document.querySelector('#cuerpo').innerHTML=""; 
+            //const tabla = document.querySelector('#cuerpo').innerHTML=""; 
             rellenar_tabla()
         }
     }) 

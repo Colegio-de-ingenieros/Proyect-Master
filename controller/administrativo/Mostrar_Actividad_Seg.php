@@ -53,13 +53,13 @@ if ($oculto==1){
     $fecha=$_POST["gastos_Fecha"];
 
     $doc=$_FILES["gastos_comprobante"]['name'];
-    $tipo = $_FILES['gastos_comprobante']['type'];
-    $tamano = $_FILES['gastos_comprobante']['size'];
     $temp = $_FILES['gastos_comprobante']['tmp_name'];
     $doc = file_get_contents($temp);
-
-    $data = validarDoc($doc, $tipo, $tamano);
-    if ($data==""){
+    if ($_FILES['gastos_comprobante']['type'] != 'application/pdf'){
+        $data = "Solo se admiten documentos PDF";
+    } else if ($_FILES['gastos_comprobante']['size'] > 1000000){
+        $data = "El tamaño del documentos debe ser menor a 1 MB";
+    } else{
         $idGas=$objeto->id_gastos();
 
         if (strpos($idPar, 'P') !== false) {
@@ -82,43 +82,35 @@ if ($oculto==1){
     $idPar=$_POST["ingresos_Participante"];
     $monto=floatval($_POST["ingresos_monto"]);
     $fecha=$_POST["ingresos_Fecha"];
+    
     $doc=$_FILES["ingresos_comprobante"]['name'];
     $temp = $_FILES['ingresos_comprobante']['tmp_name'];
     $doc = file_get_contents($temp);
+    if ($_FILES['ingresos_comprobante']['type'] != 'application/pdf'){
+        $data = "Solo se admiten documentos PDF";
+    } else if ($_FILES['ingresos_comprobante']['size'] > 1000000){
+        $data = "El tamaño del documentos debe ser menor a 1 MB";
+    } else{
 
-    $idIngre=$objeto->id_ingre();
+        $idIngre=$objeto->id_ingre();
 
-    if (strpos($idPar, 'P') !== false) {
-        $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idPar);  
-    } else if(strpos($idPar, 'E') !== false) {
-        $result = $objeto->insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idPar);
-    } else {    
-        $result = $objeto->insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idPar);
-    }
+        if (strpos($idPar, 'P') !== false) {
+            $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idPar);  
+        } else if(strpos($idPar, 'E') !== false) {
+            $result = $objeto->insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idPar);
+        } else {    
+            $result = $objeto->insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idPar);
+        }
 
-    if($result == true){
-        $data=('Ingreso registrado exitosamente');
-    }
-    else{
-        $data=('Ha ocurrido un error al conectar con la base de datos');
+        if($result == true){
+            $data=('Ingreso registrado exitosamente');
+        }
+        else{
+            $data=('Ha ocurrido un error al conectar con la base de datos');
+        }
     }
 }
 
 echo json_encode($data);
-
-
-function validarDoc($doc, $tipo, $tamano){
-        //verifica que el archivo sea una imagen
-        if (!(strpos($tipo, "pdf"))) {
-            $data=("El archivo debe estar en un formato pdf");
-        }
-        if(intval($tamano)>1000000){
-            $data=("El tamaño de la imagen debe ser menor a 1 MB");
-        }
-        else{
-           $data="";
-        }
-    return $data;
-}
 
 ?>
