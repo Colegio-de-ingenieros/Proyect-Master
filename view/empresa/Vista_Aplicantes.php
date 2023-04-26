@@ -35,17 +35,7 @@ $id=$_GET['id'];
         <ul>
 
           <!-- Cursos -->
-          <li>
-            <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
-              Cursos
-            </a>
-
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+          
 
           <!-- Cuotas -->
           <li>
