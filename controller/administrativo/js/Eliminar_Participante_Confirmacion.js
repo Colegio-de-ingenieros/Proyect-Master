@@ -2,7 +2,7 @@ function confirmacion(e){
 
     if (confirm("¿Está seguro que desea eliminar este participante?")) {
         e.preventDefault();
-        var participante = $(this).data('idp');
+        var participante = $(this).data('participante');
         $.ajax({
             url: '../../controller/administrativo/Eliminar_Participante.php', 
             type: 'GET', 
@@ -10,10 +10,9 @@ function confirmacion(e){
             
             success: function (response)
             {
+                alert("Eliminado con éxito");
 
-                alert('Eliminado con éxito');
-
-                location.href = '../../view/administrativo/Accion_Seguimiento.html';
+                //location.href = '../../view/administrativo/Accion_Seguimiento.html';
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
@@ -32,3 +31,6 @@ var linkDelete = document.querySelectorAll(".table_item__link");
 for (var i = 0; i < linkDelete.length; i++) {
     linkDelete[i].addEventListener('click', confirmacion);
 }
+
+
+

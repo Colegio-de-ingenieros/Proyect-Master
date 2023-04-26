@@ -131,7 +131,7 @@ function rellenar_tablaExtra(){
 
 function rellenar_tabla(){
     split=obtener_URL()
-    let idAct=split[2]
+    var idAct=split[2]
 
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Actividad_Tabla.php',

@@ -52,6 +52,10 @@ if ($resultado == true) {
     }
 } 
 else {
+
+
+
+    
     $salida .= 'No se encontraron resultados';
 }
 

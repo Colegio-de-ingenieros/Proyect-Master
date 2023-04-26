@@ -34,7 +34,7 @@ class EliminarParticipante{
             $res_Gas = $this->base->mostrar($q3, $a);
 
             $q4 = "DELETE FROM persogastos WHERE IdParP=:idParP";
-            $this->base->insertar_eliminar_actualizar($q3, $a);
+            $this->base->insertar_eliminar_actualizar($q4, $a);
 
             for ($y=0; $y < count($res_Gas); $y++){
                 $idGas = $res_Gas[$y]["IdGas"];
@@ -50,13 +50,15 @@ class EliminarParticipante{
             $q7 = "DELETE FROM persoparticipa WHERE IdParP = :idParP";
             $this->base->insertar_eliminar_actualizar($q7, $a);
 
+            return "elimi";
+
         } else if(strpos($idParP, 'E') !== false) {
              //Elimina Ingresos de UNA EMPRESA
-             $q="SELECT IdIngre FROM empingresos WHERE IdParP=:idParP";
+             $q="SELECT IdIngre FROM empingresos WHERE IdParE=:idParP";
              $a=[":idParP"=>$idParP];
              $res_Ingre = $this->base->mostrar($q,$a);
  
-             $q1 = "DELETE FROM empingresos  WHERE IdParP=:idParP";                 
+             $q1 = "DELETE FROM empingresos  WHERE IdParE=:idParP";                 
              $this->base->insertar_eliminar_actualizar($q1, $a);
  
              for ($x=0; $x < count($res_Ingre); $x++){
@@ -67,11 +69,11 @@ class EliminarParticipante{
                  $this->base->insertar_eliminar_actualizar($q2, $a2);
              }
              //ELIMINA LOS GASTOS DE UNA EMPRESA
-             $q3="SELECT IdGas FROM empgastos WHERE IdParP=:idParP";
+             $q3="SELECT IdGas FROM empgastos WHERE IdParE=:idParP";
              $res_Gas = $this->base->mostrar($q3, $a);
  
-             $q4 = "DELETE FROM empgastos WHERE IdParP=:idParP";
-             $this->base->insertar_eliminar_actualizar($q3, $a);
+             $q4 = "DELETE FROM empgastos WHERE IdParE=:idParP";
+             $this->base->insertar_eliminar_actualizar($q4, $a);
  
              for ($y=0; $y < count($res_Gas); $y++){
                  $idGas = $res_Gas[$y]["IdGas"];
@@ -84,16 +86,18 @@ class EliminarParticipante{
                  $this->base->insertar_eliminar_actualizar($q6, $a5);
              }
              //ELIMINA ASOCIADO DE EMPPARTICIPA
-             $q7 = "DELETE FROM empparticipa WHERE IdParP = :idParP";
+             $q7 = "DELETE FROM empparticipa WHERE IdParE = :idParP";
              $this->base->insertar_eliminar_actualizar($q7, $a);
+
+             return "Eliminado con exito";
 
         } else {
              //Elimina Ingresos de UN INSTRUCTOR
-             $q="SELECT IdIngre FROM insingresos WHERE IdParP=:idParP";
+             $q="SELECT IdIngre FROM insingresos WHERE IdParI=:idParP";
              $a=[":idParP"=>$idParP];
              $res_Ingre = $this->base->mostrar($q,$a);
  
-             $q1 = "DELETE FROM insingresos  WHERE IdParP=:idParP";                 
+             $q1 = "DELETE FROM insingresos  WHERE IdParI=:idParP";                 
              $this->base->insertar_eliminar_actualizar($q1, $a);
  
              for ($x=0; $x < count($res_Ingre); $x++){
@@ -104,11 +108,11 @@ class EliminarParticipante{
                  $this->base->insertar_eliminar_actualizar($q2, $a2);
              }
              //ELIMINA LOS GASTOS DE UN ASOCIADO
-             $q3="SELECT IdGas FROM insgastos WHERE IdParP=:idParP";
-             $res_Gas = $this->base->mostrar($q3, $a);
+             $q3="SELECT IdGas FROM insgastos WHERE IdParI=:idParP";
+             $res_Gas = $this->base->mostrar($q, $a);
  
-             $q4 = "DELETE FROM insgastos WHERE IdParP=:idParP";
-             $this->base->insertar_eliminar_actualizar($q3, $a);
+             $q4 = "DELETE FROM insgastos WHERE IdParI=:idParP";
+             $this->base->insertar_eliminar_actualizar($q4, $a);
  
              for ($y=0; $y < count($res_Gas); $y++){
                  $idGas = $res_Gas[$y]["IdGas"];
@@ -121,8 +125,9 @@ class EliminarParticipante{
                  $this->base->insertar_eliminar_actualizar($q6, $a5);
              }
              //ELIMINA ASOCIADO DE INSPARTICIPA
-             $q7 = "DELETE FROM insparticipa WHERE IdParP = :idParP";
+             $q7 = "DELETE FROM insparticipa WHERE IdParI = :idParP";
              $this->base->insertar_eliminar_actualizar($q7, $a);
+             return "Eliminado con exito";
             
         }
         
