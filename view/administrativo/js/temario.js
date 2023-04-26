@@ -610,10 +610,10 @@ const enviar = document.getElementById("update-form");
 const regresar = document.getElementById("delete-form");
 
 enviar.addEventListener("click", (e) => {
-  console.log("DataGlobal: ", DataGlobal);
-  console.log("Data: ", Data);
+  /* console.log("DataGlobal: ", DataGlobal); */
+  let temario = convertirData(DataGlobal);
+  console.log("Temario: ", temario);
 });
-
 
 const convertirData = (data) => {
   return data.map((item) => [item.title, ...item.subtitles]);
