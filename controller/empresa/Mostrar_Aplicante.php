@@ -44,8 +44,8 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre Trabajador</th>
-                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
                                 <th>Nombre de carrera</th>
                                 <th>Telefono</th>
                                 <th>Salario esperado</th>
@@ -123,9 +123,9 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre Trabajador</th>
-                                <th>Cédula</th>
-                                <th>Nombre de carrera</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Correo</th>
                                 <th>Telefono</th>
                                 <th>Salario esperado</th>
                                 <th>Acciones</th>
@@ -138,7 +138,7 @@ if (isset($_POST['consulta'])) {
     
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
-            $carrera= $resultado[$i]["Carrera"];
+            $carrera= $resultado[$i]["DesProCv"];
             $cedula= $resultado[$i]["NumCedAca"];
             $sal= $resultado[$i]["ExpSalCv"];
             $tel = $resultado[$i]["TelMPerso"];
