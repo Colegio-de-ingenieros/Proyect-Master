@@ -14,7 +14,7 @@ var_dump($arreglo); */
 $obj = new NuevoCurso();
 $obj->conexion();
 
-	 
+
 $id = $_POST['id'];
 $id = str_replace('"', '', $id);
 
