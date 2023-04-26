@@ -40,5 +40,17 @@ echo $sid;
 ?>
 <script languaje="javascript">
     var parrafo = document.getElementById("nombreOT"); // obtenemos la referencia al elemento
-parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
+  parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
+
+  var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.createElement("p");
+
+// Agregar texto al párrafo
+var texto = document.createTextNode("Este es mi texto en el párrafo.");
+parrafo.appendChild(texto);
+parrafo.classList.add("label-2");
+
+// Agregar el párrafo al elemento <body>
+document.body.appendChild(parrafo);
 </script>
