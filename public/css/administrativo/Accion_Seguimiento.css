@@ -41,6 +41,9 @@
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
+.input-format-2:hover{
+    cursor:text;
+}
 
 .grupo-boton-reg{
     display: flex;
