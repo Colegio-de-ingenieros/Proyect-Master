@@ -82,7 +82,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
             }
     
         }else{
-            $respuesta = [0,"El usuaio no existe"];
+            $respuesta = [0,"El correo electrónico no existe"];
     
         }
     
