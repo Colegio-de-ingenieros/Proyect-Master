@@ -24,7 +24,7 @@ const expresiones = {
     nombre:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
     org:/^[a-zA-ZÁ-Ýá-ý.\s]{1,50}$/,
     horas:/^[0-9]{3}$/,
-    objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
+    objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,\n]+$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
     cedula:/^[0-9]{7,8}/,
     nombre_carrera:/^[0-9a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
