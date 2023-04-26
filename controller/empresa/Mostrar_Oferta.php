@@ -54,82 +54,69 @@ $dias=trim($dias,",");
   parrafo.innerHTML = "<?php echo $dias; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+var parrafo = document.getElementById("reqi_academicosOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $req; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+var parrafo = document.getElementById("reqi_tecnicosuOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $reqtec; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
+var parrafo = document.getElementById("descri_puestoOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $desc; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("dias_laboralesOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $dias; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("modalidadOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $mod; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("jornada_labOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $jor; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("horariosOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $hin." - ".$hfin; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("salario_bruto_mensualOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $bruto; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("salario_neto_mensualOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $mens; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("telefonoOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $tel; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("correo_electronicoOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cor; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("codigo_postalOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cp; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("calle_numeroOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $calle; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("coloniaOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $col; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("ciudadOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $mun; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
+var parrafo = document.getElementById("estadoOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $edo; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
-var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $exp; ?>";
-var parrafo = document.createElement("p");
-// Agregar texto al párrafo
-var texto = document.createTextNode("Este es mi texto en el párrafo.");
-parrafo.appendChild(texto);
-parrafo.classList.add("label-2");
-
-// Agregar el párrafo al elemento <body>
-document.body.appendChild(parrafo);
 </script>
