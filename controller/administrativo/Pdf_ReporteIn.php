@@ -64,12 +64,12 @@ class PDF extends FPDF{
             
             for ($j=0; $j < count($columnas) ; $j++) { 
                 if($j == 0){
-                    $this->MultiCell(35,7,$columnas[$j],1);
+                    $this->MultiCell(35,7,$columnas[$j],1); //creamos la primera celda
                   
                 }else{
-                    # para obtener la atura, colocamos la
+                    # para obtener la atura, tomamos la posicion de y despues de colocarca y le restamos la y anterior
                     $y_anterior =  $this->GetY();
-                    $this->SetXY($x+35, $y);
+                    $this->SetXY($x+35, $y);//para mover la celda en x, aumentamos de 35 en 35 la x, 35 es el tamaño de la culumna
                     $x = $this->GetX();  
                     $altura = ($y_anterior-$y);
                     $this->Rect($x,$y,35,$altura);
