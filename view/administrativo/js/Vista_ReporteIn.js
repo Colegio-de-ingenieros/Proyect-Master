@@ -138,7 +138,7 @@ formulario.addEventListener("submit",(e)=>{
         alert("Debe seleccionar un nombre de actividad");
 
     }else if((fecha1 == "" || fecha2 == "") && document.getElementById("periodo").checked ){
-        alert("Debe seleccionar una fecha de inicio y una fecha de Finalización");
+        alert("Debe seleccionar una fecha de inicio y una fecha de finalización");
     }else{
         
 
@@ -146,7 +146,7 @@ formulario.addEventListener("submit",(e)=>{
         let fecha_fin1 = new Date(fecha2);
 
         if((fecha_inicio1 > fecha_fin1) && document.getElementById("periodo").checked){
-            alert("La fecha de inicio no debe ser mayor a la fecha de Finalización");
+            alert("La fecha de inicio no debe ser mayor a la fecha de finalización");
         }else{
 
             let nombre = document.getElementById("nombres").textContent.split(" ")[1];
@@ -256,19 +256,19 @@ function rellenar_tabla(datos) {
 
                         if(datos[i][1][k][2] == "Hotel"){
                             sub_hotel += parseFloat(datos[i][1][k][1]);
-                            hotel_col.innerText = "$ "+datos[i][1][k][1];
+                            hotel_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
                         }else if(datos[i][1][k][2] == "Transporte"){
                             sub_transporte += parseFloat(datos[i][1][k][1]);
-                            transporte_col.innerText = "$ "+datos[i][1][k][1];
+                            transporte_col.innerText = "$ "+ parseFloat(datos[i][1][k][1]);
                         }else if(datos[i][1][k][2] == "Comida"){
                             sub_comida += parseFloat(datos[i][1][k][1]);
-                            comida_col.innerText = "$ "+datos[i][1][k][1];
+                            comida_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
                         }else if(datos[i][1][k][2] == "Oficina"){
                             sub_oficina += parseFloat(datos[i][1][k][1]);
-                            oficina_col.innerText = "$ "+datos[i][1][k][1];
+                            oficina_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
                         }else if(datos[i][1][k][2] == "Honorario"){
                             sub_honorarios += parseFloat(datos[i][1][k][1]);
-                            honorarios_col.innerText = "$ "+datos[i][1][k][1];
+                            honorarios_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
                         }
                         sub_gastos += parseFloat(datos[i][1][k][1]);
                     }
@@ -276,7 +276,7 @@ function rellenar_tabla(datos) {
                 }
 
                 sub_sub_gastos += sub_gastos;
-                sub_gastos_col.innerText = "$ "+sub_gastos;
+                sub_gastos_col.innerText = "$ "+parseFloat(sub_gastos);
                 
                 // ingresos
                 //console.log(datos[i][2]);
@@ -285,7 +285,7 @@ function rellenar_tabla(datos) {
                     //checa si todavia hay ingresos, si hay se mete si no no
                     if( j < datos[i][2].length){
                         
-                        ingresos_col.innerText = "$ "+ datos[i][2][j][1];
+                        ingresos_col.innerText = "$ "+ parseFloat(datos[i][2][j][1]);
                         sub_ingresos += parseFloat(datos[i][2][j][1]);
                     }
                     
@@ -321,13 +321,13 @@ function rellenar_tabla(datos) {
     var ingresos_col = document.createElement('td'); 
 
     sub_col.innerText = "Subtotal";
-    hotel_col.innerText = "$ " + sub_hotel;
-    transporte_col.innerText = "$ " + sub_transporte;
-    comida_col.innerText = "$ " + sub_comida;
-    oficina_col.innerText = "$ " + sub_oficina;
-    honorarios_col.innerText = "$ " + sub_honorarios;
-    sub_gastos_col.innerText = "$ " + sub_sub_gastos;
-    ingresos_col.innerText = "$ " + sub_ingresos;
+    hotel_col.innerText = "$ " + parseFloat(sub_hotel);
+    transporte_col.innerText = "$ " + parseFloat(sub_transporte);
+    comida_col.innerText = "$ " + parseFloat(sub_comida);
+    oficina_col.innerText = "$ " + parseFloat(sub_oficina);
+    honorarios_col.innerText = "$ " + parseFloat(sub_honorarios);
+    sub_gastos_col.innerText = "$ " + parseFloat(sub_sub_gastos);
+    ingresos_col.innerText = "$ " + parseFloat(sub_ingresos);
 
     row.appendChild(sub_col);
     row.appendChild(hotel_col);
@@ -350,9 +350,9 @@ function rellenar_tabla(datos) {
     cantidad2.setAttribute("id","ingresos");
     cantidad3.setAttribute("id","total");
 
-    cantidad1.textContent = "$ " + sub_sub_gastos;
-    cantidad2.textContent = "$ " + sub_ingresos;
-    cantidad3.textContent = "$ " + (sub_ingresos-sub_sub_gastos);
+    cantidad1.textContent = "$ " + parseFloat(sub_sub_gastos);
+    cantidad2.textContent = "$ " + parseFloat(sub_ingresos);
+    cantidad3.textContent = "$ " + parseFloat((sub_ingresos-sub_sub_gastos));
 
     gastos_totales.innerText = "Total de gastos: "  ;
     ingresos_totales.innerText = "Total de ingresos: " ;

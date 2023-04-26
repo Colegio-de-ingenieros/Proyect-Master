@@ -51,7 +51,7 @@ class PDF extends FPDF{
         }
         //Color de las letras de la tabla 
         $this->SetTextColor(0, 0, 0);
-        $this->SetFont('Times','',14);
+        $this->SetFont('Times','',12);
 
         //colocar filas 
         for ($i=0; $i < count($filas) ; $i++) { 
