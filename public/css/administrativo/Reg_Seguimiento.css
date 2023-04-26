@@ -81,7 +81,7 @@
     transition: 300ms all;
 }
 .input-format-2:hover{
-    cursor:pointer;
+    cursor:text;
 }
 
 .input-format-2:focus{
