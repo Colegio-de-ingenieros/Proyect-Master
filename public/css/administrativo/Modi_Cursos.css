@@ -24,6 +24,7 @@
 
     --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    --shadow-3: inset 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
 
 #temario{
@@ -54,4 +55,84 @@
 
 .hr{
     margin-top: 0px;
+}
+
+/* VENTANA MODAL */
+.modal-container {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 1;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 2;
+    transition: 300ms ease-in-out;
+}
+
+.modal {
+    background: var(--color-gray);
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-1);
+
+    width: 90%;
+    min-height: 35rem;
+    max-height: 35rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    pointer-events: all;
+
+}
+
+.show {
+    display: flex;
+    pointer-events: auto;
+    animation: fade-in .5s forwards;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-subtemas{
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: initial;
+    width: 95%;
+    height: 80%;
+    margin-left: -23px;
+}
+
+.subtitulos-registrados{
+    width: 95%;
+}
+
+.row-s{
+    display: grid;
+    grid-template-columns: 2fr 0.1fr 0.1fr 0.1fr;
+    column-gap: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        /* La ventana modal es invisible al principio */
+    }
+
+    to {
+        opacity: 1;
+        /* La ventana modal se vuelve completamente visible */
+    }
+}
+
+#close{
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

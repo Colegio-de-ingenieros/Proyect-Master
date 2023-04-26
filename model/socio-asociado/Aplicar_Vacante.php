@@ -94,5 +94,13 @@
             $datos = $this->bd->mostrar($consulta,$parametros);
             return $datos;
         }
+
+        function IngresarRegistro($id_bolsa, $id_usuario){
+            $consulta = "INSERT INTO bolsaempcv (IdEmpBol, IdBolCv) 
+            VALUES (:id_bolsa, :id_usuario);";
+            $parametros = [":id_bolsa"=>$id_bolsa,":id_usuario" =>$id_usuario];
+            $respuesta = $this->bd->insertar_eliminar_actualizar($consulta,$parametros);
+            return $respuesta;
+        }
     }
-?>
+?>  

@@ -5,9 +5,15 @@ $base = new MostrarOfertas();
 $base->instancias();
 
 $id=000000;
+session_start();
+$username = $_SESSION['usuario'];
+$rfccorreo1=$obj->rfccorreo($username);
+
+$rfce=$rfccorreo1[0][0];
+//echo $rfce;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
-    $resultado = $base->buscador($busqueda);
+    $resultado = $base->buscador($busqueda,$rfce);
     
     if ($resultado == true) {
         //pone los encabezados de la tabla
@@ -40,12 +46,13 @@ if (isset($_POST['consulta'])) {
         </style>
         <div class="di">
         <table class="header_table" >
-                        <thead  >
+                        <thead>
                             <tr>
                                 <th>Nombre vacante</th>
-                                <th>Requisitos académicos</th>
+                                <th>Descripción de puesto</th>
+                                <th>Modalidad</th>
                                 <th>Experiencia requerida</th>
-                                <th>Contacto</th>
+                                
                                 <th>Numero de Aplicantes</th>
                                 <th>Acciones</th>
                             </tr>
@@ -58,19 +65,20 @@ if (isset($_POST['consulta'])) {
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
             $nombre = $resultado[$i]["VacEmpBol"];
+            $desc=$resultado[$i]["DesEmpBol"];
             $req = $resultado[$i]["ReqAcaEmpBol"];
             $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TelEmpBol"];
+            $tel = $resultado[$i]["TipoMod"];
             //$extension = getExt($logo);
             $aplicantes=$base->contar($id);
             $aplica=$aplicantes[0]["total"];
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $req . '</td>';
-            $salida .= '<td>' . $exp . '</td>';
+            $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' .$aplica . '</td>';
+            $salida .= '<td>' . $exp . '</td>';            
+            $salida .= '<td>' .$aplica. '</td>';
             $salida .= '<td><a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
             //
@@ -85,7 +93,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getOfertas();
+    $resultado = $base->getOfertas($rfce);
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -120,9 +128,10 @@ if (isset($_POST['consulta'])) {
                         <thead  >
                             <tr>
                                 <th>Nombre vacante</th>
-                                <th>Requisitos académicos</th>
+                                <th>Descripción de puesto</th>
+                                <th>Modalidad</th>
                                 <th>Experiencia requerida</th>
-                                <th>Contacto</th>
+                                
                                 <th>Numero de Aplicantes</th>
                                 <th>Acciones     </th>
                             </tr>
@@ -135,9 +144,10 @@ if (isset($_POST['consulta'])) {
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
             $nombre = $resultado[$i]["VacEmpBol"];
+            $desc=$resultado[$i]["DesEmpBol"];
             $req = $resultado[$i]["ReqAcaEmpBol"];
             $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TelEmpBol"];
+            $tel = $resultado[$i]["TipoMod"];
             //$extension = getExt($logo);
             $aplicantes=$base->contar($id);
             $aplica=$aplicantes[0]["total"];
@@ -145,9 +155,9 @@ if (isset($_POST['consulta'])) {
             $sid="s".$id;
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $req . '</td>';
-            $salida .= '<td>' . $exp . '</td>';
+            $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>' . $tel . '</td>';
+            $salida .= '<td>' . $exp . '</td>';            
             $salida .= '<td>' .$aplica. '</td>';
             
             

@@ -1,15 +1,27 @@
 const btn_cursos = document.getElementById("cursos");
 const btn_certificaciones = document.getElementById("certificaciones");
 const btn_proyectos = document.getElementById("proyectos");
+
 const formulario = document.getElementById("formulario");
+
 const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
 const titulo = document.getElementById("nombre_actividad");
+
 const fecha_inicio = document.getElementById("inicio");
 const fecha_fin = document.getElementById("fin");
+const fechas_titulo = document.getElementById("fechas_titulo");
+
+const contenedor_tabla = document.getElementById("contenedor_tabla");
+const btn_descargar_reportes = document.getElementById("boton_descargar_reporte");
+
+contenedor_tabla.style.display = 'none';
+btn_descargar_reportes.style.display = 'none';
+
 
 btn_cursos.addEventListener("click",(e)=>{
     peticion_nombres("cursos");
+
 });
 btn_certificaciones.addEventListener("click",(e)=>{
     peticion_nombres("certificaciones");
@@ -17,6 +29,83 @@ btn_certificaciones.addEventListener("click",(e)=>{
 btn_proyectos.addEventListener("click",(e)=>{
     peticion_nombres("proyectos");
 });
+
+btn_descargar_reportes.addEventListener("click",(e)=>{
+
+    let nombre = titulo.textContent;
+    let periodo =  fechas_titulo.textContent;
+    let gastos = document.getElementById("gastos").textContent;
+    let ingresos = document.getElementById("ingresos").textContent;
+    let total  = document.getElementById("total").textContent;
+    let cells = document.querySelectorAll("#cuerpo td");
+    var fila = "";
+    let datos_tabla = ""
+    let contador = 0;
+
+    cells.forEach(cell =>{
+        
+        if(contador == 8){
+            if(datos_tabla.length == 0){
+                datos_tabla =  fila;
+            }else{
+                datos_tabla = datos_tabla + ":" + fila;
+            }
+            
+            fila = ""
+            contador = 0;
+        }
+        if(fila.length == 0){
+            fila = cell.textContent;
+        }else{
+            fila = fila + "," +cell.textContent;
+        }
+        
+        contador++;
+        
+    });
+    datos_tabla = datos_tabla + ":" + fila;
+   
+
+    var datos_totales = {
+        nombre: nombre,
+        periodo: periodo,
+        gastos: gastos,
+        ingresos: ingresos,
+        total: total,
+        array_datos: datos_tabla
+    };
+    
+    
+    postForm("../../controller/administrativo/Pdf_ReporteIn.php", datos_totales);
+   
+
+});
+function postForm(path, params, method) {
+    //hace un formulario oculto para
+    // asi mandar los datos al lugar donde descargaremos la info
+    //todo es un input
+    method = method || 'post';
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', path);
+
+
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
 
 function peticion_nombres(tipo){
 
@@ -39,20 +128,24 @@ formulario.addEventListener("submit",(e)=>{
 
     e.preventDefault();
 
+    let fecha1 = fecha_inicio.value;
+    let fecha2 = fecha_fin.value;
+
     if(btn_cursos.checked == false && 
        btn_certificaciones.checked == false && 
        btn_proyectos.checked == false){
 
         alert("Debe seleccionar un nombre de actividad");
 
-    }else if((fecha_inicio.value == "" || fecha_fin.value == "") && document.getElementById("periodo").checked ){
+    }else if((fecha1 == "" || fecha2 == "") && document.getElementById("periodo").checked ){
         alert("Debe seleccionar una fecha de inicio y una fecha de Finalización");
     }else{
+        
 
-        const fecha_inicio1 = new Date(fecha_inicio.value);
-        const fecha_fin1 = new Date(fecha_fin.value);
+        let fecha_inicio1 = new Date(fecha1);
+        let fecha_fin1 = new Date(fecha2);
 
-        if(fecha_inicio1 > fecha_fin1){
+        if((fecha_inicio1 > fecha_fin1) && document.getElementById("periodo").checked){
             alert("La fecha de inicio no debe ser mayor a la fecha de Finalización");
         }else{
 
@@ -68,7 +161,14 @@ formulario.addEventListener("submit",(e)=>{
                 body: form_data
             }).then(respuesta=> respuesta.json())
             .then(datos=>{
-                console.log(datos);
+
+                if(document.getElementById("periodo").checked){
+                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
+                }else{
+                    fechas_titulo.innerText = "";
+                }
+                contenedor_tabla.style.display = 'block';
+                btn_descargar_reportes.style.display = 'block';
                 titulo.innerText = nombre;
                 rellenar_tabla(datos);
             });
@@ -85,6 +185,8 @@ formulario.addEventListener("submit",(e)=>{
 
 //rellenamos el combo nombres
 function rellenar_lista(datos) {
+    
+    
 
     document.getElementById("nombres").innerHTML = "";
 
@@ -240,10 +342,25 @@ function rellenar_tabla(datos) {
     let gastos_totales = document.createElement('div');
     let ingresos_totales = document.createElement('div');
     let total_final = document.createElement('div');
+    let cantidad1 = document.createElement("span")
+    let cantidad2 = document.createElement("span")
+    let cantidad3 = document.createElement("span")
+    
+    cantidad1.setAttribute("id","gastos");
+    cantidad2.setAttribute("id","ingresos");
+    cantidad3.setAttribute("id","total");
 
-    gastos_totales.innerText = "Total de gastos: $ " + sub_sub_gastos ;
-    ingresos_totales.innerText = "Total de ingresos: $ " + sub_ingresos;
-    total_final.innerText = "Total: $" + (sub_ingresos-sub_sub_gastos);
+    cantidad1.textContent = "$ " + sub_sub_gastos;
+    cantidad2.textContent = "$ " + sub_ingresos;
+    cantidad3.textContent = "$ " + (sub_ingresos-sub_sub_gastos);
+
+    gastos_totales.innerText = "Total de gastos: "  ;
+    ingresos_totales.innerText = "Total de ingresos: " ;
+    total_final.innerText = "Total: " ;
+
+    gastos_totales.appendChild(cantidad1);
+    ingresos_totales.appendChild(cantidad2);
+    total_final.appendChild(cantidad3);
 
     totales.appendChild(gastos_totales);
     totales.appendChild(ingresos_totales);

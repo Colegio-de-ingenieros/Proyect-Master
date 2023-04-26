@@ -74,8 +74,7 @@ if (isset($_POST['consulta'])) {
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio general</th>
-                    <th>Precio socio/asociado</th>
-                   
+                    <th>Precio <br>socio/asociado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -102,9 +101,11 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
             $salida .= '<td> 
-        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
-        <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
-        <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+        <center>
+        <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;
+        <a href="../../controller/administrativo/Get_Certificacion.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;
+        <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
+        </center>
         </td>';
             $salida .= '</tr>';
         }

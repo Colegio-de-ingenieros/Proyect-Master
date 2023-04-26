@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Modi_Cursos.css">
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
@@ -231,20 +231,38 @@
 
       <div class="section-botones-2">
         <div class="campo botones">
-          <button id="update-form" class="btn-medium btn">Actualizar registro</button>
+          <button id="update-form" class="btn-medium btn">Actualizar</button>
+          <button id="delete-form" class="btn-medium btn">Cancelar</button>
         </div>
       </div>
 
 
     </section>
+
+    <div class="modal-container" id="modal-container">
+      <div class="modal">
+        <div class="subtitulos-registrados">
+          <p class="subtitulo-1">Subtemas:</p>
+          <p class="subtitulo-2" id="modal-title"></p>
+          <hr class="hr">
+        </div>
+        <div class="container-subtemas" id="modal">
+
+        </div>
+        <div class="botones">
+          <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+        </div>
+      </div>
+      </div> 
+    </div>
+
     <span id="id-usuario" style="display:none"></span>
   </main>
   
 </body>
-<!-- <script src="js/Vali_Cursos.js"></script>
-<script src="js/Reg_Cursos.js"></script> -->
+
 <script src="js/temario.js"></script>
-<!-- <script src='js/Vali_Modicursos.js'></script> -->
+<!-- <script src="js/Ventana_Modal.js"></script> -->
 </html>
 <?php
   echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";

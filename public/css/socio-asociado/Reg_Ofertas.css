@@ -129,6 +129,8 @@ main {
     align-items: center;
     justify-content: center;
     transition: 300ms all;
+    min-height: 150px;
+    
 }
 
 .input-textarea-2:focus{
@@ -140,6 +142,37 @@ main {
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
+/*----------------- Tex area propia -------------------- */
+.input-textarea-aca-tec{
+    width: 100%;
+    height: 80px;
+    resize: none;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+    min-height: 80px;
+    
+}
+
+.input-textarea-aca-tec:focus{
+    box-shadow: var(--shadow-1);
+    transform: scale(1.02);
+}
+
+.input-textarea-aca-tec:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
 
 .formulario-descripcion {
     margin-top: 10px;
@@ -149,7 +182,7 @@ main {
 textarea {
     min-width: 100%;
     max-width: 100%;
-    min-height: 150px;
+    
 }
 
 /* ***************************************
@@ -397,12 +430,19 @@ hr{
     .contePlantilla{
         margin: 8em auto; 
     }
+    .formulario-generales, .formulario-experiencia{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+    }
 }
 
 @media screen and (max-width: 760px) {
     .nombre_Ventana{
         font-size: 1rem;
     }
+    
 }
 
 @media screen and (max-width: 650px){
@@ -422,5 +462,12 @@ hr{
     .contenedor-formulario{
         display: flow-root;
     }
+    .formulario-generales, .formulario-experiencia{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+    }
+    
     
 }

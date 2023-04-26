@@ -68,9 +68,10 @@ table{
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
+    word-wrap: break-word;
 }
 th,td {
-    max-width: 150px;
+    max-width: 300px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
