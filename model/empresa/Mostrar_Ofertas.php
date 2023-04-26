@@ -90,6 +90,12 @@ class MostrarOfertas{
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
     }
+    function getDias($id){
+        $q4 = "SELECT Dia FROM empboldias,diaslaborales
+        WHERE empboldias.IdLab=diaslaborales.IdLab and`IdEmpBol`= :id";
+        $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
+        return $resultados5;
+    }
 
 }
 
