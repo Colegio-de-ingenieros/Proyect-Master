@@ -116,7 +116,7 @@ $id=$_GET['id'];
           <hr>
           <div class="grupo-input">
             <div class="input-form">
-              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
           <input id="prodId" name="prodId" type="hidden" value=<?php echo $id; ?>>
