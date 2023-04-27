@@ -1,3 +1,4 @@
+<script src="../../view/login/js/Verificar_Permiso_Empresa.js"></script>
 <?php
 $id=$_GET['id'];
 ?>
