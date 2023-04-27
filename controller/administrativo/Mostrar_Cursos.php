@@ -161,7 +161,7 @@ echo '<script type="text/javascript">
 function eli(dato)
 {
     console.log(dato);
-   var flag = confirm("¿Está seguro de que desea eliminar el curso con temas y subtemas?");
+   var flag = confirm("¿Está seguro que desea eliminar el curso?");
    if(flag){
    var formData = new FormData();
    formData.append("id", dato);
@@ -175,6 +175,7 @@ function eli(dato)
 
            
            if (this.responseText == "El curso se eliminó con éxito, por favor refresque la página") {
+            alert ("Eliminado con éxito");
             location.reload();
            }
        }
