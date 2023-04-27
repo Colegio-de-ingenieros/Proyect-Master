@@ -24,7 +24,7 @@
 
         /* Añade cada elemento de días laborales a cada elemento de resultados */
         for ($i=0; $i < count($resultados); $i++) { 
-            $resultados[$i][18] = $array_dias_laborales[$i];
+            $resultados[$i][19] = $array_dias_laborales[$i];
         }
 
         /* Guarda los valores en un arreglo */
