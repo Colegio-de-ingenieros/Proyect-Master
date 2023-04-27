@@ -73,7 +73,7 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
          else if (respuesta[i] == "bolsa"){
 
                combo = respuesta[i+1]['ResidenciaCv'];
-               combo = combo++;
+               /* combo = combo++; */
                
                document.getElementById("salario").value = respuesta[i+1]['ExpSalCv'];
                document.getElementById("objetivo").value =respuesta[i+1]['DesProCv'];
