@@ -242,8 +242,8 @@
     <div class="modal-container" id="modal-container">
       <div class="modal">
         <div class="subtitulos-registrados">
-          <p class="subtitulo-1">Subtemas:</p>
-          <p class="subtitulo-2" id="modal-title"></p>
+          <p class="subtitulo-1" id="modal-title"></p>
+          <p class="subtitulo-2">Subtemas:</p>
           <hr class="hr">
         </div>
         <div class="container-subtemas" id="modal">

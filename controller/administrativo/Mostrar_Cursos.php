@@ -178,6 +178,9 @@ function eli(dato)
             alert ("Eliminado con éxito");
             location.reload();
            }
+           else {
+               alert(this.responseText);
+           }
        }
    };
 
