@@ -20,6 +20,7 @@ if ($resultado == true) {
   $cedula=$resultado[0]["NumCedAca"];
   $carrera=$resultado[0]["Carrera"];
   $cambio=$resultado[0]["ResidenciaCv"];
+  
 }
 if ($cambio==1) {
   $cambio="Si";
@@ -28,10 +29,12 @@ if ($cambio==1) {
 }
 $resultado=$base->mostrarColonia($identificador);
 if ($resultado == true) {
+  $cp=$resultado[0]["codpostal"];
   $colonia=$resultado[0]["nomcolonia"];
   $municipio=$resultado[0]["nommunicipio"];
   $estado=$resultado[0]["nomestado"];
 }
+echo $cp;
 ?>
 
 <script languaje="javascript">
@@ -57,6 +60,20 @@ var parrafo = document.createElement("p");
 var parrafo = document.getElementById("telefonoAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $tel; ?>";
 var parrafo = document.createElement("p");
+
+
+var parrafo = document.getElementById("cambio_residenciaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cambio; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expe_salarial_brutaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $salEsp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $desc; ?>";
+
+//Direccion
 var parrafo = document.getElementById("codigo_postalAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $cp; ?>";
 var parrafo = document.createElement("p");
@@ -76,22 +93,8 @@ var parrafo = document.getElementById("estadoAP"); // obtenemos la referencia al
   parrafo.innerHTML = "<?php echo $estado; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("cambio_residenciaAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $cambio; ?>";
-var parrafo = document.createElement("p");
-
-var parrafo = document.getElementById("expe_salarial_brutaAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $salEsp; ?>";
-var parrafo = document.createElement("p");
-
-var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $desc; ?>";
-var parrafo = document.createElement("p");
-var miLabel = document.getElementById("miLabel");
-miLabel.style.display = "none";
-
 </script>
-        <?php $resultado=$base->mostrarAcademica($id);
+<?php $resultado=$base->mostrarAcademica($id);
         if ($resultado == true) {
 
           for ($i = 0; $i < count($resultado); $i++) {
