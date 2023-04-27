@@ -41,7 +41,7 @@ window.onload = function () {
       objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
       tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
       subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
-    };
+    }
 
     nombre.addEventListener("keyup", (e) => {
       let valorInput = e.target.value;
@@ -132,7 +132,7 @@ window.onload = function () {
     function generarTemario() {
       temario.innerHTML = "";
       DataGlobal.forEach((item, index) => {
-        
+
         const titleContainer = document.createElement("div");
         titleContainer.classList.add("row");
 
@@ -209,7 +209,7 @@ window.onload = function () {
         linkSubtemas.textContent = "Subtemas";
         linkSubtemas.setAttribute("onclick", "mostrar_modal('" + index + "')");
 
-        const linkModal = document.getElementById("close");
+
 
         titleContainer.appendChild(titleInput);
         titleContainer.appendChild(addButtonAbove);
@@ -299,10 +299,7 @@ window.onload = function () {
             const linkSubtemas = document.createElement("Button");
             linkSubtemas.classList.add("btn", "btn-small", "btn-link");
             linkSubtemas.textContent = "Subtemas";
-            linkSubtemas.setAttribute(
-              "onclick",
-              "mostrar_modal(" + index + ")"
-            );
+            linkSubtemas.setAttribute("onclick", "mostrar_modal(" + index + ")");
 
             titleContainer.appendChild(titleInput);
             titleContainer.appendChild(addButtonAbove);
@@ -343,6 +340,9 @@ function mostrar_modal(position) {
     subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
   };
 
+  const cerarModal = document.getElementById("close");
+  cerarModal.setAttribute("onclick", "ocultar_modal(" + position + ")");
+
   DataGlobal.forEach((item, index) => {
     const modalContainer = document.getElementById("modal");
     const list = document.createElement("ul");
@@ -354,6 +354,10 @@ function mostrar_modal(position) {
       if (longitud_subtemas >= 1) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
+
+        /* const cerarModal = document.getElementById("close");
+        cerarModal.setAttribute("onclick", "ocultar_modal(" + position + ")");
+ */
         item.subtitles.forEach((subtitle, index) => {
           const listItem = document.createElement("li");
           listItem.classList.add("row-s");
@@ -458,14 +462,14 @@ function mostrar_modal(position) {
         });
         /* Crear los elementos en el DOM */
         modalContainer.appendChild(list);
-      } 
-      else if(longitud_subtemas == 0) {
+      }
+      else if (longitud_subtemas == 0) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
 
-        const cerarModal = document.getElementById("close");
-        cerarModal.setAttribute("onclick", "ocultar_modal(" + index + ")");
+        /* const cerarModal = document.getElementById("close");
+        cerarModal.setAttribute("onclick", "ocultar_modal(" + index + ")"); */
 
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
@@ -614,14 +618,14 @@ function ocultar_modal(position) {
   let bandera_subtemas = false;
 
   DataGlobal.forEach((item, index) => {
-    
+
     if (index == position) {
       let longitud_subtemas = item.subtitles.length;
 
       if (longitud_subtemas == 0) {
         bandera_subtemas = false;
       }
-      else{
+      else {
         item.subtitles.forEach((subtitle, index) => {
           let contenido_subtitulo = subtitle;
           if (contenido_subtitulo == "") {
@@ -631,12 +635,12 @@ function ocultar_modal(position) {
       }
     }
   });
-  
+
 
   if (bandera_subtemas == true) {
     alert("No puede haber subtemas vacios");
   }
-  else{
+  else {
     modal.classList.remove("show");
   }
 }
@@ -645,13 +649,13 @@ const enviar = document.getElementById("update-form");
 const regresar = document.getElementById("delete-form");
 
 enviar.addEventListener("click", (e) => {
-  
+
   let vacio = validar_temas();
-  
-  if (vacio == true){
+
+  if (vacio == true) {
     alert("No puede haber temas vacios");
   }
-  else{
+  else {
     let temario = convertirData(DataGlobal);
     console.log("Temario: ", temario);
 
@@ -682,12 +686,12 @@ enviar.addEventListener("click", (e) => {
   }
 });
 
-function validar_temas(){
+function validar_temas() {
   let bandera = false;
   /* Imprime cada item de la DataGlobal */
   DataGlobal.forEach((item, index) => {
     let titulo = item.title;
-    if(titulo == ""){
+    if (titulo == "") {
       bandera = true;
     }
   });
