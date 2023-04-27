@@ -53,11 +53,34 @@ include_once('../../model/socio-asociado/Reg_CV.php');
     }
 
 function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesional){
-
-    /* echo json_encode('Correcto'); */
-
     $obj = new funciones_cv();
     $obj -> conexion();
+
+
+    $ids_de_bolsacv = $obj -> seleccion_bolsa_cv($datos_generales[0]);
+    $ids_de_xp_academica = $obj -> seleccion_xp_academica($datos_generales[0]);
+    $ids_de_xp_profesional = $obj -> seleccion_xp_profesional($datos_generales[0]);
+
+    if (isset($ids_de_bolsacv)){
+        for ($i=0; $i < count($ids_de_bolsacv); $i++) { 
+            $obj -> eliminar_persobolsa_cv($datos_generales[0]);
+            $obj -> eliminar_expaca_cv($ids_de_bolsacv[$i]["IdBolCv"]);
+            $obj -> eliminar_exppro_cv($ids_de_bolsacv[$i]["IdBolCv"]);
+            $obj -> eliminar_bolsa_cv($ids_de_bolsacv[$i]["IdBolCv"]);
+        }
+    }
+
+    if (isset($ids_de_xp_academica)){
+        for ($i=0; $i < count($ids_de_xp_academica); $i++) { 
+            $obj -> eliminar_expacademica($ids_de_xp_academica[$i]["IdExpAca"]);
+        }
+    }
+    if (isset($ids_de_xp_profesional)){
+        for ($i=0; $i < count($ids_de_xp_profesional); $i++) { 
+            $obj -> eliminar_expprofesional($ids_de_xp_profesional[$i]["IdExpP"]);
+        }
+    }
+
 
     //llenar tabla bolsacv y su relacion con usuaperso
     $id_persobolsa = $obj -> buscarUltimoIdbolsacv();
@@ -90,6 +113,8 @@ function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesi
         $id_experiencia_profesional = $obj ->buscarUltimoIdexpprofesional();
         $id_experiencia_profesional = $obj -> agregar_ceros($id_experiencia_profesional, 6);
     }
+
+   
 
     echo json_encode('Datos insertados correctamente');
     /* echo json_encode($id_persobolsa); */

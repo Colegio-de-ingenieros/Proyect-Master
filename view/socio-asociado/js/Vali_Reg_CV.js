@@ -413,6 +413,29 @@ cedulas3.addEventListener('keyup', (e) => {
 
 
 function datos(){
+    if (salario != ""){
+        sal = true;
+    }
+    if (objetivo != ""){
+        obj = true;
+    }
+    if (carrera != ""){
+        carr = true;
+    }
+    if (cedulas != ""){
+        ced = true;
+    }
+    if (puesto != ""){
+        puest = true;
+    }
+    if (empresa != ""){
+        empr = true;
+    }
+    if (actividad != ""){
+        acti = true;
+    }
+
+
     if (sal == false){
         salario.style.border = "3px solid red";
     }
