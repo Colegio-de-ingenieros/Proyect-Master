@@ -116,6 +116,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br);
           miDiv.appendChild(br);</script>';
           //echo '<br>';
@@ -135,6 +136,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br);
           miDiv.appendChild(br);</script>';}}
       ?>
@@ -185,6 +187,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br)
           ;</script>';
           echo '<script>// Obtener el elemento div
@@ -220,6 +223,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br)
           ;</script>';}}
         ?> 
@@ -244,6 +248,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br);;</script>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("cer2");
@@ -259,5 +264,6 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("hr");
+          br.style.borderWidth = "0.5px";
           miDiv.appendChild(br);;</script>';}}
         ?>
