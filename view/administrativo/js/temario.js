@@ -363,6 +363,7 @@ function mostrar_modal(position) {
           input.value = subtitle;
           input.classList.add("input-format-2");
           input.placeholder = "Nuevo subtema";
+          input.maxLength = 40;
 
           input.addEventListener("keyup", (e) => {
             let valorInput = e.target.value;
