@@ -57,7 +57,9 @@ var parrafo = document.createElement("p");
 var parrafo = document.getElementById("telefonoAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $tel; ?>";
 var parrafo = document.createElement("p");
-
+var parrafo = document.getElementById("codigo_postalAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $calle; ?>";
+var parrafo = document.createElement("p");
 var parrafo = document.getElementById("calle_numeroAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $calle; ?>";
 var parrafo = document.createElement("p");
@@ -94,8 +96,17 @@ var parrafo = document.createElement("p");
           for ($i = 0; $i < count($resultado); $i++) {
             $puesto=$resultado[$i]['Carrera'];
             $ced=$resultado[$i]['NumCedAca'];
+            $num=$i+1;
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("aca");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Experiencia académica'.$num.':";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Nombre de la carrera:";
           miLabel.classList.add("label-2");
@@ -108,7 +119,7 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           miDiv.appendChild(br);</script>';
-          echo '<br>';
+          //echo '<br>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("aca2");
           var miLabel = document.createElement("label");
