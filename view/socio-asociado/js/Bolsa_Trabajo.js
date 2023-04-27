@@ -1,7 +1,7 @@
 let listOfLists = [];
 
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
+  let url = "../../controller/socio-asociado/Bolsa_trabajo.php"
   let id = 0;
 
   let form = new FormData();
@@ -13,7 +13,7 @@ window.onload = function () {
   })
     .then(response => response.json())
     .then(json => resultado(json))
-    .catch(error => alert(error));
+    .catch(error => alert("Ha ocurrido un error, inténtelo de nuevo más tarde"));
 
   const resultado = (json) => {
     listOfLists = json.map(obj => Object.values(obj));
@@ -65,7 +65,7 @@ const modal = document.getElementById('modal-container');
 
 function mostrar_modal(id_vacante) {
     modal.classList.add('show');
-    let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
+    let url = "../../../controller/socio-asociado/Bolsa_trabajo.php";
     let form = new FormData();
     form.append("id_vacante", id_vacante);
 
@@ -75,7 +75,7 @@ function mostrar_modal(id_vacante) {
     })
         .then(res => res.json())
         .then(json => resultado(json))
-        .catch(error => alert(error));
+        .catch(error => alert("Ha ocurrido un error, inténtelo más tarde"));
 
     const resultado = (json) => {
       /* console.log(json); */
@@ -166,6 +166,7 @@ function mostrar_modal(id_vacante) {
       }
     }
 }
+
 function ocultar_modal() {
     modal.classList.remove('show');
 }

@@ -75,10 +75,13 @@ table{
     font-size: 1.125rem;
 }
 th,td {
+    max-width: 300px;
     border-bottom: 1px solid #000000;
-    padding: 10px 10px;
+    padding: 10px 20px;
     font-size: 15px;
     text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
     background-color: #dfe3e7;
     
 }
