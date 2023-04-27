@@ -34,6 +34,7 @@ if ($resultado == true) {
   $municipio=$resultado[0]["nommunicipio"];
   $estado=$resultado[0]["nomestado"];
 }
+$desc=preg_replace("[\n|\r|\n\r]", "<br>", $desc);
 ?>
 
 <script languaje="javascript">
@@ -151,11 +152,11 @@ var parrafo = document.createElement("p");
           $fin=$resultado[$i]['FinExpP'];
           $act1=$resultado[$i]['ActExpP'];
           $num=$i+1;
-          $puesto= preg_replace("[\n|\r|\n\r]", "<br>", $desc);
-          $empresa= preg_replace("[\n|\r|\n\r]", "<br>", $desc);
-          $inicio= preg_replace("[\n|\r|\n\r]", "<br>", $desc);
-          $fin= preg_replace("[\n|\r|\n\r]", "<br>", $desc);
-          $act1= preg_replace("[\n|\r|\n\r]", "<br>", $desc);
+          $puesto= preg_replace("[\n|\r|\n\r]", "<br>", $puesto);
+          $empresa= preg_replace("[\n|\r|\n\r]", "<br>", $empresa);
+          $inicio= preg_replace("[\n|\r|\n\r]", "<br>", $inicio);
+          $fin= preg_replace("[\n|\r|\n\r]", "<br>", $fin);
+          $act1= preg_replace("[\n|\r|\n\r]", "<br>", $act1);
 
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro");
