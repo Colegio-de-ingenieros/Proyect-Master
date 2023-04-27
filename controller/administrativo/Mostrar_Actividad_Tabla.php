@@ -6,6 +6,7 @@ $objeto=new Actividad_Seg_Tabla();
 $salida = '';
 
 $id=$_POST["idAct"];
+$actividad=$_POST["actividad"];
 
 $resultado = $objeto->consul_datos_tabla($id);  
 if ($resultado == true) {
@@ -47,15 +48,11 @@ if ($resultado == true) {
         $salida .= '<td>' . $honorario . '</td>';
         $salida .= '<td>' . $ingresos. '</td>';
         $salida .= '<td>  <a href="#">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idp . '">Eliminar</a></td>';
+                    <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idp . '"data-actividad="'.$actividad.'">Eliminar</a></td>';
         $salida .= '</tr>';   
     }
 } 
 else {
-
-
-
-    
     $salida .= 'No se encontraron resultados';
 }
 

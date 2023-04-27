@@ -131,13 +131,16 @@ function rellenar_tablaExtra(){
 
 function rellenar_tabla(){
     split=obtener_URL()
+    var tipoAct = split[1]
     var idAct=split[2]
+
+    var actividad=tipoAct+"="+idAct;
 
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Actividad_Tabla.php',
         type: 'POST',
         dataType: 'html',
-        data: { idAct: idAct},
+        data: { idAct: idAct, actividad: actividad},
     })
 
         .done(function (respuesta)
