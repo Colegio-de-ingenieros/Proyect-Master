@@ -94,7 +94,7 @@ $id=$_GET['id'];
     </div>
 
     <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../view/login/login.html' " >Cerrar sesión</button>
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' " >Cerrar sesión</button>
     </div>
   </header>
   <main>
