@@ -36,7 +36,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -126,12 +126,12 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-        
+
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-				    </li>
+            </li>
 
             <li>
               <a href="#">
@@ -197,14 +197,15 @@
     <span id="id-usuario" style="display:none"></span>
     <span id="index-curso" style="display:none"></span>
   </main>
-  
+
 </body>
 <!-- <script src="js/Vali_Cursos.js"></script>
 <script src="js/Reg_Cursos.js"></script> -->
 <!-- <script src="js/temario.js"></script> -->
 <!-- <script src='js/Vali_Modicursos.js'></script> -->
+
 </html>
 <?php
-  echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
-  echo "<script>document.getElementById('index-curso').innerHTML = '".$_GET['index']."'</script>";
+echo "<script>document.getElementById('id-usuario').innerHTML = '" . $_GET['id'] . "'</script>";
+echo "<script>document.getElementById('index-curso').innerHTML = '" . $_GET['index'] . "'</script>";
 ?>

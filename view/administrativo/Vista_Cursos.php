@@ -13,21 +13,17 @@
   <link rel="stylesheet" href="../../public/css/administrativo/Vista_Cursos.css">
   <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
   <<!-- link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <!-- <script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script> -->
+    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="../../controller/administrativo/js/Mostrar_Cursos.js"></script> -->
 
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    
+    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+    <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+
 </head>
 
 <body>
@@ -43,7 +39,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -133,12 +129,12 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-        
+
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-				    </li>
+            </li>
 
             <li>
               <a href="#">
@@ -193,7 +189,7 @@
   </header>
 
   <main>
-  <div>
+    <div>
       <div class="article-tablas">
         <article>
           <div class="izquierda">
@@ -226,7 +222,7 @@
     </div>
     </section>
   </main>
-<script src="js/busqueda_curso.js"></script>
+  <script src="js/busqueda_curso.js"></script>
 </body>
 
 </html>
