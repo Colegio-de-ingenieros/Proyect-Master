@@ -29,6 +29,21 @@
                 return "No se encontraron resultados";
             }
         }
+
+        function extraer_dias_laborales($id){
+            $consulta = "SELECT IdLab
+            FROM `empboldias` 
+            WHERE IdEmpBol = :id ";
+            $parametros = ['id' => $id];
+            $resultados = $this->base->mostrar($consulta, $parametros);
+            
+            if ($resultados != null){
+                return $resultados;
+            }
+            else{
+                return "No se encontraron días laborales";
+            }
+        }
     }
 
     $obj = new funciones_bolsa();
