@@ -171,7 +171,7 @@ var parrafo = document.createElement("p");
           miDiv.appendChild(mip);
           miDiv.appendChild(br);</script>';
 
-          //echo '<br>';
+          echo '<br>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro2");
           var miLabel = document.createElement("label");
