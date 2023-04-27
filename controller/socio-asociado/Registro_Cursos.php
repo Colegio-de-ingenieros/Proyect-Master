@@ -15,6 +15,26 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $organizacion=$_POST["organizacion"];
     $horas=$_POST["totalhoras"];
     $archivo=$_FILES["archivo"]["name"];
+    
+
+    $new_name_file=null;
+
+    if ($archivo!='' || $archivo!=null){
+        $tipo = $_FILES['archivo']['type'];
+        list($type, $extension)=explode('/', $tipo);
+        if ($extension=='pdf'){
+            $dir='../Comprobantes/';
+            if (!file_exists($dir)){
+                mkdir($dir,0777, true);
+            }
+            $temp = $_FILES['archivo']['tmp_name'];
+            $new_name_file=$dir. $archivo;
+            if (copy($temp, $new_name_file)){
+
+            }
+        }
+        
+    }
 
     $u=$objeto->insertar_cursos($id_curso, $nombre, $organizacion, $horas, $archivo, $id_final);
 
