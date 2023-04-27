@@ -1,4 +1,4 @@
-<script src="../../view/login/js/verificar_permiso_socio.js"></script>
+<script src="../../view/login/js/Verificar_Permiso_Socio.js"></script>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -62,7 +62,7 @@
             </a>
 
             <ul>
-              <li><a id="" href="#">Ofertas de trabajo</a></li>
+              <li><a id="" href="Bolsa-Trabajo.html">Ofertas de trabajo</a></li>
               <li><a id="" href="Reg_CV.html">Mi CV</a></li>
             </ul>
           </li>

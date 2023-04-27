@@ -124,7 +124,7 @@
                 if ($auxIngresos[0][0]==NULL){
                     array_push($ingreInstr, "$ 0"); 
                 }else{
-                    array_push($ingreInstr, "$ "+$auxIngresos[0][0]); 
+                    array_push($ingreInstr, "$ ".$auxIngresos[0][0]); 
                 }
                 $temporalGastos=[];
                 for ($x=1; $x<6;$x++){

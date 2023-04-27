@@ -27,7 +27,7 @@ const expresiones = {
     objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,\n]+$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
     cedula:/^[0-9]{7,8}/,
-    nombre_carrera:/^[0-9a-zA-ZÁ-Ýá-ý0-9.,\s]{1,40}$/,
+    nombre_carrera:/^[0-9a-zA-ZÁ-Ýá-ý.,\s]{1,40}$/,
     empresa:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,100}$/,
     puesto: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,50}/,
 }
@@ -173,10 +173,10 @@ carrera3.addEventListener('keyup', (e) => {
 
     // Eliminar caracteres especiales
     carrera3.value = valorInput
-    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
-        /* carrera3.style.border = "3px solid red"; */
+        carrera3.style.border = "3px solid red";
         carr3 = false;
         if (carrera3.value==="") {
             carrera3.removeAttribute("style");
@@ -203,10 +203,10 @@ carrera1.addEventListener('keyup', (e) => {
 
     // Eliminar caracteres especiales
     carrera1.value = valorInput
-    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
-        /* carrera1.style.border = "3px solid red"; */
+        carrera1.style.border = "3px solid red";
         carr2 = false;
         if (carrera1.value==="") {
             carrera1.removeAttribute("style");
@@ -234,7 +234,7 @@ carrera.addEventListener('keyup', (e) => {
 
     // Eliminar caracteres especiales
     carrera.value = valorInput
-    .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera.style.border = "3px solid red";
@@ -413,6 +413,29 @@ cedulas3.addEventListener('keyup', (e) => {
 
 
 function datos(){
+    if (salario != ""){
+        sal = true;
+    }
+    if (objetivo != ""){
+        obj = true;
+    }
+    if (carrera != ""){
+        carr = true;
+    }
+    if (cedulas != ""){
+        ced = true;
+    }
+    if (puesto != ""){
+        puest = true;
+    }
+    if (empresa != ""){
+        empr = true;
+    }
+    if (actividad != ""){
+        acti = true;
+    }
+
+
     if (sal == false){
         salario.style.border = "3px solid red";
     }
@@ -488,7 +511,7 @@ function datos(){
         experiencia_profesional_particular = [];
 
         var combo = document.getElementById("residencia-campo").value;
-        combo = combo-1;
+        /* combo = combo-1; */
         var miVariable = localStorage.getItem('miVariable');
         datos_generales.push(miVariable);
         datos_generales.push(combo);

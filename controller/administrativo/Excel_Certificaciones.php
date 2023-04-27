@@ -89,6 +89,7 @@ for($i=0; $i<count($resultados); $i++){
     setCellValue('D'. $i+2, $precioG)->setCellValue('E' . $i + 2, $precioA);
 
     //aplicar el estilo a la descripción
+    $hoja->getStyle('A'. $i+2)->applyFromArray($style);
     $hoja->getStyle('C'. $i+2)->applyFromArray($style);
 
     //centrar el contenido

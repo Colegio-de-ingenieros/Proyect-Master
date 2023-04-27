@@ -1,7 +1,7 @@
 let listOfLists = [];
 
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
+  let url = "../../controller/socio-asociado/Bolsa_trabajo.php"
   let id = 0;
 
   let form = new FormData();
@@ -13,7 +13,7 @@ window.onload = function () {
   })
     .then(response => response.json())
     .then(json => resultado(json))
-    .catch(error => alert(error));
+    .catch(error => alert("Ocurrió un error, inténtelo de nuevo más tarde"));
 
   const resultado = (json) => {
     listOfLists = json.map(obj => Object.values(obj));
@@ -78,11 +78,15 @@ function mostrar_modal(id_vacante) {
         .catch(error => alert(error));
 
     const resultado = (json) => {
+      /* console.log(json); */
       let listOfLists2 = json.map(obj => Object.values(obj));
-      listOfLists2 = listOfLists2.map(list => list.slice(0, 16));
+      listOfLists2 = listOfLists2.map(list => list.slice(0, 21));
+      console.log(listOfLists2);
       for(let i = 0; i < listOfLists2.length; i++){
         if(listOfLists2[i][0] == id_vacante){
           const nombre_vacante = document.getElementById('nombre-vacante');
+          const empresa = document.getElementById('nombre-empresa');
+          const días = document.getElementById('dias-laborales');
           const horario = document.getElementById('horario');
           const jornada = document.getElementById('jornada');
           const modalidad = document.getElementById('modalidad');
@@ -94,11 +98,31 @@ function mostrar_modal(id_vacante) {
           const salario_neto = document.getElementById('salario-neto');
           const telefono = document.getElementById('telefono-empresa');
           const correo = document.getElementById('correo-empresa');
+          const ubicacion = document.getElementById('ubicacion');
           const link = document.getElementById('link-ventana')
+
+          let lista_dias = listOfLists2[i][19]
+          /* console.log(lista_dias) */
+          if (lista_dias != "No se encontraron días laborales") {
+            const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            let cadena = '';
+
+            for (let i = 0; i < lista_dias.length; i++) {
+              let dia = lista_dias[i][0];
+              cadena += diasSemana[dia - 1] + ', ';
+            }
+
+            cadena_dias = cadena.slice(0, -2);
+          }
+          else{
+            cadena_dias = lista_dias;
+          }
+          
 
           let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
           let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
           let formato_salario_neto = listOfLists2[i][7] + "MXN Mensuales"; 
+          let formato_ubicacion = listOfLists2[i][11] + ", " + listOfLists2[i][16] + ", " + listOfLists2[i][17] + ", " + listOfLists2[i][18];
 
           let valor_jornada = listOfLists2[i][13];
           let valor_modalidad = listOfLists2[i][14];
@@ -134,6 +158,9 @@ function mostrar_modal(id_vacante) {
           modalidad.innerHTML = texto_modalidad;
           telefono.innerHTML = listOfLists2[i][10];
           correo.innerHTML = listOfLists2[i][12];
+          empresa.innerHTML = listOfLists2[i][15]
+          días.innerHTML = cadena_dias;
+          ubicacion.innerHTML = formato_ubicacion;
           link.href = "Aplicar_Vacante.php?id="+listOfLists[i][0]
         }
       }

@@ -1,4 +1,4 @@
-<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> --> 
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +34,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -124,12 +124,12 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-        
+
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-				    </li>
+            </li>
 
             <li>
               <a href="#">

@@ -67,7 +67,7 @@ if (isset($_POST['consulta'])) {
             $respuesta .= '<td> 
             <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="eli()">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             
             </td>';
             $respuesta .= '</tr>';
@@ -161,30 +161,29 @@ echo '<script type="text/javascript">
 function eli(dato)
 {
     console.log(dato);
-   var flag = confirm("¿Está seguro de que desea eliminar el curso con temas y subtemas?");
+   var flag = confirm("¿Está seguro que desea eliminar el curso?");
    if(flag){
    var formData = new FormData();
    formData.append("id", dato);
 
-
-   var xmlhttp = new XMLHttpRequest();
-   xmlhttp.open("POST", "../../controller/administrativo/Eliminar_Cursos.php");
-
-   xmlhttp.onreadystatechange = function () {
-       if (this.readyState == 4 && this.status == 200) {
-
-           
-           if (this.responseText == "El curso se eliminó con éxito, por favor refresque la página") {
+   fetch("../../controller/administrativo/Eliminar_Cursos.php", {
+    method: "POST",
+    body: formData
+})
+    .then(res => res.json())
+    .then(data =>
+    {
+        if (data === "El curso se eliminó con éxito, por favor refresque la página") {
+            alert ("Eliminado con éxito");
             location.reload();
-           }
-       }
-   };
-
-   xmlhttp.send(formData);
-}
-    else{
-        window.location("Vista_Cursos.php");}
-}
+           
+        }
+        else {
+            alert(data);
+            
+        }
+    })
+}}
 </script>';
 echo $respuesta;
 

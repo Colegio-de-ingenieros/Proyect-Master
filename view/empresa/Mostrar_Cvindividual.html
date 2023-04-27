@@ -1,4 +1,4 @@
-<!-- <script src="../../view/login/js/verificar_permiso_socio.js"></script> -->
+<script src="../../view/login/js/Verificar_Permiso_Empresa.js"></script>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
+  
   <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
   <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -30,19 +31,6 @@
       <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
       <nav>
         <ul>
-
-          <!-- Cursos -->
-          <li>
-            <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
-              Cursos
-            </a>
-
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
 
           <!-- Cuotas -->
           <li>
@@ -65,8 +53,8 @@
             </a>
 
             <ul>
-              <li><a id="" href="../../view/empresa/Reg_Ofertas.html">Ofertas de trabajo</a></li>
-              <li><a id="" href="../../view/empresa/Vista_Ofertas.html">Mi CV</a></li>
+              <li><a id="" href="../empresa/Reg_Ofertas.html">Registrar</a></li>
+              <li><a id="" href="../empresa/Vista_Ofertas.html">Mostrar</a></li>
             </ul>
           </li>
 
@@ -100,7 +88,7 @@
     </div>
 
     <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn">Cerrar sesión</button>
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
     </div>
   </header>
 
@@ -152,30 +140,8 @@
           <p class="label-4" id="telefonoAP">Pruebas de como se ve el texto</p>
           
         </div>
-        <!-- Calle y número -->
-        <div class="campo">
-          <label for="" class="label-2">Calle y número:</label>
-          <p class="label-4" id="calle_numeroAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-        <!-- Colonia -->
-        <div class="campo">
-          <label for="" class="label-2">Colonia:</label>
-          <p class="label-4" id="coloniaAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-        <!-- Ciudad -->
-        <div class="campo">
-          <label for="" class="label-2">Ciudad:</label>
-          <p class="label-4" id="ciudadAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-        <!-- Estado -->
-        <div class="campo">
-          <label for="" class="label-2">Estado:</label>
-          <p class="label-4" id="estadoAP">Pruebas de como se ve el texto</p>
-          
-        </div>
+        
+       
         <!-- Cambio de residencia -->
         <div class="campo">
           <label for="" class="label-2">¿Puede cambiar de residencia?:</label>
@@ -195,6 +161,50 @@
         <p class="label-4" id="descripcion_profeAP">Pruebas de como se ve el texto</p>
         
       </div>
+      <br>
+      <!--PARTE DOS-->
+      <div class="divisor">
+        <p class="subtitulo-1">Domicilio</p>
+       
+        <br>
+        <hr>
+      </div>
+      <br>
+       <div class="contenedor-formulario">
+           <!-- Correo electrónico -->
+           <div class="formulario-generales">
+            <!-- Nombre -->
+            <div class="campo">
+              <label for="" class="label-2">Codigo postal:</label>
+              <p class="label-4" id="codigo_postalAP">Pruebas de como se ve el texto</p>
+              
+            </div>
+            <!-- Calle y número -->
+            <div class="campo">
+                <label for="" class="label-2">Calle y número:</label>
+                <p class="label-4" id="calle_numeroAP">Pruebas de como se ve el texto</p>
+          
+            </div>
+             <!-- Colonia -->
+              <div class="campo">
+                 <label for="" class="label-2">Colonia:</label>
+                 <p class="label-4" id="coloniaAP">Pruebas de como se ve el texto</p>
+          
+              </div>
+             <!-- Ciudad -->
+             <div class="campo">
+                 <label for="" class="label-2">Ciudad:</label>
+                 <p class="label-4" id="ciudadAP">Pruebas de como se ve el texto</p>
+          
+              </div>
+             <!-- Estado -->
+             <div class="campo">
+                 <label for="" class="label-2">Estado:</label>
+                 <p class="label-4" id="estadoAP">Pruebas de como se ve el texto</p>
+          
+              </div>
+           </div>
+    
       <!-- Experiencia académica -->
       <br>
       <div class="divisor">
@@ -203,9 +213,8 @@
         <br>
         <hr>
       </div>
-      <br>
       <!-- Formulario académico 1 -->
-      <div class="formulario-academica" id="academico-1">
+      <div class="formulario-certificaciones" id="academico-1">
         <!-- Nombre de la carrera -->
         <div class="campo" id="aca">
           <!-- <label for="" class="label-2">Nombre de la carrera:</label>
@@ -219,7 +228,7 @@
           
         </div>
       </div>
-      <br>
+
       <br>
       <!-- Formulario académico 2 -->
       <div class="formulario-academica" id="academico-2">
@@ -264,46 +273,43 @@
         <br>
         <hr>
       </div>
-      <br>
       <!-- Formulario experiencia 1 -->
-      <div class="formulario-experiencia" id="experiencia-1">
+      <div class="formulario-certificaciones" id="experiencia-1">
         <!-- Puesto que desempeñaba -->
-        <div class="campo">
-          <label for="" class="label-2">Puesto que desempeñaba:</label>
-          <p class="label-4" id="pues_desempeñoAP">Pruebas de como se ve el texto</p>
+        
+        <div class="campo" id="pro">
+          <!-- <label for="" class="label-2">Puesto que desempeñaba:</label>
+          <p class="label-4" id="pues_desempeñoAP">Pruebas de como se ve el texto</p> -->
           
         </div>
         <!-- Nombre de la empresa -->
-        <div class="campo">
-          <label for="" class="label-2">Nombre de la empresa:</label>
-          <p class="label-4" id="nombre_empresaAP">Pruebas de como se ve el texto</p>
+        <div class="campo" id="pro2">
+          
+
           
         </div>
         <!-- Fecha de inicio -->
-        <div class="campo">
-          <label for="" class="label-2">Periodo de inicio:</label>
-          <p class="label-4" id="peridod_inicioAP">Pruebas de como se ve el texto</p>
+        <div class="campo"id="pro3">
+          <!-- <label for="" class="label-2">Periodo de inicio:</label>
+          <p class="label-4" id="peridod_inicioAP">Pruebas de como se ve el texto</p> -->
           
         </div>
         <!-- Fecha de fin -->
-        <div class="campo">
-          <label for="" class="label-2">Periodo de fin:</label>
-          <p class="label-4" id="periodo_finAP">Pruebas de como se ve el texto</p>
+        <div class="campo" id="pro4">
+          <!-- <label for="" class="label-2">Periodo de fin:</label>
+          <p class="label-4" id="periodo_finAP">Pruebas de como se ve el texto</p> -->
           
         </div>
         <!-- Actividades relevantes -->
-        <div class="campo">
-          <label for="" class="label-2">Actividades relevantes:</label>
-          <p class="label-4" id="actividades_relAP">Pruebas de como se ve el texto</p>
+        <div class="campo" id="pro5">
+          <!-- <label for="" class="label-2">Actividades relevantes:</label>
+          <p class="label-4" id="actividades_relAP">Pruebas de como se ve el texto</p> -->
           
         </div>
 
       </div>
-      <br>
-      
-      <br>
       <!-- Formulario experiencia 2 -->
-      <div class="formulario-experiencia" id="experiencia-2">
+      <div class="formulario-certificaciones" id="experiencia-2">
         <!-- Puesto que desempeñaba -->
         <div class="campo">
           <label for="" class="label-2">Puesto que desempeñaba:</label>
@@ -347,18 +353,18 @@
 
       <div id="formulario-certificaciones" class="formulario-certificaciones">
         <!-- Nombre certificación -->
-        <div class="campo">
-          <label for="" class="label-2">Nombre de la certificación:</label>
+        <div class="campo" id="cer">
+          <!-- <label for="" class="label-2">Nombre de la certificación:</label> -->
          <!--  <input title="El campo nombre de la certificación solo debe de contener letras." type="text"
             class="input-format-2" placeholder="Ingrese el nombre de la certificación aquí"></input> -->
-            <p class="label-4" id="nombre_certificacionAP">Pruebas de como se ve el texto</p>
+            <!-- <p class="label-4" id="nombre_certificacionAP">Pruebas de como se ve el texto</p> -->
         </div>
         <!-- Organismo que expidió -->
-        <div class="campo">
-          <label for="" class="label-2">Institución emisora:</label>
+        <div class="campo" id="cer2">
+          <!-- <label for="" class="label-2">Institución emisora:</label> -->
           <!-- <input title="El campo institución solo debe de contener letras." type="text" class="input-format-2"
             placeholder="Ingrese la institución aquí"></input> -->
-            <p class="label-4" id="institucion_emiP">Pruebas de como se ve el texto</p>
+            <!-- <p class="label-4" id="institucion_emiP">Pruebas de como se ve el texto</p> -->
         </div>
       </div>
 

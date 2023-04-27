@@ -21,10 +21,13 @@ if ($resultado == true) {
   $tel = $resultado[0]["TelEmpBol"];
   $cor= $resultado[0]["CorreoEmpBol"];
 }
+
+//print_r($resultado);
 $resultado = $base->mostrarJornada($id);
 if ($resultado == true) {
   $jor=$resultado[0]["TipoJor"];
 }
+
 $resultado = $base->mostrarModalidad($id);
 if ($resultado == true) {
   $mod=$resultado[0]["TipoMod"];
@@ -36,6 +39,7 @@ if ($resultado == true) {
   $mun=$resultado[0]["nommunicipio"];
   $edo=$resultado[0]["nomestado"];
 }
+
 $resultado = $base->getDias($id);
 if ($resultado == true) {
   $dias="";
@@ -45,26 +49,20 @@ if ($resultado == true) {
   }
 }
 $dias=trim($dias,",");
+
+$res=preg_replace("[\n|\r|\n\r]", "<br>", $desc);
+$resTec=preg_replace("[\t|\n|\r|\n\r]", "<br>", $reqtec);
+$resAca=preg_replace("[\t|\n|\r|\n\r]", "<br>", $req);
 ?>
 <script languaje="javascript">
     var parrafo = document.getElementById("nombreOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
 
   var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $dias; ?>";
+  parrafo.innerHTML = "<?php echo $exp; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("reqi_academicosOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $req; ?>";
-var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("reqi_tecnicosuOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $reqtec; ?>";
-var parrafo = document.createElement("p");
-
-var parrafo = document.getElementById("descri_puestoOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $desc; ?>";
-var parrafo = document.createElement("p");
 
 var parrafo = document.getElementById("dias_laboralesOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $dias; ?>";
@@ -117,6 +115,17 @@ var parrafo = document.createElement("p");
 var parrafo = document.getElementById("estadoOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $edo; ?>";
 var parrafo = document.createElement("p");
-
-
 </script>
+
+<script>
+var parrafo = document.getElementById("reqi_academicosOT"); // obtenemos la referencia al elemento
+parrafo.innerHTML = "<?php echo $resAca; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("reqi_tecnicosuOT"); // obtenemos la referencia al elemento
+parrafo.innerHTML = "<?php echo $resTec; ?>";
+
+var parrafo = document.getElementById("descri_puestoOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $res; ?>";
+var parrafo = document.createElement("p");
+  </script>
