@@ -34,7 +34,6 @@ if ($resultado == true) {
   $municipio=$resultado[0]["nommunicipio"];
   $estado=$resultado[0]["nomestado"];
 }
-echo $cp;
 ?>
 
 <script languaje="javascript">

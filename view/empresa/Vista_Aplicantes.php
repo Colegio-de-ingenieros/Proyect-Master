@@ -104,11 +104,7 @@ $id=$_GET['id'];
             <h4 class="subtitulo-1">Mostrar / Consultar aplicantes</h4>
           </div>
           <hr>
-          <div class="grupo-input">
-            <div class="input-form">
-              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
-            </div>
-          </div>
+          
           <input id="prodId" name="prodId" type="hidden" value=<?php echo $id; ?>>
           
           <br>
