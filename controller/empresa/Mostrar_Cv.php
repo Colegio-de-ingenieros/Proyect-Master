@@ -58,7 +58,7 @@ var parrafo = document.getElementById("telefonoAP"); // obtenemos la referencia 
   parrafo.innerHTML = "<?php echo $tel; ?>";
 var parrafo = document.createElement("p");
 var parrafo = document.getElementById("codigo_postalAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $calle; ?>";
+  parrafo.innerHTML = "<?php echo $cp; ?>";
 var parrafo = document.createElement("p");
 var parrafo = document.getElementById("calle_numeroAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $calle; ?>";
@@ -87,7 +87,8 @@ var parrafo = document.createElement("p");
 var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $desc; ?>";
 var parrafo = document.createElement("p");
-
+var miLabel = document.getElementById("miLabel");
+miLabel.style.display = "none";
 
 </script>
         <?php $resultado=$base->mostrarAcademica($id);
@@ -99,7 +100,8 @@ var parrafo = document.createElement("p");
             $num=$i+1;
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("aca");
-
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Nombre de la carrera:";
           miLabel.classList.add("label-2");
@@ -111,10 +113,14 @@ var parrafo = document.createElement("p");
           
           var br = document.createElement("br");
           miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);
           miDiv.appendChild(br);</script>';
           //echo '<br>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("aca2");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Número de cédula:";
           miLabel.classList.add("label-2");
@@ -126,8 +132,9 @@ var parrafo = document.createElement("p");
 
           var br = document.createElement("br");
           miDiv.appendChild(br);
-          miDiv.appendChild(br);</script>';
-          echo '<br>';}}
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';}}
       ?>
         <?php $resultado=$base->mostrarLaboral($id);
         if ($resultado == true) {
@@ -143,6 +150,8 @@ var parrafo = document.createElement("p");
           
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Puesto que desempeñaba:";
           miLabel.classList.add("label-2");
@@ -163,8 +172,6 @@ var parrafo = document.createElement("p");
           miDiv.appendChild(mip);
           var br = document.createElement("br");
           miDiv.appendChild(br);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Actividades relevantes:";
           miLabel.classList.add("label-2");
@@ -173,11 +180,15 @@ var parrafo = document.createElement("p");
           mip.textContent = "'.$act1.'";
           mip.classList.add("label-4");
           miDiv.appendChild(mip);
-          miDiv.appendChild(br);</script>';
-
-          echo '<br>';
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br)
+          ;</script>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro2");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
           var miLabel = document.createElement("label");
           miLabel.textContent = "Nombre de la empresa:";
           miLabel.classList.add("label-2");
@@ -198,7 +209,6 @@ var parrafo = document.createElement("p");
           mip.textContent = "'.$fin.'";
           mip.classList.add("label-4");
           miDiv.appendChild(mip);
-
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var br = document.createElement("br");
@@ -207,7 +217,8 @@ var parrafo = document.createElement("p");
           miDiv.appendChild(br);
           var br = document.createElement("br");
           miDiv.appendChild(br);
-
+          var br = document.createElement("hr");
+          miDiv.appendChild(br)
           ;</script>';}}
         ?> 
         <?php $resultado=$base->mostrarCertificaciones($identificador);
@@ -230,8 +241,8 @@ var parrafo = document.createElement("p");
           
           var br = document.createElement("br");
           miDiv.appendChild(br);
-          miDiv.appendChild(br);</script>';
-          //echo '<br>';
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);;</script>';
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("cer2");
           var miLabel = document.createElement("label");
@@ -245,6 +256,6 @@ var parrafo = document.createElement("p");
 
           var br = document.createElement("br");
           miDiv.appendChild(br);
-          miDiv.appendChild(br);</script>';
-          echo '<br>';}}
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);;</script>';}}
         ?>
