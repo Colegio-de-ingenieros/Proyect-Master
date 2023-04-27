@@ -35,7 +35,7 @@ window.onload = function () {
 
     var expresiones = {
       clave: /^[0-9]{6}$/,
-      duracion: /^[0-9]{0,3}$/,
+      duracion: /^[0-9]{1,3}$/,
       nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
       objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
       objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
