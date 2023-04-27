@@ -613,6 +613,31 @@ enviar.addEventListener("click", (e) => {
   /* console.log("DataGlobal: ", DataGlobal); */
   let temario = convertirData(DataGlobal);
   console.log("Temario: ", temario);
+  let nombre_curso = document.getElementById("nombre-curso").value;
+  let clave_curso = document.getElementById("clave-curso").value;
+  let duracion_curso = document.getElementById("duración").value;
+  let objetivo_curso = document.getElementById("objetivo").value;
+
+  let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
+
+  let url = "../../controller/administrativo/Eliminar_Temario.php";
+  let form = new FormData()
+
+  console.log("Basicos: ", basicos);
+  console.log("Temario: ", temario);
+
+  form.append("arrayin", JSON.stringify(basicos));
+  form.append("lista", JSON.stringify(temario));
+  fetch(url, {
+    method: "POST",
+    body: form,
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      /* console.log(data); */
+      alert(data);
+    });
+
 });
 
 const convertirData = (data) => {

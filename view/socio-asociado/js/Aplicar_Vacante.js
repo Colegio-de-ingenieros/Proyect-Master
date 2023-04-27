@@ -7,7 +7,7 @@ window.onload = function () {
       let resultado = respuesta; 
 
       if(resultado == "sintemario") {
-        alert("El usuario no tiene un CV registrado");
+        alert('Para poder aplicar a la oferta es necesario que complete su CV. Por favor, diríjase al módulo "MI CV" y complete su información');
         window.location.href = "Bolsa-Trabajo.html";
       }
       else {

@@ -116,6 +116,7 @@ $style = [
 ];
 
 //aplicar el estilo al objetivo
+$hoja->getStyle('B2')->applyFromArray($style);
 $hoja->getStyle('B4')->applyFromArray($style);
 
 //colocar el temario
@@ -149,6 +150,8 @@ for($i=0; $i<count($temas); $i++){
         $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
         $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
         $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
+
+        $hoja->getStyle('A' . $fila)->applyFromArray($style);
 
         $fila++;
     }

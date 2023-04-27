@@ -51,7 +51,7 @@ botonRegresar.addEventListener("click", (e) => {
     }else if(bestado==false){
         estado.style.border = "3px solid red";
     }else if(bc1==false && bc2==false && bc3==false && bc4==false && bc5==false && bc6==false && bc7==false){
-        alert("Debe seleccionar al menos una categoria");
+        alert("Debe seleccionar al menos un día laboral");
     
     }else{
         validar(true);
@@ -60,8 +60,8 @@ botonRegresar.addEventListener("click", (e) => {
 
 const expresiones = {
     cadenasGeneral:/^[a-zA-ZÁ-ý 0-9.\s]{1,50}$/,
-    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
-    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
+    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
+    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?)?$/,

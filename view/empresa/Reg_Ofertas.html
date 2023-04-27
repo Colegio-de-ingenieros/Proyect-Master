@@ -30,17 +30,7 @@
         <ul>
 
           <!-- Cursos -->
-          <li>
-            <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
-              Cursos
-            </a>
-
-            <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
-            </ul>
-          </li>
+          
 
           <!-- Cuotas -->
           <li>
@@ -119,7 +109,7 @@
             <p class="label-2">Nombre*</p>
           </div>
           <div class="input-form">
-            <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" required placeholder="Ingrese el nombre del puesto vacante" title='El nombre del avacante solo puede contener letras, espacios intermedios, números y puntos.'
+            <input type="text" class="input-format-2" name="nom_vacante" id="nom_vacante" required placeholder="Ingrese el nombre del puesto vacante" title='El nombre de la vacante solo puede contener letras, espacios intermedios, números y puntos.'
                          maxlength="50">
           </div>
         </div>
@@ -139,11 +129,21 @@
       <br>
       <div class="grupo-input2">
         <div class="label-form">
+          <p class="label-2">Descripción del puesto*</p>
+        </div>
+        <div class="input-form">
+          <textarea  name="descri_puesto" id="descri_puesto" class="input-textarea-2"
+          required placeholder="Ingrese la descripción del puesto" title="Ingrese la descripción del puesto." ></textarea>
+        </div>
+      </div>
+      <br>
+      <div class="grupo-input2">
+        <div class="label-form">
           <p class="label-2">Requisitos académicos*</p>
         </div>
         <div class="input-form">
-          <textarea  name="requi_academicos" id="requi_academicos" class="input-textarea-2"
-          required maxlength="100" placeholder="Ingrese el requisito académico" title="Los requisitos académicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
+          <textarea  name="requi_academicos" id="requi_academicos" class="input-textarea-aca-tec"
+          required  placeholder="Ingrese los requisitos académicos" title="Los requisitos académicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
         </div>
       </div>
       <br>
@@ -152,20 +152,11 @@
           <p class="label-2">Requisitos técnicos*</p>
         </div>
         <div class="input-form">
-          <textarea name="requi_tecnicos" id="requi_tecnicos" class="input-textarea-2"
-          required maxlength="100" placeholder="Ingrese el requisito técnico" title="Los requisitos técnicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
+          <textarea name="requi_tecnicos" id="requi_tecnicos" class="input-textarea-aca-tec"
+          required  placeholder="Ingrese los requisitos técnicos" title="Los requisitos técnicos solo puede contener letras, espacios intermedios, números, comas y puntos." ></textarea>
         </div>
       </div>
       <br>
-      <div class="grupo-input2">
-        <div class="label-form">
-          <p class="label-2">Descripción del puesto*</p>
-        </div>
-        <div class="input-form">
-          <textarea  name="descri_puesto" id="descri_puesto" class="input-textarea-2"
-          required maxlength="100" placeholder="Ingrese la descripción del puesto" title="Ingrese la descripción del puesto." ></textarea>
-        </div>
-      </div>
       
       <br>
       <br>
@@ -218,8 +209,8 @@
       <div class="input-form">
 
         <select name="jornada_laboral" id="jornada_laboral"  maxlength="50" class="input-format-2">
-          <option value="2">Tiempo completo</option>
-                        <option value="1">Medio tiempo</option>
+          <option value="1">Tiempo completo</option>
+                        <option value="2">Medio tiempo</option>
         </select>
       </div>
   

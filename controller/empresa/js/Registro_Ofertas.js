@@ -27,7 +27,8 @@ formulario.addEventListener('submit', function (e)
         }
         //los datos no pasaron alguna validacion
         else {
-            alert("Error al registrar");
+            doNothing();
+            //alert("Error al registrar");
         }
     })
 })

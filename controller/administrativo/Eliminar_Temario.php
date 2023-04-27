@@ -7,22 +7,22 @@ $arreglo = json_decode($_POST["arrayin"]);
 
 // Leemos la lista 1 enviada desde JavaScript
 $lista1 = json_decode($_POST["lista"]);
-$id = $_POST['id'];
-/* echo $id;
-var_dump($lista1);
-var_dump($arreglo); */
+/* $id = $_POST['id']; */
+
 $obj = new NuevoCurso();
 $obj->conexion();
 
-	 
-$id = $_POST['id'];
-$id = str_replace('"', '', $id);
+
+/* $id = $_POST['id'];
+$id = str_replace('"', '', $id); */
 
 $idtemasl = [];
 $nomtemasl = [];
 
 $idsubtemasl = [];
 $nomsubtemasl = [];
+
+$id = $arreglo[1];
 
 
 $datost = $obj->t($id);
@@ -75,7 +75,6 @@ if ($datost) {
         }
     }
     $obj->eliminarcursotema($id);
-    $obj->eliminarcurso($id);
     if ($idtemasl) {
         for ($p = 0; $p < count($idtemasl); $p++) {
             $obj->eliminartemasub($idtemasl[$p]);
@@ -88,10 +87,6 @@ if ($datost) {
         }
     }
 }
-else {
-    $obj->eliminarcurso($id);
-}
-
 
 
 	
@@ -124,7 +119,7 @@ for($i=0;$i<count($lista1);$i++){
 
 
 for($i=0;$i<count($tema);$i++){
-    $obj->curtem($arreglo[0],$tema[$i]);
+    $obj->curtem($arreglo[1],$tema[$i]);
 }
 
 
@@ -139,5 +134,5 @@ for($i=0;$i<count($lista1);$i++){
     }
 }
 
-
+echo json_encode("Modificación exitosa");
 

@@ -20,6 +20,7 @@ if ($resultado == true) {
   $cedula=$resultado[0]["NumCedAca"];
   $carrera=$resultado[0]["Carrera"];
   $cambio=$resultado[0]["ResidenciaCv"];
+  
 }
 if ($cambio==1) {
   $cambio="Si";
@@ -28,10 +29,12 @@ if ($cambio==1) {
 }
 $resultado=$base->mostrarColonia($identificador);
 if ($resultado == true) {
+  $cp=$resultado[0]["codpostal"];
   $colonia=$resultado[0]["nomcolonia"];
   $municipio=$resultado[0]["nommunicipio"];
   $estado=$resultado[0]["nomestado"];
 }
+echo $cp;
 ?>
 
 <script languaje="javascript">
@@ -58,6 +61,22 @@ var parrafo = document.getElementById("telefonoAP"); // obtenemos la referencia 
   parrafo.innerHTML = "<?php echo $tel; ?>";
 var parrafo = document.createElement("p");
 
+
+var parrafo = document.getElementById("cambio_residenciaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cambio; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("expe_salarial_brutaAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $salEsp; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $desc; ?>";
+
+//Direccion
+var parrafo = document.getElementById("codigo_postalAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $cp; ?>";
+var parrafo = document.createElement("p");
 var parrafo = document.getElementById("calle_numeroAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $calle; ?>";
 var parrafo = document.createElement("p");
@@ -74,70 +93,52 @@ var parrafo = document.getElementById("estadoAP"); // obtenemos la referencia al
   parrafo.innerHTML = "<?php echo $estado; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("cambio_residenciaAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $cambio; ?>";
-var parrafo = document.createElement("p");
-
-var parrafo = document.getElementById("expe_salarial_brutaAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $salEsp; ?>";
-var parrafo = document.createElement("p");
-
-var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $desc; ?>";
-var parrafo = document.createElement("p");
 </script>
-<!-- Experiencia académica -->
-<br>
-      <div class="divisor">
-        <p class="subtitulo-1">Experiencia académica</p>
-       
-        <br>
-        <hr>
-      </div>
-      <br>
-      <!-- Formulario académico 1 -->
-      <div class="formulario-academica" id="academico-1">
-        <!-- Nombre de la carrera -->
-        <div class="campo">
-          <label for="" class="label-2">Nombre de la carrera:</label>
-          <p class="label-4" id="nombre_carreraAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-        <!-- Número de cédula -->
-        <div class="campo">
-          <label for="" class="label-2">Número de cédula:</label>
-          <p class="label-4" id="num_cedulaAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-      </div>
-      <br>
-      <br>
-      <div class="formulario-academica">
-        <!-- Nombre de la carrera -->
-        <?php $resultado=$base->mostrarAcademica($id);
+<?php $resultado=$base->mostrarAcademica($id);
         if ($resultado == true) {
-          $salida='';
+
           for ($i = 0; $i < count($resultado); $i++) {
             $puesto=$resultado[$i]['Carrera'];
             $ced=$resultado[$i]['NumCedAca'];
-         $salida.='<div id="carrera-1"class="campo">
-          <label for="" class="label-2">Nombre de la carrera</label><br><br>
-          <label for="" class="label-4">'.$puesto.' </label> <br> <br>
-          <label for="" class="label-2">Número de cédula</label><br> <br>
-          <label for="" class="label-4">'.$ced.' </label> <br> <br>          
-        </div>
-      ';}}
-      echo $salida;
+            $num=$i+1;
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("aca");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Nombre de la carrera:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$puesto.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';
+          //echo '<br>';
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("aca2");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Número de cédula:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$ced.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';}}
       ?>
-      </div>
-      <!-- Experiencia profesional -->
-      <div class="divisor">
-        <p class="subtitulo-1">Experiencia profesional</p>
-        <hr>
-      </div>
-      
-      <div class="formulario-experiencia">
-        <!-- Puesto que desempeñaba -->
         <?php $resultado=$base->mostrarLaboral($id);
         if ($resultado == true) {
           $salida='';
@@ -149,49 +150,115 @@ var parrafo = document.createElement("p");
           $fin=$resultado[$i]['FinExpP'];
           $act1=$resultado[$i]['ActExpP'];
           $num=$i+1;
-        
-        $salida.='<div class="campo">
-          <label for="" class="label-2">Experiencia '.$num.'</label><br><br>
-          <label for="" class="label-2">Puesto que desempeñaba</label><br><br>
-          <label for="" class="label-4">'.$puesto.'</label> <br> <br>
-          <label for="" class="label-2">Nombre de la empresa</label><br><br>
-          <label for="" class="label-4">'.$empresa.'</label><br><br>
-          <label for="" class="label-2">Fecha de inicio</label><br><br>
-          <label for="" class="label-4">'.$inicio.'</label><br><br>
-          <label for="" class="label-2">Fecha de fin</label><br><br>
-          <label for="" class="label-4">'.$fin.'</label><br><br>
-          <label for="" class="label-2">Actividades relevantes</label><br><br>
-          <label for="" class="label-4">'.$act1.'</label><br><br> 
-        </div>';}};
-        echo $salida;
-        ?>
-      </div>  
-      <!-- Certificaciónes -->
-      <div class="divisor">
-        <p class="subtitulo-1">Certificaciónes</p>
-        <hr>
-      </div>
+          
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("pro");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Puesto que desempeñaba:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$puesto.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Periodo de inicio:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$inicio.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Actividades relevantes:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$act1.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br)
+          ;</script>';
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("pro2");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Nombre de la empresa:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$empresa.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
 
-      <div class="formulario-certificaciones">
-        <!-- Nombre certificación -->
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miDiv = document.getElementById("pro2");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Periodo de fin:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$fin.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br)
+          ;</script>';}}
+        ?> 
         <?php $resultado=$base->mostrarCertificaciones($identificador);
         if ($resultado == true) {
           $salida='';
           for ($i = 0; $i < count($resultado); $i++) {
           $nomCert=$resultado[$i]['NomCerExt'];
           $inst=$resultado[$i]['OrgCerExt'];  
-         $salida.='<div class="campo">
-          <label for="" class="label-2">Nombre de la certificación</label><br><br>
-          <label for="" class="label-4">'.$nomCert.'</label><br><br> 
-          <label for="" class="label-2">Institución emismora</label><br><br>
-          <label for="" class="label-4">'.$inst.'</label><br><br> 
-        </div>';}}; 
-        echo $salida;
-        ?>
-      </div>
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("cer");
 
-    </section>
-  </main>
-</body>
-<script src="js/Reg_CV.js"></script>
-</html>
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Nombre de la certificación:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$nomCert.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);;</script>';
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("cer2");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Institución emisora:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$inst.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var br = document.createElement("hr");
+          miDiv.appendChild(br);;</script>';}}
+        ?>

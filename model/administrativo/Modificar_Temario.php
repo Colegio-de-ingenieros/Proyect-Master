@@ -75,13 +75,21 @@
             return $resultado;
         }
 
-        function insertar($arreglo){
+        function insertars($arreglo){
             $q1 = "INSERT INTO cursos (ClaveCur,NomCur,ObjCur,DuracionCur) 
             VALUES(:ClaveCur, :NomCur, :ObjCur, :DuracionCur)";
             $a1= [":ClaveCur"=>$arreglo[0], ":NomCur"=>$arreglo[1], ":ObjCur"=>$arreglo[2], ":DuracionCur"=>$arreglo[3]];
             $querry = [$q1];
             $parametros = [$a1];
 
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function insertar($arreglo){
+            $q1 = "UPDATE cursos SET NomCur=:NomCur, ObjCur=:ObjCur, DuracionCur=:DuracionCur WHERE ClaveCur=:ClaveCur";
+            $a1= [":ClaveCur"=>$arreglo[1], ":NomCur"=>$arreglo[0], ":ObjCur"=>$arreglo[3], ":DuracionCur"=>$arreglo[2]];
+            $querry = [$q1];
+            $parametros = [$a1];
+        
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
 

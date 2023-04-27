@@ -51,7 +51,7 @@ $dias=trim($dias,",");
   parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
 
   var parrafo = document.getElementById("expOT"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $dias; ?>";
+  parrafo.innerHTML = "<?php echo $exp; ?>";
 var parrafo = document.createElement("p");
 
 var parrafo = document.getElementById("reqi_academicosOT"); // obtenemos la referencia al elemento

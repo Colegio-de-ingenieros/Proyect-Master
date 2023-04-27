@@ -150,7 +150,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Individual</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
                 <li><a id="menuSucursal2" href="#">General</a></li>
               </ul>
             </li>
@@ -192,7 +192,7 @@
           <hr>
           <div class="grupo-input">
             <div class="input-form">
-              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
 
