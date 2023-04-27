@@ -247,7 +247,7 @@
 
         </div>
         <div class="botones">
-          <button id="close" class="btn btn-small">Cerrar</button>
+          <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
         </div>
       </div>
     </div>

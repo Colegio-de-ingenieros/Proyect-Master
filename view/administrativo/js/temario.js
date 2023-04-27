@@ -460,12 +460,14 @@ function mostrar_modal(position) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
+
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
         newLabelSubtema.textContent = "No hay subtemas registrados";
         newLabelSubtema.style.marginBottom = "10px";
         newLabelSubtema.style.marginTop = "10px";
         newLabelSubtema.style.marginLeft = "10px";
+
 
         const addButtonSubtitleEmpty = document.createElement("button");
         addButtonSubtitleEmpty.classList.add("btn", "btn-small", "btn-add");
@@ -604,7 +606,7 @@ function mostrar_modal(position) {
 
 function ocultar_modal() {
 
-  
+
   modal.classList.remove("show");
 }
 
