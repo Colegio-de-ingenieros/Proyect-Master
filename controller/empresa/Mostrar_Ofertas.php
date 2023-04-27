@@ -48,7 +48,7 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead>
                             <tr>
-                                <th>Nombre vacante</th>
+                                <th>Vacante</th>
                                 <th>Descripción del puesto</th>
                                 <th>Modalidad</th>
                                 <th>Experiencia requerida</th>                
@@ -126,7 +126,7 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead  >
                             <tr>
-                                <th>Nombre vacante</th>
+                                <th>Vacante</th>
                                 <th>Descripción del puesto</th>
                                 <th>Modalidad</th>
                                 <th>Experiencia requerida</th>                

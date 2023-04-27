@@ -207,7 +207,7 @@ html{
     width: 100%;
 }
 .boton_registrar{
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items: center;}
 

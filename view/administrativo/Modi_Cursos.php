@@ -1,4 +1,4 @@
-<!-- <script src="../../view/login/js/verificar_permiso_trabajador.js"></script> -->
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +36,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -126,12 +126,12 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-        
+
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
-				    </li>
+            </li>
 
             <li>
               <a href="#">
@@ -197,8 +197,7 @@
 
         <div class="campo">
           <label for="nombre-curso" class="label-2 nombre">Nombre del curso*</label>
-          <input title="El nombre solo puede contener letras, números, puntos y comas." type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Ingrese el nombre"
-            minlength="1" maxlength="40" required>
+          <input title="El nombre solo puede contener letras, números, puntos y comas." type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Ingrese el nombre" minlength="1" maxlength="40" required>
         </div>
 
         <div class="campo">
@@ -208,15 +207,13 @@
 
         <div class="campo">
           <label for="duración" class="label-2 duracion">Duración del curso*</label>
-          
-          <input title="La duración solo puede contener 3 números como máximo." type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración en hrs" maxlength="3"
-            required>
+
+          <input title="La duración solo puede contener 3 números como máximo." type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración en hrs" maxlength="3" required>
         </div>
 
         <div class="campo-wide">
           <label for="objetivo" class="label-2 objetivo">Objetivo*</label>
-          <input title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2"
-            placeholder="Ingrese el objetivo" required>
+          <input title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2" placeholder="Ingrese el objetivo" required>
         </div>
 
       </div>
@@ -250,20 +247,21 @@
 
         </div>
         <div class="botones">
-          <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+          <button id="close" class="btn btn-small">Cerrar</button>
         </div>
       </div>
-      </div> 
+    </div>
     </div>
 
     <span id="id-usuario" style="display:none"></span>
   </main>
-  
+
 </body>
 
 <script src="js/temario.js"></script>
 <!-- <script src="js/Ventana_Modal.js"></script> -->
+
 </html>
 <?php
-  echo "<script>document.getElementById('id-usuario').innerHTML = '".$_GET['id']."'</script>";
+echo "<script>document.getElementById('id-usuario').innerHTML = '" . $_GET['id'] . "'</script>";
 ?>

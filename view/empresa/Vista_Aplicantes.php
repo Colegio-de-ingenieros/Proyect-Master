@@ -1,3 +1,4 @@
+<script src="../../view/login/js/Verificar_Permiso_Empresa.js"></script>
 <?php
 $id=$_GET['id'];
 ?>
@@ -93,7 +94,7 @@ $id=$_GET['id'];
     </div>
 
     <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn">Cerrar sesión</button>
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' " >Cerrar sesión</button>
     </div>
   </header>
   <main>
@@ -104,11 +105,7 @@ $id=$_GET['id'];
             <h4 class="subtitulo-1">Mostrar / Consultar aplicantes</h4>
           </div>
           <hr>
-          <div class="grupo-input">
-            <div class="input-form">
-              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
-            </div>
-          </div>
+          
           <input id="prodId" name="prodId" type="hidden" value=<?php echo $id; ?>>
           
           <br>

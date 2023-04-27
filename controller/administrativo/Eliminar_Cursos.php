@@ -17,7 +17,7 @@ $estatus = $bd->buscaestatus($id);
 $estacur= $estatus[0]["EstatusCur"];
 
 if ($estacur == "0") {
-    echo "Error, el curso no puede ser eliminado porque tiene un seguimiento";
+    echo json_encode("Error, el curso no puede ser eliminado porque tiene un seguimiento");
 }
 else{
 $datost = $bd->t($id);
@@ -87,6 +87,6 @@ if ($datost) {
 else {
     $bd->eliminarcurso($id);
 }
-echo "El curso se eliminó con éxito, por favor refresque la página";
+echo json_encode("El curso se eliminó con éxito, por favor refresque la página");
 /* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
 }

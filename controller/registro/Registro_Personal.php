@@ -116,7 +116,7 @@ $objeto=new Personal();
     }
 
     //falta mandar el correo
-    //$objeto->mandar_correo($correo,$numIntel,$nombre);
+    $objeto->mandar_correo($correo,$numIntel,$nombre);
     if($u==true){
         echo json_encode('exito');
         

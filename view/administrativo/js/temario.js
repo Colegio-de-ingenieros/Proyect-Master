@@ -35,13 +35,13 @@ window.onload = function () {
 
     var expresiones = {
       clave: /^[0-9]{6}$/,
-      duracion: /^[0-9]{0,3}$/,
+      duracion: /^[0-9]{1,3}$/,
       nombres: /^[a-zA-ZÁ-ý0-9\s .,]{1,40}$/,
       objetivosjhg: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
       objetivo: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]+$/,
       tema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
       subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
-    };
+    }
 
     nombre.addEventListener("keyup", (e) => {
       let valorInput = e.target.value;
@@ -132,7 +132,7 @@ window.onload = function () {
     function generarTemario() {
       temario.innerHTML = "";
       DataGlobal.forEach((item, index) => {
-        
+
         const titleContainer = document.createElement("div");
         titleContainer.classList.add("row");
 
@@ -208,6 +208,8 @@ window.onload = function () {
         linkSubtemas.classList.add("btn", "btn-small", "btn-link");
         linkSubtemas.textContent = "Subtemas";
         linkSubtemas.setAttribute("onclick", "mostrar_modal('" + index + "')");
+
+
 
         titleContainer.appendChild(titleInput);
         titleContainer.appendChild(addButtonAbove);
@@ -297,10 +299,7 @@ window.onload = function () {
             const linkSubtemas = document.createElement("Button");
             linkSubtemas.classList.add("btn", "btn-small", "btn-link");
             linkSubtemas.textContent = "Subtemas";
-            linkSubtemas.setAttribute(
-              "onclick",
-              "mostrar_modal(" + index + ")"
-            );
+            linkSubtemas.setAttribute("onclick", "mostrar_modal(" + index + ")");
 
             titleContainer.appendChild(titleInput);
             titleContainer.appendChild(addButtonAbove);
@@ -341,6 +340,9 @@ function mostrar_modal(position) {
     subtema: /^[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ .,]{1,40}$/,
   };
 
+  const cerarModal = document.getElementById("close");
+  cerarModal.setAttribute("onclick", "ocultar_modal(" + position + ")");
+
   DataGlobal.forEach((item, index) => {
     const modalContainer = document.getElementById("modal");
     const list = document.createElement("ul");
@@ -352,6 +354,10 @@ function mostrar_modal(position) {
       if (longitud_subtemas >= 1) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
+
+        /* const cerarModal = document.getElementById("close");
+        cerarModal.setAttribute("onclick", "ocultar_modal(" + position + ")");
+ */
         item.subtitles.forEach((subtitle, index) => {
           const listItem = document.createElement("li");
           listItem.classList.add("row-s");
@@ -361,6 +367,7 @@ function mostrar_modal(position) {
           input.value = subtitle;
           input.classList.add("input-format-2");
           input.placeholder = "Nuevo subtema";
+          input.maxLength = 40;
 
           input.addEventListener("keyup", (e) => {
             let valorInput = e.target.value;
@@ -455,17 +462,22 @@ function mostrar_modal(position) {
         });
         /* Crear los elementos en el DOM */
         modalContainer.appendChild(list);
-      } 
-      else if(longitud_subtemas == 0) {
+      }
+      else if (longitud_subtemas == 0) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
+
+        /* const cerarModal = document.getElementById("close");
+        cerarModal.setAttribute("onclick", "ocultar_modal(" + index + ")"); */
+
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
         newLabelSubtema.textContent = "No hay subtemas registrados";
         newLabelSubtema.style.marginBottom = "10px";
         newLabelSubtema.style.marginTop = "10px";
         newLabelSubtema.style.marginLeft = "10px";
+
 
         const addButtonSubtitleEmpty = document.createElement("button");
         addButtonSubtitleEmpty.classList.add("btn", "btn-small", "btn-add");
@@ -602,42 +614,93 @@ function mostrar_modal(position) {
   };
 }
 
-function ocultar_modal() {
-  modal.classList.remove("show");
+function ocultar_modal(position) {
+  let bandera_subtemas = false;
+
+  DataGlobal.forEach((item, index) => {
+
+    if (index == position) {
+      let longitud_subtemas = item.subtitles.length;
+
+      if (longitud_subtemas == 0) {
+        bandera_subtemas = false;
+      }
+      else {
+        item.subtitles.forEach((subtitle, index) => {
+          let contenido_subtitulo = subtitle;
+          if (contenido_subtitulo == "") {
+            bandera_subtemas = true;
+          }
+        });
+      }
+    }
+  });
+
+
+  if (bandera_subtemas == true) {
+    alert("No puede haber subtemas vacios");
+  }
+  else {
+    modal.classList.remove("show");
+  }
 }
 
 const enviar = document.getElementById("update-form");
 const regresar = document.getElementById("delete-form");
 
 enviar.addEventListener("click", (e) => {
-  /* console.log("DataGlobal: ", DataGlobal); */
-  let temario = convertirData(DataGlobal);
-  console.log("Temario: ", temario);
-  let nombre_curso = document.getElementById("nombre-curso").value;
-  let clave_curso = document.getElementById("clave-curso").value;
-  let duracion_curso = document.getElementById("duración").value;
-  let objetivo_curso = document.getElementById("objetivo").value;
 
-  let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
+  let vacio = validar_temas();
 
-  let url = "../../controller/administrativo/Eliminar_Temario.php";
-  let form = new FormData()
+  if (vacio == true) {
+    alert("No puede haber temas vacios");
+  }
+  else {
+    let temario = convertirData(DataGlobal);
+    console.log("Temario: ", temario);
 
-  console.log("Basicos: ", basicos);
-  console.log("Temario: ", temario);
+    let nombre_curso = document.getElementById("nombre-curso").value;
+    let clave_curso = document.getElementById("clave-curso").value;
+    let duracion_curso = document.getElementById("duración").value;
+    let objetivo_curso = document.getElementById("objetivo").value;
 
-  form.append("arrayin", JSON.stringify(basicos));
-  form.append("lista", JSON.stringify(temario));
-  fetch(url, {
-    method: "POST",
-    body: form,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      /* console.log(data); */
-      alert(data);
-    });
+    let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
 
+    let url = "../../controller/administrativo/Eliminar_Temario.php";
+    let form = new FormData()
+
+    console.log("Basicos: ", basicos);
+    console.log("Temario: ", temario);
+
+    form.append("arrayin", JSON.stringify(basicos));
+    form.append("lista", JSON.stringify(temario));
+    fetch(url, {
+      method: "POST",
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Actualización exitosa");
+        window.location.href = "Vista_Cursos.php";
+      });
+  }
+});
+
+function validar_temas() {
+  let bandera = false;
+  /* Imprime cada item de la DataGlobal */
+  DataGlobal.forEach((item, index) => {
+    let titulo = item.title;
+    if (titulo == "") {
+      bandera = true;
+    }
+  });
+
+  return bandera;
+}
+
+regresar.addEventListener("click", (e) => {
+  window.location.href = "Vista_Cursos.php";
 });
 
 const convertirData = (data) => {
