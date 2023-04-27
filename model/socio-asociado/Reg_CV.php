@@ -8,6 +8,84 @@
             $this->base = new Crud_bd();
             $this->base->conexion_bd();
         }
+        function eliminar_persobolsa_cv($id){
+            $q2 = "DELETE FROM persobolsacv WHERE IdPerso = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function eliminar_bolsa_cv($id){
+            $q2 = "DELETE FROM bolsacv WHERE IdBolCv = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function eliminar_expaca_cv($id){
+            $q2 = "DELETE FROM expacacv WHERE IdBolCv = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function eliminar_exppro_cv($id){
+            $q2 = "DELETE FROM expprocv WHERE IdBolCv = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function eliminar_expacademica($id){
+            $q2 = "DELETE FROM expacademica WHERE IdExpAca = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        function eliminar_expprofesional($id){
+            $q2 = "DELETE FROM expprofesional WHERE IdExpP = :id"; 
+            $a2= [":id"=>$id];
+            $querry = [$q2];
+            $parametros = [$a2];
+    
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
+        
+
+        function seleccion_bolsa_cv ($id){
+            $consulta = "SELECT bolsacv.IdBolCv FROM usuaperso,persobolsacv,bolsacv
+            WHERE usuaperso.IdPerso = '$id' 
+            and usuaperso.IdPerso =persobolsacv.IdPerso
+            and persobolsacv.IdBolCv = bolsacv.IdBolCv;";
+            $datos = $this->base->mostrar($consulta);
+            return $datos;
+        }
+        function seleccion_xp_academica ($id){
+            $consulta = "SELECT expacademica.IdExpAca FROM usuaperso,persobolsacv,bolsacv,expacacv,expacademica
+            WHERE usuaperso.IdPerso = '$id' 
+            and usuaperso.IdPerso =persobolsacv.IdPerso
+            and persobolsacv.IdBolCv = bolsacv.IdBolCv
+            and bolsacv.IdBolCv = expacacv.IdBolCv
+            and expacacv.IdExpAca = expacademica.IdExpAca;";
+            $datos = $this->base->mostrar($consulta);
+            return $datos;
+        }
+        function seleccion_xp_profesional ($id){
+            $consulta = "SELECT expprofesional.IdExpP FROM usuaperso,persobolsacv,bolsacv,expprocv,expprofesional
+            WHERE usuaperso.IdPerso = '$id' 
+            and usuaperso.IdPerso =persobolsacv.IdPerso
+            and persobolsacv.IdBolCv = bolsacv.IdBolCv
+            and persobolsacv.IdBolCv = expprocv.IdBolCv 
+            and expprocv.IdExpP = expprofesional.IdExpP ;";
+            $datos = $this->base->mostrar($consulta);
+            return $datos;
+        }
 
         function insertar_expprocv($ide, $idb){
             //consultas para la tabla de certificaciones internas
