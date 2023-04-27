@@ -60,8 +60,8 @@ botonRegresar.addEventListener("click", (e) => {
 
 const expresiones = {
     cadenasGeneral:/^[a-zA-ZÁ-ý 0-9.\s]{1,50}$/,
-    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
-    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
+    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
+    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
     postal:/^[0-9]{5}$/,
     estado:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?)?$/,

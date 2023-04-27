@@ -88,34 +88,20 @@ var parrafo = document.createElement("p");
 
 
 </script>
-
-
-      <div class="formulario-academica">
-        <!-- Nombre de la carrera -->
         <?php $resultado=$base->mostrarAcademica($id);
         if ($resultado == true) {
-          $salida='';
+
           for ($i = 0; $i < count($resultado); $i++) {
             $puesto=$resultado[$i]['Carrera'];
             $ced=$resultado[$i]['NumCedAca'];
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("aca");
           var miLabel = document.createElement("label");
-          miLabel.textContent = "Este es mi nuevo label";
-          miLabel.classList.add("label-2");
-          miDiv.appendChild(miLabel);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          miDiv.appendChild(br);</script>';
-          echo '<br>';
-          echo '<script>// Obtener el elemento div
-          var miDiv = document.getElementById("aca2");
-          var miLabel = document.createElement("label");
-          miLabel.textContent = "Este es mi nuevo label";
+          miLabel.textContent = "Nombre de la carrera:";
           miLabel.classList.add("label-2");
           miDiv.appendChild(miLabel);
           var mip = document.createElement("p");
-          mip.textContent = "Este es la p";
+          mip.textContent = "'.$puesto.'";
           mip.classList.add("label-4");
           miDiv.appendChild(mip);
 
@@ -123,24 +109,22 @@ var parrafo = document.createElement("p");
           miDiv.appendChild(br);
           miDiv.appendChild(br);</script>';
           echo '<br>';
-         $salida.='<div id="carrera-1"class="campo">
-          <label for="" class="label-2">Nombre de la carrera</label><br><br>
-          <label for="" class="label-4">'.$puesto.' </label> <br> <br>
-          <label for="" class="label-2">Número de cédula</label><br> <br>
-          <label for="" class="label-4">'.$ced.' </label> <br> <br>          
-        </div>
-      ';}}
-      echo $salida;
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("aca2");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Número de cédula:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$ced.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';
+          echo '<br>';}}
       ?>
-      </div>
-      <!-- Experiencia profesional -->
-      <div class="divisor">
-        <p class="subtitulo-1">Experiencia profesional</p>
-        <hr>
-      </div>
-      
-      <div class="formulario-experiencia">
-        <!-- Puesto que desempeñaba -->
         <?php $resultado=$base->mostrarLaboral($id);
         if ($resultado == true) {
           $salida='';
@@ -167,8 +151,7 @@ var parrafo = document.createElement("p");
           <label for="" class="label-4">'.$act1.'</label><br><br> 
         </div>';}};
         echo $salida;
-        ?>
-      </div>  
+        ?> 
       <!-- Certificaciónes -->
       <div class="divisor">
         <p class="subtitulo-1">Certificaciónes</p>
