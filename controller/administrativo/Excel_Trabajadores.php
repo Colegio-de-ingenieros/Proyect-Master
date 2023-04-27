@@ -69,6 +69,11 @@ $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 $estilo->getFont()->setName("Inter', sans-serif")->setSize(12.5); //cambiar el tipo de letra y tamaño
 
+//crear un objeto de estilo para ajustar el texto de descripcion
+$style = [
+    'alignment' => [
+        'wrapText' => true]];
+
 //llenar el archivo con los datos
 for($i=0; $i<count($resultados); $i++){
     //guardar los datos de la certificacion actual 
@@ -82,6 +87,9 @@ for($i=0; $i<count($resultados); $i++){
     //poner los datos en la tabla
     $hoja->setCellValue('A'. $i+2, $rfc)->setCellValue('B'.$i+2, $nombre)->setCellValue('C'. $i+2, $app)->
     setCellValue('D'. $i+2, $apm)->setCellValue('E' . $i + 2, $correo)->setCellValue('F' . $i + 2, $telefono);
+
+    $hoja->getStyle('B' . $i + 2)->applyFromArray($style);
+    $hoja->getStyle('E' . $i + 2)->applyFromArray($style);
 
     //centrar el contenido
     $estilo = $hoja->getStyle('A'. $i+2);
