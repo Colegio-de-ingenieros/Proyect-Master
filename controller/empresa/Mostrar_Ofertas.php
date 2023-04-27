@@ -49,12 +49,11 @@ if (isset($_POST['consulta'])) {
                         <thead>
                             <tr>
                                 <th>Nombre vacante</th>
-                                <th>Descripción de puesto</th>
+                                <th>Descripción del puesto</th>
                                 <th>Modalidad</th>
-                                <th>Experiencia requerida</th>
-                                
-                                <th>Numero de Aplicantes</th>
-                                <th>Acciones</th>
+                                <th>Experiencia requerida</th>                
+                                <th>Número de aplicantes</th>
+                                <th>Acciones     </th>
                             </tr>
                         </thead>
                 <tbody>';
@@ -128,11 +127,10 @@ if (isset($_POST['consulta'])) {
                         <thead  >
                             <tr>
                                 <th>Nombre vacante</th>
-                                <th>Descripción de puesto</th>
+                                <th>Descripción del puesto</th>
                                 <th>Modalidad</th>
-                                <th>Experiencia requerida</th>
-                                
-                                <th>Numero de Aplicantes</th>
+                                <th>Experiencia requerida</th>                
+                                <th>Número de aplicantes</th>
                                 <th>Acciones     </th>
                             </tr>
                         </thead>
