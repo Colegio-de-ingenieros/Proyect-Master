@@ -42,6 +42,40 @@ class dato{
         $datos = $this->bd->mostrar($consulta,$parametros);
         return $datos;
     }
+    function bolsacv($id){
+        $consulta = "SELECT DesProCv,ResidenciaCv,ExpSalCv FROM usuaperso,persobolsacv,bolsacv
+        WHERE 
+        binary(usuaperso.IdPerso) = binary(:id)
+        and usuaperso.IdPerso = persobolsacv.IdPerso
+        and persobolsacv.IdBolCV = bolsacv.IdBolCV";
+        $parametros = [":id"=>$id];
+        $datos = $this->bd->mostrar($consulta,$parametros);
+        return $datos;
+    }
+    function experiencia_academica($id){
+        $consulta = "SELECT Carrera,NumCedAca FROM usuaperso,persobolsacv,bolsacv,expacacv,expacademica
+        WHERE 
+        binary(usuaperso.IdPerso) = binary(:id)
+        and usuaperso.IdPerso = persobolsacv.IdPerso
+        and persobolsacv.IdBolCV = bolsacv.IdBolCV
+        and bolsacv.IdBolCV = expacacv.IdBolCV
+        and expacacv.IdExpAca = expacademica.IdExpAca";
+        $parametros = [":id"=>$id];
+        $datos = $this->bd->mostrar($consulta,$parametros);
+        return $datos;
+    }
+    function experiencia_profesional($id){
+        $consulta = "SELECT EmpExpP,IniExpP,FinExpP,PuestoExpP,ActExpP FROM usuaperso,persobolsacv,bolsacv,expprocv,expprofesional
+        WHERE 
+        binary(usuaperso.IdPerso) = binary(:id)
+        and usuaperso.IdPerso = persobolsacv.IdPerso
+        and persobolsacv.IdBolCV = bolsacv.IdBolCV
+        and bolsacv.IdBolCV = expprocv.IdBolCV
+        and expprocv.IdExpP = expprofesional.IdExpP";
+        $parametros = [":id"=>$id];
+        $datos = $this->bd->mostrar($consulta,$parametros);
+        return $datos;
+    }
 
 }
 

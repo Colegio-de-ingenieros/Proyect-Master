@@ -30,7 +30,117 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
       // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
       const contenedor = document.getElementById('formulario-certificaciones');
 
-      if (respuesta.length > 2){
+      for (let i = 2; i < respuesta.length; i++) {
+         console.log (i);
+         if (respuesta[i] == "no hay certificaciones"){
+            contenedor.textContent = 'No se encontraron certificaciones';
+         }
+         else if (respuesta[i] == "certificaciones"){
+            for (let j = i+1; j < respuesta.length; j++) {
+               console.log(i);
+               if (respuesta[j] == "bolsa" || respuesta[j] == "academica" || respuesta[j] == "profesional"){
+                  i = j-1;
+                  break;
+               }
+               // Crear una nueva caja de texto
+               const nuevaCajaTexto = document.createElement('input');
+      
+               // Establecer los atributos de la nueva caja de texto
+               nuevaCajaTexto.type = 'text';
+               nuevaCajaTexto.name = 'nuevo-input';
+               nuevaCajaTexto.classList = 'input-format-2';
+               let certificacion = respuesta[j]['NomCerExt'];
+               nuevaCajaTexto.value = certificacion;
+               nuevaCajaTexto.readOnly = true;
+      
+               // Añadir la nueva caja de texto al contenedor
+               contenedor.appendChild(nuevaCajaTexto);
+      
+               const CajaTexto = document.createElement('input');
+      
+               // Establecer los atributos de la nueva caja de texto
+               CajaTexto.type = 'text';
+               CajaTexto.name = 'nuevo-input';
+               CajaTexto.classList = 'input-format-2';
+               let empresa = respuesta[j]['OrgCerExt'];
+               CajaTexto.value = empresa;
+               CajaTexto.readOnly = true;
+      
+               // Añadir la nueva caja de texto al contenedor
+               contenedor.appendChild(CajaTexto);
+            }
+         }
+         else if (respuesta[i] == "bolsa"){
+
+               combo = respuesta[i+1]['ResidenciaCv'];
+               combo = combo++;
+               
+               document.getElementById("salario").value = respuesta[i+1]['ExpSalCv'];
+               document.getElementById("objetivo").value =respuesta[i+1]['DesProCv'];
+   
+               if (combo === 1) {
+                  document.getElementById("residencia-campo").value = "1";
+                } else if (combo === 2) {
+                  document.getElementById("residencia-campo").value = "2";
+                } 
+   
+         }
+         else if (respuesta[i] == "academica"){
+            let posicion = i+1;
+            for (let j = i+1; j < respuesta.length; j++) {
+               console.log(i);
+               if (respuesta[j] == "bolsa" || respuesta[j] == "academica" || respuesta[j] == "profesional"){
+                  i = j-1;
+                  break;
+               }
+               else if (j == posicion){
+                  document.getElementById("carrera-1").value = respuesta[j]['Carrera'];
+                  document.getElementById("cedula-1").value = respuesta[j]['NumCedAca'];
+               }
+               else if (j == posicion+1){
+                  document.getElementById("carrera-2").value =  respuesta[j]['Carrera'];
+                  document.getElementById("cedula-2").value = respuesta[j]['NumCedAca'];
+               }
+               else if (j == posicion+2){
+                  document.getElementById("carrera-3").value =  respuesta[j]['Carrera'];
+                  document.getElementById("cedula-3").value = respuesta[j]['NumCedAca'];
+               }
+               
+            }
+         }
+         else if (respuesta[i] == "profesional"){
+            let posicion = i+1;
+            for (let j = i+1; j < respuesta.length; j++) {
+               console.log(i);
+               if (respuesta[j] == "bolsa" || respuesta[j] == "academica" || respuesta[j] == "profesional"){
+                  i = j-1;
+                  break;
+               }
+               else if (j == posicion){
+                  document.getElementById("puesto-antiguo-1").value = respuesta[j]['PuestoExpP'];
+                  document.getElementById("empresa-antigua-1").value = respuesta[j]['EmpExpP'];
+                  document.getElementById("periodo-inicio-antigua-1").value = respuesta[j]['IniExpP'];
+                  document.getElementById("periodo-fin-antigua-1").value = respuesta[j]['FinExpP'];
+                  document.getElementById("actividad-antigua-1").value = respuesta[j]['ActExpP'];
+               }
+               else if (j == posicion+1){
+                  document.getElementById("puesto-antiguo-2").value = respuesta[j]['PuestoExpP'];
+                  document.getElementById("empresa-antigua-2").value = respuesta[j]['EmpExpP'];
+                  document.getElementById("periodo-inicio-antigua-2").value = respuesta[j]['IniExpP'];
+                  document.getElementById("periodo-fin-antigua-2").value = respuesta[j]['FinExpP'];
+                  document.getElementById("actividad-antigua-2").value = respuesta[j]['ActExpP'];
+               }
+               
+               
+            }
+         }
+      }
+   });
+
+      // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
+/*       const contenedor = document.getElementById('formulario-certificaciones');
+
+      if (respuesta.length > 2 && respuesta[2] != "bolsa"){
          for (let i = 2; i < respuesta.length; i++) {
          // Crear una nueva caja de texto
          const nuevaCajaTexto = document.createElement('input');
@@ -63,4 +173,20 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
    else{
       contenedor.textContent = 'No se encontraron certificaciones';
    }
-   });
+   }); */
+
+/* function mostrar(){
+   
+   
+         document.getElementById("puesto-antiguo-1").value = estado;
+         document.getElementById("empresa-antigua-1").value = estado;
+         document.getElementById("periodo-inicio-antigua-1").value = "2023-12-02";
+         document.getElementById("periodo-fin-antigua-1").value = "2023-12-02";
+         document.getElementById("actividad-antigua-1").value = estado;
+   
+         document.getElementById("puesto-antiguo-2").value = estado;
+         document.getElementById("empresa-antigua-2").value = estado;
+         document.getElementById("periodo-inicio-antigua-2").value = "2023-12-02";
+         document.getElementById("periodo-fin-antigua-2").value = "2023-12-02";
+         document.getElementById("actividad-antigua-2").value = estado;
+} */
