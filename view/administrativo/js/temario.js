@@ -209,6 +209,8 @@ window.onload = function () {
         linkSubtemas.textContent = "Subtemas";
         linkSubtemas.setAttribute("onclick", "mostrar_modal('" + index + "')");
 
+        const linkModal = document.getElementById("close");
+
         titleContainer.appendChild(titleInput);
         titleContainer.appendChild(addButtonAbove);
         titleContainer.appendChild(addButtonBelow);
@@ -461,6 +463,9 @@ function mostrar_modal(position) {
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
 
+        const cerarModal = document.getElementById("close");
+        cerarModal.setAttribute("onclick", "ocultar_modal(" + index + ")");
+
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
         newLabelSubtema.textContent = "No hay subtemas registrados";
@@ -604,10 +609,35 @@ function mostrar_modal(position) {
   };
 }
 
-function ocultar_modal() {
+function ocultar_modal(position) {
+  let bandera_subtemas = false;
 
+  DataGlobal.forEach((item, index) => {
+    
+    if (index == position) {
+      let longitud_subtemas = item.subtitles.length;
 
-  modal.classList.remove("show");
+      if (longitud_subtemas == 0) {
+        bandera_subtemas = false;
+      }
+      else{
+        item.subtitles.forEach((subtitle, index) => {
+          let contenido_subtitulo = subtitle;
+          if (contenido_subtitulo == "") {
+            bandera_subtemas = true;
+          }
+        });
+      }
+    }
+  });
+  
+
+  if (bandera_subtemas == true) {
+    alert("No puede haber subtemas vacios");
+  }
+  else{
+    modal.classList.remove("show");
+  }
 }
 
 const enviar = document.getElementById("update-form");

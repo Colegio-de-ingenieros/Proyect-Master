@@ -1,7 +1,7 @@
 let listOfLists = [];
 
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
+  let url = "../controller/socio-asociado/Bolsa_Trabajo.php";
   let id = 0;
 
   let form = new FormData();
@@ -13,7 +13,7 @@ window.onload = function () {
   })
     .then(response => response.json())
     .then(json => resultado(json))
-    .catch(error => alert(error));
+    .catch(error => alert("No se encontraron vacantes"));
 
   const resultado = (json) => {
     listOfLists = json.map(obj => Object.values(obj));
