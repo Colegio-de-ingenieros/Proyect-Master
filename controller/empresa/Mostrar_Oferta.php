@@ -53,6 +53,7 @@ $dias=trim($dias,",");
 $res=preg_replace("[\n|\r|\n\r]", "<br>", $desc);
 $resTec=preg_replace("[\t|\n|\r|\n\r]", "<br>", $reqtec);
 $resAca=preg_replace("[\t|\n|\r|\n\r]", "<br>", $req);
+
 ?>
 <script languaje="javascript">
     var parrafo = document.getElementById("nombreOT"); // obtenemos la referencia al elemento
