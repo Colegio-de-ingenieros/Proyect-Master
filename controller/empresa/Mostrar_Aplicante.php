@@ -45,7 +45,7 @@ if (isset($_POST['consulta'])) {
                         <thead  >
                             <tr>
                                 <th>Nombre</th>
-                                <th>Descripción</th>
+                                <th>Descripción profesional</th>
                                 <th>Correo</th>
                                 <th>Teléfono</th>
                                 <th>Salario esperado</th>
@@ -122,7 +122,7 @@ if (isset($_POST['consulta'])) {
                         <thead  >
                             <tr>
                                 <th>Nombre</th>
-                                <th>Descripción</th>
+                                <th>Descripción profesional</th>
                                 <th>Correo</th>
                                 <th>Teléfono</th>
                                 <th>Salario esperado</th>
