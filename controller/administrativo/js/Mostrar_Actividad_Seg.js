@@ -72,14 +72,16 @@ function rellenar_datos(datos) {
         }
         if (dato.length != 0){
             dato.forEach(registro => {
-            var optionElement = document.createElement("option");
-            optionElement.value = registro[0];
-            optionElement.text = registro[1];
-            document.getElementById(campo).appendChild(optionElement);
+                var optionElement = document.createElement("option");
+                optionElement.value = registro[0];
+                optionElement.text = registro[1];
+                document.getElementById(campo).appendChild(optionElement);
             });
+
             if (i<4){
-            document.ready = document.getElementById(campo).value = '0';
+                document.ready = document.getElementById(campo).value = '0';
             }
+            document.getElementById(campo).disabled = false;
         } else {
             var optionElement = document.createElement("option");
             optionElement.value = "Vacio";
@@ -131,13 +133,16 @@ function rellenar_tablaExtra(){
 
 function rellenar_tabla(){
     split=obtener_URL()
+    var tipoAct = split[1]
     var idAct=split[2]
+
+    var actividad=tipoAct+"="+idAct;
 
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Actividad_Tabla.php',
         type: 'POST',
         dataType: 'html',
-        data: { idAct: idAct},
+        data: { idAct: idAct, actividad: actividad},
     })
 
         .done(function (respuesta)

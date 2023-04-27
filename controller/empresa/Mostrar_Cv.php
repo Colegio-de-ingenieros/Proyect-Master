@@ -85,33 +85,11 @@ var parrafo = document.createElement("p");
 var parrafo = document.getElementById("descripcion_profeAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $desc; ?>";
 var parrafo = document.createElement("p");
+
+
 </script>
-<!-- Experiencia académica -->
-<br>
-      <div class="divisor">
-        <p class="subtitulo-1">Experiencia académica</p>
-       
-        <br>
-        <hr>
-      </div>
-      <br>
-      <!-- Formulario académico 1 -->
-      <div class="formulario-academica" id="academico-1">
-        <!-- Nombre de la carrera -->
-        <div class="campo">
-          <label for="" class="label-2">Nombre de la carrera:</label>
-          <p class="label-4" id="nombre_carreraAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-        <!-- Número de cédula -->
-        <div class="campo">
-          <label for="" class="label-2">Número de cédula:</label>
-          <p class="label-4" id="num_cedulaAP">Pruebas de como se ve el texto</p>
-          
-        </div>
-      </div>
-      <br>
-      <br>
+
+
       <div class="formulario-academica">
         <!-- Nombre de la carrera -->
         <?php $resultado=$base->mostrarAcademica($id);
@@ -120,6 +98,31 @@ var parrafo = document.createElement("p");
           for ($i = 0; $i < count($resultado); $i++) {
             $puesto=$resultado[$i]['Carrera'];
             $ced=$resultado[$i]['NumCedAca'];
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("aca");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Este es mi nuevo label";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';
+          echo '<br>';
+          echo '<script>// Obtener el elemento div
+          var miDiv = document.getElementById("aca2");
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Este es mi nuevo label";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "Este es la p";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          miDiv.appendChild(br);</script>';
+          echo '<br>';
          $salida.='<div id="carrera-1"class="campo">
           <label for="" class="label-2">Nombre de la carrera</label><br><br>
           <label for="" class="label-4">'.$puesto.' </label> <br> <br>

@@ -3,6 +3,8 @@ function confirmacion(e){
     if (confirm("¿Está seguro que desea eliminar este participante?")) {
         e.preventDefault();
         var participante = $(this).data('participante');
+        var actividad = $(this).data('actividad');
+
         $.ajax({
             url: '../../controller/administrativo/Eliminar_Participante.php', 
             type: 'GET', 
@@ -11,8 +13,9 @@ function confirmacion(e){
             success: function (response)
             {
                 alert("Eliminado con éxito");
+                window.location.href='../../view/administrativo/Accion_Seguimiento.html?actividad='+actividad;
 
-                //location.href = '../../view/administrativo/Accion_Seguimiento.html';
+                //location.href = "../../view/administrativo/Accion_Seguimiento.html?actividad='.$actividad.'";
             },
             error: function (jqXHR, textStatus, errorThrown)
             {

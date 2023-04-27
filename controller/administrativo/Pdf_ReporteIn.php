@@ -41,7 +41,7 @@ class PDF extends FPDF{
 
         $this->SetFillColor(8,82,98);
         //Cabecera
-        $this->Ln(30);
+        $this->Ln(15);
         //Color e la cabecarea de la tabla 
         foreach($header as $col)
         {
@@ -53,17 +53,37 @@ class PDF extends FPDF{
         $this->SetTextColor(0, 0, 0);
         $this->SetFont('Times','',12);
 
-        //colocar filas 
+        $this->Ln();
+        //crea las celdas de la tabla con los datos
         for ($i=0; $i < count($filas) ; $i++) { 
-            $this->Ln();
+            
+            $y = $this->GetY(); 
+            $x = $this->GetX();
+          
             $columnas = explode(",",$filas[$i]);
+            
             for ($j=0; $j < count($columnas) ; $j++) { 
-                # crea las 8 celdas
-                $this->Cell(35,7,$columnas[$j],1);
+                if($j == 0){
+                    $this->MultiCell(35,7,$columnas[$j],1); //creamos la primera celda
+                  
+                }else{
+                    # para obtener la atura, tomamos la posicion de y despues de colocarca y le restamos la y anterior
+                    $y_anterior =  $this->GetY();
+                    $this->SetXY($x+35, $y);//para mover la celda en x, aumentamos de 35 en 35 la x, 35 es el tamaño de la culumna
+                    $x = $this->GetX();  
+                    $altura = ($y_anterior-$y);
+                    $this->Rect($x,$y,35,$altura);
+                    $this->MultiCell(35,$altura,$columnas[$j],1);
+                }
+                
+              
+                
             }
+            //agrega un salto de pagina si hay overflow a causa de la celda
+            if($this->GetY()+$altura>$this->PageBreakTrigger)
+            $this->AddPage($this->CurOrientation);
            
         }
-
        
 
         $this->SetFont('Arial','B',15);
@@ -72,7 +92,7 @@ class PDF extends FPDF{
         $this->Cell(60,10,'Total de ingresos = '.$ingresos,0,1,'L');
         $this->Cell(60,10,'Total = '.$total,0,1,'L');
     }
-    
+
 
 }
 
