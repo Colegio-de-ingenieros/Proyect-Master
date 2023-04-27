@@ -79,10 +79,13 @@ function mostrar_modal(id_vacante) {
 
     const resultado = (json) => {
       let listOfLists2 = json.map(obj => Object.values(obj));
-      listOfLists2 = listOfLists2.map(list => list.slice(0, 16));
+      listOfLists2 = listOfLists2.map(list => list.slice(0, 19));
+      /* console.log(listOfLists2) */
       for(let i = 0; i < listOfLists2.length; i++){
         if(listOfLists2[i][0] == id_vacante){
           const nombre_vacante = document.getElementById('nombre-vacante');
+          const empresa = document.getElementById('nombre-empresa');
+          const días = document.getElementById('dias-laborales');
           const horario = document.getElementById('horario');
           const jornada = document.getElementById('jornada');
           const modalidad = document.getElementById('modalidad');
@@ -95,6 +98,19 @@ function mostrar_modal(id_vacante) {
           const telefono = document.getElementById('telefono-empresa');
           const correo = document.getElementById('correo-empresa');
           const link = document.getElementById('link-ventana')
+
+          let lista_dias = listOfLists2[i][18]
+          console.log(lista_dias)
+
+          const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+          let cadena = '';
+
+          for (let i = 0; i < lista_dias.length; i++) {
+            let dia = lista_dias[i][0];
+            cadena += diasSemana[dia - 1] + ', ';
+          }
+
+          cadena_dias = cadena.slice(0, -2);
 
           let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
           let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
@@ -134,6 +150,8 @@ function mostrar_modal(id_vacante) {
           modalidad.innerHTML = texto_modalidad;
           telefono.innerHTML = listOfLists2[i][10];
           correo.innerHTML = listOfLists2[i][12];
+          empresa.innerHTML = listOfLists2[i][15]
+          días.innerHTML = cadena_dias;
           link.href = "Aplicar_Vacante.php?id="+listOfLists[i][0]
         }
       }
