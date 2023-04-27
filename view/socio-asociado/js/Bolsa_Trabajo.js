@@ -101,16 +101,21 @@ function mostrar_modal(id_vacante) {
 
           let lista_dias = listOfLists2[i][18]
           console.log(lista_dias)
+          if (lista_dias != "No se encontraron días laborales") {
+            const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+            let cadena = '';
 
-          const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-          let cadena = '';
+            for (let i = 0; i < lista_dias.length; i++) {
+              let dia = lista_dias[i][0];
+              cadena += diasSemana[dia - 1] + ', ';
+            }
 
-          for (let i = 0; i < lista_dias.length; i++) {
-            let dia = lista_dias[i][0];
-            cadena += diasSemana[dia - 1] + ', ';
+            cadena_dias = cadena.slice(0, -2);
           }
-
-          cadena_dias = cadena.slice(0, -2);
+          else{
+            cadena_dias = lista_dias;
+          }
+          
 
           let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
           let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
