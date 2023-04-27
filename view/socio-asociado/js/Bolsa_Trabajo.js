@@ -1,7 +1,7 @@
 let listOfLists = [];
 
 window.onload = function () {
-  let url = "../../../controller/socio-asociado/Bolsa_Trabajo.php";
+  let url = "../../controller/socio-asociado/Bolsa_trabajo.php"
   let id = 0;
 
   let form = new FormData();
