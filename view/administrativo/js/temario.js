@@ -460,12 +460,14 @@ function mostrar_modal(position) {
         list.classList.add("list-items");
         modalTitle.textContent = item.title;
         modalContainer.innerHTML = "";
+
         const newLabelSubtema = document.createElement("label");
         newLabelSubtema.classList.add("label-2");
         newLabelSubtema.textContent = "No hay subtemas registrados";
         newLabelSubtema.style.marginBottom = "10px";
         newLabelSubtema.style.marginTop = "10px";
         newLabelSubtema.style.marginLeft = "10px";
+
 
         const addButtonSubtitleEmpty = document.createElement("button");
         addButtonSubtitleEmpty.classList.add("btn", "btn-small", "btn-add");
@@ -603,6 +605,8 @@ function mostrar_modal(position) {
 }
 
 function ocultar_modal() {
+
+
   modal.classList.remove("show");
 }
 
@@ -610,34 +614,58 @@ const enviar = document.getElementById("update-form");
 const regresar = document.getElementById("delete-form");
 
 enviar.addEventListener("click", (e) => {
-  /* console.log("DataGlobal: ", DataGlobal); */
-  let temario = convertirData(DataGlobal);
-  console.log("Temario: ", temario);
-  let nombre_curso = document.getElementById("nombre-curso").value;
-  let clave_curso = document.getElementById("clave-curso").value;
-  let duracion_curso = document.getElementById("duración").value;
-  let objetivo_curso = document.getElementById("objetivo").value;
+  
+  let vacio = validar_temas();
+  
+  if (vacio == true){
+    alert("No puede haber temas vacios");
+  }
+  else{
+    let temario = convertirData(DataGlobal);
+    console.log("Temario: ", temario);
 
-  let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
+    let nombre_curso = document.getElementById("nombre-curso").value;
+    let clave_curso = document.getElementById("clave-curso").value;
+    let duracion_curso = document.getElementById("duración").value;
+    let objetivo_curso = document.getElementById("objetivo").value;
 
-  let url = "../../controller/administrativo/Eliminar_Temario.php";
-  let form = new FormData()
+    let basicos = [nombre_curso, clave_curso, duracion_curso, objetivo_curso];
 
-  console.log("Basicos: ", basicos);
-  console.log("Temario: ", temario);
+    let url = "../../controller/administrativo/Eliminar_Temario.php";
+    let form = new FormData()
 
-  form.append("arrayin", JSON.stringify(basicos));
-  form.append("lista", JSON.stringify(temario));
-  fetch(url, {
-    method: "POST",
-    body: form,
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      /* console.log(data); */
-      alert(data);
-    });
+    console.log("Basicos: ", basicos);
+    console.log("Temario: ", temario);
 
+    form.append("arrayin", JSON.stringify(basicos));
+    form.append("lista", JSON.stringify(temario));
+    fetch(url, {
+      method: "POST",
+      body: form,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        alert("Actualización exitosa");
+        window.location.href = "Vista_Cursos.php";
+      });
+  }
+});
+
+function validar_temas(){
+  let bandera = false;
+  /* Imprime cada item de la DataGlobal */
+  DataGlobal.forEach((item, index) => {
+    let titulo = item.title;
+    if(titulo == ""){
+      bandera = true;
+    }
+  });
+
+  return bandera;
+}
+
+regresar.addEventListener("click", (e) => {
+  window.location.href = "Vista_Cursos.php";
 });
 
 const convertirData = (data) => {

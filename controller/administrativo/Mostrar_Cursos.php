@@ -166,29 +166,24 @@ function eli(dato)
    var formData = new FormData();
    formData.append("id", dato);
 
-
-   var xmlhttp = new XMLHttpRequest();
-   xmlhttp.open("POST", "../../controller/administrativo/Eliminar_Cursos.php");
-
-   xmlhttp.onreadystatechange = function () {
-       if (this.readyState == 4 && this.status == 200) {
-
-           
-           if (this.responseText == "El curso se eliminó con éxito, por favor refresque la página") {
+   fetch("../../controller/administrativo/Eliminar_Cursos.php", {
+    method: "POST",
+    body: formData
+})
+    .then(res => res.json())
+    .then(data =>
+    {
+        if (data === "El curso se eliminó con éxito, por favor refresque la página") {
             alert ("Eliminado con éxito");
             location.reload();
-           }
-           else {
-               alert(this.responseText);
-           }
-       }
-   };
-
-   xmlhttp.send(formData);
-}
-    else{
-        window.location("Vista_Cursos.php");}
-}
+           
+        }
+        else {
+            alert(data);
+            
+        }
+    })
+}}
 </script>';
 echo $respuesta;
 
