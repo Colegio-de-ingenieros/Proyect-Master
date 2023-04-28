@@ -65,7 +65,7 @@ const modal = document.getElementById('modal-container');
 
 function mostrar_modal(id_vacante) {
     modal.classList.add('show');
-    let url = "../../../controller/socio-asociado/Bolsa_trabajo.php";
+    let url = "../../controller/socio-asociado/Bolsa_trabajo.php";
     let form = new FormData();
     form.append("id_vacante", id_vacante);
 
