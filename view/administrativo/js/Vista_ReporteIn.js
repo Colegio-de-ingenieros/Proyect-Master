@@ -329,6 +329,15 @@ function rellenar_tabla(datos) {
     sub_gastos_col.innerText = "$ " + parseFloat(sub_sub_gastos);
     ingresos_col.innerText = "$ " + parseFloat(sub_ingresos);
 
+    sub_col.classList.add('subtotal');
+    hotel_col.classList.add('subtotal');
+    transporte_col.classList.add('subtotal');
+    comida_col.classList.add('subtotal');
+    oficina_col.classList.add('subtotal');
+    honorarios_col.classList.add('subtotal');
+    sub_gastos_col.classList.add('subtotal');
+    ingresos_col.classList.add('subtotal');
+
     row.appendChild(sub_col);
     row.appendChild(hotel_col);
     row.appendChild(transporte_col);
