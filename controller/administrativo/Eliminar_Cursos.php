@@ -4,16 +4,14 @@ include_once('../../model/administrativo/Eliminar_Cursos.php');
 $bd = new EliminarCurso();
 $bd->BD();
 
-$id = $_POST['id'];
+$id = $_GET['id'];
 $id = $bd->agregar_ceros($id, 6);
-
-
 
 $estatus = $bd->buscaestatus($id);
 $estacur= $estatus[0]["EstatusCur"];
 
 if ($estacur == "0") {
-    echo json_encode("Error, el curso no puede ser eliminado porque tiene un seguimiento");
+    http_response_code(404);
 }
 else{
 $datost = $bd->t($id);
