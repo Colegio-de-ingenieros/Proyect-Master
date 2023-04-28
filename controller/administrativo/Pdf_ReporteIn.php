@@ -27,9 +27,9 @@ class PDF extends FPDF{
         // Salto de línea
         $this->Ln(20);
         $this->Cell(280,10,'Colegio de Ingenieros en Sistemas Computacionales',0,1,'C');
-        $this->Ln(5);
+        $this->Ln();
         $this->Cell(280,10,'Reporte individual',0,1,'C');
-        $this->Ln(5);
+        $this->Ln();
         $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
     } 
@@ -41,7 +41,7 @@ class PDF extends FPDF{
 
         $this->SetFillColor(8,82,98);
         //Cabecera
-        $this->Ln(15);
+        $this->Ln(25);
         //Color e la cabecarea de la tabla 
         foreach($header as $col)
         {
@@ -52,7 +52,6 @@ class PDF extends FPDF{
         //Color de las letras de la tabla 
         $this->SetTextColor(0, 0, 0);
         $this->SetFont('Times','',12);
-
         $this->Ln();
         //crea las celdas de la tabla con los datos
         for ($i=0; $i < count($filas) ; $i++) { 
