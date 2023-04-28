@@ -78,11 +78,11 @@ class EliminarCurso{
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
-    function s($id,$tes){
+    function s($id){
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
-            where  temas.IdTema = '$tes'
-            and temas.IdTema = temassub.IdTema
-            and temassub.IdSubT = subtemas.IdSubT";
+            WHERE  temas.IdTema = '$id'
+            AND temas.IdTema = temassub.IdTema
+            AND temassub.IdSubT = subtemas.IdSubT;";
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
