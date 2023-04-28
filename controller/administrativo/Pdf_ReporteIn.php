@@ -27,9 +27,9 @@ class PDF extends FPDF{
         // Salto de línea
         $this->Ln(20);
         $this->Cell(280,10,'Colegio de Ingenieros en Sistemas Computacionales',0,1,'C');
-        $this->Ln(10);
+        $this->Ln(5);
         $this->Cell(280,10,'Reporte individual',0,1,'C');
-        $this->Ln(10);
+        $this->Ln(5);
         $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
     } 

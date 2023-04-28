@@ -144,6 +144,19 @@
           <label for="" class="label-2">Teléfono</label>
           <input type="tel" class="input-format-2" id="telefono-campo" readonly></input>
         </div>
+        <!-- Cambio de residencia -->
+        <div class="campo">
+          <label for="" class="label-2">¿Puede cambiar de residencia?</label>
+          <input type="text" class="input-format-2" id="residencia-campo" readonly>
+        </div>
+        <!-- Expectativa salarial bruta -->
+        <div class="campo">
+          <label for="" class="label-2">Expectativa salarial bruta</label>
+          <input id="salarial-campo" type="text"class="input-format-2" readonly></input>
+        </div>
+      </div>
+
+      <div class="fromulario-generales">
         <!-- Calle y número -->
         <div class="campo">
           <label for="" class="label-2">Calle y número</label>
@@ -163,16 +176,6 @@
         <div class="campo">
           <label for="" class="label-2">Estado</label>
           <input type="text" class="input-format-2" id="estado-campo" readonly>
-        </div>
-        <!-- Cambio de residencia -->
-        <div class="campo">
-          <label for="" class="label-2">¿Puede cambiar de residencia?</label>
-          <input type="text" class="input-format-2" id="residencia-campo" readonly>
-        </div>
-        <!-- Expectativa salarial bruta -->
-        <div class="campo">
-          <label for="" class="label-2">Expectativa salarial bruta</label>
-          <input id="salarial-campo" type="text"class="input-format-2" readonly></input>
         </div>
       </div>
 
