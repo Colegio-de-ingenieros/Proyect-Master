@@ -173,7 +173,7 @@ function eli(dato)
     .then(res => res.json())
     .then(data =>
     {
-        if (data === "El curso se eliminó con éxito, por favor refresque la página") {
+        if (data === "exito") {
             alert ("Eliminado con éxito");
             location.reload();
            
