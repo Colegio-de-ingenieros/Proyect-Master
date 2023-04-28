@@ -156,7 +156,18 @@
         </div>
       </div>
 
-      <div class="fromulario-generales">
+      <div class="formulario-descripcion">
+        <label for="" class="label-2">Descripción profesional</label>
+        <textarea  id="objetivo" class="input-format-2" readonly></textarea>
+      </div>
+      
+      <!-- Dirección -->
+      <div class="divisor">
+        <p class="subtitulo-1">Dirección</p>
+        <hr>
+      </div>
+      
+      <div class="formulario-generales">
         <!-- Calle y número -->
         <div class="campo">
           <label for="" class="label-2">Calle y número</label>
@@ -179,10 +190,6 @@
         </div>
       </div>
 
-      <div class="formulario-descripcion">
-        <label for="" class="label-2">Descripción profesional</label>
-        <textarea  id="objetivo" class="input-format-2" readonly></textarea>
-      </div>
       <!-- Experiencia académica -->
       <div class="divisor">
         <p class="subtitulo-1">Experiencia académica</p>
