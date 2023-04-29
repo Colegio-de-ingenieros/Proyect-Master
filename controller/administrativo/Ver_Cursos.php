@@ -143,12 +143,13 @@ $respuesta .= '
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de cursos</title>
+  <title>Ver más de un curso</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="../../public/css/administrativo/Ver_Cursos.css">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <!--<link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
@@ -326,6 +327,11 @@ $respuesta .= '
           </script>
 
 	<main>
+	
+	<a target="_blank" href="../../controller/administrativo/Pdf_cursos.php?id='.$id. '" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en PDF</a>
+	<br>
+	<a target="_blank" href="#" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);" onclick="generar()">Descargar temario en Excel</a>
+
 	<section>
 		<h1 style="width: 500px; word-wrap: break-word;">'. $nombre .'</h1>
         <h4>'. $clave .'</h4>
@@ -340,9 +346,7 @@ $respuesta .= '
 		</section>
 		<section>
 			<h2>Temario</h2>
-			<a target="_blank" href="../../controller/administrativo/Pdf_cursos.php?id='.$id. '" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);">Descargar temario en PDF</a>
-			<br>
-			<a target="_blank" href="#" style="text-decoration: none; font-size: 1rem; font-weight: 600;padding: 6px 12px;background: var(--color-primary);color: var(--color-white);border-radius: var(--radius-2);" onclick="generar()">Descargar temario en Excel</a>
+			
 		</section>
 		<section>
 			<p>';
