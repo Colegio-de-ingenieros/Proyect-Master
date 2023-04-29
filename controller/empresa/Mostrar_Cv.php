@@ -34,7 +34,7 @@ if ($resultado == true) {
   $municipio=$resultado[0]["nommunicipio"];
   $estado=$resultado[0]["nomestado"];
 }
-$desc=preg_replace("[\n|\r|\n\r]", '<br>', $desc);
+$desc=preg_replace("[\n|\r|\n\r]", "<br>", $desc);
 ?>
 
 <script languaje="javascript">
