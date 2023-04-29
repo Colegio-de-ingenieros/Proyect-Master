@@ -69,7 +69,7 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let formulario_data = new FormData(formulario);
     if(campo_codigo.value.length == 0 ){
-        alert("Debe escribir el código");
+        alert("Ingrese el código de verificación que se le ha enviado");
     }else{
         if(banderas.bcodigo){
             fetch("../../controller/login/Comparar_Codigo.php",
