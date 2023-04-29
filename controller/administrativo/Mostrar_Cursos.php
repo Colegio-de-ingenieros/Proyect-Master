@@ -58,7 +58,7 @@ if (isset($_POST['consulta'])) {
             $nombre = $datos[$i]["NomCur"];
             $duracion = $datos[$i]["DuracionCur"];
             //$extension = getExt($logo);
-    
+    //<a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             //escribe los valores en la tabla
             $respuesta .= '<tr>';
             $respuesta .= '<td>' . $clave . '</td>';
@@ -67,7 +67,7 @@ if (isset($_POST['consulta'])) {
             $respuesta .= '<td> 
             <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#" class="table_item__link eliminar-elemento" data-id="' . $clave . '">Eliminar</a></td>
             
             </td>';
             $respuesta .= '</tr>';
@@ -133,7 +133,7 @@ if ($datos == true) {
         $nombre = $datos[$i]["NomCur"];
         $duracion = $datos[$i]["DuracionCur"];
         //$extension = getExt($logo);
-
+        //<a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         //escribe los valores en la tabla
         $respuesta .= '<tr>';
         $respuesta .= '<td>' . $clave . '</td>';
@@ -142,8 +142,8 @@ if ($datos == true) {
         $respuesta .= '<td> 
         <a href="../../controller/administrativo/Ver_Cursos.php?id='. $clave .'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="../../view/administrativo/Modi_Cursos.php?id='. $clave .'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" onclick="eli(' .$clave. ')">Eliminar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
+        <a href="#" class="table_item__link eliminar-elemento" data-id="' . $clave . '">Eliminar</a></td>
         </td>';
         $respuesta .= '</tr>';
         $respuesta .= '</div>';
@@ -156,7 +156,9 @@ else {
     $respuesta .= 'No se encontraron resultados';
 }
 }
-$respuesta .= "</tbody></table>";
+echo $respuesta;
+
+/* $respuesta .= "</tbody></table>";
 echo '<script type="text/javascript">
 function eli(dato)
 {
@@ -186,5 +188,6 @@ function eli(dato)
 }}
 </script>';
 echo $respuesta;
-
+ */
 ?>
+<script src="../../controller/administrativo/js/Eliminar_Cursos.js"></script>

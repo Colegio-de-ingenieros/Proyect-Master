@@ -22,11 +22,24 @@ class EliminarCurso{
         return $numero_nuevo;
     }
 
-    function buscaestatus($id){
+/*     function buscaestatus($id){
         $consulta = "SELECT EstatusCur FROM cursos
         WHERE cursos.ClaveCur = '$id';";
         $datos = $this->bd->mostrar($consulta);
         return $datos;
+    } */
+    function buscaestatus($id){
+        $querry1 = "SELECT EstatusCur FROM cursos WHERE ClaveCur=:id";
+        $arre1 = [":id"=>$id];
+        $resultados = $this->bd->mostrar($querry1, $arre1);
+        
+        //Tiene un seguimiento el proyecto
+        if ($resultados[0]["EstatusCur"]===0){
+            return 1;
+        }
+        else{
+            return 0;
+        }
     }
 
     function eliminarcurso($id){
@@ -78,11 +91,11 @@ class EliminarCurso{
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
-    function s($id,$tes){
+    function s($id){
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
-            where  temas.IdTema = '$tes'
-            and temas.IdTema = temassub.IdTema
-            and temassub.IdSubT = subtemas.IdSubT";
+            WHERE  temas.IdTema = '$id'
+            AND temas.IdTema = temassub.IdTema
+            AND temassub.IdSubT = subtemas.IdSubT;";
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
