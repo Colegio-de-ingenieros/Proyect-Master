@@ -8,7 +8,7 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let formulario_data = new FormData(formulario);
     if(campo_usuario.value.length == 0 || campo_pass.value.length == 0){
-        alert("Debe escribir su usuario y contraseña");
+        alert("Ingrese su correo electrónico y su contraseña");
     }else{
         fetch("../../controller/login/Login.php",
         {
