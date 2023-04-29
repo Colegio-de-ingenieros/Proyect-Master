@@ -7,7 +7,7 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let formulario_data = new FormData(formulario);
     if(campo_usuario.value.length == 0 ){
-        alert("Debe escribir su usuario");
+        alert("Ingrese su correo electrónico");
     }else{
         fetch("../../controller/login/Existencia_Usuario.php",
         {
