@@ -483,13 +483,13 @@ function datos(){
         segunda_carrera = 0;
         tercer_carrera = 0;
         segundo_puesto= 0;
-        if (document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value !== ""){
+        if (document.getElementById("carrera-2").value.trim().length != 0 && document.getElementById("cedula-2").value.trim().length != 0){
             segunda_carrera = 1;
         }
-        if (document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value !== ""){
+        if (document.getElementById("carrera-3").value.trim().length != 0 && document.getElementById("cedula-3").value.trim().length != 0){
             tercer_carrera = 1;
         }
-        if(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value !== ""){
+        if(document.getElementById("puesto-antiguo-2").value.trim().length != 0 && document.getElementById("empresa-antigua-2").value.trim().length != 0 && document.getElementById("actividad-antigua-2").value.trim().length != 0){
             segundo_puesto= 1;
         }
 
