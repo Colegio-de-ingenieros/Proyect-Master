@@ -1,7 +1,7 @@
 <?php
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Aplicantes.php');
-include_once('../..//view/empresa/Mostrar_Cvindividual.html');
+include_once('../../view/empresa/Mostrar_Cvindividual.html');
 //echo $id;
 $base = new MostrarAplicantes();
 $base->instancias();
