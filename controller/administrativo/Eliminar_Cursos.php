@@ -8,9 +8,9 @@ $id = $_GET['id'];
 $id = $bd->agregar_ceros($id, 6);
 
 $estatus = $bd->buscaestatus($id);
-$estacur= $estatus[0]["EstatusCur"];
+/* $estacur= $estatus[0]["EstatusCur"]; */
 
-if ($estacur == "0") {
+if ($estatus == true) {
     http_response_code(404);
 }
 else{

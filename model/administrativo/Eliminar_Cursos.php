@@ -22,11 +22,24 @@ class EliminarCurso{
         return $numero_nuevo;
     }
 
-    function buscaestatus($id){
+/*     function buscaestatus($id){
         $consulta = "SELECT EstatusCur FROM cursos
         WHERE cursos.ClaveCur = '$id';";
         $datos = $this->bd->mostrar($consulta);
         return $datos;
+    } */
+    function buscaestatus($id){
+        $querry1 = "SELECT EstatusCur FROM cursos WHERE ClaveCur=:id";
+        $arre1 = [":id"=>$id];
+        $resultados = $this->bd->mostrar($querry1, $arre1);
+        
+        //Tiene un seguimiento el proyecto
+        if ($resultados[0] ["EstatusCur"]==0){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     function eliminarcurso($id){
