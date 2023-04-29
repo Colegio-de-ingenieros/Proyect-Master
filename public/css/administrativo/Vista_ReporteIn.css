@@ -72,7 +72,7 @@ article{
 .totales{
     width: 15em; 
     margin: auto 53em;
-}
+} 
 
 .input-textarea:focus{
     box-shadow: var(--shadow-1);
