@@ -34,7 +34,7 @@ class EliminarCurso{
         $resultados = $this->bd->mostrar($querry1, $arre1);
         
         //Tiene un seguimiento el proyecto
-        if ($resultados[0]["EstatusCur"]===0){
+        if ($resultados[0]["EstatusCur"]==0){
             return 1;
         }
         else{

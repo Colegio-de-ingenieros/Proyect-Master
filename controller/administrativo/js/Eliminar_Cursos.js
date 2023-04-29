@@ -3,7 +3,7 @@ function confirmacion(e){
     if (confirm("¿Está seguro que desea eliminar este curso?")) {
         e.preventDefault();
         var id = $(this).data('id');
-
+        console.log(id);
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
