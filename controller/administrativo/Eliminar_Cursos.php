@@ -10,7 +10,7 @@ $id = $bd->agregar_ceros($id, 6);
 $estatus = $bd->buscaestatus($id);
 /* $estacur= $estatus[0]["EstatusCur"]; */
 
-if ($estatus == true) {
+if ($estatus === 1) {
     http_response_code(404);
 }
 else{
