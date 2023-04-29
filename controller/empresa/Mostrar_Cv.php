@@ -152,11 +152,11 @@ var parrafo = document.createElement("p");
           $fin=$resultado[$i]['FinExpP'];
           $act1=$resultado[$i]['ActExpP'];
           $num=$i+1;
-          $puesto= preg_replace("[\n|\r|\n\r]", "<br>", $puesto);
-          $empresa= preg_replace("[\n|\r|\n\r]", "<br>", $empresa);
-          $inicio= preg_replace("[\n|\r|\n\r]", "<br>", $inicio);
-          $fin= preg_replace("[\n|\r|\n\r]", "<br>", $fin);
-          $act1= preg_replace("[\n|\r|\n\r]", "<br>", $act1);
+          $puesto= preg_replace("[\n|\r|\n\r]", ' ', $puesto);
+          $empresa= preg_replace("[\n|\r|\n\r]", ' ', $empresa);
+          $inicio= preg_replace("[\n|\r|\n\r]", ' ', $inicio);
+          $fin= preg_replace("[\n|\r|\n\r]", ' ', $fin);
+          $act1= preg_replace("[\n|\r|\n\r]", ' ', $act1);
 
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro");
@@ -240,8 +240,8 @@ var parrafo = document.createElement("p");
           for ($i = 0; $i < count($resultado); $i++) {
           $nomCert=$resultado[$i]['NomCerExt'];
           $inst=$resultado[$i]['OrgCerExt'];  
-          $nomCert= preg_replace("[\n|\r|\n\r]", "<br>", $nomCert);
-          $inst= preg_replace("[\n|\r|\n\r]", "<br>", $inst);
+          $nomCert= preg_replace("[\n|\r|\n\r]", ' ', $nomCert);
+          $inst= preg_replace("[\n|\r|\n\r]", ' ', $inst);
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("cer");
 
