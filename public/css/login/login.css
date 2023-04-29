@@ -290,5 +290,22 @@ a{
 
     #check__menu:checked ~ nav > ul {
         margin-top: -115px;
+    } 
+
+    .contImg{
+        display: none;
     }
+
+    .contLogin{
+        width: 100%;
+    } 
+
+    .btn-medium{
+        width: 80%;
+    } 
+
+    .contLogo{
+        width: 80%;
+    }
+    
 }
