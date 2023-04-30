@@ -1,14 +1,6 @@
 <?php
 include_once('../../model/administrativo/Reg_Trabajadores.php');
-/*$rfc = $_POST["caja_rfc"];
-$nombre = $_POST["caja_nombre"];
-$apaterno = $_POST["caja_ap_paterno"];
-$amaterno = $_POST["caja_ap_materno"];
-$correo = $_POST["caja_correo"];
-$telefono = $_POST["caja_telefono"];
-$pass = $_POST["caja_contra"];
-$pass_hashed = password_hash($pass, PASSWORD_BCRYPT);*/
-$rfc = "MIML97";
+$rfc = $_POST["caja_rfc"];
 $nombre = $_POST["caja_nombre"];
 $apaterno = $_POST["caja_ap_paterno"];
 $amaterno = $_POST["caja_ap_materno"];
@@ -16,14 +8,22 @@ $correo = $_POST["caja_correo"];
 $telefono = $_POST["caja_telefono"];
 $pass = $_POST["caja_contra"];
 $pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
+// $rfc = "MIML970715L18";
+// $nombre = "Leobardo";
+// $apaterno = "Miramontes";
+// $amaterno = "Murillo";
+// $correo = "led.tesmur@gmail.com";
+// $telefono = "4371073134";
+// $pass = "Hatsune11";
+// $pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
 $num='4';
 //$ban=true;
 $obj = new NuevoTrabajador();
 $obj->conexion();
-$corExiste=obj->existeCorreo($correo);
+$obj->existeCorreo($correo);
 if($obj->buscarPorRFC($rfc)){
     echo json_encode('ya existe');
-}else if ($corExiste){
+}else if ($obj->existeCorreo($correo)){
     echo json_encode('correo');
 }
 else{
