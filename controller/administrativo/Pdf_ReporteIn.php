@@ -88,12 +88,17 @@ class PDF extends FPDF{
            
         }
        
-
-        $this->SetFont('Arial','B',15);
+        
+        $this->SetFont('Arial','B',14);
         $this->Ln(10);
-        $this->Cell(255,10,'Total de gastos = ' .$gastos ,0,1,'R');
-        $this->Cell(257,10,'Total de ingresos = '.$ingresos,0,1,'R');
-        $this->Cell(228,10,'Total = '.$total,0,1,'R');
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total de gastos = ' .$gastos);
+        $x = $this->GetX();
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total de ingresos = '.$ingresos);
+        $x = $this->GetX();
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total = '.$total);
     }
 
 
