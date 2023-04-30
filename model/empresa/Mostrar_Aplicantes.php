@@ -10,7 +10,7 @@ class MostrarAplicantes{
     }
     function getAplicantes($id){
         $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,ResidenciaCv, ExpSalCv, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
-        FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
+        FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
          AND bolsaempresa.IdEmpBol=:id
@@ -33,7 +33,7 @@ class MostrarAplicantes{
     }
     function getAplicante($id){
         $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso, ExpSalCv, CorreoPerso, FechaNacPerso, CallePerso, DesProCv,ResidenciaCv 
-        FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
+        FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
          AND bolsacv.IdBolCv=:id
