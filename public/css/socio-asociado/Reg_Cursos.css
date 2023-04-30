@@ -38,9 +38,13 @@ main {
 
 .formulario-generales, .formulario-experiencia{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
-    row-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
 }
 
 .formulario-experiencia{
@@ -76,6 +80,8 @@ main {
     margin-bottom: 50px;
 }
 
+
+
 .divisor{
     margin-top: 10px;
 }
@@ -92,7 +98,10 @@ main {
     border-radius: var(--radius-2);
     padding: 10px 20px;
     border: none;
+    padding-top: 10px;
+    gap: 16px;
     outline: none;
+    
 
     font-size: 1rem;
     display: flex;
@@ -152,6 +161,56 @@ textarea {
     min-height: 150px;
 }
 
+/* contenedor guia */
+html{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}    
+.contenedorregistro{
+    height: 32em;
+    width: 90%;
+    border: none;
+    background-color: none; 
+    width: 80%;
+    height: 500px;
+    justify-content: center;
+    margin: 14em auto; 
+} 
+.contenedor-formulario{
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.grupo-input2{
+    display: block;
+    grid-column: span 1;
+
+}
+.grupo-input{
+    display: block;
+}
+.grupo-input-datos-generales{
+    display: block;
+}
+
+.label-form{
+    padding-bottom: 10px;
+}
+
+.input-format{
+    resize: none;
+    width: 100%;
+}
+
+.input-textarea{
+    width: 100%;
+}
+.boton_registrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
 /* ***************************************
 *                BOTONES                 *
 ******************************************/
