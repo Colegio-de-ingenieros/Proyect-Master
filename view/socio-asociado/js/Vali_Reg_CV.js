@@ -327,7 +327,7 @@ salario.addEventListener('keyup', (e) =>{
 let cedulas= document.getElementById("cedula-1");
 cedulas.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-    if(valorInput !==""){
+
 	cedulas.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
@@ -344,7 +344,7 @@ cedulas.addEventListener('keyup', (e) => {
         ced = true;
     }
  /*    validar(bandCedu); */
-    }
+    
 });
 
 let cedulas2 = document.getElementById("cedula-2");
@@ -438,15 +438,19 @@ function datos(){
 
     if (sal == false){
         salario.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if (obj == false){
         objetivo.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if (carr == false){
         carrera.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if (ced == false){
         cedulas.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if ((document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value === "")
     ||(document.getElementById("carrera-2").value === "" && document.getElementById("cedula-2").value !== "")){
@@ -472,12 +476,15 @@ function datos(){
     }
     else if (puest == false){
         puesto.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if (empr == false){
         empresa.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else if (acti == false){
         actividad.style.border = "3px solid red";
+        alert("llene los campos obligatorios para continuar");
     }
     else {
         segunda_carrera = 0;

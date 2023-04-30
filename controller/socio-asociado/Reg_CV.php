@@ -116,7 +116,7 @@ function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesi
 
    
 
-    echo json_encode('Datos insertados correctamente');
+    echo json_encode('Registro exitoso');
     /* echo json_encode($id_persobolsa); */
 }
 ?>
