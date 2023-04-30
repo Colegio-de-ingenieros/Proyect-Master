@@ -153,8 +153,8 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Visualizar</a></li>
               </ul>
             </li>
 
@@ -177,7 +177,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Individual</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
                 <li><a id="menuSucursal2" href="#">General</a></li>
               </ul>
             </li>
