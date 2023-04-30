@@ -310,11 +310,10 @@ $respuesta .= ' -->
 						}
 
 						for ($il = 0; $il < count($idsubtemasl); $il++) {
-							$respuesta .= '<h4 style="width: 500px;">'.$nomsubtemasl[$il] .'</h4><br>';
+							$respuesta .= '<h4 >'.$nomsubtemasl[$il] .'</h4><br>';
 							/* $respuesta .= '<h4 style="width: 500px;">'.$idsubtemasl[$i] .'</h4><br>'; */
 
 						}
-					                    
 					}
 				}
 		
@@ -331,7 +330,7 @@ $respuesta .= ' -->
 			}
 			else 
 			{
-				$respuesta .= '<h3 style="width: 500px;">No hay temas registrados</h3><br>';
+				$respuesta .= '<h3>No hay temas registrados</h3><br>';
 			}
 			$respuesta .= '		
     </section>
