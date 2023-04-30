@@ -36,7 +36,8 @@ if ($datost) {
 else {
     $bd->eliminarcurso($id);
 }
-echo json_encode("exito");
+echo "<script>location.href = '../../view/administrativo/Vista_Cursos.php';</script>";
 }
 /* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
 
+?>

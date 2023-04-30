@@ -32,6 +32,7 @@ class PDF extends FPDF{
 
         $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
+        
     } 
 
     function TablaBasica($header,$gastos,$ingresos,$total,$dato)
@@ -41,7 +42,7 @@ class PDF extends FPDF{
 
         $this->SetFillColor(8,82,98);
         //Cabecera
-        $this->Ln();
+      
         //Color e la cabecarea de la tabla 
         foreach($header as $col)
         {

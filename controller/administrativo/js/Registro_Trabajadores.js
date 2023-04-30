@@ -22,7 +22,9 @@ formulario.addEventListener('submit', function (e)
             alert("Registro exitoso");
             
         }
-
+        else if (data === 'correo') {
+            alert("Este correo ya esta registrado");
+        }
         else {
             alert("RFC ya existente");
         }

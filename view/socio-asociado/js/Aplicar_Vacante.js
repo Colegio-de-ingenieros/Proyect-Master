@@ -268,12 +268,13 @@ function aplicar() {
     .catch(error => console.log(error))
 
   function resultados(JSON) {
-    if (JSON == true) {
-      alert("Se ha aplicado a la vacante");
+    if(JSON == "Ya has aplicado a esta vacante"){
+      alert("Ya has aplicado a esta vacante");
       window.location.href = "Bolsa-Trabajo.html";
     }
-    else {
-      alert("No se ha podido aplicar a la vacante");
+    else{
+      alert("Se ha aplicado a la vacante");
+      window.location.href = "Bolsa-Trabajo.html";
     }
   }
 }

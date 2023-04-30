@@ -263,11 +263,36 @@ class Reportes_in extends Crud_bd{
 
     public function periodoHistorico($id_seguimiento)
     {
-        # te da el periodo de los gastos e ingresos basados en un id de seguimiento
+        # te da la fecha mas antigua y la mas nueva en la quye se ha registrado un gasto
+        # o un ingreso del id de seguimiento que le des
         $this->conexion_bd();
-        $fecha = $this->mostrar("");
+        $sql = "SELECT MIN(fechas) as antigua, MAX(fechas) as reciente from ((select controlgas.FechaGas as fechas from controlgas
+                INNER JOIN ((SELECT empgastos.IdGas as IdGas from empparticipa
+                INNER JOIN empgastos ON empgastos.IdParE = empparticipa.IdParE and empparticipa.IdSeg = :id)
+                UNION ALL
+                (SELECT persogastos.IdGas as IdGas from persoparticipa
+                INNER JOIN persogastos ON persogastos.IdParP = persoparticipa.IdParP and persoparticipa.IdSeg = :id)
+                UNION ALL
+                (SELECT insgastos.IdGas as IdGas from insparticipa
+                INNER JOIN insgastos ON insgastos.IdParI = insparticipa.IdParI and insparticipa.IdSeg = :id)) 
+                as tablaGas
+                ON tablaGas.IdGas = controlgas.IdGas)
+                UNION All 
+                (select controlingre.FechaIngre as fechas from controlingre
+                INNER JOIN ((SELECT empingresos.IdIngre as IdIngre from empparticipa
+                INNER JOIN empingresos ON empingresos.IdParE = empparticipa.IdParE and empparticipa.IdSeg = :id)
+                UNION ALL
+                (SELECT persoingresos.IdIngre as IdIngre from persoparticipa
+                INNER JOIN persoingresos ON persoingresos.IdParP = persoparticipa.IdParP and persoparticipa.IdSeg = :id)
+                UNION ALL
+                (SELECT insingresos.IdIngre as IdIngre from insparticipa
+                INNER JOIN insingresos ON insingresos.IdParI = insparticipa.IdParI and insparticipa.IdSeg = :id)) 
+                as tablaIds
+                ON tablaIds.IdIngre = controlingre.IdIngre)) as m";
+        $fechas = $this->mostrar($sql,[":id"=>$id_seguimiento]);
         $this->cerrar_conexion();
-
+        
+        return $fechas;
 
     }
 

@@ -6,12 +6,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro CV</title>
+  <title>Registro de mi CV</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_CV.css">
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <!-- <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
@@ -100,7 +100,7 @@
     </div>
 
     <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn">Cerrar sesión</button>
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php'">Cerrar sesión</button>
     </div>
   </header>
 
@@ -110,11 +110,9 @@
         <h3 class="h3">Registro del CV</h2>
           <br>
           <p class="subtitulo-1">Datos generales</p>
-          <br>
           <hr>
       </div>
       <!-- Datos generales -->
-      <br>
       <div class="formulario-generales">
         <!-- Nombre -->
         <div class="campo">
@@ -168,10 +166,8 @@
           placeholder="Ingrese la descripción profesional"></textarea>
       </div>
       <!-- Dirección -->
-      <br>
       <div class="divisor">
         <p class="subtitulo-1">Dirección</p>
-        <br>
         <hr>
       </div>
 
@@ -198,13 +194,13 @@
         </div>
       </div>
       <!-- Experiencia académica -->
-      <br>
+
       <div class="divisor">
         <p class="subtitulo-1">Experiencia académica</p>
-        <br>
+
         <hr>
       </div>
-      <br>
+
       <!-- Formulario académico 1 -->
       <div class="formulario-academica" id="academico-1">
         <!-- Nombre de la carrera -->
@@ -218,11 +214,11 @@
           <input id="cedula-1" title="El campo cédula solo debe de contener números." type="text" class="input-format-2" placeholder="Ingrese el número de cédula aquí" maxlength="8"></input>
         </div>
       </div>
-      <br>
+
       <div class="botones-academica" id="botones-1">
         <button class="btn btn-small" onclick="nueva_carrera_1()">Agregar carrera</button>
       </div>
-      <br>
+
       <!-- Formulario académico 2 -->
       <div class="formulario-academica" id="academico-2">
         <!-- Nombre de la carrera -->
@@ -266,10 +262,9 @@
       <!-- Experiencia profesional -->
       <div class="divisor">
         <p class="subtitulo-1">Experiencia profesional</p>
-        <br>
         <hr>
       </div>
-      <br>
+
       <!-- Formulario experiencia 1 -->
       <div class="formulario-experiencia" id="experiencia-1">
         <!-- Puesto que desempeñaba -->
@@ -302,11 +297,11 @@
         </div>
 
       </div>
-      <br>
+
       <div class="botones-experiencia" id="boton-experiencia-1">
         <button class="btn btn-small" onclick="nueva_experiencia()">Agregar experiencia</button>
       </div>
-      <br>
+
       <!-- Formulario experiencia 2 -->
       <div class="formulario-experiencia" id="experiencia-2">
         <!-- Puesto que desempeñaba -->
@@ -346,9 +341,7 @@
       <!-- Certificaciónes -->
       <div class="divisor">
         <p class="subtitulo-1">Certificaciones</p>
-        <br>
         <hr>
-        <br>
       </div>
 
       <div id="formulario-certificaciones" class="formulario-certificaciones">
@@ -379,7 +372,7 @@
 
   </main>
 </body>
-<script src="js/Reg_CV.js"></script>
+<!-- <script src="js/Reg_CV.js"></script> -->
 <script src="js/peticion_bolsat.js"></script>
 <script src="js/Vali_Reg_CV.js"></script>
 </html>

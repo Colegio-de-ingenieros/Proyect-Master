@@ -5,7 +5,16 @@
 
     $objeto = new dato();
     $objeto->BD();
-    
-    $resultado = $objeto->IngresarRegistro($id_bolsa, $id_usuario);
-    echo json_encode($resultado);
+
+    $existencia = $objeto->verificarExistenciaRegistro($id_bolsa, $id_usuario);
+    $existencia = $existencia[0][0];
+
+    if($existencia == 1){
+        $mensaje = "Ya has aplicado a esta vacante";
+        echo json_encode($mensaje);
+    }
+    else if($existencia == 0){
+        $resultado = $objeto->IngresarRegistro($id_bolsa, $id_usuario);
+        echo json_encode($resultado);
+    }
 ?>
