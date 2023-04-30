@@ -91,9 +91,9 @@ class PDF extends FPDF{
 
         $this->SetFont('Arial','B',15);
         $this->Ln(10);
-        $this->Cell(260,10,'Total de gastos = ' .$gastos ,0,1,'R');
-        $this->Cell(265,10,'Total de ingresos = '.$ingresos,0,1,'R');
-        $this->Cell(234,10,'Total = '.$total,0,1,'R');
+        $this->Cell(255,10,'Total de gastos = ' .$gastos ,0,1,'R');
+        $this->Cell(257,10,'Total de ingresos = '.$ingresos,0,1,'R');
+        $this->Cell(228,10,'Total = '.$total,0,1,'R');
     }
 
 
