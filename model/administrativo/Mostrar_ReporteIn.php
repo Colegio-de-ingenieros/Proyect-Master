@@ -90,7 +90,7 @@ class Reportes_in extends Crud_bd{
     {
         # trae el nombre, los gastos, e ingresos de los socios con ese id de seguimiento
         $this->conexion_bd();
-        $sql1 = "SELECT persoparticipa.IdParP as id,CONCAT('Asoc. ',usuaperso.NomPerso) as nombre FROM persoparticipa 
+        $sql1 = "SELECT persoparticipa.IdParP as id,CONCAT('Asoc. ',usuaperso.NomPerso,' ',usuaperso.ApePPerso,' ',usuaperso.ApeMPerso) as nombre FROM persoparticipa 
                 INNER JOIN usuaperso on usuaperso.IdPerso = persoparticipa.IdPerso  
                 WHERE persoparticipa.IdSeg = :id
                 GROUP BY nombre
@@ -123,7 +123,7 @@ class Reportes_in extends Crud_bd{
     {
         # trae el nombre, los gastos, e ingresos de los instructores con ese id de seguimiento
         $this->conexion_bd();
-        $sql1 = "SELECT insparticipa.IdParI as id,CONCAT('Instr. ',instructor.NomIns) as nombre FROM insparticipa
+        $sql1 = "SELECT insparticipa.IdParI as id,CONCAT('Instr. ',instructor.NomIns,' ',instructor.ApePIns,' ',instructor.ApeMIns) as nombre FROM insparticipa
                 INNER JOIN instructor on instructor.ClaveIns = insparticipa.ClaveIns
                 WHERE insparticipa.IdSeg = :id
                 GROUP BY nombre
@@ -198,7 +198,7 @@ class Reportes_in extends Crud_bd{
     {
         # trae el nombre, los gastos, e ingresos de los socios con ese id de seguimiento
         $this->conexion_bd();
-        $sql1 = "SELECT persoparticipa.IdParP as id,CONCAT('Asoc. ',usuaperso.NomPerso) as nombre FROM persoparticipa 
+        $sql1 = "SELECT persoparticipa.IdParP as id,CONCAT('Asoc. ',usuaperso.NomPerso,' ',usuaperso.ApePPerso,' ',usuaperso.ApeMPerso) as nombre FROM persoparticipa 
                 INNER JOIN usuaperso on usuaperso.IdPerso = persoparticipa.IdPerso  
                 WHERE persoparticipa.IdSeg = :id
                 GROUP BY nombre
@@ -231,7 +231,7 @@ class Reportes_in extends Crud_bd{
     {
         # trae el nombre, los gastos, e ingresos de los instructores con ese id de seguimiento
         $this->conexion_bd();
-        $sql1 = "SELECT insparticipa.IdParI as id,CONCAT('Instr. ',instructor.NomIns) as nombre FROM insparticipa
+        $sql1 = "SELECT insparticipa.IdParI as id,CONCAT('Instr. ',instructor.NomIns,' ',instructor.ApePIns,' ',instructor.ApeMIns) as nombre FROM insparticipa
                 INNER JOIN instructor on instructor.ClaveIns = insparticipa.ClaveIns
                 WHERE insparticipa.IdSeg = :id
                 GROUP BY nombre
@@ -261,6 +261,15 @@ class Reportes_in extends Crud_bd{
         return $datos;
     }
 
+    public function periodoHistorico($id_seguimiento)
+    {
+        # te da el periodo de los gastos e ingresos basados en un id de seguimiento
+        $this->conexion_bd();
+        $fecha = $this->mostrar("");
+        $this->cerrar_conexion();
+
+
+    }
 
 }
 

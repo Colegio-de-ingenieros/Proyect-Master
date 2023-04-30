@@ -321,6 +321,14 @@ textarea {
         column-gap: 20px;
         row-gap: 10px;
     }
+    .formulario-certificaciones{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+        margin-bottom: 10px;
+        align-items: end;
+    }
 }
 
 @media screen and (max-width: 760px) {

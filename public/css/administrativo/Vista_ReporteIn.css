@@ -68,8 +68,13 @@ article{
 } 
 
 .subtotal{
-    font-weight: 600;
-}
+    font-weight: 800;
+} 
+
+.totales{
+    width: 15em; 
+    margin: auto 53em;
+} 
 
 .input-textarea:focus{
     box-shadow: var(--shadow-1);

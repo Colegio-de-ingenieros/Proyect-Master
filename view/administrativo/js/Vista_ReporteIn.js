@@ -15,6 +15,9 @@ const fechas_titulo = document.getElementById("fechas_titulo");
 const contenedor_tabla = document.getElementById("contenedor_tabla");
 const btn_descargar_reportes = document.getElementById("boton_descargar_reporte");
 
+const btn_periodo = document.getElementById("completo");
+const btn_historial_completo = document.getElementById("periodo");
+
 contenedor_tabla.style.display = 'none';
 btn_descargar_reportes.style.display = 'none';
 
@@ -29,6 +32,21 @@ btn_certificaciones.addEventListener("click",(e)=>{
 btn_proyectos.addEventListener("click",(e)=>{
     peticion_nombres("proyectos");
 });
+
+btn_periodo.addEventListener("click",(e)=>{
+    fecha_inicio.disabled = true;
+    fecha_fin.disabled = true;
+});
+
+btn_historial_completo.addEventListener("click",(e)=>{
+    fecha_inicio.disabled = false;
+    fecha_fin.disabled = false;
+});
+
+window.addEventListener("load",(e)=>{
+    peticion_nombres("cursos");
+});
+
 
 btn_descargar_reportes.addEventListener("click",(e)=>{
 
@@ -89,6 +107,7 @@ function postForm(path, params, method) {
     var form = document.createElement('form');
     form.setAttribute('method', method);
     form.setAttribute('action', path);
+    form.setAttribute('target', '_blank');
 
 
     for (var key in params) {
@@ -137,6 +156,18 @@ formulario.addEventListener("submit",(e)=>{
 
         alert("Debe seleccionar un nombre de actividad");
 
+    }else if(document.getElementById("nombres").textContent == "" && btn_cursos.checked){
+
+        alert("No hay cursos con seguimiento");
+
+    }else if(document.getElementById("nombres").textContent == "" && btn_certificaciones.checked){
+
+        alert("No hay certificaciones con seguimiento");
+
+    }else if(document.getElementById("nombres").textContent == "" && btn_proyectos.checked){
+
+        alert("No hay proyectos con seguimiento");
+
     }else if((fecha1 == "" || fecha2 == "") && document.getElementById("periodo").checked ){
         alert("Debe seleccionar una fecha de inicio y una fecha de finalización");
     }else{
@@ -149,7 +180,7 @@ formulario.addEventListener("submit",(e)=>{
             alert("La fecha de inicio no debe ser mayor a la fecha de finalización");
         }else{
 
-            let nombre = document.getElementById("nombres").textContent.split(" ")[1];
+            let nombre = getNombre();
             let numero = document.getElementById("nombres").value.split(" ");
     
             let form_data = new FormData(formulario);
@@ -376,6 +407,22 @@ function rellenar_tabla(datos) {
     totales.appendChild(total_final);
 
 
+}
+
+function getNombre() {
+    //muestra el nombre
+    let nombre_elementos = document.getElementById("nombres").textContent.split(" ");
+    let nombre_completo = "";
+
+    nombre_elementos.shift();
+
+    nombre_elementos.forEach(elemento =>{
+
+        nombre_completo += " " + elemento;
+        
+    });
+
+    return nombre_completo;
 }
 
 

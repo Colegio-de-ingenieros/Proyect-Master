@@ -25,11 +25,11 @@ class PDF extends FPDF{
         $fecha_hoy = date('Y/m/d');
         $this->Text(250,15, $fecha_hoy); //Aqui la variable de la fecha de emision del reporte 
         // Salto de línea
-        $this->Ln(20);
+        $this->Ln(15);
         $this->Cell(280,10,'Colegio de Ingenieros en Sistemas Computacionales',0,1,'C');
-        $this->Ln();
+        
         $this->Cell(280,10,'Reporte individual',0,1,'C');
-        $this->Ln();
+
         $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
     } 
@@ -41,7 +41,7 @@ class PDF extends FPDF{
 
         $this->SetFillColor(8,82,98);
         //Cabecera
-        $this->Ln(25);
+        $this->Ln();
         //Color e la cabecarea de la tabla 
         foreach($header as $col)
         {
@@ -54,8 +54,11 @@ class PDF extends FPDF{
         $this->SetFont('Times','',12);
         $this->Ln();
         //crea las celdas de la tabla con los datos
-        for ($i=0; $i < count($filas) ; $i++) { 
-            
+        for ($i=0; $i < count($filas) ; $i++) {
+            //pone en negritas el texto 
+            if($i == (count($filas)-1)){
+                $this->SetFont('Times','B',13);
+            }
             $y = $this->GetY(); 
             $x = $this->GetX();
           
@@ -87,9 +90,9 @@ class PDF extends FPDF{
 
         $this->SetFont('Arial','B',15);
         $this->Ln(10);
-        $this->Cell(70,10,'Total de gastos = ' .$gastos ,0,1,'L');
-        $this->Cell(60,10,'Total de ingresos = '.$ingresos,0,1,'L');
-        $this->Cell(60,10,'Total = '.$total,0,1,'L');
+        $this->Cell(260,10,'Total de gastos = ' .$gastos ,0,1,'R');
+        $this->Cell(265,10,'Total de ingresos = '.$ingresos,0,1,'R');
+        $this->Cell(235,10,'Total = '.$total,0,1,'R');
     }
 
 

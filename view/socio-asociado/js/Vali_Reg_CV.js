@@ -178,7 +178,7 @@ carrera3.addEventListener('keyup', (e) => {
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera3.style.border = "3px solid red";
         carr3 = false;
-        if (carrera3.value==="") {
+        if (carrera3.value.trim().length == 0) {
             carrera3.removeAttribute("style");
         }
 	}else{
@@ -208,7 +208,7 @@ carrera1.addEventListener('keyup', (e) => {
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera1.style.border = "3px solid red";
         carr2 = false;
-        if (carrera1.value==="") {
+        if (carrera1.value.trim().length == 0) {
             carrera1.removeAttribute("style");
         }
 	}else{
@@ -362,7 +362,7 @@ cedulas2.addEventListener('keyup', (e) => {
     if (!expresiones.cedula.test(valorInput)) {
         /* cedulas2.style.border = "3px solid red"; */
         ced2 = false;
-        if (cedulas2.value==="") {
+        if (cedulas2.value.trim().length >= 7 || cedulas2.value.trim().length == 0) {
             cedulas2.removeAttribute("style");
         }
 	}else{ 
@@ -388,7 +388,7 @@ cedulas3.addEventListener('keyup', (e) => {
     if (!expresiones.cedula.test(valorInput)) {
         /* cedulas3.style.border = "3px solid red"; */
         ced3 = false;
-        if (cedulas3.value==="") {
+        if (cedulas3.value.trim().length >= 7 || cedulas3.value.trim().length == 0) {
             cedulas3.removeAttribute("style");
         }
 	}else{ 
@@ -413,28 +413,28 @@ cedulas3.addEventListener('keyup', (e) => {
 
 
 function datos(){
-    if (salario != ""){
+    if (salario.value.trim().length != 0){
         sal = true;
     }
-    if (objetivo != ""){
+    if (objetivo.value.trim().length != 0){
         obj = true;
     }
-    if (carrera != ""){
+    if (carrera.value.trim().length != 0){
         carr = true;
     }
-    if (cedulas != ""){
+    if (cedulas.value.trim().length >= 7){
         ced = true;
     }
-    if (puesto != ""){
+    if (puesto.value.trim().length != 0){
         puest = true;
     }
-    if (empresa != ""){
+    if (empresa.value.trim().length != 0){
         empr = true;
     }
-    if (actividad != ""){
+    if (actividad.value.trim().length != 0){
         acti = true;
     }
-
+    console.log(sal, obj, carr, ced, puest, empr, acti)
 
     if (sal == false){
         salario.style.border = "3px solid red";
@@ -450,11 +450,17 @@ function datos(){
     }
     else if ((document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value === "")
     ||(document.getElementById("carrera-2").value === "" && document.getElementById("cedula-2").value !== "")){
-    alert("llene los campos de la segunda carrera");
+    alert("llene correctamente los campos de la segunda carrera");
+    }
+    else if (document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value.trim().length < 7){
+        alert("llene correctamente los campos de la segunda carrera");
     }
     else if ((document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value === "")
     ||(document.getElementById("carrera-3").value === "" && document.getElementById("cedula-3").value !== "")){
-    alert("llene los campos de la tercera carrera");
+    alert("llene correctamente los campos de la tercera carrera");
+    }
+    else if (document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value.trim().length < 7){
+        alert("llene correctamente los campos de la tercera carrera");
     }
     else if ((document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value === "")
     ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value === "")
@@ -474,13 +480,16 @@ function datos(){
         actividad.style.border = "3px solid red";
     }
     else {
-        if (document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value !== ""){
+        segunda_carrera = 0;
+        tercer_carrera = 0;
+        segundo_puesto= 0;
+        if (document.getElementById("carrera-2").value.trim().length != 0 && document.getElementById("cedula-2").value.trim().length != 0){
             segunda_carrera = 1;
         }
-        if (document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value !== ""){
+        if (document.getElementById("carrera-3").value.trim().length != 0 && document.getElementById("cedula-3").value.trim().length != 0){
             tercer_carrera = 1;
         }
-        if(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value !== ""){
+        if(document.getElementById("puesto-antiguo-2").value.trim().length != 0 && document.getElementById("empresa-antigua-2").value.trim().length != 0 && document.getElementById("actividad-antigua-2").value.trim().length != 0){
             segundo_puesto= 1;
         }
 
@@ -585,7 +594,7 @@ function datos(){
                     alert("Registro exitoso");
                     location.href = '../../view/administrativo/Reg_Proyectos.html';
                 }
-                
+    
                 else if (data === 'Fechas') {
                     alert("Fecha de finalización debe ser posterior a fecha de inicio");
                 }
