@@ -101,7 +101,7 @@ class EliminarCurso{
     }
 }
 
-$objeto = new EliminarCurso();
-$objeto->BD();
+/* $objeto = new EliminarCurso();
+$objeto->BD(); */
 
 ?>
