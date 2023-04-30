@@ -42,8 +42,11 @@ if(
 ){ 
     /**se inserta la empresa */ 
     $existe = $objeto->buscar_empresa($_POST["rfc"]);
+    $existe_correo = $objeto->existeCorreo($_POST["correo"]);
     if($existe){
         $data = ["Esta empresa ya ha sido registrada anteriormente."];
+    }else if($existe_correo){
+        $data = ["El correo electrónico ya ha sido registrado anteriormente."];
     }else{
         $rfc_empresa = $_POST["rfc"];
         $password = password_hash($_POST["password"], PASSWORD_DEFAULT);

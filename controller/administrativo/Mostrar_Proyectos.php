@@ -106,7 +106,7 @@ else{
             $salida .= '<td>' . $fin . '</td>';
             $salida .= '<td>$' . $monto . '</td>';
             $salida .= '<td>' . $objetivo . '</td>';
-            $salida .= '<td>  <a href="../../controller/administrativo/Get_Proyecto.php?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Modi_Proyectos.php?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
             <a href="#" class="table_item__link eliminar-elemento" data-idp="' . $idp . '">Eliminar</a></td>';
             $salida .= '</tr>';

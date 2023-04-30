@@ -5,10 +5,8 @@ $bd = new EliminarCurso();
 $bd->BD();
 
 $id = $_GET['id'];
-/* $id = $bd->agregar_ceros($id, 6); */
 
 $estatus = $bd->buscaestatus($id);
-/* $estacur= $estatus[0]["EstatusCur"]; */
 
 if ($estatus == 1) {
     http_response_code(404);
@@ -38,5 +36,5 @@ else {
 }
 echo json_encode("exito");
 }
-/* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
+
 

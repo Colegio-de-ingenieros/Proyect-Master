@@ -1,3 +1,9 @@
+<?php
+$idp=$_GET["idp"];
+include_once('../../controller/administrativo/Get_Proyecto.php');
+list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
+?>
+
 <script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="es">
@@ -199,14 +205,14 @@
 
       <form class="formulario-de-datos" id="formulario">
 
-        <input type="hidden" id="idp" name="idp">
+        <input type="hidden" id="idp" name="idp" value="<?php echo $idp?>">
 
         <div class="grupo-input">
           <div class="label-form">
             <p class="label-2">Nombre del proyecto*</p>
           </div>
           <div class="input-form">
-            <input type="text" name="nom_proyecto" id="nom_proyecto" class="input-format-2"
+            <input type="text" name="nom_proyecto" id="nom_proyecto" value="<?php echo $nom?>" class="input-format-2"
               placeholder="Ingrese el nombre" required maxlength="60" 
               title="El nombre del proyecto solo puede contener letras mayúsculas, minúsculas, números, comas y puntos.">
           </div>
@@ -218,7 +224,7 @@
           </div>
 
           <div class="input-form">
-            <input type="date" name="ini_proyecto" id="ini_proyecto" class="input-format-2" required
+            <input type="date" name="ini_proyecto" id="ini_proyecto" value="<?php echo $ini?>" class="input-format-2" required
             title="La fecha de inicio debe cumplir con el formato dd/mm/aaa.">
           </div>
         </div>
@@ -229,7 +235,7 @@
           </div>
           
           <div class="input-form">
-            <input type="date" name="fin_proyecto" id="fin_proyecto" class="input-format-2"  required
+            <input type="date" name="fin_proyecto" id="fin_proyecto" value="<?php echo $fin?>" class="input-format-2"  required
             title="La fecha de finalización debe cumplir con el formato dd/mm/aaa y debe ser mayor a la fecha de inicio.">
 
           </div>
@@ -240,7 +246,7 @@
             <p class="label-2">Monto*</p>
           </div>
           <div class="input-form">
-            <input  type="text"   name="monto_proyecto" id="monto_proyecto" class="input-format-2" placeholder="Ingrese el monto" required 
+            <input  type="text"   name="monto_proyecto" id="monto_proyecto" value="<?php echo $monto?>" class="input-format-2" placeholder="Ingrese el monto" required 
             title="El monto solo puede contener números y un punto.">
           </div>
         </div>
@@ -252,7 +258,7 @@
           <div class="input-form">
             <textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea"
               placeholder="Ingrese el objetivo" required
-              title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
+              title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."><?php echo $obj?></textarea>
           </div>
         </div>
         <br>
@@ -268,5 +274,7 @@
   </main>
   <script src="../../view/administrativo/js/Vali_Proyectos.js"></script>
 </body>
-<script src="js/Modificar_Proyectos.js"></script>
+<script src="../../controller/administrativo/js/Modificar_Proyectos.js"></script>
 </html>
+
+

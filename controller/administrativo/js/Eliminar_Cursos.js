@@ -3,11 +3,11 @@ function confirmacion(e){
     if (confirm("¿Está seguro que desea eliminar este curso?")) {
         e.preventDefault();
         var id = $(this).data('id');
-
+        console.log(id);
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
-            url: '../../controller/administrativo/Eliminar_Cursos.php', 
+            url: '../../controller/administrativo/elimina.php', 
             type: 'GET', 
             data: {id: id}, 
             success: function (response)

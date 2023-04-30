@@ -15,7 +15,7 @@ formulario.addEventListener('submit', function (e)
     .then(res => res.json())
     .then(data => {
         if (data === 'exito') {
-            alert("Curso registrado.");
+            alert("Registro exitoso.");
             location.href="../../view/socio-asociado/Reg_Cursos.html";
         }
         //los datos no pasaron alguna validacion

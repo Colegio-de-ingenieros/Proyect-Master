@@ -13,14 +13,13 @@
             $this->SetFont('Arial','B',16);
             $this->SetTextColor(33,45,106);
             // Movernos a la derecha
-            $this->Cell(83);
+            $this->SetXY(70,10);
             // Título
-            $this->Cell(30,10,utf8_decode('Colegio de Ingenieros'),0,0,'C');
-            $this->Ln(10);
-            $this->Cell(83);
-            $this->Cell(30,10,utf8_decode('en Sistemas Computacionales'),0,0,'C');
+            $this->Cell(70,10,utf8_decode('Colegio de Ingenieros'),0,0,'C');
+            $this->SetXY(60,16);
+            $this->Cell(90,10,utf8_decode('en Sistemas Computacionales'),0,0,'C');
             // Salto de línea
-            $this->Ln(20);
+            $this->Ln(12);
         }
 
         // Pie de página
@@ -68,34 +67,35 @@
     /* CLAVE DEL CURSO*/
 
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,10,utf8_decode('Clave del curso: '),0,1,'C');
+    $pdf->Cell(40,10,utf8_decode('Clave del curso: '),0,1,'L');
     $pdf->SetFont('Arial','',14);
-    $pdf->Cell(0,10,utf8_decode($clave),0,1,'C');  
+    $pdf->Cell(20,10,utf8_decode($clave),0,1,'L');  
+    $pdf->Ln(5);
 
     /* NOMBRE DEL CURSO*/
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,10,utf8_decode('Nombre del curso: '),0,1,'C');
+    $pdf->Cell(45,10,utf8_decode('Nombre del curso: '),0,1,'L');
     $pdf->SetFont('Arial','',14);
-    $pdf->Cell(0,10,utf8_decode($nombre),0,1,'C');
+    $pdf->Cell(0,10,utf8_decode($nombre),0,1,'L');
+    $pdf->Ln(5);
 
     /* DURACIÓN DEL CURSO*/
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,10,utf8_decode('Duración del curso: '),0,1,'C');
+    $pdf->Cell(50,10,utf8_decode('Duración del curso: '),0,1,'L');
     $pdf->SetFont('Arial','',14);
-    $pdf->Cell(0,10,utf8_decode($duracion).' horas',0,1,'C');
-
+    $pdf->Cell(30,10,utf8_decode($duracion).' horas',0,1,'L');
+    $pdf->Ln(5);
 
     /* OBJETIVO DEL CURSO*/
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,10,utf8_decode('Objetivo del curso: '),0,1,'C');
+    $pdf->Cell(50,10,utf8_decode('Objetivo del curso: '),0,1,'L');
     $pdf->SetFont('Arial','',14);
-    $pdf->MultiCell(0,10,utf8_decode($objetivo),0,'C',false);
-
+    $pdf->MultiCell(0,10,utf8_decode($objetivo),0,'J');
+    $pdf->Ln(5);
     /* TEMARIO DEL CURSO */
     $pdf->SetFont('Arial','B',14);
-    $pdf->Cell(0,10,utf8_decode('Temario del curso: '),0,1,'C');
+    $pdf->Cell(45,10,utf8_decode('Temario del curso: '),0,1,'L');
     $pdf->SetFont('Arial','',14);
-
     /* Crea un ciclo en donde se itere el tema y sus subtemas */
     if ($datost) {
         $idtemasl = [];
@@ -125,7 +125,8 @@
         
         for ($i = 0; $i < count($idtemasl); $i++) {
             $pdf->SetFont('Arial','B',16);
-            $pdf->Cell(0,10,utf8_decode($nomtemasl[$i]),0,1,'C');
+            $pdf->Cell(0,10,utf8_decode($nomtemasl[$i]),0,1,'L');
+
             //$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$nomtemasl[$i] .'</h3><br>';
             $datoss = $bd->s($tem,((string)$idtemasl[$i]));
             $idsubtemasl = [];
@@ -155,7 +156,7 @@
 
                 for ($il = 0; $il < count($idsubtemasl); $il++) {
                     $pdf->SetFont('Arial','',14);
-                    $pdf->Cell(0,10,utf8_decode($nomsubtemasl[$il]),0,1,'C');
+                    $pdf->Cell(0,10,utf8_decode($nomsubtemasl[$il]),0,1,'L');
                     //$respuesta .= '<h4 style="width: 500px;">'.$nomsubtemasl[$il] .'</h4><br>';
                 }         
             }
@@ -180,7 +181,7 @@
 } */
 else {
     $pdf->SetFont('Arial','',14);
-    $pdf->Cell(0,10,utf8_decode('No hay temas registrados'),0,1,'C');
+    $pdf->Cell(0,10,utf8_decode('No hay temas registrados'),0,1,'L');
 }
 
     $pdf->Output();

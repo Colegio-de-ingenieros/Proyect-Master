@@ -233,12 +233,29 @@ class Alta_empresa extends Crud_bd{
     }
     public function inserciones()
     {
-        # code...
         $this->conexion_bd();
         $res = $this->insertar_eliminar_actualizar($this->sql,$this->parametros);
         $this->cerrar_conexion();
         return $res;
 
+    }
+
+    public function existeCorreo($correo)
+    {
+        # ve si el correo ya esta en la base
+        $this->conexion_bd();
+        $dato1 = $this->mostrar("SELECT CorreoPerso FROM usuaperso WHERE binary(CorreoPerso)= binary(:correo)",[':correo'=>$correo]);
+        $dato2 = $this->mostrar("SELECT CorreoUsuaEmp FROM usuaemp WHERE binary(CorreoUsuaEmp)= binary(:correo)",[':correo'=>$correo]);
+        $dato3 = $this->mostrar("SELECT CorreoT FROM trabajadores WHERE binary(CorreoT)= binary(:correo)",[':correo'=>$correo]);
+        $this->cerrar_conexion();
+
+        if(count($dato1) == 0 && count($dato2) == 0 && count($dato3) == 0){
+          
+            return false;
+        }else{
+            
+            return true;
+        }
     }
 }
 
