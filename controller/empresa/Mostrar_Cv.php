@@ -17,11 +17,10 @@ if ($resultado == true) {
   $correo=$resultado[0]["CorreoPerso"];
   $desc=$resultado[0]["DesProCv"];
   $salEsp=$resultado[0]["ExpSalCv"];
-  $cedula=$resultado[0]["NumCedAca"];
-  $carrera=$resultado[0]["Carrera"];
   $cambio=$resultado[0]["ResidenciaCv"];
   
 }
+
 if ($cambio==1) {
   $cambio="Si";
 }else{

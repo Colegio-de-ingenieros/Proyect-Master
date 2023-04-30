@@ -9,10 +9,9 @@ class MostrarAplicantes{
         $this->base->conexion_bd();
     }
     function getAplicantes($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca,ResidenciaCv, ExpSalCv,Carrera, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,ResidenciaCv, ExpSalCv, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
-        WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
-         AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
+        WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
          AND bolsaempresa.IdEmpBol=:id
          GROUP BY bolsacv.IdBolCv";
@@ -21,10 +20,9 @@ class MostrarAplicantes{
         return $resultados;
     }
     function buscadorAplicante($buscar,$id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera , DesProCv, CorreoPerso
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso, ExpSalCv, DesProCv, CorreoPerso
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
-         AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
          AND bolsaempresa.IdEmpBol=:id AND (NomPerso LIKE :busqueda OR ApePPerso LIKE :busqueda OR ApeMPerso LIKE :busqueda
          OR Carrera LIKE :busqueda)
@@ -34,10 +32,9 @@ class MostrarAplicantes{
         return $resultados;
     }
     function getAplicante($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,NumCedAca, ExpSalCv,Carrera, CorreoPerso, FechaNacPerso, CallePerso, DesProCv,ResidenciaCv 
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso, ExpSalCv, CorreoPerso, FechaNacPerso, CallePerso, DesProCv,ResidenciaCv 
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa, expacacv, expacademica 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv
-         AND bolsacv.IdBolCv=expacacv.IdBolCv AND expacacv.IdExpAca=expacademica.IdExpAca 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
          AND bolsacv.IdBolCv=:id
          GROUP BY bolsacv.IdBolCv";
