@@ -7,7 +7,7 @@ function confirmacion(e){
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
-            url: '/ColegioIngenieros/controller/administrativo/elimina.php', 
+            url: '/ColegioIngenieros/controller/administrativo/Eliminar_Cursos.php', 
             type: 'GET', 
             data: {id: id}, 
             success: function (response)
