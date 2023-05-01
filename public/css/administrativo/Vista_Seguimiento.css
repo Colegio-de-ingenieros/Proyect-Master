@@ -112,17 +112,45 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 }
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1180px){
+    .article-tablas{
+        width: 1000px;
+    }
+    .article-tablas article{
+        width: 1000px;
+    }
+    article{
+        width: 1000px;
+    }
     table{
         width: 130%;
         border-collapse: collapse;
         font-family: 'Manrope';
-        margin-left: 25rem;
     }
     .sub-titulo{
         display: flex;
         flex-direction: column;
         align-items: flex-start; 
-        margin-left: 25rem;  
+    }
+  }
+@media screen and (max-width: 1000px){
+    .article-tablas{
+        width: auto;
+    }
+    .article-tablas article{
+        width: auto;
+    }
+    article{
+        width: auto;
+    }
+    table{
+        width: 130%;
+        border-collapse: collapse;
+        font-family: 'Manrope';
+    }
+    .sub-titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
     }
   }

@@ -108,4 +108,18 @@ p{
     .formulario-de-datos{
         display: block;
     }
+    .grupo-input{
+        padding: 0 0 10px 0;
+    }
+    
+    .grupo-input2{
+        padding: 0 0 10px 0;
+    }
+    .grupo-input3{
+        padding: 0 0 10px 0;
+    }
+    .grupo-input4{
+        display: contents;
+        padding: 0 0 10px 0;
+    }
 }
