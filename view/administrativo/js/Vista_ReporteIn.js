@@ -198,9 +198,13 @@ formulario.addEventListener("submit",(e)=>{
                     fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
                     rellenar_tabla(datos);
                 }else{
-                    
-                    fechas_titulo.innerText = datos[0][0][0] + "  " + datos[0][0][1];
+                    if(datos[0][0][0] != null && datos[0][0][1] != null){
+                        fechas_titulo.innerText = datos[0][0][0] + "  " + datos[0][0][1];   
+                    }else{
+                        fechas_titulo.innerText = "";
+                    }
                     rellenar_tabla(datos[1]);
+                    
                 }
                 
                 
