@@ -412,6 +412,24 @@
             mail($destinatario,$asunto,$cuerpo, $headers);
     }
 
+    function existeCorreo($correo)
+    {
+        $this->conexion_bd();
+        # ve si el correo ya esta en la base
+        $dato1 = $this->mostrar("SELECT CorreoPerso FROM usuaperso WHERE binary(CorreoPerso)= binary(:correo)",[':correo'=>$correo]);
+        $dato2 = $this->mostrar("SELECT CorreoUsuaEmp FROM usuaemp WHERE binary(CorreoUsuaEmp)= binary(:correo)",[':correo'=>$correo]);
+        $dato3 = $this->mostrar("SELECT CorreoT FROM trabajadores WHERE binary(CorreoT)= binary(:correo)",[':correo'=>$correo]);
+
+        if(count($dato1) == 0 && count($dato2) == 0 && count($dato3) == 0){
+          
+            return false;
+        }else{
+            
+            return true;
+        }
+        $this->cerrar_conexion();
+    }
+
     
     }
 ?>

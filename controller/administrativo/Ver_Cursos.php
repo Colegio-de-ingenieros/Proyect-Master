@@ -61,7 +61,7 @@ $respuesta .= ' -->
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = \'../../controller/login/logout.php\'">Cerrar sesión</button>
       </div>
     </div>
 
@@ -82,7 +82,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="#">Visualizar</a></li>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -93,8 +93,8 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -106,7 +106,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -130,7 +130,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -142,7 +142,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -154,7 +154,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -166,7 +166,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -189,7 +189,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Visualizar</a></li>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -203,6 +203,7 @@ $respuesta .= ' -->
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
               </ul>
             </li>
+
           </ul>
         </nav>
       </div>

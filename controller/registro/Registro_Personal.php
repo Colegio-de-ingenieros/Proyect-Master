@@ -71,11 +71,16 @@ $objeto=new Personal();
     $idFuncion = $objeto->obtener_id_empresa_funcion();
     $idCertExt = $objeto->obtener_id_certificacion();
     $result = $objeto->numero_inteligente($idUsua);
+    $correoExiste=$objeto->existeCorreo($correo);
     $consecutivo=$result[0]; 
     $numIntel =$result[1];
 
     //echo $ceduPersona;
     //echo json_encode($checkboxlaboral);
+
+    if($correoExiste){
+        echo json_encode('existe');
+    }else{
 
     if ($checkboxcertificacion== 'desactivado' and $checkboxlaboral=='desactivado'){
         $u=$objeto->insertar_normal($idUsua, $nombre, $apeP, $apeM, $fecha, $telF, $telM, $correo, $password, $cedula, $calle, $colonia,
@@ -124,6 +129,7 @@ $objeto=new Personal();
         echo json_encode('no exito');
         
     }
+}
     
                     
 

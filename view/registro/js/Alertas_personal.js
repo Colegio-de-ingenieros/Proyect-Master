@@ -39,6 +39,9 @@ formulario.addEventListener('submit', function (e)
                     alert("Verifique su correo y guarde el número inteligente que le ha sido enviado.");
                     location.href="../../view/registro/Reg_Personal.html";
                 }
+                else if (data === 'existe'){
+                    alert("Este correo ya esta registrado");
+                }
                 //los datos no pasaron alguna validacion
                 else if (data === 'no exito'){
                     alert("Hubo un error");
