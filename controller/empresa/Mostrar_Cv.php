@@ -151,14 +151,29 @@ var parrafo = document.createElement("p");
           $fin=$resultado[$i]['FinExpP'];
           $act1=$resultado[$i]['ActExpP'];
           $num=$i+1;
+          $salto='";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var mip = document.createElement("p");
+          mip.textContent = "';
           $puesto= preg_replace("[\n|\r|\n\r]", ' ', $puesto);
           $empresa= preg_replace("[\n|\r|\n\r]", ' ', $empresa);
           $inicio= preg_replace("[\n|\r|\n\r]", ' ', $inicio);
           $fin= preg_replace("[\n|\r|\n\r]", ' ', $fin);
-          $act1= preg_replace("[\n|\r|\n\r]", ' ', $act1);
+          $act1= preg_replace("[\n|\r|\n\r]", $salto, $act1);
 
           echo '<script>// Obtener el elemento div
           var miDiv = document.getElementById("pro");
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
+          miLabel.textContent = "Nombre de la empresa:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$empresa.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var miLabel = document.createElement("label");
@@ -182,6 +197,16 @@ var parrafo = document.createElement("p");
           var br = document.createElement("br");
           miDiv.appendChild(br);
           var miLabel = document.createElement("label");
+          miLabel.textContent = "Periodo de fin:";
+          miLabel.classList.add("label-2");
+          miDiv.appendChild(miLabel);
+          var mip = document.createElement("p");
+          mip.textContent = "'.$fin.'";
+          mip.classList.add("label-4");
+          miDiv.appendChild(mip);
+          var br = document.createElement("br");
+          miDiv.appendChild(br);
+          var miLabel = document.createElement("label");
           miLabel.textContent = "Actividades relevantes:";
           miLabel.classList.add("label-2");
           miDiv.appendChild(miLabel);
@@ -194,43 +219,8 @@ var parrafo = document.createElement("p");
           var br = document.createElement("hr");
           br.style.borderWidth = "0.5px";
           miDiv.appendChild(br)
-          ;</script>';
-          
-          echo '<script>// Obtener el elemento div
-          var miDiv = document.getElementById("pro2");
           var br = document.createElement("br");
           miDiv.appendChild(br);
-          var miLabel = document.createElement("label");
-          miLabel.textContent = "Nombre de la empresa:";
-          miLabel.classList.add("label-2");
-          miDiv.appendChild(miLabel);
-          var mip = document.createElement("p");
-          mip.textContent = "'.$empresa.'";
-          mip.classList.add("label-4");
-          miDiv.appendChild(mip);
-
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          var miDiv = document.getElementById("pro2");
-          var miLabel = document.createElement("label");
-          miLabel.textContent = "Periodo de fin:";
-          miLabel.classList.add("label-2");
-          miDiv.appendChild(miLabel);
-          var mip = document.createElement("p");
-          mip.textContent = "'.$fin.'";
-          mip.classList.add("label-4");
-          miDiv.appendChild(mip);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          var br = document.createElement("br");
-          miDiv.appendChild(br);
-          var br = document.createElement("hr");
-          br.style.borderWidth = "0.5px";
-          miDiv.appendChild(br)
           ;</script>';}}
         ?> 
         <?php $resultado=$base->mostrarCertificaciones($identificador);
