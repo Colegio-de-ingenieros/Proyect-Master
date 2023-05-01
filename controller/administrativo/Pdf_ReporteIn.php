@@ -30,7 +30,7 @@ class PDF extends FPDF{
         
         $this->Cell(280,10,'Reporte individual',0,1,'C');
 
-        $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
+        $this->Cell(60,10,iconv("UTF-8", "CP1250//TRANSLIT", $this->nombre_actividad),0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
         
     } 
@@ -67,7 +67,8 @@ class PDF extends FPDF{
             
             for ($j=0; $j < count($columnas) ; $j++) { 
                 if($j == 0){
-                    $this->MultiCell(35,7,$columnas[$j],1); //creamos la primera celda
+                    //para que acepte acentos
+                    $this->MultiCell(35,7,iconv("UTF-8", "CP1250//TRANSLIT",$columnas[$j]),1); //creamos la primera celda
                   
                 }else{
                     # para obtener la atura, tomamos la posicion de y despues de colocarca y le restamos la y anterior
