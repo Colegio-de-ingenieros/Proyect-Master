@@ -240,3 +240,8 @@ html{
     color: var(--color-white);
 }
 
+@media screen and (max-width: 768px) {
+    .formulario-generales, .formulario-experiencia, .formulario-certificaciones, .formulario-academica {
+        grid-template-columns: 1fr;
+    }
+}

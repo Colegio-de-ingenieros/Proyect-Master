@@ -30,8 +30,9 @@ class PDF extends FPDF{
         
         $this->Cell(280,10,'Reporte individual',0,1,'C');
 
-        $this->Cell(60,10,$this->nombre_actividad,0,1,'L'); // Aqui el nombre de la actividad 
+        $this->Cell(60,10,iconv("UTF-8", "CP1250//TRANSLIT", $this->nombre_actividad),0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
+        
     } 
 
     function TablaBasica($header,$gastos,$ingresos,$total,$dato)
@@ -41,7 +42,7 @@ class PDF extends FPDF{
 
         $this->SetFillColor(8,82,98);
         //Cabecera
-        $this->Ln();
+      
         //Color e la cabecarea de la tabla 
         foreach($header as $col)
         {
@@ -66,7 +67,8 @@ class PDF extends FPDF{
             
             for ($j=0; $j < count($columnas) ; $j++) { 
                 if($j == 0){
-                    $this->MultiCell(35,7,$columnas[$j],1); //creamos la primera celda
+                    //para que acepte acentos
+                    $this->MultiCell(35,7,iconv("UTF-8", "CP1250//TRANSLIT",$columnas[$j]),1); //creamos la primera celda
                   
                 }else{
                     # para obtener la atura, tomamos la posicion de y despues de colocarca y le restamos la y anterior
@@ -87,12 +89,17 @@ class PDF extends FPDF{
            
         }
        
-
-        $this->SetFont('Arial','B',15);
+        
+        $this->SetFont('Arial','B',14);
         $this->Ln(10);
-        $this->Cell(260,10,'Total de gastos = ' .$gastos ,0,1,'R');
-        $this->Cell(265,10,'Total de ingresos = '.$ingresos,0,1,'R');
-        $this->Cell(235,10,'Total = '.$total,0,1,'R');
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total de gastos = ' .$gastos);
+        $x = $this->GetX();
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total de ingresos = '.$ingresos);
+        $x = $this->GetX();
+        $this->SetXY($this->GetX()+200, $this->GetY());
+        $this->MultiCell(80,10,'Total = '.$total);
     }
 
 

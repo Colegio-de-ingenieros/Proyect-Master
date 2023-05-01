@@ -63,7 +63,7 @@ article{
     font-weight: 500;
 }
 table{
-    width: 130%;
+    width: 100%;
     border-collapse: collapse;
     font-family: 'Manrope';
 }
@@ -99,7 +99,7 @@ tr:hover td {
 
 @media screen and (max-width: 1024px){
     table{
-        width: 130%;
+        width: 100%;
         border-collapse: collapse;
         font-family: 'Manrope';
         margin-left: 25rem;

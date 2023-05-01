@@ -29,6 +29,7 @@ if(isset($_POST["tipo"]) && isset($_POST["bandera"])){
     $numero_segumiento = $_POST["numero_seguimiento"];
     $tipo_reporte = $_POST["tipo_reporte"];
     $datos = [];
+    $datos_seguimieto = [];
 
     if($tipo_reporte == "1"){
         $inicio = $_POST["inicio"];
@@ -39,9 +40,13 @@ if(isset($_POST["tipo"]) && isset($_POST["bandera"])){
 
         
     }else{
-        $datos[] = $reportes->consultaSocio($numero_segumiento);
-        $datos[] = $reportes->consultaEmpresa($numero_segumiento);
-        $datos[] = $reportes->consultaInstructor($numero_segumiento);
+        
+        $datos_seguimieto[] = $reportes->consultaSocio($numero_segumiento);
+        $datos_seguimieto[] = $reportes->consultaEmpresa($numero_segumiento);
+        $datos_seguimieto[] = $reportes->consultaInstructor($numero_segumiento);
+        $datos[] = $reportes->periodoHistorico($numero_segumiento);
+        $datos[] =  $datos_seguimieto;
+
     }
 
    
