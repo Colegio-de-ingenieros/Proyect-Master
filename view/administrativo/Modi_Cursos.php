@@ -1,4 +1,4 @@
-<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
+<!-- <script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -213,9 +213,8 @@
 
         <div class="campo-wide">
           <label for="objetivo" class="label-2 objetivo">Objetivo*</label>
-          <input title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2" placeholder="Ingrese el objetivo" required>
+          <textarea title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2" placeholder="Ingrese el objetivo" required></textarea>
         </div>
-
       </div>
 
 
