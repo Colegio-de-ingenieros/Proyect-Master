@@ -46,9 +46,8 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>      </div>
       </div>
-    </div>
 
     <!-- Menu Desplegable -->
     <div class="container_menu">
