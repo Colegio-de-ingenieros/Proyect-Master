@@ -103,7 +103,7 @@ formulario.addEventListener("submit",(e)=>{
         .then(response => response.json())
         .then(data => {
             alert(data[0]);
-            if(data[0] != "Esta empresa ya ha sido registrada anteriormente."){
+            if(data[0] == "Registro exitoso. Verifique su correo y guarde el número inteligente que le ha sido enviado"){
                 formulario.reset();
             }
         });
