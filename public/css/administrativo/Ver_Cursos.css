@@ -121,7 +121,6 @@ li {
 .section-temario{
     display: flex;
     flex-direction: column;
-    width: 70%;
     align-items: flex-start;
     margin-bottom: 10px;
 }

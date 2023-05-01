@@ -18,6 +18,8 @@ const btn_descargar_reportes = document.getElementById("boton_descargar_reporte"
 const btn_periodo = document.getElementById("completo");
 const btn_historial_completo = document.getElementById("periodo");
 
+const option_nombre = document.getElementById("nombres");
+
 contenedor_tabla.style.display = 'none';
 btn_descargar_reportes.style.display = 'none';
 
@@ -39,6 +41,8 @@ btn_periodo.addEventListener("click",(e)=>{
 });
 
 btn_historial_completo.addEventListener("click",(e)=>{
+    fecha_inicio.valueAsDate = null;
+    fecha_fin.valueAsDate = null;
     fecha_inicio.disabled = false;
     fecha_fin.disabled = false;
 });
@@ -150,13 +154,7 @@ formulario.addEventListener("submit",(e)=>{
     let fecha1 = fecha_inicio.value;
     let fecha2 = fecha_fin.value;
 
-    if(btn_cursos.checked == false && 
-       btn_certificaciones.checked == false && 
-       btn_proyectos.checked == false){
-
-        alert("Debe seleccionar un nombre de actividad");
-
-    }else if(document.getElementById("nombres").textContent == "" && btn_cursos.checked){
+    if(document.getElementById("nombres").textContent == "" && btn_cursos.checked){
 
         alert("No hay cursos con seguimiento");
 
@@ -181,7 +179,7 @@ formulario.addEventListener("submit",(e)=>{
         }else{
 
             let nombre = getNombre();
-            let numero = document.getElementById("nombres").value.split(" ");
+            let numero = option_nombre.options[option_nombre.selectedIndex].text.split(" ");
     
             let form_data = new FormData(formulario);
             form_data.append("numero_seguimiento",numero[0]);
@@ -192,16 +190,24 @@ formulario.addEventListener("submit",(e)=>{
                 body: form_data
             }).then(respuesta=> respuesta.json())
             .then(datos=>{
-
-                if(document.getElementById("periodo").checked){
-                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
-                }else{
-                    fechas_titulo.innerText = "";
-                }
                 contenedor_tabla.style.display = 'block';
                 btn_descargar_reportes.style.display = 'block';
                 titulo.innerText = nombre;
-                rellenar_tabla(datos);
+
+                if(document.getElementById("periodo").checked){
+                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
+                    rellenar_tabla(datos);
+                }else{
+                    if(datos[0][0][0] != null && datos[0][0][1] != null){
+                        fechas_titulo.innerText = datos[0][0][0] + "  " + datos[0][0][1];   
+                    }else{
+                        fechas_titulo.innerText = "";
+                    }
+                    rellenar_tabla(datos[1]);
+                    
+                }
+                
+                
             });
 
         }
@@ -313,12 +319,17 @@ function rellenar_tabla(datos) {
                 //console.log(datos[i][2]);
                 if(datos[i][2].length != 0){
 
-                    //checa si todavia hay ingresos, si hay se mete si no no
-                    if( j < datos[i][2].length){
+                    //checa si todavia hay ingresos, si hay ingresos y son de esa persona se meten
+                    for (let index = 0; index < datos[i][2].length; index++) {
+                       
+                       
+                        if(datos[i][2][index][0] === identificador){
+                            ingresos_col.innerText = "$ "+ parseFloat(datos[i][2][index][1]);
+                            sub_ingresos += parseFloat(datos[i][2][index][1]);
+                        }
                         
-                        ingresos_col.innerText = "$ "+ parseFloat(datos[i][2][j][1]);
-                        sub_ingresos += parseFloat(datos[i][2][j][1]);
                     }
+                    
                     
                 }
 
@@ -411,7 +422,7 @@ function rellenar_tabla(datos) {
 
 function getNombre() {
     //muestra el nombre
-    let nombre_elementos = document.getElementById("nombres").textContent.split(" ");
+    let nombre_elementos = option_nombre.options[option_nombre.selectedIndex].text.split(" ");
     let nombre_completo = "";
 
     nombre_elementos.shift();

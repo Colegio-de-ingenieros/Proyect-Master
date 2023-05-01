@@ -95,6 +95,13 @@
             return $datos;
         }
 
+        function verificarExistenciaRegistro($id_bolsa, $id_usuario){
+            $consulta = "SELECT COUNT(*) FROM bolsaempcv WHERE IdEmpBol = :id_bolsa AND IdBolCv = :id_usuario";
+            $parametros = [":id_bolsa"=>$id_bolsa,":id_usuario" =>$id_usuario];
+            $respuesta = $this->bd->mostrar($consulta,$parametros);
+            return $respuesta;
+        }
+
         function IngresarRegistro($id_bolsa, $id_usuario){
             $consulta = "INSERT INTO bolsaempcv (IdEmpBol, IdBolCv) 
             VALUES (:id_bolsa, :id_usuario);";
