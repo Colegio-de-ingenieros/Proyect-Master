@@ -111,6 +111,7 @@ function rellenar_nombre_tipo(datos, tipo) {
   } else{
     document.getElementById("nombre").disabled = false;
     datos.forEach(registro => {
+      console.log(registro[0])
         var optionElement = document.createElement("option");
         optionElement.value = registro[0];
         optionElement.text = registro[1];
@@ -125,7 +126,8 @@ let formulario  = document.getElementById("formulario");
 formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let envio=1
-    let nombre = document.getElementById("nombre").value;
+    let auxNombre = document.getElementById("nombre");
+    console.log("Nuevio", document.getElementById("nombre").value)
     let instructores = document.getElementById("instructores");
     let socio_asociado =document.getElementById("nom_socio_asociado");
     let empresa = document.getElementById("nom_empresa");
@@ -141,8 +143,9 @@ formulario.addEventListener("submit",(e)=>{
       alert("Por favor, seleccione al menos un participante, ya sea un socio / asociado o una empresa.");
     }
 
-    if (nombre !=0  && instructores.value !=0  && (socio_asociado.value != 0 || empresa.value != 0 )) {
+    if (auxNombre.value.length !=0  && instructores.value !=0  && (socio_asociado.value != 0 || empresa.value != 0 )) {
       let valueHidden = document.getElementById("oculto").value; 
+      let nombre = document.getElementById("nombre").value
       let auxLisI=[]
       let auxLisS=[]
       let auxLisE=[]
