@@ -61,7 +61,7 @@ function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesi
     $ids_de_xp_academica = $obj -> seleccion_xp_academica($datos_generales[0]);
     $ids_de_xp_profesional = $obj -> seleccion_xp_profesional($datos_generales[0]);
 
-    if (isset($ids_de_bolsacv)){
+    if (isset($ids_de_bolsacv[0]["IdBolCv"])){
 
 
         $obj->actualizarbolsa($ids_de_bolsacv[0]["IdBolCv"], $datos_generales[3], $datos_generales[1], $datos_generales[2]);
@@ -108,7 +108,7 @@ function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesi
 
     
 
-/* else{
+else{
     //llenar tabla bolsacv y su relacion con usuaperso
     $id_persobolsa = $obj -> buscarUltimoIdbolsacv();
     $id_persobolsa = $obj -> agregar_ceros($id_persobolsa, 6);
@@ -142,7 +142,7 @@ function meterdatos($datos_generales,$experiencia_academica,$experiencia_profesi
     }
 
 }
- */
+
     echo json_encode('Registro exitoso');
     /* echo json_encode($id_persobolsa); */
 }
