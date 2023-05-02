@@ -1,5 +1,5 @@
 <?php
-include('../../config/Crud_bd.php'); 
+require_once ('../../config/Crud_bd.php'); 
 
 class EliminarCurso{
     private $bd;
@@ -84,19 +84,19 @@ class EliminarCurso{
     }
     function t($id){
         $consulta = "SELECT temas.NomTema, temas.IdTema FROM cursos, cursotema, temas 
-        WHERE cursos.ClaveCur = '$id' 
+        WHERE cursos.ClaveCur = :id 
         AND cursos.ClaveCur = cursotema.ClaveCur 
         AND cursotema.IdTema = temas.IdTema 
         ORDER BY temas.IdTema ASC;";
-        $datos = $this->bd->mostrar($consulta);
+        $datos = $this->bd->mostrar($consulta,[":id"=>$id]);
         return $datos;
     }
     function s($id){
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
-            WHERE  temas.IdTema = '$id'
+            WHERE  temas.IdTema = :id
             AND temas.IdTema = temassub.IdTema
             AND temassub.IdSubT = subtemas.IdSubT;";
-        $datos = $this->bd->mostrar($consulta);
+        $datos = $this->bd->mostrar($consulta,[":id"=>$id]);
         return $datos;
     }
 }
