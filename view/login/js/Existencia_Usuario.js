@@ -37,7 +37,7 @@ function mostrar_mensaje() {
     }
    
     let etiqueta_p = document.createElement("p");
-    let texto = document.createTextNode("El Correo electrónico no existe");
+    let texto = document.createTextNode("El correo electrónico no existe");
     etiqueta_p.appendChild(texto);
     contenedor.appendChild(etiqueta_p);
     
