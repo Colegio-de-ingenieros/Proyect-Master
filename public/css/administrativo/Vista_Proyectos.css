@@ -68,14 +68,14 @@ table{
 }
 
 .header_table thead th {
-    
     top: 0;
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
+    word-wrap: break-word;
 }
 th,td {
-    max-width: 230px;
+    max-width: 235px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
@@ -83,7 +83,6 @@ th,td {
     word-wrap: break-word;
     white-space: normal;
     background-color: #dfe3e7;
-    
 }
 tr:hover td {
     color: #3a42b4;
