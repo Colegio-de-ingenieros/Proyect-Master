@@ -27,7 +27,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                         <th>Nombre</th>
                         <th>Organización</th>
                         <th>Total de horas</th>
-                        <th>PDF</th>
+                        <th>Comprobante</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -71,7 +71,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                         <th>Nombre</th>
                         <th>Organización</th>
                         <th>Total de horas</th>
-                        <th>PDF</th>   
+                        <th>Comprobante</th>   
                         <th>Acciones</th>
                     </tr>
                 </thead>
