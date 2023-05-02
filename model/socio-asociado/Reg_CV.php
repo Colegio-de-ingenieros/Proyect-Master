@@ -8,6 +8,18 @@
             $this->base = new Crud_bd();
             $this->base->conexion_bd();
         }
+        function actualizarbolsa($idb, $descripcion, $residencia, $salario){
+            $q1 = "UPDATE bolsacv 
+            SET DesProCv = :descripcion, ResidenciaCv = :residencia, ExpSalCv = :salario WHERE IdBolCv = :idb";
+
+            $a1 = [":idb"=>$idb, ":descripcion"=>$descripcion, ":residencia"=>$residencia, ":salario"=>$salario];
+
+            //acomoda todo en arreglos para mandarlos al CRUD
+            $querry = [$q1];
+            $parametros = [$a1];
+
+            $this->base->insertar_eliminar_actualizar($querry, $parametros);
+        }
         function eliminar_persobolsa_cv($id){
             $q2 = "DELETE FROM persobolsacv WHERE IdPerso = :id"; 
             $a2= [":id"=>$id];
