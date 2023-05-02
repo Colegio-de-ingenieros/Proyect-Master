@@ -4,40 +4,53 @@ include_once('../../model/administrativo/Eliminar_Cursos.php');
 $bd = new EliminarCurso();
 $bd->BD();
 
-$id = $_GET['id'];
-/* $id = $bd->agregar_ceros($id, 6); */
+if(isset($_POST["id"])){
+    
 
-$estatus = $bd->buscaestatus($id);
-/* $estacur= $estatus[0]["EstatusCur"]; */
+    $id = $_POST["id"];
+    $estatus = $bd->buscaestatus($id);
 
-if ($estatus == 1) {
-    http_response_code(404);
-}
-else{
-$datost = $bd->t($id);
-if ($datost) {
-    $bd->eliminarcursotema($id);
-    $bd->eliminarcurso($id);    
-    for ($i = 0; $i < count($datost); $i++) {
+    $respuesta = [];
 
+    if($estatus == 1){
 
-        $tema =  $datost[$i]["IdTema"];
-        $datoss = $bd->s($tema);
-        $bd->eliminartemasub($datost[$i]["IdTema"]); 
-        $bd->eliminartema($datost[$i]["IdTema"]);
+        $respuesta = ["no hubo exito"];
+      
 
-            for ($j = 0; $j < count($datoss); $j++) {
-                $bd->eliminarsubtema($datoss[$j]["IdSubT"]); 
-            } 
+    }else{
+        // busca si tiene temas
+        $datost = $bd->t($id);
+        
+        if(count($datost) > 0){//si tiene elemnetos que que entre
+            
+            $bd->eliminarcursotema($id);
+            $bd->eliminarcurso($id);
+            
+
+            for ($i=0; $i < count($datost) ; $i++) { 
+            
+                $tema = $datost[$i]["IdTema"];
+                $datoss = $bd->s($tema);
+                $bd->eliminartemasub($datost[$i]["IdTema"]);
+                $bd->eliminartema($datost[$i]["IdTema"]);
+
+                for ($j=0; $j < count($datoss) ; $j++) { 
+                    $bd->eliminarsubtema($datoss[$j]["IdSubT"]);
+                }
+
+            }
+
+        }else{
+            $bd->eliminarcurso($id);
+
+        }
+
+        $respuesta = ["Exito"];
     }
-}
 
+    header("Content-Type: application/json");
+    echo json_encode($respuesta);
 
-else {
-    $bd->eliminarcurso($id);
 }
-echo "<script>location.href = '../../view/administrativo/Vista_Cursos.php';</script>";
-}
-/* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
 
 ?>
