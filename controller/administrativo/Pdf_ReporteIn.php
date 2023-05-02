@@ -30,7 +30,7 @@ class PDF extends FPDF{
         
         $this->Cell(280,10,'Reporte individual',0,1,'C');
 
-        $this->Cell(60,10,iconv("UTF-8", "CP1250//TRANSLIT", $this->nombre_actividad),0,1,'L'); // Aqui el nombre de la actividad 
+        $this->Cell(60,10,iconv('UTF-8', 'windows-1252', $this->nombre_actividad),0,1,'L'); // Aqui el nombre de la actividad 
         $this->Cell(60,10,$this->periodo,0,1,'L'); //Aqui el periodo que se eligio 
         
     } 
@@ -48,27 +48,48 @@ class PDF extends FPDF{
         {
             $this->SetFont('Times','B',14);
             $this->SetTextColor(255, 255, 255);
-            $this->Cell(35,10, utf8_decode($col),1, 0 , 'L', true);
+            $this->Cell(35,10, iconv('UTF-8', 'windows-1252',$col),1, 0 , 'L', true);
         }
         //Color de las letras de la tabla 
         $this->SetTextColor(0, 0, 0);
         $this->SetFont('Times','',12);
         $this->Ln();
+        
         //crea las celdas de la tabla con los datos
         for ($i=0; $i < count($filas) ; $i++) {
             //pone en negritas el texto 
             if($i == (count($filas)-1)){
                 $this->SetFont('Times','B',13);
             }
-            $y = $this->GetY(); 
-            $x = $this->GetX();
+            
           
             $columnas = explode(",",$filas[$i]);
-            
+            $y = $this->GetY(); 
+            $x = $this->GetX();
+        
+
             for ($j=0; $j < count($columnas) ; $j++) { 
                 if($j == 0){
+                    //saca la altura que tendri la celda con el string que le pasamos
+                    $string = $columnas[$j];
+                    $singleLineWidth = $this->GetStringWidth($string);
+                    $numberLines = ceil(($this->GetX() + $singleLineWidth) / ($this->GetPageWidth() - 20)); // 20 accounts for the 10mm default margins
+                    $lineHeight = 13;//el tamaño de la linea es el que le especificamos en la fuente
+                    $heightOfOutput = $numberLines * $lineHeight;
+
+                    // Now use $heightOfOutput to, for example, determine if a page break is needed before output
+                    if($this->GetY()>$this->PageBreakTrigger-$heightOfOutput){
+                        
+                        $this->AddPage($this->CurOrientation);
+                      
+                        //actualizamos los valores que tenemos almacenado en x y, despues del pagebreak en caso de que se alla realizado
+                        $y = $this->GetY(); 
+                        $x = $this->GetX();
+                    }
+                        
                     //para que acepte acentos
-                    $this->MultiCell(35,7,iconv("UTF-8", "CP1250//TRANSLIT",$columnas[$j]),1); //creamos la primera celda
+                    $this->MultiCell(35,7,iconv('UTF-8', 'windows-1252',$columnas[$j]),1); //creamos la primera celda
+                    
                   
                 }else{
                     # para obtener la atura, tomamos la posicion de y despues de colocarca y le restamos la y anterior
@@ -86,6 +107,7 @@ class PDF extends FPDF{
             //agrega un salto de pagina si hay overflow a causa de la celda
             if($this->GetY()+$altura>$this->PageBreakTrigger)
             $this->AddPage($this->CurOrientation);
+            
            
         }
        
@@ -105,7 +127,7 @@ class PDF extends FPDF{
 
 }
 
-
+    header("Content-type: application/pdf; charset=utf-8");
     //Creación del objeto de la clase heredada
     $pdf=new PDF($_POST["nombre"],$_POST["periodo"]);
     //Títulos de las columnas
@@ -113,9 +135,11 @@ class PDF extends FPDF{
     $pdf->AliasNbPages();
     //Primera página
     $pdf->AddPage();
+
     $pdf->SetFont('Times','',14);
     $pdf->SetY(65);
     //$pdf->AddPage();
+    
     $pdf->TablaBasica($header,$_POST["gastos"],$_POST["ingresos"],$_POST["total"],$_POST["array_datos"]);
     
     $pdf->Output();
