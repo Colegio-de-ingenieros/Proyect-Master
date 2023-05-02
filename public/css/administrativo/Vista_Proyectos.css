@@ -75,7 +75,7 @@ table{
     font-size: 1.125rem;
 }
 th,td {
-    max-width: 280px;
+    max-width: 230px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
