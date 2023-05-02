@@ -1,14 +1,14 @@
 <?php
-include_once('../../model/administrativo/Eliminar_Cursos.php');
+include_once('../../model/administrativo/Eliminar_Cursos_Model.php');
 
-$bd = new EliminarCurso();
-$bd->BD();
+$base = new EliminarCurso();
+$base->BD();
 
 if(isset($_POST["id"])){
     
 
     $id = $_POST["id"];
-    $estatus = $bd->buscaestatus($id);
+    $estatus = $base->buscaestatus($id);
 
     $respuesta = [];
 
@@ -19,29 +19,29 @@ if(isset($_POST["id"])){
 
     }else{
         // busca si tiene temas
-        $datost = $bd->t($id);
+        $datost = $base->t($id);
         
         if(count($datost) > 0){//si tiene elemnetos que que entre
             
-            $bd->eliminarcursotema($id);
-            $bd->eliminarcurso($id);
+            $base->eliminarcursotema($id);
+            $base->eliminarcurso($id);
             
 
             for ($i=0; $i < count($datost) ; $i++) { 
             
                 $tema = $datost[$i]["IdTema"];
-                $datoss = $bd->s($tema);
-                $bd->eliminartemasub($datost[$i]["IdTema"]);
-                $bd->eliminartema($datost[$i]["IdTema"]);
+                $datoss = $base->s($tema);
+                $base->eliminartemasub($datost[$i]["IdTema"]);
+                $base->eliminartema($datost[$i]["IdTema"]);
 
                 for ($j=0; $j < count($datoss) ; $j++) { 
-                    $bd->eliminarsubtema($datoss[$j]["IdSubT"]);
+                    $base->eliminarsubtema($datoss[$j]["IdSubT"]);
                 }
 
             }
 
         }else{
-            $bd->eliminarcurso($id);
+            $base->eliminarcurso($id);
 
         }
 
