@@ -61,7 +61,7 @@ $respuesta .= ' -->
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = \'../../controller/login/logout.php\'">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = \'../../../controller/login/logout.php\'">Cerrar sesión</button>
       </div>
     </div>
 
