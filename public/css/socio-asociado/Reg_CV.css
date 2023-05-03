@@ -217,6 +217,9 @@ textarea {
     resize: none;
 }
 
+.expand{
+    grid-column: span 2;
+}
 
 @media screen and (max-width: 1250px) {
     .formulario-generales, .formulario-experiencia{
@@ -239,6 +242,10 @@ textarea {
 
     .formulario-certificaciones{
         grid-template-columns: 1fr;
+    }
+
+    .expand{
+        grid-column: span 1;
     }
 }
 

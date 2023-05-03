@@ -243,7 +243,10 @@ textarea {
     #experiencia-1{
         display: flex;
         flex-direction: column;
-        
+    }
+
+    .expand{
+        grid-column: span 1;
     }
 }
 
