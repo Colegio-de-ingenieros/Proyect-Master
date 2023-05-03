@@ -7,8 +7,8 @@ if(isset($_POST["id"])){
     
 
     $id = $_POST["id"];
-    //$estatus = $base->buscaestatus($id);
-    $estatus = 2;
+    $estatus = $base->buscaestatus($id);
+   
     $respuesta = [];
 
     if($estatus == 1){
@@ -18,8 +18,8 @@ if(isset($_POST["id"])){
 
     }else{
         // busca si tiene temas
-        // $datost = $base->t($id);
-        // $respuesta = $datost;
+        $datost = $base->t($id);
+        $respuesta = $datost;
         
         //if(count($datost) > 0){//si tiene elemnetos que que entre
             
@@ -47,7 +47,7 @@ if(isset($_POST["id"])){
 
         }*/
 
-        $respuesta = [$id];
+        //$respuesta = ["Exito"];
     }
 
     header("Content-Type: application/json");
