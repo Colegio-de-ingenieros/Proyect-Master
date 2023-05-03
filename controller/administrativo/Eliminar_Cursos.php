@@ -1,15 +1,15 @@
 <?php
 include_once('../../model/administrativo/Eliminar_Cursos_Model.php');
 ini_set('display_errors', 1);
-$base = new EliminarCurso();
-$base->BD();
+// $base = new EliminarCurso();
+// $base->BD();
 
 if(isset($_POST["id"])){
     
 
     $id = $_POST["id"];
-    $estatus = $base->buscaestatus($id);
-
+    //$estatus = $base->buscaestatus($id);
+    $estatus = 2;
     $respuesta = [];
 
     if($estatus == 1){
@@ -19,9 +19,9 @@ if(isset($_POST["id"])){
 
     }else{
         // busca si tiene temas
-        $datost = $base->t($id);
+        //$datost = $base->t($id);
         
-        if(count($datost) > 0){//si tiene elemnetos que que entre
+        //if(count($datost) > 0){//si tiene elemnetos que que entre
             
             // $base->eliminarcursotema($id);
             // $base->eliminarcurso($id);
@@ -39,13 +39,13 @@ if(isset($_POST["id"])){
             //     }
 
             // }
-            $respuesta = $datost;
+            //$respuesta = $datost;
 
 
-        }else{
+        /*}else{
             //$base->eliminarcurso($id);
 
-        }
+        }*/
 
         $respuesta = ["Exito"];
     }
