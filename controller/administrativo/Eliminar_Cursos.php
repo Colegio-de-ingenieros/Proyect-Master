@@ -21,33 +21,33 @@ if(isset($_POST["id"])){
         $datost = $base->t($id);
         $respuesta = $datost;
         
-        //if(count($datost) > 0){//si tiene elemnetos que que entre
+        if(count($datost) > 0){//si tiene elemnetos que que entre
             
-            // $base->eliminarcursotema($id);
-            // $base->eliminarcurso($id);
+            $base->eliminarcursotema($id);
+            $base->eliminarcurso($id);
             
 
-            // for ($i=0; $i < count($datost) ; $i++) { 
+            for ($i=0; $i < count($datost) ; $i++) { 
             
-            //     $tema = $datost[$i]["IdTema"];
-            //     $datoss = $base->s($tema);
-            //     $base->eliminartemasub($datost[$i]["IdTema"]);
-            //     $base->eliminartema($datost[$i]["IdTema"]);
+                $tema = $datost[$i]["IdTema"];
+                $datoss = $base->s($tema);
+                $base->eliminartemasub($datost[$i]["IdTema"]);
+                $base->eliminartema($datost[$i]["IdTema"]);
 
-            //     for ($j=0; $j < count($datoss) ; $j++) { 
-            //         $base->eliminarsubtema($datoss[$j]["IdSubT"]);
-            //     }
+                for ($j=0; $j < count($datoss) ; $j++) { 
+                    $base->eliminarsubtema($datoss[$j]["IdSubT"]);
+                }
 
-            // }
-            //$respuesta = $datost;
+            }
+            $respuesta = $datost;
 
 
-        /*}else{
-            //$base->eliminarcurso($id);
+        }else{
+            $base->eliminarcurso($id);
 
-        }*/
+        }
 
-        //$respuesta = ["Exito"];
+        $respuesta = ["Exito"];
     }
 
     header("Content-Type: application/json");
