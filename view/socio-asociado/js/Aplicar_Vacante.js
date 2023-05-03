@@ -141,7 +141,7 @@ window.onload = function () {
 
           const label_fecha_fin = document.createElement("label");
           label_fecha_fin.classList.add("label-2");
-          label_fecha_fin.textContent = "Periodo de fin";
+          label_fecha_fin.textContent = "Periodo de finalización";
 
           const input_fecha_fin = document.createElement("input");
           input_fecha_fin.type = "date";
