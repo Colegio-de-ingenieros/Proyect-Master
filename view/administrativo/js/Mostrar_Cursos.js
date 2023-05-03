@@ -106,6 +106,7 @@ function eliminar_f(clave) {
         }).then(respuesta=> respuesta.json())
         .then(datos=>{
 
+            console.log(datos);
            
             if(datos[0] == "Exito"){
 

@@ -45,42 +45,36 @@ class EliminarCurso{
     function eliminarcurso($id){
         $q2 = "DELETE FROM cursos WHERE ClaveCur = :id"; 
         $a2= [":id"=>$id];
-        $querry = [$q2];
-        $parametros = [$a2];
+        
 
-        $this->bd->insertar_eliminar_actualizar($querry, $parametros);
+        $this->bd->insertar_eliminar_actualizar($q2, $a2);
     }
     function eliminartema($id){
         $q2 = "DELETE FROM temas WHERE IdTema = :id"; 
         $a2= [":id"=>$id];
-        $querry = [$q2];
-        $parametros = [$a2];
+        
 
-        $this->bd->insertar_eliminar_actualizar($querry, $parametros);
+        $this->bd->insertar_eliminar_actualizar($q2, $a2);
     }
     function eliminartemasub($id){
         $q2 = "DELETE FROM temassub WHERE IdTema = :id"; 
         $a2= [":id"=>$id];
-        $querry = [$q2];
-        $parametros = [$a2];
-
-        $this->bd->insertar_eliminar_actualizar($querry, $parametros);
+      
+        $this->bd->insertar_eliminar_actualizar($q2, $a2);
     }
     function eliminarsubtema($id){
         $q2 = "DELETE FROM subtemas WHERE IdSubT = :id"; 
         $a2= [":id"=>$id];
-        $querry = [$q2];
-        $parametros = [$a2];
+       
 
-        $this->bd->insertar_eliminar_actualizar($querry, $parametros);
+        $this->bd->insertar_eliminar_actualizar($q2, $a2);
     }
     function eliminarcursotema($id){
         $q2 = "DELETE FROM cursotema WHERE ClaveCur = :id"; 
         $a2= [":id"=>$id];
-        $querry = [$q2];
-        $parametros = [$a2];
+       
 
-        $this->bd->insertar_eliminar_actualizar($querry, $parametros);
+        $this->bd->insertar_eliminar_actualizar($q2, $a2);
     }
     function t($id){
         $consulta = "SELECT temas.NomTema, temas.IdTema FROM cursos, cursotema, temas 
