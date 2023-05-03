@@ -43,7 +43,7 @@ if(isset($_POST["id"])){
 
 
         }else{
-            $base->eliminarcurso($id);
+            //$base->eliminarcurso($id);
 
         }
 
