@@ -1,6 +1,6 @@
 <?php
 include_once('../../model/administrativo/Eliminar_Cursos_Model.php');
-
+ini_set('display_errors', 1);
 $base = new EliminarCurso();
 $base->BD();
 
