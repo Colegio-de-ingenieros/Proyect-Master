@@ -17,7 +17,7 @@ class EliminarCurso extends Crud_bd{
         return $numero_nuevo;
     }
 
-    public function buscaestatus($id){
+    public function buscaestatus($id=null){
         $this->conexion_bd();
         $querry1 = "SELECT EstatusCur FROM cursos WHERE ClaveCur=:id";
         $arre1 = [":id"=>$id];
@@ -32,42 +32,42 @@ class EliminarCurso extends Crud_bd{
         }
     }
 
-    public function eliminarcurso($id){
+    public function eliminarcurso($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM cursos WHERE ClaveCur = :id"; 
         $a2= [":id"=>$id];
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
-    public function eliminartema($id){
+    public function eliminartema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM temas WHERE IdTema = :id"; 
         $a2= [":id"=>$id];
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
-    public function eliminartemasub($id){
+    public function eliminartemasub($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM temassub WHERE IdTema = :id"; 
         $a2= [":id"=>$id];
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
-    public function eliminarsubtema($id){
+    public function eliminarsubtema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM subtemas WHERE IdSubT = :id"; 
         $a2= [":id"=>$id];
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
-    public function eliminarcursotema($id){
+    public function eliminarcursotema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM cursotema WHERE ClaveCur = :id"; 
         $a2= [":id"=>$id];
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
-    public function t($id){
+    public function t($id=null){
         $this->conexion_bd();
         $consulta = "SELECT temas.NomTema, temas.IdTema FROM cursos, cursotema, temas 
         WHERE cursos.ClaveCur = :id 
@@ -78,7 +78,7 @@ class EliminarCurso extends Crud_bd{
         $this->cerrar_conexion();
         return $datos;
     }
-    public function s($id){
+    public function s($id=null){
         $this->conexion_bd();
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
             WHERE  temas.IdTema = :id
