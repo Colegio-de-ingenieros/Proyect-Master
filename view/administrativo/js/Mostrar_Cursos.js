@@ -111,7 +111,7 @@ function eliminar_f(clave) {
             if(datos[0] == "Exito"){
 
                 alert("Eliminado con exito");
-                location.reload();
+                //location.reload();
 
             }else{
                 alert("El curso tiene seguimiento");
