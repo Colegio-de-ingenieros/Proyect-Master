@@ -8,7 +8,7 @@ $id=000000;
 session_start();
 $username = $_SESSION['usuario'];
 $rfccorreo1=$obj->rfccorreo($username);
-
+//print_r($rfccorreo1);
 $rfce=$rfccorreo1[0][0];
 //echo $rfce;
 if (isset($_POST['consulta'])) {
@@ -70,6 +70,13 @@ if (isset($_POST['consulta'])) {
             $req = $resultado[$i]["ReqAcaEmpBol"];
             $exp = $resultado[$i]["AñoEmpBol"];
             $tel = $resultado[$i]["TipoMod"];
+            $estatus= $resultado[$i]["EstatusEmpBol"];
+            if ($estatus==1) {
+                $estatus="Aprobado";
+            }
+            else{
+                $estatus="En espera";
+            }
             //$extension = getExt($logo);
             $aplicantes=$base->contar($id);
             $aplica=$aplicantes[0]["total"];
@@ -80,7 +87,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $exp . '</td>';            
             $salida .= '<td>' .$aplica. '</td>';
-            $salida .= '<td>' .$aplica. '</td>';
+            $salida .= '<td>' .$estatus. '</td>';
             $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
             
@@ -152,6 +159,13 @@ if (isset($_POST['consulta'])) {
             $req = $resultado[$i]["ReqAcaEmpBol"];
             $exp = $resultado[$i]["AñoEmpBol"];
             $tel = $resultado[$i]["TipoMod"];
+            $estatus= $resultado[$i]["EstatusEmpBol"];
+            if ($estatus==1) {
+                $estatus="Aprobado";
+            }
+            else{
+                $estatus="En espera";
+            }
             //$extension = getExt($logo);
             $aplicantes=$base->contar($id);
             $aplica=$aplicantes[0]["total"];
@@ -163,7 +177,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $exp . '</td>';            
             $salida .= '<td>' .$aplica. '</td>';
-            $salida .= '<td>' .$aplica. '</td>';            
+            $salida .= '<td>' .$estatus. '</td>';            
             $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             
             $salida .= '</tr></div>';
