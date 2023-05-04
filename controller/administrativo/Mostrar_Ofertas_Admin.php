@@ -44,12 +44,10 @@ if (isset($_POST['consulta'])) {
         <table class="header_table" >
                         <thead>
                             <tr>
+                                <th>Empresa</th>
                                 <th>Vacante</th>
-                                <th>Descripción del puesto</th>
-                                <th>Modalidad</th>
-                                <th>Experiencia requerida</th>                
-                                <th>Número de aplicantes</th>
-                                <th>Acciones     </th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                 <tbody>';
