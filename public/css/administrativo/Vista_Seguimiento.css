@@ -80,6 +80,11 @@ article{
 .grupo-input3{
     grid-column: span 3;
 }
+
+.radio-button-format{
+    margin-right: 10px;
+}
+
 table{
     width: 100%;
     border-collapse: collapse;
