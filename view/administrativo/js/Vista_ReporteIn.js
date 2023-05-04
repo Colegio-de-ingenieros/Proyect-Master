@@ -413,8 +413,8 @@ function rellenar_tabla(datos) {
     ingresos_totales.appendChild(cantidad2);
     total_final.appendChild(cantidad3);
 
-    totales.appendChild(gastos_totales);
     totales.appendChild(ingresos_totales);
+    totales.appendChild(gastos_totales);
     totales.appendChild(total_final);
 
 

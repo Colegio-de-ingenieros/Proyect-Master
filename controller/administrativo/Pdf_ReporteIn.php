@@ -115,10 +115,10 @@ class PDF extends FPDF{
         $this->SetFont('Arial','B',14);
         $this->Ln(10);
         $this->SetXY($this->GetX()+200, $this->GetY());
-        $this->MultiCell(80,10,'Total de gastos = ' .$gastos);
+        $this->MultiCell(80,10,'Total de ingresos = '.$ingresos);
         $x = $this->GetX();
         $this->SetXY($this->GetX()+200, $this->GetY());
-        $this->MultiCell(80,10,'Total de ingresos = '.$ingresos);
+        $this->MultiCell(80,10,'Total de gastos = ' .$gastos);
         $x = $this->GetX();
         $this->SetXY($this->GetX()+200, $this->GetY());
         $this->MultiCell(80,10,'Total = '.$total);
