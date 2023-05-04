@@ -7,14 +7,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
-  <title>Vizualización de cursos</title>
+  <title>Registro de cuotas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/Vista_Cursos.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../../controller/socio-asociado/js/Mostrar_Cursos.js"></script>
-
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cuota.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
@@ -102,30 +102,85 @@
   </div>
   </header>
 
-  <main class="section-main">
-    <div>
-        <div class="article-tablas">
-          <article>
-            <div class="sub-titulo">
-              <h4 class="subtitulo-1">Mostrar / Consultar</h4>
-            </div>
-            <hr>
-            <div class="grupo-input">
-              <div class="input-form">
-                <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
-                
-              </div>
-            </div>
-            <br>
-            <div class="tablas">
-              <section class="header_table" id="tablaResultado">
-  
-              </section>
-            </div>
-          </article>
-        </div>
+  <main>
+    <section class="section-main">
+      <div class="cabezera">
+        <h3 class="h3">Registro</h2>
+          <br>
+        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+          <p class="subtitulo-1">Datos de la cuota</p>
+          
+          <hr>
       </div>
+      <!-- Datos generales -->
+      <div class="formulario-generales">
+        <!-- Nombre -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Tipo de cuota*</p>
+        </div>
+        <select type="text" class="input-format"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+            <option value="" selected disabled>Seleccione su máximo grado de estudios</option>
+            <option value="1">Pasante</option>
+            <option value="2">Licenciatura</option>
+            <option value="3">Maestría</option>
+            <option value="4">Doctorado</option>
+            </select>
+        </div>
+        <!-- Org -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Monto*</p>
+        </div>
+          <input type="text" class="input-format-2" id="organizacion" placeholder="Ingrese el nombre de la organización" name="organizacion" required maxlength="50"
+          title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto."></input>
+        </div>
+        <!-- HORAS -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Total de horas*</p>
+        </div>
+        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" disabled name="fechaICert" maxlength="60">
+        </div>
+        <div class="campo">
+          
+            <div class="label-form">
+              <p class="label-2">Total de horas*</p>
+          </div>
+          <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" disabled name="fechaICert" maxlength="60">
+          </div>
+        <!-- PDF -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Comprobante de cuota*</p>
+        </div>
+            <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
+            required title="El archivo debe ser maximo de 10MB."></input>
+            <br><br>
+            
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+        
+        
+
+      <div class="botones-registro">
+        <button id="boton_registrar" class="btn btn-medium">Registrar</button>
+      </div>
+
+    </form>
+
+    </section>
+    <span id="id-usuario" style="display:none">P0001</span>
+
   </main>
+
+ 
 </body>
 
 </html>
