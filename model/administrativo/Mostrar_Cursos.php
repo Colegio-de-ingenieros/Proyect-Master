@@ -12,7 +12,7 @@ class MostrarCurso{
 
     //hace la consulta principal de los datos de las certificaciones
     function cursos_disponibles(){
-        $consulta = "SELECT ClaveCur, NomCur, DuracionCur FROM cursos";
+        $consulta = "SELECT ClaveCur, NomCur, DuracionCur,EstatusCur FROM cursos";
         $datos = $this->bd->mostrar($consulta);
 
         return $datos;

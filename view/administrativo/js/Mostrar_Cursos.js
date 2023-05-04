@@ -55,6 +55,7 @@ function crear_tabla(datos) {
             var clave = document.createElement('td');
             var nombre = document.createElement('td');
             var duracion = document.createElement('td');
+            var seguimiento = document.createElement('td');
             var acciones = document.createElement('td');
 
             var ver_mas = document.createElement("a");
@@ -82,14 +83,30 @@ function crear_tabla(datos) {
 
             clave.innerText = datos[i]["ClaveCur"];
             nombre.innerText = datos[i]["NomCur"];
-            duracion.innerText = datos[i]["DuracionCur"];        
+            duracion.innerText = datos[i]["DuracionCur"]; 
+            if (datos[i]["EstatusCur"] == 1){
+                seguimiento.innerText = "No";   
 
-            row.appendChild(clave);
-            row.appendChild(nombre);
-            row.appendChild(duracion);
-            row.appendChild(acciones);
+                row.appendChild(clave);
+                row.appendChild(nombre);
+                row.appendChild(duracion);
+                row.appendChild(seguimiento);
+                row.appendChild(acciones);
 
-            cuerpo_tabla.appendChild(row);
+                cuerpo_tabla.appendChild(row);
+            }else{
+                seguimiento.innerText = "Si";   
+
+                row.appendChild(clave);
+                row.appendChild(nombre);
+                row.appendChild(duracion);
+                row.appendChild(seguimiento);
+                row.appendChild(acciones);
+
+                cuerpo_tabla.appendChild(row);
+            }   
+
+            
             
         }
 
