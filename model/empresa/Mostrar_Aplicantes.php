@@ -13,7 +13,7 @@ class MostrarAplicantes{
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 
-         AND bolsaempresa.IdEmpBol=:id
+         AND bolsaempresa.IdEmpBol=:id AND `EstatusCv` = 1
          GROUP BY bolsacv.IdBolCv";
         $resultados = $this->base->mostrar($querry, [":id" => $id]);
 

@@ -10,7 +10,7 @@ class MostrarOfertas{
     }
     //hace la consulta principal de los datos de las certificaciones
     function getOfertas($rfc){
-        $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod 
+        $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod, EstatusEmpBol 
         FROM bolsaempresa, usuaempbolsa,bolsamodalidades,modalidad
         WHERE bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and bolsaempresa.IdEmpBol=bolsamodalidades.IdEmpBol and bolsamodalidades.IdMod=modalidad.IdMod and usuaempbolsa.RFCUsuaEmp=:rfc
         ORDER BY VacEmpBol ASC";
@@ -25,7 +25,7 @@ class MostrarOfertas{
     }
     function buscador($busqueda,$rfce){
         
-        $querry = "SELECT RFCUsuaEmp,bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod, TipoJor 
+        $querry = "SELECT RFCUsuaEmp,bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod, TipoJor, EstatusEmpBol
         FROM bolsaempresa, usuaempbolsa,bolsamodalidades,modalidad, bolsajornada, jornada
         WHERE (bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and bolsaempresa.IdEmpBol=bolsamodalidades.IdEmpBol and bolsamodalidades.IdMod=modalidad.IdMod and bolsaempresa.IdEmpBol=bolsajornada.IdEmpBol 
         and bolsajornada.IdJor=jornada.IdJor and usuaempbolsa.RFCUsuaEmp=:rfc)
@@ -73,19 +73,22 @@ class MostrarOfertas{
         return $resultados4;
     }
     function contar($id){
-        $q4 = "SELECT COUNT(*) AS total FROM `bolsaempcv`
-        WHERE `IdEmpBol`= :id";
+        $q4 = "SELECT COUNT(*) AS total 
+        FROM `bolsaempcv`,bolsacv
+        WHERE bolsaempcv.IdBolCv=bolsacv.IdBolCv AND `IdEmpBol`= :id  AND `EstatusCv` = 1";
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
     }
     function mostrarAplicantes($id){
-        $q4 = "SELECT * FROM `bolsaempcv`
+        $q4 = "SELECT * 
+        FROM `bolsaempcv`
         WHERE `IdEmpBol`= :id";
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
     }
     function getAplicante($id){
-        $q4 = "SELECT * FROM `bolsaempcv`
+        $q4 = "SELECT * 
+        FROM `bolsaempcv`
         WHERE `IdEmpBol`= :id";
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
