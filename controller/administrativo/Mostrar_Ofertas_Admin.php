@@ -1,15 +1,11 @@
 <?php
-include_once('../../model/empresa/Mostrar_Ofertas.php');
+include_once('../../model/administrativo/Mostrar_Ofertas.php');
 $salida = '';
 $base = new MostrarOfertas();
 $base->instancias();
 
-$id=000000;
-session_start();
-$username = $_SESSION['usuario'];
-$rfccorreo1=$obj->rfccorreo($username);
 
-$rfce=$rfccorreo1[0][0];
+$rfce=" ";
 //echo $rfce;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
@@ -53,9 +49,7 @@ if (isset($_POST['consulta'])) {
                                 <th>Modalidad</th>
                                 <th>Experiencia requerida</th>                
                                 <th>Número de aplicantes</th>
-                                <th>Aprobado</th>
                                 <th>Acciones     </th>
-                                
                             </tr>
                         </thead>
                 <tbody>';
@@ -80,10 +74,8 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $exp . '</td>';            
             $salida .= '<td>' .$aplica. '</td>';
-            $salida .= '<td>' .$aplica. '</td>';
             $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
-            
             //
             $salida .= '</tr></div>';
     
@@ -135,9 +127,7 @@ if (isset($_POST['consulta'])) {
                                 <th>Modalidad</th>
                                 <th>Experiencia requerida</th>                
                                 <th>Número de aplicantes</th>
-                                <th>Aprobado</th>
                                 <th>Acciones     </th>
-                                
                             </tr>
                         </thead>
                 <tbody>';
@@ -163,9 +153,9 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $tel . '</td>';
             $salida .= '<td>' . $exp . '</td>';            
             $salida .= '<td>' .$aplica. '</td>';
-            $salida .= '<td>' .$aplica. '</td>';            
-            $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             
+            
+            $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             $salida .= '</tr></div>';
     
             
