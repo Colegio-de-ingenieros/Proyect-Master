@@ -21,7 +21,11 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
 
     <script languaje="javascript">
       function regresar(){
-        location.href = '../../view/administrativo/Vista_Proyectos.php';
+        var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+        if(resp ==  true){
+          location.href = '../../view/administrativo/Vista_Proyectos.php';
+        }
+
       }
     </script>
 
