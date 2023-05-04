@@ -9,20 +9,22 @@ class MostrarOfertas{
         $this->base->conexion_bd();
     }
     //hace la consulta principal de los datos de las certificaciones
-    function getOfertas($rfc){
-        $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod 
-        FROM bolsaempresa, usuaempbolsa,bolsamodalidades,modalidad
-        WHERE bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and bolsaempresa.IdEmpBol=bolsamodalidades.IdEmpBol and bolsamodalidades.IdMod=modalidad.IdMod and usuaempbolsa.RFCUsuaEmp=:rfc
-        ORDER BY VacEmpBol ASC";
-        $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
+    function getOfertas(){
+        $querry = "SELECT NomUsuaEmp,VacEmpBol, EstatusEmpBol, bolsaempresa.IdEmpBol
+        FROM usuaemp, usuaempbolsa, bolsaempresa
+        WHERE usuaemp.RFCUsuaEmp = usuaempbolsa.RFCUsuaEmp  and bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol
+        ORDER BY NomUsuaEmp ASC";
+        $resultados = $this->base->mostrar($querry);
+        return $resultados;
 
 }
-function buscadorOfertas($rfc,$busqueda){
-    $querry = "SELECT bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol, TipoMod 
-    FROM bolsaempresa, usuaempbolsa,bolsamodalidades,modalidad
-    WHERE bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol and bolsaempresa.IdEmpBol=bolsamodalidades.IdEmpBol and bolsamodalidades.IdMod=modalidad.IdMod and usuaempbolsa.RFCUsuaEmp=:rfc
-    ORDER BY VacEmpBol ASC";
-    $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
+function buscadorOfertas($busqueda){
+    $querry = "SELECT NomUsuaEmp,VacEmpBol, EstatusEmpBol, bolsaempresa.IdEmpBol
+    FROM usuaemp, usuaempbolsa, bolsaempresa
+    WHERE usuaemp.RFCUsuaEmp = usuaempbolsa.RFCUsuaEmp  and bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol
+    AND (NomUsuaEmp LIKE :busqueda OR VacEmpBol LIKE :busqueda)
+    ORDER BY NomUsuaEmp ASC";
+    $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%"]);
 
 }
 }
