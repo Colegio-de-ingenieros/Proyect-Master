@@ -20,7 +20,10 @@
     <!--regresa a la vista de todas las certificaciones sin modificar nada-->
     <script languaje="javascript">
       function regresar(){
-        location.href = '../../view/administrativo/Vista_Certificaciones.php';
+        var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
+        if(resp ==  true){
+          location.href = '../../view/administrativo/Vista_Certificaciones.php';
+        }
       }
     </script>
 
