@@ -701,7 +701,7 @@ function validar_temas() {
 }
 
 regresar.addEventListener("click", (e) => {
-  let respuesta_confirm = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
+  let respuesta_confirm = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
 
   if (respuesta_confirm == true) {
     window.location.href = "Vista_Cursos.html ";
