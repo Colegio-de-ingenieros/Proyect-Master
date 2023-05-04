@@ -9,7 +9,7 @@ $rfce=" ";
 //echo $rfce;
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
-    $resultado = $base->buscador($busqueda,$rfce);
+    $resultado = $base->buscadorOfertas($busqueda);
     
     if ($resultado == true) {
         //pone los encabezados de la tabla
@@ -42,36 +42,35 @@ if (isset($_POST['consulta'])) {
         </style>
         <div class="di">
         <table class="header_table" >
-                        <thead>
-                            <tr>
-                                <th>Empresa</th>
-                                <th>Vacante</th>
-                                <th>Estatus</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                <tbody>';
-    
-        //agrega los resultados de la busqueda
-        for ($i = 0; $i < count($resultado); $i++) {
-    
+                    <thead  >
+                    <tr>
+                    <th>Empresa</th>
+                    <th>Vacante</th>
+                    <th>Estatus</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+            //agrega los resultados de la busqueda
+            for ($i = 0; $i < count($resultado); $i++) {
+
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
             $nombre = $resultado[$i]["VacEmpBol"];
-            $desc=$resultado[$i]["DesEmpBol"];
-            $req = $resultado[$i]["ReqAcaEmpBol"];
-            $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TipoMod"];
-            //$extension = getExt($logo);
-            $aplicantes=$base->contar($id);
-            $aplica=$aplicantes[0]["total"];
+            $empresa=$resultado[$i]["NomUsuaEmp"];
+            $estatus= $resultado[$i]["EstatusEmpBol"];
+            if ($estatus==1) {
+            $estatus="Aprobado";
+            }
+            else{
+            $estatus="En espera";
+            }
             //escribe los valores en la tabla
             $salida .= '<tr>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $desc . '</td>';
-            $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' . $exp . '</td>';            
-            $salida .= '<td>' .$aplica. '</td>';
+            $salida .= '<td>' . $empresa . '</td>';
+            $salida .= '<td>' . $nombre . '</td>';         
+            $salida .= '<td>' .$estatus. '</td>';
             $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             //
             //
@@ -86,7 +85,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->getOfertas($rfce);
+    $resultado = $base->getOfertas();
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
@@ -119,40 +118,34 @@ if (isset($_POST['consulta'])) {
         <div class="di">
         <table class="header_table" >
                         <thead  >
-                            <tr>
+                                <tr>
+                                <th>Empresa</th>
                                 <th>Vacante</th>
-                                <th>Descripción del puesto</th>
-                                <th>Modalidad</th>
-                                <th>Experiencia requerida</th>                
-                                <th>Número de aplicantes</th>
-                                <th>Acciones     </th>
+                                <th>Estatus</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
                 <tbody>';
-    
+
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
-    
+
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $id = $resultado[$i]["IdEmpBol"];
             $nombre = $resultado[$i]["VacEmpBol"];
-            $desc=$resultado[$i]["DesEmpBol"];
-            $req = $resultado[$i]["ReqAcaEmpBol"];
-            $exp = $resultado[$i]["AñoEmpBol"];
-            $tel = $resultado[$i]["TipoMod"];
-            //$extension = getExt($logo);
-            $aplicantes=$base->contar($id);
-            $aplica=$aplicantes[0]["total"];
+            $empresa=$resultado[$i]["NomUsuaEmp"];
+            $estatus= $resultado[$i]["EstatusEmpBol"];
+            if ($estatus==1) {
+            $estatus="Aprobado";
+            }
+            else{
+            $estatus="En espera";
+            }
             //escribe los valores en la tabla
-            $sid="s".$id;
             $salida .= '<tr>';
-            $salida .= '<td>' . $nombre . '</td>';
-            $salida .= '<td>' . $desc . '</td>';
-            $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' . $exp . '</td>';            
-            $salida .= '<td>' .$aplica. '</td>';
-            
-            
+            $salida .= '<td>' . $empresa . '</td>';
+            $salida .= '<td>' . $nombre . '</td>';           
+            $salida .= '<td>' .$estatus. '</td>';
             $salida .= '<td><a href="../../controller/empresa/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
             $salida .= '</tr></div>';
     
