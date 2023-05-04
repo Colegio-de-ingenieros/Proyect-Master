@@ -1,43 +1,58 @@
 <?php
-include_once('../../model/administrativo/Eliminar_Cursos.php');
+include_once('../../model/administrativo/Eliminar_Cursos_Model.php');
+ini_set('display_errors', 1);
+$base = new EliminarCurso();
 
-$bd = new EliminarCurso();
-$bd->BD();
+if(isset($_POST["id"])){
+    
 
-$id = $_GET['id'];
-/* $id = $bd->agregar_ceros($id, 6); */
+    $id = $_POST["id"];
+    $estatus = $base->buscaestatus($id);
+   
+    $respuesta = [];
 
-$estatus = $bd->buscaestatus($id);
-/* $estacur= $estatus[0]["EstatusCur"]; */
+    if($estatus == 1){
 
-if ($estatus == 1) {
-    http_response_code(404);
-}
-else{
-$datost = $bd->t($id);
-if ($datost) {
-    $bd->eliminarcursotema($id);
-    $bd->eliminarcurso($id);    
-    for ($i = 0; $i < count($datost); $i++) {
+        $respuesta = ["no hubo exito"];
+      
+
+    }else{
+        // busca si tiene temas
+        $datost = $base->t($id);
+        $respuesta = $datost;
+        
+        if(count($datost) > 0){//si tiene elemnetos que que entre
+            
+            $base->eliminarcursotema($id);
+            $base->eliminarcurso($id);
+            
+
+            for ($i=0; $i < count($datost) ; $i++) { 
+            
+                $tema = $datost[$i]["IdTema"];
+                $datoss = $base->s($tema);
+                $base->eliminartemasub($datost[$i]["IdTema"]);
+                $base->eliminartema($datost[$i]["IdTema"]);
+
+                for ($j=0; $j < count($datoss) ; $j++) { 
+                    $base->eliminarsubtema($datoss[$j]["IdSubT"]);
+                }
+
+            }
+            $respuesta = $datost;
 
 
-        $tema =  $datost[$i]["IdTema"];
-        $datoss = $bd->s($tema);
-        $bd->eliminartemasub($datost[$i]["IdTema"]); 
-        $bd->eliminartema($datost[$i]["IdTema"]);
+        }else{
+            $base->eliminarcurso($id);
 
-            for ($j = 0; $j < count($datoss); $j++) {
-                $bd->eliminarsubtema($datoss[$j]["IdSubT"]); 
-            } 
+        }
+
+        $respuesta = ["Exito"];
     }
-}
 
+    header("Content-Type: application/json");
+    echo json_encode($respuesta);
 
-else {
-    $bd->eliminarcurso($id);
 }
-echo "<script>location.href = '../../view/administrativo/Vista_Cursos.php';</script>";
-}
-/* header("Location: ../../view/administrativo/Vista_Cursos.php"); */
 
 ?>

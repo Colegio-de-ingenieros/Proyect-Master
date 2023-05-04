@@ -217,3 +217,41 @@ textarea {
     color: var(--color-white);
 }
 
+@media screen and (max-width: 1250px) {
+    .formulario-generales{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    main{
+        margin-top: 3.5rem;
+    }
+
+    .formulario-generales{
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-academica{
+        grid-template-columns: 1fr;
+    }
+
+    .formulario-certificaciones{
+        grid-template-columns: 1fr;
+    }
+
+    #experiencia-1{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .expand{
+        grid-column: span 1;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    html{
+        font-size: 13px;
+    }
+}

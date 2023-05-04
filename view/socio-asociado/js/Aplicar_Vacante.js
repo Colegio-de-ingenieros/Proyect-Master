@@ -141,7 +141,7 @@ window.onload = function () {
 
           const label_fecha_fin = document.createElement("label");
           label_fecha_fin.classList.add("label-2");
-          label_fecha_fin.textContent = "Periodo de fin";
+          label_fecha_fin.textContent = "Periodo de finalización";
 
           const input_fecha_fin = document.createElement("input");
           input_fecha_fin.type = "date";
@@ -201,6 +201,7 @@ window.onload = function () {
           for (let i = 0; i < lista_certificaciones.length; i++) {
             const div1 = document.createElement("div");
             div1.classList.add("campo");
+            div1.classList.add("expand");
 
             const label_certificacion = document.createElement("label");
             label_certificacion.classList.add("label-2");
@@ -208,6 +209,7 @@ window.onload = function () {
 
             const input_certificacion = document.createElement("input");
             input_certificacion.classList.add("input-format-2");
+            input_certificacion.classList.add("expand");
             input_certificacion.id = "certificacion-" + i;
             input_certificacion.readOnly = true;
             input_certificacion.value = lista_certificaciones[i][0];

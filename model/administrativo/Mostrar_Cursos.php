@@ -25,8 +25,8 @@ class MostrarCurso{
         return $resultados;
     }
 }
-
+/*
 $objeto = new MostrarCurso();
-$objeto->BD();
+$objeto->BD();*/
 
 ?>

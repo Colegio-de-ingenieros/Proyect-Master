@@ -98,7 +98,7 @@
 
     <div class="boton-cerrar-session">
       <button class="btn-cerrar-session btn"
-        onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+        onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
     </div>
   </header>
 

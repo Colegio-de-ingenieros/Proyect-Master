@@ -36,7 +36,7 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/logout.php' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -93,7 +93,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.php">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
               </ul>
             </li>
 
