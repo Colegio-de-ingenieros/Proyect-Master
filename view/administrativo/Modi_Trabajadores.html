@@ -19,6 +19,8 @@
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 
+    <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+
 </head>
 
 <body>
@@ -253,7 +255,7 @@
           <div class="grupo-boton-reg">
              <div class="boton_registrar">
                  <button class="btn-medium btn" id="boton_actualizar" type="submit">Actualizar</button>&nbsp;&nbsp;
-                 <button class="btn-medium btn" id="boton_cancelar" type="button" onclick="location.href = '../../view/administrativo/Vista_trabajadores.php' ">Cancelar</button>
+                 <button class="btn-medium btn" id="boton_cancelar" type="button" onclick="regresar()">Cancelar</button>
               </div>
           </div>
       </form>
@@ -261,6 +263,14 @@
     </section>
   </main>
   <script src="../../view/administrativo/js/Vali_Mod_Trabajadores.js"></script>
+  <script languaje="javascript">
+    function regresar(){
+      var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
+      if(resp ==  true){
+        location.href = '../../view/administrativo/Vista_trabajadores.php';
+      }
+    }
+  </script>
 </body>
 <script src="js/Modificar_Trabajador.js"></script>
 
