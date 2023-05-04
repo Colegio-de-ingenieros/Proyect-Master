@@ -46,7 +46,21 @@ article{
     width: 1200px;
     background-color: #dfe3e7;
 }
-
+.nombre{
+    width: 300px;
+}
+.duracion{
+    width: 10px;
+}
+.seguimiento{
+    width: 10px;
+}
+.accion{
+    width: 10px;
+}
+.clave{
+    width: 100px;
+}
 .article-tablas article{
     margin: 20px auto;
     padding: 10px;
