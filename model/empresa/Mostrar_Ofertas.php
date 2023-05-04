@@ -81,8 +81,8 @@ class MostrarOfertas{
     }
     function mostrarAplicantes($id){
         $q4 = "SELECT * 
-        FROM `bolsaempcv`,bolsacv
-        WHERE bolsaempcv.IdBolCv=bolsacv.IdBolCv AND `IdEmpBol`= :id  AND `EstatusCv` = 1";
+        FROM `bolsaempcv`
+        WHERE `IdEmpBol`= :id";
         $resultados5 = $this->base->mostrar($q4, [":id" => $id]);
         return $resultados5;
     }
