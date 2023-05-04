@@ -6,9 +6,7 @@ $base = new MostrarProyectos();
 $base->instancias();
 
 //manda a hacer la busqueda
-$resultado = $base->getProyectos();
-$resultado1 = $base->getIniPro();
-$resultado2 = $base->getFinPro();
+
 
 if (isset($_POST['consulta'])) {
     //echo($_POST['consulta']);
@@ -27,6 +25,7 @@ if (isset($_POST['consulta'])) {
                                 <th>Fecha de finalización</th>
                                 <th>Monto</th>
                                 <th>Objetivo</th>
+                                <th>Seguimiento</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -42,7 +41,15 @@ if (isset($_POST['consulta'])) {
             $fin = $resultado[$i]["FinPro"];
             $monto = $resultado[$i]["MontoPro"];
             $objetivo = $resultado[$i]["ObjPro"];
-            
+            $estatus = $resultado[$i]["EstatusPro"];
+            $esta='';
+
+            if ($estatus==0){
+                $esta='Si';
+            }
+            else{
+                $esta='No';
+            }
 
             //escribe los valores en la tabla
             $salida .= '<tr>';
@@ -51,6 +58,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $fin . '</td>';
             $salida .= '<td>$' . $monto . '</td>';
             $salida .= '<td>' . $objetivo . '</td>';
+            $salida .= '<td>' . $esta . '</td>';
             $salida .= '<td>  <a href="../../controller/administrativo/Get_Proyecto.php?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
             <a href="#" class="table_item__link eliminar-elemento" data-idp="' . $idp . '">Eliminar</a></td>';
@@ -82,6 +90,7 @@ else{
                                 <th>Fecha de finalización</th>
                                 <th>Monto</th>
                                 <th>Objetivo</th>
+                                <th>Seguimiento</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -97,15 +106,24 @@ else{
             $fin = $resultado2[$i]["FinPro"];
             $monto = $resultado[$i]["MontoPro"];
             $objetivo = $resultado[$i]["ObjPro"];
-            
+            $estatus = $resultado[$i]["EstatusPro"];
+            $esta='';
 
-            //escribe los valores en la tabla
+            if ($estatus==0){
+                $esta='Si';
+            }
+            else{
+                $esta='No';
+            }
+            
+          //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $inicio . '</td>';
             $salida .= '<td>' . $fin . '</td>';
             $salida .= '<td>$' . $monto . '</td>';
             $salida .= '<td>' . $objetivo . '</td>';
+            $salida .= '<td>' . $esta . '</td>';
             $salida .= '<td>  <a href="../../view/administrativo/Modi_Proyectos.php?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         
             <a href="#" class="table_item__link eliminar-elemento" data-idp="' . $idp . '">Eliminar</a></td>';
