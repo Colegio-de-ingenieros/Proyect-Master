@@ -61,9 +61,9 @@ function crear_tabla(datos) {
             var modificar = document.createElement("a");
             var eliminar = document.createElement("a");
 
-            ver_mas.textContent = "Ver más  ";
-            modificar.textContent = "Modificar  ";
-            eliminar.textContent = "Eliminar  ";
+            ver_mas.textContent = "Ver más";
+            modificar.textContent = "Modificar";
+            eliminar.textContent = "Eliminar";
 
             ver_mas.href = "../../controller/administrativo/Ver_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
             modificar.href = "../../view/administrativo/Modi_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
@@ -71,6 +71,10 @@ function crear_tabla(datos) {
             eliminar.setAttribute("class","eliminar_s");
             eliminar.setAttribute("id",datos[i]["ClaveCur"]);
             eliminar.setAttribute('onclick',"eliminar_f('"+datos[i]["ClaveCur"]+"')");
+
+            eliminar.setAttribute("class", "espaciado");
+            modificar.setAttribute("class", "espaciado");
+            ver_mas.setAttribute("class", "espaciado");
 
             acciones.appendChild(ver_mas);
             acciones.appendChild(modificar);
@@ -110,11 +114,11 @@ function eliminar_f(clave) {
            
             if(datos[0] == "Exito"){
 
-                alert("Eliminado con exito");
+                alert("Eliminado con éxito");
                 location.reload();
 
             }else{
-                alert("El curso tiene seguimiento");
+                alert("Error, el curso no puede ser eliminado porque tiene un seguimiento");
             }
             
         });
