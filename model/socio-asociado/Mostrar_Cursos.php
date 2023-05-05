@@ -43,5 +43,15 @@
             $this->cerrar_conexion();
             return $datos;
         }
+
+        public function getCursosId($idc){
+            $this->conexion_bd();
+            
+            $consulta = "SELECT * FROM altacursos WHERE  IdCurPerso = :idc";
+            $parametros = [":idc"=>$idc];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
     }
 ?>

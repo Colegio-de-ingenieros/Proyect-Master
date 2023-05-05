@@ -60,6 +60,10 @@ article{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
+
+.radio-button-format{
+    margin-right: 10px;
+}
 .formulario-de-datos{
     padding: 20px 0px 20px 0;
     display: grid;

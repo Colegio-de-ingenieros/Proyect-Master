@@ -29,6 +29,12 @@ article{
     padding: 2rem 0 0 0;
 
 }
+.grupo-input-vista{
+    display: flex;
+    flex-direction: initial;
+    padding: 2rem 0 0 0;
+
+}
 .input-format-2{
     color: var(--color-black);
     background-color: var(--color-white);
@@ -55,6 +61,30 @@ article{
     font-weight: 500;
 }
 
+.radio-button-format{
+    margin-right: 10px;
+}
+
+.formulario-de-datos{
+    padding: 0px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+.label-form{
+    padding-bottom: 10px;
+}
+.input-format-2{
+    width: 100%;
+}
+
+.grupo-input2{
+    grid-column: span 2;
+}
+
+.grupo-input3{
+    grid-column: span 3;
+}
 table{
     width: 100%;
     border-collapse: collapse;
@@ -68,14 +98,14 @@ table{
 }
 
 .header_table thead th {
+    
     top: 0;
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
-    word-wrap: break-word;
 }
 th,td {
-    max-width: 235px;
+    max-width: 280px;
     border-bottom: 1px solid #000000;
     padding: 10px 20px;
     font-size: 15px;
@@ -83,23 +113,53 @@ th,td {
     word-wrap: break-word;
     white-space: normal;
     background-color: #dfe3e7;
+    
 }
 tr:hover td {
     color: #3a42b4;
     cursor: pointer;
     background-color: #ffffff;
 }
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1180px){
+    .article-tablas{
+        width: 1000px;
+    }
+    .article-tablas article{
+        width: 1000px;
+    }
+    article{
+        width: 1000px;
+    }
     table{
         width: 130%;
         border-collapse: collapse;
         font-family: 'Manrope';
-        margin-left: 25rem;
     }
     .sub-titulo{
         display: flex;
         flex-direction: column;
         align-items: flex-start; 
-        margin-left: 25rem;  
+    }
+  }
+@media screen and (max-width: 1000px){
+    .article-tablas{
+        width: 100%;
+        padding-left: 100px;
+    }
+    .article-tablas article{
+        width: auto;
+    }
+    article{
+        width: auto;
+    }
+    table{
+        width: auto;
+        border-collapse: collapse;
+        font-family: 'Manrope';
+    }
+    .sub-titulo{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
     }
   }
