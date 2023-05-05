@@ -25,6 +25,7 @@ function buscadorOfertas($busqueda){
     AND (NomUsuaEmp LIKE :busqueda OR VacEmpBol LIKE :busqueda)
     ORDER BY NomUsuaEmp ASC";
     $resultados = $this->base->mostrar($querry, [":busqueda" => "%".$busqueda."%"]);
+    return $resultados;
 
 }
 }

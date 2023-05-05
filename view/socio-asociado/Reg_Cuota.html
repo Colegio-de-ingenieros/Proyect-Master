@@ -7,11 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
-  <title>Modificar cursos</title>
+  <title>Registro de cuotas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/Mod_Cursos.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cuota.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
   
@@ -105,10 +105,10 @@
   <main>
     <section class="section-main">
       <div class="cabezera">
-        <h3 class="h3">Modificar</h2>
+        <h3 class="h3">Registro</h2>
           <br>
         <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
-          <p class="subtitulo-1">Datos del curso</p>
+          <p class="subtitulo-1">Datos de la cuota</p>
           
           <hr>
       </div>
@@ -118,34 +118,45 @@
         <div class="campo">
           
           <div class="label-form">
-            <p class="label-2">Nombre*</p>
+            <p class="label-2">Tipo de cuota*</p>
         </div>
-          <input type="text" class="input-format-2" id="nombre" placeholder="Ingrese el nombre del curso" name="nombre" required maxlength="40"
-          title="El nombre solo puede contener letras mayúsculas, minúsculas, números, coma y el punto."></input>
+        <select type="text" class="input-format-2"placeholder="Seleccione el tipo de cuota" id="tipo" name="tipo" required maxlength="12">
+            <option value="" selected disabled>Seleccione el tipo de cuota</option>
+            <option value="1">membresía</option>
+            <option value="2">curso</option>
+            <option value="3">certificacion</option>
+            <option value="4">Doctorado</option>
+            </select>
         </div>
         <!-- Org -->
         <div class="campo">
           
           <div class="label-form">
-            <p class="label-2">Organización*</p>
+            <p class="label-2">Monto*</p>
         </div>
-          <input type="text" class="input-format-2" id="organizacion" placeholder="Ingrese el nombre de la organización" name="organizacion" required maxlength="50"
-          title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto."></input>
+          <input type="text" class="input-format-2" id="monto" placeholder="Ingrese el monto de la cuota" name="monto" required maxlength="50"
+          title="El monto de la cuota deben ser numeros enteros o decimales."></input>
         </div>
         <!-- HORAS -->
         <div class="campo">
           
           <div class="label-form">
-            <p class="label-2">Total de horas</p>
+            <p class="label-2">Fecha de inicio*</p>
         </div>
-          <input type="text" class="input-format-2" id="totalhoras" placeholder="Ingrese el total de horas" name="totalhoras" required maxlength="3"
-          title="El total de horas solo puede contener numeros."></input>
+        <input type="date" class="input-format-2" placeholder="Ingrese la fecha de inicio" id="fechainicio" name="fechainicio" >
         </div>
+        <div class="campo">
+          
+            <div class="label-form">
+              <p class="label-2">Fecha fin*</p>
+          </div>
+          <input type="date" class="input-format-2" placeholder="Ingrese la fecha de fin" id="fechafin" name="fechafin">
+          </div>
         <!-- PDF -->
         <div class="campo">
           
           <div class="label-form">
-            <p class="label-2">Comprobante del curso*</p>
+            <p class="label-2">Comprobante de cuota*</p>
         </div>
             <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
             required title="El archivo debe ser maximo de 10MB."></input>
@@ -154,7 +165,7 @@
           </div>
           <div></div>
           <div></div>
-          <div></div>
+          
         
         
 
@@ -169,7 +180,7 @@
 
   </main>
 
-  
+<script src="js/Vali_Reg_Cuota.js"></script>
 </body>
 
 </html>
