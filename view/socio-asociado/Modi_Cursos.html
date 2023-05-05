@@ -17,6 +17,14 @@
   
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+
+  <!--regresa a la vista de todas las certificaciones sin modificar nada-->
+<script languaje="javascript">
+  function regresar(){
+    location.href = '../../view/socio-asociado/Ver_Cursos.html';
+  }
+</script>
+
 </head>
 
 <body>
@@ -107,8 +115,10 @@
       <div class="cabezera">
         <h3 class="h3">Modificar</h2>
           <br>
-        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+        <form action="../../controller/socio-asociado/Modificar_Cursos.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
           <p class="subtitulo-1">Datos del curso</p>
+
+          <input type="hidden" id="idc" name="idc">
           
           <hr>
       </div>
@@ -145,21 +155,33 @@
         <div class="campo">
           
           <div class="label-form">
-            <p class="label-2">Comprobante del curso*</p>
+            <p class="label-2">Comprobante del curso actual*</p>
         </div>
             <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
             required title="El archivo debe ser maximo de 10MB."></input>
+        </div>
+          <!-- PDF -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Comprobante del curso nuevo*</p>
+        </div>
+            <input type="file" class="input-format-2" id="archivo1"  name="archivo1" accept="application/pdf" 
+             title="El archivo debe ser maximo de 10MB."></input>
+        </div>    
             <br><br>
             
-          </div>
+        </div>
           <div></div>
           <div></div>
           <div></div>
+          <br><br>
         
         
 
       <div class="botones-registro">
-        <button id="boton_registrar" class="btn btn-medium">Registrar</button>
+        <button id="boton_registrar" class="btn btn-medium">Actualizar</button>&nbsp;&nbsp;
+        <button id="cancelar" class="btn-medium btn" onclick="regresar()">Cancelar</button>
       </div>
 
     </form>
@@ -169,7 +191,9 @@
 
   </main>
 
+  <script src="../../view/socio-asociado/js/Vali_cursos.js"></script>
   
 </body>
+<script src="js/Modificar_Cursos.js"></script>
 
 </html>

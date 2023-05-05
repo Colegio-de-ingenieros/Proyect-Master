@@ -49,7 +49,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
                 </td>';
                 $salida .= '</tr>';
@@ -93,7 +93,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="#'.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
                 </td>';
                 $salida .= '</tr>';
