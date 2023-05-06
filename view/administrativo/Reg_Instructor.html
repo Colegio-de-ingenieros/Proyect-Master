@@ -192,31 +192,35 @@
         <hr> 
         <form action="">  
             <div class="contenedor-formulario">
+                <!-- Nombre -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Nombre(s)*</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="40"
+                    <input type="text" class="input-format-2" id="nombre" maxlength="40"
                       placeholder="Ingrese su nombre" required title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                   </div>
                 </div>
+
+                <!-- Apellido Paterno -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Apellido paterno*</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="20"
+                    <input type="text" class="input-format-2" id="paterno" maxlength="20"
                       placeholder="Ingrese su apellido paterno" required title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
                   </div>
                 </div>
-        
+                
+                <!-- Apellido Materno -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Apellido materno</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="20"
+                    <input type="text" class="input-format-2" id="materno" maxlength="20"
                       placeholder="Ingrese su apellido materno" title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
                   </div>
                 </div> 
@@ -291,7 +295,7 @@
                     </select>
                 </div>
             </div>
-             
+            
 
             <br>
             <br>
@@ -395,4 +399,5 @@
     </section>
   </main> 
 </body>
+<script src="js/Vali_Instructores.js"></script>
 </html>
