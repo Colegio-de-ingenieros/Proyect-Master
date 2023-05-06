@@ -203,7 +203,14 @@ html{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-} 
+}  
+
+.dinamico{
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
 
 .grupo-boton-reg{
     display: flex;
@@ -236,7 +243,17 @@ html{
 }
 .boton_registrar{
     display: flex;
+    align-items: center;
+} 
+
+.botones_registrar{
+    display: flex;
     flex-direction: column;
+    align-items: center;
+}
+
+.boton_extras{
+    display: flex;
     align-items: center;
 }
 
