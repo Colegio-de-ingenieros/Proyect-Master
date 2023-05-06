@@ -75,12 +75,49 @@ class Instructor_model extends Crud_bd{
         
     }
 
+    public function extraerInstructores(){
+        $this->conexion_bd();
+        $consulta = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns FROM instructor";
+        $resultados = $this->mostrar($consulta);
+        $this->cerrar_conexion();
 
-}
+        return $resultados;
+    }
 
+    public function extraerInfoInstructorIndividual($id){
+        /* Extraemos la información individual del instructor */
+        $this->conexion_bd();
+        $consulta = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns 
+        FROM instructor 
+        WHERE ClaveIns = :id";
+        $parametros = [":id"=>$id];
+        $resultados_datos_basicos = $this->mostrar($consulta,$parametros);
 
+        /* Extraemos las certificaciones internas del instructor */
+        $consulta = "SELECT certinterna.NomCertInt, certinterna.DesCerInt, certinterna.EstatusCertInt 
+        from certinterna, inscertint
+        WHERE inscertint.ClaveIns = :id
+        and inscertint.IdCerInt = certinterna.IdCerInt";
+        $parametros = [":id"=>$id];
+        $resultados_certificaciones_internas = $this->mostrar($consulta,$parametros);
 
+        /* Extraemos las certificaciones externas del instructor */
+        $consulta = "SELECT certexterna.NomCerExt, certexterna.OrgCerExt, certexterna.IniCerExt, certexterna.FinCerExt
+        from certexterna, inscertext
+        WHERE inscertext.ClaveIns = :id
+        and inscertext.IdCerExt = certexterna.IdCerExt";
+        $parametros = [":id"=>$id];
+        $resultados_certificaciones_externas = $this->mostrar($consulta,$parametros);
 
+        /* Extraemos las especialidades del instructor */
+        $consulta = "SELECT especialidades.NomEspIns 
+        FROM especialidades, especialins 
+        WHERE especialins.ClaveIns = :id 
+        AND especialins.IdEspIns = especialidades.IdEspIns";
+        $parametros = [":id"=>$id];
+        $resultados_especialidades = $this->mostrar($consulta,$parametros);
 
+    }
+}   
 
 ?>
