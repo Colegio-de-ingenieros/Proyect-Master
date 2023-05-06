@@ -47,7 +47,7 @@ if ($resultado == true) {
         $salida .= '<td>' . $oficina. '</td>';
         $salida .= '<td>' . $honorario . '</td>';
         $salida .= '<td>' . $ingresos. '</td>';
-        $salida .= '<td>  <a href="#">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        $salida .= '<td>  <a href="../../view/administrativo/Accion_Participante.html?participante='.$idp.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idp . '"data-actividad="'.$actividad.'">Eliminar</a></td>';
         $salida .= '</tr>';   
     }

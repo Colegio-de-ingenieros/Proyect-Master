@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 	<link rel="stylesheet" href="../../public/css/administrativo/Accion_Participante.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<!-- <script src="../../controller/administrativo/js/Mostrar_Seguimiento.js"></script> -->
 </head>
 
 <body>
@@ -184,41 +183,33 @@
 			<div class="article-tablas">
 				<article>
 					<div class="sub-titulo">
-						<h4 class="subtitulo-1">Participante</h4>
+						<h4 class="subtitulo-1" id="encabezado">Participante</h4>
 					</div>
 					<hr>
 					<br>
 					<form class="formulario-de-datos" id="formulario">
             
 						<div class="grupo-input-vista">
-							<input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_cursos" value="curso">
+							<input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_gastos" value="gastos">
 							Gastos
 						</div>
 				
 						<div class="grupo-input-vista">
-							<input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_proyecto" value="proyecto">
+							<input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_ingresos" value="ingresos">
 							Ingresos
 						</div>
 					</form>
 
 					<div class="tablas">
 						<section class="header_table" id="tablaResultado">
-							<table>
-								<thead>
-									<tr>
-										<th>Tipo</th>
-										<th>Fecha</th>
-										<th>Monto</th>
-										<th>Comprobante</th>
-										<th>Acciones</th>
-									</tr>
-								</thead>
-							</table>
+
 						</section>
 					</div>
 				</article>
 			</div>
 		</div>
 	</main>
+	<script src="../../controller/administrativo/js/Mostrar_Gastos_Ingresos.js"></script>
+
 </body>
 </html>
