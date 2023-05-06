@@ -1,4 +1,4 @@
-
+<script src="https://kit.fontawesome.com/076daf5dc7.js" crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -252,11 +252,27 @@
                     </div>
                     <div class="input-form">
                         <div class="boton_registrar">
-                            <button type="button"><i class="fa-solid fa-delete-left" style="color: #273544;"></i></button>
-                            <button type="button"><i class="fa-solid fa-pen-to-square" style="color: #273544;"></i></button>
                         </div>
                     </div> 
-                </div> 
+                </div>  
+            </div> 
+            <div class="dinamico">
+                <div class="grupo-input">
+                    <div class="input-form">
+                    <input type="text" class="input-format-2" maxlength="40"
+                        placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
+                    </div> 
+                </div>
+                <div class="grupo-input">
+                    <div class="input-form">
+                        <div class="boton_extras"> 
+                            <p class="label-0">....</p>
+                            <button type="button"><i class="fa-solid fa-pen-to-square" style="color: #273544;"></i></button>
+                            <p class="label-0">..</p>
+                            <button type="button"><i class="fa-solid fa-delete-left" style="color: #273544;"></i></button>
+                        </div>
+                    </div> 
+                </div>
             </div>
             <br> 
 
@@ -323,7 +339,7 @@
                     <p class="label-0">Agregar</p>
                     </div>
                     <div class="input-form">
-                        <div class="boton_registrar">
+                        <div class="botones_registrar">
                             <button class="btn-medium btn" type="submit">Agregar</button>
                         </div>
                     </div> 
@@ -349,7 +365,16 @@
                                 </tr>
                               </thead>
                               <tbody >
-                               
+                                <tr>
+                                    <th>Dato</th>
+                                    <th>Dato</th>
+                                    <th>dd/mm/aaaa</th>
+                                    <th>dd/mm/aaaa</th>
+                                    <th>
+                                        <button type="button"><i class="fa-solid fa-pen-to-square" style="color: #273544;"></i></button>
+                                        <button type="button"><i class="fa-solid fa-delete-left" style="color: #273544;"></i></button>
+                                    </th>
+                                </tr>
                               </tbody>
                             </table>
                         </section>
@@ -360,7 +385,7 @@
             <br>
             <br>
             <br>
-            <div class="boton_registrar">
+            <div class="botones_registrar">
                 <button class="btn-medium btn" id="boton_registro" type="submit">Registrar</button>
             </div>
             <br>
