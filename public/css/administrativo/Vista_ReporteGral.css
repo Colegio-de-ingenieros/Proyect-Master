@@ -12,7 +12,7 @@ article{
     background-color: #dfe3e7;
 }
 .article-tablas article{
-    margin-top: 20px;
+    margin-top: 0px;
     margin-left: -10px;
     padding: 10px;
     width: 1200px;
@@ -130,7 +130,7 @@ table{
 }
 .header_table {
     max-height: 100vh;
-    width: 91.5%;
+    width: 93%;
     overflow: auto;
     border: 1px solid #dddddd;
 }
@@ -169,7 +169,7 @@ p{
         display: block;
     }
     table{
-        width: 130%;
+        max-width: 120%;
         border-collapse: collapse;
         font-family: 'Manrope';
     }

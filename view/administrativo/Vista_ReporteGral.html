@@ -181,6 +181,55 @@
     <section class="section-main">
         <p class="subtitulo-1">Datos generales</p>
         <hr>
+        <form class="formulario-de-datos" id="formulario">
+          <div class="grupo-input3">
+              <div class="label-form">
+                  <p class="label-2">Tipo</p>
+              </div>
+          </div>
+          <div class="grupo-input">
+              <input type="radio" name="tipo" id="cursos" class="radio-button-format" placeholder="Radio" checked>
+              Curso
+          </div> 
+  
+          <div class="grupo-input">
+            <input type="radio" name="tipo" id="proyectos" class="radio-button-format" placeholder="Radio">
+            Proyecto
+        </div>
+  
+          <div class="grupo-input">
+              <input type="radio" name="tipo"n id="certificaciones" class="radio-button-format" placeholder="Radio" >
+              Certificación
+          </div>
+
+          <div class="grupo-input3">
+            <br>
+            <p class="subtitulo-1">Tipo de reporte</p>
+            <hr>
+          </div>
+          <div class="grupo-input">
+              <input type="radio" checked id="completo" name="tipo_reporte" value="0" class="radio-button-format" placeholder="Radio">
+              <b>Historial completo</b>
+          </div>
+          <div></div><div></div>
+          <div class="grupo-input">
+              <input type="radio" id="periodo" name="tipo_reporte" value="1" class="radio-button-format" placeholder="Radio">
+              <b>Periodo</b>
+          </div>
+          <div class="grupo-input">
+              <b>Inicio</b>
+              <input type="date" name="inicio" id="inicio"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+          <div class="grupo-input">
+              <b>Finalización</b>
+              <input type="date" name="fin" id="fin"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+  
+          <div></div><div></div>
+          <div class="boton-reporte">
+              <input type="submit" name="registrar" id="registrar" class="btn-medium btn" value="Generar reporte">
+          </div>
+        </form>
         <div class="grupo-input3" id="contenedor_tabla">
             <div class="article-tablas" >
                 <article>          
@@ -189,9 +238,7 @@
                         <table >
                           <thead>
                             <tr>
-                                <th>Nombre</th>
-                                <th>Organización</th>
-                                <th>Participante</th>
+                                <th>Actividad</th>
                                 <th>Hotel</th>
                                 <th>Transporte</th>
                                 <th>Comida</th>
