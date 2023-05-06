@@ -41,7 +41,8 @@ if ($tipo=="gastos"){
             $comprobante = $resultado[$i]["MontoGas"];
     
             $idGasto=$resultado[$i]["IdGas"];
-    
+            
+            $tipoAct='gasto';
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $tipo. '</td>';
@@ -49,7 +50,7 @@ if ($tipo=="gastos"){
             $salida .= '<td>' . $monto. '</td>';
             $salida .= '<td>' . $comprobante . '</td>';
             $salida .= '<td>  <a href="../../view/administrativo/Modi_Gastos_Participante.html?participante='.$idGasto.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '"data-gasto="'.$idGasto.'">Eliminar</a></td>';
+                        <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '" data-actividad="'.$idGasto.'" data-tipo="'.$tipoAct.'">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
     } 
@@ -88,13 +89,14 @@ if ($tipo=="gastos"){
     
             $idIngre=$resultado[$i]["IdIngre"];
     
+            $tipoAct='ingreso';
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $monto. '</td>';
             $salida .= '<td>' . $comprobante . '</td>';
             $salida .= '<td>  <a href="../../view/administrativo/Modi_Ingresos_participante.html?participante='.$idIngre.'">Modifcar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '"data-ingreso="'.$idIngre.'">Eliminar</a></td>';
+                        <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '"data-actividad="'.$idIngre.'"  data-tipo="'.$tipoAct.'">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
     } 
@@ -108,4 +110,4 @@ echo ($salida);
 
 ?>
 
-<script src="../../controller/administrativo/js/Eliminar_Participante_Confirmacion.js"></script>
+<script src="../../controller/administrativo/js/Eliminar_Gasto_Ingreso_Confirmacion.js"></script>

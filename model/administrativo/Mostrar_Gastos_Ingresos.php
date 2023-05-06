@@ -37,7 +37,7 @@
 
         public function buscar_gastos_perso($id){
             $this->conexion_bd();
-            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas, FechaGas
+            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas
                     FROM persoparticipa, persogastos, controlgas, contipogas, tipogastos
                     WHERE persoparticipa.IdParP= :id AND persoparticipa.IdParP=persogastos.IdParP AND persogastos.IdGas=controlgas.IdGas AND
                     controlgas.IdGas=contipogas.IdGas AND contipogas.IdGasto = tipogastos.IdGasto ORDER BY FechaGas ASC";
@@ -49,7 +49,7 @@
 
         public function buscar_gastos_empresa($id){
             $this->conexion_bd();
-            $sql = "SELECT empparticipa.IdParE, tipogastos.TipoGas, controlgas.IdGas, MontoGas, FechaGas
+            $sql = "SELECT empparticipa.IdParE, tipogastos.TipoGas, controlgas.IdGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas
                     FROM empparticipa, empgastos, controlgas, contipogas, tipogastos
                     WHERE empparticipa.IdParE= :id AND empparticipa.IdParE=empgastos.IdParE AND empgastos.IdGas=controlgas.IdGas AND
                     controlgas.IdGas=contipogas.IdGas AND contipogas.IdGasto = tipogastos.IdGasto ORDER BY FechaGas DESC";
@@ -61,7 +61,7 @@
 
         public function buscar_gastos_instr($id){
             $this->conexion_bd();
-            $sql = "SELECT insparticipa.IdParI, tipogastos.TipoGas, controlgas.IdGas, MontoGas, FechaGas
+            $sql = "SELECT insparticipa.IdParI, tipogastos.TipoGas, controlgas.IdGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas
                     FROM insparticipa, insgastos, controlgas, contipogas, tipogastos
                     WHERE insparticipa.IdParI= :id AND insparticipa.IdParI=insgastos.IdParI AND insgastos.IdGas=controlgas.IdGas AND
                     controlgas.IdGas=contipogas.IdGas AND contipogas.IdGasto = tipogastos.IdGasto ORDER BY FechaGas DESC";
@@ -73,7 +73,7 @@
 
         public function buscar_ingresos_perso($id){
             $this->conexion_bd();
-            $sql = "SELECT controlingre.IdIngre, MontoIngre, FechaIngre
+            $sql = "SELECT controlingre.IdIngre, MontoIngre,  DATE_FORMAT(FechaIngre, '%d/%m/%Y') FechaIngre
                     FROM persoparticipa, persoingresos, controlingre
                     WHERE persoparticipa.IdParP= :id AND persoparticipa.IdParP=persoingresos.IdParP AND persoingresos.IdIngre=controlingre.IdIngre ORDER BY FechaIngre ASC";
             $arre = [":id"=>$id];
@@ -84,7 +84,7 @@
 
         public function buscar_ingresos_empresa($id){
             $this->conexion_bd();
-            $sql = "SELECT controlingre.IdIngre, MontoIngre, FechaIngre
+            $sql = "SELECT controlingre.IdIngre, MontoIngre,  DATE_FORMAT(FechaIngre, '%d/%m/%Y') FechaIngre
                     FROM empparticipa, empingresos, controlingre
                     WHERE empparticipa.IdParE= :id AND empparticipa.IdParE=empingresos.IdParE AND empingresos.IdIngre=controlingre.IdIngre ORDER BY FechaIngre ASC";
             $arre = [":id"=>$id];
@@ -95,7 +95,7 @@
 
         public function buscar_ingresos_instr($id){
             $this->conexion_bd();
-            $sql = "SELECT controlingre.IdIngre, MontoIngre, FechaIngre
+            $sql = "SELECT controlingre.IdIngre, MontoIngre,  DATE_FORMAT(FechaIngre, '%d/%m/%Y') FechaIngre
                     FROM insparticipa, insingresos, controlingre
                     WHERE insparticipa.IdParI= :id AND insparticipa.IdParI=insingresos.IdParI AND insingresos.IdIngre=controlingre.IdIngre ORDER BY FechaIngre ASC";
             $arre = [":id"=>$id];
