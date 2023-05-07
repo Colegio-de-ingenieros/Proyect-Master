@@ -15,4 +15,11 @@
             $arre = [$a1];
             $this->base->insertar_eliminar_actualizar($querry, $arre);
         }
+        function modificar_cv($id,$comentario,$valor){
+            $q1="UPDATE bolsacv SET  ComeCv = :comentario, EstatusCv=:valor WHERE IdBolCv = :id";
+            $a1 = [":comentario"=>$comentario, ":valor"=>$valor, ":id"=>$id];
+            $querry = [$q1];
+            $arre = [$a1];
+            $this->base->insertar_eliminar_actualizar($querry, $arre);
+        }
     }

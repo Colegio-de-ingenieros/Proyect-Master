@@ -18,6 +18,13 @@ if ($resultado == true) {
   $desc=$resultado[0]["DesProCv"];
   $salEsp=$resultado[0]["ExpSalCv"];
   $cambio=$resultado[0]["ResidenciaCv"];
+  $com=$resultado[0]["ComeCv"];
+  $status=$resultado[0]["EstatusCv"];
+  if ($status==1) {
+    $status="Aprobado";
+  }
+  if ($com==""){
+    $com="No hay comentarios";}
   
 }
 
@@ -90,6 +97,13 @@ var parrafo = document.createElement("p");
 
 var parrafo = document.getElementById("estadoAP"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $estado; ?>";
+var parrafo = document.createElement("p");
+
+var parrafo = document.getElementById("escrito_estatusAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $status; ?>";
+var parrafo = document.createElement("p");
+var parrafo = document.getElementById("comentarioAP"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $com; ?>";
 var parrafo = document.createElement("p");
 
 </script>
