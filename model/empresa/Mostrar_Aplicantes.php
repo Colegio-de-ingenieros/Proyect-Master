@@ -20,7 +20,7 @@ class MostrarAplicantes{
         return $resultados;
     }
     function getAplicantes_admin($id){
-        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,ResidenciaCv, ExpSalCv, DesProCv, CallePerso, CorreoPerso, FechaNacPerso
+        $querry = "SELECT bolsacv.IdBolCv, usuaperso.IdPerso, NomPerso, ApePPerso, ApeMPerso,TelMPerso,ResidenciaCv, ExpSalCv, DesProCv, CallePerso, CorreoPerso, FechaNacPerso, EstatusCv
         FROM usuaperso,persobolsacv, bolsacv, bolsaempcv,bolsaempresa 
         WHERE usuaperso.IdPerso=persobolsacv.IdPerso AND persobolsacv.IdBolCv=bolsacv.IdBolCv 
          AND bolsacv.IdBolCv=bolsaempcv.IdBolCv AND bolsaempresa.IdEmpBol=bolsaempcv.IdEmpBol 

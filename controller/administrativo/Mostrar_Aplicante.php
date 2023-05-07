@@ -138,18 +138,22 @@ if (isset($_POST['consulta'])) {
             $nom = $resultado[$i]["NomPerso"].' '.$resultado[$i]["ApePPerso"].' '.$resultado[$i]["ApeMPerso"];
             $carrera= $resultado[$i]["DesProCv"];
             $cedula= $resultado[$i]["CorreoPerso"];
-            $sal= $resultado[$i]["ExpSalCv"];
+            $status= $resultado[$i]["EstatusCv"];
             $tel = $resultado[$i]["TelMPerso"];
             $id = $resultado[$i]["IdBolCv"];
             //$extension = getExt($logo);
-    
+            if ($status == 1) {
+                $status = "Aprobado";
+            } else {
+                $status = "Rechazado";
+            }
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nom . '</td>';
             $salida .= '<td>' . $carrera . '</td>';
             $salida .= '<td>' . $cedula . '</td>';
             $salida .= '<td>' . $tel . '</td>';
-            $salida .= '<td>' . $sal . '</td>';
+            $salida .= '<td>' . $status . '</td>';
             $salida .= '<td> <a href="../../controller/administrativo/Mostrar_Cv.php?id='.$id.'" >Ver más</a></td>';
             //
             //
