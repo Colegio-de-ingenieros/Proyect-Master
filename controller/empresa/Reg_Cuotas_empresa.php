@@ -26,9 +26,7 @@
             else if ($tipobox == 3){
                 $tipobox = "Certificación";
             }
-            else if ($tipobox == 4){
-                $tipobox = "Doctorado";
-            }
+            
     
             $new_name_file=null;
         
