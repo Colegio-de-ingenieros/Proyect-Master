@@ -74,7 +74,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $empresa . '</td>';
             $salida .= '<td>' . $nombre . '</td>';         
             $salida .= '<td>' .$estatus. '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_Cvadmin.html?id='.$id.'" >Aplicantes</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -141,6 +141,9 @@ if (isset($_POST['consulta'])) {
             if ($estatus==1) {
             $estatus="Aprobado";
             }
+            else if ($estatus==2){
+            $estatus="Rechazado";
+            }
             else{
             $estatus="En espera";
             }
@@ -149,7 +152,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $empresa . '</td>';
             $salida .= '<td>' . $nombre . '</td>';           
             $salida .= '<td>' .$estatus. '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/empresa/Vista_Aplicantes.php?id='.$id.'" >Aplicantes</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_Cvadmin.html?id='.$id.'" >Aplicantes</a></td>';
             $salida .= '</tr></div>';
     
             
