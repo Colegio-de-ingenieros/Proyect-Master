@@ -21,6 +21,9 @@ if ($resultado == true) {
   $tel = $resultado[0]["TelEmpBol"];
   $cor= $resultado[0]["CorreoEmpBol"];
   $com= $resultado[0]["ComeEmpBol"];
+  if ($com=="") {
+    $com="Sin comentarios";
+  }
   $status= $resultado[0]["EstatusEmpBol"];
   if ($status==1) {
     $status="Aprobado";
@@ -137,5 +140,11 @@ parrafo.innerHTML = "<?php echo $resTec; ?>";
 
 var parrafo = document.getElementById("descri_puestoOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $res; ?>";
+
+  var parrafo = document.getElementById("escrito_estatusOT"); // obtenemos la referencia al elemento
+parrafo.innerHTML = "<?php echo $status; ?>";
+
+var parrafo = document.getElementById("comentarioOT"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $com; ?>";
 var parrafo = document.createElement("p");
   </script>
