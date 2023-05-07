@@ -14,7 +14,7 @@ formulario.addEventListener('submit', function (e)
     var producto = urlParams.get('id');
     
     cadena='../../controller/administrativo/Actualizacion_Comentario_Oferta.php?id='+producto;
-    console.log(cadena);
+    //console.log(cadena);
     fetch(cadena, {
         method: 'POST',
         body: datos
@@ -22,11 +22,14 @@ formulario.addEventListener('submit', function (e)
 
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        //console.log(data);
         if (data === 'exito') {
             const form= document.getElementById('formulario');
             alert("Registro exitoso");
             
+        }
+        else{
+            console.log(data);
         }
     })
 })
