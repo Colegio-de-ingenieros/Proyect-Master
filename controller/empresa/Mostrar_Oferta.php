@@ -20,6 +20,15 @@ if ($resultado == true) {
   $exp = $resultado[0]["AñoEmpBol"];
   $tel = $resultado[0]["TelEmpBol"];
   $cor= $resultado[0]["CorreoEmpBol"];
+  $com= $resultado[0]["ComeEmpBol"];
+  $status= $resultado[0]["EstatusEmpBol"];
+  if ($status==1) {
+    $status="Aprobado";
+  }else if ($status==2) {
+    $status="Rechazado";
+  }else if ($status==0) {
+    $status="En espera";
+  }
 }
 
 //print_r($resultado);
