@@ -11,7 +11,7 @@ class Cuotas_empresa extends Crud_bd{
         $this->cerrar_conexion();
         return $datos;
     }
-    function insertar_cuota($id,$id_cuota,$id_tipo_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo){
+    function insertar_cuota($id,$id_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo){
         $this->conexion_bd();
 
         //consultas para la tabla de cuotas
@@ -90,24 +90,6 @@ class Cuotas_empresa extends Crud_bd{
 
         }
         return $numero_nuevo;
-    }
-    public function id_tipo_cuota(){
-        $this->conexion_bd();
-
-        $sql = "SELECT Count(IdCuota) FROM tipocuota";
-        $arreglo = $this->mostrar($sql);
-        $this->cerrar_conexion();
-    
-        $numero = "";
-        if(is_null($arreglo[0][0]) == 1){
-            $numero = 1;
-            
-        }else{
-            $numero = $arreglo[0][0];
-            $numero++;
-            
-        }
-        return $numero;
     }
 }
 

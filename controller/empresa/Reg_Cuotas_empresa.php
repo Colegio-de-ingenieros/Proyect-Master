@@ -7,7 +7,6 @@
         $objeto = new Cuotas_empresa();
         $id = $objeto->usuario($usuario);
         $id_cuota = $objeto->id_cuotas();
-        $id_tipo_cuota = $objeto->id_tipo_cuota();
         $id = $id[0]['RFCUsuaEmp'];
 
         $tipobox=$_POST["tipo"];
@@ -46,7 +45,7 @@
                 }
             }
     
-            $insercion = $objeto->insertar_cuota($id,$id_cuota,$id_tipo_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo);
+            $insercion = $objeto->insertar_cuota($id,$id_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo);
     
             if ($insercion==true){
                 echo json_encode('exito');
