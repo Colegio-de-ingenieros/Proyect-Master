@@ -8,14 +8,7 @@ $correo = $_POST["caja_correo"];
 $telefono = $_POST["caja_telefono"];
 $pass = $_POST["caja_contra"];
 $pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
-// $rfc = "MIML970715L18";
-// $nombre = "Leobardo";
-// $apaterno = "Miramontes";
-// $amaterno = "Murillo";
-// $correo = "led.tesmur@gmail.com";
-// $telefono = "4371073134";
-// $pass = "Hatsune11";
-// $pass_hashed = password_hash($pass, PASSWORD_BCRYPT);
+
 $num='4';
 //$ban=true;
 $obj = new NuevoTrabajador();

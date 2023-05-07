@@ -194,7 +194,7 @@
       <hr>
       <!-- Datos generales avacante -->
       <br>
-    <form action="" id="formula">     
+    <form action="" id="formula" method="post">     
       <div class="formulario-generales">
         <!-- Nombre -->
         <div class="grupo-input">
@@ -411,9 +411,9 @@
   <hr size="1px" />
   <br>
   <div class="input-form">
-    <label for="" class="checkbox"><input type="radio" id="ti_ck" class="checkbox-format" > Aceptar oferta </label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format" value="1" > Aceptar oferta </label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       
-    <label for="" class="checkbox"><input type="radio" id="ti_ck" class="checkbox-format" > Rechazar oferta </label>
+    <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck2" class="checkbox-format" value="2"  checked> Rechazar oferta </label>
         <br>
         <br>
 </div>
@@ -435,6 +435,7 @@
     </form>
     </section>
   </main>
-
+  <script src="../../view/administrativo/js/Vali_Oferta_AR.js"></script>
+  <script src="../../controller/administrativo/js/Registro_Comentario_Ofertas.js"></script>
 </body>
 </html

@@ -141,6 +141,9 @@ if (isset($_POST['consulta'])) {
             if ($estatus==1) {
             $estatus="Aprobado";
             }
+            else if ($estatus==2){
+            $estatus="Rechazado";
+            }
             else{
             $estatus="En espera";
             }
