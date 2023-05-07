@@ -152,7 +152,7 @@ var respuesta = document.getElementById('respuesta');
    
     if (sal == true){
         var datos= new FormData(formulario);
-        fetch('../../controller/socio-asociado/Reg_Cuotas_socio-asociado.php', {
+        fetch('../../controller/empresa/Reg_Cuotas_empresa.php', {
             method: 'POST',
             body: datos
         })
@@ -161,7 +161,7 @@ var respuesta = document.getElementById('respuesta');
         .then(data => {
             if (data === 'exito') {
                 alert("Registro exitoso");
-                location.href="../../view/socio-asociado/Reg_Cuota.html";
+                location.href="../../view/empresa/Reg_Cuota.html";
             }
             //los datos no pasaron alguna validacion
             else if (data === 'No hubo éxito al registrar la cuota'){

@@ -12,14 +12,8 @@
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Instructor.css">
 
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  
 </head>
 
 <body>
@@ -192,31 +186,35 @@
         <hr> 
         <form action="">  
             <div class="contenedor-formulario">
+                <!-- Nombre -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Nombre(s)*</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="40"
+                    <input type="text" class="input-format-2" id="nombre" maxlength="40"
                       placeholder="Ingrese su nombre" required title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                   </div>
                 </div>
+
+                <!-- Apellido Paterno -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Apellido paterno*</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="20"
+                    <input type="text" class="input-format-2" id="paterno" maxlength="20"
                       placeholder="Ingrese su apellido paterno" required title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
                   </div>
                 </div>
-        
+                
+                <!-- Apellido Materno -->
                 <div class="grupo-input">
                   <div class="label-form">
                     <p class="label-2">Apellido materno</p>
                   </div>
                   <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="20"
+                    <input type="text" class="input-format-2" id="materno" maxlength="20"
                       placeholder="Ingrese su apellido materno" title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
                   </div>
                 </div> 
@@ -232,7 +230,7 @@
                     <p class="label-2">Nombre</p>
                     </div>
                     <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="40"
+                    <input type="text" class="input-format-2" id="especialidad" maxlength="40"
                         placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
                     </div> 
                 </div>  
@@ -257,12 +255,14 @@
                 </div>  
             </div> 
             <div class="dinamico">
+                <!-- Especialidad  -->
                 <div class="grupo-input">
                     <div class="input-form">
-                    <input type="text" class="input-format-2" maxlength="40"
+                    <input type="text" class="input-format-2"  maxlength="40"
                         placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
                     </div> 
                 </div>
+                <!-- Botones -->
                 <div class="grupo-input">
                     <div class="input-form">
                         <div class="boton_extras"> 
@@ -291,49 +291,54 @@
                     </select>
                 </div>
             </div>
-             
+            
 
             <br>
             <br>
             <p class="subtitulo-2"> Externas</p> 
             <div class="contenedor-formulario">
+                <!-- Nombre de la certificacion -->
                 <div class="grupo-input">
                     <div class="label-form">
                         <p class="label-2">Nombre de certificación*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format-2" placeholder="Ingrese el nombre de la certificación"   maxlength="60"
+                        <input type="text" class="input-format-2" id="nombre-cert-externa" placeholder="Ingrese el nombre de la certificación"   maxlength="60"
                         title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .).">
                     </div>
                 </div>
 
+                <!-- Organización -->
                 <div class="grupo-input4">
                     <div class="label-form">
                         <p class="label-2">Organización del certificado*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format-2" placeholder="Ingrese la organización"  maxlength="50"
+                        <input type="text" class="input-format-2" id="organizacion-externa" placeholder="Ingrese la organización"  maxlength="50"
                         title="El nombre de la organización puede contener letras mayúsculas, minúsculas y caracteres especiales ( . ).">
                     </div>
                 </div>
 
+                <!-- Fecha de emisión -->
                 <div class="grupo-input">
                     <div class="label-form">
                         <p class="label-2">Fecha de emisión*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format-2" placeholder="Ingrese la fecha de inicio">
+                        <input type="date" class="input-format-2" id="emision-externa" placeholder="Ingrese la fecha de inicio">
                     </div>
                 </div>
 
+                <!-- Fecha de vigencia -->
                 <div class="grupo-input4">
                     <div class="label-form">
                         <p class="label-2">Fecha de vigencia*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format-2" placeholder="Ingrese la fecha de finalización">
+                        <input type="date" class="input-format-2" id="vigencia-externa" placeholder="Ingrese la fecha de finalización">
                     </div>
                 </div> 
+                <!-- Boton externas -->
                 <div class="grupo-input">
                     <div class="label-form">
                     <p class="label-0">Agregar</p>
@@ -395,4 +400,5 @@
     </section>
   </main> 
 </body>
+<script src="js/Vali_Instructores.js"></script>
 </html>
