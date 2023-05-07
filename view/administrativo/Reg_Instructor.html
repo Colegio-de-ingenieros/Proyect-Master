@@ -240,7 +240,7 @@
                     </div>
                     <div class="input-form">
                         <div class="boton_registrar">
-                            <button class="btn-medium btn" type="submit">Agregar</button>
+                            <button class="btn-medium btn" type="button" id="btn_agregar_espe">Agregar</button>
                         </div>
                     </div> 
                 </div> 
@@ -254,25 +254,8 @@
                     </div> 
                 </div>  
             </div> 
-            <div class="dinamico">
-                <!-- Especialidad  -->
-                <div class="grupo-input">
-                    <div class="input-form">
-                    <input type="text" class="input-format-2"  maxlength="40"
-                        placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
-                    </div> 
-                </div>
-                <!-- Botones -->
-                <div class="grupo-input">
-                    <div class="input-form">
-                        <div class="boton_extras"> 
-                            <p class="label-0">....</p>
-                            <button type="button"><i class="fa-solid fa-pen-to-square" style="color: #273544;"></i></button>
-                            <p class="label-0">..</p>
-                            <button type="button"><i class="fa-solid fa-delete-left" style="color: #273544;"></i></button>
-                        </div>
-                    </div> 
-                </div>
+            <div class="dinamico" id="contenedor_espe">
+              
             </div>
             <br> 
 
@@ -345,7 +328,7 @@
                     </div>
                     <div class="input-form">
                         <div class="botones_registrar">
-                            <button class="btn-medium btn" type="submit">Agregar</button>
+                            <button class="btn-medium btn" type="button" id="btn_agregar_certi">Agregar</button>
                         </div>
                     </div> 
                 </div>
@@ -353,12 +336,10 @@
             <br>
             <br>
             <div class="conteTabla" >
-                <br>
-                <h3 class="h3" ></h3>
                 <div class="article-tablas" >
                     <article>          
                       <div class="tablas">
-                        <section class="header_table" >
+                        <section class="header_table" id="contenedor_tabla" style="display: none;" >
                             <table >
                               <thead>
                                 <tr>
@@ -369,18 +350,10 @@
                                     <th>Acciones</th>
                                 </tr>
                               </thead>
-                              <tbody >
-                                <tr>
-                                    <th>Dato</th>
-                                    <th>Dato</th>
-                                    <th>dd/mm/aaaa</th>
-                                    <th>dd/mm/aaaa</th>
-                                    <th>
-                                        <button type="button"><i class="fa-solid fa-pen-to-square" style="color: #273544;"></i></button>
-                                        <button type="button"><i class="fa-solid fa-delete-left" style="color: #273544;"></i></button>
-                                    </th>
-                                </tr>
-                              </tbody>
+                              <!-- esto se debe dejar asi  <tbody id="body_tabla" ></tbody>, para que no me marque en el js que tengo un nodo
+                                  de texto fantasma
+                              -->
+                              <tbody id="body_tabla" ></tbody>
                             </table>
                         </section>
                       </div>
@@ -399,6 +372,8 @@
         </form>
     </section>
   </main> 
+  <script src="js/Vali_Instructores.js"></script>
+  <script src="js/Reg_Instructores.js"></script>
 </body>
-<script src="js/Vali_Instructores.js"></script>
+
 </html>
