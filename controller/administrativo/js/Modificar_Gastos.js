@@ -38,7 +38,35 @@ function obtener_Datos(){
         }) 
 }
 
-//responde cuando hay un click en el boton uno
+//responde cuando hay un click en el boton actualizar
+formulario_Gastos.actualizar.addEventListener('click', function (e){
+    e.preventDefault();
+    console.log("aqui andamosb")
+    let urlAct = window.location+''
+    let split = urlAct.split("=");
+    var participante = split[1];
+    var idOperacion = split[3];
+    var aux="gasto"
+
+    let url = "../../controller/administrativo/Modificar_Gastos_Ingresos.php";
+
+    let form = new FormData(formulario_Gastos);
+    form.append("idOperacion", idOperacion);
+    form.append("aux", aux);
+    fetch(url, {
+    method: "POST",
+    body: form
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert(data);
+            if (data=='Actualización exitosa'){
+                window.location.href='../../view/administrativo/Accion_Participante.html?participante='+participante;
+            }
+    })  
+})
+
+//responde cuando hay un click en el boton cancelar
 formulario_Gastos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
     console.log("auch")
