@@ -7,7 +7,6 @@
         $objeto = new BuscarId();
         $id = $objeto->usuario($usuario);
         $id_cuota = $objeto->id_cuotas();
-        $id_tipo_cuota = $objeto->id_tipo_cuota();
         $id = $id[0]['IdPerso'];
 
         $tipobox=$_POST["tipo"];
@@ -25,9 +24,6 @@
             }
             else if ($tipobox == 3){
                 $tipobox = "Certificación";
-            }
-            else if ($tipobox == 4){
-                $tipobox = "Doctorado";
             }
     
             $new_name_file=null;
@@ -48,7 +44,7 @@
                 }
             }
     
-            $insercion = $objeto->insertar_cuota($id,$id_cuota,$id_tipo_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo);
+            $insercion = $objeto->insertar_cuota($id,$id_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo);
     
             if ($insercion==true){
                 echo json_encode('exito');

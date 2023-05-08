@@ -26,11 +26,18 @@ const banderas_externas = {
 
 /* Validación para el nombre */
 const nombre_campo = document.getElementById('nombre');
+nombre_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	nombre_campo.value = valorInput
+    .trimEnd();
+});
 nombre_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     nombre_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
 
-    if (!expresiones.nombre.test(valorInput)) {
+    let valorInput2 = e.target.value;
+
+    if (!expresiones.nombre.test(valorInput2)) {
         nombre_campo.style.border = "3px solid red";
         banderas.nombre = false;
     }
@@ -42,11 +49,16 @@ nombre_campo.addEventListener('keyup', (e) => {
 
 /* Validación para el apellido paterno */
 const paterno_campo = document.getElementById('paterno');
+paterno_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	paterno_campo.value = valorInput
+    .trimEnd();
+});
 paterno_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     paterno_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
-
-    if (!expresiones.apellidos.test(valorInput)) {
+    let valorInput2 = e.target.value;
+    if (!expresiones.apellidos.test(valorInput2)) {
         paterno_campo.style.border = "3px solid red";
         banderas.paterno = false;
     }
@@ -58,13 +70,22 @@ paterno_campo.addEventListener('keyup', (e) => {
 
 /* Validación para el apellido materno */
 const materno_campo = document.getElementById('materno');
+materno_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	materno_campo.value = valorInput
+    .trimEnd();
+    if(e.target.value.length == 0 ){
+        materno_campo.removeAttribute("style");
+        banderas.materno = true;
+    }
+});
 materno_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
 
     if (valorInput !== "") {
         materno_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
-
-        if (!expresiones.apellidos.test(valorInput)) {
+        let valorInput2 = e.target.value;
+        if (!expresiones.apellidos.test(valorInput2)) {
             materno_campo.style.border = "3px solid red";
             banderas.materno = false;
         } else {
@@ -76,11 +97,16 @@ materno_campo.addEventListener('keyup', (e) => {
 
 /* Validación para la especialidad */
 const especialidad_campo = document.getElementById('especialidad');
+especialidad_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	especialidad_campo.value = valorInput
+    .trimEnd();
+});
 especialidad_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     especialidad_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
-
-    if (!expresiones.especialidades.test(valorInput)) {
+    let valorInput2 = e.target.value;
+    if (!expresiones.especialidades.test(valorInput2)) {
         especialidad_campo.style.border = "3px solid red";
         banderas.especialidad = false;
     }
@@ -92,12 +118,17 @@ especialidad_campo.addEventListener('keyup', (e) => {
 
 /* Validación para el nombre de la certificación externa */
 const nombre_certificacion_campo = document.getElementById('nombre-cert-externa');
+nombre_certificacion_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	nombre_certificacion_campo.value = valorInput
+    .trimEnd();
+});
 nombre_certificacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
     nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s,.]/g, '');
-
-    if (!expresiones.texto_comas.test(valorInput)) {
+    let valorInput2 = e.target.value;
+    if (!expresiones.texto_comas.test(valorInput2)) {
         nombre_certificacion_campo.style.border = "3px solid red";
         banderas_externas.nombre = false;
     }
@@ -109,11 +140,16 @@ nombre_certificacion_campo.addEventListener('keyup', (e) => {
 
 /* Validacion para el campo de organización */
 const organizacion_campo = document.getElementById('organizacion-externa');
+organizacion_campo.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	organizacion_campo.value = valorInput
+    .trimEnd();
+});
 organizacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     organizacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
-
-    if (!expresiones.nombre.test(valorInput)) {
+    let valorInput2 = e.target.value;
+    if (!expresiones.nombre.test(valorInput2)) {
         organizacion_campo.style.border = "3px solid red";
         banderas_externas.organizacion = false;
     }

@@ -10,7 +10,7 @@ class BuscarId extends Crud_bd{
         $this->cerrar_conexion();
         return $datos;
     }
-    function insertar_cuota($id,$id_cuota,$id_tipo_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo){
+    function insertar_cuota($id,$id_cuota,$tipobox,$monto,$fecha_inicio,$fecha_fin,$archivo){
         $this->conexion_bd();
 
         //consultas para la tabla de cuotas
@@ -25,20 +25,29 @@ class BuscarId extends Crud_bd{
 
         $a2 = [":idPerso"=>$id, ":idcuota"=>$id_cuota];
 
-        //consultas para el tipo de cuota
-        $q3 = "INSERT INTO tipocuota (IdCuota ,TipoCuota) 
-        VALUES (:idcuota, :tipobox)";
+        if ($tipobox == "Membresía"){
+            //consultas para la tabla de relacion de coutas con el tipo de cuota
+            $q3 = "INSERT INTO tipovigcuota (IdVigCuo ,IdCuota) 
+            VALUES (:IdVigCuo, :idcuota)";
 
-        $a3 = [":idcuota"=>$id_tipo_cuota, ":tipobox"=>$tipobox];
+            $a3 = [":IdVigCuo"=>$id_cuota, ":idcuota"=>"1"];
+        }
+        else if ($tipobox == "Curso"){
+            //consultas para la tabla de relacion de coutas con el tipo de cuota
+            $q3 = "INSERT INTO tipovigcuota (IdVigCuo ,IdCuota) 
+            VALUES (:IdVigCuo, :idcuota)";
 
-        //consultas para la tabla de relacion de coutas con el tipo de cuota
-        $q4 = "INSERT INTO tipovigcuota (IdVigCuo ,IdCuota) 
-        VALUES (:IdVigCuo, :idcuota)";
+            $a3 = [":IdVigCuo"=>$id_cuota, ":idcuota"=>"2"];
+        }else if($tipobox == "Certificación"){
+            //consultas para la tabla de relacion de coutas con el tipo de cuota
+            $q3 = "INSERT INTO tipovigcuota (IdVigCuo ,IdCuota) 
+            VALUES (:IdVigCuo, :idcuota)";
 
-        $a4 = [":IdVigCuo"=>$id_cuota, ":idcuota"=>$id_tipo_cuota];
+            $a3 = [":IdVigCuo"=>$id_cuota, ":idcuota"=>"3"];
+        }
 
-        $querry = [$q1, $q2, $q3, $q4];
-        $parametros = [$a1, $a2, $a3, $a4];
+        $querry = [$q1, $q2, $q3];
+        $parametros = [$a1, $a2, $a3];
         //acomoda todo en arreglos para mandarlos al CRUD
 
         $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
@@ -78,24 +87,6 @@ class BuscarId extends Crud_bd{
 
         }
         return $numero_nuevo;
-    }
-    public function id_tipo_cuota(){
-        $this->conexion_bd();
-
-        $sql = "SELECT Count(IdCuota) FROM tipocuota";
-        $arreglo = $this->mostrar($sql);
-        $this->cerrar_conexion();
-    
-        $numero = "";
-        if(is_null($arreglo[0][0]) == 1){
-            $numero = 1;
-            
-        }else{
-            $numero = $arreglo[0][0];
-            $numero++;
-            
-        }
-        return $numero;
     }
 }
 
