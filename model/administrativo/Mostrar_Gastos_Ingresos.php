@@ -37,7 +37,7 @@
 
         public function buscar_gastos_perso($id){
             $this->conexion_bd();
-            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas
+            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas, DocGas
                     FROM persoparticipa, persogastos, controlgas, contipogas, tipogastos
                     WHERE persoparticipa.IdParP= :id AND persoparticipa.IdParP=persogastos.IdParP AND persogastos.IdGas=controlgas.IdGas AND
                     controlgas.IdGas=contipogas.IdGas AND contipogas.IdGasto = tipogastos.IdGasto ORDER BY FechaGas ASC";
@@ -103,6 +103,41 @@
             $this->cerrar_conexion();
             return $resultado;
         }
+
+        public function buscar_gasto($idGas){
+            $this->conexion_bd();
+            $sql = "SELECT MontoGas, FechaGas, tipogastos.IdGasto, tipogastos.TipoGas
+                    FROM controlgas, contipogas, tipogastos
+                    WHERE controlgas.IdGas = :id AND controlgas.IdGas = contipogas.IdGas  AND contipogas.IdGasto = tipogastos.IdGasto";
+            $arre = [":id"=>$idGas];
+            $datos = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            $tipoGastos= $this->gastos();
+            $resultado=array_merge($datos, $tipoGastos);
+            return $resultado;
+        }
+
+        public function gastos(){
+            $this->conexion_bd();
+            $sql = "SELECT*
+                    FROM tipogastos";
+            $resultado = $this->mostrar($sql);
+            $this->cerrar_conexion();
+            return $resultado;
+        }
+
+        public function buscar_ingreso($idIngre){
+            $this->conexion_bd();
+            $sql = "SELECT MontoIngre, FechaIngre
+                    FROM controlingre
+                    WHERE controlingre.IdIngre = :id";
+            $arre = [":id"=>$idIngre];
+            $resultado = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultado;
+        }
+
+
 
        
 

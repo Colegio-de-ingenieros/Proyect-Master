@@ -6,7 +6,7 @@ function obtener_Datos(){
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var idOperacion = split[3];
-    var aux="gasto"
+    var aux="ingreso"
 
     let url = "../../controller/administrativo/Get_Gastos_Ingresos.php";
 
@@ -19,29 +19,18 @@ function obtener_Datos(){
     })
         .then(response => response.json())
         .then(data => {
-            document.getElementById("gastos_Tipo_Gasto").innerHTML = "";
-            document.getElementById("gastos_monto").innerHTML = "";
-            document.getElementById("gastos_Fecha").innerHTML = "";
+            document.getElementById("ingresos_monto").innerHTML = "";
+            document.getElementById("ingresos_Fecha").innerHTML = "";
 
-            for (var i = 1; i < 6; i++) {
-                var optionElement = document.createElement("option");
-                optionElement.value = data[i][0];
-                optionElement.text = data[i][1];
-                document.getElementById("gastos_Tipo_Gasto").appendChild(optionElement);
-            }
-
-            document.getElementById("gastos_Tipo_Gasto").value=data[0][2];
-            document.getElementById("gastos_monto").value = data[0][0];
-            document.getElementById("gastos_Fecha").value = data[0][1];
-            
-
+            document.getElementById("ingresos_monto").value = data[0][0];
+            document.getElementById("ingresos_Fecha").value = data[0][1];
         }) 
 }
 
 //responde cuando hay un click en el boton uno
-formulario_Gastos.cancelar.addEventListener('click', function (e){
+formulario_Ingresos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
-    console.log("auch")
+    console.log("auchIngresos")
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var participante = split[1];
