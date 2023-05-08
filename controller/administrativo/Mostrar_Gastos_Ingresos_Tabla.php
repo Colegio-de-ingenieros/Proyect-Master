@@ -98,7 +98,7 @@ if ($tipo=="gastos"){
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $monto. '</td>';
             $salida .= '<td>' . $comprobante . '</td>';
-            $salida .= '<td>  <a href="../../view/administrativo/Modi_Ingresos_Participante.html?participante='.$urlDatos.'">Modifcar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Modi_Ingresos_Participante.html?participante='.$urlDatos.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '"data-actividad="'.$idIngre.'"  data-tipo="'.$tipoAct.'">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
