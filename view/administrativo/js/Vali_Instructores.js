@@ -19,9 +19,7 @@ const banderas = {
 /* Conjunto de banderas para realizar verificación al añadir una certificación externa */
 const banderas_externas = {
     nombre: false,
-    organizacion: false,
-    emision: false,
-    vencimiento: false,
+    organizacion: false
 };
 
 /* Validación para el nombre */
@@ -101,6 +99,10 @@ especialidad_campo.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
 	especialidad_campo.value = valorInput
     .trimEnd();
+    if(e.target.value.length == 0 ){
+        especialidad_campo.removeAttribute("style");
+        banderas.especialidad = false;
+    }
 });
 especialidad_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
@@ -122,6 +124,10 @@ nombre_certificacion_campo.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
 	nombre_certificacion_campo.value = valorInput
     .trimEnd();
+    if(e.target.value.length == 0 ){
+        nombre_certificacion_campo.removeAttribute("style");
+        banderas_externas.nombre = false;
+    }
 });
 nombre_certificacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
@@ -144,6 +150,10 @@ organizacion_campo.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
 	organizacion_campo.value = valorInput
     .trimEnd();
+    if(e.target.value.length == 0 ){
+        organizacion_campo.removeAttribute("style");
+        banderas_externas.organizacion = false;
+    }
 });
 organizacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;

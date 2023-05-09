@@ -4,6 +4,7 @@ const cmp_especialidades = document.getElementById("especialidad");
 
 const btn_certificacion = document.getElementById("btn_agregar_certi");
 const cnt_tabla = document.getElementById("contenedor_tabla");
+const tabla = document.getElementById("tabla");
 const cuerpo_tabla = document.getElementById("body_tabla");
 
 const nombre_cert = document.getElementById("nombre-cert-externa");
@@ -11,17 +12,100 @@ const organizacion_cert = document.getElementById("organizacion-externa");
 const fecha_e_cert = document.getElementById("emision-externa");
 const fecha_v_cert = document.getElementById("vigencia-externa");
 
+const formulario = document.getElementById("formulario");
+const cnt_certifiacionesInt = document.getElementById("cert_int");
+
+window.addEventListener("load",(e)=>{
+    fetch("../../controller/administrativo/Registro_instructores.php")
+    .then(respuesta => respuesta.json())
+    .then(datos =>{
+       
+        llenarCertificacionesInternas(datos);
+    });
+});
+
+formulario.addEventListener("submit",(e)=>{
+    e.preventDefault();
+
+    let respuesta =  SeleccionoUnaCertificacionInterna();
+    if(respuesta){
+        let datos_tabla = extraer_datos_tabla();
+        let datos_espe = extraer_datos_input();
+       
+    
+        let form_data = new FormData(e.target);
+        form_data.append("certificaciones",JSON.stringify(datos_tabla));
+        form_data.append("especialidades",JSON.stringify(datos_espe));
+      
+    
+        fetch("../../controller/administrativo/Registro_instructores.php",{
+            method:"POST",
+            body: form_data
+        }).then(respuesta => respuesta.json())
+        .then(datos =>{
+            if(datos == true){
+                alert("El instructor se ha registrado con exito");
+                
+                limpiar();
+            }else{
+                alert("No se pudo registrar el instructor");
+            }
+        });
+    }else{
+        alert("Debe seleccionar una certificacion interna");
+    }
+   
+    
+});
+
 btn_especialidades.addEventListener("click",(e)=>{
+
     let texto = cmp_especialidades.value;
-    agregar_especialidad(texto);
+
+    if(banderas.especialidad){
+
+        banderas.especialidad = false;
+        cmp_especialidades.value = "";
+        agregar_especialidad(texto);
+
+    }
+    
 });
 
 btn_certificacion.addEventListener("click",(e)=>{
+
     let nombre = nombre_cert.value;
     let org = organizacion_cert.value;
     let fechaE = fecha_e_cert.value;
     let fechaV = fecha_v_cert.value;
-    agregar_certificacion(nombre,org,fechaE,fechaV);
+    let fecha_inicio = new Date(fechaE);
+    let fecha_fin = new Date(fechaV)
+
+    if(nombre != "" || org != ""){
+        if(nombre == ""){
+            alert("Debe colocar el nombre de la certificacion");
+        }else if(org == ""){
+            alert("Debe colocar el nombre de la organizacion");
+        }else if(fechaE == ""){
+            alert("Debe seleccionar una fecha de emision");
+        }else if(fechaV == ""){
+            alert("Debe seleccionar una fecha de vigencia");
+        }else if(fecha_inicio > fecha_fin){
+            alert("La fecha de emision no puede ser mayor a la fecha de vigencia");
+        }else if(banderas_externas.nombre && banderas_externas.organizacion){
+    
+                banderas_externas.nombre = false;
+                banderas_externas.organizacion = false;
+    
+    
+                nombre_cert.value = "";
+                organizacion_cert.value = "";
+                fecha_e_cert.value = "";
+                fecha_v_cert.value = "";
+                agregar_certificacion(nombre,org,fechaE,fechaV);
+        }
+        
+    } 
     
 });
 
@@ -55,8 +139,6 @@ function agregar_especialidad(texto) {
 
     //icono_modificar.style.cssText ="color: #273544";
     icono_eliminar.style.cssText ="color: #273544";
-
-    cnt_input.classList.add("especialidades");
 
     //btn_modificar.appendChild(icono_modificar);
     btn_eliminar.appendChild(icono_eliminar);
@@ -147,5 +229,93 @@ function elimina_elementos_tabla(id_fila) {
     
 }
 
+/* estos metodos extraen datos de la tabla */
+function extraer_datos_tabla() {
+    
+    let filas = [];
+    
 
+    for (var i = 1, row; row = tabla.rows[i]; i++) {
+        
+        let fila = [];
 
+        for (var j = 0; j< 4 ; j++) {
+            col = row.cells[j];
+            fila.push(col.textContent);
+        }  
+        filas.push(fila);
+     }
+
+    return filas;
+}
+
+/* Estrae los datos de los input especialidades */
+
+function extraer_datos_input() {
+
+    let especialidades = document.querySelectorAll(".espe-input");
+    let lista = [];
+    
+    for (let i = 0; i < especialidades.length; i++) {
+        
+        let especialidad = especialidades[i];
+        lista.push(especialidad.value);
+       
+    }
+
+    return lista;
+    
+}
+
+function llenarCertificacionesInternas(datos) {
+
+    if(datos.length == 0){
+
+        let option = document.createElement("option");
+        option.value = "";
+        option.text = "No hay certificaciones internas disponibles;";
+        option.selected = true;
+        cnt_certifiacionesInt.appendChild(option);
+        cnt_certifiacionesInt.disabled = true;
+
+    }else{
+        for (let i = 0; i < datos.length; i++) {
+        
+            let option = document.createElement("option");
+            option.value = datos[i][0];
+            option.text = datos[i][1];
+    
+            cnt_certifiacionesInt.appendChild(option);
+    
+            
+        }
+    }
+    
+    
+    
+}
+function SeleccionoUnaCertificacionInterna() {
+
+    isselected = false;
+    
+    for (var i=0; i<cnt_certifiacionesInt.options.length; i++) {
+        if (cnt_certifiacionesInt.options[i].selected) {
+            isselected = true;
+        } 
+    } 
+
+    return isselected;
+    
+}
+function limpiar() {
+    formulario.reset();
+    cuerpo_tabla.innerHTML = "";
+    while (cuerpo_tabla.firstChild) {
+        cuerpo_tabla.removeChild(cuerpo_tabla.firstChild);
+    }
+    cnt_tabla.style.display = 'none';
+    while (cnt_especialidades.firstChild) {
+        cnt_especialidades.removeChild(cnt_especialidades.firstChild);
+    }
+   
+}
