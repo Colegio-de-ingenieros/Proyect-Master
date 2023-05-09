@@ -28,32 +28,32 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
 
     let respuesta =  SeleccionoUnaCertificacionInterna();
-    if(respuesta){
-        let datos_tabla = extraer_datos_tabla();
-        let datos_espe = extraer_datos_input();
+    
+    let datos_tabla = extraer_datos_tabla();
+    let datos_espe = extraer_datos_input();
        
     
-        let form_data = new FormData(e.target);
-        form_data.append("certificaciones",JSON.stringify(datos_tabla));
-        form_data.append("especialidades",JSON.stringify(datos_espe));
-      
+    let form_data = new FormData(e.target);
+    form_data.append("certificaciones",JSON.stringify(datos_tabla));
+    form_data.append("especialidades",JSON.stringify(datos_espe));
+    if(respuesta == false){
+        form_data.append("cert_int","");
+    }  
     
-        fetch("../../controller/administrativo/Registro_instructores.php",{
-            method:"POST",
-            body: form_data
-        }).then(respuesta => respuesta.json())
-        .then(datos =>{
-            if(datos == true){
-                alert("El instructor se ha registrado con exito");
+    fetch("../../controller/administrativo/Registro_instructores.php",{
+        method:"POST",
+        body: form_data
+    }).then(respuesta => respuesta.json())
+    .then(datos =>{
+        if(datos == true){
+            alert("El instructor se ha registrado con exito");
                 
-                limpiar();
-            }else{
-                alert("No se pudo registrar el instructor");
-            }
-        });
-    }else{
-        alert("Debe seleccionar una certificacion interna");
-    }
+            limpiar();
+        }else{
+            alert("No se pudo registrar el instructor");
+        }
+    });
+    
    
     
 });
@@ -274,7 +274,6 @@ function llenarCertificacionesInternas(datos) {
         let option = document.createElement("option");
         option.value = "";
         option.text = "No hay certificaciones internas disponibles;";
-        option.selected = true;
         cnt_certifiacionesInt.appendChild(option);
         cnt_certifiacionesInt.disabled = true;
 

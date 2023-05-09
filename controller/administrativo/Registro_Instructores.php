@@ -16,7 +16,14 @@ if(isset($_POST["certificaciones"]) && isset($_POST["especialidades"]) &&
     $apellido_p = $_POST["apellido_p"];
     $apellido_m = $_POST["apellido_m"];
 
-    $datos = $objeto->insertarinstructor($nombre,$apellido_p,$apellido_m,$certificacionesExternas,$especialidades,$certificacionesInternas);    
+    if($certificacionesInternas == ""){
+        $datos = $objeto->insertarinstructor($nombre,$apellido_p,$apellido_m,$certificacionesExternas,$especialidades,array());
+
+    }else{
+        $datos = $objeto->insertarinstructor($nombre,$apellido_p,$apellido_m,$certificacionesExternas,$especialidades,$certificacionesInternas);
+    }
+
+        
     
 
 }else{

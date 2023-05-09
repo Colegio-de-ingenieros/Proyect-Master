@@ -1,12 +1,12 @@
 
 /* Expresiones regulares */
 const expresiones = {
-    nombre: /^[a-zA-ZÁ-Ýá-ý\s.]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    nombre: /^[a-zA-ZÁ-Ýá-ý\.\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
     apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
     especialidades: /^[a-zA-ZÁ-Ýá-ý\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
     fecha: /^\d{4}-\d{2}-\d{2}$/, // Fecha en formato yyyy-mm-dd
     hora: /^\d{2}:\d{2}$/, // Hora en formato hh:mm
-    texto_comas: /^[a-zA-ZÁ-Ýá-ý\s,.]{1,60}$/, // Letras y espacios, pueden llevar acentos y comas.
+    texto_comas: /^[a-zA-ZÁ-ý\s,]{1,60}$/, // Letras y espacios, pueden llevar acentos y comas.
 }
 /* Conjunto de banderas para realizar verificación */
 const banderas = {
@@ -31,7 +31,7 @@ nombre_campo.addEventListener('blur', (e) => {
 });
 nombre_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
-    nombre_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+    nombre_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
 
     let valorInput2 = e.target.value;
 
@@ -132,7 +132,7 @@ nombre_certificacion_campo.addEventListener('blur', (e) => {
 nombre_certificacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s,.]/g, '');
+    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-ý\s,]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.texto_comas.test(valorInput2)) {
         nombre_certificacion_campo.style.border = "3px solid red";
@@ -157,7 +157,7 @@ organizacion_campo.addEventListener('blur', (e) => {
 });
 organizacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
-    organizacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
+    organizacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.nombre.test(valorInput2)) {
         organizacion_campo.style.border = "3px solid red";

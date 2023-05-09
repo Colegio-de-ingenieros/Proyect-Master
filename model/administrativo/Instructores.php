@@ -120,8 +120,8 @@ class Instructor_model extends Crud_bd{
         $id_externa = $this->extraer_numero_certificaciones();
 
         for ($i=0; $i < count($certificaciones) ; $i++) { 
-            $numero = $id_externa+1;
-            $id_externa = $this->agregar_ceros($numero,6);
+           
+            //echo $i." certificaciones externas". $id_externa."<br>";
             $sqls[] =  "INSERT INTO certexterna (IdCerExt,NomCerExt,OrgCerExt,IniCerExt,FinCerExt)
                          VALUES (:idCer,:nomCer, :orgCer, :iniCer,:finCer)";
             $parametros[] = [":idCer" =>$id_externa , ":nomCer" => $certificaciones[$i][0], 
@@ -131,6 +131,9 @@ class Instructor_model extends Crud_bd{
 
             $sqls[] = "INSERT INTO inscertext (ClaveIns,IdCerExt) VALUES (:idI,:idCe)";
             $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_externa];
+
+            $numero = $id_externa+1;
+            $id_externa = $this->agregar_ceros($numero,6);
             
             
         }
@@ -138,8 +141,8 @@ class Instructor_model extends Crud_bd{
         $id_especialidad = $this->extraer_numero_especialidades();
 
         for ($i=0; $i < count($especialidades) ; $i++) { 
-            $numero = $id_especialidad+1;
-            $id_especialidad = $this->agregar_ceros($numero,6);
+
+            //echo $i."especialidad ". $id_especialidad ."<br>";
 
             $sqls[] =  "INSERT INTO especialidades (IdEspIns,NomEspIns) VALUES(:idEspe,:nombre)";
             $parametros[] = [":idEspe" =>$id_especialidad , ":nombre" => $especialidades[$i]];
@@ -147,11 +150,13 @@ class Instructor_model extends Crud_bd{
             $sqls[] = "INSERT INTO especialins (ClaveIns,IdEspIns) VALUES (:idI,:idCe)";
             $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_especialidad];
 
-            
+            $numero = $id_especialidad+1;
+            $id_especialidad = $this->agregar_ceros($numero,6);
         }
 
         #agregamos la relacion de las certificaciones internas con el instructor
         for ($index=0; $index < count($certificaciones_int) ; $index++) { 
+            //echo $index."Certificacion interna";
             $sqls[] = "INSERT INTO inscertint (ClaveIns,IdCerInt) VALUES(:id,:idcerin)";
             $parametros[] = [":id"=>$id_instructor,":idcerin"=>$certificaciones_int[$index]];
         }
@@ -219,5 +224,8 @@ class Instructor_model extends Crud_bd{
         return $resultados;
     }
 }   
-
+/*
+$m = new Instructor_model();
+$r = $m->insertarinstructor("juan","jose","",[["12","no hay","2023-04-12","2023-04-24"],["13","no hay","2023-04-12","2023-04-24"],["14","no hay","2023-04-12","2023-04-24"]],["uno1","dos1","tres1","cuatro1"],["000001","000002"]);
+echo $r;*/
 ?>
