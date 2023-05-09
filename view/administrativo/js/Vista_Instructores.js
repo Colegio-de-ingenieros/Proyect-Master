@@ -27,6 +27,11 @@ window.onload = function () {
             // Seguimiento
             let seguimientoCell = document.createElement('td');
             let seguimientoText = rowData[4];
+            if (seguimientoText == 1) {
+                seguimientoText = "Si";
+            } else {
+                seguimientoText = "No";
+            }
             let seguimientoTextNode = document.createTextNode(seguimientoText);
             seguimientoCell.appendChild(seguimientoTextNode);
             row.appendChild(seguimientoCell);
@@ -34,7 +39,7 @@ window.onload = function () {
             // Acciones
             let accionesCell = document.createElement('td');
             let verMasLink = document.createElement('a');
-            verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.html');
+            verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.php?id=' + rowData[0] + ' ');
             verMasLink.textContent = "Ver más";
             accionesCell.appendChild(verMasLink);
 

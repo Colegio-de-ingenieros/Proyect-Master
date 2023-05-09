@@ -4,8 +4,6 @@ require_once('../../config/Crud_bd.php');
 
 class Instructor_model extends Crud_bd{
 
-
-
     public function buscarCertificaciones()
     {
         $this->conexion_bd();
@@ -84,16 +82,16 @@ class Instructor_model extends Crud_bd{
         return $resultados;
     }
 
-    public function extraerInfoInstructorIndividual($id){
-        /* Extraemos la información individual del instructor */
+    public function mostrar_instructor_individual($id){
+        //* Extraemos la información individual del instructor 
         $this->conexion_bd();
-        $consulta = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns 
+        $consulta = "SELECT NomIns, ApePIns, ApeMIns 
         FROM instructor 
         WHERE ClaveIns = :id";
         $parametros = [":id"=>$id];
         $resultados_datos_basicos = $this->mostrar($consulta,$parametros);
 
-        /* Extraemos las certificaciones internas del instructor */
+        //* Extraemos las certificaciones internas del instructor 
         $consulta = "SELECT certinterna.NomCertInt, certinterna.DesCerInt, certinterna.EstatusCertInt 
         from certinterna, inscertint
         WHERE inscertint.ClaveIns = :id
@@ -101,7 +99,7 @@ class Instructor_model extends Crud_bd{
         $parametros = [":id"=>$id];
         $resultados_certificaciones_internas = $this->mostrar($consulta,$parametros);
 
-        /* Extraemos las certificaciones externas del instructor */
+        //* Extraemos las certificaciones externas del instructor
         $consulta = "SELECT certexterna.NomCerExt, certexterna.OrgCerExt, certexterna.IniCerExt, certexterna.FinCerExt
         from certexterna, inscertext
         WHERE inscertext.ClaveIns = :id
@@ -109,7 +107,7 @@ class Instructor_model extends Crud_bd{
         $parametros = [":id"=>$id];
         $resultados_certificaciones_externas = $this->mostrar($consulta,$parametros);
 
-        /* Extraemos las especialidades del instructor */
+        //* Extraemos las especialidades del instructor
         $consulta = "SELECT especialidades.NomEspIns 
         FROM especialidades, especialins 
         WHERE especialins.ClaveIns = :id 
@@ -117,6 +115,17 @@ class Instructor_model extends Crud_bd{
         $parametros = [":id"=>$id];
         $resultados_especialidades = $this->mostrar($consulta,$parametros);
 
+        //* Junta todas las variables en un solo arreglo y retornalo 
+        $resultados = [
+            "datos_basicos"=>$resultados_datos_basicos,
+            "especialidades"=>$resultados_especialidades,
+            "certificaciones_internas"=>$resultados_certificaciones_internas,
+            "certificaciones_externas"=>$resultados_certificaciones_externas
+        ];
+
+        $this->cerrar_conexion();
+        //* Retorna el arreglo con toda la información
+        return $resultados;
     }
 }   
 
