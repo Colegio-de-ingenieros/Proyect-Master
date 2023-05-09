@@ -66,6 +66,11 @@ hr{
     border-radius: 5px;
     width: 90%;
     margin: auto;
+} 
+
+.datos{
+    width: 50%;
+    margin: auto;
 }
 
 .sub-titulo{
