@@ -46,7 +46,7 @@ formulario.addEventListener("submit",(e)=>{
     }).then(respuesta => respuesta.json())
     .then(datos =>{
         if(datos == true){
-            alert("El instructor se ha registrado con exito");
+            alert("Registro exitoso");
                 
             limpiar();
         }else{
@@ -83,15 +83,15 @@ btn_certificacion.addEventListener("click",(e)=>{
 
     if(nombre != "" || org != ""){
         if(nombre == ""){
-            alert("Debe colocar el nombre de la certificacion");
+            alert("Debe colocar el nombre de la certificación");
         }else if(org == ""){
-            alert("Debe colocar el nombre de la organizacion");
+            alert("Debe colocar el nombre de la organización");
         }else if(fechaE == ""){
-            alert("Debe seleccionar una fecha de emision");
+            alert("Debe seleccionar una fecha de emisión");
         }else if(fechaV == ""){
             alert("Debe seleccionar una fecha de vigencia");
         }else if(fecha_inicio > fecha_fin){
-            alert("La fecha de emision no puede ser mayor a la fecha de vigencia");
+            alert("La fecha de emisión no puede ser mayor a la fecha de vigencia");
         }else if(banderas_externas.nombre && banderas_externas.organizacion){
     
                 banderas_externas.nombre = false;
