@@ -118,6 +118,22 @@ h3{
     align-items: center;
     justify-content: center;
     transition: 300ms all;
+} 
+
+.input-format-11{
+    width: 70%; 
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
 }
 
 .input-format:focus{
