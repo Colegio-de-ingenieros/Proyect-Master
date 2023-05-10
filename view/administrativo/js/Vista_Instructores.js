@@ -45,7 +45,7 @@ window.onload = function () {
             accionesCell.appendChild(verMasLink);
 
             let modificarLink = document.createElement('a');
-            modificarLink.setAttribute('href', '../../../view/administrativo/Modi_Instructor.html?id=' + encodeURLComponent(rowData[0]) + ' ');
+            modificarLink.setAttribute('href', '../../../view/administrativo/Modi_Instructor.html?id=' + encodeURIComponent(rowData[0]) + ' ');
             modificarLink.textContent = "Modificar";
             accionesCell.appendChild(modificarLink);
 
