@@ -121,10 +121,11 @@ function agregar_especialidad(texto) {
     let id_input = cnt_especialidades.childNodes.length+Math.floor(Math.random() * 100)+Date.now().toString(5);
     let id_cnt = "contenedor"+ id_input;
 
-    cnt_input.setAttribute("id",id_cnt);
+    cnt_input.setAttribute("id",id_cnt); 
+    cnt_input.classList.add("conte");
 
     input.setAttribute("id",id_input);
-    input.classList.add("input-format-2");
+    input.classList.add("input-format-11");
     input.classList.add("espe-input");
     input.setAttribute("maxlength","40");
     input.setAttribute("placeholder","Ingrese la especialidad");
