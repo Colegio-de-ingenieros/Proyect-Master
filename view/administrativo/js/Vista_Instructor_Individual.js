@@ -48,6 +48,52 @@ window.onload = function() {
         let nombre_instructor = lista_datos_generales[0][0] + " " + lista_datos_generales[0][1] + " " + (lista_datos_generales[0][2] || "");
         document.getElementById('nombre_instructor').textContent = nombre_instructor;
 
+        //* Crear etiquetas para mostrar las especialidades
+        if (lista_especialidades.length > 0) {
+            for (let i = 0; i < lista_especialidades.length; i++) {
+                let etiqueta = document.createElement('p');
+                etiqueta.classList.add('subtitulo-11');
+                etiqueta.textContent = lista_especialidades[i][0];
+                document.getElementById('especialidades_instructor').appendChild(etiqueta);
+            }
+        }
+        else{
+            let etiqueta = document.createElement('p');
+            etiqueta.classList.add('subtitulo-11');
+            etiqueta.textContent = "No se encontraron especialidades";
+            document.getElementById('especialidades_instructor').appendChild(etiqueta);
+        }
 
+        //* Crear etiquetas para mostrar las certificaciones internas
+        if (lista_certificaciones_internas.length > 0) {
+            for (let i = 0; i < lista_certificaciones_internas.length; i++) {
+                let etiqueta = document.createElement('p');
+                etiqueta.classList.add('subtitulo-11');
+                etiqueta.textContent = lista_certificaciones_internas[i][0];
+                document.getElementById('certificaciones_internas').appendChild(etiqueta);
+            }
+        }
+        else{
+            let etiqueta = document.createElement('p');
+            etiqueta.classList.add('subtitulo-11');
+            etiqueta.textContent = "No se encontraron certificaciones internas";
+            document.getElementById('certificaciones_internas').appendChild(etiqueta);
+        }   
+
+        //* Crear etiquetas para mostrar las certificaciones externas
+        if (lista_certificaciones_externas.length > 0) {
+            for (let i = 0; i < lista_certificaciones_externas.length; i++) {
+                let etiqueta = document.createElement('p');
+                etiqueta.classList.add('subtitulo-11');
+                etiqueta.textContent = lista_certificaciones_externas[i][0];
+                document.getElementById('certificaciones_externas').appendChild(etiqueta);
+            }
+        }
+        else{
+            let etiqueta = document.createElement('p');
+            etiqueta.classList.add('subtitulo-11');
+            etiqueta.textContent = "No se encontraron certificaciones externas";
+            document.getElementById('certificaciones_externas').appendChild(etiqueta);
+        }
     }
 };

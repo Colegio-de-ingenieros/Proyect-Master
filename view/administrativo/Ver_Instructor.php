@@ -190,26 +190,24 @@
                 <br>
                 <p class="subtitulo-0"> Especialidades</p>
                 <br>
-                <div class="datos">
-                  <p class="subtitulo-11" id="especialidades_instructor"></p>
-                  <br> 
+                <div class="datos" id="especialidades_instructor">
+                  <p class="subtitulo-11"></p>
                 </div>
+                <br>
                 <hr>
                 <br>
                 <p class="subtitulo-0"> Certificaciones internas </p>
                 <br>
-                <div class="datos">
-                  <p class="subtitulo-11"> Dato</p>
-                  <br>
+                <div class="datos" id="certificaciones_internas">
                 </div>
+                <br>
                 <hr>
                 <br>
                 <p class="subtitulo-0"> Certificaciones externas </p>
                 <br>
-                <div class="datos">
-                  <p class="subtitulo-11"> Dato</p>
-                  <br>
+                <div class="datos" id="certificaciones_externas">
                 </div>
+                <br>
             </div>
         </form>
     </section>
