@@ -80,6 +80,7 @@ class Instructor_model extends Crud_bd{
         return $numero_con_ceros;
 
     }
+
     public function extraer_numero_especialidades()
     {
         $this->conexion_bd();
@@ -102,7 +103,6 @@ class Instructor_model extends Crud_bd{
         return $numero_con_ceros;
 
     }
-
 
     public function insertarinstructor($nombre,$paterno,$materno,$certificaciones,$especialidades,$certificaciones_int)
     {
@@ -211,7 +211,7 @@ class Instructor_model extends Crud_bd{
         $parametros = [":id"=>$id];
         $resultados_especialidades = $this->mostrar($consulta,$parametros);
 
-        //* Junta todas las variables en un solo arreglo y retornalo 
+        //* Juntamos todas las variables en un solo arreglo
         $resultados = [
             "datos_basicos"=>$resultados_datos_basicos,
             "especialidades"=>$resultados_especialidades,
@@ -222,6 +222,64 @@ class Instructor_model extends Crud_bd{
         $this->cerrar_conexion();
         //* Retorna el arreglo con toda la información
         return $resultados;
+    }
+
+    public function eliminar_instructor($id){
+        $this->conexion_bd();
+        //* Eliminamos todos los ids de las certificaciones internas del instructor
+        $consulta = "DELETE FROM inscertint WHERE ClaveIns = :id";
+        $parametros = [":id"=>$id];
+        $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+        //* Seleccionamos todos los ids de las especialidades del instructor
+        $consulta = "SELECT IdEspIns FROM especialins WHERE ClaveIns = :id";
+        $parametros = [":id"=>$id];
+        $resultados_id_especialidades = $this->mostrar($consulta,$parametros);
+
+        //* Eliminamos todas las especialidades del instructor
+        if(count($resultados_id_especialidades) > 0){
+
+            //* Eliminamos la relación de las especialidades con el instructor
+            $consulta = "DELETE FROM especialins WHERE ClaveIns = :id";
+            $parametros = [":id"=>$id];
+            $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+            $lista_id_especialidades = array_column($resultados_id_especialidades,'IdEspIns');
+
+            for($i = 0; $i < count($lista_id_especialidades); $i++){
+                $consulta = "DELETE FROM especialidades WHERE IdEspIns = :id";
+                $parametros = [":id"=>$lista_id_especialidades[$i]];
+                $this->insertar_eliminar_actualizar($consulta,$parametros);
+            }
+        }
+
+        //* Seleccionamos todos los ids de las certificaciones externas del instructor
+        $consulta = "SELECT IdCerExt FROM inscertext WHERE ClaveIns = :id";
+        $parametros = [":id"=>$id];
+        $resultados_id_certificaciones_externas = $this->mostrar($consulta,$parametros);
+        
+        if(count($resultados_id_certificaciones_externas) > 0){
+            //* Eliminamos la relación de las certificaciones externas con el instructor
+            $consulta = "DELETE FROM inscertext WHERE ClaveIns = :id";
+            $parametros = [":id"=>$id];
+            $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+            $lista_id_certificaciones_externas = array_column($resultados_id_certificaciones_externas,'IdCerExt');
+
+            //* Eliminamos todas las certificaciones externas del instructor
+            for($i = 0; $i < count($lista_id_certificaciones_externas); $i++){
+                $consulta = "DELETE FROM certexterna WHERE IdCerExt = :id";
+                $parametros = [":id"=>$lista_id_certificaciones_externas[$i]];
+                $this->insertar_eliminar_actualizar($consulta,$parametros);
+            }
+        }
+
+        //* Eliminamos el instructor
+        $consulta = "DELETE FROM instructor WHERE ClaveIns = :id";
+        $parametros = [":id"=>$id];
+        $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+        $this->cerrar_conexion();
     }
 }   
 /*
