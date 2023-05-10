@@ -27,10 +27,11 @@ window.onload = function () {
             //* Seguimiento
             let seguimientoCell = document.createElement('td');
             let seguimientoText = rowData[4];
+
             if (seguimientoText == 1) {
-                seguimientoText = "Si";
-            } else {
                 seguimientoText = "No";
+            } else {
+                seguimientoText = "Si";
             }
             let seguimientoTextNode = document.createTextNode(seguimientoText);
             seguimientoCell.appendChild(seguimientoTextNode);
@@ -44,7 +45,7 @@ window.onload = function () {
             accionesCell.appendChild(verMasLink);
 
             let modificarLink = document.createElement('a');
-            modificarLink.setAttribute('href', '');
+            modificarLink.setAttribute('href', '../../../view/administrativo/Modi_Instructor.html?id=' + encodeURLComponent(rowData[0]) + ' ');
             modificarLink.textContent = "Modificar";
             accionesCell.appendChild(modificarLink);
 
