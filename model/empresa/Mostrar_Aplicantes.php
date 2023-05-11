@@ -86,6 +86,5 @@ class MostrarAplicantes{
 
 $obj = new MostrarAplicantes();
 $obj->instancias();
-//$z=$obj->getAplicante('000001');
-//var_dump($z)
+
 ?>

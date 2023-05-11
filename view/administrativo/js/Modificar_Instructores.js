@@ -14,14 +14,38 @@ const fecha_v_cert = document.getElementById("vigencia-externa");
 
 const formulario = document.getElementById("formulario");
 const cnt_certifiacionesInt = document.getElementById("cert_int");
+const id_instructor = (new URLSearchParams(location.search)).get('id');
+
+const nombre = document.getElementById("nombre");
+const apellido_p = document.getElementById("paterno");
+const apellido_m = document.getElementById("materno");
+
 
 window.addEventListener("load",(e)=>{
+    let form_data = new FormData();
+    form_data.append("id",id_instructor);
+
     fetch("../../controller/administrativo/Registro_Instructores.php")
     .then(respuesta => respuesta.json())
-    .then(datos =>{
-       
+    .then(datos =>{ 
         llenarCertificacionesInternas(datos);
     });
+    
+    fetch("../../controller/administrativo/Modificar_Instructores.php",{
+        method: 'POST',
+        body: form_data
+    })
+    .then(respuesta => respuesta.json())
+    .then(datos =>{ 
+        console.log(datos);
+        mostrarDatosBasicos(datos[0]);
+        mostrarEspecialidades(datos[1]);
+        mostrarCertificacionesInternas(datos[2]);
+        mostrarCertificaciones(datos[3]);
+    });
+
+
+
 });
 
 formulario.addEventListener("submit",(e)=>{
@@ -46,11 +70,11 @@ formulario.addEventListener("submit",(e)=>{
     }).then(respuesta => respuesta.json())
     .then(datos =>{
         if(datos == true){
-            alert("Registro exitoso");
+            alert("Modificacion exitosa");
                 
             limpiar();
         }else{
-            alert("No se pudo registrar el instructor");
+            alert("No se pudo modificar el instructor");
         }
     });
     
@@ -66,7 +90,7 @@ btn_especialidades.addEventListener("click",(e)=>{
 
         banderas.especialidad = false;
         cmp_especialidades.value = "";
-        agregar_especialidad(texto);
+        agregar_especialidad(texto,false,"");
 
     }
     
@@ -102,14 +126,14 @@ btn_certificacion.addEventListener("click",(e)=>{
                 organizacion_cert.value = "";
                 fecha_e_cert.value = "";
                 fecha_v_cert.value = "";
-                agregar_certificacion(nombre,org,fechaE,fechaV);
+                agregar_certificacion(nombre,org,fechaE,fechaV,false,"");
         }
         
     } 
     
 });
 
-function agregar_especialidad(texto) {
+function agregar_especialidad(texto,clase,id) {
 
     let cnt_input = document.createElement("div");
     let input = document.createElement("input");
@@ -125,6 +149,9 @@ function agregar_especialidad(texto) {
     cnt_input.classList.add("conte");
 
     input.setAttribute("id",id_input);
+    if(clase){
+        input.classList.add("old-"+id);
+    }
     input.classList.add("input-format-11");
     input.classList.add("espe-input");
     input.setAttribute("maxlength","40");
@@ -158,7 +185,7 @@ function agregar_especialidad(texto) {
     
 }
 
-function agregar_certificacion(nombre,organizacion,fechaE, fechaV) {
+function agregar_certificacion(nombre,organizacion,fechaE, fechaV, clase,id) {
     cnt_tabla.style.display = 'block';
 
     var row = document.createElement('tr');
@@ -192,6 +219,9 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV) {
     row.appendChild(fecha_e_c);
     row.appendChild(fecha_v_c);
     row.appendChild(acciones_c);
+    if(clase){
+        row.classList.add("old-"+id);
+    }
 
     cuerpo_tabla.appendChild(row);
     
@@ -318,4 +348,43 @@ function limpiar() {
         cnt_especialidades.removeChild(cnt_especialidades.firstChild);
     }
    
+}
+
+function mostrarEspecialidades(especilidades) {
+    
+    if(especilidades.length > 0){
+        for (let i = 0; i < especilidades.length; i++) {
+            
+            agregar_especialidad(especilidades[i][1],true,especilidades[i][0]);
+        }
+        
+    }
+
+   
+}
+function mostrarCertificaciones(Certificaciones) {
+    
+    if(Certificaciones.length > 0){
+        for (let i = 0; i < Certificaciones.length; i++) {
+            
+            agregar_certificacion(Certificaciones[i][1],Certificaciones[i][2],Certificaciones[i][3],Certificaciones[i][4],true,Certificaciones[i][0]);
+        }
+        
+    }
+
+   
+}
+function mostrarDatosBasicos(datos) {
+    nombre.value = datos[0][0];
+    apellido_p.value = datos[0][1];
+    apellido_m.value = datos[0][2]  == undefined ?  "": datos[0][2];
+}
+
+function mostrarCertificacionesInternas(datos) {
+    for (let i = 0; i < datos.length; i++) {
+        console.log("#cert_int option[value='"+datos[i][0] +"']");
+        document.querySelector("#cert_int option[value='"+datos[i][0] +"']").selected = true;
+        
+    }
+    
 }

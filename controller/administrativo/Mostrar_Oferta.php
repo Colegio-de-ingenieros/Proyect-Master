@@ -3,7 +3,6 @@
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Ofertas.php');
 include_once('../..//view/administrativo/Aprobar_Ofertalaboral.html');
-//echo "hola";
 $base = new MostrarOfertas();
 $base->instancias();
 $resultado = $base->mostrarOferta($id);
@@ -22,8 +21,6 @@ if ($resultado == true) {
   $tel = $resultado[0]["TelEmpBol"];
   $cor= $resultado[0]["CorreoEmpBol"];
 }
-
-//print_r($resultado);
 $resultado = $base->mostrarJornada($id);
 if ($resultado == true) {
   $jor=$resultado[0]["TipoJor"];

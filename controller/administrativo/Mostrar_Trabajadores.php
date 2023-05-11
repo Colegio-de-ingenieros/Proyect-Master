@@ -63,8 +63,6 @@ if (isset($_POST['consulta'])) {
             $amat = $resultado[$i]["ApeMT"];
             $correo = $resultado[$i]["CorreoT"];
             $telefono = $resultado[$i]["TelT"];
-            //$extension = getExt($logo);
-    
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $rfc. '</td>';
@@ -83,7 +81,6 @@ if (isset($_POST['consulta'])) {
     } 
     
     else {
-        //echo "si entra al else";
         $salida .= 'No se encontraron resultados';
     }
 } else {
@@ -154,9 +151,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $telefono . '</td>';
             $rfcc="'".$rfc."'";
             $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv(String('.$rfcc.'))" class="table_item__link">Eliminar</a></td>';
-            
-            //<a href="../../controller/administrativo/Eliminar_Trabajadores.php?rfc='.$rfc.'" class="table_item__link">Eliminar</a></td>';
-            //
+
             $salida .= '</tr></div>';
     
             
@@ -168,10 +163,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 }
-//manda a hacer la busqueda
-//$resultado = $base->getTrabajadores();
-//echo '<script>alert("si entra al php");</script>';
-//echo "si entra al php";
+
 
 
 $salida .= "</tbody></table>";
@@ -190,7 +182,7 @@ function confirmDesactiv(dato)
 }
 
 </script>';
-//echo '<script>alert("si entra al php");</script>';
+
 
 echo $salida;
 echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
