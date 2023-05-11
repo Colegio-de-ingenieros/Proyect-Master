@@ -1,7 +1,7 @@
 
 /* Expresiones regulares */
 const expresiones = {
-    nombre: /^[a-zA-ZÁ-Ýá-ý\.\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    nombre: /^[a-zA-ZÁ-Ýá-ý\.\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
     apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
     especialidades: /^[a-zA-ZÁ-Ýá-ý\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
     fecha: /^\d{4}-\d{2}-\d{2}$/, // Fecha en formato yyyy-mm-dd
@@ -128,13 +128,15 @@ nombre_certificacion_campo.addEventListener('blur', (e) => {
         nombre_certificacion_campo.removeAttribute("style");
         banderas_externas.nombre = false;
     }
+    /*console.log("blur nombre certificacion");
+    console.log(banderas_externas);*/
 });
 nombre_certificacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-ý\s,]/g, '');
+    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
     let valorInput2 = e.target.value;
-    if (!expresiones.texto_comas.test(valorInput2)) {
+    if (!expresiones.nombre.test(valorInput2)) {
         nombre_certificacion_campo.style.border = "3px solid red";
         banderas_externas.nombre = false;
     }
@@ -142,6 +144,8 @@ nombre_certificacion_campo.addEventListener('keyup', (e) => {
         nombre_certificacion_campo.removeAttribute("style");
         banderas_externas.nombre = true;
     }
+    /*console.log("key up nombre certificacion");
+    console.log(banderas_externas);*/
 });
 
 /* Validacion para el campo de organización */
@@ -154,6 +158,8 @@ organizacion_campo.addEventListener('blur', (e) => {
         organizacion_campo.removeAttribute("style");
         banderas_externas.organizacion = false;
     }
+    /*console.log("blur organizacion");
+    console.log(banderas_externas);*/
 });
 organizacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
@@ -167,5 +173,7 @@ organizacion_campo.addEventListener('keyup', (e) => {
         organizacion_campo.removeAttribute("style");
         banderas_externas.organizacion = true;
     }
+    /*console.log("keyup organizacion");
+    console.log(banderas_externas);*/
 });
 
