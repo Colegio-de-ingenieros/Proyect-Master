@@ -40,16 +40,19 @@ window.onload = function () {
             //* Acciones
             let accionesCell = document.createElement('td');
             let verMasLink = document.createElement('a');
+            verMasLink.setAttribute('class', 'link');
             verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.php?id=' + rowData[0] + ' ');
             verMasLink.textContent = "Ver más";
             accionesCell.appendChild(verMasLink);
 
             let modificarLink = document.createElement('a');
+            modificarLink.setAttribute('class', 'link');
             modificarLink.setAttribute('href', '../../view/administrativo/Modi_Instructor.html?id=' + encodeURIComponent(rowData[0]) + ' ');
             modificarLink.textContent = "Modificar";
             accionesCell.appendChild(modificarLink);
 
             let eliminarLink = document.createElement('a');
+            eliminarLink.setAttribute('class', 'link');
             eliminarLink.setAttribute('href', '#');
             eliminarLink.addEventListener('click', function () {
                 let respuesta = confirm("Estas seguro que desea eliminar?");
