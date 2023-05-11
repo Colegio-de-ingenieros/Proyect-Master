@@ -115,7 +115,7 @@ function crear_tabla(datos) {
 
 function eliminar_f(clave) {
    
-    var respuesta = confirm("Estas seguro que desea eliminar?");
+    var respuesta = confirm("¿Está seguro que desea eliminar?");
     if(respuesta){
     
         let form_data = new FormData();
