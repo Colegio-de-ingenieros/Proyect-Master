@@ -226,59 +226,97 @@ class Instructor_model extends Crud_bd{
 
     public function eliminar_instructor($id){
         $this->conexion_bd();
-        //* Eliminamos todos los ids de las certificaciones internas del instructor
-        $consulta = "DELETE FROM inscertint WHERE ClaveIns = :id";
+
+        //* Seleccionamos el estatus del instructor para saber si está con seguimiento o no
+        $consulta = "SELECT EstatusIns FROM instructor WHERE ClaveIns = :id";
         $parametros = [":id"=>$id];
-        $this->insertar_eliminar_actualizar($consulta,$parametros);
+        $resultados_estatus = $this->mostrar($consulta,$parametros);
 
-        //* Seleccionamos todos los ids de las especialidades del instructor
-        $consulta = "SELECT IdEspIns FROM especialins WHERE ClaveIns = :id";
-        $parametros = [":id"=>$id];
-        $resultados_id_especialidades = $this->mostrar($consulta,$parametros);
-
-        //* Eliminamos todas las especialidades del instructor
-        if(count($resultados_id_especialidades) > 0){
-
-            //* Eliminamos la relación de las especialidades con el instructor
-            $consulta = "DELETE FROM especialins WHERE ClaveIns = :id";
+        $lista_estatus = array_column($resultados_estatus,'EstatusIns');
+        //* Si el estatus es 1, significa que el instructor está sin seguimiento
+        if($lista_estatus == 0){
+            return false;
+        }
+        else{
+            //* Eliminamos todos los ids de las certificaciones internas del instructor
+            $consulta = "DELETE FROM inscertint WHERE ClaveIns = :id";
             $parametros = [":id"=>$id];
             $this->insertar_eliminar_actualizar($consulta,$parametros);
 
-            $lista_id_especialidades = array_column($resultados_id_especialidades,'IdEspIns');
+            //* Seleccionamos todos los ids de las especialidades del instructor
+            $consulta = "SELECT IdEspIns FROM especialins WHERE ClaveIns = :id";
+            $parametros = [":id"=>$id];
+            $resultados_id_especialidades = $this->mostrar($consulta,$parametros);
 
-            for($i = 0; $i < count($lista_id_especialidades); $i++){
-                $consulta = "DELETE FROM especialidades WHERE IdEspIns = :id";
-                $parametros = [":id"=>$lista_id_especialidades[$i]];
+            //* Eliminamos todas las especialidades del instructor
+            if(count($resultados_id_especialidades) > 0){
+
+                //* Eliminamos la relación de las especialidades con el instructor
+                $consulta = "DELETE FROM especialins WHERE ClaveIns = :id";
+                $parametros = [":id"=>$id];
                 $this->insertar_eliminar_actualizar($consulta,$parametros);
-            }
-        }
 
-        //* Seleccionamos todos los ids de las certificaciones externas del instructor
-        $consulta = "SELECT IdCerExt FROM inscertext WHERE ClaveIns = :id";
-        $parametros = [":id"=>$id];
-        $resultados_id_certificaciones_externas = $this->mostrar($consulta,$parametros);
-        
-        if(count($resultados_id_certificaciones_externas) > 0){
-            //* Eliminamos la relación de las certificaciones externas con el instructor
-            $consulta = "DELETE FROM inscertext WHERE ClaveIns = :id";
+                $lista_id_especialidades = array_column($resultados_id_especialidades,'IdEspIns');
+
+                for($i = 0; $i < count($lista_id_especialidades); $i++){
+                    $consulta = "DELETE FROM especialidades WHERE IdEspIns = :id";
+                    $parametros = [":id"=>$lista_id_especialidades[$i]];
+                    $this->insertar_eliminar_actualizar($consulta,$parametros);
+                }
+            }
+
+            //* Seleccionamos todos los ids de las certificaciones externas del instructor
+            $consulta = "SELECT IdCerExt FROM inscertext WHERE ClaveIns = :id";
+            $parametros = [":id"=>$id];
+            $resultados_id_certificaciones_externas = $this->mostrar($consulta,$parametros);
+            
+            if(count($resultados_id_certificaciones_externas) > 0){
+                //* Eliminamos la relación de las certificaciones externas con el instructor
+                $consulta = "DELETE FROM inscertext WHERE ClaveIns = :id";
+                $parametros = [":id"=>$id];
+                $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+                $lista_id_certificaciones_externas = array_column($resultados_id_certificaciones_externas,'IdCerExt');
+
+                //* Eliminamos todas las certificaciones externas del instructor
+                for($i = 0; $i < count($lista_id_certificaciones_externas); $i++){
+                    $consulta = "DELETE FROM certexterna WHERE IdCerExt = :id";
+                    $parametros = [":id"=>$lista_id_certificaciones_externas[$i]];
+                    $this->insertar_eliminar_actualizar($consulta,$parametros);
+                }
+            }
+
+            //* Seleccionamos todos los elementos de la tabla seguimiento
+            $consulta = "SELECT seguimiento.IdSeg 
+            FROM seguimiento, insparticipa, instructor 
+            WHERE instructor.ClaveIns = :id 
+            AND instructor.ClaveIns = insparticipa.ClaveIns 
+            AND insparticipa.IdSeg = seguimiento.IdSeg;";
+            $parametros = [":id"=>$id];
+            $resultados_id_seguimiento = $this->mostrar($consulta,$parametros);
+
+            if(count($resultados_id_seguimiento) > 0){
+                $lista_id_seguimiento = array_column($resultados_id_seguimiento,'IdSeg');
+
+                //* Eliminamos la relación de los instructores con el seguimiento
+                $consulta = "DELETE FROM insparticipa WHERE ClaveIns = :id";
+                $parametros = [":id"=>$id];
+                $this->insertar_eliminar_actualizar($consulta,$parametros);
+
+                //* Eliminamos todos los instructores que estén en la tabla seguimiento
+                for($i = 0; $i < count($lista_id_seguimiento); $i++){
+                    $consulta = "DELETE FROM seguimiento WHERE IdSeg = :id";
+                    $parametros = [":id"=>$lista_id_seguimiento[$i]];
+                    $this->insertar_eliminar_actualizar($consulta,$parametros);
+                }
+            }
+
+            //* Eliminamos el instructor
+            $consulta = "DELETE FROM instructor WHERE ClaveIns = :id";
             $parametros = [":id"=>$id];
             $this->insertar_eliminar_actualizar($consulta,$parametros);
-
-            $lista_id_certificaciones_externas = array_column($resultados_id_certificaciones_externas,'IdCerExt');
-
-            //* Eliminamos todas las certificaciones externas del instructor
-            for($i = 0; $i < count($lista_id_certificaciones_externas); $i++){
-                $consulta = "DELETE FROM certexterna WHERE IdCerExt = :id";
-                $parametros = [":id"=>$lista_id_certificaciones_externas[$i]];
-                $this->insertar_eliminar_actualizar($consulta,$parametros);
-            }
+            return true;
         }
-
-        //* Eliminamos el instructor
-        $consulta = "DELETE FROM instructor WHERE ClaveIns = :id";
-        $parametros = [":id"=>$id];
-        $this->insertar_eliminar_actualizar($consulta,$parametros);
-
         $this->cerrar_conexion();
     }
 }   

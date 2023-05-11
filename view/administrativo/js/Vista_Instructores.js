@@ -65,8 +65,14 @@ window.onload = function () {
                         body: form_data
                     }).then(respuesta => respuesta.json())
                         .then(datos => {
-                            alert("Eliminado con éxito");
-                            location.reload();
+                            
+                            if(datos == false){
+                                alert("No se puede eliminar el instructor, ya que tiene cursos asignados");
+                            }
+                            else{
+                                alert("Eliminado con éxito");
+                                location.reload();
+                            }
                         })
                         .catch(error => alert(error));
                 }
