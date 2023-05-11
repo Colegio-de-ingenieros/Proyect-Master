@@ -40,6 +40,7 @@ window.addEventListener("load",(e)=>{
         console.log(datos);
         mostrarDatosBasicos(datos[0]);
         mostrarEspecialidades(datos[1]);
+        mostrarCertificacionesInternas(datos[2]);
         mostrarCertificaciones(datos[3]);
     });
 
@@ -377,4 +378,13 @@ function mostrarDatosBasicos(datos) {
     nombre.value = datos[0][0];
     apellido_p.value = datos[0][1];
     apellido_m.value = datos[0][2]  == undefined ?  "": datos[0][2];
+}
+
+function mostrarCertificacionesInternas(datos) {
+    for (let i = 0; i < datos.length; i++) {
+        console.log("#cert_int option[value='"+datos[i][0] +"']");
+        document.querySelector("#cert_int option[value='"+datos[i][0] +"']").selected = true;
+        
+    }
+    
 }
