@@ -2,7 +2,6 @@
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Aplicantes.php');
 include_once('../../view/administrativo/Aprobar_Cvadmin.html');
-//echo $id;
 $base = new MostrarAplicantes();
 $base->instancias();
 $resultado = $base->getAplicante($id);
@@ -144,7 +143,6 @@ var parrafo = document.createElement("p");
         if ($resultado == true) {
           $salida='';
           for ($i = 0; $i < count($resultado); $i++) {
-          // IdBolCv 	IdExpP 	EmpExpP 	IniExpP 	FinExpP 	PuestoExpP 	ActExpP 	IdExpP 	
           $puesto=$resultado[$i]['PuestoExpP'];
           $empresa=$resultado[$i]['EmpExpP'];
           $inicio=$resultado[$i]['IniExpP'];

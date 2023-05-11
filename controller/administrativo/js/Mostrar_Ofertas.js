@@ -1,7 +1,7 @@
 $(buscar_datos());
 
 function buscar_datos(consulta){
-    console.log("estoy en oferta de administrador");
+    
     $.ajax({
         url: '../../controller/administrativo/Mostrar_Ofertas_Admin.php',
         type: 'POST',

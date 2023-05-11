@@ -185,8 +185,8 @@ function confirmDesactiv(dato)
 }
 
 </script>';
-//echo '<script>alert("si entra al php");</script>';
+
 
 echo $salida;
-//echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
+
 ?>

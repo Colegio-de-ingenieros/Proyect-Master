@@ -141,7 +141,6 @@ if (isset($_POST['consulta'])) {
             $sal= $resultado[$i]["ExpSalCv"];
             $tel = $resultado[$i]["TelMPerso"];
             $id = $resultado[$i]["IdBolCv"];
-            //$extension = getExt($logo);
     
             //escribe los valores en la tabla
             $salida .= '<tr>';
@@ -160,14 +159,11 @@ if (isset($_POST['consulta'])) {
     } 
     
     else {
-        //echo "si entra al else";
+
         $salida .= 'No se encontraron resultados';
     }
 }
-//manda a hacer la busqueda
-//$resultado = $base->getTrabajadores();
-//echo '<script>alert("si entra al php");</script>';
-//echo "si entra al php";
+
 
 
 $salida .= "</tbody></table>";

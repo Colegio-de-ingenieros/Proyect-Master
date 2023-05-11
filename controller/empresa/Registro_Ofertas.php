@@ -52,13 +52,13 @@ if ($c1 == 0 && $c2 == 0 && $c3 == 0 && $c4 == 0 && $c5 == 0 && $c6 == 0 && $c7 
     echo json_encode('error');
 }
 else{
-   //$ban=true;
+
    $obj = new NuevaOferta();
    $obj->conexion();
    $rfccorreo1=$obj->rfccorreo($username);
 
    $rfce=$rfccorreo1[0][0];
-   //echo json_encode($rfccorreo[0]);
+ 
    $anterior=$obj->obtenerId();
    if ($anterior==null){
       $anterior="000000";
