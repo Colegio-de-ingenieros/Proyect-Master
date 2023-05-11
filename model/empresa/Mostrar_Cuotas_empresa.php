@@ -15,7 +15,7 @@ class MostrarCuota extends Crud_bd{
 
     function cuotas_disponibles($id){
         $this->conexion_bd();
-        $consulta = "SELECT MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota
+        $consulta = "SELECT vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota
         FROM usuaemp,empvigcuota,vigenciacuotas,tipovigcuota,tipocuota
         WHERE usuaemp.RFCUsuaEmp = '$id'
         and usuaemp.RFCUsuaEmp = empvigcuota.RFCUsuaEmp
