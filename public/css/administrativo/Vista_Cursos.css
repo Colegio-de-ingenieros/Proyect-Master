@@ -24,6 +24,9 @@
     --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 }
+.espaciado{
+    margin-left: 10px;
+}
 
 *{
     margin: 0;
@@ -43,7 +46,21 @@ article{
     width: 1200px;
     background-color: #dfe3e7;
 }
-
+.nombre{
+    width: 300px;
+}
+.duracion{
+    width: 10px;
+}
+.seguimiento{
+    width: 10px;
+}
+.accion{
+    width: 10px;
+}
+.clave{
+    width: 100px;
+}
 .article-tablas article{
     margin: 20px auto;
     padding: 10px;

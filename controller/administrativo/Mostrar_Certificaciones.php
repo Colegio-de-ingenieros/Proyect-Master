@@ -22,6 +22,7 @@ if (isset($_POST['consulta'])) {
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio socio/asociado</th>
+                    <th>Seguimiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -29,6 +30,8 @@ if (isset($_POST['consulta'])) {
 
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
+            $seguimiento = 'No';
+
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $idc = $resultado[$i]["IdCerInt"];
             $logo = $resultado[$i]["LogoCerInt"];
@@ -39,6 +42,11 @@ if (isset($_POST['consulta'])) {
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
 
+            //obtiene el valor real de seguimiento
+            if($status == 0){
+                $seguimiento = 'Si';
+            }
+
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
@@ -47,6 +55,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
+            $salida .= '<td>' . $seguimiento . '</td>';
             $salida .= '<td> 
         <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;&nbsp
         <a href="../../controller/administrativo/Get_Certificacion.php?idc=' . $idc . '">Modificar</a>&nbsp;&nbsp;&nbsp
@@ -75,6 +84,7 @@ if (isset($_POST['consulta'])) {
                     <th>Descripción</th>
                     <th>Precio general</th>
                     <th>Precio <br>socio/asociado</th>
+                    <th>Seguimiento</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -82,6 +92,7 @@ if (isset($_POST['consulta'])) {
 
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
+            $seguimiento = 'No';
             //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
             $idc = $resultado[$i]["IdCerInt"];
             $logo = $resultado[$i]["LogoCerInt"];
@@ -92,6 +103,11 @@ if (isset($_POST['consulta'])) {
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
 
+            //obtiene el valor real de seguimiento
+            if($status == 0){
+                $seguimiento = 'Si';
+            }
+
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
@@ -100,6 +116,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $desc . '</td>';
             $salida .= '<td>$' . $precioG . '</td>';
             $salida .= '<td>$' . $precioA . '</td>';
+            $salida .= '<td>' . $seguimiento . '</td>';
             $salida .= '<td> 
         <center>
         <a href="../../controller/administrativo/Mostrar_Historial.php?idc=' . $idc . '">Historial</a>&nbsp;&nbsp;

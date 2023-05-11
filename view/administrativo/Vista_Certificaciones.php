@@ -15,7 +15,7 @@
   <script src="../../controller/administrativo/js/Mostrar_Certificaciones.js"></script>
 
 
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
@@ -190,7 +190,7 @@
           <hr>
           <div class="grupo-input">
             <div class="input-form">
-              <input type="search" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
+              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
 

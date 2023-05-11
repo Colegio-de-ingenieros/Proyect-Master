@@ -62,7 +62,7 @@ table{
 }
 .header_table {
     max-height: 100vh;
-    width: 100%;
+    width: 101%;
     overflow: auto;
     border: 1px solid #dddddd;
 }
@@ -75,9 +75,9 @@ table{
     word-wrap: break-word;
 }
 th,td {
-    max-width: 235px;
+    max-width: 215px;
     border-bottom: 1px solid #000000;
-    padding: 10px 20px;
+    padding: 10px 9px;
     font-size: 15px;
     text-align: center;
     word-wrap: break-word;

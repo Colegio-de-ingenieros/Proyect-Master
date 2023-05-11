@@ -55,15 +55,16 @@ function crear_tabla(datos) {
             var clave = document.createElement('td');
             var nombre = document.createElement('td');
             var duracion = document.createElement('td');
+            var seguimiento = document.createElement('td');
             var acciones = document.createElement('td');
 
             var ver_mas = document.createElement("a");
             var modificar = document.createElement("a");
             var eliminar = document.createElement("a");
 
-            ver_mas.textContent = "Ver más  ";
-            modificar.textContent = "Modificar  ";
-            eliminar.textContent = "Eliminar  ";
+            ver_mas.textContent = "Ver más";
+            modificar.textContent = "Modificar";
+            eliminar.textContent = "Eliminar";
 
             ver_mas.href = "../../controller/administrativo/Ver_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
             modificar.href = "../../view/administrativo/Modi_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
@@ -72,20 +73,40 @@ function crear_tabla(datos) {
             eliminar.setAttribute("id",datos[i]["ClaveCur"]);
             eliminar.setAttribute('onclick',"eliminar_f('"+datos[i]["ClaveCur"]+"')");
 
+            eliminar.setAttribute("class", "espaciado");
+            modificar.setAttribute("class", "espaciado");
+            ver_mas.setAttribute("class", "espaciado");
+
             acciones.appendChild(ver_mas);
             acciones.appendChild(modificar);
             acciones.appendChild(eliminar);
 
             clave.innerText = datos[i]["ClaveCur"];
             nombre.innerText = datos[i]["NomCur"];
-            duracion.innerText = datos[i]["DuracionCur"];        
+            duracion.innerText = datos[i]["DuracionCur"]; 
+            if (datos[i]["EstatusCur"] == 1){
+                seguimiento.innerText = "No";   
 
-            row.appendChild(clave);
-            row.appendChild(nombre);
-            row.appendChild(duracion);
-            row.appendChild(acciones);
+                row.appendChild(clave);
+                row.appendChild(nombre);
+                row.appendChild(duracion);
+                row.appendChild(seguimiento);
+                row.appendChild(acciones);
 
-            cuerpo_tabla.appendChild(row);
+                cuerpo_tabla.appendChild(row);
+            }else{
+                seguimiento.innerText = "Si";   
+
+                row.appendChild(clave);
+                row.appendChild(nombre);
+                row.appendChild(duracion);
+                row.appendChild(seguimiento);
+                row.appendChild(acciones);
+
+                cuerpo_tabla.appendChild(row);
+            }   
+
+            
             
         }
 
@@ -94,7 +115,7 @@ function crear_tabla(datos) {
 
 function eliminar_f(clave) {
    
-    var respuesta = confirm("Estas seguro que desea eliminar?");
+    var respuesta = confirm("¿Está seguro que desea eliminar?");
     if(respuesta){
     
         let form_data = new FormData();
@@ -110,11 +131,11 @@ function eliminar_f(clave) {
            
             if(datos[0] == "Exito"){
 
-                alert("Eliminado con exito");
+                alert("Eliminado con éxito");
                 location.reload();
 
             }else{
-                alert("El curso tiene seguimiento");
+                alert("Error, el curso no puede ser eliminado porque tiene un seguimiento");
             }
             
         });

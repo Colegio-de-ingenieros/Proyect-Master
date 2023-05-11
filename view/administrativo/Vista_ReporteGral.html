@@ -1,19 +1,19 @@
-<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vizualización de proyectos</title>
+  <title>Reporte general</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Vista_ReporteGral.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Proyectos.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../../controller/administrativo/js/Mostrar_Proyectos.js"></script>
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
@@ -23,13 +23,13 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Proyectos</h1>
+          <h1 class="nombre_Ventana">Reporte general</h1>
         </div>
 
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>      
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -109,8 +109,8 @@
               </a>
 
               <ul>
-              <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
-								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -119,7 +119,7 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-
+        
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
@@ -178,41 +178,98 @@
   </header>
 
   <main>
-
-    <div>
-      <div class="article-tablas">
-        <article>
-          <div class="sub-titulo">
-            <h4 class="subtitulo-1">Mostrar / Consultar</h4>
+    <section class="section-main">
+        <p class="subtitulo-1">Datos generales</p>
+        <hr>
+        <form class="formulario-de-datos" id="formulario">
+          <div class="grupo-input3">
+              <div class="label-form">
+                  <p class="label-2">Tipo</p>
+              </div>
           </div>
-          <hr>
           <div class="grupo-input">
-            <div class="input-form">
-              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
-            </div>
+              <input type="radio" name="tipo" id="cursos" class="radio-button-format" placeholder="Radio" checked>
+              Curso
+          </div> 
+  
+          <div class="grupo-input">
+            <input type="radio" name="tipo" id="proyectos" class="radio-button-format" placeholder="Radio">
+            Proyecto
+        </div>
+  
+          <div class="grupo-input">
+              <input type="radio" name="tipo"n id="certificaciones" class="radio-button-format" placeholder="Radio" >
+              Certificación
           </div>
-          <!-- llama al archivo que genera el excel -->
-          <script languaje="javascript">
-            function generar() {
-              location.href = '../../controller/administrativo/Excel_Proyectos.php';
-            }
-          </script>
 
-          <div class="boton_registrar">
-            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          <div class="grupo-input3">
+            <br>
+            <p class="subtitulo-1">Tipo de reporte</p>
+            <hr>
           </div>
-          <br>
-          <div class="tablas">
-            <section class="header_table" id="tablaResultado">
+          <div class="grupo-input">
+              <input type="radio" checked id="completo" name="tipo_reporte" value="0" class="radio-button-format" placeholder="Radio">
+              <b>Historial completo</b>
+          </div>
+          <div></div><div></div>
+          <div class="grupo-input">
+              <input type="radio" id="periodo" name="tipo_reporte" value="1" class="radio-button-format" placeholder="Radio">
+              <b>Periodo</b>
+          </div>
+          <div class="grupo-input">
+              <b>Inicio</b>
+              <input type="date" name="inicio" id="inicio"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+          <div class="grupo-input">
+              <b>Finalización</b>
+              <input type="date" name="fin" id="fin"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+  
+          <div></div><div></div>
+          <div class="boton-reporte">
+              <input type="submit" name="registrar" id="registrar" class="btn-medium btn" value="Generar reporte">
+          </div>
+        </form>
+        <div class="grupo-input3" id="contenedor_tabla">
+            <div class="article-tablas" >
+                <article>          
+                  <div class="tablas">
+                    <section class="header_table" id="tablaResultado">
+                        <table >
+                          <thead>
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Hotel</th>
+                                <th>Transporte</th>
+                                <th>Comida</th>
+                                <th>Oficina</th>
+                                <th>Honorarios</th>
+                                <th>Subtotal gastos</th>
+                                <th>Ingresos</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cuerpo" >
+                           
+                          </tbody>
+                        </table>
+                    </section>
+                  </div>
+                </article>
+              </div>
+          </div>
+          <div class="totales" id="datos">
+            
+          </div>
+          <div>
 
-            </section>
           </div>
-        </article>
-      </div>
-    </div>
+
+        <div class="boton-reporte" >
+            <button type="submit"  name="registrar" class="btn-medium btn" id="boton_descargar_reporte">Descargar reporte</button>
+        </div>
+      <br>
   </main>
 
-  </div>
-</body>
 
+</body>
 </html>

@@ -13,14 +13,17 @@
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Certificaciones.css">
 
-  <link rel="icon" href="/public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 
     <!--regresa a la vista de todas las certificaciones sin modificar nada-->
     <script languaje="javascript">
       function regresar(){
-        location.href = '../../view/administrativo/Vista_Certificaciones.php';
+        var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+        if(resp ==  true){
+          location.href = '../../view/administrativo/Vista_Certificaciones.php';
+        }
       }
     </script>
 

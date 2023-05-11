@@ -11,7 +11,6 @@
             $this->Image('../../public/img/ciscigCompleto.png',10,8,50);
             // Arial bold 15
             $this->SetFont('Arial','B',16);
-            $this->SetTextColor(33,45,106);
             // Movernos a la derecha
             $this->SetXY(70,10);
             // Título

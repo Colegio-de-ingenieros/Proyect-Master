@@ -14,20 +14,18 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Modificación de proyectos</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Proyectos.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-
     <script languaje="javascript">
       function regresar(){
-        location.href = '../../view/administrativo/Vista_Proyectos.php';
+        var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+        if(resp ==  true){
+          location.href = '../../view/administrativo/Vista_Proyectos.php';
+        }
+
       }
     </script>
 

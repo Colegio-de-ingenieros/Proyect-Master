@@ -682,7 +682,7 @@ enviar.addEventListener("click", (e) => {
       .then((res) => res.json())
       .then((data) => {
         alert("Actualización exitosa");
-        window.location.href = "Vista_Cursos.php";
+        window.location.href = "Vista_Cursos.html ";
       });
   }
 });
@@ -701,7 +701,11 @@ function validar_temas() {
 }
 
 regresar.addEventListener("click", (e) => {
-  window.location.href = "Vista_Cursos.php";
+  let respuesta_confirm = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+
+  if (respuesta_confirm == true) {
+    window.location.href = "Vista_Cursos.html ";
+  }
 });
 
 const convertirData = (data) => {
