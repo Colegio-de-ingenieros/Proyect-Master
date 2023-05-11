@@ -286,31 +286,6 @@ class Instructor_model extends Crud_bd{
                 }
             }
 
-            //* Seleccionamos todos los elementos de la tabla seguimiento
-            $consulta = "SELECT seguimiento.IdSeg 
-            FROM seguimiento, insparticipa, instructor 
-            WHERE instructor.ClaveIns = :id 
-            AND instructor.ClaveIns = insparticipa.ClaveIns 
-            AND insparticipa.IdSeg = seguimiento.IdSeg;";
-            $parametros = [":id"=>$id];
-            $resultados_id_seguimiento = $this->mostrar($consulta,$parametros);
-
-            if(count($resultados_id_seguimiento) > 0){
-                $lista_id_seguimiento = array_column($resultados_id_seguimiento,'IdSeg');
-
-                //* Eliminamos la relación de los instructores con el seguimiento
-                $consulta = "DELETE FROM insparticipa WHERE ClaveIns = :id";
-                $parametros = [":id"=>$id];
-                $this->insertar_eliminar_actualizar($consulta,$parametros);
-
-                //* Eliminamos todos los instructores que estén en la tabla seguimiento
-                for($i = 0; $i < count($lista_id_seguimiento); $i++){
-                    $consulta = "DELETE FROM seguimiento WHERE IdSeg = :id";
-                    $parametros = [":id"=>$lista_id_seguimiento[$i]];
-                    $this->insertar_eliminar_actualizar($consulta,$parametros);
-                }
-            }
-
             //* Eliminamos el instructor
             $consulta = "DELETE FROM instructor WHERE ClaveIns = :id";
             $parametros = [":id"=>$id];
