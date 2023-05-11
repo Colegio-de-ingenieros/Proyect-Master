@@ -66,10 +66,10 @@ window.onload = function () {
                     }).then(respuesta => respuesta.json())
                         .then(datos => {
                             
-                            if(datos == false){
-                                alert("No se puede eliminar el instructor, ya que tiene cursos asignados");
+                            if(datos == "con"){
+                                alert("El instructor tiene seguimiento.");
                             }
-                            else{
+                            else if(datos == "sin"){
                                 alert("Eliminado con éxito");
                                 location.reload();
                             }

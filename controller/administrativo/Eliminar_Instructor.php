@@ -2,9 +2,8 @@
     include_once('../../model/administrativo/Instructores.php');
 
     $objeto = new Instructor_model();
-    //$id = $_POST['id_instructor'];
-    //? Id de prueba:  
-    $id = 'I00001';
+    $id = $_POST['id_instructor'];
+    //? Id de prueba:  $id = 'I00001';
 
     $eliminar_instructor = $objeto->eliminar_instructor($id);
     

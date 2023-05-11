@@ -4,8 +4,6 @@ require_once('../../config/Crud_bd.php');
 
 class Instructor_model extends Crud_bd{
 
-
-
     public function buscarCertificacionExternas()
     {
         $this->conexion_bd();
@@ -233,11 +231,12 @@ class Instructor_model extends Crud_bd{
         $resultados_estatus = $this->mostrar($consulta,$parametros);
 
         $lista_estatus = array_column($resultados_estatus,'EstatusIns');
+
         //* Si el estatus es 1, significa que el instructor está sin seguimiento
-        if($lista_estatus == 0){
-            return false;
+        if($lista_estatus[0] == "0"){
+            return "con";
         }
-        else{
+        else if($lista_estatus[0] == "1"){            
             //* Eliminamos todos los ids de las certificaciones internas del instructor
             $consulta = "DELETE FROM inscertint WHERE ClaveIns = :id";
             $parametros = [":id"=>$id];
@@ -290,7 +289,7 @@ class Instructor_model extends Crud_bd{
             $consulta = "DELETE FROM instructor WHERE ClaveIns = :id";
             $parametros = [":id"=>$id];
             $this->insertar_eliminar_actualizar($consulta,$parametros);
-            return true;
+            return "sin";
         }
         $this->cerrar_conexion();
     }
