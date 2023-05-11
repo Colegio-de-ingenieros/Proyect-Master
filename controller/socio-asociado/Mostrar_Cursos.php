@@ -50,7 +50,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -94,7 +94,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>&nbsp;&nbsp;&nbsp
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -108,3 +108,5 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     echo $salida;
 }
 ?>
+
+<script src="../../controller/socio-asociado/js/Eliminar_Cursos_Confirmacion.js"></script>
