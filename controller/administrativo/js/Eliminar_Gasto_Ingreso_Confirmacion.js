@@ -6,10 +6,6 @@ function confirmacion(e){
         var participante= $(this).data('participante');
         var actividad = $(this).data('actividad');
         
-        console.log(participante)
-        console.log(actividad)
-        console.log(tipo)
-
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             url: '../../controller/administrativo/Eliminar_Gasto_Ingreso.php', 
@@ -22,7 +18,8 @@ function confirmacion(e){
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista
-                location.href = '../../view/administrativo/Accion_Participante.html';
+                window.location.href='../../view/administrativo/Accion_Participante.html?participante='+participante;
+                //location.href = '../../view/administrativo/Accion_Participante.html';
             },
             error: function (jqXHR, textStatus, errorThrown)
             {

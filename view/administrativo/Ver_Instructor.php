@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -11,10 +11,6 @@
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Vista_Instructor.css">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
-  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
@@ -188,25 +184,29 @@
                 <br>
                 <p class="subtitulo-0"> Nombre</p>
                 <br>
-                <p class="subtitulo-11"> Dato</p>
+                <p class="subtitulo-11" id="nombre_instructor"></p>
                 <br>
                 <hr>
                 <br>
                 <p class="subtitulo-0"> Especialidades</p>
                 <br>
-                <p class="subtitulo-11"> Dato</p>
-                <br> 
+                <div class="datos" id="especialidades_instructor">
+                  <p class="subtitulo-11"></p>
+                </div>
+                <br>
                 <hr>
                 <br>
                 <p class="subtitulo-0"> Certificaciones internas </p>
                 <br>
-                <p class="subtitulo-11"> Dato</p>
+                <div class="datos" id="certificaciones_internas">
+                </div>
                 <br>
                 <hr>
                 <br>
                 <p class="subtitulo-0"> Certificaciones externas </p>
                 <br>
-                <p class="subtitulo-11"> Dato</p>
+                <div class="datos" id="certificaciones_externas">
+                </div>
                 <br>
             </div>
         </form>
@@ -215,5 +215,11 @@
   <br>
   <br>
   <br>
+  <span id="id_instructor" style="display:none"></span>
 </body>
+<script src="js/Vista_Instructor_Individual.js"></script>
 </html>
+
+<?php
+  echo "<script>document.getElementById('id_instructor').innerHTML = '" . $_GET['id'] . "'</script>";
+?>

@@ -125,8 +125,8 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
               </ul>
             </li>
 

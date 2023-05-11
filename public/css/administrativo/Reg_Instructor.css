@@ -118,6 +118,23 @@ h3{
     align-items: center;
     justify-content: center;
     transition: 300ms all;
+} 
+
+.input-format-11{
+    width: 85%; 
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+    margin: auto;
 }
 
 .input-format:focus{
@@ -210,6 +227,10 @@ html{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
+} 
+
+.conte{
+    display: flex;
 }
 
 .grupo-boton-reg{
@@ -249,6 +270,12 @@ html{
 .botones_registrar{
     display: flex;
     flex-direction: column;
+    align-items: center;
+} 
+
+.botones_actualizar{
+    display: flex; 
+    margin: auto 25em;  
     align-items: center;
 }
 

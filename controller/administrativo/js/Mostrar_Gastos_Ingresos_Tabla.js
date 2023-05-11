@@ -18,7 +18,7 @@ function verSeleccion(e){
     }
 }
 
-//Llena las secciones de instructores y participantes
+
 function obtener_Datos(){
     let urlAct = window.location+''
     let split = urlAct.split("=");

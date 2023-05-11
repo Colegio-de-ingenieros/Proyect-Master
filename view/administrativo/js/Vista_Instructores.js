@@ -17,34 +17,67 @@ window.onload = function () {
         json.forEach(rowData => {
             let row = document.createElement('tr');
 
-            // Nombre
+            //* Nombre
             let nameCell = document.createElement('td');
             let nameText = rowData[1] + " " + rowData[2] + " " + (rowData[3] || "");
             let nameTextNode = document.createTextNode(nameText);
             nameCell.appendChild(nameTextNode);
             row.appendChild(nameCell);
 
-            // Seguimiento
+            //* Seguimiento
             let seguimientoCell = document.createElement('td');
             let seguimientoText = rowData[4];
+
+            if (seguimientoText == 1) {
+                seguimientoText = "No";
+            } else {
+                seguimientoText = "Si";
+            }
             let seguimientoTextNode = document.createTextNode(seguimientoText);
             seguimientoCell.appendChild(seguimientoTextNode);
             row.appendChild(seguimientoCell);
 
-            // Acciones
+            //* Acciones
             let accionesCell = document.createElement('td');
             let verMasLink = document.createElement('a');
-            verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.html');
+            verMasLink.setAttribute('class', 'link');
+            verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.php?id=' + rowData[0] + ' ');
             verMasLink.textContent = "Ver más";
             accionesCell.appendChild(verMasLink);
 
             let modificarLink = document.createElement('a');
-            modificarLink.setAttribute('href', '');
+            modificarLink.setAttribute('class', 'link');
+            modificarLink.setAttribute('href', '../../view/administrativo/Modi_Instructor.html?id=' + encodeURIComponent(rowData[0]) + ' ');
             modificarLink.textContent = "Modificar";
             accionesCell.appendChild(modificarLink);
 
             let eliminarLink = document.createElement('a');
-            eliminarLink.setAttribute('href', '');
+            eliminarLink.setAttribute('class', 'link');
+            eliminarLink.setAttribute('href', '#');
+            eliminarLink.addEventListener('click', function () {
+                let respuesta = confirm("Estas seguro que desea eliminar?");
+                if (respuesta) {
+                    let form_data = new FormData();
+                    form_data.append("id_instructor", rowData[0]);
+
+                    fetch('../../controller/administrativo/Eliminar_Instructor.php', {
+                        method: "POST",
+                        body: form_data
+                    }).then(respuesta => respuesta.json())
+                        .then(datos => {
+                            
+                            if(datos == "con"){
+                                alert("El instructor tiene seguimiento.");
+                            }
+                            else if(datos == "sin"){
+                                alert("Eliminado con éxito");
+                                location.reload();
+                            }
+                        })
+                        .catch(error => alert(error));
+                }
+            });
+
             eliminarLink.textContent = "Eliminar";
             accionesCell.appendChild(eliminarLink);
 

@@ -35,21 +35,23 @@ if ($tipo=="gastos"){
     
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
+            header("Content-type: application/pdf");
             $tipo= $resultado[$i]["TipoGas"];
             $fecha= $resultado[$i]["FechaGas"];
             $monto = $resultado[$i]["MontoGas"];
-            $comprobante = $resultado[$i]["MontoGas"];
-    
+            //$comprobante = $resultado[$i]["DocGas"];
+            $comprobante = "documento";
             $idGasto=$resultado[$i]["IdGas"];
             
             $tipoAct='gasto';
+            $urlDatos=$idPar."=gasto=".$idGasto;
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $tipo. '</td>';
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $monto. '</td>';
             $salida .= '<td>' . $comprobante . '</td>';
-            $salida .= '<td>  <a href="../../view/administrativo/Modi_Gastos_Participante.html?participante='.$idGasto.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Modi_Gastos_Participante.html?participante='.$urlDatos.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '" data-actividad="'.$idGasto.'" data-tipo="'.$tipoAct.'">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
@@ -90,12 +92,13 @@ if ($tipo=="gastos"){
             $idIngre=$resultado[$i]["IdIngre"];
     
             $tipoAct='ingreso';
+            $urlDatos=$idPar."=ingreso=".$idIngre;
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $monto. '</td>';
             $salida .= '<td>' . $comprobante . '</td>';
-            $salida .= '<td>  <a href="../../view/administrativo/Modi_Ingresos_participante.html?participante='.$idIngre.'">Modifcar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Modi_Ingresos_Participante.html?participante='.$urlDatos.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="#" class="table_item__link eliminar-elemento" data-participante="' . $idPar . '"data-actividad="'.$idIngre.'"  data-tipo="'.$tipoAct.'">Eliminar</a></td>';
             $salida .= '</tr>';   
         }
