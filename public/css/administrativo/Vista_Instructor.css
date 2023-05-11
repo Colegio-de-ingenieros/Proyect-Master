@@ -182,3 +182,7 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 } 
+
+.link{
+    margin-inline: 5px;
+}
