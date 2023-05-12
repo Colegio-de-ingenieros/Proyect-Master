@@ -2,7 +2,15 @@
 //obtener el id
 include_once('../../model/administrativo/Mostrar_Proyectos.php');
 
-    function fecPro($idp){
+$objeto=new MostrarProyectos();
+$objeto->instancias();
+$data =[];
+$idp=$_POST["idP"];
+$data = $objeto->getProyectosId($idp);
+
+echo json_encode($data);
+
+    /*function fecPro($idp){
         $base = new MostrarProyectos();
         $base->instancias();
         $resultado1 = $base->getIniProId($idp);
@@ -16,7 +24,7 @@ include_once('../../model/administrativo/Mostrar_Proyectos.php');
         $fin = $resultado2[0]["FinPro"];
 
         return [$nombre, $objetivo, $monto,$inicio, $fin] ;
-    }
+    }*/
     //hace la consulta principal de los datos de los proyectos
     /*function datosPro($idp){
         $base = new MostrarProyectos();
@@ -76,4 +84,3 @@ include_once('../../model/administrativo/Mostrar_Proyectos.php');
 
 
 <!-- script para poner los valores en los campos correspondientes -->*/
-

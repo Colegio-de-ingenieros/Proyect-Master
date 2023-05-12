@@ -1,9 +1,3 @@
-<?php
-$idp=$_GET["idp"];
-include_once('../../controller/administrativo/Get_Proyecto.php');
-list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
-?>
-
 <script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <!DOCTYPE html>
 <html lang="es">
@@ -19,15 +13,6 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Proyectos.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 
-    <script languaje="javascript">
-      function regresar(){
-        var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
-        if(resp ==  true){
-          location.href = '../../view/administrativo/Vista_Proyectos.php';
-        }
-
-      }
-    </script>
 
 </head>
 
@@ -202,14 +187,14 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
 
       <form class="formulario-de-datos" id="formulario">
 
-        <input type="hidden" id="idp" name="idp" value="<?php echo $idp?>">
+        <input type="hidden" id="idp" name="idp" >
 
         <div class="grupo-input">
           <div class="label-form">
             <p class="label-2">Nombre del proyecto*</p>
           </div>
           <div class="input-form">
-            <input type="text" name="nom_proyecto" id="nom_proyecto" value="<?php echo $nom?>" class="input-format-2"
+            <input type="text" name="nom_proyecto" id="nom_proyecto" class="input-format-2"
               placeholder="Ingrese el nombre" required maxlength="60" 
               title="El nombre del proyecto solo puede contener letras mayúsculas, minúsculas, números, comas y puntos.">
           </div>
@@ -221,7 +206,7 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
           </div>
 
           <div class="input-form">
-            <input type="date" name="ini_proyecto" id="ini_proyecto" value="<?php echo $ini?>" class="input-format-2" required
+            <input type="date" name="ini_proyecto" id="ini_proyecto"  class="input-format-2" required
             title="La fecha de inicio debe cumplir con el formato dd/mm/aaa.">
           </div>
         </div>
@@ -232,7 +217,7 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
           </div>
           
           <div class="input-form">
-            <input type="date" name="fin_proyecto" id="fin_proyecto" value="<?php echo $fin?>" class="input-format-2"  required
+            <input type="date" name="fin_proyecto" id="fin_proyecto" class="input-format-2"  required
             title="La fecha de finalización debe cumplir con el formato dd/mm/aaa y debe ser mayor a la fecha de inicio.">
 
           </div>
@@ -243,7 +228,7 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
             <p class="label-2">Monto*</p>
           </div>
           <div class="input-form">
-            <input  type="text"   name="monto_proyecto" id="monto_proyecto" value="<?php echo $monto?>" class="input-format-2" placeholder="Ingrese el monto" required 
+            <input  type="text"   name="monto_proyecto" id="monto_proyecto"  class="input-format-2" placeholder="Ingrese el monto" required 
             title="El monto solo puede contener números y un punto.">
           </div>
         </div>
@@ -255,7 +240,7 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
           <div class="input-form">
             <textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea"
               placeholder="Ingrese el objetivo" required
-              title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."><?php echo $obj?></textarea>
+              title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
           </div>
         </div>
         <br>
@@ -263,15 +248,16 @@ list($nom, $obj, $monto,$ini,$fin)=fecPro($idp);
         <div class="grupo-boton-reg">
           <div class="boton_registrar">
             <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Actualizar</button>&nbsp;&nbsp;
-            <button type="button" name="cancelar" id="cancelar" class="btn-medium btn" onclick="regresar()">Cancelar</button>
+            <button type="button" name="cancelar" id="cancelar" class="btn-medium btn" >Cancelar</button>
           </div>
         </div>
       </form>
     </section>
   </main>
   <script src="../../view/administrativo/js/Vali_Proyectos.js"></script>
+  <script src="../../controller/administrativo/js/Modificar_Proyectos.js"></script>
 </body>
-<script src="../../controller/administrativo/js/Modificar_Proyectos.js"></script>
+
 </html>
 
 
