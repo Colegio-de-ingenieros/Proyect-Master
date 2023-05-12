@@ -1,48 +1,33 @@
 <?php
 include_once('../../model/administrativo/Modificar_Proyectos.php');
-
-class ModificaPro{
-    private $obj, $idp, $nombre, $inicio, $fin, $objetivo, $monto;
-
     //inicializa los valores que ocupan las demas funciones
-    function instancias(){
-        $this->obj = new ModificarProyecto();
-        $this->obj->conexion();
-        $this->idp = $_POST["idp"];
-        $this->nombre = $_POST["nom_proyecto"];
-        $this->inicio = $_POST["ini_proyecto"];
-        $this->fin = $_POST["fin_proyecto"];
-        $this->objetivo = $_POST["obj_proyecto"];
-        $this->monto = $_POST["monto_proyecto"];
+ 
+        $data =[];
 
-        $FechaI= new DateTime($this->inicio);
-        $FechaF= new DateTime($this->fin);
+        $obj = new ModificarProyecto();
+        $obj->conexion();
+        $idp = $_POST["idp"];
+        $nombre = $_POST["nom_proyecto"];
+        $inicio = $_POST["ini_proyecto"];
+        $fin = $_POST["fin_proyecto"];
+        $objetivo = $_POST["obj_proyecto"];
+        $monto = $_POST["monto_proyecto"];
+
+        $FechaI= new DateTime($inicio);
+        $FechaF= new DateTime($fin);
 
         //Compara que la fecha fin sea posterios a la fecha de inicio
         if ($FechaF > $FechaI){
-            $this->modificar();
+            $monto=floatval($monto);
+            $obj->modificar($idp, $nombre, $inicio,$fin, $objetivo, $monto);
+            $data=('Actualización exitosa');
+            
         }
         else{
-            echo json_encode('Fechas');
+            $data('Fecha de finalización debe ser posterior a fecha de inicio');
         }
-        
 
-    }
+echo json_encode($data); 
 
-    //manda a llamar al archivo de model para meter los datos a la base
-    function modificar(){
-        $this->monto=floatval($this->monto);
-        $this->obj->modificar($this->idp, $this->nombre, $this->inicio,$this->fin, $this->objetivo, $this->monto);
-
-        echo json_encode('Correcto');
-      
-    }
-
-    
-
-}
-
-$obj = new ModificaPro();
-$obj->instancias();
 
 ?>

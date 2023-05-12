@@ -43,9 +43,9 @@ class MostrarProyectos{
     }
 
     function getProyectosId($idp){
-        $querry = "SELECT NomProyecto, ObjPro, MontoPro FROM proyectos Where IdPro=:idp";
-        $resultados = $this->base->mostrar($querry,[":idp"=>$idp]);
-
+        $querry = "SELECT * FROM proyectos Where IdPro=:idp";
+        $arre = [":idp"=>$idp];
+        $resultados = $this->base->mostrar($querry,$arre);
         return $resultados;
     }
     function getIniProId($idp){
