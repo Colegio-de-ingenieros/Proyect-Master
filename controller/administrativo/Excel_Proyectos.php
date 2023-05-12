@@ -30,7 +30,7 @@ $hoja -> setCellValue('A1', "Nombre") -> setCellValue("B1", "Fecha de inicio") -
     setCellValue("D1", "Monto") -> setCellValue("E1", "Objetivo");
 
 //cambiar el color de las celdas de encabezado
-$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('085262');
+$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
 
 
  //poner estilo a los encabezados
@@ -81,42 +81,42 @@ for($i=0; $i<count($resultado); $i++){
     $objetivo = $resultado[$i]["ObjPro"];
 
     //poner los datos en la tabla
-    $hoja->setCellValue('A'. $i+2, $nombre)->setCellValue('B'.$i+2, $inicio)->setCellValue('C'. $i+2, $fin)->
-    setCellValue('D'. $i+2, $monto)->setCellValue('E' . $i + 2, $objetivo);
+    $hoja->setCellValue('A'. strval($i+2), $nombre)->setCellValue('B'.strval($i+2), $inicio)->setCellValue('C'. strval($i+2), $fin)->
+    setCellValue('D'. strval($i+2), $monto)->setCellValue('E' . strval($i+2), $objetivo);
 
     //aplicar el estilo a la descripción
-    $hoja->getStyle('A'. $i + 2)->applyFromArray($style);
-    $hoja->getStyle('E' . $i + 2)->applyFromArray($style);
+    $hoja->getStyle('A'. strval($i+2))->applyFromArray($style);
+    $hoja->getStyle('E' . strval($i+2))->applyFromArray($style);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. $i+2);
+    $estilo = $hoja->getStyle('A'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('B'. $i+2);
+    $estilo = $hoja->getStyle('B'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('C'. $i+2);
+    $estilo = $hoja->getStyle('C'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('D'. $i+2);
+    $estilo = $hoja->getStyle('D'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('E'. $i+2);
+    $estilo = $hoja->getStyle('E'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 }
 
 //colocar los bordes
-$estilo = $hoja->getStyle('A2:E'.$i+2);
+$estilo = $hoja->getStyle('A2:E'.strval($i+2));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 //definir los tamaños de las columnas

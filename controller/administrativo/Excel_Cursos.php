@@ -28,7 +28,7 @@ $hoja = $spreadsheet->getActiveSheet();
 $hoja -> setCellValue('A1', "Clave") -> setCellValue("B1", "Nombre") -> setCellValue("C1", "Duración");
 
 //cambiar el color de las celdas de encabezado
-$hoja->getStyle('A1:C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('085262');
+$hoja->getStyle('A1:C1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
 
 
  //poner estilo a los encabezados
@@ -63,23 +63,23 @@ for($i=0; $i<count($resultado); $i++){
     $duracion = $resultado[$i]["DuracionCur"];
 
     //poner los datos en la tabla
-    $hoja->setCellValue('A'. $i+2, $clave)->setCellValue('B'.$i+2, $nombre)->setCellValue('C'. $i+2, $duracion);
+    $hoja->setCellValue('A'. strval($i+2), $clave)->setCellValue('B'.strval($i+2), $nombre)->setCellValue('C'. strval($i+2), $duracion);
 
     //aplicar el estilo a la descripción
-    $hoja->getStyle('C'. $i+2)->applyFromArray($style);
+    $hoja->getStyle('C'. strval($i+2))->applyFromArray($style);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. $i+2);
+    $estilo = $hoja->getStyle('A'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('B'. $i+2);
+    $estilo = $hoja->getStyle('B'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('C'. $i+2);
+    $estilo = $hoja->getStyle('C'. strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
@@ -87,7 +87,7 @@ for($i=0; $i<count($resultado); $i++){
 }
 
 //colocar los bordes
-$estilo = $hoja->getStyle('A2:C'.$i+2);
+$estilo = $hoja->getStyle('A2:C'.strval($i+2));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 //definir los tamaños de las columnas
