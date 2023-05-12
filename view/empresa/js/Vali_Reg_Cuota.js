@@ -26,6 +26,7 @@ monto.addEventListener('keyup', (e) =>{
         valorInput = valorInput.substr(0, valorInput.length-1);
         monto.value = valorInput;
         sal = false
+        validar(sal)
     }
 
     //elimina el tercer decimal
@@ -40,17 +41,20 @@ monto.addEventListener('keyup', (e) =>{
         valorInput = valorInput.substr(1, valorInput.length);
         monto.value = valorInput;
         sal = false
+        validar(sal)
     }
 
     //verifica que se cumpla con la expresion correpondiente    
     if (!expresiones.precio.test(valorInput)) {
         monto.style.border = "3px solid red";
         sal = false
+        validar(sal)
         
     }
     else {
         monto.removeAttribute("style");
         sal = true;
+        validar(sal)
     }
 
 })
@@ -139,45 +143,14 @@ function validarDecimales(cadena){
     
 }
 
-var formulario = document.getElementById('formulario');
-formulario.addEventListener('submit', function (e)
-{
-    e.preventDefault();
-    console.log("hola");
-    const date_fin = document.getElementById('archivo').value;
-    console.log(date_fin);
+function validar(bandera){
+    const guardar = document.getElementById('boton_registrar');
 
-    var formulario = document.getElementById('formulario');
-var respuesta = document.getElementById('respuesta');
-   
-    if (sal == true){
-        var datos= new FormData(formulario);
-        fetch('../../controller/empresa/Reg_Cuotas_empresa.php', {
-            method: 'POST',
-            body: datos
-        })
+    if(bandera == false){              
+        guardar.disabled=true;
+        
+    }else{
+        guardar.disabled=false;
+    }
 
-        .then(res => res.json())
-        .then(data => {
-            if (data === 'exito') {
-                alert("Registro exitoso");
-                location.href="../../view/empresa/Reg_Cuota.html";
-            }
-            //los datos no pasaron alguna validacion
-            else if (data === 'No hubo éxito al registrar la cuota'){
-                alert("Hubo un error");
-            }
-            else if (data == 'fechas'){
-                alert("Fecha de finalización debe ser posterior a fecha de inicio");
-            }
-            else{
-                alert (data)
-            }
-        })
-    }
-    else{
-        alert("Ingrese los datos del formulario correctamente para continuar");
-    }
-    
-    
-})
+}
