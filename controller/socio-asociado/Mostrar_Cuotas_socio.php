@@ -52,7 +52,7 @@ session_start();
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#" class="table_item__link eliminar-elemento" data-idV="' . $idV . '">Eliminar</a>
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -99,7 +99,7 @@ session_start();
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#" class="table_item__link eliminar-elemento" data-idV="' . $idV . '">Eliminar</a>
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -113,3 +113,5 @@ session_start();
     echo $salida;
 }
 ?>
+
+<script src="../../controller/socio-asociado/js/Eliminar_Cuotas_Confirmacion.js"></script>
