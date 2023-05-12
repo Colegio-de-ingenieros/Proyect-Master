@@ -1,6 +1,6 @@
 <?php
+ini_set('display_errors', 1);
 //importar los archivos necesarios
-
 use PhpOffice\PhpSpreadsheet\Style\Color;
 
 include_once('../../model/administrativo/Mostrar_Certificaciones.php');
