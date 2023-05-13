@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../public/css/login/recuperar_Contra.css">
+    <title>Recuperar Contraseña</title>
+</head>
+<body>
+    <div class="contentP">
+        <div class="contLogo">
+            <img class="img" src="../../public/img/ciscigCompleto.png" alt="">
+        </div> 
+        <br>
+        <p class="label-2">Restablecer contraseña</p>
+        <br> 
+        <form action="" id="formulario">
+            <div class="campos">
+                <p class="label-3">Te hemos enviado un código de verificación a tu correo electrónico.</p>
+                <br>
+                <div class="mensaje" id="Mensaje">
+                </div>
+                <input type="text" id="codigo" name="codigo" class="input-format" maxlength="5" placeholder="Escribe el código"> 
+            </div> 
+            <div class="boton">
+                <input type="submit" class="btn-medium btn" value="Enviar" >
+            </div>
+        </form> 
+        <br>
+        <div class="info">
+            <button class="btn-small btn" id="reenviar">Reenviar código</button>
+            
+            <br>
+        </div>
+    </div>
+    <script src="js/Comparacion_Codigo.js"></script>
+</body>
+</html>
