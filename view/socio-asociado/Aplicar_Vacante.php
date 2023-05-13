@@ -31,33 +31,31 @@
           <!-- Cursos -->
           <li>
             <a href="#">
-              <!--               <i class="fa-solid fa-user-tie"></i> -->
               Cursos
             </a>
 
             <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
+              <li><a id="" href="../../view/socio-asociado/Reg_Cursos.html">Registrar</a></li>
+              <li><a id="" href="../../view/socio-asociado/Ver_Cursos.html">Mostrar</a></li>
             </ul>
           </li>
 
           <!-- Cuotas -->
           <li>
             <a href="#">
-              <!-- <i class="fa-solid fa-circle-check"></i> -->
               Cuotas
             </a>
 
             <ul>
-              <li><a id="" href="#">Registrar</a></li>
-              <li><a id="" href="#">Mostrar</a></li>
+              <li><a id="" href="Reg_Cuota.html">Registrar</a></li>
+              <li><a id="" href="Vista_Cuotas.html">Mostrar</a></li>
             </ul>
           </li>
 
           <!-- Bolsa de trabajo -->
           <li>
             <a href="#">
-              <!-- <i class="fa-solid fa-chalkboard-user"></i> -->
+             
               Bolsa de trabajo
             </a>
 
@@ -70,7 +68,7 @@
           <!-- Servicios -->
           <li>
             <a href="#">
-              <!-- <i class="fa-solid fa-clipboard-list"></i> -->
+              
               Servicios
             </a>
 
@@ -83,7 +81,7 @@
           <!-- Mi Perfil -->
           <li>
             <a href="#">
-              <!-- <i class="fa-regular fa-user"></i> -->
+              
               Mi perfil
             </a>
 
