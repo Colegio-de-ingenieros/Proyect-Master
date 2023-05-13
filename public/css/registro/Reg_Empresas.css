@@ -1,0 +1,78 @@
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: #dfe3e7;
+}
+/* contenedor guia */
+html{
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+}    
+.contePlantilla{
+    height: 32em;
+    width: 90%;
+    border: none;
+    background-color: none; 
+    width: 80%;
+    height: 500px;
+    justify-content: center;
+    margin: 14em auto; 
+} 
+.contenedor-formulario{
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.grupo-input-datos-generales{
+    display: block;
+}
+
+.grupo-input{ 
+    display: block;  
+}
+.grupo-input2{
+    display: block;
+    grid-column: span 3;
+
+}
+.grupo-input3{
+    display: block;
+    grid-column: span 2; 
+} 
+
+.label-2{
+    width: 90%;
+}
+
+.label-form{
+    padding-bottom: 10px;
+} 
+
+.label-texto{
+    padding-bottom: 10px;
+    width: 1200px;
+}
+
+.input-format{
+    width: 100%;
+} 
+
+.input-format-2{
+    width: 90%;
+}
+
+.input-textarea{
+    width: 100%;
+} 
+.input-textarea-2{
+    width: 98%;
+}
+.boton_registrar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;}
+
+hr{
+    color: gray;
+}
