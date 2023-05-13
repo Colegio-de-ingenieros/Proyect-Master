@@ -112,3 +112,5 @@ if (isset ($_SESSION['usuario']  )){
     echo $salida;
 }
 ?>
+
+<script src="../../controller/empresa/js/Eliminar_Cuotas_Confirmacion.js"></script>
