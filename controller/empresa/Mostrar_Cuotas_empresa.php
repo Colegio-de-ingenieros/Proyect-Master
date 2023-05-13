@@ -35,6 +35,7 @@ if (isset ($_SESSION['usuario']  )){
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($resultado); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+                $idV = $resultado[$i]["IdVigCuo"];
                 $monto = $resultado[$i]["MontoVigCuo"];
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
@@ -49,8 +50,8 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#">Eliminar</a>
+                <a href="../../controller/empresa/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -81,6 +82,7 @@ if (isset ($_SESSION['usuario']  )){
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($cuotas); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
+                $idV = $cuotas[$i]["IdVigCuo"];
                 $monto = $cuotas[$i]["MontoVigCuo"];
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
@@ -95,8 +97,8 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="#">Modificar</a>&nbsp;&nbsp;&nbsp
-                <a href="#">Eliminar</a>
+                <a href="../../controller/empresa/Get_Cuotas_empresa.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
             }
