@@ -1,0 +1,379 @@
+<script src="https://kit.fontawesome.com/076daf5dc7.js" crossorigin="anonymous"></script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de instructores</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Reg_Instructor.css">
+
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  
+</head>
+
+<body>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Instructores</h1>
+        </div>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+        
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
+                <li><a id="menuSucursal2" href="#">General</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Ofertas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header> 
+
+  <main>
+    <section class="section-main"> 
+        <div class="cabezera">
+            <h4 class="h4">Registro</h4>
+        </div>
+        <br>
+        <p class="subtitulo-1"> Datos generales</p>
+        <hr> 
+        <form action="" id="formulario">  
+            <div class="contenedor-formulario">
+                <!-- Nombre -->
+                <div class="grupo-input">
+                  <div class="label-form">
+                    <p class="label-2">Nombre(s)*</p>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" class="input-format-2" name="nombre" id="nombre" maxlength="40"
+                      placeholder="Ingrese su nombre" required title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                  </div>
+                </div>
+
+                <!-- Apellido Paterno -->
+                <div class="grupo-input">
+                  <div class="label-form">
+                    <p class="label-2">Apellido paterno*</p>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" class="input-format-2" name="apellido_p" id="paterno" maxlength="20"
+                      placeholder="Ingrese su apellido paterno" required title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
+                  </div>
+                </div>
+                
+                <!-- Apellido Materno -->
+                <div class="grupo-input">
+                  <div class="label-form">
+                    <p class="label-2">Apellido materno</p>
+                  </div>
+                  <div class="input-form">
+                    <input type="text" class="input-format-2" name="apellido_m"  id="materno" maxlength="20"
+                      placeholder="Ingrese su apellido materno" title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+                  </div>
+                </div> 
+            </div> 
+            <br> 
+
+            <p class="subtitulo-1"> Especialidades</p>
+            <hr> 
+            <br>
+            <div class="contenedor-formulario">
+                <div class="grupo-input">
+                    <div class="label-form">
+                    <p class="label-2">Nombre</p>
+                    </div>
+                    <div class="input-form">
+                    <input type="text" class="input-format-2" id="especialidad" maxlength="40"
+                        placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
+                    </div> 
+                </div>  
+                <div class="grupo-input">
+                    <div class="label-form">
+                    <p class="label-0">Agregar</p>
+                    </div>
+                    <div class="input-form">
+                        <div class="boton_registrar">
+                            <button class="btn-medium btn" type="button" id="btn_agregar_espe">Agregar</button>
+                        </div>
+                    </div> 
+                </div> 
+                <div class="grupo-input">
+                    <div class="label-form">
+                    <p class="label-0">Agregar</p>
+                    </div>
+                    <div class="input-form">
+                        <div class="boton_registrar">
+                        </div>
+                    </div> 
+                </div>  
+            </div> 
+            <div class="dinamico" id="contenedor_espe">
+              
+            </div>
+            <br> 
+
+            <p class="subtitulo-1"> Certificaciones</p>
+            <hr>
+            <br>
+            <p class="subtitulo-2"> Internas</p> 
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Nombre*</p>
+                </div>
+                <div class="input-form">
+                    <select type="checkbox" class="input-format-0" id="cert_int" name="cert_int[]"  multiple='multiple'
+                    title="Seleccione uno o más instructores. Para seleccionar varios, deje presionado la tecla “ctrl” mientras selecciona los nombres de los instructores. ">
+                    
+                    </select>
+                </div>
+            </div>
+            
+
+            <br>
+            <br>
+            <p class="subtitulo-2"> Externas</p> 
+            <div class="contenedor-formulario">
+                <!-- Nombre de la certificacion -->
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Nombre de certificación*</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format-2" id="nombre-cert-externa" placeholder="Ingrese el nombre de la certificación"   maxlength="60"
+                        title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .).">
+                    </div>
+                </div>
+
+                <!-- Organización -->
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Organización del certificado*</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="text" class="input-format-2" id="organizacion-externa" placeholder="Ingrese la organización"  maxlength="40"
+                        title="El nombre de la organización puede contener letras mayúsculas, minúsculas y caracteres especiales ( . ).">
+                    </div>
+                </div>
+
+                <!-- Fecha de emisión -->
+                <div class="grupo-input">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de emisión*</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format-2" id="emision-externa" placeholder="Ingrese la fecha de inicio">
+                    </div>
+                </div>
+
+                <!-- Fecha de vigencia -->
+                <div class="grupo-input4">
+                    <div class="label-form">
+                        <p class="label-2">Fecha de vigencia*</p>
+                    </div>
+                    <div class="input-form">
+                        <input type="date" class="input-format-2" id="vigencia-externa" placeholder="Ingrese la fecha de finalización">
+                    </div>
+                </div> 
+                <!-- Boton externas -->
+                <div class="grupo-input">
+                    <div class="label-form">
+                    <p class="label-0">Agregar</p>
+                    </div>
+                    <div class="input-form">
+                        <div class="botones_registrar">
+                            <button class="btn-medium btn" type="button" id="btn_agregar_certi">Agregar</button>
+                        </div>
+                    </div> 
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="conteTabla" >
+                <div class="article-tablas" >
+                    <article>          
+                      <div class="tablas">
+                        <section class="header_table" id="contenedor_tabla" style="display: none;" >
+                            <table id="tabla">
+                              <thead>
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Organización</th>
+                                    <th>Fecha de emisión</th>
+                                    <th>Fecha de vigencia</th>
+                                    <th>Acciones</th>
+                                </tr>
+                              </thead>
+                              <!-- esto se debe dejar asi  <tbody id="body_tabla" ></tbody>, para que no me marque en el js que tengo un nodo
+                                  de texto fantasma
+                              -->
+                              <tbody id="body_tabla" ></tbody>
+                            </table>
+                        </section>
+                      </div>
+                    </article>
+                </div>
+            </div> 
+            <br>
+            <br>
+            <br>
+            <div class="botones_registrar">
+                <button class="btn-medium btn" id="boton_registro" type="submit">Registrar</button>
+            </div>
+            <br>
+            <br>
+            <br>
+        </form>
+    </section>
+  </main> 
+  <script src="js/Vali_Instructores.js"></script>
+  <script src="js/Reg_Instructores.js"></script>
+</body>
+
+</html>
