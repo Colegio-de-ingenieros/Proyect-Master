@@ -1,0 +1,145 @@
+<script src="../../view/login/js/Verificar_Permiso_Socio.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bolsa de trabajo</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Bolsa_Trabajo.css">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+
+<body>
+  <header>
+
+    <div class="menu">
+      <input type="checkbox" id="check__menu">
+      <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
+      <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+      <nav>
+        <ul>
+
+          <!-- Cursos -->
+          <li>
+            <a href="#">
+              Cursos
+            </a>
+
+            <ul>
+              <li><a id="" href="../../view/socio-asociado/Reg_Cursos.html">Registrar</a></li>
+              <li><a id="" href="../../view/socio-asociado/Ver_Cursos.html">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Cuotas -->
+          <li>
+            <a href="#">
+              Cuotas
+            </a>
+
+            <ul>
+              <li><a id="" href="Reg_Cuota.html">Registrar</a></li>
+              <li><a id="" href="Vista_Cuotas.html">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Bolsa de trabajo -->
+          <li>
+            <a href="#">
+             
+              Bolsa de trabajo
+            </a>
+
+            <ul>
+              <li><a id="" href="Bolsa_Trabajo.html">Ofertas de trabajo</a></li>
+              <li><a id="" href="Reg_CV.html">Mi CV</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li>
+            <a href="#">
+              
+              Servicios
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Mi Perfil -->
+          <li>
+            <a href="#">
+              
+              Mi perfil
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Datos Generales</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="boton-cerrar-session">
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="section-main">
+      <div class="cabezera">
+        <h3 class="h3 titulo-central">Conoce las mejores ofertas de trabajo que tenemos para tí.</h2>
+          <hr>
+      </div>
+
+      <article class="cards" id="cards">
+
+        </div>
+
+      </article>
+    </section>
+
+    <div class="modal-container" id="modal-container">
+      <div class="modal">
+        <h1>Datos de la vacante</h1>
+        
+        <div class="datos-oferta">
+          <p class="item">Nombre de la vacante: <span class="item-2" id="nombre-vacante"></span></p>
+          <p class="item">Empresa: <span class="item-2" id="nombre-empresa"></span></p>
+          <p class="item">Horario: <span class="item-2" id="horario"></span></p>
+          <p class="item">Días laborales: <span class="item-2" id="dias-laborales"></span></p>
+          <p class="item">Jornada: <span class="item-2" id="jornada"></span></p>
+          <p class="item">Modalidad: <span class="item-2" id="modalidad"></span></p>
+          <p class="item">Descrpición del empleo: <span class="item-2" id="descripcion-vacante"></span></p>
+          <p class="item">Requisitos técnicos: <span class="item-2" id="requisitos-tecnicos"></span></p>
+          <p class="item">Requisitos académicos: <span class="item-2" id="requisitos-academicos"></span></p>
+          <p class="item">Años de experiencia requeridos:<span class="item-2" id="experiencia"></span></p>
+          <p class="item">Salario bruto: <span class="item-2" id="salario-bruto"></span></p>
+          <p class="item">Salario neto: <span class="item-2" id="salario-neto"></span></p>
+          <p class="item">Teléfono de contacto: <span class="item-2" id="telefono-empresa"></span></p>
+          <p class="item">Correo empresarial: <span class="item-2" id="correo-empresa"></span></p>
+          <p class="item">Domicilio: <span class="item-2" id="ubicacion"></span></p>
+        </div>
+        <div class="botones">
+          <button id="close" class="btn btn-small" onclick="ocultar_modal()">Cerrar</button>
+          <a href="" id="link-ventana" class="btn btn-small">Aplicar a la vacante</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+<script src="js/Bolsa_Trabajo.js"></script>
+</html>
