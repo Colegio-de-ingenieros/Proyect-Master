@@ -159,7 +159,6 @@ if (isset($_POST['consulta'])) {
     } 
     
     else {
-        //echo "si entra al else";
         $salida .= 'No se encontraron resultados';
     }
 }
@@ -178,13 +177,12 @@ function confirmDesactiv(dato)
         window.location.assign(cadena);
         
    }else
-        window.location.assign("Vista_trabajadores.php");
+        window.location.assign("Vista_Trabajadores.html");
 }
 
 </script>';
 
 
 echo $salida;
-echo '<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>';
+
 ?>
-<script src="../../controller/administrativo/js/Eliminar_Trabajadores_Confirmacion.js"></script>
