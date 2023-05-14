@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #273544;
+    --color-secondary: #303a6e;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
+
+    --color-white: #ffffff;
+    --color-gray: #dfe3e7;
+    --color-gray-2: #d6dbe0;
+    --color-black: #000000;
+
+    --color-placeholder-1: #93979b;
+    --color-placeholder-2: #7c838a;
+    --color-placeholder-3: #474a57;
+
+    --color-red: #ff0000;
+
+    --radius-1: 15px;
+    --radius-2: 8px;
+
+    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    
+}
+
+body{
+    background-color: var(--color-gray);
+}
+
+.section-main{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.cabezera{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+hr{
+    margin-top: -13px;
+}
+
+.h4{
+    margin-bottom: 2.125rem;
+}
+
+.formulario-cursos{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 20px;
+}
+
+.campo-wide{
+    grid-column: span 3;
+    margin-top: -25px;
+    margin-bottom: 10px;
+}
+
+.formulario-titulos{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-template-rows: repeat(2, 1fr); */
+    grid-gap: 20px;
+}
+
+.input-format-2{
+    width: 100%;
+}
+
+.hr-2{
+    margin-top: 3px;
+    margin-bottom: 0.2rem;
+    opacity: 0.2;
+}
+
+.subtitulo-2{
+    font-size: 1.3rem;
+}
+
+.body-1{
+    font-size: 0.8rem;
+}
+
+.section-botones{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: -3rem;
+}
+
+.section-botones-2{
+    display: grid;
+    margin-top: 2rem;
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+}
+
+.inputs-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 10px;
+    gap: 16px;
+    background-color: var(--color-gray);
+}
+
+.input-format{
+    color: var(--color-black);
+    background-color: var(--color-gray);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.input-format-2{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+}
+
+.input-format:focus{
+    background: var(--color-gray-2);
+    box-shadow: var(--shadow-1);
+    /* transform: scale(1.1); */
+}
+
+.input-format-2:focus{
+    background: var(--color-white);
+    box-shadow: var(--shadow-1);
+    transform: scale(1.02);
+}
+
+.input-format:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format-2:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.input-format::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-format-2::placeholder{
+    color: var(--color-placeholder-1);
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.input-textarea-2{
+    width: 100%;
+    height: 80px;
+    resize: none;
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+    overflow-y: scroll;
+}
+
+.input-textarea-2:focus{
+    box-shadow: var(--shadow-1);
+    transform: scale(1.02);
+}
+
+.input-textarea-2:focus::placeholder{
+    color: var(--color-placeholder-2);
+    font-weight: 500;
+}
+
+.section-botones-2 {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-small {
+    padding: 12px 24px;
+}
+
+@media screen and (max-width: 1250px) {
+    main{
+        margin-top: 11.5rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    main{
+        margin-top: 11.5rem;
+    }
+    .section-main{
+        width: 80%;
+    }
+
+    .campo-wide{
+        grid-column: span 1;
+        margin-top: 3px;
+    }
+
+    .formulario-cursos {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(4, 0.6fr);
+        grid-gap: 0;
+    }
+
+    .hr-2{
+        width: 100%;
+    }
+
+    .h4{
+        align-items: center;
+        font-size: 2rem;
+    }
+    
+    .cabezera{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .campo {
+        display: flex;
+        flex-direction: column;
+    }
+    .botones{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .titulos-registrados{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .formulario-titulos{
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+
+    .section-botones, .section-botones-2{
+        margin-top: 2rem;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 20px;
+    }
+
+    .btn-small{
+        width: 50%;
+        height: 50px;
+        font-size: 1rem;
+    }
+}
+
+.campos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.titulo-curso{
+    margin-bottom: 10px
+}
+
+.lista{
+    margin-top: 20px;
+}
+
+.tema-btn-add, 
+.tema-btn-new-add{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.subtema-btn-add,
+.subtema-btn-new-add{
+    margin-top: 10px;
+}
+
+#visualizar_modificar{
+    margin-left: 20px;
+}
+
+.elemento-tema{
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+.elemento-subtema{
+    font-weight: 400;
+}
