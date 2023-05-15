@@ -30,7 +30,7 @@ class MostrarCuota extends Crud_bd{
     
     function buscar($busqueda,$id){
         $this->conexion_bd();
-        $querry = "SELECT  MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota 
+        $querry = "SELECT  vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota 
         FROM usuaemp,empvigcuota,vigenciacuotas,tipovigcuota,tipocuota
         WHERE usuaemp.RFCUsuaEmp = '$id'
         and usuaemp.RFCUsuaEmp = empvigcuota.RFCUsuaEmp
