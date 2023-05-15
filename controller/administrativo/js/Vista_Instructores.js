@@ -26,7 +26,7 @@ function extraer_datos() {
     let form_data = new FormData();
     form_data.append("consulta",consulta);
 
-    fetch("../../controller/administrativo/Mostrar_Instructores_In.php",{
+    fetch("../../controller/administrativo/Mostrar_Instructores_Busqueda_In.php",{
         method:"POST",
         body: form_data
     }).then(respuesta=> respuesta.json())

@@ -1,7 +1,9 @@
 <?php
-    include_once('../../model/administrativo/Instructores.php');
 
-    $objeto = new Instructor_model();
+include_once('../../model/administrativo/Mostrar_Instructores.php');
+
+$objeto = new Mostrar_Instructor();
+
 
     $id = $_POST['id_instructor'];
     //? Id de prueba:  $id = 'I00001';
