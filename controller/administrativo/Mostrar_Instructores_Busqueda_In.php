@@ -1,8 +1,8 @@
 <?php
 
-include_once('../../model/administrativo/Instructores.php');
+include_once('../../model/administrativo/Mostrar_Instructores.php');
 
-$objeto = new Instructor_model();
+$objeto = new Mostrar_Instructor();
 
 $instructores = $objeto->busquedainteligente($_POST["consulta"]);
 

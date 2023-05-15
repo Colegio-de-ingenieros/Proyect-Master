@@ -1,6 +1,6 @@
 <?php
-require_once("../../model/administrativo/Instructores.php");
-$objeto = new Instructor_model();
+require_once("../../model/administrativo/Modificar_Instructores.php");
+$objeto = new  Modificar_Instructor();
 /**para que pueda usar el array que me esta mandando */
 $datos = "upps surgio un error";
 
