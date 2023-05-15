@@ -80,7 +80,7 @@ function respuesta(json) {
         let accionesCell = document.createElement('td');
         let verMasLink = document.createElement('a');
         verMasLink.setAttribute('class', 'link');
-        verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.php?id=' + rowData[0] + ' ');
+        verMasLink.setAttribute('href', '../../view/administrativo/Ver_Instructor.html?id=' + encodeURIComponent(rowData[0]) + ' ');
         verMasLink.textContent = "Ver más";
         accionesCell.appendChild(verMasLink);
 

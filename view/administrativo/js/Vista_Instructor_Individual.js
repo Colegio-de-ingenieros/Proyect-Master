@@ -2,7 +2,7 @@ window.onload = function() {
     let id_instructor = (new URLSearchParams(location.search)).get('id');
 
     //* Crear el objeto para hacer la solicitud de datos al servidor
-    let url = '../../controller/administrativo/Mostrar_Instructores_Individual.php';
+    let url = '../../controller/administrativo/Mostrar_Instructor_Individual.php';
     let form = new FormData();
     form.append('id_instructor', id_instructor);
 
