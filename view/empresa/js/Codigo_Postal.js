@@ -9,12 +9,12 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
     let contenido =  document.getElementById("cpPerso").value;
     
     if(contenido.length == 5){
-        //console.log(contenido);
+
         let formulario_data = new FormData();
         formulario_data.append("cpPerso",contenido);
         
 
-        fetch("../../controller/registro/codigo_postal.php",
+        fetch("../../controller/registro/Codigo_Postal.php",
         {
             method: 'POST',
             body: formulario_data,

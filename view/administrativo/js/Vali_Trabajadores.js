@@ -55,24 +55,24 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
         .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
         // Eliminar el ultimo espaciado
         .trim();
-        console.log(valorInput.length)
+
     if (valorInput.length == 13) {
-        console.log("Entro a la decision")
+
         if (!expresiones.rfc.test(valorInput)) {
-            console.log("RFC incorrecto");
+
             caja_rfc.style.border = "3px solid red";
             bRFC = false
         }else{
-            console.log("RFC correcto");
+
             caja_rfc.removeAttribute("style");
             bRFC = true
         }
     }else{
-        console.log("RFC incorrecto");
+
         caja_rfc.style.border = "3px solid red";
         bRFC = false
     }
-    console.log(bRFC)
+
     validar(bRFC);
 })
 
@@ -243,15 +243,15 @@ function validar(bandera){
     const guardar = document.getElementById('boton_registro');
     if(bandera == false && bRFC == false){        
         //guardar.style.border = "3px solid red";
-        console.log("toy bloqueado")        
+      
         guardar.disabled=true;
-        //console.log("no pase validacion");
+
         
     }
     else if (bandera == true && bRFC == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
-        //console.log("pase validacion");
+
         
 
     }

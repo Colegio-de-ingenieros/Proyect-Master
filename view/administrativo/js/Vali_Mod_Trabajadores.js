@@ -37,35 +37,6 @@ const expresiones = {
     passw:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])).{8,16}$/,
 }
 
-/*formulario.caja_rfc.addEventListener('keyup', (e) => {
-    
-    const guar= document.getElementById('boton_registro');
-	let valorInput = e.target.value;
-    formulario.caja_rfc.value = valorInput
-    //formulario.caja_rfc.value = valorInput
-	//formulario.caja_rfc.value = valorInput.toUpperCase()
-    //alorInput = valorInput.toUpperCase()
-    // Eliminar espacios en blanco
-	.replace(/\s/g, '')
-     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
-    .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
-     // Eliminar el ultimo espaciado
-	.trim();
-
-    if (!expresiones.rfc.test(valorInput)) {
-        console.log("RFC incorrecto");
-        caja_rfc.style.border = "3px solid red";
-        guar.disabled=true;
-        bRFC = false
-	}else{
-        console.log("RFC correcto");
-        caja_rfc.removeAttribute("style");
-        bRFC = true
-    }
-    console.log(bRFC)
-    validar(bRFC);
-})*/
 //funcion para que me valide la caja rfc del html
 formulario.caja_rfc.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
@@ -77,24 +48,24 @@ formulario.caja_rfc.addEventListener('keyup', (e) => {
         .replace(/[a-záéíóúÁÉÍÓÚñÑ]/g, '')
         // Eliminar el ultimo espaciado
         .trim();
-        //console.log(valorInput.length)
+
     if (valorInput.length == 13) {
-        //console.log("Entro a la decision")
+
         if (!expresiones.rfc.test(valorInput)) {
-            //console.log("RFC incorrecto");
+ 
             caja_rfc.style.border = "3px solid red";
             bRFC = false
         }else{
-            //console.log("RFC correcto");
+
             caja_rfc.removeAttribute("style");
             bRFC = true
         }
     }else{
-        //console.log("RFC incorrecto");
+
         caja_rfc.style.border = "3px solid red";
         bRFC = false
     }
-    //console.log(bRFC)
+
     validar(bRFC);
 })
 
@@ -213,15 +184,15 @@ function validar(bandera){
     const guardar = document.getElementById('boton_actualizar');
     if(bandera == false && bRFC == false){        
         //guardar.style.border = "3px solid red";
-        console.log("toy bloqueado")        
+   
         guardar.disabled=true;
-        //console.log("no pase validacion");
+
         
     }
     else if (bandera == true && bRFC == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
-        console.log("pase validacion");
+
         
 
     }
