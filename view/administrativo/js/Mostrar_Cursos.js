@@ -67,7 +67,7 @@ function crear_tabla(datos) {
             eliminar.textContent = "Eliminar";
 
             ver_mas.href = "../../controller/administrativo/Ver_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
-            modificar.href = "../../view/administrativo/Modi_Cursos.php?id="+encodeURIComponent(datos[i]["ClaveCur"]);
+            modificar.href = "../../view/administrativo/Modi_Cursos.html?id="+encodeURIComponent(datos[i]["ClaveCur"]);
             eliminar.href = "#";
             eliminar.setAttribute("class","eliminar_s");
             eliminar.setAttribute("id",datos[i]["ClaveCur"]);

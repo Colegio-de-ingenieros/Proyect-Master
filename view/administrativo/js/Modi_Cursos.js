@@ -2,7 +2,7 @@ var DataGlobal;
 
 window.onload = function () {
   let url = "../../controller/administrativo/Mostrar_Temario.php";
-  var id = document.getElementById("id-usuario").textContent;
+  var id = (new URLSearchParams(location.search)).get('id');
 
   let form = new FormData();
   form.append("id_usuario", id);
