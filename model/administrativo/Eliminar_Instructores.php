@@ -2,7 +2,7 @@
 
 require_once('../../config/Crud_bd.php');
 
-class Eliminar_Instructor extends Crud_bd{
+class Eliminar_Instructor_model extends Crud_bd{
 
     
     public function eliminar_instructor($id){
