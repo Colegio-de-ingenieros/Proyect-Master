@@ -1,34 +1,3 @@
-/*var formulario = document.getElementById('formulario');
-var respuesta = document.getElementById('respuesta');
-
-formulario.addEventListener('submit', function (e)
-{
-    e.preventDefault();
-    var datos = new FormData(formulario);
-    fetch('../../controller/administrativo/Modificar_Proyectos.php', {
-        method: 'POST',
-        body: datos
-    })
-
-        .then(res => res.json())
-        .then(data =>
-        {
-        
-            if (data === 'Correcto') {
-                alert("Actualización exitosa");
-                location.href = '../../view/administrativo/Vista_Proyectos.php';
-            }
-
-            else if (data === 'Fechas') {
-                alert("La fecha de finalización debe ser posterior a la de inicio")
-            }
-
-            else {
-                alert("Error al acutualizar el proyecto");
-            }
-        })
-})*/
-
 window.onload = function () {
     obtener_Datos()
 }
@@ -86,7 +55,7 @@ formulario.registrar.addEventListener('click', function (e){
         .then(data => {
             alert(data);
             if (data=='Actualización exitosa'){
-                window.location.href='../../view/administrativo/Vista_Proyectos.php';
+                window.location.href='../../view/administrativo/Vista_Proyectos.html';
             }
     })  
 })
@@ -98,7 +67,7 @@ formulario.cancelar.addEventListener('click', function (e){
 
     var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
     if(resp ==  true){
-      window.location.href='../../view/administrativo/Vista_Proyectos.php';
+      window.location.href='../../view/administrativo/Vista_Proyectos.html';
     }
 
     
