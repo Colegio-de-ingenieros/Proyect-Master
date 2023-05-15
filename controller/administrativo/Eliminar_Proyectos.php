@@ -4,7 +4,6 @@ $idp = $_GET["idp"];
 
 $obj = new EliminarProyecto();
 $obj->instanciar();
-
 $seg = $obj->estatusPro($idp);
 
 if($seg == true){
@@ -14,7 +13,6 @@ else{
     $obj->eliminar($idp);
 }
 
-echo "<script>location.href = '../../view/administrativo/Vista_Certificaciones.php';</script>";
 
 ?>
 

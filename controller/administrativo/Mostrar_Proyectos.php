@@ -5,15 +5,10 @@ $salida = '';
 $base = new MostrarProyectos();
 $base->instancias();
 
-//manda a hacer la busqueda
-
 
 if (isset($_POST['consulta'])) {
-    //echo($_POST['consulta']);
     $busqueda = $_POST['consulta'];
-
     $resultado = $base->consultaInteligente($busqueda);
-
 
     if ($resultado == true) {
         //pone los encabezados de la tabla
@@ -63,8 +58,7 @@ if (isset($_POST['consulta'])) {
         
             <a href="#" class="table_item__link eliminar-elemento" data-idp="' . $idp . '">Eliminar</a></td>';
             $salida .= '</tr>';
-
-            
+  
         }
     } 
 
@@ -128,7 +122,6 @@ else{
             $salida .= '<td>  <a href="../../view/administrativo/Modi_Proyectos.html?idp='.$idp.'">Modificar</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="#" class="table_item__link eliminar-elemento" data-idp="' . $idp . '">Eliminar</a></td>';
             $salida .= '</tr>';
-
             
         }
     } 
@@ -139,7 +132,6 @@ else{
 
     $salida .= "</tbody></table>";
 
-    
 
 }
 

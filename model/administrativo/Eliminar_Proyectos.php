@@ -31,7 +31,6 @@ class EliminarProyecto{
             return false;
         }
     }
-
-    
+ 
 }
 ?>

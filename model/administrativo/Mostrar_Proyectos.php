@@ -29,18 +29,6 @@ class MostrarProyectos{
         return $resultados2;
     }
 
-    function getIniProFor($ini){
-        $querry1 = "SELECT DATE_FORMAT(IniPro, '%d/%m/%Y') IniPro  FROM proyectos WHERE IniPro=:ini";
-        $resultados1 = $this->base->mostrar($querry1,[":ini"=>$ini]);
-
-        return $resultados1;
-    }
-    function getFinProFor($idp){
-        $querry2 = "SELECT DATE_FORMAT(FinPro, '%d/%m/%Y') FinPro  FROM proyectos WHERE IdPro=:idp";
-        $resultados2 = $this->base->mostrar($querry2,[":idp"=>$idp]);
-
-        return $resultados2;
-    }
 
     function getProyectosId($idp){
         $querry = "SELECT * FROM proyectos Where IdPro=:idp";
@@ -48,18 +36,7 @@ class MostrarProyectos{
         $resultados = $this->base->mostrar($querry,$arre);
         return $resultados;
     }
-    function getIniProId($idp){
-        $querry1 = "SELECT IniPro  FROM proyectos Where IdPro=:idp";
-        $resultados1 = $this->base->mostrar($querry1,[":idp"=>$idp]);
-
-        return $resultados1;
-    }
-    function getFinProId($idp){
-        $querry2 = "SELECT  FinPro  FROM proyectos Where IdPro=:idp";
-        $resultados2 = $this->base->mostrar($querry2,[":idp"=>$idp]);
-
-        return $resultados2;
-    }
+    
 
     function consultaInteligente($valor){
         $querry = "SELECT IdPro, NomProyecto, DATE_FORMAT(IniPro, '%d/%m/%Y') IniPro, DATE_FORMAT(FinPro, '%d/%m/%Y') FinPro, MontoPro, ObjPro, EstatusPro FROM proyectos
