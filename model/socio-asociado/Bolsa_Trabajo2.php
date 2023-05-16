@@ -43,7 +43,7 @@ class dato{
         return $datos;
     }
     function bolsacv($id){
-        $consulta = "SELECT DesProCv,ResidenciaCv,ExpSalCv FROM usuaperso,persobolsacv,bolsacv
+        $consulta = "SELECT EstatusCv,DesProCv,ResidenciaCv,ExpSalCv FROM usuaperso,persobolsacv,bolsacv
         WHERE 
         binary(usuaperso.IdPerso) = binary(:id)
         and usuaperso.IdPerso = persobolsacv.IdPerso

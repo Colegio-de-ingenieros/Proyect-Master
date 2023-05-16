@@ -83,6 +83,18 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
                 } else if (combo === 2) {
                   document.getElementById("residencia-campo").value = "2";
                 } 
+
+                const contenedor_estatus = document.getElementById('formulario-estatus');
+                let estatus =respuesta[i+1]['EstatusCv'];
+                if (estatus == 0) {
+                  contenedor_estatus.textContent = 'Estatus del CV: En espera de revisión';
+                }
+                else if (estatus == 1) {
+                  contenedor_estatus.textContent = 'Estatus del CV: Aceptado';
+                }
+                 else if (estatus == 2) {
+                  contenedor_estatus.textContent = 'Estatus del CV: Rechazado';
+                }
    
          }
          else if (respuesta[i] == "academica"){
@@ -136,57 +148,3 @@ fetch("../../controller/socio-asociado/Bolsa_Trabajo2.php")
          }
       }
    });
-
-      // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
-/*       const contenedor = document.getElementById('formulario-certificaciones');
-
-      if (respuesta.length > 2 && respuesta[2] != "bolsa"){
-         for (let i = 2; i < respuesta.length; i++) {
-         // Crear una nueva caja de texto
-         const nuevaCajaTexto = document.createElement('input');
-
-         // Establecer los atributos de la nueva caja de texto
-         nuevaCajaTexto.type = 'text';
-         nuevaCajaTexto.name = 'nuevo-input';
-         nuevaCajaTexto.classList = 'input-format-2';
-         let certificacion = respuesta[i]['NomCerExt'];
-         nuevaCajaTexto.value = certificacion;
-         nuevaCajaTexto.readOnly = true;
-
-         // Añadir la nueva caja de texto al contenedor
-         contenedor.appendChild(nuevaCajaTexto);
-
-         const CajaTexto = document.createElement('input');
-
-         // Establecer los atributos de la nueva caja de texto
-         CajaTexto.type = 'text';
-         CajaTexto.name = 'nuevo-input';
-         CajaTexto.classList = 'input-format-2';
-         let empresa = respuesta[i]['OrgCerExt'];
-         CajaTexto.value = empresa;
-         CajaTexto.readOnly = true;
-
-         // Añadir la nueva caja de texto al contenedor
-         contenedor.appendChild(CajaTexto);
-      }
-   }
-   else{
-      contenedor.textContent = 'No se encontraron certificaciones';
-   }
-   }); */
-
-/* function mostrar(){
-   
-   
-         document.getElementById("puesto-antiguo-1").value = estado;
-         document.getElementById("empresa-antigua-1").value = estado;
-         document.getElementById("periodo-inicio-antigua-1").value = "2023-12-02";
-         document.getElementById("periodo-fin-antigua-1").value = "2023-12-02";
-         document.getElementById("actividad-antigua-1").value = estado;
-   
-         document.getElementById("puesto-antiguo-2").value = estado;
-         document.getElementById("empresa-antigua-2").value = estado;
-         document.getElementById("periodo-inicio-antigua-2").value = "2023-12-02";
-         document.getElementById("periodo-fin-antigua-2").value = "2023-12-02";
-         document.getElementById("actividad-antigua-2").value = estado;
-} */
