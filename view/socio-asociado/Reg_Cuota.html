@@ -1,0 +1,184 @@
+<script src="../../view/login/js/Verificar_Permiso_Socio.js"></script>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <title>Registro de cuotas</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Cuota.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  
+  
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+</head>
+
+<body>
+  <header>
+
+    <div class="menu">
+      <input type="checkbox" id="check__menu">
+      <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
+      <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
+      <nav>
+        <ul>
+
+          <!-- Cursos -->
+          <li>
+            <a href="#">
+              Cursos
+            </a>
+
+            <ul>
+              <li><a id="" href="../../view/socio-asociado/Reg_Cursos.html">Registrar</a></li>
+              <li><a id="" href="../../view/socio-asociado/Ver_Cursos.html">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Cuotas -->
+          <li>
+            <a href="#">
+              Cuotas
+            </a>
+
+            <ul>
+              <li><a id="" href="Reg_Cuota.html">Registrar</a></li>
+              <li><a id="" href="Vista_Cuotas.html">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Bolsa de trabajo -->
+          <li>
+            <a href="#">
+             
+              Bolsa de trabajo
+            </a>
+
+            <ul>
+              <li><a id="" href="Bolsa-Trabajo.html">Ofertas de trabajo</a></li>
+              <li><a id="" href="Reg_CV.html">Mi CV</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li>
+            <a href="#">
+              
+              Servicios
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Registrar</a></li>
+              <li><a id="" href="#">Mostrar</a></li>
+            </ul>
+          </li>
+
+          <!-- Mi Perfil -->
+          <li>
+            <a href="#">
+              
+              Mi perfil
+            </a>
+
+            <ul>
+              <li><a id="" href="#">Datos Generales</a></li>
+            </ul>
+          </li>
+
+        </ul>
+      </nav>
+    </div>
+
+    <div class="boton-cerrar-session">
+      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+  </div>
+  </header>
+
+  <main>
+    <section class="section-main">
+      <div class="cabezera">
+        <h3 class="h3">Registro</h2>
+          <br>
+        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+          <p class="subtitulo-1">Datos de la cuota</p>
+          
+          <hr>
+      </div>
+      <!-- Datos generales -->
+      <div class="formulario-generales">
+        <!-- Nombre -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Tipo de cuota*</p>
+        </div>
+        <select type="text" class="input-format-2"placeholder="Seleccione el tipo de cuota" id="tipo" name="tipo" required maxlength="12">
+            <option value="" selected disabled>Seleccione el tipo de cuota</option>
+            <option value="1">membresía</option>
+            <option value="2">curso</option>
+            <option value="3">certificacion</option>
+            </select>
+        </div>
+        <!-- Org -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Monto*</p>
+        </div>
+          <input type="text" class="input-format-2" id="monto" placeholder="Ingrese el monto de la cuota" name="monto" required maxlength="50"
+          title="El monto de la cuota deben ser numeros enteros o decimales."></input>
+        </div>
+        <!-- HORAS -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Fecha de inicio*</p>
+        </div>
+        <input type="date" class="input-format-2" placeholder="Ingrese la fecha de inicio" id="fechainicio" name="fechainicio" required>
+        </div>
+        <div class="campo">
+          
+            <div class="label-form">
+              <p class="label-2">Fecha fin*</p>
+          </div>
+          <input type="date" class="input-format-2" placeholder="Ingrese la fecha de fin" id="fechafin" name="fechafin" required>
+          </div>
+        <!-- PDF -->
+        <div class="campo">
+          
+          <div class="label-form">
+            <p class="label-2">Comprobante de cuota*</p>
+        </div>
+            <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
+            required title="El archivo debe ser maximo de 10MB."></input>
+            <br><br>
+            
+          </div>
+          <div></div>
+          <div></div>
+          
+        
+        
+
+      <div class="botones-registro">
+        <button id="boton_registrar" class="btn btn-medium">Registrar</button>
+      </div>
+
+    </form>
+
+    </section>
+    <span id="id-usuario" style="display:none">P0001</span>
+
+  </main>
+
+<script src="js/Vali_Reg_Cuota.js"></script>
+<script src="js/Reg_Cuotas.js"></script>
+</body>
+
+</html>
