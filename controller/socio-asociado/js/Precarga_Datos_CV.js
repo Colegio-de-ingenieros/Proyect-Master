@@ -95,6 +95,13 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                  else if (estatus == 2) {
                   contenedor_estatus.textContent = 'Estatus del CV: Rechazado';
                 }
+
+                const contenedor_comentario = document.getElementById('comentario');
+                if (respuesta[i+1]['ComeCv'] == null) {
+                contenedor_comentario.textContent = 'Comentarios: No hay comentarios';
+               }else{
+                contenedor_comentario.textContent = 'Comentarios: '+respuesta[i+1]['ComeCv'];
+               }
    
          }
          else if (respuesta[i] == "academica"){
