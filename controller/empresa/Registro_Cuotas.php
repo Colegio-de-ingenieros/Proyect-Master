@@ -1,5 +1,5 @@
 <?php
-    require_once("../../model/empresa/Reg_Cuotas_empresa.php");
+    require_once("../../model/empresa/Reg_Cuotas.php");
     session_start();
     if (isset ($_SESSION['usuario']  )){
         $usuario = $_SESSION['usuario'];

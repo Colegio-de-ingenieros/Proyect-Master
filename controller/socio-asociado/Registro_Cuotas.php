@@ -1,5 +1,5 @@
 <?php
-    require_once("../../model/socio-asociado/Reg_Cuotas_socio-asociado.php");
+    require_once("../../model/socio-asociado/Reg_Cuotas.php");
     session_start();
     if (isset ($_SESSION['usuario']  )){
         $usuario = $_SESSION['usuario'];
