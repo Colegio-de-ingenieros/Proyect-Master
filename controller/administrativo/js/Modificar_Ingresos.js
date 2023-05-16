@@ -2,6 +2,7 @@ window.onload = function () {
     obtener_Datos()
 }
 
+//Se ejecuta al cargar la pagina, muestra los datos del ingreso en las cajas de texto
 function obtener_Datos(){
     let urlAct = window.location+''
     let split = urlAct.split("=");
@@ -24,6 +25,7 @@ function obtener_Datos(){
 
             document.getElementById("ingresos_monto").value = data[0][0];
             document.getElementById("ingresos_Fecha").value = data[0][1];
+            document.getElementById('doc_ingreso_viejo').setAttribute('href', '../../controller/comprobantes/administrativo/ingresos/'+idOperacion+'.pdf');
         }) 
 }
 

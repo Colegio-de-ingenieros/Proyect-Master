@@ -61,6 +61,7 @@ if ($oculto==1){
         $data = "El tamaño del documentos debe ser menor a 1 MB";
     } else{
         $idGas=$objeto->id_gastos();
+        
 
         if (strpos($idPar, 'P') !== false) {
             $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);  
@@ -71,6 +72,12 @@ if ($oculto==1){
         }
         
         if($result == true){
+            $nuevoNombre=$idGas;
+            $target_path = "../comprobantes/administrativo/gastos/";
+            $parts = explode(".",$_FILES['gastos_comprobante']['name']);
+            $target_path = $target_path . $nuevoNombre.".". end($parts);
+            move_uploaded_file($_FILES['gastos_comprobante']['tmp_name'], $target_path);
+            
             $data=('Gasto registrado exitosamente');
         }
         else{
@@ -103,6 +110,12 @@ if ($oculto==1){
         }
 
         if($result == true){
+            $nuevoNombre=$idIngre;
+            $target_path = "../comprobantes/administrativo/ingresos/";
+            $parts = explode(".",$_FILES['ingresos_comprobante']['name']);
+            $target_path = $target_path . $nuevoNombre.".". end($parts);
+            move_uploaded_file($_FILES['ingresos_comprobante']['tmp_name'], $target_path);
+
             $data=('Ingreso registrado exitosamente');
         }
         else{

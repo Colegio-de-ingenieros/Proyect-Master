@@ -2,6 +2,7 @@ window.onload = function () {
     obtener_Datos()
 }
 
+//Se ejecuta al cargar la pagina, muestra los datos del gasto en las cajas de texto
 function obtener_Datos(){
     let urlAct = window.location+''
     let split = urlAct.split("=");
@@ -33,15 +34,14 @@ function obtener_Datos(){
             document.getElementById("gastos_Tipo_Gasto").value=data[0][2];
             document.getElementById("gastos_monto").value = data[0][0];
             document.getElementById("gastos_Fecha").value = data[0][1];
+            document.getElementById('doc_gasto_viejo').setAttribute('href', '../../controller/comprobantes/administrativo/gastos/'+idOperacion+'.pdf');
             
-
         }) 
 }
 
 //responde cuando hay un click en el boton actualizar
 formulario_Gastos.actualizar.addEventListener('click', function (e){
     e.preventDefault();
-    console.log("aqui andamosb")
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var participante = split[1];
@@ -76,7 +76,6 @@ formulario_Gastos.cancelar.addEventListener('click', function (e){
 
     var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
     if(resp ==  true){
-      //location.href = '../../view/administrativo/Vista_Certificaciones.php';
       window.location.href='../../view/administrativo/Accion_Participante.html?participante='+participante;
     }
 
