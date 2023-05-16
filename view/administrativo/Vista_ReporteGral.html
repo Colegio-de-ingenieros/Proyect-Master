@@ -1,36 +1,35 @@
-<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modificación</title>
+  <title>Reporte general</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Vista_ReporteGral.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Cursos.css">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 </head>
 
 <body>
-
   <header>
     <div class="header_superior">
       <div class="titulo">
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Cursos</h1>
+          <h1 class="nombre_Ventana">Reporte general</h1>
         </div>
 
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -75,7 +74,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.html">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -99,7 +98,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.html">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
               </ul>
             </li>
 
@@ -110,8 +109,8 @@
               </a>
 
               <ul>
-              <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
-							<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -120,7 +119,7 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-
+        
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
@@ -147,7 +146,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
+                <li><a id="menuSucursal2" href="#">General</a></li>
               </ul>
             </li>
 
@@ -172,7 +171,6 @@
                 <li><a id="menuSucursal1" href="#">Ofertas</a></li>
               </ul>
             </li>
-
           </ul>
         </nav>
       </div>
@@ -181,74 +179,97 @@
 
   <main>
     <section class="section-main">
-      <div class="cabezera">
-        <h4 class="h4">Modificación</h4>
-        <h6 class="subtitulo-1">Datos generales</h6>
-      </div>
-      <hr>
-
-      <div class="formulario-cursos">
-
-        <div class="campo">
-          <label for="nombre-curso" class="label-2 nombre">Nombre del curso*</label>
-          <input title="El nombre solo puede contener letras, números, puntos y comas." type="text" name="nombre-curso" id="nombre-curso" class="input-format-2" placeholder="Ingrese el nombre" minlength="1" maxlength="40" required>
+        <p class="subtitulo-1">Datos generales</p>
+        <hr>
+        <form class="formulario-de-datos" id="formulario">
+          <div class="grupo-input3">
+              <div class="label-form">
+                  <p class="label-2">Tipo</p>
+              </div>
+          </div>
+          <div class="grupo-input">
+              <input type="radio" name="tipo" id="cursos" class="radio-button-format" placeholder="Radio" checked>
+              Curso
+          </div> 
+  
+          <div class="grupo-input">
+            <input type="radio" name="tipo" id="proyectos" class="radio-button-format" placeholder="Radio">
+            Proyecto
         </div>
+  
+          <div class="grupo-input">
+              <input type="radio" name="tipo"n id="certificaciones" class="radio-button-format" placeholder="Radio" >
+              Certificación
+          </div>
 
-        <div class="campo">
-          <label for="clave-curso" class="label-2 clave">Clave del curso*</label>
-          <input type="text" name="clave-curso" id="clave-curso" class="input-format-2" readonly required>
+          <div class="grupo-input3">
+            <br>
+            <p class="subtitulo-1">Tipo de reporte</p>
+            <hr>
+          </div>
+          <div class="grupo-input">
+              <input type="radio" checked id="completo" name="tipo_reporte" value="0" class="radio-button-format" placeholder="Radio">
+              <b>Historial completo</b>
+          </div>
+          <div></div><div></div>
+          <div class="grupo-input">
+              <input type="radio" id="periodo" name="tipo_reporte" value="1" class="radio-button-format" placeholder="Radio">
+              <b>Periodo</b>
+          </div>
+          <div class="grupo-input">
+              <b>Inicio</b>
+              <input type="date" name="inicio" id="inicio"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+          <div class="grupo-input">
+              <b>Finalización</b>
+              <input type="date" name="fin" id="fin"  disabled="disabled" class="input-format-2" placeholder="Date">
+          </div>
+  
+          <div></div><div></div>
+          <div class="boton-reporte">
+              <input type="submit" name="registrar" id="registrar" class="btn-medium btn" value="Generar reporte">
+          </div>
+        </form>
+        <div class="grupo-input3" id="contenedor_tabla">
+            <div class="article-tablas" >
+                <article>          
+                  <div class="tablas">
+                    <section class="header_table" id="tablaResultado">
+                        <table >
+                          <thead>
+                            <tr>
+                                <th>Actividad</th>
+                                <th>Hotel</th>
+                                <th>Transporte</th>
+                                <th>Comida</th>
+                                <th>Oficina</th>
+                                <th>Honorarios</th>
+                                <th>Subtotal gastos</th>
+                                <th>Ingresos</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cuerpo" >
+                           
+                          </tbody>
+                        </table>
+                    </section>
+                  </div>
+                </article>
+              </div>
+          </div>
+          <div class="totales" id="datos">
+            
+          </div>
+          <div>
+
+          </div>
+
+        <div class="boton-reporte" >
+            <button type="submit"  name="registrar" class="btn-medium btn" id="boton_descargar_reporte">Descargar reporte</button>
         </div>
-
-        <div class="campo">
-          <label for="duración" class="label-2 duracion">Duración del curso*</label>
-
-          <input title="La duración solo puede contener 3 números como máximo." type="text" name="duración" id="duración" class="input-format-2" placeholder="Ingrese la duración en hrs" maxlength="3" required>
-        </div>
-
-        <div class="campo-wide">
-          <label for="objetivo" class="label-2 objetivo">Objetivo*</label>
-          <textarea title="El objetivo solo puede contener letras, números, puntos y comas" type="textarea" name="objetivo" id="objetivo" class="input-textarea-2" placeholder="Ingrese el objetivo" required></textarea>
-        </div>
-      </div>
-
-
-      <div class="titulos-registrados">
-        <p class="subtitulo-1">Temario</p>
-        <hr class="hr">
-      </div>
-
-      <div id="temario"></div>
-
-      <div class="section-botones-2">
-        <div class="campo botones">
-          <button id="update-form" class="btn-medium btn">Actualizar</button>
-          <button id="delete-form" class="btn-medium btn">Cancelar</button>
-        </div>
-      </div>
-
-
-    </section>
-
-    <div class="modal-container" id="modal-container">
-      <div class="modal">
-        <div class="subtitulos-registrados">
-          <p class="subtitulo-1" id="modal-title"></p>
-          <p class="subtitulo-2">Subtemas:</p>
-          <hr class="hr">
-        </div>
-        <div class="container-subtemas" id="modal">
-
-        </div>
-        <div class="botones">
-          <button id="close" class="btn btn-small">Cerrar</button>
-        </div>
-      </div>
-    </div>
-    </div>
-
-    <span id="id-usuario" style="display:none"></span>
+      <br>
   </main>
 
+
 </body>
-<script src="../../controller/administrativo/js/Modi_Cursos.js"></script>
 </html>
