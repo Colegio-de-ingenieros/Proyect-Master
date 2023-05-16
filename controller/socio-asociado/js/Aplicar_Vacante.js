@@ -249,10 +249,9 @@ window.onload = function () {
 }
 
 function aplicar() {
-  const id_bolsa = document.getElementById("id-bolsa");
   const id_usuario = document.getElementById("id-usuario");
 
-  let valor_id_bolsa = id_bolsa.textContent;
+  let valor_id_bolsa = (new URLSearchParams(location.search)).get('id');;
   let valor_id_usuario = id_usuario.textContent;
 
   let url = "../../controller/socio-asociado/Enviar_Vacante.php"
@@ -272,11 +271,11 @@ function aplicar() {
   function resultados(JSON) {
     if(JSON == "Ya has aplicado a esta vacante"){
       alert("Ya has aplicado a esta vacante");
-      window.location.href = "Bolsa-Trabajo.html";
+      window.location.href = "Bolsa_Trabajo.html";
     }
     else{
       alert("Se ha aplicado a la vacante");
-      window.location.href = "Bolsa-Trabajo.html";
+      window.location.href = "Bolsa_Trabajo.html";
     }
   }
 }
