@@ -1,5 +1,5 @@
 window.onload = function() {
-    let id_instructor = document.getElementById('id_instructor').textContent;
+    let id_instructor = (new URLSearchParams(location.search)).get('id');
 
     //* Crear el objeto para hacer la solicitud de datos al servidor
     let url = '../../controller/administrativo/Mostrar_Instructor_Individual.php';
