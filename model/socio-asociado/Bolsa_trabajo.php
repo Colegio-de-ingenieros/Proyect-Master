@@ -19,7 +19,8 @@
             and usuaemp.RFCUsuaEmp = usuaemplugares.RFCUsuaEmp 
             and usuaemplugares.IdColonia = colonias.IdColonia 
             and municipios.idmunicipio = colonias.idmunicipio 
-            and estados.idestado = municipios.idestado";
+            and estados.idestado = municipios.idestado
+            and bolsaempresa.EstatusEmpBol = 1";
             $resultados = $this->base->mostrar($query);
 
             if ($resultados != null){
