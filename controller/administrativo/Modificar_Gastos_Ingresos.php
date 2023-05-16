@@ -10,7 +10,7 @@ $aux=$_POST["aux"];
 
 if ($aux=="gasto"){
     $tipoGasto=$_POST["gastos_Tipo_Gasto"];
-    $monto=floatval($_POST["gastos_monto"]);
+    $monto=$_POST["gastos_monto"];
     $fecha=$_POST["gastos_Fecha"];
 
     if ($_FILES["gastos_comprobante"]['name'] !=""){
@@ -61,7 +61,7 @@ if ($aux=="gasto"){
     }
 
 } else{
-    $monto=floatval($_POST["ingresos_monto"]);
+    $monto=$_POST["ingresos_monto"];
     $fecha=$_POST["ingresos_Fecha"];
 
     if ($_FILES["ingresos_comprobante"]['name'] !=""){
@@ -87,7 +87,7 @@ if ($aux=="gasto"){
             }else{
                 $data=('Ha ocurrido un error al conectar con la base de datos');
             }
-            #$result = $objeto->modificar_ingreso_doc($idOperacion, $doc);
+         
         }
     }else{
         $result = $objeto->modificar_ingreso($idOperacion, $monto, $fecha);

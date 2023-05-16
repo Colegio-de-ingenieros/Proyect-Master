@@ -196,11 +196,11 @@
             return $numero_nuevo;
         }
 
-        public function insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idParP){
+        public function insert_gastos_perso($idGas, $monto, $fecha, $tipoGasto, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
 
@@ -220,11 +220,11 @@
             return $ejecucion;
         }
 
-        public function insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idParE){
+        public function insert_gastos_empresa($idGas, $monto, $fecha, $tipoGasto, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
 
@@ -244,11 +244,11 @@
             return $ejecucion;
         }
 
-        public function insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idParI){
+        public function insert_gastos_instr($idGas, $monto, $fecha, $tipoGasto, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO contipogas (IdGasto, IdGas) VALUES(:IdTipo, :Id)";
 
@@ -268,11 +268,11 @@
             return $ejecucion;
         }
 
-        public function insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idParP){
+        public function insert_ingresos_perso($idIngre, $monto, $fecha, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO persoingresos (IdIngre, IdParP) VALUES(:IdIngre, :IdPar)";
 
@@ -288,11 +288,11 @@
             return $ejecucion;
         }
 
-        public function insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idParE){
+        public function insert_ingresos_empresa($idIngre, $monto, $fecha, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO empingresos (IdIngre, IdParE) VALUES(:IdIngre, :IdPar)";
 
@@ -308,11 +308,11 @@
             return $ejecucion;
         }
 
-        public function insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idParI){
+        public function insert_ingresos_instr($idIngre, $monto, $fecha, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha, :Doc)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
 
-            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha, ":Doc"=>$doc];
+            $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
             $q2 = "INSERT INTO insingresos (IdIngre, IdParI) VALUES(:IdIngre, :IdPar)";
 

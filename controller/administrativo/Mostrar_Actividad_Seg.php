@@ -49,7 +49,7 @@ if ($oculto==1){
 } else if ($oculto==3){
     $idPar=$_POST["gastos_participante"];
     $tipoGasto=$_POST["gastos_Tipo_Gasto"];
-    $monto=floatval($_POST["gastos_monto"]);
+    $monto=$_POST["gastos_monto"];
     $fecha=$_POST["gastos_Fecha"];
 
     $doc=$_FILES["gastos_comprobante"]['name'];
@@ -64,11 +64,11 @@ if ($oculto==1){
         
 
         if (strpos($idPar, 'P') !== false) {
-            $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);  
+            $result = $objeto->insert_gastos_perso($idGas, $monto, $fecha, $tipoGasto, $idPar);  
         } else if(strpos($idPar, 'E') !== false) {
-            $result = $objeto->insert_gastos_empresa($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+            $result = $objeto->insert_gastos_empresa($idGas, $monto, $fecha, $tipoGasto, $idPar);
         } else {    
-            $result = $objeto->insert_gastos_instr($idGas, $monto, $fecha, $doc, $tipoGasto, $idPar);
+            $result = $objeto->insert_gastos_instr($idGas, $monto, $fecha, $tipoGasto, $idPar);
         }
         
         if($result == true){
@@ -87,7 +87,7 @@ if ($oculto==1){
 
 } else if ($oculto==4){
     $idPar=$_POST["ingresos_Participante"];
-    $monto=floatval($_POST["ingresos_monto"]);
+    $monto=$_POST["ingresos_monto"];
     $fecha=$_POST["ingresos_Fecha"];
     
     $doc=$_FILES["ingresos_comprobante"]['name'];
@@ -102,11 +102,11 @@ if ($oculto==1){
         $idIngre=$objeto->id_ingre();
 
         if (strpos($idPar, 'P') !== false) {
-            $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $doc, $idPar);  
+            $result = $objeto->insert_ingresos_perso($idIngre, $monto, $fecha, $idPar);  
         } else if(strpos($idPar, 'E') !== false) {
-            $result = $objeto->insert_ingresos_empresa($idIngre, $monto, $fecha, $doc, $idPar);
+            $result = $objeto->insert_ingresos_empresa($idIngre, $monto, $fecha, $idPar);
         } else {    
-            $result = $objeto->insert_ingresos_instr($idIngre, $monto, $fecha, $doc, $idPar);
+            $result = $objeto->insert_ingresos_instr($idIngre, $monto, $fecha, $idPar);
         }
 
         if($result == true){

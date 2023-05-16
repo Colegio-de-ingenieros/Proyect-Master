@@ -14,6 +14,8 @@ class RegistroPro{
         $this->objetivo = $_POST["obj_proyecto"];
         $this->monto = $_POST["monto_proyecto"];
 
+        
+
         $FechaI= new DateTime($this->inicio);
         $FechaF= new DateTime($this->fin);
 
@@ -40,7 +42,6 @@ class RegistroPro{
     }
 
     function insertar(){
-        $this->monto=floatval($this->monto);
         $this->obj->insertar($this->idp, $this->nombre, $this->inicio,$this->fin, $this->objetivo, $this->monto);
 
         $resultados = $this->obj->buscarPorId($this->idp);

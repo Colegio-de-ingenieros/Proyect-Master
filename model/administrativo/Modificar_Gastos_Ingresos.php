@@ -22,16 +22,6 @@
             return $resultado;
         }
 
-        public function modificar_gasto_doc($idGas, $doc){
-            $this->conexion_bd();
-            $querry = "UPDATE controlgas SET DocGas=:doc
-                        WHERE IdGas=:id";
-            $arre = [":id"=>$idGas, ":doc"=>$doc];
-            $resultado = $this->insertar_eliminar_actualizar($querry, $arre);
-            $this->cerrar_conexion();
-            return $resultado;
-        }
-
         public function modificar_ingreso($idGas, $monto, $fecha){
             $this->conexion_bd();
             $querry = "UPDATE controlingre SET MontoIngre=:monto, FechaIngre=:fecha
@@ -43,15 +33,7 @@
         }
 
         
-        public function modificar_ingreso_doc($idGas, $doc){
-            $this->conexion_bd();
-            $querry = "UPDATE controlingre SET DocIngre=:doc
-                        WHERE IdIngre=:id";
-            $arre = [":id"=>$idGas, ":doc"=>$doc];
-            $resultado = $this->insertar_eliminar_actualizar($querry, $arre);
-            $this->cerrar_conexion();
-            return $resultado;
-        }
+        
     }
 
 ?>
