@@ -2,7 +2,7 @@ $(buscar_datos());
 
 function buscar_datos(consulta){
     $.ajax({
-        url: '../../controller/empresa/Mostrar_Cuotas_empresa.php',
+        url: '../../controller/empresa/Mostrar_Cuotas.php',
         type: 'POST',
         dataType: 'html',
         data: { consulta: consulta },

@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/socio-asociado/Registro_CV.php');
+include_once('../../model/socio-asociado/Reg_CV.php');
 
     $variable1 = json_decode($_POST['datos_generales']);
     $variable2 = json_decode($_POST['experiencia_academica_general']);

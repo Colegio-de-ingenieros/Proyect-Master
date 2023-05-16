@@ -1,13 +1,13 @@
 <?php
-    require_once("../../model/socio-asociado/Reg_Cuotas.php");
+    require_once("../../model/empresa/Reg_Cuotas.php");
     session_start();
     if (isset ($_SESSION['usuario']  )){
         $usuario = $_SESSION['usuario'];
 
-        $objeto = new BuscarId();
+        $objeto = new Cuotas_empresa();
         $id = $objeto->usuario($usuario);
         $id_cuota = $objeto->id_cuotas();
-        $id = $id[0]['IdPerso'];
+        $id = $id[0]['RFCUsuaEmp'];
 
         $tipobox=$_POST["tipo"];
         $monto=$_POST["monto"];
@@ -25,6 +25,7 @@
             else if ($tipobox == 3){
                 $tipobox = "Certificación";
             }
+            
     
             $new_name_file=null;
         
