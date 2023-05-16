@@ -1,23 +1,21 @@
 <?php
-include_once('../../model/socio-asociado/Mostrar_Cuotas.php');
+include_once('../../model/empresa/Mostrar_Cuotas.php');
 
 session_start();
 
- if (isset ($_SESSION['usuario']  )){
-        $usuario = $_SESSION['usuario'];
-    
+if (isset ($_SESSION['usuario']  )){
+    $usuario = $_SESSION['usuario'];
 
-        $salida = '';
-        $bd = new MostrarCuota();
-        $id = $bd->usuario($usuario);
-        $cuotas = $bd->cuotas_disponibles($id[0]['IdPerso']);  
-
+    $salida = '';
+    $bd = new MostrarCuota();
+    $id = $bd->usuario($usuario);
+    $cuotas = $bd->cuotas_disponibles($id[0]['RFCUsuaEmp']); 
 
     if (isset($_POST['consulta'])) {
         //echo($_POST['consulta']);
         $busqueda = $_POST['consulta'];
 
-        $resultado = $bd->buscar($busqueda,$id[0]['IdPerso']);
+        $resultado = $bd->buscar($busqueda,$id[0]['RFCUsuaEmp']);
 
         if ($resultado == true) {
             //pone los encabezados de la tabla
@@ -37,7 +35,7 @@ session_start();
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($resultado); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV=$resultado[$i]["IdVigCuo"];
+                $idV = $resultado[$i]["IdVigCuo"];
                 $monto = $resultado[$i]["MontoVigCuo"];
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
@@ -52,7 +50,7 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/empresa/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
@@ -84,7 +82,7 @@ session_start();
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($cuotas); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV=$cuotas[$i]["IdVigCuo"];
+                $idV = $cuotas[$i]["IdVigCuo"];
                 $monto = $cuotas[$i]["MontoVigCuo"];
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
@@ -99,7 +97,7 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/empresa/Get_Cuotas_empresa.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
@@ -114,27 +112,24 @@ session_start();
     echo $salida;
 }
 ?>
-
-<script src="../../controller/socio-asociado/js/Eliminar_Cuotas_Confirmacion.js"></script><?php
-include_once('../../model/socio-asociado/Mostrar_Cuotas_socio.php');
+<?php
+include_once('../../model/empresa/Mostrar_Cuotas_empresa.php');
 
 session_start();
 
- if (isset ($_SESSION['usuario']  )){
-        $usuario = $_SESSION['usuario'];
-    
+if (isset ($_SESSION['usuario']  )){
+    $usuario = $_SESSION['usuario'];
 
-        $salida = '';
-        $bd = new MostrarCuota();
-        $id = $bd->usuario($usuario);
-        $cuotas = $bd->cuotas_disponibles($id[0]['IdPerso']);  
-
+    $salida = '';
+    $bd = new MostrarCuota();
+    $id = $bd->usuario($usuario);
+    $cuotas = $bd->cuotas_disponibles($id[0]['RFCUsuaEmp']); 
 
     if (isset($_POST['consulta'])) {
         //echo($_POST['consulta']);
         $busqueda = $_POST['consulta'];
 
-        $resultado = $bd->buscar($busqueda,$id[0]['IdPerso']);
+        $resultado = $bd->buscar($busqueda,$id[0]['RFCUsuaEmp']);
 
         if ($resultado == true) {
             //pone los encabezados de la tabla
@@ -154,7 +149,7 @@ session_start();
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($resultado); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV=$resultado[$i]["IdVigCuo"];
+                $idV = $resultado[$i]["IdVigCuo"];
                 $monto = $resultado[$i]["MontoVigCuo"];
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
@@ -169,7 +164,7 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/empresa/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
@@ -201,7 +196,7 @@ session_start();
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($cuotas); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV=$cuotas[$i]["IdVigCuo"];
+                $idV = $cuotas[$i]["IdVigCuo"];
                 $monto = $cuotas[$i]["MontoVigCuo"];
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
@@ -216,7 +211,7 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
-                <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
+                <a href="../../controller/empresa/Get_Cuotas_empresa.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
                 </td>';
                 $salida .= '</tr>';
@@ -232,4 +227,4 @@ session_start();
 }
 ?>
 
-<script src="../../controller/socio-asociado/js/Eliminar_Cuotas_Confirmacion.js"></script>
+<script src="../../controller/empresa/js/Eliminar_Cuotas_Confirmacion.js"></script>
