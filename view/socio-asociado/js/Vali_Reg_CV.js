@@ -135,10 +135,8 @@ empresa2.addEventListener('keyup', (e) => {
         empresa2.removeAttribute("style");
         empr2 = true;
     }
-    /* validar(bandEmpLab); */
-    }/* else{
-        validar(true);
-    } */
+  
+    }
 );
 
 let empresa = document.getElementById("empresa-antigua-1");
@@ -155,23 +153,14 @@ empresa.addEventListener('keyup', (e) => {
         empresa.removeAttribute("style");
         empr = true;
     }
-    /* validar(bandEmpLab); */
-    }/* else{
-        validar(true);
-    } */
+    
+    }
 );
 
 let carrera3 = document.getElementById("carrera-3");
 carrera3.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-    /* let laboral=document.getElementById('checkboxlaboral');
-
-    if(valorInput !="" && laboral.checked){
-
-    
-	carrera.value = valorInput */
-
-    // Eliminar caracteres especiales
+   
     carrera3.value = valorInput
     .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
@@ -185,23 +174,14 @@ carrera3.addEventListener('keyup', (e) => {
         carrera3.removeAttribute("style");
         carr3 = true;
     }
-    /* validar(bandEmpLab); */
-    }/* else{
-        validar(true);
-    } */
+    
+    }
 );
 
 let carrera1 = document.getElementById("carrera-2");
 carrera1.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-    /* let laboral=document.getElementById('checkboxlaboral');
-
-    if(valorInput !="" && laboral.checked){
-
     
-	carrera.value = valorInput */
-
-    // Eliminar caracteres especiales
     carrera1.value = valorInput
     .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
@@ -215,24 +195,15 @@ carrera1.addEventListener('keyup', (e) => {
         carrera1.removeAttribute("style");
         carr2 = true;
     }
-    /* validar(bandEmpLab); */
-    }/* else{
-        validar(true);
-    } */
+   
+    }
 );
 
 
 let carrera = document.getElementById("carrera-1");
 carrera.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-    /* let laboral=document.getElementById('checkboxlaboral');
-
-    if(valorInput !="" && laboral.checked){
-
     
-	carrera.value = valorInput */
-
-    // Eliminar caracteres especiales
     carrera.value = valorInput
     .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
@@ -243,10 +214,8 @@ carrera.addEventListener('keyup', (e) => {
         carrera.removeAttribute("style");
         carr = true;
     }
-    /* validar(bandEmpLab); */
-    }/* else{
-        validar(true);
-    } */
+    
+    }
 );
 
 let objetivo = document.getElementById("objetivo");
@@ -360,7 +329,7 @@ cedulas2.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.cedula.test(valorInput)) {
-        /* cedulas2.style.border = "3px solid red"; */
+        
         ced2 = false;
         if (cedulas2.value.trim().length >= 7 || cedulas2.value.trim().length == 0) {
             cedulas2.removeAttribute("style");
@@ -369,7 +338,7 @@ cedulas2.addEventListener('keyup', (e) => {
         cedulas2.removeAttribute("style");
         ced2 = true;
     }
- /*    validar(bandCedu); */
+ 
     }
 });
 
@@ -386,7 +355,7 @@ cedulas3.addEventListener('keyup', (e) => {
    .trim();
 
     if (!expresiones.cedula.test(valorInput)) {
-        /* cedulas3.style.border = "3px solid red"; */
+        
         ced3 = false;
         if (cedulas3.value.trim().length >= 7 || cedulas3.value.trim().length == 0) {
             cedulas3.removeAttribute("style");
@@ -395,21 +364,11 @@ cedulas3.addEventListener('keyup', (e) => {
         cedulas3.removeAttribute("style");
         ced3= true;
     }
- /*    validar(bandCedu); */
+ 
     }
 });
 
-/* function validar(bandera){
-    const guardar = document.getElementById('boton_registrar');
 
-    if(bandera == false){              
-        guardar.disabled=true;
-        
-    }else{
-        guardar.disabled=false;
-    }
-
-} */
 
 
 function datos(){
@@ -580,7 +539,7 @@ function datos(){
         datos.append('experiencia_academica_general', JSON.stringify(experiencia_academica_general));
         datos.append('experiencia_profesional_general', JSON.stringify(experiencia_profesional_general));
 
-        fetch('../../controller/socio-asociado/Reg_CV.php', {
+        fetch('../../controller/socio-asociado/Registro_CV.php', {
             method: 'POST',
             body: datos
         })
@@ -597,17 +556,7 @@ function datos(){
                 alert(data);
                 }
                 
-                /* if (data === 'Correcto') {
-                    alert("Registro exitoso");
-                    location.href = '../../view/administrativo/Reg_Proyectos.html';
-                }
-    
-                else if (data === 'Fechas') {
-                    alert("Fecha de finalización debe ser posterior a fecha de inicio");
-                }
-                else {
-                    alert(data);
-                } */
+        
             })
 
         }        
@@ -615,9 +564,7 @@ function datos(){
     }
 
 
-    //ibtener el datos de la combo box con id = residencia-campo
-    /* var combo = document.getElementById("residencia-campo").value;
-    console.log(combo); */
+  
 }
 
 

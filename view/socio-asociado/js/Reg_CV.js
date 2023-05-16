@@ -1,5 +1,5 @@
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Reg_CV.php";
+  let url = "../../controller/socio-asociado/Registro_CV.php";
   let id = document.getElementById("id-usuario").textContent;
 
   let form = new FormData();
