@@ -10,6 +10,7 @@
     --color-white: #ffffff;
     --color-gray: #dfe3e7;
     --color-gray-2: #d6dbe0;
+    --color-gray-3: #ccd1d3;
     --color-black: #000000;
 
     --color-placeholder-1: #93979b;
@@ -34,14 +35,30 @@ main {
 
 .section-main{
     width: 80%;
+    background: var(--color-white);
+    padding-inline: 5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.cabezera{
+    justify-content: center;
+}
+
 .campo{
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.formulario-generales, .formulario-experiencia{
+
+.formulario-generales{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.formulario-experiencia{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
     column-gap: 20px;
 }
 
@@ -149,7 +166,7 @@ main {
     height: 80px;
     resize: none;
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: var(--color-gray-2);
     border-radius: var(--radius-2);
     padding: 10px 20px;
     border: none;
@@ -165,6 +182,7 @@ main {
 .input-textarea-2:focus{
     box-shadow: var(--shadow-1);
     transform: scale(1.02);
+    background-color: var(--color-gray-3);
 }
 
 .input-textarea-2:focus::placeholder{
