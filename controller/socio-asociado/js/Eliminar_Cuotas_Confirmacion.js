@@ -1,6 +1,6 @@
 function confirmacion(e){
 
-    if (confirm("¿Está seguro que desea eliminar este curso?")) {
+    if (confirm("¿Está seguro que desea eliminar esta cuota?")) {
         e.preventDefault();
         var idc = $(this).data('idc');
 
