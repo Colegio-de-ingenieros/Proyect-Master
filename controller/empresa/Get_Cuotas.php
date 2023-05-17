@@ -3,7 +3,7 @@
 $idV = $_GET["idV"];
 
 //llamar a los otros archivos que se ocupan
-include_once('../../model/empresa/Mostrar_Cuotas_empresa.php');
+include_once('../../model/empresa/Mostrar_Cuotas.php');
 include_once('../../view/empresa/Modi_Cuota.html');
 
 //instancias la clase para buscar y traer los datos
