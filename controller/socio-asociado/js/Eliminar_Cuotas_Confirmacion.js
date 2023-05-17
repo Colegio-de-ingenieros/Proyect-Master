@@ -7,7 +7,7 @@ function confirmacion(e){
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
-            url: '../../controller/socio-asociado/Eliminar_Cuotas_socio.php', 
+            url: '../../controller/socio-asociado/Eliminar_Cuotas.php', 
             type: 'GET', 
             data: {idc: idc}, 
             success: function (response)
