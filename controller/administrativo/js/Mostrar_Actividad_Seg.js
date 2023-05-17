@@ -123,7 +123,7 @@ function rellenar_tablaExtra(){
                 <td>${resultado[5][i]}</td> 
                 <td>${resultado[6][i]}</td> 
                 <td>${resultado[7][i]}</td> 
-                <td><a href="../../view/administrativo/Vista_Certificaciones.php">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <td><a href="../../view/administrativo/Vista_Certificaciones.html">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <a  href="<script src="../../controller/administrativo/js/Eliminar_Participante_Confirmacion.js"></script> ">Eliminar</a></td></td> 
             </tr> 
             ` 
