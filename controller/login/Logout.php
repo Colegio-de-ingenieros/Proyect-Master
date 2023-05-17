@@ -3,7 +3,7 @@
     session_destroy();
     setcookie("token","",time()-1,"/");
 
-    header("Location: ../../view/login/login.html");
+    header("Location: ../../view/login/Login.html");
 
 
 ?>
