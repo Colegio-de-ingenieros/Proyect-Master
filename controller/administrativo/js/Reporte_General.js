@@ -16,7 +16,8 @@ const titulo = document.getElementById("nombre_actividad");
 const textFechaI = document.getElementById("inicio");
 const textFechaF = document.getElementById("fin");
 
-const fechas_titulo = document.getElementsByClassName("article-tablas");
+const fechas_titulo = document.getElementById("fechas_titulo");
+
 
 radioPeriodo.addEventListener('click', function (e){
     textFechaF.disabled = false;
@@ -78,7 +79,8 @@ function peticion(tipo)
 
         else {
             band = true;
-            fechas_titulo.innerText = fechaI + "  " + fechaF  
+            fechas_titulo.innerHTML = fechaI + "  " + fechaF 
+             
         }
     }
 
@@ -102,7 +104,6 @@ function peticion(tipo)
 };
 
 function mostrar_tabla(datos){
-    //alert(datos.length);
     cuerpo_tabla.innerHTML = "";
     totales.innerHTML = "";
 
