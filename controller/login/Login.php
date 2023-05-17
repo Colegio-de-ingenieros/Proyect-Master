@@ -76,7 +76,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
                 
                 setcookie("token",$token,time()+(60*60*8),"/");
                 
-                $respuesta = [1,"../../view/administrativo/Menu_Administrativ.o.html"];
+                $respuesta = [1,"../../view/administrativo/Menu_Administrativo.html"];
             }else{
                 $respuesta = [0,"Contraseña incorrecta"];
             }

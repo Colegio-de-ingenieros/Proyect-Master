@@ -23,10 +23,10 @@ if (isset ($_SESSION['usuario']  )){
             $salida .= '<table>
                 <thead>
                     <tr>
-                        <th>Monto</th>
-                        <th>Tipo de cuota</th>
+                        <th>Tipo</th>
                         <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>
+                        <th>Fecha de finalización</th>
+                        <th>Monto</th>
                         <th>Comprobante</th>
                         <th>Acciones</th>
                     </tr>
@@ -45,10 +45,10 @@ if (isset ($_SESSION['usuario']  )){
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td>' . $tipo . '</td>';
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
+                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
@@ -70,10 +70,10 @@ if (isset ($_SESSION['usuario']  )){
             $salida .= '<table>
                 <thead>
                     <tr>
-                        <th>Monto</th>
-                        <th>Tipo de cuota</th>
+                        <th>Tipo</th>
                         <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>   
+                        <th>Fecha de finalización</th>
+                        <th>Monto</th>
                         <th>Comprobante</th>
                         <th>Acciones</th>
                     </tr>
@@ -92,10 +92,10 @@ if (isset ($_SESSION['usuario']  )){
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td>' . $tipo . '</td>';
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
+                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas_empresa.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
