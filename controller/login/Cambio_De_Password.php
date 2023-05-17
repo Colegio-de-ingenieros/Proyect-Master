@@ -4,7 +4,7 @@ require_once("../../model/login/Sesiones.php");
 session_start();
 if(isset($_POST["sesion"])){
 
-    $respuesta = [0,"../../view/login/recuperar_Contra1.html"];
+    $respuesta = [0,"../../view/loginRecuperar_Contra1.html"];
 
     if(isset($_SESSION["email"]) && isset($_SESSION["codigo_correcto"])){
 
@@ -13,7 +13,7 @@ if(isset($_POST["sesion"])){
     }if(isset($_SESSION["email"]) && isset($_SESSION["codigo_correcto"]) == false){
 
         session_destroy();
-        $respuesta = [0,"../../view/login/recuperar_Contra1.html"];
+        $respuesta = [0,"../../view/login/Recuperar_Contra1.html"];
 
     }
 
@@ -43,7 +43,7 @@ if(isset($_POST["password"]) && isset($_POST["password_confirmacion"])){
 
     if($respuesta){
 
-        $direccion = ["../../view/login/recuperar_Contra4.html"];
+        $direccion = ["../../view/login/Recuperar_Contra4.html"];
 
     }else{
 

@@ -15,10 +15,10 @@ class Cuotas_empresa extends Crud_bd{
         $this->conexion_bd();
 
         //consultas para la tabla de cuotas
-        $q1 = "INSERT INTO vigenciacuotas (IdVigCuo, MontoVigCuo, IniVigCuo, FinVigCuo, DocCuota) 
-        VALUES (:id_cuota, :monto, :fecha_inicio, :fecha_fin, :archivo)";
+        $q1 = "INSERT INTO vigenciacuotas (IdVigCuo, MontoVigCuo, IniVigCuo, FinVigCuo) 
+        VALUES (:id_cuota, :monto, :fecha_inicio, :fecha_fin)";
 
-        $a1 = [":id_cuota"=>$id_cuota, ":monto"=>$monto, ":fecha_inicio"=>$fecha_inicio, ":fecha_fin"=>$fecha_fin,":archivo"=>$archivo];
+        $a1 = [":id_cuota"=>$id_cuota, ":monto"=>$monto, ":fecha_inicio"=>$fecha_inicio, ":fecha_fin"=>$fecha_fin];
 
         //consultas para la tabla de relacion de cuotas y empresa
         $q2 = "INSERT INTO empvigcuota (RFCUsuaEmp ,IdVigCuo) 
