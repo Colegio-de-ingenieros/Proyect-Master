@@ -55,6 +55,12 @@ main {
     justify-content: space-between;
 }
 
+.formulario-datos-generales{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 20px;
+}
+
 .formulario-experiencia{
     display: grid;
     grid-template-columns: repeat(2, 1fr);

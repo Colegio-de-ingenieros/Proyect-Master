@@ -61,12 +61,7 @@ article{
     align-items: flex-start; 
 }
 
-hr{
-    border: 1px solid var(--color-placeholder-1);
-    border-radius: 5px;
-    width: 90%;
-    margin: auto;
-} 
+ 
 
 .datos{
     width: 50%;
