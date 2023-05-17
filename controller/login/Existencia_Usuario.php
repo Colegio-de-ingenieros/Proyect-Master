@@ -20,7 +20,7 @@ if(isset($_POST["usuario"])){
         
         $user->correoConCodigo($usuario,$codigo);
 
-        $respuesta = [1,"../../view/login/recuperar_Contra2.html"];
+        $respuesta = [1,"../../view/login/Recuperar_Contra2.html"];
     
         
 
@@ -36,7 +36,7 @@ if(isset($_POST["usuario"])){
         
         $user->correoConCodigo($usuario,$codigo);
 
-        $respuesta = [1,"../../view/login/recuperar_Contra2.html"];
+        $respuesta = [1,"../../view/login/Recuperar_Contra2.html"];
 
     }else if($user->userExist_trabajadores($usuario)){
         
@@ -49,7 +49,7 @@ if(isset($_POST["usuario"])){
         $_SESSION["timeout"] = time()+(60*30);
         
         $user->correoConCodigo($usuario,$codigo);
-        $respuesta = [1,"../../view/login/recuperar_Contra2.html"];
+        $respuesta = [1,"../../view/login/Recuperar_Contra2.html"];
 
     }else{
         
