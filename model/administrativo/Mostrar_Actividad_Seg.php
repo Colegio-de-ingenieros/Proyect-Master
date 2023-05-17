@@ -198,7 +198,7 @@
 
         public function insert_gastos_perso($idGas, $monto, $fecha, $tipoGasto, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
@@ -222,7 +222,7 @@
 
         public function insert_gastos_empresa($idGas, $monto, $fecha, $tipoGasto, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
@@ -246,7 +246,7 @@
 
         public function insert_gastos_instr($idGas, $monto, $fecha, $tipoGasto, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas, DocGas) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlgas (IdGas, MontoGas, FechaGas) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idGas, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
@@ -270,7 +270,7 @@
 
         public function insert_ingresos_perso($idIngre, $monto, $fecha, $idParP){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
@@ -290,7 +290,7 @@
 
         public function insert_ingresos_empresa($idIngre, $monto, $fecha, $idParE){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
@@ -310,7 +310,7 @@
 
         public function insert_ingresos_instr($idIngre, $monto, $fecha, $idParI){
             $this->conexion_bd();
-            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre, DocIngre) VALUES(:Id, :Monto, :Fecha)";
+            $q1 = "INSERT INTO controlingre (IdIngre, MontoIngre, FechaIngre) VALUES(:Id, :Monto, :Fecha)";
 
             $a1 = [":Id"=>$idIngre, ":Monto"=>$monto, ":Fecha"=>$fecha];
 
