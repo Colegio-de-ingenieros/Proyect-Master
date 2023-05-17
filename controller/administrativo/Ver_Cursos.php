@@ -26,11 +26,6 @@ $datoss = $bd->tema($id);
         $estatus = $datos[$i]["EstatusCur"];  
 }
 
-/* echo $clave;
-echo $nombre;
-echo $duracion;
-echo $objetivo;
-echo $estatus; */
 
 $respuesta .= ' -->
 <!DOCTYPE html>
@@ -130,7 +125,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.php">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -141,8 +136,8 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -178,7 +173,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
-                <li><a id="menuSucursal2" href="#">General</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
               </ul>
             </li>
 
@@ -312,7 +307,7 @@ $respuesta .= ' -->
 
 						for ($il = 0; $il < count($idsubtemasl); $il++) {
 							$respuesta .= '<h4 >'.$nomsubtemasl[$il] .'</h4><br>';
-							/* $respuesta .= '<h4 style="width: 500px;">'.$idsubtemasl[$i] .'</h4><br>'; */
+							
 
 						}
 					}
@@ -320,14 +315,7 @@ $respuesta .= ' -->
 		
 
 
-					/* $datoss = $bd->s($tem,$iden);
-					if ($datoss) {
-						for ($j = 0; $j < count($datoss); $j++) {
-							$te = $datoss[$j]["NomSubT"];
-							$respuesta .= '<h4 style="width: 500px;">'.$te .'</h4><br>';
-						}                    
-					}
-				}  */
+					
 			}
 			else 
 			{
