@@ -1,13 +1,13 @@
 function confirmacion(e){
 
-    if (confirm("¿Está seguro que desea eliminar este curso?")) {
+    if (confirm("¿Está seguro que desea eliminar esta cuota?")) {
         e.preventDefault();
         var idc = $(this).data('idc');
 
         // Realizar la solicitud Ajax para eliminar el elemento
         $.ajax({
             //manda a llamar al php que tiene la logica para eliminar
-            url: '../../controller/empresa/Eliminar_Cuotas_empresa.php', 
+            url: '../../controller/empresa/Eliminar_Cuotas.php', 
             type: 'GET', 
             data: {idc: idc}, 
             success: function (response)

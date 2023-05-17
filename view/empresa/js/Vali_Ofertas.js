@@ -177,7 +177,7 @@ formula.cpPerso.addEventListener('keyup', (e) => {
             formulario_data.append("cpPerso",contenido);
             
     
-            fetch("../../controller/registro/codigo_postal.php",
+            fetch("../../controller/registro/Codigo_Postal.php",
             {
                 method: 'POST',
                 body: formulario_data,

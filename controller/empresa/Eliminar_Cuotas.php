@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/empresa/Eliminar_Cuotas_empresa.php');
+include_once('../../model/empresa/Eliminar_Cuotas.php');
 $idV = $_GET["idc"];
 $obj = new eliminarCuotas();
 $obj->eliminar($idV);

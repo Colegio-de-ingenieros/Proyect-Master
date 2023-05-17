@@ -24,10 +24,10 @@ session_start();
             $salida .= '<table>
                 <thead>
                     <tr>
-                        <th>Monto</th>
-                        <th>Tipo de cuota</th>
+                        <th>Tipo</th>
                         <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>
+                        <th>Fecha de finalización</th>
+                        <th>Monto</th>
                         <th>Comprobante</th>
                         <th>Acciones</th>
                     </tr>
@@ -46,11 +46,11 @@ session_start();
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td>' . $tipo . '</td>';
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
-                $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $monto . '</td>';
+                $salida .= '<td> <a href="../../controller/Comprobantes/'.$idV.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
@@ -71,10 +71,10 @@ session_start();
             $salida .= '<table>
                 <thead>
                     <tr>
-                        <th>Monto</th>
-                        <th>Tipo de cuota</th>
+                        <th>Tipo</th>
                         <th>Fecha de inicio</th>
-                        <th>Fecha de fin</th>   
+                        <th>Fecha de finalización</th>
+                        <th>Monto</th>
                         <th>Comprobante</th>
                         <th>Acciones</th>
                     </tr>
@@ -85,19 +85,19 @@ session_start();
             for ($i = 0; $i < count($cuotas); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
                 $idV=$cuotas[$i]["IdVigCuo"];
-                $monto = $cuotas[$i]["MontoVigCuo"];
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
                 $fecha_fin = $cuotas[$i]["FinVigCuo"];
+                $monto = $cuotas[$i]["MontoVigCuo"];
                 $pdf = $cuotas[$i]["DocCuota"];
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td>' . $tipo . '</td>';
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
-                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $monto . '</td>';
+                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$idV.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>

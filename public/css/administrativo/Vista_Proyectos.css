@@ -75,7 +75,7 @@ table{
     word-wrap: break-word;
 }
 th,td {
-    max-width: 215px;
+    max-width: 200px;
     border-bottom: 1px solid #000000;
     padding: 10px 9px;
     font-size: 15px;

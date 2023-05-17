@@ -1,5 +1,5 @@
 <?php
-include_once('../../model/socio-asociado/Eliminar_Cuotas_socio.php');
+include_once('../../model/socio-asociado/Eliminar_Cuotas.php');
 $idV = $_GET["idc"];
 $obj = new eliminarCuotas();
 $obj->eliminar($idV);
