@@ -37,7 +37,7 @@ const expresiones = {
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?){1,100}$/,
     ///^[a-zA-ZÁ-Ýá-ý\.\s]+#?([0-9\s]+)([\/\s]*)([0-9a-zA-ZÁ-Ýá-ý\s]*){1,100}$/,
     nombre_e:/^[a-zA-ZÁ-Ýá-ý0-9.\s]{1,100}$/,
-    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s]{1,50}$/,
+    puesto_e:/^[a-zA-ZÁ-Ýá-ý\s.]{1,50}$/,
     funcion_e:/^[a-zA-ZÁ-Ýá-ý0-9.,\s]{1,60}$/,
 }
 
@@ -381,7 +381,7 @@ formulario.puestoEmpPerso.addEventListener('keyup', (e) => {
 	formulario.puestoEmpPerso.value = valorInput
 
     // Eliminar caracteres especiales
-    .replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+    .replace(/[^a-zA-ZÁ-Ýá-ý\s.]/g, '');
 
     if (!expresiones.puesto_e.test(valorInput)) {
         formulario.puestoEmpPerso.style.border = "3px solid red";
