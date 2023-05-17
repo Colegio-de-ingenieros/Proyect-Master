@@ -125,7 +125,7 @@ function agregar_especialidad(texto) {
     cnt_input.classList.add("conte");
 
     input.setAttribute("id",id_input);
-    input.classList.add("input-format-11");
+    input.classList.add("input-format-22");
     input.classList.add("espe-input");
     input.setAttribute("maxlength","40");
     input.setAttribute("placeholder","Ingrese la especialidad");
@@ -135,11 +135,13 @@ function agregar_especialidad(texto) {
     input.value = texto;
     input.disabled = true;
 
+    btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
+
     //icono_modificar.className = "fa-solid fa-pen-to-square";
-    icono_eliminar.className = "fa-solid fa-delete-left" ;
+    icono_eliminar.className = "ti ti-backspace-filled" ;
 
     //icono_modificar.style.cssText ="color: #273544";
-    icono_eliminar.style.cssText ="color: #273544";
+    //icono_eliminar.style.cssText ="color: #273544";
 
     //btn_modificar.appendChild(icono_modificar);
     btn_eliminar.appendChild(icono_eliminar);
@@ -178,9 +180,9 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV) {
     let id_fila = "fila" + cuerpo_tabla.childNodes.length*Math.floor(Math.random() * 100)+Date.now().toString(23);
     row.setAttribute("id",id_fila);
 
-    icono_eliminar.className = "fa-solid fa-delete-left" ;
-    icono_eliminar.style.cssText ="color: #273544";
-
+    icono_eliminar.className = "ti ti-backspace-filled" ;
+    //icono_eliminar.style.cssText ="color: #273544";
+    btn_eliminar.classList.add("btn", "btn-small", "btn-danger");
     btn_eliminar.setAttribute("type","button");
     btn_eliminar.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");
     btn_eliminar.appendChild(icono_eliminar);
