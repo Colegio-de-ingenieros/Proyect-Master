@@ -15,7 +15,7 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
         }else if($tipo_usuario == "socio"){
             $respuesta = [1,"../../view/socio-asociado/Menu_socio.html"];
         }else if($tipo_usuario == "trabajador"){
-            $respuesta = [1,"../../view/administrativo/Menu_Administrativ.o.html"];
+            $respuesta = [1,"../../view/administrativo/Menu_Administrativo.html"];
         }
 
     }
