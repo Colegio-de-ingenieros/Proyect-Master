@@ -49,7 +49,7 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
-                $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a href="../../controller/Comprobantes/'.$idV.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas_socio.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
@@ -96,7 +96,7 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_inicio . '</td>';
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
-                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$idV.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas_empresa.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>

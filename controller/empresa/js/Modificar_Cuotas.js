@@ -9,7 +9,7 @@ formulario.addEventListener('submit', function (e)
     e.preventDefault();
     var datos = new FormData(formulario);
     //fusiona el html con el php de la logica y validaciones
-    fetch('../../controller/empresa/Modificar_Cuotas_empresa.php', {
+    fetch('../../controller/empresa/Modificar_Cuotas.php', {
         method: 'POST',
         body: datos
     })

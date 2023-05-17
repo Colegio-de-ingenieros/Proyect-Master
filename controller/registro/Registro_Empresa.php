@@ -2,7 +2,7 @@
 /**
  * procesa los datos y hace la consulta
  */
-require_once("../../model/Reg_Empresa.php");
+require_once("../../model/registro/Reg_Empresa.php");
 $objeto = new Alta_empresa();
 $data =[];
 if(

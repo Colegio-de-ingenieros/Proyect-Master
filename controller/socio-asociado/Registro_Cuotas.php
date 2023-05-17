@@ -37,7 +37,7 @@
                         mkdir($dir,0777, true);
                     }
                     $temp = $_FILES['archivo']['tmp_name'];
-                    $new_name_file=$dir. $archivo;
+                    $new_name_file=$dir. $id_cuota;
                     if (copy($temp, $new_name_file)){
         
                     }
