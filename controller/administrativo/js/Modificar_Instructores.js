@@ -20,29 +20,29 @@ const nombre = document.getElementById("nombre");
 const apellido_p = document.getElementById("paterno");
 const apellido_m = document.getElementById("materno");
 
+/* guardaran las certificaciones y especialidades eliminadas y nuevas, para insertar y eliminar respectivamente */
+window.certificaciones = [];
+window.especialidades = [];
 
-window.addEventListener("load",(e)=>{
+
+window.addEventListener("load",async (e)=>{
     let form_data = new FormData();
     form_data.append("id",id_instructor);
 
-    fetch("../../controller/administrativo/Registro_Instructores.php")
-    .then(respuesta => respuesta.json())
-    .then(datos =>{ 
-        llenarCertificacionesInternas(datos);
-    });
+    let respuesta_certrificacionesIn = await fetch("../../controller/administrativo/Registro_Instructores.php");
+    let datos = await respuesta_certrificacionesIn.json();
+    llenarCertificacionesInternas(datos);
     
-    fetch("../../controller/administrativo/Modificar_Instructores.php",{
+    let respuesta_instructores = await fetch("../../controller/administrativo/Modificar_Instructores.php",{
         method: 'POST',
         body: form_data
-    })
-    .then(respuesta => respuesta.json())
-    .then(datos =>{ 
-        console.log(datos);
-        mostrarDatosBasicos(datos[0]);
-        mostrarEspecialidades(datos[1]);
-        mostrarCertificacionesInternas(datos[2]);
-        mostrarCertificaciones(datos[3]);
     });
+    let datos_instructores = await respuesta_instructores.json();
+    console.log(datos_instructores);
+    mostrarDatosBasicos(datos_instructores[0]);
+    mostrarEspecialidades(datos_instructores[1]);
+    mostrarCertificacionesInternas(datos_instructores[2]);
+    mostrarCertificaciones(datos_instructores[3]);
 
 
 
@@ -53,32 +53,34 @@ formulario.addEventListener("submit",(e)=>{
 
     let respuesta =  SeleccionoUnaCertificacionInterna();
     
-    let datos_tabla = extraer_datos_tabla();
-    let datos_espe = extraer_datos_input();
-       
+    extraer_datos_tabla();
+    extraer_datos_input();
+    //ordena las listas, primero van las que se van a eliminar
+    window.especialidades.sort();
+    window.certificaciones.sort();
     
     let form_data = new FormData(e.target);
-    form_data.append("certificaciones",JSON.stringify(datos_tabla));
-    form_data.append("especialidades",JSON.stringify(datos_espe));
+    form_data.append("id",id_instructor);
+    form_data.append("certificaciones",JSON.stringify(window.certificaciones));
+    form_data.append("especialidades",JSON.stringify(window.especialidades));
     if(respuesta == false){
         form_data.append("cert_int","");
     }  
     
-    fetch("../../controller/administrativo/Registro_Instructores.php",{
+    fetch("../../controller/administrativo/Modificar_Instructores.php",{
         method:"POST",
         body: form_data
     }).then(respuesta => respuesta.json())
     .then(datos =>{
         if(datos == true){
             alert("Modificacion exitosa");
-                
-            limpiar();
+            window.location.href = '../administrativo/Vista_Instructor.html' ;
         }else{
             alert("No se pudo modificar el instructor");
         }
     });
     
-   
+
     
 });
 
@@ -238,6 +240,17 @@ function bloquear_input(id_input) {
 function eliminar_elemento(id_cnt) {
     //elimina los elementos de especializacion
     let contenedor = document.getElementById(id_cnt);
+    // guarda el id del elemento antiguo eliminado
+    let especialidad = document.querySelector("#"+ id_cnt +" input")
+    let clasesLista = especialidad.className.split(" ");
+    let clase_con_id = clasesLista.find(texto => texto.includes("old"));
+
+
+    if(clase_con_id != undefined){
+        let id = clase_con_id.split("-")[1];
+        window.especialidades.push(["delete",id]);
+    }
+
     //elimina a todos sus hijos primero
     while (contenedor.firstChild) {
         contenedor.removeChild(contenedor.firstChild);
@@ -248,6 +261,15 @@ function eliminar_elemento(id_cnt) {
 function elimina_elementos_tabla(id_fila) {
     let contenedor = document.getElementById(id_fila);
     //elimina a todos sus hijos primero
+    let clasesLista = contenedor.className.split(" ");
+    let clase_con_id = clasesLista.find(texto => texto.includes("old"));
+
+
+    if(clase_con_id != undefined){
+        let id = clase_con_id.split("-")[1];
+        window.certificaciones.push(["delete",id]);
+    }
+
     while (contenedor.firstChild) {
         contenedor.removeChild(contenedor.firstChild);
     }
@@ -260,24 +282,36 @@ function elimina_elementos_tabla(id_fila) {
     
 }
 
-/* estos metodos extraen datos de la tabla */
+/* estos metodos extraen datos de la tabla 
+    en este caso para no desperdiciar tantos ids en la base de datos,
+    cada que se agrega o modifica una cosa, cuando enviamos los datos
+    colocamos una etiqueta, que indica si es un nuevo registro para insercion,
+    o si ya existe, si si existe, no se hace nada
+*/
+
 function extraer_datos_tabla() {
     
-    let filas = [];
     
 
     for (var i = 1, row; row = tabla.rows[i]; i++) {
         
         let fila = [];
 
-        for (var j = 0; j< 4 ; j++) {
-            col = row.cells[j];
-            fila.push(col.textContent);
-        }  
-        filas.push(fila);
-     }
+        let clasesLista = row.className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("old"));
+        if(clase_con_id == undefined){
 
-    return filas;
+            fila.push("new");
+            for (var j = 0; j< 4 ; j++) {
+                col = row.cells[j];
+                fila.push(col.textContent);
+            }  
+            window.certificaciones.push(fila);
+        } 
+        
+     }
+    
+
 }
 
 /* Estrae los datos de los input especialidades */
@@ -285,16 +319,19 @@ function extraer_datos_tabla() {
 function extraer_datos_input() {
 
     let especialidades = document.querySelectorAll(".espe-input");
-    let lista = [];
     
     for (let i = 0; i < especialidades.length; i++) {
-        
+
         let especialidad = especialidades[i];
-        lista.push(especialidad.value);
+        let clasesLista = especialidades[i].className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("old"));
+
+        if(clase_con_id == undefined){
+            window.especialidades.push(["new",especialidad.value]);
+        }
        
     }
 
-    return lista;
     
 }
 
@@ -382,7 +419,7 @@ function mostrarDatosBasicos(datos) {
 
 function mostrarCertificacionesInternas(datos) {
     for (let i = 0; i < datos.length; i++) {
-        console.log("#cert_int option[value='"+datos[i][0] +"']");
+        
         document.querySelector("#cert_int option[value='"+datos[i][0] +"']").selected = true;
         
     }

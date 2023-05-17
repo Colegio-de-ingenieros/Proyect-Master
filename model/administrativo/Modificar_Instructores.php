@@ -3,8 +3,155 @@ require_once('../../config/Crud_bd.php');
 
 class Modificar_Instructor extends Crud_bd{
 
-    public function modificarinstructor($nombre,$apellido_p,$apellido_m,$certificacionesExternas,$especialidades,$certificacionesInternas)
+    public function agregar_ceros($numero,$largo)
     {
+        $ceros = "";
+        $numero_nuevo="";
+        for ($i=0; $i < $largo ; $i++) { 
+            $numero_nuevo = $ceros .$numero;
+            if(strlen($numero_nuevo) == $largo){
+                break;
+            }else{
+                $ceros = $ceros . "0";
+            }
+
+        }
+        
+        return $numero_nuevo;
+    }
+
+    public function extraer_numero_certificaciones()
+    {
+        # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
+        $this->conexion_bd();
+        $sql = "SELECT  MAX(CAST(SUBSTRING(IdCerExt,2) AS INT))  FROM  certexterna " ;
+        $numero_consecutivo =  $this->mostrar($sql);
+        $this->cerrar_conexion();
+        $numero = "";
+
+        if (is_null($numero_consecutivo[0][0]) == 1) {
+            # significa que no hay registros por eso hay que generarlo
+            $numero = 1;
+        }else{
+            $numero = $numero_consecutivo[0][0];
+            $numero++;
+           
+        }
+        $numero_con_ceros = $this->agregar_ceros($numero,6);
+       
+
+        return $numero_con_ceros;
+
+    }
+
+    public function extraer_numero_especialidades()
+    {
+        # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
+        $this->conexion_bd();
+        $sql = "SELECT  MAX(CAST(SUBSTRING(IdEspIns,2) AS INT))  FROM  especialidades " ;
+        $numero_consecutivo =  $this->mostrar($sql);
+        $this->cerrar_conexion();
+        $numero = "";
+
+        if (is_null($numero_consecutivo[0][0]) == 1) {
+            # significa que no hay registros por eso hay que generarlo
+            $numero = 1;
+        }else{
+            $numero = $numero_consecutivo[0][0];
+            $numero++;
+           
+        }
+        $numero_con_ceros = $this->agregar_ceros($numero,6);
+       
+
+        return $numero_con_ceros;
+
+    }
+
+    public function modificarinstructor($id_instructor,$nombre,$apellido_p,$apellido_m,$certificacionesExternas,$especialidades,$certificacionesInternas)
+    {
+        // eliminar
+
+        $sqls = [];
+        $parametros = [];
+
+        $sqls[] = "UPDATE instructor SET NomIns=:nombre, ApePIns=:paterno, ApeMIns=:materno   WHERE ClaveIns=:id ";
+        $parametros[] = [":id"=>$id_instructor,":nombre"=>$nombre,":paterno"=>$apellido_p,":materno"=>$apellido_m];
+
+        $sqls[] = "DELETE FROM inscertint WHERE ClaveIns=:id";
+        $parametros[] = [":id"=>$id_instructor];
+
+        #certificacion externa
+        $id_externa = $this->extraer_numero_certificaciones();
+
+        for ($i=0; $i < count($certificacionesExternas) ; $i++) { 
+
+            if($certificacionesExternas[$i][0] == "new"){
+
+                $sqls[] =  "INSERT INTO certexterna (IdCerExt,NomCerExt,OrgCerExt,IniCerExt,FinCerExt)
+                         VALUES (:idCer,:nomCer, :orgCer, :iniCer,:finCer)";
+                $parametros[] = [":idCer" =>$id_externa , ":nomCer" => $certificacionesExternas[$i][1], 
+                                ":orgCer"=>$certificacionesExternas[$i][2], ":iniCer"=>$certificacionesExternas[$i][3],
+                                ":finCer"=>$certificacionesExternas[$i][4]
+                                ];
+
+                $sqls[] = "INSERT INTO inscertext (ClaveIns,IdCerExt) VALUES (:idI,:idCe)";
+                $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_externa];
+
+                $numero = $id_externa+1;
+                $id_externa = $this->agregar_ceros($numero,6);
+            }else{
+                $sqls[] = "DELETE FROM inscertext WHERE ClaveIns=:idInstructor AND IdCerExt=:idExterna";
+                $parametros[] = [":idInstructor"=> $id_instructor,":idExterna"=>$certificacionesExternas[$i][1]];
+
+                $sqls[] = "DELETE FROM certexterna WHERE IdCerExt = :id";
+                $parametros[] = [":id"=>$certificacionesExternas[$i][1]];
+                
+            }  
+            
+        }
+
+        # agregemos las consultas de las especialidades 
+        $id_especialidad = $this->extraer_numero_especialidades();
+
+        for ($i=0; $i < count($especialidades) ; $i++) { 
+           
+
+            if($especialidades[$i][0] == "new"){
+
+                $sqls[] =  "INSERT INTO especialidades (IdEspIns,NomEspIns) VALUES(:idEspe,:nombre)";
+                $parametros[] = [":idEspe" =>$id_especialidad , ":nombre" => $especialidades[$i][1]];
+
+                $sqls[] = "INSERT INTO especialins (ClaveIns,IdEspIns) VALUES (:idI,:idCe)";
+                $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_especialidad];
+
+                $numero = $id_especialidad+1;
+                $id_especialidad = $this->agregar_ceros($numero,6);
+
+            }else{
+                $id_especialidad_temp = $especialidades[$i][1];
+                $sqls[] = "DELETE FROM especialins WHERE ClaveIns=:i AND IdEspIns=:c; DELETE FROM especialidades WHERE IdEspIns=:c";
+                $parametros[] = [":i"=>$id_instructor,":c"=>$id_especialidad_temp];
+               
+                /*$sql[] = "DELETE FROM especialidades WHERE IdEspIns=:c";
+                $parametros[] = [":c"=>$id_especialidad_temp];*/
+            }
+            
+        }
+
+        #agregamos la relacion de las certificaciones internas con el instructor
+        for ($index=0; $index < count($certificacionesInternas) ; $index++) { 
+            //echo $index."Certificacion interna";
+            $sqls[] = "INSERT INTO inscertint (ClaveIns,IdCerInt) VALUES(:id,:idcerin)";
+            $parametros[] = [":id"=>$id_instructor,":idcerin"=>$certificacionesInternas[$index]];
+        }
+
+
+        $this->conexion_bd();
+        $resultado = $this->insertar_eliminar_actualizar($sqls,$parametros);
+        $this->cerrar_conexion();
+
+        return $resultado;
 
     }
     public function mostrarInstructorParaModificacion($id)
