@@ -37,7 +37,7 @@
 
         public function buscar_gastos_perso($id){
             $this->conexion_bd();
-            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas, DocGas
+            $sql = "SELECT controlgas.IdGas, tipogastos.TipoGas, MontoGas,  DATE_FORMAT(FechaGas, '%d/%m/%Y') FechaGas
                     FROM persoparticipa, persogastos, controlgas, contipogas, tipogastos
                     WHERE persoparticipa.IdParP= :id AND persoparticipa.IdParP=persogastos.IdParP AND persogastos.IdGas=controlgas.IdGas AND
                     controlgas.IdGas=contipogas.IdGas AND contipogas.IdGasto = tipogastos.IdGasto ORDER BY FechaGas ASC";

@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../model/Reg_personal.php');
+require_once('../../model/registro/Reg_Personal.php');
 $objeto=new Personal();
 
 
