@@ -195,7 +195,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_Ofertasadmin.html">Ofertas</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
               </ul>
             </li>
 
