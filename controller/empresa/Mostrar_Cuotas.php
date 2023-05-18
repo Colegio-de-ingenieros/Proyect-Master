@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 include_once('../../model/empresa/Mostrar_Cuotas.php');
