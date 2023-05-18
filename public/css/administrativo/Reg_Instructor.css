@@ -218,6 +218,19 @@ h3{
     margin: auto 2em ;
 } 
 
+.btn-mediumm{
+    margin: auto 0.35em ;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: all 300ms;
+} 
+
 .btn-danger{
     background: var(--color-red-2);
 }
@@ -361,7 +374,7 @@ html{
 .botones_actualizar{
     display: flex;
     align-items: center;
-    margin: auto 20em; 
+    margin: auto 25em; 
 } 
 
 hr{
