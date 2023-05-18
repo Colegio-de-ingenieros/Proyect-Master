@@ -42,7 +42,7 @@ session_start();
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
                 $fecha_fin = $resultado[$i]["FinVigCuo"];
-                $pdf = $resultado[$i]["DocCuota"];
+                
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
@@ -89,7 +89,7 @@ session_start();
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
                 $fecha_fin = $cuotas[$i]["FinVigCuo"];
                 $monto = $cuotas[$i]["MontoVigCuo"];
-                $pdf = $cuotas[$i]["DocCuota"];
+                
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';

@@ -8,9 +8,11 @@ $id=000000;
 session_start();
 $username = $_SESSION['usuario'];
 $idPersona=$base->getId($username);
+
 $id=$idPersona[0][0];
 
 $cv=$base->getCv($id);
+
 if ($cv==false){
     $salida .= 'No se encontraron resultados';
 }
@@ -88,7 +90,7 @@ if (isset($_POST['consulta'])) {
         $salida .= 'No se encontraron resultados';
     }
 } else {
-    $resultado = $base->mostrarSolicitud($cvPersona);
+    $resultado = $base->mostrar($cvPersona);
     if ($resultado == true) {
         //pone los encabezados de la tabla
         $salida .= '
