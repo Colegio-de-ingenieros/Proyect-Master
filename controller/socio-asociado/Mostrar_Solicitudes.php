@@ -9,8 +9,14 @@ session_start();
 $username = $_SESSION['usuario'];
 $idPersona=$base->getId($username);
 $id=$idPersona[0][0];
+
 $cv=$base->getCv($id);
-$cvPersona=$cv[0][1];
+if ($cv==false){
+    $salida .= 'No hay un CV registrado, por favor regístrelo.';
+}
+else{
+    $cvPersona=$cv[0][1];
+
 if (isset($_POST['consulta'])) {
     $busqueda = $_POST['consulta'];
     $resultado = $base->busquedaSolicitud($busqueda,$cvPersona);
@@ -150,7 +156,7 @@ if (isset($_POST['consulta'])) {
     else {
         $salida .= 'No se encontraron resultados';
     }
-}
+}}
 //manda a hacer la busqueda
 
 
