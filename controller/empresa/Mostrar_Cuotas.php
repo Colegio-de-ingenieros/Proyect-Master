@@ -41,7 +41,7 @@ if (isset ($_SESSION['usuario']  )){
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
                 $fecha_fin = $resultado[$i]["FinVigCuo"];
-                $pdf = $resultado[$i]["DocCuota"];
+                
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
@@ -88,7 +88,7 @@ if (isset ($_SESSION['usuario']  )){
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
                 $fecha_fin = $cuotas[$i]["FinVigCuo"];
-                $pdf = $cuotas[$i]["DocCuota"];
+                
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
