@@ -1,8 +1,8 @@
 
 <?php
+session_start();
 include_once('../../model/empresa/Mostrar_Cuotas.php');
 
-session_start();
 
 if (isset ($_SESSION['usuario']  )){
     $usuario = $_SESSION['usuario'];
