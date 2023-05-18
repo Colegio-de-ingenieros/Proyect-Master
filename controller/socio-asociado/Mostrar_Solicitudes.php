@@ -12,7 +12,7 @@ $id=$idPersona[0][0];
 
 $cv=$base->getCv($id);
 if ($cv==false){
-    $salida .= 'No hay un CV registrado, por favor regístrelo.';
+    $salida .= 'No se encontraron resultados';
 }
 else{
     $cvPersona=$cv[0][1];
