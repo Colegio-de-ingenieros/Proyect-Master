@@ -2,12 +2,29 @@ let bRechazo = false
 
 var radioButton1 = document.getElementById("ti_ck1");
 var radioButton2 = document.getElementById("ti_ck2");
+var textBox = document.getElementById("descri_puesto");
+
 
 let botonRegresar = document.getElementById("boton_registro");
 
+textBox.disabled = true;
+radioButton1.addEventListener("change", function() {
+    if (radioButton1.checked) {
+      textBox.disabled = true;
+      guardar.disabled=false;
+    }
+  });
+  
+  radioButton2.addEventListener("change", function() {
+    if (radioButton2.checked) {
+      textBox.disabled = false;
+    }
+  });
+
+
 botonRegresar.addEventListener("click", (e) => {
 
-    if(bRechazo==false){
+    if(bRechazo==false && radioButton2.checked){
         descri_puesto.style.border = "3px solid red";
     }else if(!(radioButton1.checked || radioButton2.checked)){
         alert("Debes marcar uno de los dos botones");
@@ -52,7 +69,7 @@ function validar(bandera){
     }
     else if (bandera == true){
         guardar.disabled=false;
-        
+        console.log("toy bloqueado")
 
     }
     else{

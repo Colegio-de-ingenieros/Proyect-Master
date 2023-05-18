@@ -2,7 +2,11 @@
 <?php
 include_once('../../model/administrativo/Modificar_Oferta.php');
 $id=$_GET["id"];
-$comentario = $_POST["descri_puesto"];
+if ($_POST["descri_puesto"]=NULL){
+    $comentario="";
+    }else{
+    $comentario = $_POST["descri_puesto"];
+    }
 $valorRadio = $_POST["radiosb"];
 $bandera=0;
 if ($valorRadio == null){

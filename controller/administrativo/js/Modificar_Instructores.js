@@ -73,10 +73,10 @@ formulario.addEventListener("submit",(e)=>{
     }).then(respuesta => respuesta.json())
     .then(datos =>{
         if(datos == true){
-            alert("Modificacion exitosa");
+            alert("Actualización exitosa");
             window.location.href = '../administrativo/Vista_Instructor.html' ;
         }else{
-            alert("No se pudo modificar el instructor");
+            alert("No se pudo actualizar el instructor");
         }
     });
     
