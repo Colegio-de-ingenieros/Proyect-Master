@@ -45,7 +45,7 @@ class Reporte{
                 $gastosPer = $base->getGastosPerso($ids);
                 $ingreInst = $base->getIngresosPerso($ids);
                 $ingreEmp = $base->getIngresosEmpresa($ids);
-                $ingrePerso = $base->getIngresosPerso($ids);
+                $ingrePerso = $base->getIngresosInst($ids);
             }
 
             else{
