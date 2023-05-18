@@ -74,7 +74,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $empresa . '</td>';
             $salida .= '<td>' . $nombre . '</td>';         
             $salida .= '<td>' .$estatus. '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta_Individual.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_Cvadmin.html?id='.$id.'" >Aplicantes</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta_Individual.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_CvAdmin.html?id='.$id.'" >Aplicantes</a></td>';
             //
             //
             $salida .= '</tr></div>';
@@ -152,7 +152,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $empresa . '</td>';
             $salida .= '<td>' . $nombre . '</td>';           
             $salida .= '<td>' .$estatus. '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta_Individual.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_Cvadmin.html?id='.$id.'" >Aplicantes</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Mostrar_Oferta_Individual.php?id='.$id.'" >Más...</a>&nbsp;&nbsp;&nbsp;<a href="../../view/administrativo/Vista_CvAdmin.html?id='.$id.'" >Aplicantes</a></td>';
             $salida .= '</tr></div>';
     
             
