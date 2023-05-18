@@ -15,7 +15,7 @@ class MostrarCuota extends Crud_bd{
 
     function cuotas_disponibles($id){
         $this->conexion_bd();
-        $consulta = "SELECT vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota
+        $consulta = "SELECT vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota
         FROM usuaemp,empvigcuota,vigenciacuotas,tipovigcuota,tipocuota
         WHERE usuaemp.RFCUsuaEmp = '$id'
         and usuaemp.RFCUsuaEmp = empvigcuota.RFCUsuaEmp
@@ -30,7 +30,7 @@ class MostrarCuota extends Crud_bd{
     
     function buscar($busqueda,$id){
         $this->conexion_bd();
-        $querry = "SELECT  vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota,DocCuota 
+        $querry = "SELECT  vigenciacuotas.IdVigCuo,MontoVigCuo, IniVigCuo, FinVigCuo,TipoCuota 
         FROM usuaemp,empvigcuota,vigenciacuotas,tipovigcuota,tipocuota
         WHERE usuaemp.RFCUsuaEmp = '$id'
         and usuaemp.RFCUsuaEmp = empvigcuota.RFCUsuaEmp
@@ -45,7 +45,7 @@ class MostrarCuota extends Crud_bd{
 
     function buscar_datos($id){
         $this->conexion_bd();
-        $consulta = "SELECT tipovigcuota.IdCuota, MontoVigCuo, IniVigCuo, FinVigCuo, DocCuota 
+        $consulta = "SELECT tipovigcuota.IdCuota, MontoVigCuo, IniVigCuo, FinVigCuo 
         FROM vigenciacuotas, tipovigcuota 
         WHERE vigenciacuotas.IdVigCuo='$id' and vigenciacuotas.IdVigCuo=tipovigcuota.IdVigCuo";
         $resultados = $this->mostrar($consulta);

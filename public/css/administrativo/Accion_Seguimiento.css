@@ -146,31 +146,33 @@ article{
 }
 
 table{
-    width: 110%;
+    width: 100%;
     border-collapse: collapse;
     font-family: 'Manrope';
 }
 .header_table {
     max-height: 100vh;
-    width: 100%;
+    width: 101%;
     overflow: auto;
     border: 1px solid #dddddd;
 }
 
 .header_table thead th {
-    
     top: 0;
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
+    word-wrap: break-word;
 }
 th,td {
+    max-width: 200px;
     border-bottom: 1px solid #000000;
-    padding: 10px 10px;
+    padding: 10px 9px;
     font-size: 15px;
     text-align: center;
+    word-wrap: break-word;
+    white-space: normal;
     background-color: #dfe3e7;
-    
 }
 tr:hover td {
     color: #3a42b4;

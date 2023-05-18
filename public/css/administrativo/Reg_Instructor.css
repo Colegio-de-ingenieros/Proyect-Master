@@ -1,3 +1,30 @@
+:root{
+    --color-primary: #273544;
+    --color-secondary: #303a6e;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
+
+    --color-white: #ffffff;
+    --color-gray: #dfe3e7;
+    --color-gray-2: #d6dbe0;
+    --color-black: #000000;
+
+    --color-placeholder-1: #93979b;
+    --color-placeholder-2: #7c838a;
+    --color-placeholder-3: #474a57;
+
+    --color-red: #ff0000;
+    --color-red-2: #8a0000;
+
+    --radius-1: 15px;
+    --radius-2: 8px;
+
+    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    --shadow-3: inset 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
 /*----------------------- Encabezados --------------------------*/
 h3{
     color: var(--color-black);
@@ -54,6 +81,22 @@ h3{
     transition: 300ms all;
     width: 100%;
 } 
+
+.input-format-22{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+    width: 35em;
+}
 
 .input-format-0{
     color: var(--color-black);
@@ -169,6 +212,67 @@ h3{
     color: var(--color-placeholder-1);
     font-size: 1rem;
     font-weight: 400;
+} 
+
+.btn-medium{
+    margin: auto 2em ;
+} 
+
+.btn-mediumm{
+    margin: auto 0.35em ;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: all 300ms;
+} 
+
+.btn-danger{
+    background: var(--color-red-2);
+}
+
+.btn-danger:hover{
+    background: var(--color-red);
+}
+
+.btn-medium1{
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: all 300ms;
+    margin: auto 49em;
+} 
+
+.btn-small{
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 8px 12px;
+    border: none;
+    color: var(--color-white);
+    transition: all 300ms;
+}
+
+.btn-small1{
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+    margin: auto 2.5em;
+    padding: 8px 12px;
+    border: none;
+    color: var(--color-white);
+    transition: all 300ms;
+    width: 6.5em;
 }
 
 .input-textarea-2{
@@ -220,16 +324,14 @@ html{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-}  
+} 
 
-.dinamico{
-    padding: 20px 0px 20px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
+.contenedor-formulario1{
+    display: flex;
 } 
 
 .conte{
+    margin: 1em auto;
     display: flex;
 }
 
@@ -253,7 +355,7 @@ html{
 
 .label-form{
     padding-bottom: 10px;
-}
+} 
 
 .input-format{
     width: 100%;
@@ -261,10 +363,6 @@ html{
 
 .input-textarea{
     width: 100%;
-}
-.boton_registrar{
-    display: flex;
-    align-items: center;
 } 
 
 .botones_registrar{
@@ -274,15 +372,10 @@ html{
 } 
 
 .botones_actualizar{
-    display: flex; 
-    margin: auto 25em;  
-    align-items: center;
-}
-
-.boton_extras{
     display: flex;
     align-items: center;
-}
+    margin: auto 25em; 
+} 
 
 hr{
     color: gray;
@@ -466,6 +559,10 @@ tr:hover td {
         display: flex;
         flex-direction: column;
         width: 80%;
+    } 
+
+    .input-format-0{
+        width: 100%;
     }
     
 }

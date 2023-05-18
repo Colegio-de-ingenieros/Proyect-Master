@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../model/empresa/Modificar_Cuotas_empresa.php');
+require_once('../../model/empresa/Modificar_Cuotas.php');
 session_start();
 if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $usuario = $_SESSION['usuario'];

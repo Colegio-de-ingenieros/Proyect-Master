@@ -6,12 +6,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modificar instructores</title>
+  <title>Modificación de instructores</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Instructor.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   
 </head>
@@ -60,8 +60,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_trabajadores.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_trabajadores.php">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Trabajadores.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -167,7 +167,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Ofertas</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_Ofertasadmin.html">Ofertas</a></li>
               </ul>
             </li>
           </ul>
@@ -179,7 +179,7 @@
   <main>
     <section class="section-main"> 
         <div class="cabezera">
-            <h4 class="h4">Modificar</h4>
+            <h4 class="h4">Modificación</h4>
         </div>
         <br>
         <p class="subtitulo-1"> Datos generales</p>
@@ -224,45 +224,26 @@
             <p class="subtitulo-1"> Especialidades</p>
             <hr> 
             <br>
-            <div class="contenedor-formulario">
-                <div class="grupo-input">
-                    <div class="label-form">
-                    <p class="label-2">Nombre</p>
-                    </div>
-                    <div class="input-form">
-                    <input type="text" class="input-format-2" id="especialidad" maxlength="40"
-                        placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
-                    </div> 
-                </div>  
-                <div class="grupo-input">
-                    <div class="label-form">
-                    <p class="label-0">Agregar</p>
-                    </div>
-                    <div class="input-form">
-                        <div class="boton_registrar">
-                            <button class="btn-medium btn" type="button" id="btn_agregar_espe">Agregar</button>
-                        </div>
-                    </div> 
-                </div> 
-                <div class="grupo-input">
-                    <div class="label-form">
-                    <p class="label-0">Agregar</p>
-                    </div>
-                    <div class="input-form">
-                        <div class="boton_registrar">
-                        </div>
-                    </div> 
-                </div>  
+            <p class="label-2">Nombre</p>
+            <br>
+            <div class="contenedor-formulario1">
+                <div class="input-form">
+                  <input type="text" class="input-format-22" id="especialidad" maxlength="40"
+                      placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
+                </div>   
+                   
+                  <div class="input-form">
+                    <button class="btn-medium btn" type="button" id="btn_agregar_espe">Añadir</button>
+                  </div> 
             </div> 
             <div class="dinamico" id="contenedor_espe">
               
             </div>
             <br> 
 
-            <p class="subtitulo-1"> Certificaciones</p>
+            <p class="subtitulo-1"> Certificaciones internas</p>
             <hr>
-            <br>
-            <p class="subtitulo-2"> Internas</p> 
+            <br> 
             <div class="grupo-input">
                 <div class="label-form">
                     <p class="label-2">Nombre*</p>
@@ -278,7 +259,8 @@
 
             <br>
             <br>
-            <p class="subtitulo-2"> Externas</p> 
+            <p class="subtitulo-1"> Certificaciones externas</p>
+            <hr> 
             <div class="contenedor-formulario">
                 <!-- Nombre de la certificacion -->
                 <div class="grupo-input">
@@ -321,18 +303,10 @@
                         <input type="date" class="input-format-2" id="vigencia-externa" placeholder="Ingrese la fecha de finalización">
                     </div>
                 </div> 
-                <!-- Boton externas -->
-                <div class="grupo-input">
-                    <div class="label-form">
-                    <p class="label-0">Agregar</p>
-                    </div>
-                    <div class="input-form">
-                        <div class="botones_registrar">
-                            <button class="btn-medium btn" type="button" id="btn_agregar_certi">Agregar</button>
-                        </div>
-                    </div> 
-                </div>
+                <!-- Boton externas -->      
             </div>
+            <button class="btn-medium1 btn" type="button" id="btn_agregar_certi">Añadir</button>
+            <br>
             <br>
             <br>
             <div class="conteTabla" >
@@ -364,9 +338,9 @@
             <br>
             <br>
             <div class="botones_actualizar">
-              <button class="btn-medium btn" id="boton_actualizar" type="submit">Actualizar</button>&nbsp;&nbsp;
-               <button class="btn-medium btn" id="boton_cancelar"  type="button" onclick="window.location.href = '../administrativo/Vista_Instructor.html' ">Cancelar</button>
-          </div>
+              <button class="btn-mediumm btn" id="boton_actualizar" type="submit">Actualizar</button>
+              <button class="btn-mediumm btn" id="boton_cancelar"  type="button" onclick="window.location.href = '../administrativo/Vista_Instructor.html' ">Cancelar</button>
+            </div>
           <br>
           <br>
           <br>

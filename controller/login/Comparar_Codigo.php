@@ -5,7 +5,7 @@ session_start();
 #este si no esta el usuario entonces no puede entrar
 if(isset($_POST["sesion"])){
 
-    $respuesta = [0,"../../view/login/recuperar_Contra1.html"];
+    $respuesta = [0,"../../view/login/Recuperar_Contra1.html"];
 
     if(isset($_SESSION["email"])){
 
@@ -33,7 +33,7 @@ if(isset($_POST["codigo"])){
     }else if($codigo_mandado == $codigo_real){
 
         $_SESSION["codigo_correcto"] = true;
-        $respuesta = [1,"../../view/login/recuperar_Contra3.html"];
+        $respuesta = [1,"../../view/login/Recuperar_Contra3.html"];
 
     }else{
 

@@ -15,7 +15,7 @@ window.onload = function () {
         .then((json) => respuesta(json))
         .catch((error) => alert(error));
 
-    
+
 };
 
 caja_busqueda.addEventListener("keyup", extraer_datos);
@@ -24,33 +24,33 @@ function extraer_datos() {
 
     consulta = caja_busqueda.value;
     let form_data = new FormData();
-    form_data.append("consulta",consulta);
+    form_data.append("consulta", consulta);
 
-    fetch("../../controller/administrativo/Mostrar_Instructores_Busqueda_In.php",{
-        method:"POST",
+    fetch("../../controller/administrativo/Mostrar_Instructores_Busqueda_In.php", {
+        method: "POST",
         body: form_data
-    }).then(respuesta=> respuesta.json())
-    .then(datos=>{
-        
-        document.querySelector("table tbody").innerHTML = "";
-        caja_mensaje.innerHTML = "";
+    }).then(respuesta => respuesta.json())
+        .then(datos => {
 
-        if(datos.length == 0){
-            cnt_tabla.style.display = 'none';
-            caja_mensaje.innerText = "No se encontraron resultados";
-        }else{
-            cnt_tabla.style.display = 'block';
-            respuesta(datos);
-        }   
+            document.querySelector("table tbody").innerHTML = "";
+            caja_mensaje.innerHTML = "";
 
-        
-    });
-    
+            if (datos.length == 0) {
+                cnt_tabla.style.display = 'none';
+                caja_mensaje.innerText = "No se encontraron resultados";
+            } else {
+                cnt_tabla.style.display = 'block';
+                respuesta(datos);
+            }
+
+
+        });
+
 }
 
 
 function respuesta(json) {
-    
+
     const tableBody = document.querySelector("table tbody");
 
     json.forEach(rowData => {
@@ -94,7 +94,7 @@ function respuesta(json) {
         eliminarLink.setAttribute('class', 'link');
         eliminarLink.setAttribute('href', '#');
         eliminarLink.addEventListener('click', function () {
-            let respuesta = confirm("Estas seguro que desea eliminar?");
+            let respuesta = confirm("¿Está seguro que desea eliminar este instructor?");
             if (respuesta) {
                 let form_data = new FormData();
                 form_data.append("id_instructor", rowData[0]);
@@ -104,11 +104,11 @@ function respuesta(json) {
                     body: form_data
                 }).then(respuesta => respuesta.json())
                     .then(datos => {
-                        
-                        if(datos == "con"){
-                            alert("El instructor tiene seguimiento.");
+
+                        if (datos == "con") {
+                            alert("Error, el instructor no puede ser eliminado porque tiene un seguimiento");
                         }
-                        else if(datos == "sin"){
+                        else if (datos == "sin") {
                             alert("Eliminado con éxito");
                             location.reload();
                         }

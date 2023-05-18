@@ -29,7 +29,8 @@ class MostrarSolicitud{
         $resultados = $this->base->mostrar($querry, [":id" => $socio, ":busqueda" => "%".$busqueda."%"]);
         return $resultados;
     }
-    function mostrarSolicitud($socio){
+
+    function mostrar($socio){
         $querry = "SELECT NomUsuaEmp,bolsaempresa.IdEmpBol, VacEmpBol, ReqAcaEmpBol, AñoEmpBol,TelEmpBol, DesEmpBol
         FROM bolsaempresa, usuaempbolsa, bolsaempcv,usuaemp
         WHERE usuaemp.RFCUsuaEmp=usuaempbolsa.RFCUsuaEmp AND bolsaempresa.IdEmpBol=usuaempbolsa.IdEmpBol 
@@ -37,4 +38,6 @@ class MostrarSolicitud{
         $resultados = $this->base->mostrar($querry, [":id" => $socio]);
         return $resultados;
     }
+
+
 }
