@@ -359,9 +359,9 @@ html{
 } 
 
 .botones_actualizar{
-    display: block;
-    flex-direction: column;
-    align-items: center; 
+    display: flex;
+    align-items: center;
+    margin: auto 20em; 
 } 
 
 hr{
