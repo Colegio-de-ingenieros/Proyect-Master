@@ -94,7 +94,7 @@ function respuesta(json) {
         eliminarLink.setAttribute('class', 'link');
         eliminarLink.setAttribute('href', '#');
         eliminarLink.addEventListener('click', function () {
-            let respuesta = confirm("Estas seguro que desea eliminar?");
+            let respuesta = confirm("¿Está seguro que desea eliminar este instructor?");
             if (respuesta) {
                 let form_data = new FormData();
                 form_data.append("id_instructor", rowData[0]);
@@ -106,7 +106,7 @@ function respuesta(json) {
                     .then(datos => {
                         
                         if(datos == "con"){
-                            alert("El instructor tiene seguimiento.");
+                            alert("Error, el instructor no puede ser eliminado porque tiene un seguimiento");
                         }
                         else if(datos == "sin"){
                             alert("Eliminado con éxito");
