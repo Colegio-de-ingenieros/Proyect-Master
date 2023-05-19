@@ -30,7 +30,7 @@ function obtener_Datos(){
 }
 
 //responde cuando hay un click en el boton actualizar
-formulario_Ingresos.addEventListener('submit', function (e){
+formulario_Ingresos.actualizar.addEventListener('click', function (e){
     e.preventDefault();
     console.log("aqui andamosb")
     let urlAct = window.location+''

@@ -40,7 +40,7 @@ function obtener_Datos(){
 }
 
 //responde cuando hay un click en el boton actualizar
-formulario_Gastos.addEventListener('submit', function (e){
+formulario_Gastos.actualizar.addEventListener('click', function (e){
     e.preventDefault();
     let urlAct = window.location+''
     let split = urlAct.split("=");
