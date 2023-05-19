@@ -78,9 +78,9 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                document.getElementById("salario").value = respuesta[i+1]['ExpSalCv'];
                document.getElementById("objetivo").value =respuesta[i+1]['DesProCv'];
    
-               if (combo === 1) {
+               if (combo == 1) {
                   document.getElementById("residencia-campo").value = "1";
-                } else if (combo === 2) {
+                } else if (combo == 2) {
                   document.getElementById("residencia-campo").value = "2";
                 } 
 
