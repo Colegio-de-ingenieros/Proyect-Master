@@ -11,8 +11,6 @@ textBox.disabled = true;
 radioButton1.addEventListener("change", function() {
     if (radioButton1.checked) {
       textBox.disabled = true;
-      descri_puesto.removeAttribute("style");
-      document.getElementById("descri_puesto").value = "";
       guardar.disabled=false;
     }
   });
