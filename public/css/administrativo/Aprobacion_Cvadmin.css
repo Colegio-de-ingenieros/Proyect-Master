@@ -340,7 +340,7 @@ textarea {
     .contePlantilla{
         margin: 8em auto; 
     }
-    .formulario-generales, .formulario-experiencia{
+    .formulario-dato-generales, .formulario-experiencia{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         column-gap: 20px;
@@ -380,7 +380,7 @@ textarea {
     .contenedor-formulario{
         display: flow-root;
     }
-    .formulario-generales, .formulario-experiencia{
+    .formulario-datos-generales, .formulario-experiencia{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         column-gap: 20px;
