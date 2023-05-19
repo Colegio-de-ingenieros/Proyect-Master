@@ -61,12 +61,8 @@ class Mostrar_Instructor extends Crud_bd{
     public function busquedainteligente($busqueda)
     {
         $this->conexion_bd();
-        $consulta = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns 
-                    FROM instructor 
-                    WHERE  (CONCAT(instructor.NomIns,' ',COALESCE(instructor.ApePIns, ''),' ',COALESCE(instructor.ApeMIns, ''))) LIKE '".$busqueda."%'
-                    OR instructor.ApePIns LIKE '".$busqueda."%' OR instructor.ApePIns LIKE '%".$busqueda."'
-                    OR (COALESCE(instructor.ApeMIns, '')) LIKE '".$busqueda."%' OR (COALESCE(instructor.ApeMIns, '')) LIKE '%".$busqueda."'";
-        $resultados = $this->mostrar($consulta);
+        $query = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns FROM instructor WHERE instructor.NomIns LIKE :busqueda OR instructor.ApePIns LIKE :busqueda OR instructor.ApeMIns LIKE :busqueda ";
+        $resultados = $this->mostrar($query, [":busqueda" => "%".$busqueda."%"]);
         $this->cerrar_conexion();
 
         return $resultados;
