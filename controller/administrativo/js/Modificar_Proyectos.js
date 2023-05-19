@@ -36,7 +36,7 @@ function obtener_Datos(){
 
 
 //responde cuando hay un click en el boton actualizar
-formularioProyectos.addEventListener('submit', function (e){
+formulario.registrar.addEventListener('click', function (e){
     e.preventDefault();
     let urlAct = window.location+''
     let split = urlAct.split("=");
@@ -45,7 +45,7 @@ formularioProyectos.addEventListener('submit', function (e){
 
     let url = "../../controller/administrativo/Modificar_Proyectos.php";
 
-    let form = new FormData(formularioProyectos);
+    let form = new FormData(formulario);
     form.append("idP", idP);
     fetch(url, {
     method: "POST",
@@ -61,7 +61,7 @@ formularioProyectos.addEventListener('submit', function (e){
 })
 
 //responde cuando hay un click en el boton cancelar
-formularioProyectos.cancelar.addEventListener('click', function (e){
+formulario.cancelar.addEventListener('click', function (e){
     e.preventDefault();
     let urlAct = window.location+''
 
