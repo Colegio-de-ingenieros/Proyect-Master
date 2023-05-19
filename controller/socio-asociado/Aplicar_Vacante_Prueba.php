@@ -1,4 +1,8 @@
 <?php
+    ini_set('display_errors', '0');
+    ini_set('log_errors', '1');
+    ini_set('error_log', '../../public/php_errors_Aplicar_Vacante.log');
+    error_reporting(E_ALL);
     require_once("../../model/socio-asociado/Aplicar_Vacante.php");
     session_start();
     if (isset ($_SESSION['usuario'])&& isset($_SESSION['tipo_usuario'])){

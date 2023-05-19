@@ -12,7 +12,9 @@ const organizacion_cert = document.getElementById("organizacion-externa");
 const fecha_e_cert = document.getElementById("emision-externa");
 const fecha_v_cert = document.getElementById("vigencia-externa");
 
+const btn_formulario_registrar = document.getElementById("boton_registro");
 const formulario = document.getElementById("formulario");
+const formulario_cert = document.getElementById("formulario_cert");
 const cnt_certifiacionesInt = document.getElementById("cert_int");
 
 window.addEventListener("load",(e)=>{
@@ -22,40 +24,49 @@ window.addEventListener("load",(e)=>{
        
         llenarCertificacionesInternas(datos);
     });
+    
 });
+btn_formulario_registrar.addEventListener("click",(e)=>{
 
-formulario.addEventListener("submit",(e)=>{
-    e.preventDefault();
+    if(!banderas.nombre){
+        nombre_campo.style.border = "3px solid red";
+    }else if(!banderas.paterno){
+        paterno_campo.style.border = "3px solid red";
+    }else{
+        
+        let respuesta =  SeleccionoUnaCertificacionInterna();
+        
+        let datos_tabla = extraer_datos_tabla();
+        let datos_espe = extraer_datos_input();
+        
+        
+        let form_data = new FormData(formulario);
+        form_data.append("certificaciones",JSON.stringify(datos_tabla));
+        form_data.append("especialidades",JSON.stringify(datos_espe));
+        if(respuesta == false){
+            form_data.append("cert_int","");
+        }  
+        
+        fetch("../../controller/administrativo/Registro_Instructores.php",{
+            method:"POST",
+            body: form_data
+        }).then(respuesta => respuesta.json())
+        .then(datos =>{
+            if(datos == true){
+                alert("Registro exitoso");
+                    
+                location.reload();
 
-    let respuesta =  SeleccionoUnaCertificacionInterna();
-    
-    let datos_tabla = extraer_datos_tabla();
-    let datos_espe = extraer_datos_input();
-       
-    
-    let form_data = new FormData(e.target);
-    form_data.append("certificaciones",JSON.stringify(datos_tabla));
-    form_data.append("especialidades",JSON.stringify(datos_espe));
-    if(respuesta == false){
-        form_data.append("cert_int","");
-    }  
-    
-    fetch("../../controller/administrativo/Registro_Instructores.php",{
-        method:"POST",
-        body: form_data
-    }).then(respuesta => respuesta.json())
-    .then(datos =>{
-        if(datos == true){
-            alert("Registro exitoso");
-                
-            limpiar();
-        }else{
-            alert("No se pudo registrar el instructor");
-        }
-    });
-    
+            }else{
+                alert("No se pudo registrar el instructor");
+            }
+        });
+        
    
     
+
+    }
+
 });
 
 btn_especialidades.addEventListener("click",(e)=>{
@@ -68,12 +79,15 @@ btn_especialidades.addEventListener("click",(e)=>{
         cmp_especialidades.value = "";
         agregar_especialidad(texto);
 
+    }else{
+        especialidad_campo.style.border = "3px solid red";
+        banderas.especialidad = false;
     }
     
 });
 
-btn_certificacion.addEventListener("click",(e)=>{
-
+formulario_cert.addEventListener("submit",(e)=>{
+    e.preventDefault();
     let nombre = nombre_cert.value;
     let org = organizacion_cert.value;
     let fechaE = fecha_e_cert.value;
@@ -81,11 +95,15 @@ btn_certificacion.addEventListener("click",(e)=>{
     let fecha_inicio = new Date(fechaE);
     let fecha_fin = new Date(fechaV)
 
-    if(nombre != "" || org != ""){
+
         if(nombre == ""){
             alert("Debe colocar el nombre de la certificación");
+            nombre_certificacion_campo.style.border = "3px solid red";
+            banderas_externas.nombre = false;
         }else if(org == ""){
             alert("Debe colocar el nombre de la organización");
+            organizacion_campo.style.border = "3px solid red";
+            banderas_externas.organizacion = false;
         }else if(fechaE == ""){
             alert("Debe seleccionar una fecha de emisión");
         }else if(fechaV == ""){
@@ -97,7 +115,6 @@ btn_certificacion.addEventListener("click",(e)=>{
                 banderas_externas.nombre = false;
                 banderas_externas.organizacion = false;
     
-    
                 nombre_cert.value = "";
                 organizacion_cert.value = "";
                 fecha_e_cert.value = "";
@@ -105,17 +122,16 @@ btn_certificacion.addEventListener("click",(e)=>{
                 agregar_certificacion(nombre,org,fechaE,fechaV);
         }
         
-    } 
+    
     
 });
+
 
 function agregar_especialidad(texto) {
 
     let cnt_input = document.createElement("div");
     let input = document.createElement("input");
-    //let btn_modificar = document.createElement("button");
     let btn_eliminar = document.createElement("button");
-    //let icono_modificar = document.createElement("i");
     let icono_eliminar = document.createElement("i");
 
     let id_input = cnt_especialidades.childNodes.length+Math.floor(Math.random() * 100)+Date.now().toString(5);
@@ -136,24 +152,15 @@ function agregar_especialidad(texto) {
     input.disabled = true;
 
     btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
-
-    //icono_modificar.className = "fa-solid fa-pen-to-square";
     icono_eliminar.className = "ti ti-backspace-filled" ;
 
-    //icono_modificar.style.cssText ="color: #273544";
-    //icono_eliminar.style.cssText ="color: #273544";
-
-    //btn_modificar.appendChild(icono_modificar);
     btn_eliminar.appendChild(icono_eliminar);
 
-    //btn_modificar.setAttribute("type","button");
     btn_eliminar.setAttribute("type","button");
 
-    //btn_modificar.setAttribute('onclick',"modificar('"+ id_input  +"')");
     btn_eliminar.setAttribute('onclick',"eliminar_elemento('"+id_cnt+"')");
 
     cnt_input.appendChild(input);
-    //cnt_input.appendChild(btn_modificar);
     cnt_input.appendChild(btn_eliminar);
 
     cnt_especialidades.appendChild(cnt_input);
@@ -181,7 +188,7 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV) {
     row.setAttribute("id",id_fila);
 
     icono_eliminar.className = "ti ti-backspace-filled" ;
-    //icono_eliminar.style.cssText ="color: #273544";
+    
     btn_eliminar.classList.add("btn", "btn-small", "btn-danger");
     btn_eliminar.setAttribute("type","button");
     btn_eliminar.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");

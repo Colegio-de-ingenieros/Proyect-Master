@@ -228,7 +228,7 @@
             <br>
             <div class="contenedor-formulario1">
               <div class="input-form">
-                <input type="text" class="input-format-22" id="especialidad" maxlength="40"
+                <input type="text" class="input-format-22" id="especialidad" maxlength="60"
                   placeholder="Ingrese la especialidad" title="La especialidad solo puede contener letras mayúsculas y minúsculas.">
               </div>
               <div class="input-form">
@@ -250,17 +250,18 @@
                 </div>
                 <div class="input-form">
                     <select type="checkbox" class="input-format-0" id="cert_int" name="cert_int[]"  multiple='multiple'
-                    title="Seleccione una o mas certificaciones. Para seleccionar varios, deje presionado la tecla “ctrl” mientras selecciona los nombres de los instructores. ">
+                    title="Seleccione una o más certificaciones. Para seleccionar varias, deje presionado la tecla “ctrl” mientras selecciona los nombres de las certificaciones. ">
                     
                     </select>
                 </div>
             </div>
-            
+        </form>
 
             <br>
             <br>
             <p class="subtitulo-1"> Certificaciones externas</p>
             <hr>
+            <form id="formulario_cert" >
             <div class="contenedor-formulario">
                 <!-- Nombre de la certificacion -->
                 <div class="grupo-input">
@@ -279,7 +280,7 @@
                         <p class="label-2">Organización del certificado*</p>
                     </div>
                     <div class="input-form">
-                        <input type="text" class="input-format-2" id="organizacion-externa" placeholder="Ingrese la organización"  maxlength="40"
+                        <input type="text" class="input-format-2" id="organizacion-externa" placeholder="Ingrese la organización"  maxlength="60"
                         title="El nombre de la organización puede contener letras mayúsculas, minúsculas y caracteres especiales ( . ).">
                     </div>
                 </div>
@@ -290,7 +291,7 @@
                         <p class="label-2">Fecha de emisión*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format-2" id="emision-externa" placeholder="Ingrese la fecha de inicio">
+                        <input type="date" class="input-format-2" id="emision-externa" title="La fecha de emisión debe cumplir con el formato dd/mm/aaa." placeholder="Ingrese la fecha de inicio">
                     </div>
                 </div>
 
@@ -300,13 +301,13 @@
                         <p class="label-2">Fecha de vigencia*</p>
                     </div>
                     <div class="input-form">
-                        <input type="date" class="input-format-2" id="vigencia-externa" placeholder="Ingrese la fecha de finalización">
+                        <input type="date" class="input-format-2" id="vigencia-externa" title="La fecha de vigencia debe cumplir con el formato dd/mm/aaa." placeholder="Ingrese la fecha de finalización">
                     </div>
                 </div> 
                 <!-- Boton externas -->
             
             </div>
-            <button class="btn-medium1 btn" type="button" id="btn_agregar_certi">Añadir</button>
+            <button class="btn-medium1 btn" type="submit" id="btn_agregar_certi">Añadir</button>
             <br>
             <br>
             <br>
@@ -318,7 +319,7 @@
                             <table id="tabla">
                               <thead>
                                 <tr>
-                                    <th>Nombre</th>
+                                    <th >Nombre</th>
                                     <th>Organización</th>
                                     <th>Fecha de emisión</th>
                                     <th>Fecha de vigencia</th>
@@ -339,12 +340,12 @@
             <br>
             <br>
             <div class="botones_registrar">
-                <button class="btn-medium btn" id="boton_registro" type="submit">Registrar</button>
+                <button class="btn-medium btn" id="boton_registro" type="button">Registrar</button>
             </div>
             <br>
             <br>
             <br>
-        </form>
+        
     </section>
   </main> 
   <script src="js/Vali_Instructores.js"></script>
