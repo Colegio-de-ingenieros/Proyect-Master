@@ -346,6 +346,12 @@ textarea {
         column-gap: 20px;
         row-gap: 10px;
     }
+    .formulario-generales, .formulario-experiencia{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+    }
     .formulario-certificaciones{
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -381,6 +387,12 @@ textarea {
         display: flow-root;
     }
     .formulario-datos-generales, .formulario-experiencia{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 20px;
+        row-gap: 10px;
+    }
+    .formulario-generales, .formulario-experiencia{
         display: grid;
         grid-template-columns: repeat(1, 1fr);
         column-gap: 20px;
