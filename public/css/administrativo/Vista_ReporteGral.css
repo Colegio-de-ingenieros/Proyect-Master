@@ -123,14 +123,17 @@ article{
     font-size: 1rem;
     font-weight: 400;
 }
+p{
+    display: contents;
+}
 table{
-    width: 120%;
+    width: 100%;
     border-collapse: collapse;
     font-family: 'Manrope';
 }
 .header_table {
     max-height: 100vh;
-    width: 93%;
+    width: 91.5%;
     overflow: auto;
     border: 1px solid #dddddd;
 }
@@ -140,11 +143,12 @@ table{
     background-color: #085262;
     color: #e6e7e8;
     font-size: 1.125rem;
+    word-wrap: break-word;
 }
 th,td {
-    max-width: 153 px;
+    max-width: 200px;
     border-bottom: 1px solid #000000;
-    padding: 10px 20px;
+    padding: 10px 9px;
     font-size: 15px;
     text-align: center;
     word-wrap: break-word;
@@ -156,23 +160,27 @@ tr:hover td {
     cursor: pointer;
     background-color: #ffffff;
 }
-p{
-    display: contents;
-}
 .boton-reporte{
     display: flex;
     flex-direction: column;
     margin-left: 100px;
     align-items: center;}
-@media screen and (max-width: 650px){
+@media screen and (max-width: 1024px){
     .formulario-de-datos{
         display: block;
     }
-    table{
-        max-width: 120%;
-        border-collapse: collapse;
-        font-family: 'Manrope';
-    }
+    .header_table {
+        max-height: 100vh;
+        width: 91.5%;
+      }
+      
+    th, td {
+        max-width: none;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
     .sub-titulo{
         display: flex;
         flex-direction: column;
