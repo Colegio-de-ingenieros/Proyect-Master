@@ -154,3 +154,15 @@ function validar(bandera){
     }
 
 }
+
+const boton_enviar = document.getElementById("boton_registrar");
+boton_enviar.addEventListener("click",(e)=>{
+
+    if(sal == false){
+        monto.style.border = "3px solid red";
+    }else{
+        validar(true);
+    }
+
+
+});
