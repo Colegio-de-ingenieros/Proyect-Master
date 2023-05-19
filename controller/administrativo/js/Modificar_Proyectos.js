@@ -45,7 +45,7 @@ formularioProyectos.addEventListener('submit', function (e){
 
     let url = "../../controller/administrativo/Modificar_Proyectos.php";
 
-    let form = new FormData(formulario);
+    let form = new FormData(formularioProyectos);
     form.append("idP", idP);
     fetch(url, {
     method: "POST",
