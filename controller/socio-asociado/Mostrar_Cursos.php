@@ -40,14 +40,13 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $nombre = $resultado[$i]["NomCurPerso"];
                 $orga = $resultado[$i]["OrgCurPerso"];
                 $hrs = $resultado[$i]["HraCurPerso"];
-                $pdf = $resultado[$i]["DocCurPerso"];
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
-                $salida .= '<td> <a href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a href="../../controller/Comprobantes/'.$id_final_.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
@@ -84,14 +83,13 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $nombre = $cursos[$i]["NomCurPerso"];
                 $orga = $cursos[$i]["OrgCurPerso"];
                 $hrs = $cursos[$i]["HraCurPerso"];
-                $pdf = $cursos[$i]["DocCurPerso"];
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
-                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$pdf.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$id_final.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>

@@ -28,7 +28,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 mkdir($dir,0777, true);
             }
             $temp = $_FILES['archivo']['tmp_name'];
-            $new_name_file=$dir. $archivo;
+            $new_name_file=$dir. $id_final;
             if (copy($temp, $new_name_file)){
 
             }
@@ -36,7 +36,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         
     }
 
-    $u=$objeto->insertar_cursos($id_curso, $nombre, $organizacion, $horas, $archivo, $id_final);
+    $u=$objeto->insertar_cursos($id_curso, $nombre, $organizacion, $horas, $id_final);
 
     if ($u==true){
         echo json_encode('exito');
