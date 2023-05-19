@@ -64,6 +64,7 @@ class Mostrar_Instructor extends Crud_bd{
         $consulta = "SELECT ClaveIns, NomIns, ApePIns, ApeMIns, EstatusIns 
                     FROM instructor 
                     WHERE  (CONCAT(instructor.NomIns,' ',COALESCE(instructor.ApePIns, ''),' ',COALESCE(instructor.ApeMIns, ''))) LIKE '".$busqueda."%'
+                    OR instructor.NomIns LIKE '".$busqueda."%' OR instructor.NomIns LIKE '%".$busqueda."'
                     OR instructor.ApePIns LIKE '".$busqueda."%' OR instructor.ApePIns LIKE '%".$busqueda."'
                     OR (COALESCE(instructor.ApeMIns, '')) LIKE '".$busqueda."%' OR (COALESCE(instructor.ApeMIns, '')) LIKE '%".$busqueda."'";
         $resultados = $this->mostrar($consulta);

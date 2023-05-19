@@ -17,7 +17,6 @@ $FechaF= new DateTime($fin);
 
 //Compara que la fecha fin sea posterios a la fecha de inicio
 if ($FechaF > $FechaI){
-    $monto=floatval($monto);
     $obj->modificar($idp, $nombre, $inicio,$fin, $objetivo, $monto);
     $data=('Actualización exitosa');
     

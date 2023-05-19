@@ -86,7 +86,7 @@ article{
 .contenedor-formulario{
     background-color: white; 
     border-radius: var(--radius-2);
-    height: 50em;
+    height: 100%;
 } 
 
 .subtitulo-0{
