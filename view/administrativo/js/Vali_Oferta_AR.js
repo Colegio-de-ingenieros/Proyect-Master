@@ -3,7 +3,7 @@ let bRechazo = false
 var radioButton1 = document.getElementById("ti_ck1");
 var radioButton2 = document.getElementById("ti_ck2");
 var textBox = document.getElementById("descri_puesto");
-
+const guardar = document.getElementById('boton_registro');
 
 let botonRegresar = document.getElementById("boton_registro");
 
