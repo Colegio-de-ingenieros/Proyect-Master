@@ -1,5 +1,5 @@
 window.onload = function () {
-  fetch("../../controller/socio-asociado/Aplicar_Vacante.php")
+  fetch("../../controller/socio-asociado/Aplicar_Vacante_Prueba.php")
     .then(response => response.json())
     .then(respuesta => {
       console.log(respuesta);
