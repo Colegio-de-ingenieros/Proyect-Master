@@ -36,7 +36,7 @@ function obtener_Datos(){
 
 
 //responde cuando hay un click en el boton actualizar
-formulario.registrar.addEventListener('click', function (e){
+formularioProyectos.addEventListener('submit', function (e){
     e.preventDefault();
     let urlAct = window.location+''
     let split = urlAct.split("=");
@@ -61,7 +61,7 @@ formulario.registrar.addEventListener('click', function (e){
 })
 
 //responde cuando hay un click en el boton cancelar
-formulario.cancelar.addEventListener('click', function (e){
+formularioProyectos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
     let urlAct = window.location+''
 
