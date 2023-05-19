@@ -37,8 +37,8 @@ botonRegresar.addEventListener("click", (e) => {
 });
 
 const expresiones = {
-    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
-    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,1000}$/,
+    cadenasAcademicos:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
+    cadenasDescripcion:/^[a-zA-ZÁ-ý 0-9,.\s]{1,100}$/,
 
 }
 
