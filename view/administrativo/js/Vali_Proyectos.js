@@ -33,10 +33,10 @@ const expresiones = {
 }
 
 /* Input Nombre del Proyecto */
-formulario.nom_proyecto.addEventListener('keyup', (e) => {
+formularioProyectos.nom_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.nom_proyecto.value = valorInput
+	formularioProyectos.nom_proyecto.value = valorInput
      // Eliminar caracteres especiales
     .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº`´·¨°¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
@@ -51,10 +51,10 @@ formulario.nom_proyecto.addEventListener('keyup', (e) => {
 })
 
 /* Input Objetivo Proyecto*/
-formulario.obj_proyecto.addEventListener('keyup', (e) => {
+formularioProyectos.obj_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.obj_proyecto.value = valorInput
+	formularioProyectos.obj_proyecto.value = valorInput
     // Eliminar numeros
 	.replace(/[0-9]/g, '')
      // Eliminar caracteres especiales
@@ -71,9 +71,9 @@ formulario.obj_proyecto.addEventListener('keyup', (e) => {
 })
 
 /* Input Monto Proyecto*/
-formulario.monto_proyecto.addEventListener('keyup', (e) => {
+formularioProyectos.monto_proyecto.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
-	formulario.monto_proyecto.value = valorInput
+	formularioProyectos.monto_proyecto.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     //Elimina letras
@@ -87,20 +87,20 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
     if (verificarPuntos(valorInput) == true) {
         monto_proyecto.style.border = "3px solid red";
         valorInput = valorInput.substr(0, valorInput.length - 1);
-        formulario.monto_proyecto.value = valorInput;
+        formularioProyectos.monto_proyecto.value = valorInput;
     }
 
     //elimina el primer caracter si es un punto
     if (primeroNum(valorInput) == true) {
         monto_proyecto.style.border = "3px solid red";
         valorInput = valorInput.substr(0, valorInput.length - 1);
-        formulario.monto_proyecto.value = valorInput;
+        formularioProyectos.monto_proyecto.value = valorInput;
     }
 
     if (validarDecimales(valorInput) == true) {
         valorInput = valorInput.substr(0, valorInput.length - 1);
         //alert(valorInput.length);
-        formulario.monto_proyecto.value = valorInput;
+        formularioProyectos.monto_proyecto.value = valorInput;
     }
     //verifica que se cumpla con la expresion correpondiente    
     else if (!expresiones.MonPro.test(valorInput)) {
@@ -120,7 +120,7 @@ formulario.monto_proyecto.addEventListener('keyup', (e) => {
 
 function validar(bandera){
     const registrar = document.getElementById('registrar');
-    if (ultimoNum(formulario.monto_proyecto.value) == true) {
+    if (ultimoNum(formularioProyectos.monto_proyecto.value) == true) {
         bMonPro = false;
         registrar.disabled = true;
     }
