@@ -167,7 +167,7 @@ main {
     font-weight: 500;
 }
 
-.input-textarea-2{
+.input-textarea-aca-tec{
     width: 100%;
     height: 80px;
     resize: none;
@@ -183,15 +183,16 @@ main {
     align-items: center;
     justify-content: center;
     transition: 300ms all;
+    min-height: 80px;
 }
 
-.input-textarea-2:focus{
+.input-textarea-aca-tec:focus{
     box-shadow: var(--shadow-1);
     transform: scale(1.02);
     background-color: var(--color-gray);
 }
 
-.input-textarea-2:focus::placeholder{
+.input-textarea-aca-tec:focus::placeholder{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
