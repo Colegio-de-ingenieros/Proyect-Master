@@ -8,7 +8,7 @@
     --color-quinary: #085262;
 
     --color-white: #ffffff;
-    --color-gray: #dfe3e7;
+    --color-gray: #f2f4f7;
     --color-gray-2: #d6dbe0;
     --color-gray-3: #ccd1d3;
     --color-black: #000000;
@@ -172,7 +172,7 @@ main {
     height: 80px;
     resize: none;
     color: var(--color-black);
-    background-color: var(--color-gray-2);
+    background-color: var(--color-gray);
     border-radius: var(--radius-2);
     padding: 10px 20px;
     border: none;
@@ -188,7 +188,7 @@ main {
 .input-textarea-2:focus{
     box-shadow: var(--shadow-1);
     transform: scale(1.02);
-    background-color: var(--color-gray-3);
+    background-color: var(--color-gray);
 }
 
 .input-textarea-2:focus::placeholder{
