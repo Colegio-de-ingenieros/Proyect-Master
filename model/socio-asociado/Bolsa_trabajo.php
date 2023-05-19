@@ -11,16 +11,16 @@
 
         function extraer_datos_bolsa(){
             $query = "SELECT bolsaempresa.IdEmpBol, bolsaempresa.VacEmpBol, bolsaempresa.ReqAcaEmpBol, bolsaempresa.ReqTecEmpBol, bolsaempresa.DesEmpBol, bolsaempresa.AñoEmpBol, bolsaempresa.SalBrutoEmpBol, bolsaempresa.SalNetoEmpBol, bolsaempresa.HrIniEmpBol, bolsaempresa.HrFinEmpBol, bolsaempresa.TelEmpBol, bolsaempresa.CalleEmpBol, bolsaempresa.CorreoEmpBol, bolsajornada.IdJor, bolsamodalidades.IdMod, usuaemp.NomUsuaEmp, colonias.nomcolonia, municipios.nommunicipio, estados.nomestado 
-            from usuaemp, usuaempbolsa, bolsaempresa, bolsajornada, bolsamodalidades, usuaemplugares, colonias, municipios, estados 
+            FROM bolsaempresa, bolsajornada, bolsamodalidades, usuaemp, usuaempbolsa, colonias, municipios, estados, bolsacvlugares
             WHERE bolsaempresa.IdEmpBol = usuaempbolsa.IdEmpBol 
-            and usuaempbolsa.RFCUsuaEmp = usuaemp.RFCUsuaEmp 
-            and bolsajornada.IdEmpBol = bolsaempresa.IdEmpBol 
-            and bolsamodalidades.IdEmpBol = bolsaempresa.IdEmpBol 
-            and usuaemp.RFCUsuaEmp = usuaemplugares.RFCUsuaEmp 
-            and usuaemplugares.IdColonia = colonias.IdColonia 
-            and municipios.idmunicipio = colonias.idmunicipio 
-            and estados.idestado = municipios.idestado
-            and bolsaempresa.EstatusEmpBol = 1";
+            AND usuaempbolsa.RFCUsuaEmp = usuaemp.RFCUsuaEmp 
+            AND bolsajornada.IdEmpBol = bolsaempresa.IdEmpBol 
+            AND bolsamodalidades.IdEmpBol = bolsaempresa.IdEmpBol 
+            AND bolsacvlugares.IdEmpBol = bolsaempresa.IdEmpBol
+            AND bolsacvlugares.IdColonia = colonias.IdColonia
+            AND municipios.idmunicipio = colonias.idmunicipio 
+            AND estados.idestado = municipios.idestado
+            AND bolsaempresa.EstatusEmpBol = 1";
             $resultados = $this->base->mostrar($query);
 
             if ($resultados != null){

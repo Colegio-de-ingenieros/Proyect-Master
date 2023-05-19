@@ -8,7 +8,7 @@ window.onload = function () {
 
       if(resultado == "sintemario") {
         alert('Para poder aplicar a la oferta es necesario que complete su CV. Por favor, diríjase al módulo "MI CV" y complete su información');
-        window.location.href = "Bolsa-Trabajo.html";
+        window.location.href = "Bolsa_Trabajo.html";
       }
       else {
         let datos_generales = Object.values(respuesta[0][0]);

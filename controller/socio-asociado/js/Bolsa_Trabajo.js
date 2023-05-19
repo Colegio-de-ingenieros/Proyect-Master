@@ -13,30 +13,43 @@ window.onload = function () {
   })
     .then(response => response.json())
     .then(json => resultado(json))
-    .catch(error => alert("Ha ocurrido un error, inténtelo de nuevo más tarde"));
+    .catch(error => console.log("Ha ocurrido un error, inténtelo de nuevo más tarde"));
 
   const resultado = (json) => {
-    listOfLists = json.map(obj => Object.values(obj));
-    listOfLists = listOfLists.map(list => list.slice(0, 18));
+    if (json == "No se encontraron resultados") {
+      let tarjetas = document.getElementById("cards");
+      tarjetas.style.display = "flex";
+      
 
-    let tarjetas = document.getElementById("cards");
+      /* Crea una etiqueta en donde mencione que no se encontraron vacantes */
+      let etiqueta = document.createElement("div");
+      etiqueta.innerHTML = "No se encontraron vacantes";
+      etiqueta.style.marginTop = "5px";
+      /* Agrega la etiqueta a la sección de tarjetas */
+      tarjetas.appendChild(etiqueta);
+    }
+    else {
+      listOfLists = json.map(obj => Object.values(obj));
+      listOfLists = listOfLists.map(list => list.slice(0, 18));
 
-    for (let i = 0; i < listOfLists.length; i++) {
-      let formato_salario_neto = listOfLists[i][7] + " MXN Mensuales";
-      let formato_direccicon = listOfLists[i][16] + ", " + listOfLists[i][17];
-      let formato_nombre_empresa = listOfLists[i][15];
+      let tarjetas = document.getElementById("cards");
 
-      let valor_jornada = listOfLists[i][13];
-      let texto_jornada = "";
+      for (let i = 0; i < listOfLists.length; i++) {
+        let formato_salario_neto = listOfLists[i][7] + " MXN Mensuales";
+        let formato_direccicon = listOfLists[i][16] + ", " + listOfLists[i][17];
+        let formato_nombre_empresa = listOfLists[i][15];
 
-      if (valor_jornada === "1") {
-        texto_jornada = "Tiempo Completo";
-      }
-      else if (valor_jornada === "2") {
-        texto_jornada = "Medio Tiempo";
-      }
+        let valor_jornada = listOfLists[i][13];
+        let texto_jornada = "";
 
-      body = `
+        if (valor_jornada === "1") {
+          texto_jornada = "Tiempo Completo";
+        }
+        else if (valor_jornada === "2") {
+          texto_jornada = "Medio Tiempo";
+        }
+
+        body = `
         <div class="card" onclick="mostrar_modal('${listOfLists[i][0]}')">
 
         <div class="card-content">
@@ -52,10 +65,10 @@ window.onload = function () {
         </div>
       </div>
       `;
-      /* crea los elementos dentro de tarjetas */
-      tarjetas.innerHTML += body;
+        /* crea los elementos dentro de tarjetas */
+        tarjetas.innerHTML += body;
+      }
     }
-
   }
 }
 

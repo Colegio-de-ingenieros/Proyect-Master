@@ -37,6 +37,7 @@
         echo json_encode($array);
     }
     else{
-        echo $resultados;
+        header('Content-Type: application/json');
+        echo json_encode($resultados);
     }
 ?>
