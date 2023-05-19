@@ -639,7 +639,7 @@ function ocultar_modal(position) {
 
 
   if (bandera_subtemas == true) {
-    alert("No puede haber subtemas vacios");
+    alert("No puede haber subtemas vacíos");
   }
   else {
     modal.classList.remove("show");
@@ -654,7 +654,7 @@ enviar.addEventListener("click", (e) => {
   let vacio = validar_temas();
 
   if (vacio == true) {
-    alert("No puede haber temas vacios");
+    alert("No puede haber temas vacíos");
   }
   else {
     let temario = convertirData(DataGlobal);

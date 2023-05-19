@@ -1,9 +1,6 @@
-
 <?php
-include_once('../../model/empresa/Mostrar_Cuotas.php');
-
 session_start();
-
+include_once('../../model/empresa/Mostrar_Cuotas.php');
 if (isset ($_SESSION['usuario']  )){
     $usuario = $_SESSION['usuario'];
 
