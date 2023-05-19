@@ -15,13 +15,13 @@ function confirmacion(e){
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista
-                location.href = '../../view/administrativo/Vista_Proyectos.php';
+                location.href = '../../view/administrativo/Vista_Proyectos.html';
             },
             error: function (jqXHR, textStatus, errorThrown)
             {
                 // psrocesar la respuesta del servidor en caso de error
                 alert('Error, el proyecto no puede ser eliminado porque tiene un seguimiento');
-                location.href = '../../view/administrativo/Vista_Proyectos.php';
+                location.href = '../../view/administrativo/Vista_Proyectos.html';
             }
         });
 
