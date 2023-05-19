@@ -563,6 +563,21 @@ tr:hover td {
 
     .input-format-0{
         width: 100%;
+    } 
+
+    .contenedor-formulario1{
+        width: 100%;
     }
+
+    .input-format-22{
+        width: 12em;
+    }
+
+    .btn-medium{
+        margin: auto 0.3em ;
+    } 
     
+    .btn-medium1{
+        margin: auto 5em ;
+    }
 }

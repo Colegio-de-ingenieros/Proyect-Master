@@ -2,7 +2,6 @@
 /* Expresiones regulares */
 const expresiones = {
     nombre: /^[a-zA-ZÁ-Ýá-ý\.\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
-    certificacion: /^[a-zA-ZÁ-Ýá-ý0-9\.\s]{1,60}$/,
     apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
     especialidades: /^[a-zA-ZÁ-Ýá-ý\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
     fecha: /^\d{4}-\d{2}-\d{2}$/, // Fecha en formato yyyy-mm-dd
@@ -96,7 +95,6 @@ materno_campo.addEventListener('keyup', (e) => {
 
 /* Validación para la especialidad */
 const especialidad_campo = document.getElementById('especialidad');
-
 especialidad_campo.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
 	especialidad_campo.value = valorInput
@@ -130,14 +128,15 @@ nombre_certificacion_campo.addEventListener('blur', (e) => {
         nombre_certificacion_campo.removeAttribute("style");
         banderas_externas.nombre = false;
     }
-   
+    /*console.log("blur nombre certificacion");
+    console.log(banderas_externas);*/
 });
 nombre_certificacion_campo.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý0-9\.\s]/g, '');
+    nombre_certificacion_campo.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\s]/g, '');
     let valorInput2 = e.target.value;
-    if (!expresiones.certificacion.test(valorInput2)) {
+    if (!expresiones.nombre.test(valorInput2)) {
         nombre_certificacion_campo.style.border = "3px solid red";
         banderas_externas.nombre = false;
     }
@@ -145,7 +144,8 @@ nombre_certificacion_campo.addEventListener('keyup', (e) => {
         nombre_certificacion_campo.removeAttribute("style");
         banderas_externas.nombre = true;
     }
-    
+    /*console.log("key up nombre certificacion");
+    console.log(banderas_externas);*/
 });
 
 /* Validacion para el campo de organización */

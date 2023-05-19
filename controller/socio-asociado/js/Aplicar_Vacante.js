@@ -1,5 +1,5 @@
 window.onload = function () {
-  fetch("../../controller/socio-asociado/Aplicar_Vacante_Prueba.php")
+  fetch("../../controller/socio-asociado/Aplicar_Vacante.php")
     .then(response => response.json())
     .then(respuesta => {
       console.log(respuesta);
@@ -8,7 +8,7 @@ window.onload = function () {
 
       if(resultado == "sintemario") {
         alert('Para poder aplicar a la oferta es necesario que complete su CV. Por favor, diríjase al módulo "MI CV" y complete su información');
-        window.location.href = "Bolsa_Trabajo.html";
+        window.location.href = "Bolsa-Trabajo.html";
       }
       else {
         let datos_generales = Object.values(respuesta[0][0]);

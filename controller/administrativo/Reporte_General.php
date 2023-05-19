@@ -54,7 +54,7 @@ class Reporte{
                 $gastosPer = $base->getGastosPerso($ids, $fechaI, $fechaF);
                 $ingreInst = $base->getIngresosPerso($ids, $fechaI, $fechaF);
                 $ingreEmp = $base->getIngresosEmpresa($ids, $fechaI, $fechaF);
-                $ingrePerso = $base->getIngresosInst($ids, $fechaI, $fechaF);
+                $ingrePerso = $base->getIngresosPerso($ids, $fechaI, $fechaF);
             }
             
 

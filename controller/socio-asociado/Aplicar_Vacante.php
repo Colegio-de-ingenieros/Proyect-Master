@@ -1,7 +1,7 @@
 <?php
     require_once("../../model/socio-asociado/Aplicar_Vacante.php");
     session_start();
-    if (isset ($_SESSION['usuario'])&& isset($_SESSION['tipo_usuario'])){
+    if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         $usuario = $_SESSION['usuario'];
         $tipo_usuario = $_SESSION['tipo_usuario'];
 
