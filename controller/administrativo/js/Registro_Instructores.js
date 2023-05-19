@@ -24,9 +24,7 @@ window.addEventListener("load",(e)=>{
        
         llenarCertificacionesInternas(datos);
     });
-    var fechaActual = new Date().toISOString().split("T")[0];
-    fecha_e_cert.max = fechaActual;
-
+    
 });
 btn_formulario_registrar.addEventListener("click",(e)=>{
 
