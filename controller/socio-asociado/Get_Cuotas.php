@@ -15,7 +15,6 @@ $tipo=$resultado[0]["IdCuota"];
 $monto = $resultado[0]["MontoVigCuo"];
 $inicio = $resultado[0]["IniVigCuo"];
 $fin = $resultado[0]["FinVigCuo"];
-$doc = $resultado[0]["DocCuota"];
 ?>
 
 
@@ -26,5 +25,5 @@ $doc = $resultado[0]["DocCuota"];
     document.getElementById("monto").value = "<?php echo $monto ?>";
     document.getElementById("fechainicio").value = "<?php echo $inicio ?>";
     document.getElementById("fechafin").value = "<?php echo $fin ?>";
-    document.getElementById("archivo").scr = "<?php echo 'data:application/pdf'.$doc ?>";
+    document.getElementById("archivo").scr = "<?php echo 'data:application/pdf'?>";
 </script>

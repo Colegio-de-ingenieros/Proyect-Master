@@ -49,14 +49,14 @@
             return $datos;
         }
 
-        public function insertar_cursos($id_curso, $nombre, $organizacion, $horas, $archivo, $id_perso){
+        public function insertar_cursos($id_curso, $nombre, $organizacion, $horas, $id_perso){
             $this->conexion_bd();
 
             //consultas para la tabla de usuaperso
-            $q1 = "INSERT INTO altacursos (IdCurPerso, NomCurPerso, HraCurPerso, DocCurPerso, OrgCurPerso) 
-            VALUES (:idCurso, :nomCurso, :hraCurso, :docCurso, :orgCurso)";
+            $q1 = "INSERT INTO altacursos (IdCurPerso, NomCurPerso, HraCurPerso, OrgCurPerso) 
+            VALUES (:idCurso, :nomCurso, :hraCurso, :orgCurso)";
 
-            $a1 = [":idCurso"=>$id_curso, ":nomCurso"=>$nombre, ":hraCurso"=>$horas, ":docCurso"=>$archivo, ":orgCurso"=>$organizacion];
+            $a1 = [":idCurso"=>$id_curso, ":nomCurso"=>$nombre, ":hraCurso"=>$horas, ":orgCurso"=>$organizacion];
 
             //consultas para la tabla de usuaperso
             $q2 = "INSERT INTO persoaltacur (IdPerso ,IdCurPerso) 

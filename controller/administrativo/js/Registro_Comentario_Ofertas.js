@@ -25,7 +25,7 @@ formulario.addEventListener('submit', function (e)
         //console.log(data);
         if (data === 'exito') {
             const form= document.getElementById('formulario');
-            alert("Registro exitoso");
+            alert("Envío exitoso");
             
         }
         else{

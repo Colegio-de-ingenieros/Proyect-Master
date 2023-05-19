@@ -20,7 +20,7 @@ formulario.addEventListener('submit', function (e)
             //el registro fue exitoso
             if (data === 'exito') {
                 alert("Actualización exitosa");
-                location.href = '../../view/socio-asociado/Ver_Cursos.html';
+                location.href = '../../view/socio-asociado/Vista_Cursos.html';
             }
             //los datos no pasaron alguna validacion
             else if (data === 'no exito'){

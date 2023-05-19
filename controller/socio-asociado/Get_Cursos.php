@@ -13,7 +13,6 @@ $resultado=$base->getCursosId($idc);
 //guardar los datos en variables
 $nombre = $resultado[0]["NomCurPerso"];
 $hra = $resultado[0]["HraCurPerso"];
-$doc = $resultado[0]["DocCurPerso"];
 $org = $resultado[0]["OrgCurPerso"];
 ?>
 
@@ -24,5 +23,5 @@ $org = $resultado[0]["OrgCurPerso"];
     document.getElementById("nombre").value = "<?php echo $nombre ?>";
     document.getElementById("organizacion").value = "<?php echo $org ?>";
     document.getElementById("totalhoras").value = "<?php echo $hra ?>";
-    document.getElementById("archivo").scr = "<?php echo 'data:application/pdf'.$doc ?>";
+    document.getElementById("archivo").scr = "<?php echo 'data:application/pdf'?>";
 </script>
