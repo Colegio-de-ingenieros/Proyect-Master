@@ -22,7 +22,7 @@ class PDF extends FPDF{
         // Movernos a la derecha
         $this->Cell(80);
         // Título
-        $fecha_hoy = date('Y/m/d');
+        $fecha_hoy = date('d/m/Y');
         $this->Text(250,15, $fecha_hoy); //Aqui la variable de la fecha de emision del reporte 
         // Salto de línea
         $this->Ln(15);
