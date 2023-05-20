@@ -1,5 +1,5 @@
 <?php
-    include_once('../../model/socio-asociado/Bolsa_trabajo.php');
+    include_once('../../model/socio-asociado/Bolsa_Trabajo.php');
 
     $obj = new funciones_bolsa();
     $obj -> conexion();
@@ -32,11 +32,11 @@
             $array[$i] = $resultados[$i];
         }
 
-
         header('Content-Type: application/json');
         echo json_encode($array);
     }
     else{
+        header('Content-Type: application/json');
         echo $resultados;
     }
 ?>

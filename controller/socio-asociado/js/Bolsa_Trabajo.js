@@ -1,7 +1,7 @@
 let listOfLists = [];
 
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Bolsa_trabajo.php"
+  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php"
   let id = 0;
 
   let form = new FormData();
@@ -13,30 +13,46 @@ window.onload = function () {
   })
     .then(response => response.json())
     .then(json => resultado(json))
-    .catch(error => alert("Ha ocurrido un error, inténtelo de nuevo más tarde"));
+    .catch(error => console.log("Ha ocurrido un error, inténtelo de nuevo más tarde"));
 
   const resultado = (json) => {
-    listOfLists = json.map(obj => Object.values(obj));
-    listOfLists = listOfLists.map(list => list.slice(0, 18));
+    if (json == "No se encontraron resultados") {
+      let tarjetas = document.getElementById("cards");
+      tarjetas.style.display = "flex";
 
-    let tarjetas = document.getElementById("cards");
+      let etiqueta = document.createElement("div");
+      etiqueta.innerHTML = "No se encontraron vacantes";
+      etiqueta.style.marginTop = "5px";
 
-    for (let i = 0; i < listOfLists.length; i++) {
-      let formato_salario_neto = listOfLists[i][7] + " MXN Mensuales";
-      let formato_direccicon = listOfLists[i][16] + ", " + listOfLists[i][17];
-      let formato_nombre_empresa = listOfLists[i][15];
+      tarjetas.appendChild(etiqueta);
+    }
+    else {
+      listOfLists = json.map(obj => Object.values(obj));
+      listOfLists = listOfLists.map(list => list.slice(0, 19));
 
-      let valor_jornada = listOfLists[i][13];
-      let texto_jornada = "";
+      let tarjetas = document.getElementById("cards");
 
-      if (valor_jornada === "1") {
-        texto_jornada = "Tiempo Completo";
-      }
-      else if (valor_jornada === "2") {
-        texto_jornada = "Medio Tiempo";
-      }
+      for (let i = 0; i < listOfLists.length; i++) {
+        let salario_neto = listOfLists[i][7];
+        if (salario_neto.length > 32) {
+          salario_neto = [salario_neto.slice(0, 28), " ", salario_neto.slice(32)].join('');
+        }
 
-      body = `
+        let formato_salario_neto = salario_neto + " MXN Mensuales";
+        let formato_direccicon = listOfLists[i][17] + ", " + listOfLists[i][18];
+        let formato_nombre_empresa = listOfLists[i][15];
+
+        let valor_jornada = listOfLists[i][13];
+        let texto_jornada = "";
+
+        if (valor_jornada === "1") {
+          texto_jornada = "Tiempo Completo";
+        }
+        else if (valor_jornada === "2") {
+          texto_jornada = "Medio Tiempo";
+        }
+
+        body = `
         <div class="card" onclick="mostrar_modal('${listOfLists[i][0]}')">
 
         <div class="card-content">
@@ -52,10 +68,9 @@ window.onload = function () {
         </div>
       </div>
       `;
-      /* crea los elementos dentro de tarjetas */
-      tarjetas.innerHTML += body;
+        tarjetas.innerHTML += body;
+      }
     }
-
   }
 }
 
@@ -65,7 +80,7 @@ const modal = document.getElementById('modal-container');
 
 function mostrar_modal(id_vacante) {
   modal.classList.add('show');
-  let url = "../../controller/socio-asociado/Bolsa_trabajo.php";
+  let url = "../../controller/socio-asociado/Bolsa_Trabajo.php";
   let form = new FormData();
   form.append("id_vacante", id_vacante);
 
@@ -75,10 +90,10 @@ function mostrar_modal(id_vacante) {
   })
     .then(res => res.json())
     .then(json => resultado(json))
-    .catch(error => alert("Ha ocurrido un error, inténtelo más tarde"));
+    .catch(error => console.log("Ha ocurrido un error, inténtelo más tarde 2"));
 
   const resultado = (json) => {
-    /* console.log(json); */
+
     let listOfLists2 = json.map(obj => Object.values(obj));
     listOfLists2 = listOfLists2.map(list => list.slice(0, 21));
     console.log(listOfLists2);
@@ -102,7 +117,7 @@ function mostrar_modal(id_vacante) {
         const link = document.getElementById('link-ventana')
 
         let lista_dias = listOfLists2[i][19]
-        /* console.log(lista_dias) */
+
         if (lista_dias != "No se encontraron días laborales") {
           const diasSemana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
           let cadena = '';
@@ -117,7 +132,6 @@ function mostrar_modal(id_vacante) {
         else {
           cadena_dias = lista_dias;
         }
-
 
         let formato_horario = listOfLists2[i][8] + " - " + listOfLists2[i][9];
         let formato_salario_bruto = listOfLists2[i][6] + "MXN Mensuales";
