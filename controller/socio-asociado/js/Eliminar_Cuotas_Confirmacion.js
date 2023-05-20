@@ -13,7 +13,8 @@ function confirmacion(e){
             success: function (response)
             {
                 // Procesar la respuesta del servidor en caso de éxito
-                alert('Eliminado con éxito');
+                alert(response);
+                //alert('Eliminado con éxito');
                 // volver a la pagina de vista
                 location.href = '../../view/socio-asociado/Vista_Cuotas.html';
             },
