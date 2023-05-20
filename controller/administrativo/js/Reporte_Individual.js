@@ -173,6 +173,7 @@ formulario.addEventListener("submit",(e)=>{
 
         let fecha_inicio1 = new Date(fecha1);
         let fecha_fin1 = new Date(fecha2);
+      
 
         if((fecha_inicio1 > fecha_fin1) && document.getElementById("periodo").checked){
             alert("La fecha de inicio no debe ser mayor a la fecha de finalización");
@@ -195,7 +196,8 @@ formulario.addEventListener("submit",(e)=>{
                 titulo.innerText = nombre;
 
                 if(document.getElementById("periodo").checked){
-                    fechas_titulo.innerText = fecha1 + "  "+ fecha2  ;
+                   
+                    fechas_titulo.innerText = cambiar_fecha(fecha1) + "  "+ cambiar_fecha(fecha2)  ;
                     rellenar_tabla(datos);
                 }else{
                     if(datos[0][0][0] != null && datos[0][0][1] != null){
@@ -437,3 +439,9 @@ function getNombre() {
 }
 
 
+function cambiar_fecha(string) {
+    let separacion = string.split("-");
+    let nueva_fecha = separacion[2] + "/" + separacion[1] +"/"+ separacion[0];
+    return nueva_fecha;
+    
+}
