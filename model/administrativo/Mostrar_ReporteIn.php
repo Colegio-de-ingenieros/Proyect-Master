@@ -266,7 +266,7 @@ class Reportes_in extends Crud_bd{
         # te da la fecha mas antigua y la mas nueva en la quye se ha registrado un gasto
         # o un ingreso del id de seguimiento que le des
         $this->conexion_bd();
-        $sql = "SELECT MIN(fechas) as antigua, MAX(fechas) as reciente from ((select controlgas.FechaGas as fechas from controlgas
+        $sql = "SELECT DATE_FORMAT(MIN(fechas), '%d/%m/%Y') as antigua, DATE_FORMAT(MAX(fechas), '%d/%m/%Y')  as reciente from ((select controlgas.FechaGas as fechas from controlgas
                 INNER JOIN ((SELECT empgastos.IdGas as IdGas from empparticipa
                 INNER JOIN empgastos ON empgastos.IdParE = empparticipa.IdParE and empparticipa.IdSeg = :id)
                 UNION ALL
