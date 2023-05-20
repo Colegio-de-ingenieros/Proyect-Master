@@ -21,6 +21,8 @@ formulario.addEventListener('submit', function (e)
             if (data === 'exito') {
                 alert("Actualización exitosa");
                 location.href = '../../view/empresa/Vista_Cuotas.html';
+            }else if (data == 'fechas'){
+                alert("Fecha de finalización debe ser posterior a fecha de inicio");
             }
             //los datos no pasaron alguna validacion
             else if (data === 'no exito'){

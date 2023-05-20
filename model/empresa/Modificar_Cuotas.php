@@ -9,7 +9,12 @@
             $consulta1 = "UPDATE vigenciacuotas SET MontoVigCuo=:monto, IniVigCuo=:inicio, FinVigCuo=:fin WHERE IdVigCuo=:idV";
             $parametros1 = [":idV"=>$idV, ":monto"=>$monto, ":inicio"=>$inicio, ":fin"=>$fin];
             
-            $datos = $this->insertar_eliminar_actualizar($consulta1,$parametros1);
+            $consulta = "UPDATE tipovigcuota SET IdCuota=:tipo WHERE IdVigCuo=:idV";
+            $parametros = [":idV"=>$idV, ":tipo"=>$tipo];
+            $consul=[$consulta1, $consulta];
+            $para=[$parametros1, $parametros];
+            
+            $datos = $this->insertar_eliminar_actualizar($consul,$para);
             $this->cerrar_conexion();
             return $datos;
         }
@@ -18,6 +23,16 @@
             $this->conexion_bd();
             $consulta = "SELECT RFCUsuaEmp FROM usuaemp WHERE binary(CorreoUsuaEmp) =  binary(:user)";
             $parametros = [":user"=>$correo];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function id_cuotas($id){
+            $this->conexion_bd();
+    
+            $consulta = "SELECT IdVigCuo FROM empvigcuota WHERE RFCUsuaEmp =  :user";
+            $parametros = [":user"=>$id];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
             return $datos;
