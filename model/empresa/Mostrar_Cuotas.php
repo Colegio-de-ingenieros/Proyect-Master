@@ -52,5 +52,15 @@ class MostrarCuota extends Crud_bd{
         $this->cerrar_conexion();
         return $resultados;
     }
+
+    public function id_cuotas($id){
+        $this->conexion_bd();
+
+        $consulta = "SELECT IdVigCuo FROM empvigcuota WHERE binary(RFCUsuaEmp) =  binary(:user)";
+        $parametros = [":user"=>$id];
+        $datos = $this->mostrar($consulta,$parametros);
+        $this->cerrar_conexion();
+        return $datos;
+    }
 }
 ?>
