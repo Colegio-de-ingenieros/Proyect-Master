@@ -34,5 +34,5 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     document.getElementById("monto").value = "<?php echo $monto ?>";
     document.getElementById("fechainicio").value = "<?php echo $inicio ?>";
     document.getElementById("fechafin").value = "<?php echo $fin ?>";
-    document.getElementById("archivo").setAttribute('href', ('../../controller/comprobantes/<?php echo $id_cuota ?>'));
+    document.getElementById("archivo").setAttribute('href', ('../../controller/Comprobantes/<?php echo $id_cuota ?>'));
 </script>
