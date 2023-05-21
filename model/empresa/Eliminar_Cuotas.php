@@ -14,7 +14,7 @@ class eliminarCuotas extends Crud_bd{
         $consulta = "DELETE FROM vigenciacuotas WHERE IdVigCuo=:idV";
         $parametros = [":idV"=>$idV];
 
-        $consul=[$consulta1, $consulta, $consulta2];
+        $consul=[$consulta1, $consulta2, $consulta];
         $para=[$parametros1, $parametros, $parametros2];
 
         $datos = $this->insertar_eliminar_actualizar($consul,$para);
