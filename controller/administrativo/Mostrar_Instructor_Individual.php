@@ -4,9 +4,8 @@ include_once('../../model/administrativo/Mostrar_Instructores.php');
 
 $objeto = new Mostrar_Instructor();
 
-    //?$id = $_POST['id_instructor'];
-    //? Id de prueba:  
-    $id = 'I00006';
+    $id = $_POST['id_instructor'];
+    //? Id de prueba:  $id = 'I00006';
     
     $Info_Instructor_Individual = $objeto->mostrar_instructor_individual($id);
 
