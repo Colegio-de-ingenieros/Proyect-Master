@@ -12,7 +12,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     //instancias la clase para buscar y traer los datos
     $base = new MostrarCuota();
-    $resultado=$base->buscar_datos($idV);
+    $resultado=$base->buscar_datos1($idV);
     $id = $base->usuario($usuario);
     $id = $id[0]['RFCUsuaEmp'];
     $id_cuota = $base->id_cuotas($id);
@@ -34,5 +34,5 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     document.getElementById("monto").value = "<?php echo $monto ?>";
     document.getElementById("fechainicio").value = "<?php echo $inicio ?>";
     document.getElementById("fechafin").value = "<?php echo $fin ?>";
-    document.getElementById("archivo").setAttribute('href', ('../../controller/Comprobantes/<?php echo $id_cuota ?>'));
+    document.getElementById("archivo").setAttribute('href', ('../../controller/Comprobantes/empresa/cuotas/<?php echo $id_cuota ?>'));
 </script>
