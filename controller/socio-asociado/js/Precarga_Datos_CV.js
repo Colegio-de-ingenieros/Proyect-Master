@@ -29,6 +29,7 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
 
       // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
       const contenedor = document.getElementById('formulario-certificaciones');
+      const respuesta_estatus = document.getElementById('respuesta');
 
       for (let i = 2; i < respuesta.length; i++) {
          console.log (i);
@@ -153,5 +154,8 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                
             }
          }
+      }
+      if (respuesta.length <= 3){
+         respuesta_estatus.textContent = 'No hay CV registrado';
       }
    });

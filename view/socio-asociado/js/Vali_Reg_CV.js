@@ -397,33 +397,33 @@ function datos(){
 
     if (sal == false){
         salario.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if (obj == false){
         objetivo.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if (carr == false){
         carrera.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if (ced == false){
         cedulas.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if ((document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value === "")
     ||(document.getElementById("carrera-2").value === "" && document.getElementById("cedula-2").value !== "")){
-    alert("llene correctamente los campos de la segunda carrera");
+    alert("Llene correctamente los campos de la segunda carrera");
     }
     else if (document.getElementById("carrera-2").value !== "" && document.getElementById("cedula-2").value.trim().length < 7){
-        alert("llene correctamente los campos de la segunda carrera");
+        alert("Llene correctamente los campos de la segunda carrera");
     }
     else if ((document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value === "")
     ||(document.getElementById("carrera-3").value === "" && document.getElementById("cedula-3").value !== "")){
-    alert("llene correctamente los campos de la tercera carrera");
+    alert("Llene correctamente los campos de la tercera carrera");
     }
     else if (document.getElementById("carrera-3").value !== "" && document.getElementById("cedula-3").value.trim().length < 7){
-        alert("llene correctamente los campos de la tercera carrera");
+        alert("Llene correctamente los campos de la tercera carrera");
     }
     else if ((document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value === "")
     ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value === "")
@@ -431,19 +431,19 @@ function datos(){
     ||(document.getElementById("puesto-antiguo-2").value === "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value !== "")
     ||(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value === "" && document.getElementById("actividad-antigua-2").value !== "")
     ||(document.getElementById("puesto-antiguo-2").value !== "" && document.getElementById("empresa-antigua-2").value !== "" && document.getElementById("actividad-antigua-2").value === "")){
-    alert("llene los campos de la segunda experiencia laboral");
+    alert("Llene los campos de la segunda experiencia laboral");
     }
     else if (puest == false){
         puesto.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if (empr == false){
         empresa.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else if (acti == false){
         actividad.style.border = "3px solid red";
-        alert("llene los campos obligatorios para continuar");
+        alert("Llene los campos obligatorios para continuar");
     }
     else {
         segunda_carrera = 0;
@@ -554,6 +554,7 @@ function datos(){
                 }
                 else{
                 alert(data);
+                location.href = "../../view/socio-asociado/Reg_CV.html";
                 }
                 
         

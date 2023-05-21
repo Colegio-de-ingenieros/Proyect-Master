@@ -10,9 +10,9 @@
         }
         function actualizarbolsa($idb, $descripcion, $residencia, $salario){
             $q1 = "UPDATE bolsacv 
-            SET DesProCv = :descripcion, ResidenciaCv = :residencia, ExpSalCv = :salario WHERE IdBolCv = :idb";
+            SET DesProCv = :descripcion, ResidenciaCv = :residencia, ExpSalCv = :salario, EstatusCv = :estatus, ComeCv = :comentario WHERE IdBolCv = :idb";
 
-            $a1 = [":idb"=>$idb, ":descripcion"=>$descripcion, ":residencia"=>$residencia, ":salario"=>$salario];
+            $a1 = [":idb"=>$idb, ":descripcion"=>$descripcion, ":residencia"=>$residencia, ":salario"=>$salario, ":estatus"=> 0, ":comentario"=> null];
 
             //acomoda todo en arreglos para mandarlos al CRUD
             $querry = [$q1];
