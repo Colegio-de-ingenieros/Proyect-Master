@@ -20,7 +20,10 @@ if ($resultado == true) {
   $exp = $resultado[0]["AñoEmpBol"];
   $tel = $resultado[0]["TelEmpBol"];
   $cor= $resultado[0]["CorreoEmpBol"];
+  $estatus = $resultado[0]["EstatusEmpBol"];
+  $comentario=$resultado[0]["ComeEmpBol"];
 }
+echo $comentario;
 $resultado = $base->mostrarJornada($id);
 if ($resultado == true) {
   $jor=$resultado[0]["TipoJor"];
@@ -52,9 +55,15 @@ $res=preg_replace("[\n|\r|\n\r]", "<br>", $desc);
 $resTec=preg_replace("[\t|\n|\r|\n\r]", "<br>", $reqtec);
 $resAca=preg_replace("[\t|\n|\r|\n\r]", "<br>", $req);
 
+
+
+
 ?>
 <script>
 </script>
+
+
+
 <script>
     var parrafo = document.getElementById("nombreOT"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenido
@@ -130,3 +139,18 @@ var parrafo = document.getElementById("descri_puestoOT"); // obtenemos la refere
   parrafo.innerHTML = "<?php echo $res; ?>";
 var parrafo = document.createElement("p");
   </script>
+
+<script>
+    <?php if ($estatus==1 or $estatus==0) { ?>
+        // Marcar el checkbox si la condición en PHP se cumple
+        var textBox = document.getElementById("descri_puesto");
+        document.getElementById("ti_ck1").checked = true;
+        textBox.disabled = true;
+    <?php }else if ($estatus==2){ ?>
+        document.getElementById("ti_ck2").checked = true;
+        var textBox = document.getElementById("descri_puesto");
+        textBox.disabled = false;
+        var texto ="<?php echo $comentario; ?>";
+        textBox.value = texto;
+    <?php } ?>
+</script>
