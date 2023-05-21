@@ -12,6 +12,7 @@ const organizacion_cert = document.getElementById("organizacion-externa");
 const fecha_e_cert = document.getElementById("emision-externa");
 const fecha_v_cert = document.getElementById("vigencia-externa");
 
+const btn_formulario_actualizar = document.getElementById("boton_actualizar");
 const formulario = document.getElementById("formulario");
 const cnt_certifiacionesInt = document.getElementById("cert_int");
 const id_instructor = (new URLSearchParams(location.search)).get('id');
@@ -20,10 +21,28 @@ const nombre = document.getElementById("nombre");
 const apellido_p = document.getElementById("paterno");
 const apellido_m = document.getElementById("materno");
 
+const abrir_modal = document.getElementById("open");
+const cerrar_modal = document.getElementById("close");
+const guardar_modal = document.getElementById("guardar_modal");
+const modal = document.getElementById("modal-container");
+const modalContainer = document.getElementById("modal");
+
+const nombre_cert_modi = document.getElementById("nombre-cert-externa-modi");
+const organizacion_cert_modi = document.getElementById("organizacion-externa-modi");
+const fecha_e_cert_modi = document.getElementById("emision-externa-modi");
+const fecha_v_cert_modi = document.getElementById("vigencia-externa-modi");
+
+const formulario_cert = document.getElementById("formulario_cert");
+const formulario_cert_modal = document.getElementById("formulario_cert_modal");
+const btn_cancelar_registro_principal = document.getElementById("boton_cancelar");
+
 /* guardaran las certificaciones y especialidades eliminadas y nuevas, para insertar y eliminar respectivamente */
 window.certificaciones = [];
 window.especialidades = [];
 
+const expre = {
+    especialidades: /^[a-zA-ZÁ-Ýá-ý\s]{1,60}$/
+}
 
 window.addEventListener("load",async (e)=>{
     let form_data = new FormData();
@@ -38,48 +57,64 @@ window.addEventListener("load",async (e)=>{
         body: form_data
     });
     let datos_instructores = await respuesta_instructores.json();
-    console.log(datos_instructores);
+ 
     mostrarDatosBasicos(datos_instructores[0]);
     mostrarEspecialidades(datos_instructores[1]);
     mostrarCertificacionesInternas(datos_instructores[2]);
     mostrarCertificaciones(datos_instructores[3]);
 
+    banderas.nombre = true;
+    banderas.paterno = true;
+
 
 
 });
+btn_cancelar_registro_principal.addEventListener("click",(e)=>{
+    let respuesta = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    if(respuesta){
+        window.location.href = '../administrativo/Vista_Instructor.html' 
+    }
+});
+btn_formulario_actualizar.addEventListener("click",(e)=>{
 
-formulario.addEventListener("submit",(e)=>{
-    e.preventDefault();
+    if(!banderas.nombre){
+        nombre_campo.style.border = "3px solid red";
+    }else if(!banderas.paterno){
+        paterno_campo.style.border = "3px solid red";
+    }else{
+        
+        let respuesta =  SeleccionoUnaCertificacionInterna();
+        
+        extraer_datos_tabla();
+        extraer_datos_input();
+       
+        
+        
+        let form_data = new FormData(formulario);
+        form_data.append("id",id_instructor);
+        form_data.append("certificaciones",JSON.stringify(ordenarLista(window.certificaciones)));
+        form_data.append("especialidades",JSON.stringify(ordenarLista(window.especialidades)));
+        if(respuesta == false){
+            form_data.append("cert_int","");
+        }  
+        
+        fetch("../../controller/administrativo/Modificar_Instructores.php",{
+            method:"POST",
+            body: form_data
+        }).then(respuesta => respuesta.json())
+        .then(datos =>{
+            if(datos == true){
+                alert("Actualización exitosa");
+                window.especialidades = [];
+                window.certificaciones = [];
 
-    let respuesta =  SeleccionoUnaCertificacionInterna();
-    
-    extraer_datos_tabla();
-    extraer_datos_input();
-    //ordena las listas, primero van las que se van a eliminar
-    window.especialidades.sort();
-    window.certificaciones.sort();
-    
-    let form_data = new FormData(e.target);
-    form_data.append("id",id_instructor);
-    form_data.append("certificaciones",JSON.stringify(window.certificaciones));
-    form_data.append("especialidades",JSON.stringify(window.especialidades));
-    if(respuesta == false){
-        form_data.append("cert_int","");
-    }  
-    
-    fetch("../../controller/administrativo/Modificar_Instructores.php",{
-        method:"POST",
-        body: form_data
-    }).then(respuesta => respuesta.json())
-    .then(datos =>{
-        if(datos == true){
-            alert("Actualización exitosa");
-            window.location.href = '../administrativo/Vista_Instructor.html' ;
-        }else{
-            alert("No se pudo actualizar el instructor");
-        }
-    });
-    
+                window.location.href = '../administrativo/Vista_Instructor.html' ;
+            }
+                
+        });
+      
+        
+    }    
 
     
 });
@@ -94,11 +129,15 @@ btn_especialidades.addEventListener("click",(e)=>{
         cmp_especialidades.value = "";
         agregar_especialidad(texto,false,"");
 
+    }else{
+        especialidad_campo.style.border = "3px solid red";
+        banderas.especialidad = false;
     }
     
 });
 
-btn_certificacion.addEventListener("click",(e)=>{
+formulario_cert.addEventListener("submit",(e)=>{
+    e.preventDefault();
 
     let nombre = nombre_cert.value;
     let org = organizacion_cert.value;
@@ -107,29 +146,32 @@ btn_certificacion.addEventListener("click",(e)=>{
     let fecha_inicio = new Date(fechaE);
     let fecha_fin = new Date(fechaV)
 
-    if(nombre != "" || org != ""){
-        if(nombre == ""){
-            alert("Debe colocar el nombre de la certificación");
-        }else if(org == ""){
-            alert("Debe colocar el nombre de la organización");
-        }else if(fechaE == ""){
-            alert("Debe seleccionar una fecha de emisión");
-        }else if(fechaV == ""){
-            alert("Debe seleccionar una fecha de vigencia");
-        }else if(fecha_inicio > fecha_fin){
-            alert("La fecha de emisión no puede ser mayor a la fecha de vigencia");
-        }else if(banderas_externas.nombre && banderas_externas.organizacion){
+    if(nombre == ""){
+        alert("Debe colocar el nombre de la certificación");
+        nombre_certificacion_campo.style.border = "3px solid red";
+        banderas_externas.nombre = false;
+    }else if(org == ""){
+        alert("Debe colocar el nombre de la organización");
+        organizacion_campo.style.border = "3px solid red";
+        banderas_externas.organizacion = false;
+    }else if(fechaE == ""){
+        alert("Debe seleccionar una fecha de emisión");
+    }else if(fechaV == ""){
+        alert("Debe seleccionar una fecha de vigencia");
+    }else if(fecha_inicio > fecha_fin){
+        alert("La fecha de emisión no puede ser mayor a la fecha de vigencia");
+    }else if(banderas_externas.nombre && banderas_externas.organizacion){
+
+        banderas_externas.nombre = false;
+        banderas_externas.organizacion = false;
     
-                banderas_externas.nombre = false;
-                banderas_externas.organizacion = false;
     
-    
-                nombre_cert.value = "";
-                organizacion_cert.value = "";
-                fecha_e_cert.value = "";
-                fecha_v_cert.value = "";
-                agregar_certificacion(nombre,org,fechaE,fechaV,false,"");
-        }
+        nombre_cert.value = "";
+        organizacion_cert.value = "";
+        fecha_e_cert.value = "";
+        fecha_v_cert.value = "";
+        agregar_certificacion(nombre,org,fechaE,fechaV,false,"");
+      
         
     } 
     
@@ -139,9 +181,9 @@ function agregar_especialidad(texto,clase,id) {
 
     let cnt_input = document.createElement("div");
     let input = document.createElement("input");
-    //let btn_modificar = document.createElement("button");
+    let btn_modificar = document.createElement("button");
     let btn_eliminar = document.createElement("button");
-    //let icono_modificar = document.createElement("i");
+    let icono_modificar = document.createElement("i");
     let icono_eliminar = document.createElement("i");
 
     let id_input = cnt_especialidades.childNodes.length+Math.floor(Math.random() * 100)+Date.now().toString(5);
@@ -156,33 +198,46 @@ function agregar_especialidad(texto,clase,id) {
     }
     input.classList.add("input-format-22");
     input.classList.add("espe-input");
-    input.setAttribute("maxlength","40");
+    input.setAttribute("maxlength","60");
     input.setAttribute("placeholder","Ingrese la especialidad");
     input.setAttribute("tittle","La especialidad solo puede contener letras mayúsculas y minúsculas.");
     input.setAttribute("onblur","bloquear_input('"+id_input+"')");
+    input.addEventListener("keyup",(e)=>{
 
+        let valorInput = e.target.value;
+        e.target.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\s]/g, '');
+        let valorInput2 = e.target.value;
+        if (!expre.especialidades.test(valorInput2)) {
+            input.style.border = "3px solid red";
+        }   
+        else {
+            input.removeAttribute("style");
+           
+        }
+    });
+    
     input.value = texto;
     input.disabled = true;
 
     btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
 
-    //icono_modificar.className = "fa-solid fa-pen-to-square";
+    icono_modificar.className = "fa-solid fa-pen-to-square";;
+    icono_modificar.style.cssText ="color: #273544";
+    
+    btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
     icono_eliminar.className = "ti ti-backspace-filled" ;
 
-    //icono_modificar.style.cssText ="color: #273544";
-    //icono_eliminar.style.cssText ="color: #273544";
-
-    //btn_modificar.appendChild(icono_modificar);
+    btn_modificar.appendChild(icono_modificar);
     btn_eliminar.appendChild(icono_eliminar);
 
-    //btn_modificar.setAttribute("type","button");
+    btn_modificar.setAttribute("type","button");
     btn_eliminar.setAttribute("type","button");
 
-    //btn_modificar.setAttribute('onclick',"modificar('"+ id_input  +"')");
+    btn_modificar.setAttribute('onclick',"modificar('"+ id_input  +"')");
     btn_eliminar.setAttribute('onclick',"eliminar_elemento('"+id_cnt+"')");
 
     cnt_input.appendChild(input);
-    //cnt_input.appendChild(btn_modificar);
+    cnt_input.appendChild(btn_modificar);
     cnt_input.appendChild(btn_eliminar);
 
     cnt_especialidades.appendChild(cnt_input);
@@ -198,8 +253,12 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV, clase,id) {
     var fecha_e_c = document.createElement('td');
     var fecha_v_c = document.createElement('td');
     var acciones_c = document.createElement('td');
+
     let btn_eliminar = document.createElement("button");
     let icono_eliminar = document.createElement("i");
+
+    let btn_modificar = document.createElement("button");
+    let icono_modificar = document.createElement("i");
 
     nombre_c.innerText = nombre;
     org_c.innerText = organizacion;
@@ -209,6 +268,13 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV, clase,id) {
     let id_fila = "fila" + cuerpo_tabla.childNodes.length*Math.floor(Math.random() * 100)+Date.now().toString(23);
     row.setAttribute("id",id_fila);
 
+    icono_modificar.className = "fa-solid fa-pen-to-square";;
+    icono_modificar.style.cssText ="color: #273544";
+
+    btn_modificar.setAttribute("onclick","mostrar_modal('"+id_fila+"')");
+    btn_modificar.appendChild(icono_modificar);
+    btn_modificar.setAttribute("type","button");
+
     icono_eliminar.className = "ti ti-backspace-filled" ;
     btn_eliminar.classList.add("btn", "btn-small", "btn-danger");
 
@@ -216,6 +282,7 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV, clase,id) {
     btn_eliminar.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");
     btn_eliminar.appendChild(icono_eliminar);
 
+    acciones_c.appendChild(btn_modificar);
     acciones_c.appendChild(btn_eliminar);
 
     row.appendChild(nombre_c);
@@ -301,15 +368,21 @@ function extraer_datos_tabla() {
 
         let clasesLista = row.className.split(" ");
         let clase_con_id = clasesLista.find(texto => texto.includes("old"));
-        if(clase_con_id == undefined){
 
-            fila.push("new");
-            for (var j = 0; j< 4 ; j++) {
-                col = row.cells[j];
-                fila.push(col.textContent);
-            }  
-            window.certificaciones.push(fila);
-        } 
+        if(clase_con_id == undefined){
+            fila.push("new"); 
+        } else{
+            let id = clase_con_id.split("-")[1];
+            fila.push("update");
+            fila.push(id);
+           
+        }
+
+        for (var j = 0; j< 4 ; j++) {
+            col = row.cells[j];
+            fila.push(col.textContent);
+        }  
+        window.certificaciones.push(fila);
         
      }
     
@@ -330,6 +403,9 @@ function extraer_datos_input() {
 
         if(clase_con_id == undefined){
             window.especialidades.push(["new",especialidad.value]);
+        }else{
+            let id = clase_con_id.split("-")[1];
+            window.especialidades.push(["update",id,especialidad.value]);
         }
        
     }
@@ -376,18 +452,7 @@ function SeleccionoUnaCertificacionInterna() {
     return isselected;
     
 }
-function limpiar() {
-    formulario.reset();
-    cuerpo_tabla.innerHTML = "";
-    while (cuerpo_tabla.firstChild) {
-        cuerpo_tabla.removeChild(cuerpo_tabla.firstChild);
-    }
-    cnt_tabla.style.display = 'none';
-    while (cnt_especialidades.firstChild) {
-        cnt_especialidades.removeChild(cnt_especialidades.firstChild);
-    }
-   
-}
+
 
 function mostrarEspecialidades(especilidades) {
     
@@ -427,3 +492,94 @@ function mostrarCertificacionesInternas(datos) {
     }
     
 }
+
+function mostrar_modal(id) {
+    
+    modal.classList.add("show");
+    
+
+    let row = document.getElementById(id);
+    let cells = row.getElementsByTagName("td");
+   
+    nombre_cert_modi.value = cells[0].textContent;
+    organizacion_cert_modi.value = cells[1].textContent;
+    fecha_e_cert_modi.value = cells[2].textContent;
+    fecha_v_cert_modi.value = cells[3].textContent; 
+
+    cerrar_modal.setAttribute("onclick", "ocultar_modal()");
+    guardar_modal.setAttribute("onclick", "guardar_cambio('"+id+"')");
+}
+
+function ocultar_modal() {
+    let respuesta = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    if(respuesta){
+        nombre_cert_modi.removeAttribute("style");
+        banderas_modal.nombre_modi = true;
+        organizacion_cert_modi.removeAttribute("style");
+        banderas_modal.organizacion_modi = true;
+
+        modal.classList.remove("show");
+        modal.classList.add("#close");
+    }
+    
+}
+
+function guardar_cambio(id){
+    //guarda la modificacion que hicimos en la modal
+    //ve si todos los campos del formulario son validos 
+    if (!formulario_cert_modal.checkValidity()) {
+       //si no lo son desencadena las alertas de html
+        formulario_cert_modal.reportValidity();
+       
+    }else{
+        let fechaE = fecha_e_cert_modi.value;
+        let fechaV = fecha_v_cert_modi.value;
+        let fecha_inicio = new Date(fechaE);
+        let fecha_fin = new Date(fechaV)
+
+        if(nombre_cert_modi.value == ""){
+            alert("Debe colocar el nombre de la certificación");
+        }else if(organizacion_cert_modi.value == ""){
+            alert("Debe colocar el nombre de la organización");
+        }else if(fechaE == ""){
+            alert("Debe seleccionar una fecha de emisión");
+        }else if(fechaV == ""){
+            alert("Debe seleccionar una fecha de vigencia");
+        }else if(fecha_inicio > fecha_fin){
+            alert("La fecha de emisión no puede ser mayor a la fecha de vigencia");
+        }else if(banderas_modal.nombre_modi && banderas_modal.organizacion_modi){
+
+            nombre_cert_modi.removeAttribute("style");
+            banderas_modal.nombre_modi = true;
+            organizacion_cert_modi.removeAttribute("style");
+            banderas_modal.organizacion_modi = true;
+
+            let row = document.getElementById(id);
+            let cells = row.getElementsByTagName("td");
+        
+            cells[0].textContent = nombre_cert_modi.value;
+            cells[1].textContent = organizacion_cert_modi.value;
+            cells[2].textContent = fecha_e_cert_modi.value;
+            cells[3].textContent = fecha_v_cert_modi.value;
+
+
+            modal.classList.remove("show");
+            modal.classList.add("#close");
+
+            
+            
+        }
+
+    }
+        
+}
+
+function ordenarLista(lista) {
+    //coloca la lista en este orden eliminar, delete, update, new
+    let lista_new = lista.filter(element=>{ return element[0] == "new" });
+    let lista_update = lista.filter(element=>{ return element[0] == "update" });
+    let lista_delete = lista.filter(element=>{ return element[0] == "delete" });
+    let lista_ordenanda = lista_delete.concat(lista_update).concat(lista_new);
+    return lista_ordenanda; 
+}
+
