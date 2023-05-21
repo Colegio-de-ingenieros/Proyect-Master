@@ -82,25 +82,37 @@ class Modificar_Instructor extends Crud_bd{
         $parametros[] = [":id"=>$id_instructor];
 
         #certificacion externa
-        $id_externa = $this->extraer_numero_certificaciones();
-
+      
         for ($i=0; $i < count($certificacionesExternas) ; $i++) { 
 
             if($certificacionesExternas[$i][0] == "new"){
 
                 $sqls[] =  "INSERT INTO certexterna (IdCerExt,NomCerExt,OrgCerExt,IniCerExt,FinCerExt)
-                         VALUES (:idCer,:nomCer, :orgCer, :iniCer,:finCer)";
-                $parametros[] = [":idCer" =>$id_externa , ":nomCer" => $certificacionesExternas[$i][1], 
+                         VALUES (
+                            (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdCerExt,2) AS INT))+1,1),6,'0') as id  FROM  certexterna) AS tabla),
+                            :nomCer, :orgCer, :iniCer,:finCer)";
+                $parametros[] = [ ":nomCer" => $certificacionesExternas[$i][1], 
                                 ":orgCer"=>$certificacionesExternas[$i][2], ":iniCer"=>$certificacionesExternas[$i][3],
                                 ":finCer"=>$certificacionesExternas[$i][4]
                                 ];
 
-                $sqls[] = "INSERT INTO inscertext (ClaveIns,IdCerExt) VALUES (:idI,:idCe)";
-                $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_externa];
+                $sqls[] = "INSERT INTO inscertext (ClaveIns,IdCerExt) VALUES (:idI,
+                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdCerExt,2) AS INT)),1),6,'0') as id  FROM  certexterna) AS tabla))";
+                $parametros[] = [":idI"=>$id_instructor];
 
-                $numero = $id_externa+1;
-                $id_externa = $this->agregar_ceros($numero,6);
+             
+
+            }else if($certificacionesExternas[$i][0] == "update"){
+
+                $sqls[] =  "UPDATE certexterna SET NomCerExt=:nomCer, OrgCerExt=:orgCer, IniCerExt=:iniCer, FinCerExt=:finCer WHERE  IdCerExt=:idCer";
+                $parametros[] = [":idCer" =>$certificacionesExternas[$i][1] , ":nomCer" => $certificacionesExternas[$i][2], 
+                                ":orgCer"=>$certificacionesExternas[$i][3], ":iniCer"=>$certificacionesExternas[$i][4],
+                                ":finCer"=>$certificacionesExternas[$i][5]
+                                ];
+            
             }else{
+              
+
                 $sqls[] = "DELETE FROM inscertext WHERE ClaveIns=:idInstructor AND IdCerExt=:idExterna";
                 $parametros[] = [":idInstructor"=> $id_instructor,":idExterna"=>$certificacionesExternas[$i][1]];
 
@@ -112,29 +124,32 @@ class Modificar_Instructor extends Crud_bd{
         }
 
         # agregemos las consultas de las especialidades 
-        $id_especialidad = $this->extraer_numero_especialidades();
 
         for ($i=0; $i < count($especialidades) ; $i++) { 
            
 
             if($especialidades[$i][0] == "new"){
 
-                $sqls[] =  "INSERT INTO especialidades (IdEspIns,NomEspIns) VALUES(:idEspe,:nombre)";
-                $parametros[] = [":idEspe" =>$id_especialidad , ":nombre" => $especialidades[$i][1]];
+                $sqls[] =  "INSERT INTO especialidades (IdEspIns,NomEspIns) VALUES(
+                    (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdEspIns,2) AS INT))+1,1),6,'0') as id  FROM  especialidades) AS tabla),
+                    :nombre)";
+                $parametros[] = [":nombre" => $especialidades[$i][1]];
 
-                $sqls[] = "INSERT INTO especialins (ClaveIns,IdEspIns) VALUES (:idI,:idCe)";
-                $parametros[] = [":idI"=>$id_instructor,":idCe"=>$id_especialidad];
+                $sqls[] = "INSERT INTO especialins (ClaveIns,IdEspIns) VALUES (:idI,
+                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdEspIns,2) AS INT)),1),6,'0') as id  FROM  especialidades) AS tabla))";
+                $parametros[] = [":idI"=>$id_instructor];
 
-                $numero = $id_especialidad+1;
-                $id_especialidad = $this->agregar_ceros($numero,6);
-
+            }else if($especialidades[$i][0] == "update"){
+            
+                $sqls[] =  "UPDATE especialidades SET NomEspIns=:nombre WHERE IdEspIns=:idEspe";
+                $parametros[] = [":idEspe" =>$especialidades[$i][1],":nombre" => $especialidades[$i][2]];
+            
             }else{
+
                 $id_especialidad_temp = $especialidades[$i][1];
                 $sqls[] = "DELETE FROM especialins WHERE ClaveIns=:i AND IdEspIns=:c; DELETE FROM especialidades WHERE IdEspIns=:c";
                 $parametros[] = [":i"=>$id_instructor,":c"=>$id_especialidad_temp];
                
-                /*$sql[] = "DELETE FROM especialidades WHERE IdEspIns=:c";
-                $parametros[] = [":c"=>$id_especialidad_temp];*/
             }
             
         }

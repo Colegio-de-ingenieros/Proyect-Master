@@ -316,15 +316,3 @@ function SeleccionoUnaCertificacionInterna() {
     return isselected;
     
 }
-function limpiar() {
-    formulario.reset();
-    cuerpo_tabla.innerHTML = "";
-    while (cuerpo_tabla.firstChild) {
-        cuerpo_tabla.removeChild(cuerpo_tabla.firstChild);
-    }
-    cnt_tabla.style.display = 'none';
-    while (cnt_especialidades.firstChild) {
-        cnt_especialidades.removeChild(cnt_especialidades.firstChild);
-    }
-   
-}
