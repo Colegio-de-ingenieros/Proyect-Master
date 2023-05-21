@@ -150,5 +150,6 @@ var parrafo = document.createElement("p");
         document.getElementById("ti_ck2").checked = true;
         var textBox = document.getElementById("descri_puesto");
         textBox.disabled = false;
+        textBox.value = <?php $comentario ?>
     <?php } ?>
 </script>
