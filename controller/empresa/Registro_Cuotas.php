@@ -33,7 +33,7 @@
                 $tipo = $_FILES['archivo']['type'];
                 list($type, $extension)=explode('/', $tipo);
                 if ($extension=='pdf'){
-                    $dir='../Comprobantes/';
+                    $dir='../Comprobantes/empresa/cuotas/';
                     if (!file_exists($dir)){
                         mkdir($dir,0777, true);
                     }
