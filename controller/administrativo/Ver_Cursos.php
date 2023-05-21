@@ -251,7 +251,7 @@ $respuesta .= ' -->
       $idtemasl = [];
 			$nomtemasl = [];
 
-			$datost = $bd->t($id);
+			$datost = $bd->temas_busqueda($id);
 			if ($datost) {
 				for ($i = 0; $i < count($datost); $i++) {
 					$tem = $datost[$i]["NomTema"];
@@ -279,7 +279,7 @@ $respuesta .= ' -->
 			
 				for ($i = 0; $i < count($idtemasl); $i++) {
 					$respuesta .= '<h3 class="subtitulo-1">'.$nomtemasl[$i] .'</h3><br>';
-					$datoss = $bd->s($tem,((string)$idtemasl[$i]));
+					$datoss = $bd->subtemas_busqueda($tem,((string)$idtemasl[$i]));
 					$idsubtemasl = [];
 					$nomsubtemasl = [];
 					if ($datoss) {

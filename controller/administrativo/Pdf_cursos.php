@@ -44,7 +44,7 @@
     $bd->BD();
     
     $datos = $bd->cursos_disponibles($id);
-    $datost = $bd->t($id);
+    $datost = $bd->temas_busqueda($id);
 
     for ($i = 0; $i < count($datos); $i++) {
         $clave = $datos[$i]["ClaveCur"];
@@ -127,7 +127,7 @@
             $pdf->Cell(0,10,utf8_decode($nomtemasl[$i]),0,1,'L');
 
             //$respuesta .= '<h3 style="width: 500px; word-wrap: break-word;">'.$nomtemasl[$i] .'</h3><br>';
-            $datoss = $bd->s($tem,((string)$idtemasl[$i]));
+            $datoss = $bd->subtemas_busqueda($tem,((string)$idtemasl[$i]));
             $idsubtemasl = [];
             $nomsubtemasl = [];
             if ($datoss) {

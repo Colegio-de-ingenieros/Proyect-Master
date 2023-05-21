@@ -49,7 +49,7 @@ class VerCurso{
         and temassub.IdSubT = subtemas.IdSubT";
         $datos = $this->bd->mostrar($consulta);
     }
-    function t($id){
+    function temas_busqueda($id){
         /* $consulta = "SELECT  temas.NomTema, temas.IdTema  ORDER BY temas.IdTema ASC FROM cursos,cursotema,temas 
         where cursos.ClaveCur = '$id' and cursos.ClaveCur = cursotema.ClaveCur 
         and cursotema.IdTema = temas.IdTema"; */
@@ -61,7 +61,7 @@ class VerCurso{
         $datos = $this->bd->mostrar($consulta);
         return $datos;
     }
-    function s($id,$tes){
+    function subtemas_busqueda($id,$tes){
 
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
             where  temas.IdTema = '$tes'
