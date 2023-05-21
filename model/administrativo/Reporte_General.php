@@ -25,7 +25,7 @@ class ReporteGral{
     //busca los gastos de instructores de un curso que recibe como parametro, opcional busca entre las fechas que recibe
     function getGastosIns($ids, ?string $fechaI = null, ?string $fechaF = null){
         if($fechaI == null and $fechaF == null){
-            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas 
+            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas
             FROM insparticipa,insgastos, controlgas, contipogas, tipogastos 
             WHERE insparticipa.idSeg = :ids AND insparticipa.IdParI = insgastos.IdParI AND 
             insgastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -35,7 +35,7 @@ class ReporteGral{
         }
 
         else{
-            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas 
+            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas 
             FROM insparticipa,insgastos, controlgas, contipogas, tipogastos 
             WHERE insparticipa.idSeg = :ids AND insparticipa.IdParI = insgastos.IdParI AND 
             insgastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -53,7 +53,7 @@ class ReporteGral{
     function getGastosEmp($ids, ?string $fechaI = null, ?string $fechaF = null)
     {
         if ($fechaI == null and $fechaF == null) {
-            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas
+            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas
             FROM empparticipa, empgastos, controlgas, contipogas, tipogastos 
             WHERE empparticipa.IdSeg = :ids AND empparticipa.IdParE = empgastos.IdParE AND 
             empgastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -61,7 +61,7 @@ class ReporteGral{
 
             $arre = [":ids" => $ids];
         } else {
-            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas
+            $qGastoInstructores = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas
             FROM empparticipa, empgastos, controlgas, contipogas, tipogastos 
             WHERE empparticipa.IdSeg = :ids AND empparticipa.IdParE = empgastos.IdParE AND 
             empgastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -79,7 +79,7 @@ class ReporteGral{
     function getGastosPerso($ids, ?string $fechaI = null, ?string $fechaF = null)
     {
         if ($fechaI == null and $fechaF == null) {
-            $qGastoPersonas = "SELECT controlgas.MontoGas, tipogastos.TipoGas
+            $qGastoPersonas = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas
             FROM persoparticipa, persogastos, controlgas, contipogas, tipogastos 
             WHERE persoparticipa.IdSeg = :ids AND persoparticipa.IdParP = persogastos.IdParP AND 
             persogastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -87,7 +87,7 @@ class ReporteGral{
 
             $arre = [":ids" => $ids];
         } else {
-            $qGastoPersonas = "SELECT controlgas.MontoGas, tipogastos.TipoGas
+            $qGastoPersonas = "SELECT controlgas.MontoGas, tipogastos.TipoGas, controlgas.FechaGas
             FROM persoparticipa, persogastos, controlgas, contipogas, tipogastos 
             WHERE persoparticipa.IdSeg = :ids AND persoparticipa.IdParP = persogastos.IdParP AND 
             persogastos.IdGas = controlgas.IdGas AND controlgas.IdGas = contipogas.IdGas AND 
@@ -105,7 +105,8 @@ class ReporteGral{
     function getIngresosPerso($ids, ?string $fechaI = null, ?string $fechaF = null)
     {
         if ($fechaI == null and $fechaF == null) {
-            $qIngrePersonas = "SELECT SUM(controlingre.MontoIngre) as total FROM persoparticipa, persoingresos, controlingre
+            $qIngrePersonas = "SELECT SUM(controlingre.MontoIngre) as total
+            FROM persoparticipa, persoingresos, controlingre
             WHERE persoparticipa.IdSeg = :ids AND persoparticipa.IdParP = persoingresos.IdParP AND 
             persoingresos.IdIngre = controlingre.IdIngre";
 
@@ -157,7 +158,7 @@ class ReporteGral{
         } else {
             $qIngreInst = "SELECT SUM(controlingre.MontoIngre) as total FROM insparticipa, insingresos, controlingre
             WHERE insparticipa.IdSeg = :ids AND insparticipa.IdParI = insingresos.IdParI AND 
-            empingresos.IdIngre = controlingre.IdIngre AND controlingre.FechaIngre <= :fechaF AND 
+            insingresos.IdIngre = controlingre.IdIngre AND controlingre.FechaIngre <= :fechaF AND 
             controlingre.FechaIngre >= :fechaI";
 
             $arre = [":ids" => $ids, ":fechaF" => $fechaF, ":fechaI" => $fechaI];
@@ -189,6 +190,50 @@ class ReporteGral{
 
         return $nom;
 
+    }
+
+    function getFechas($tabla){
+        $qgi = "SELECT MAX(controlgas.FechaGas) as maximo, MIN(controlgas.FechaGas) as minimo 
+        FROM $tabla, seguimiento, insparticipa, insgastos, controlgas 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = insparticipa.IdSeg AND 
+        insparticipa.IdParI = insgastos.IdParI AND insgastos.IdGas = controlgas.IdGas)";
+
+        $qge = "SELECT MAX(controlgas.FechaGas) as maximo, MIN(controlgas.FechaGas) as minimo 
+        FROM $tabla, seguimiento, empparticipa, empgastos, controlgas 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = empparticipa.IdSeg AND 
+        empparticipa.IdParE = empgastos.IdParE AND empgastos.IdGas = controlgas.IdGas)";
+
+        $qgp = "SELECT MAX(controlgas.FechaGas) as maximo, MIN(controlgas.FechaGas) as minimo 
+        FROM $tabla, seguimiento, persoparticipa, persogastos, controlgas 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = persoparticipa.IdSeg AND 
+        persoparticipa.IdParP = persogastos.IdParP AND persogastos.IdGas = controlgas.IdGas)";
+
+        $qii = "SELECT MAX(controlingre.FechaIngre) as maximo, MIN(controlingre.FechaIngre) as minimo 
+        FROM $tabla, seguimiento, insparticipa, insingresos, controlingre 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = insparticipa.IdSeg AND 
+        insparticipa.IdParI = insingresos.IdParI AND insingresos.IdIngre = controlingre.IdIngre)";
+
+        $qie = "SELECT MAX(controlingre.FechaIngre) as maximo, MIN(controlingre.FechaIngre) as minimo 
+        FROM $tabla, seguimiento, empparticipa, empingresos, controlingre 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = empparticipa.IdSeg AND 
+        empparticipa.IdParE = empingresos.IdParE AND empingresos.IdIngre = controlingre.IdIngre)";
+
+        $qip = "SELECT MAX(controlingre.FechaIngre) as maximo, MIN(controlingre.FechaIngre) as minimo 
+        FROM $tabla, seguimiento, persoparticipa, persoingresos, controlingre 
+        WHERE($tabla.IdSeg = seguimiento.IdSeg AND seguimiento.IdSeg = persoparticipa.IdSeg AND 
+        persoparticipa.IdParP = persoingresos.IdParP AND persoingresos.IdIngre = controlingre.IdIngre)";
+
+        //$querry = [$qgi, $qge, $qgp];
+
+        $fgi = $this->base->mostrar($qgi);
+        $fge = $this->base->mostrar($qge);
+        $fgp = $this->base->mostrar($qgp);
+        $fii = $this->base->mostrar($qii);
+        $fie = $this->base->mostrar($qie);
+        $fip = $this->base->mostrar($qip);
+
+        $fechas = [$fgi, $fge, $fgp, $fii, $fie, $fip];
+        return $fechas;
     }
 }
 ?>

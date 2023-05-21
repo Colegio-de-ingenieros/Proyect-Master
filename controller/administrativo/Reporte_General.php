@@ -26,6 +26,8 @@ class Reporte{
         }
 
         $seguimientos = $base->get($tabla);
+        $fechaMax = '0000-00-00';
+        $fechaMin = '9999-99-99';
 
         for ($i = 0; $i < count($seguimientos); $i++) {
             //           nom, h, t, c, o, h, s, i
@@ -79,6 +81,16 @@ class Reporte{
                 else if ($gastosIns[$j]["TipoGas"] == 'Honorario') {
                     $honorarios = $honorarios + $gastosIns[$j]["MontoGas"];
                 }
+
+                //compara la fehca del gasto
+                if($gastosIns[$j]["FechaGas"] <= $fechaMin){
+                    $fechaMin = $gastosIns[$j]["FechaGas"];
+                }
+
+                if ($gastosIns[$j]["FechaGas"] >= $fechaMax) {
+                    $fechaMax = $gastosIns[$j]["FechaGas"];
+                }
+
             }
 
             //suma los gastos de las empresas
@@ -101,6 +113,15 @@ class Reporte{
                 
                 else if ($gastosEmp[$j]["TipoGas"] == 'Honorario') {
                     $honorarios = $honorarios + $gastosEmp[$j]["MontoGas"];
+                }
+
+                //compara la fehca del gasto
+                if ($gastosEmp[$j]["FechaGas"] <= $fechaMin) {
+                    $fechaMin = $gastosEmp[$j]["FechaGas"];
+                }
+
+                if ($gastosEmp[$j]["FechaGas"] >= $fechaMax) {
+                    $fechaMax = $gastosEmp[$j]["FechaGas"];
                 }
             }
 
@@ -125,6 +146,15 @@ class Reporte{
                 else if ($gastosPer[$j]["TipoGas"] == 'Honorario') {
                     $honorarios = $honorarios + $gastosPer[$j]["MontoGas"];
                 }
+
+                //compara la fehca del gasto
+                if ($gastosPer[$j]["FechaGas"] <= $fechaMin) {
+                    $fechaMin = $gastosPer[$j]["FechaGas"];
+                }
+
+                if ($gastosPer[$j]["FechaGas"] >= $fechaMax) {
+                    $fechaMax = $gastosPer[$j]["FechaGas"];
+                }
             }
 
             //suma todos los gastos
@@ -142,21 +172,43 @@ class Reporte{
             $datos_seg[7] = $ingreTotal;
 
             array_push($datos, $datos_seg);
+
+            $fechas = $base->getFechas($tabla);
+            //echo $fechas[0]["maximo"] . '<br>';
+            
         }
 
-        
+        /*echo $fechas[0][0]["maximo"];
+        echo $fechas[1][0]["maximo"];*/
+
+        //echo count($fechas);
+        for($i=0; $i<count($fechas); $i++){
+            if($fechas[$i][0]["maximo"] >= $fechaMax and $fechas[$i][0]["maximo"] != null){
+                $fechaMax = $fechas[$i][0]["maximo"];
+                //echo $fechaMax;
+            }
+
+            if ($fechas[$i][0]["minimo"] <= $fechaMin and $fechas[$i][0]["minimo"] != null) {
+                $fechaMin = $fechas[$i][0]["minimo"];
+                //echo $fechaMin;
+            }
+            //echo $fechaMin . '<br>';
+        }
+
+        array_push($datos, $fechaMin);
+        array_push($datos, $fechaMax);
     
-    //echo '<script>alert("' . $datos[0][0] . '")</script>';
-    //echo json_encode("hola");
-    echo json_encode($datos);
+        //echo '<script>alert("' . $datos[0][0] . '")</script>';
+        //echo json_encode("hola");
+        echo json_encode($datos);
 
-    /*for($fila=0; $fila<count($datos); $fila++){
-        for($col=0; $col<7; $col++){
-            echo $datos[$fila][$col] . '  ';
-        }
+        /*for($fila=0; $fila<count($datos); $fila++){
+            for($col=0; $col<7; $col++){
+                echo $datos[$fila][$col] . '  ';
+            }
 
-        echo '<br>';
-    }*/
+            echo '<br>';
+        }*/
     }
 }
 

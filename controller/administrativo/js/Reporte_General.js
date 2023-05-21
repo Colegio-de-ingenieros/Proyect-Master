@@ -9,8 +9,9 @@ const radioPeriodo = document.getElementById("periodo");
 
 const botonGenerar = document.getElementById("registrar");
 
-const cuerpo_tabla = document.getElementById("cuerpo");
-const totales = document.getElementById("datos");
+//const cuerpo_tabla = document.getElementById("cuerpo");
+const contenedor = document.getElementById("tablaResultado")
+//const totales = document.getElementById("datos");
 const titulo = document.getElementById("nombre_actividad");
 
 const textFechaI = document.getElementById("inicio");
@@ -18,6 +19,46 @@ const textFechaF = document.getElementById("fin");
 
 const fechas_titulo = document.getElementById("fechas_titulo");
 
+const total = document.getElementById("total")
+const totales = document.createElement("div")
+totales.id = "datos"
+//document.appendChild(totales)
+
+//crear la tabla
+var tabla = document.createElement("table")
+
+var encabezados = document.createElement("thead")
+
+//encabezados
+var encabezado = document.createElement("tr")
+var titulo_actividad = document.createElement("th")
+titulo_actividad.textContent = "Actividad"
+
+var titulo_hotel = document.createElement("th")
+titulo_hotel.textContent = "Hotel"
+
+var titulo_transporte = document.createElement("th")
+titulo_transporte.textContent = "Transporte"
+
+var titulo_comida = document.createElement("th")
+titulo_comida.textContent = "Comida"
+
+var titulo_oficina = document.createElement("th")
+titulo_oficina.textContent = "Oficina"
+
+var titulo_honorarios = document.createElement("th")
+titulo_honorarios.textContent = "Honorarios"
+
+var titulo_subt = document.createElement("th")
+titulo_subt.textContent = "Subtotal gastos"
+
+var titulo_ingresos = document.createElement("th")
+titulo_ingresos.textContent = "Ingresos"
+
+//cuerpo de la tabla
+var cuerpo_tabla = document.createElement("tbody")
+
+crearTabla();
 
 radioPeriodo.addEventListener('click', function (e){
     textFechaF.disabled = false;
@@ -104,6 +145,8 @@ function peticion(tipo)
 };
 
 function mostrar_tabla(datos){
+    tabla.innerHTML = ""
+    crearTabla()
     cuerpo_tabla.innerHTML = "";
     totales.innerHTML = "";
 
@@ -115,7 +158,7 @@ function mostrar_tabla(datos){
     sub_sub_gastos = 0;
     sub_ingresos = 0;
 
-    for (let i = 0; i < datos.length; i++) {
+    for (let i = 0; i < datos.length -2; i++) {
 
         //poner los datos recibidos en la tabla
         if (datos[i].length == 0) {
@@ -236,5 +279,26 @@ function mostrar_tabla(datos){
     totales.appendChild(ingresos_totales);
     totales.appendChild(gastos_totales);
     totales.appendChild(total_final);
+
+    contenedor.appendChild(tabla)
+
+    total.appendChild(totales)
 }
 
+function crearTabla(){
+    
+    encabezado.appendChild(titulo_actividad)
+    encabezado.appendChild(titulo_hotel)
+    encabezado.appendChild(titulo_transporte)
+    encabezado.appendChild(titulo_comida)
+    encabezado.appendChild(titulo_oficina)
+    encabezado.appendChild(titulo_honorarios)
+    encabezado.appendChild(titulo_subt)
+    encabezado.appendChild(titulo_ingresos)
+
+    encabezados.appendChild(encabezado);
+    tabla.appendChild(encabezados)
+
+    //cuerpo de la tabla
+    tabla.appendChild(cuerpo_tabla);
+}
