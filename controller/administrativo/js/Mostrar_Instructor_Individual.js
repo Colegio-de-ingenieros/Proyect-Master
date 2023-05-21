@@ -80,14 +80,56 @@ window.onload = function() {
             document.getElementById('certificaciones_internas').appendChild(etiqueta);
         }   
 
+
         //* Crear etiquetas para mostrar las certificaciones externas
         if (lista_certificaciones_externas.length > 0) {
+            
+            const div = document.getElementById('certificaciones_externas');
+            let tabla = document.createElement('table');
+
+            let thead = document.createElement('thead');
+            let tr = document.createElement('tr');
+            let th1 = document.createElement('th');
+            let th2 = document.createElement('th');
+            let th3 = document.createElement('th');
+            let th4 = document.createElement('th');
+
+            th1.textContent = "Nombre";
+            th2.textContent = "Organización";
+            th3.textContent = "Fecha de emisión";
+            th4.textContent = "Fecha de vigencia";
+
+            tr.appendChild(th1);
+            tr.appendChild(th2);
+            tr.appendChild(th3);
+            tr.appendChild(th4);
+            thead.appendChild(tr);
+            tabla.appendChild(thead);
+
+            let tbody = document.createElement('tbody');
+            
             for (let i = 0; i < lista_certificaciones_externas.length; i++) {
-                let etiqueta = document.createElement('p');
-                etiqueta.classList.add('subtitulo-11');
-                etiqueta.textContent = lista_certificaciones_externas[i][0];
-                document.getElementById('certificaciones_externas').appendChild(etiqueta);
+                let tr = document.createElement('tr');
+
+                let td1 = document.createElement('td');
+                let td2 = document.createElement('td');
+                let td3 = document.createElement('td');
+                let td4 = document.createElement('td');
+
+                td1.textContent = lista_certificaciones_externas[i][0];
+                td2.textContent = lista_certificaciones_externas[i][1];
+                td3.textContent = lista_certificaciones_externas[i][2];
+                td4.textContent = lista_certificaciones_externas[i][3];
+
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                tr.appendChild(td3);
+                tr.appendChild(td4);
+                tbody.appendChild(tr);
             }
+
+            tabla.appendChild(tbody);
+            div.appendChild(tabla);
         }
         else{
             let etiqueta = document.createElement('p');
