@@ -7,7 +7,7 @@ const guardar = document.getElementById('boton_registro');
 
 let botonRegresar = document.getElementById("boton_registro");
 
-textBox.disabled = true;
+//textBox.disabled = true;
 radioButton1.addEventListener("change", function() {
     if (radioButton1.checked) {
         textBox.disabled = true;
