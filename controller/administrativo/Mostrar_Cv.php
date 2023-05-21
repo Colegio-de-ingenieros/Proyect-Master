@@ -17,6 +17,8 @@ if ($resultado == true) {
   $desc=$resultado[0]["DesProCv"];
   $salEsp=$resultado[0]["ExpSalCv"];
   $cambio=$resultado[0]["ResidenciaCv"];
+  $estatus=$resultado[0]["EstatusCv"];
+  $comentario=$resultado[0]["ComeCv"];
   
 }
 
