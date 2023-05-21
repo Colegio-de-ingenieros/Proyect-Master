@@ -263,3 +263,17 @@ var parrafo = document.createElement("p");
           br.style.borderWidth = "0.5px";
           miDiv.appendChild(br);;</script>';}}
         ?>
+<script>
+    <?php if ($estatus==1 or $estatus==0) { ?>
+        // Marcar el checkbox si la condición en PHP se cumple
+        var textBox = document.getElementById("descri_puesto");
+        document.getElementById("ti_ck1").checked = true;
+        textBox.disabled = true;
+    <?php }else if ($estatus==2){ ?>
+        document.getElementById("ti_ck2").checked = true;
+        var textBox = document.getElementById("descri_puesto");
+        textBox.disabled = false;
+        var texto ="<?php echo $comentario; ?>";
+        textBox.value = texto;
+    <?php } ?>
+</script>
