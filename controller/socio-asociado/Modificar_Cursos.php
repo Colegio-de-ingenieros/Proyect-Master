@@ -23,12 +23,12 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         $tipo = $_FILES['archivo1']['type'];
         list($type, $extension)=explode('/', $tipo);
         if ($extension=='pdf'){
-            $dir='../Comprobantes/';
+            $dir='../Comprobantes/socio-asociado/cursos/';
             if (!file_exists($dir)){
                 mkdir($dir,0777, true);
             }
             $temp = $_FILES['archivo1']['tmp_name'];
-            $new_name_file=$dir. $id_final;
+            $new_name_file=$dir. $id;
             if (copy($temp, $new_name_file)){
 
             }
@@ -40,8 +40,6 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($u==true){
         echo json_encode('exito');
-    }else{
-        echo json_encode('no exito');
     }
 }
 

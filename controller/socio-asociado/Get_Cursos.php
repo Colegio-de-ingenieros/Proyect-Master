@@ -32,5 +32,5 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         document.getElementById("nombre").value = "<?php echo $nombre ?>";
         document.getElementById("organizacion").value = "<?php echo $org ?>";
         document.getElementById("totalhoras").value = "<?php echo $hra ?>";
-        document.getElementById("archivo").setAttribute('href', ('../../controller/Comprobantes/<?php echo $id_final ?>'));
+        document.getElementById("archivo").setAttribute('href', ('../../controller/Comprobantes/socio-asociado/cursos/<?php echo $idc ?>'));
     </script>

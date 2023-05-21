@@ -20,7 +20,7 @@
         public function id_cursos(){
             $this->conexion_bd();
 
-            $sql = "SELECT Count(IdCurPerso) FROM altacursos";
+            $sql = "SELECT MAX(CAST(IdCurPerso AS INT)) FROM altacursos";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
         

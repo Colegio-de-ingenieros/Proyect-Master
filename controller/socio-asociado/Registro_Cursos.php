@@ -23,12 +23,12 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         $tipo = $_FILES['archivo']['type'];
         list($type, $extension)=explode('/', $tipo);
         if ($extension=='pdf'){
-            $dir='../Comprobantes/';
+            $dir='../Comprobantes/socio-asociado/cursos/';
             if (!file_exists($dir)){
                 mkdir($dir,0777, true);
             }
             $temp = $_FILES['archivo']['tmp_name'];
-            $new_name_file=$dir. $id_final;
+            $new_name_file=$dir. $id_curso;
             if (copy($temp, $new_name_file)){
 
             }

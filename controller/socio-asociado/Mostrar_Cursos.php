@@ -46,7 +46,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
-                $salida .= '<td> <a href="../../controller/Comprobantes/'.$id_final_.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a href="../../controller/Comprobantes/socio-asociado/cursos/'.$idc.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
@@ -89,7 +89,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
-                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/'.$id_final.'">Abrir archivo</a></td>';
+                $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/socio-asociado/cursos/'.$idc.'">Abrir archivo</a></td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>

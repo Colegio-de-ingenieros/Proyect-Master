@@ -113,7 +113,7 @@
       <div class="cabezera">
         <h3 class="h3">Modificar</h2>
           <br>
-        <form action="../../controller/socio-asociado/Modificar_Cursos.php" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
           <p class="subtitulo-1">Datos del curso</p>
 
           <input type="hidden" id="idc" name="idc">
@@ -180,8 +180,8 @@
         
 
       <div class="botones-registro">
-        <button id="boton_registrar" class="btn btn-medium">Actualizar</button>&nbsp;&nbsp;
-        <button id="cancelar" class="btn-medium btn" onclick="regresar()">Cancelar</button>
+        <button type="submit" name="boton_registrar" id="boton_registrar" class="btn-medium btn">Actualizar</button>&nbsp;&nbsp;
+        <button type="button" name="cancelar" id="cancelar" class="btn-medium btn" >Cancelar</button>
       </div>
 
     </form>
@@ -194,6 +194,6 @@
   <script src="../../view/socio-asociado/js/Vali_cursos.js"></script>
   
 </body>
-<script src="js/Modificar_Cursos.js"></script>
+<script src="../../controller/socio-asociado/js/Modificar_Cursos.js"></script>
 
 </html>
