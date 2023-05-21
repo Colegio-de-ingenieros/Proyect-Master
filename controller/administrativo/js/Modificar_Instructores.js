@@ -219,12 +219,11 @@ function agregar_especialidad(texto,clase,id) {
     input.value = texto;
     input.disabled = true;
 
-    btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
+    btn_eliminar.classList.add("btn", "btn-small0", "btn-danger");
 
-    icono_modificar.className = "fa-solid fa-pen-to-square";;
-    icono_modificar.style.cssText ="color: #273544";
+    icono_modificar.className = "fa-solid fa-pen-to-square";
+    btn_modificar.classList.add("btn", "btn-small1", "btn-danger1")
     
-    btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
     icono_eliminar.className = "ti ti-backspace-filled" ;
 
     btn_modificar.appendChild(icono_modificar);
@@ -268,8 +267,8 @@ function agregar_certificacion(nombre,organizacion,fechaE, fechaV, clase,id) {
     let id_fila = "fila" + cuerpo_tabla.childNodes.length*Math.floor(Math.random() * 100)+Date.now().toString(23);
     row.setAttribute("id",id_fila);
 
-    icono_modificar.className = "fa-solid fa-pen-to-square";;
-    icono_modificar.style.cssText ="color: #273544";
+    icono_modificar.className = "fa-solid fa-pen-to-square";
+    btn_modificar.classList.add("btn", "btn-small0", "btn-danger1")
 
     btn_modificar.setAttribute("onclick","mostrar_modal('"+id_fila+"')");
     btn_modificar.appendChild(icono_modificar);
@@ -492,7 +491,7 @@ function mostrarCertificacionesInternas(datos) {
     }
     
 }
-
+/*************************************************************************************** */
 function mostrar_modal(id) {
     
     modal.classList.add("show");
@@ -506,8 +505,9 @@ function mostrar_modal(id) {
     fecha_e_cert_modi.value = cells[2].textContent;
     fecha_v_cert_modi.value = cells[3].textContent; 
 
-    cerrar_modal.setAttribute("onclick", "ocultar_modal()");
     guardar_modal.setAttribute("onclick", "guardar_cambio('"+id+"')");
+    cerrar_modal.setAttribute("onclick", "ocultar_modal()");
+    
 }
 
 function ocultar_modal() {
