@@ -60,7 +60,7 @@ class Cuotas_empresa extends Crud_bd{
     public function id_cuotas(){
         $this->conexion_bd();
 
-        $sql = "SELECT Count(IdVigCuo) FROM vigenciacuotas";
+        $sql = "SELECT MAX(IdVigCuo) FROM vigenciacuotas";
         $arreglo = $this->mostrar($sql);
         $this->cerrar_conexion();
     
