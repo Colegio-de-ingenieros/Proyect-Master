@@ -106,7 +106,7 @@ function peticion(tipo)
         fechaI = textFechaI.value;
         fechaF = textFechaF.value;
 
-        //alert(fechaI + ' - ' + fechaF)
+        console.log(fechaI + ' - ' + fechaF)
 
         if (fechaI == "" || fechaF == "") {
             alert("Debe seleccionar una fecha de inicio y una fecha de finalización")
@@ -120,7 +120,7 @@ function peticion(tipo)
 
         else {
             band = true;
-            fechas_titulo.innerHTML = fechaI + "  " + fechaF 
+            fechas_titulo.innerHTML = formatoFecha(fechaI) + "  -  " + formatoFecha(fechaF) 
              
         }
     }
@@ -145,6 +145,11 @@ function peticion(tipo)
 };
 
 function mostrar_tabla(datos){
+    //pone las fechas si se pide historial completo
+    if (radioCompleto.checked) {
+        
+        fechas_titulo.innerHTML = formatoFecha(datos[datos.length - 2]) + "  -  " + formatoFecha(datos[datos.length - 1]) 
+    }
     tabla.innerHTML = ""
     crearTabla()
     cuerpo_tabla.innerHTML = "";
@@ -301,4 +306,29 @@ function crearTabla(){
 
     //cuerpo de la tabla
     tabla.appendChild(cuerpo_tabla);
+}
+
+//recibe la fecha como una cadena y le da el formato dd/mm/aaa
+function formatoFecha(cad){
+    console.log(cad)
+    fecha1 = new Date(cad);
+
+    fecha = new Date(fecha1)
+    fecha.setDate(fecha.getDate() + 1)
+    console.log(fecha)
+
+    var dia = fecha.getDate();
+    var mes = fecha.getMonth() + 1; 
+    var year = fecha.getFullYear();
+
+    if (dia < 10) {
+        dia = '0' + dia;
+    }
+    if (mes < 10) {
+        mes = '0' + mes; 
+    }
+
+    var formato = dia + '/' + mes + '/' + year;
+
+    return formato
 }
