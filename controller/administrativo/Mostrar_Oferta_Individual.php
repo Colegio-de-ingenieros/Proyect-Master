@@ -2,7 +2,7 @@
 <?php
 $id=$_GET['id'];
 include_once('../../model/empresa/Mostrar_Ofertas.php');
-include_once('../..//view/administrativo/Aprobar_Ofertalaboral.html');
+include_once('../../view/administrativo/Aprobar_Ofertalaboral.html');
 $base = new MostrarOfertas();
 $base->instancias();
 $resultado = $base->mostrarOferta($id);
