@@ -53,6 +53,16 @@ class MostrarCuota extends Crud_bd{
         return $resultados;
     }
 
+    function buscar_datos1($id){
+        $this->conexion_bd();
+        $consulta = "SELECT tipovigcuota.IdCuota, MontoVigCuo, IniVigCuo, FinVigCuo
+        FROM vigenciacuotas, tipovigcuota 
+        WHERE vigenciacuotas.IdVigCuo='$id' and vigenciacuotas.IdVigCuo=tipovigcuota.IdVigCuo";
+        $resultados = $this->mostrar($consulta);
+        $this->cerrar_conexion();
+        return $resultados;
+    }
+
     public function id_cuotas($id){
         $this->conexion_bd();
 

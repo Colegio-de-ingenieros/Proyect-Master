@@ -1,36 +1,39 @@
-
-//declara las variables globales
-var formulario = document.getElementById('formulario');
-var respuesta = document.getElementById('respuesta');
-
-//responde cuando hay un click en el boton
-formulario.addEventListener('submit', function (e)
-{
+//responde cuando hay un click en el boton actualizar
+formulario.addEventListener('submit', function (e){
     e.preventDefault();
-    var datos = new FormData(formulario);
-    //fusiona el html con el php de la logica y validaciones
-    fetch('../../controller/socio-asociado/Modificar_Cuotas.php', {
-        method: 'POST',
-        body: datos
+    let urlAct = window.location+''
+    let split = urlAct.split("=");
+    var idP= split[1];
+
+
+    let url = "../../controller/socio-asociado/Modificar_Cuotas.php";
+
+    let form = new FormData(formulario);
+    form.append("idP", idP);
+    fetch(url, {
+    method: "POST",
+    body: form
     })
-        //recibe el mensaje para mandarlo como alerta
-        .then(res => res.json())
-        .then(data =>
-        {
-            //el registro fue exitoso
-            if (data === 'exito') {
+        .then(response => response.json())
+        .then(data => {
+            if (data==='exito'){
                 alert("Actualización exitosa");
-                location.href = '../../view/socio-asociado/Vista_Cuotas.html';
-            }else if (data == 'fechas'){
+                window.location.href='../../view/socio-asociado/Vista_Cuotas.html';
+            }else if(data==='fechas'){
                 alert("Fecha de finalización debe ser posterior a fecha de inicio");
             }
-            //los datos no pasaron alguna validacion
-            else if (data === 'no exito'){
-                alert("Hubo un error");
-            }
-            //los datos no pasaron alguna validacion
-            else {
-                alert(data);
-            }
-        })
+    })  
+})
+
+//responde cuando hay un click en el boton cancelar
+formulario.cancelar.addEventListener('click', function (e){
+    e.preventDefault();
+    let urlAct = window.location+''
+
+    var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    if(resp ==  true){
+      window.location.href='../../view/socio-asociado/Vista_Cuotas.html';
+    }
+
+    
 })
