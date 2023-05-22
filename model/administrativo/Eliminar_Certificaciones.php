@@ -73,5 +73,23 @@ class EliminarCert{
             return false;
         }
     }
+
+    //busca relaciones con instructores, retorna true si encuentra alguna y false si no
+    function buscarIns($idc){
+        $querry = "SELECT * FROM inscertint WHERE IdCerInt = :id";
+        $arre = [":id" => $idc];
+
+        $resultados = $this->base->mostrar($querry, $arre);
+
+        if($resultados == null){
+            //no hay relacion
+            return false;
+        }
+
+        else{
+            //si hay relacion
+            return true;
+        }
+    }
 }
 ?>

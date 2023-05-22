@@ -78,8 +78,10 @@ btn_cancelar_registro_principal.addEventListener("click",(e)=>{
 btn_formulario_actualizar.addEventListener("click",(e)=>{
 
     if(!banderas.nombre){
+        formulario.reportValidity();
         nombre_campo.style.border = "3px solid red";
     }else if(!banderas.paterno){
+        formulario.reportValidity();
         paterno_campo.style.border = "3px solid red";
     }else{
         
@@ -147,11 +149,9 @@ formulario_cert.addEventListener("submit",(e)=>{
     let fecha_fin = new Date(fechaV)
 
     if(nombre == ""){
-        alert("Debe colocar el nombre de la certificación");
         nombre_certificacion_campo.style.border = "3px solid red";
         banderas_externas.nombre = false;
     }else if(org == ""){
-        alert("Debe colocar el nombre de la organización");
         organizacion_campo.style.border = "3px solid red";
         banderas_externas.organizacion = false;
     }else if(fechaE == ""){
@@ -170,7 +170,7 @@ formulario_cert.addEventListener("submit",(e)=>{
         organizacion_cert.value = "";
         fecha_e_cert.value = "";
         fecha_v_cert.value = "";
-        agregar_certificacion(nombre,org,fechaE,fechaV,false,"");
+        agregar_certificacion(nombre,org,cambiar_fecha(fechaE),cambiar_fecha(fechaV),false,"");
       
         
     } 
@@ -379,7 +379,11 @@ function extraer_datos_tabla() {
 
         for (var j = 0; j< 4 ; j++) {
             col = row.cells[j];
-            fila.push(col.textContent);
+            if(j == 2 || j == 3){
+                fila.push(cambiar_fecha_bd(col.textContent));
+            }else{
+                fila.push(col.textContent);
+            }
         }  
         window.certificaciones.push(fila);
         
@@ -470,7 +474,7 @@ function mostrarCertificaciones(Certificaciones) {
     if(Certificaciones.length > 0){
         for (let i = 0; i < Certificaciones.length; i++) {
             
-            agregar_certificacion(Certificaciones[i][1],Certificaciones[i][2],Certificaciones[i][3],Certificaciones[i][4],true,Certificaciones[i][0]);
+            agregar_certificacion(Certificaciones[i][1],Certificaciones[i][2],cambiar_fecha(Certificaciones[i][3]),cambiar_fecha(Certificaciones[i][4]),true,Certificaciones[i][0]);
         }
         
     }
@@ -502,8 +506,8 @@ function mostrar_modal(id) {
    
     nombre_cert_modi.value = cells[0].textContent;
     organizacion_cert_modi.value = cells[1].textContent;
-    fecha_e_cert_modi.value = cells[2].textContent;
-    fecha_v_cert_modi.value = cells[3].textContent; 
+    fecha_e_cert_modi.value = cambiar_fecha_bd(cells[2].textContent);
+    fecha_v_cert_modi.value = cambiar_fecha_bd(cells[3].textContent); 
 
     guardar_modal.setAttribute("onclick", "guardar_cambio('"+id+"')");
     cerrar_modal.setAttribute("onclick", "ocultar_modal()");
@@ -536,12 +540,8 @@ function guardar_cambio(id){
         let fechaV = fecha_v_cert_modi.value;
         let fecha_inicio = new Date(fechaE);
         let fecha_fin = new Date(fechaV)
-
-        if(nombre_cert_modi.value == ""){
-            alert("Debe colocar el nombre de la certificación");
-        }else if(organizacion_cert_modi.value == ""){
-            alert("Debe colocar el nombre de la organización");
-        }else if(fechaE == ""){
+        
+        if(fechaE == ""){
             alert("Debe seleccionar una fecha de emisión");
         }else if(fechaV == ""){
             alert("Debe seleccionar una fecha de vigencia");
@@ -559,8 +559,8 @@ function guardar_cambio(id){
         
             cells[0].textContent = nombre_cert_modi.value;
             cells[1].textContent = organizacion_cert_modi.value;
-            cells[2].textContent = fecha_e_cert_modi.value;
-            cells[3].textContent = fecha_v_cert_modi.value;
+            cells[2].textContent = cambiar_fecha(fecha_e_cert_modi.value);
+            cells[3].textContent = cambiar_fecha(fecha_v_cert_modi.value);
 
 
             modal.classList.remove("show");
@@ -581,5 +581,20 @@ function ordenarLista(lista) {
     let lista_delete = lista.filter(element=>{ return element[0] == "delete" });
     let lista_ordenanda = lista_delete.concat(lista_update).concat(lista_new);
     return lista_ordenanda; 
+}
+
+function cambiar_fecha(string) {
+    //cambia formato dd/mm/YYYY
+    let separacion = string.split("-");
+    let nueva_fecha = separacion[2] + "/" + separacion[1] +"/"+ separacion[0];
+    return nueva_fecha;
+    
+}
+function cambiar_fecha_bd(string) {
+    //cambia formato YYYY-mm-dd
+    let separacion = string.split("/");
+    let nueva_fecha = separacion[2] + "-" + separacion[1] +"-"+ separacion[0];
+    return nueva_fecha;
+    
 }
 
