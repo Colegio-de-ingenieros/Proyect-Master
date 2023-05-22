@@ -151,7 +151,7 @@ function agregar_especialidad(texto) {
     input.value = texto;
     input.disabled = true;
 
-    btn_eliminar.classList.add("btn", "btn-small1", "btn-danger");
+    btn_eliminar.classList.add("btn", "btn-smal", "btn-danger");
     icono_eliminar.className = "ti ti-backspace-filled" ;
 
     btn_eliminar.appendChild(icono_eliminar);
