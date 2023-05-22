@@ -184,8 +184,9 @@ p{
         margin: 2em auto;
     }
 
-    .tablas{
-        width: 28%;
+    .tablas {
+        width: 35%;
+        display: flex;
     }
 
     .totales{
