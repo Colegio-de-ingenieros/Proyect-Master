@@ -85,6 +85,7 @@ window.onload = function() {
         if (lista_certificaciones_externas.length > 0) {
             
             const div = document.getElementById('certificaciones_externas');
+            div.classList.add('header_table');
             let tabla = document.createElement('table');
 
             let thead = document.createElement('thead');
