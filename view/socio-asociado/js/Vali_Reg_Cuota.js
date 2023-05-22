@@ -165,3 +165,13 @@ boton_enviar.addEventListener("click",(e)=>{
 
 
 });
+
+function validarArchivo(input) {
+    var archivo = input.files[0];
+    var maxSize = 10 * 1024 * 1024; // 10MB
+    
+    if (archivo && archivo.size > maxSize) {
+      alert("El archivo seleccionado supera el tamaño máximo permitido de 10MB.");
+      input.value = ""; // Limpia el valor del campo de archivo
+    }
+  }
