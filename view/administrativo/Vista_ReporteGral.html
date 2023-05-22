@@ -234,27 +234,47 @@
             <input type="submit" name="registrar" id="registrar" class="btn-medium btn" value="Generar reporte">
         </div>
       </form>
-      <br>
-      <!-- ETIQUETA PARA FECHA DE LA TABLA -->
-      <p class="subtitulo-1" id="fechas_titulo"></p>
-      <hr>
-    	<br>
-	</section>
-	<div class="article-tablas">
-        <article>
-          <div class="tablas">
-            <section class="header_table" id="tablaResultado">
-
-            </section>
+      <div class="grupo-input3" id="contenedor_tabla">
+            <br>
+            <h3 class="h3" id="nombre_actividad"></h3>
+            <p class="subtitulo-1" id="fechas_titulo"></p>
+            <hr>
+            <div class="article-tablas" >
+                <article>          
+                  <div class="tablas">
+                    <section class="header_table" id="tablaResultado">
+                        <table >
+                          <thead>
+                            <tr>
+                                <th>Participante</th>
+                                <th>Hotel</th>
+                                <th>Transporte</th>
+                                <th>Comida</th>
+                                <th>Oficina</th>
+                                <th>Honorarios</th>
+                                <th>Subtotal gastos</th>
+                                <th>Ingresos</th>
+                            </tr>
+                          </thead>
+                          <tbody id="cuerpo" >
+                           
+                          </tbody>
+                        </table>
+                    </section>
+                  </div>
+                </article>
+              </div>
           </div>
-		  <div id="total">
+          <div class="totales" id="datos">
+            
+          </div>
+          <div>
 
-		  </div>
-		  <div class="boton-reporte" >
-			<button type="submit"  name="registrar" class="btn-medium btn" id="boton_descargar_reporte">Descargar reporte</button>
-		</div>
-        </article>
-      </div>
+          </div>
+
+        <div class="boton-reporte" >
+            <button type="submit"  name="registrar" class="btn-medium btn" id="descargar">Descargar reporte</button>
+        </div>
 
 
   </main>
