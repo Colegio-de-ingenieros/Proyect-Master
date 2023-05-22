@@ -10,17 +10,24 @@ function confirmacion(e){
             url: '../../controller/administrativo/Eliminar_Certificaciones.php', 
             type: 'GET', 
             data: {idc: idc}, 
-            success: function (response)
-            {
+            success: function (response){
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista
                 location.href = '../../view/administrativo/Vista_Certificaciones.html';
             },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                // psrocesar la respuesta del servidor en caso de error
+            error: function (jqXHR, textStatus, errorThrown){
+
+                if (errorThrown == 'Forbidden') {
+                //la certificacion tiene un seguimiento
                 alert('Error, la certificación no puede ser eliminada porque tiene un seguimiento');
+                }
+
+                else if (errorThrown == 'Method Not Allowed') {
+                    //la certificacion esta relacionada con instructores
+                    alert('Error, la certificación no puede ser eliminada porque está relacionada con uno o más instructores');
+                }
+                
                 location.href = '../../view/administrativo/Vista_Certificaciones.html';
             }
         });
