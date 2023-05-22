@@ -88,6 +88,22 @@ h3{
     width: 100%;
 } 
 
+.input-format-{
+    color: var(--color-black);
+    background-color: var(--color-white);
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 300ms all;
+    width: 100%;
+}
+
 .input-format-22{
     color: var(--color-black);
     background-color: var(--color-white);
