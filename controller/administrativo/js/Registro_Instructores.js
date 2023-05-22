@@ -29,9 +29,15 @@ window.addEventListener("load",(e)=>{
 btn_formulario_registrar.addEventListener("click",(e)=>{
 
     if(!banderas.nombre){
+
         nombre_campo.style.border = "3px solid red";
+        formulario.reportValidity();
+
     }else if(!banderas.paterno){
+
         paterno_campo.style.border = "3px solid red";
+        formulario.reportValidity();
+
     }else{
         
         let respuesta =  SeleccionoUnaCertificacionInterna();
@@ -97,19 +103,27 @@ formulario_cert.addEventListener("submit",(e)=>{
 
 
         if(nombre == ""){
-            alert("Debe colocar el nombre de la certificación");
+
             nombre_certificacion_campo.style.border = "3px solid red";
             banderas_externas.nombre = false;
+
         }else if(org == ""){
-            alert("Debe colocar el nombre de la organización");
+           
             organizacion_campo.style.border = "3px solid red";
             banderas_externas.organizacion = false;
+
         }else if(fechaE == ""){
+
             alert("Debe seleccionar una fecha de emisión");
+
         }else if(fechaV == ""){
+
             alert("Debe seleccionar una fecha de vigencia");
+
         }else if(fecha_inicio > fecha_fin){
+
             alert("La fecha de emisión no puede ser mayor a la fecha de vigencia");
+
         }else if(banderas_externas.nombre && banderas_externas.organizacion){
     
                 banderas_externas.nombre = false;
@@ -119,7 +133,7 @@ formulario_cert.addEventListener("submit",(e)=>{
                 organizacion_cert.value = "";
                 fecha_e_cert.value = "";
                 fecha_v_cert.value = "";
-                agregar_certificacion(nombre,org,fechaE,fechaV);
+                agregar_certificacion(nombre,org,cambiar_fecha(fechaE),cambiar_fecha(fechaV));
         }
         
     
@@ -251,7 +265,12 @@ function extraer_datos_tabla() {
 
         for (var j = 0; j< 4 ; j++) {
             col = row.cells[j];
-            fila.push(col.textContent);
+            if(j == 2 || j == 3){
+                fila.push(cambiar_fecha_bd(col.textContent));
+            }else{
+                fila.push(col.textContent);
+            }
+            
         }  
         filas.push(fila);
      }
@@ -316,3 +335,19 @@ function SeleccionoUnaCertificacionInterna() {
     return isselected;
     
 }
+
+function cambiar_fecha(string) {
+    //cambia formato dd/mm/YYYY
+    let separacion = string.split("-");
+    let nueva_fecha = separacion[2] + "/" + separacion[1] +"/"+ separacion[0];
+    return nueva_fecha;
+    
+}
+function cambiar_fecha_bd(string) {
+    //cambia formato YYYY-mm-dd
+    let separacion = string.split("/");
+    let nueva_fecha = separacion[2] + "-" + separacion[1] +"-"+ separacion[0];
+    return nueva_fecha;
+    
+}
+

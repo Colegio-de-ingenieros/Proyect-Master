@@ -15,11 +15,11 @@ nombre_certificacion_campo_modi.addEventListener('keyup', (e) => {
     let valorInput2 = e.target.value;
     if (!expresiones.certificacion.test(valorInput2)) {
         nombre_certificacion_campo_modi.style.border = "3px solid red";
-        banderas_externas.nombre_modi = false;
+        banderas_modal.nombre_modi = false;
     }
     else {
         nombre_certificacion_campo_modi.removeAttribute("style");
-        banderas_externas.nombre_modi = true;
+        banderas_modal.nombre_modi = true;
     }
    
 });
@@ -33,11 +33,11 @@ organizacion_campo_modi.addEventListener('keyup', (e) => {
     let valorInput2 = e.target.value;
     if (!expresiones.nombre.test(valorInput2)) {
         organizacion_campo_modi.style.border = "3px solid red";
-        banderas_externas.organizacion_modi = false;
+        banderas_modal.organizacion_modi = false;
     }
     else {
         organizacion_campo_modi.removeAttribute("style");
-        banderas_externas.organizacion_modi = true;
+        banderas_modal.organizacion_modi = true;
     }
    
 });
