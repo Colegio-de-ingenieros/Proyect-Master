@@ -23,6 +23,7 @@ const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
 
 const btn_descargar_reportes = document.getElementById("descargar");
+var nombreAct = "Cursos";
 
 contenedor_tabla.style.display = 'none';
 btn_descargar_reportes.style.display = 'none';
@@ -41,19 +42,107 @@ formulario.addEventListener('submit', function (e){
     e.preventDefault()
     if (radioCert.checked) {
         //alert("certificaciones");
+        nombreAct = "Certificaciones"
         peticion("certificaciones")
     }
 
     else if (radioCursos.checked) {
         //alert("cursos");
         peticion("cursos")
+        nombreAct = "Cursos"
     }
 
     if (radioProy.checked) {
         //alert("proyectos");
         peticion("proyectos")
+        nombreAct = "Proyectos"
     }
 })
+
+//escuchador para el pdf
+btn_descargar_reportes.addEventListener("click", (e) =>
+{
+
+    let nombre = nombreAct;
+    let periodo = fechas_titulo.textContent;
+    let gastos = document.getElementById("gastos").textContent;
+    let ingresos = document.getElementById("ingresos").textContent;
+    let total = document.getElementById("total").textContent;
+    let cells = document.querySelectorAll("#cuerpo td");
+    var fila = "";
+    let datos_tabla = ""
+    let contador = 0;
+
+    cells.forEach(cell =>
+    {
+
+        if (contador == 8) {
+            if (datos_tabla.length == 0) {
+                datos_tabla = fila;
+            } else {
+                datos_tabla = datos_tabla + ":" + fila;
+            }
+
+            fila = ""
+            contador = 0;
+        }
+        if (fila.length == 0) {
+            fila = cell.textContent;
+        } else {
+            fila = fila + "," + cell.textContent;
+        }
+
+        contador++;
+
+    });
+    datos_tabla = datos_tabla + ":" + fila;
+
+    console.log(nombre);
+
+
+    var datos_totales = {
+        nombre: nombre,
+        periodo: periodo,
+        gastos: gastos,
+        ingresos: ingresos,
+        total: total,
+        array_datos: datos_tabla
+    };
+
+
+    postForm("../../controller/administrativo/Pdf_ReporteGral.php", datos_totales);
+
+
+});
+
+function postForm(path, params, method)
+{
+    //hace un formulario oculto para
+    // asi mandar los datos al lugar donde descargaremos la info
+    //todo es un input
+    method = method || 'post';
+
+    var form = document.createElement('form');
+    form.setAttribute('method', method);
+    form.setAttribute('action', path);
+    form.setAttribute('target', '_blank');
+
+
+    for (var key in params) {
+        if (params.hasOwnProperty(key)) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type', 'hidden');
+            hiddenField.setAttribute('name', key);
+            hiddenField.setAttribute('value', params[key]);
+
+            form.appendChild(hiddenField);
+        }
+    }
+
+    document.body.appendChild(form);
+    form.submit();
+}
+
 
 function peticion(tipo)
 {
@@ -117,8 +206,9 @@ function mostrar_tabla(datos){
 
     //pone las fechas si se pide historial completo
     if (radioCompleto.checked) {
-        
-        fechas_titulo.innerHTML = formatoFecha(datos[datos.length - 2]) + "  -  " + formatoFecha(datos[datos.length - 1]) 
+        fechaI = formatoFecha(datos[datos.length - 2])
+        fechaF = formatoFecha(datos[datos.length - 1])
+        fechas_titulo.innerHTML = fechaI + "  -  " + fechaF 
     }
     //tabla.innerHTML = ""
     //crearTabla()
