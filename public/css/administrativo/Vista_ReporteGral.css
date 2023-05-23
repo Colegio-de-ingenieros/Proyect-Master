@@ -11,9 +11,9 @@ article{
     background-color: #dfe3e7;
 }
 .article-tablas article{
-    margin: 20px auto;
+    margin: 20px 0 20px 0;
     padding: 0px;
-    width:1085px;
+    width:100%;
     background-color: #dfe3e7;
 }
 .table{
@@ -199,7 +199,7 @@ tr:hover td {
     }
 
     .tablas {
-        width: 42%;
+        width: 100%;
     }
 
     .totales {
