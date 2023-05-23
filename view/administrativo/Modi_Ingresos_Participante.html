@@ -246,6 +246,11 @@
   <script src="../../view/administrativo/js/Vali_Mod_Ingresos.js"></script>
   <script src="../../controller/administrativo/js/Modificar_Ingresos.js"></script>
 
+  <script>
+    var fechaActual = new Date().toISOString().split("T")[0];
+    document.getElementById("ingresos_Fecha").max = fechaActual;
+  </script>
+
 </body>
 
 </html>

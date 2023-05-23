@@ -50,15 +50,13 @@
 
         public function buscar_no_socios($id){
             $this->conexion_bd();
-            $sqlB = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
+            $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso
                     EXCEPT
                     SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso, persoparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = persoparticipa.IdSeg AND
                         persoparticipa.IdPerso = usuaperso.IdPerso ";
-            $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
-            FROM usuaperso";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -67,15 +65,13 @@
 
         public function buscar_no_empresas($id){
             $this->conexion_bd();
-            $sqlB = "SELECT usuaemp.RFCUsuaEmp, CONCAT_WS(' ', usuaemp.NomUsuaEmp) as Nombre
+            $sql = "SELECT usuaemp.RFCUsuaEmp, CONCAT_WS(' ', usuaemp.NomUsuaEmp) as Nombre
                     FROM usuaemp
                     EXCEPT
                     SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp
                     FROM usuaemp, empparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = empparticipa.IdSeg AND
                         empparticipa.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
-            $sql = "SELECT usuaemp.RFCUsuaEmp, CONCAT_WS(' ', usuaemp.NomUsuaEmp) as Nombre
-            FROM usuaemp";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -84,15 +80,13 @@
 
         public function buscar_no_instructores($id){
             $this->conexion_bd();
-            $sqlB = "SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
+            $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
                     FROM instructor
                     EXCEPT
                     SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
                     FROM instructor, insparticipa, seguimiento
                     WHERE seguimiento.IdSeg = :id AND seguimiento.IdSeg = insparticipa.IdSeg AND
                     insparticipa.ClaveIns = instructor.ClaveIns";
-            $sql = "SELECT instructor.ClaveIns, CONCAT_WS(' ', instructor.NomIns, instructor.ApePIns, instructor.ApeMIns) as Nombre
-            FROM instructor";
             $arre = [":id"=>$id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();

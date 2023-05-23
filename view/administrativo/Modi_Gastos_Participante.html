@@ -259,6 +259,11 @@
   <script src="../../view/administrativo/js/Vali_Mod_Gastos.js"></script>
   <script src="../../controller/administrativo/js/Modificar_Gastos.js"></script>
 
+  <script>
+    var fechaActual = new Date().toISOString().split("T")[0];
+    document.getElementById("gastos_Fecha").max = fechaActual;
+  </script>
+  
 </body>
 
 </html>
