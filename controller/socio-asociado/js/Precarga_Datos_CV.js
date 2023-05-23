@@ -84,24 +84,24 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                 } else if (combo == 2) {
                   document.getElementById("residencia-campo").value = "2";
                 } 
-
+                respuesta_estatus.style.display = "block";
                 const contenedor_estatus = document.getElementById('formulario-estatus');
                 let estatus =respuesta[i+1]['EstatusCv'];
                 if (estatus == 0) {
-                  contenedor_estatus.textContent = 'Estatus del CV: En espera de revisión';
+                  contenedor_estatus.textContent = 'En espera';
                 }
                 else if (estatus == 1) {
-                  contenedor_estatus.textContent = 'Estatus del CV: Aceptado';
+                  contenedor_estatus.textContent = 'Aceptado';
                 }
                  else if (estatus == 2) {
-                  contenedor_estatus.textContent = 'Estatus del CV: Rechazado';
+                  contenedor_estatus.textContent = 'Rechazado';
                 }
 
                 const contenedor_comentario = document.getElementById('comentario');
-                if (respuesta[i+1]['ComeCv'] == null) {
-                contenedor_comentario.textContent = 'Comentarios: No hay comentarios';
+                if (respuesta[i+1]['ComeCv'] == null  || respuesta[i+1]['ComeCv'] == "") {
+                contenedor_comentario.textContent = 'Sin comentarios';
                }else{
-                contenedor_comentario.textContent = 'Comentarios: '+respuesta[i+1]['ComeCv'];
+                contenedor_comentario.textContent = respuesta[i+1]['ComeCv'];
                }
    
          }
@@ -155,7 +155,9 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
             }
          }
       }
+      
       if (respuesta.length <= 3){
-         respuesta_estatus.textContent = 'No hay CV registrado';
+         const no_hay = document.getElementById('nohay');
+         no_hay.textContent = 'No hay CV registrado';
       }
    });
