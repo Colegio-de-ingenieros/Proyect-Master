@@ -30,7 +30,7 @@ class Mostrar_Instructor extends Crud_bd{
         $resultados_certificaciones_internas = $this->mostrar($consulta,$parametros);
 
         //* Extraemos las certificaciones externas del instructor
-        $consulta = "SELECT certexterna.NomCerExt, certexterna.OrgCerExt, certexterna.IniCerExt, certexterna.FinCerExt
+        $consulta = "SELECT certexterna.NomCerExt, certexterna.OrgCerExt, DATE_FORMAT(certexterna.IniCerExt,'%d/%m/%Y') as IniCerExt, DATE_FORMAT(certexterna.FinCerExt, '%d/%m/%Y') as FinCerExt
         from certexterna, inscertext
         WHERE inscertext.ClaveIns = :id
         and inscertext.IdCerExt = certexterna.IdCerExt";
