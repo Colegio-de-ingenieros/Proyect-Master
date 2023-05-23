@@ -397,6 +397,9 @@
             $parametros = [$a];
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+
+            $this->estatus_ins($claveIns);
+
             $this->cerrar_conexion();
 
             return $ejecucion;
@@ -430,6 +433,14 @@
             $this->cerrar_conexion();
 
             return $ejecucion;
+        }
+
+        public function estatus_ins($idIns){
+            $this->conexion_bd();
+            $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
+            $arre = [":estatus"=>0, ":id"=>$idIns ];
+            $this->insertar_eliminar_actualizar($querry, $arre);
+            $this->cerrar_conexion();
         }
     }
 
