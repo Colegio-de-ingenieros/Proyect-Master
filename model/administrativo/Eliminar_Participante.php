@@ -124,11 +124,30 @@ class EliminarParticipante{
                  $q6 = "DELETE FROM controlgas  WHERE IdGas=:idGas";                 
                  $this->base->insertar_eliminar_actualizar($q6, $a5);
              }
+
+             $q8 = "SELECT ClaveIns FROM insparticipa WHERE IdParI=:idParP";
+             $resul = $this->base->mostrar($q8, $a);
+             $idIns=$resul[0]["ClaveIns"];
+
              //ELIMINA ASOCIADO DE INSPARTICIPA
              $q7 = "DELETE FROM insparticipa WHERE IdParI = :idParP";
              $this->base->insertar_eliminar_actualizar($q7, $a);
-             return "Eliminado con exito";
-            
+
+            $querry2 = "SELECT * FROM insparticipa WHERE ClaveIns=:claveIns";
+            $arre2 = [":claveIns"=>$idIns];
+            $resulta = $this->base->mostrar($querry2, $arre2);
+ 
+            if ($resulta!=null){
+                 return false;
+             }
+             else{
+                 //No tiene seguimientos, cambia el estatus
+                 $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
+                 $arre = [":estatus"=>1, ":id"=>$idIns ];
+                 $this->base->insertar_eliminar_actualizar($querry, $arre);
+             }
+             
+            return "Eliminado con exito";
         }
         
     }
