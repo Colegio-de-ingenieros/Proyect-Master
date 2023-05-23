@@ -20,8 +20,8 @@ if ($aux=="gasto"){
 
         if ($_FILES['gastos_comprobante']['type'] != 'application/pdf'){
             $data = "Solo se admiten documentos PDF";
-        } else if ($_FILES['gastos_comprobante']['size'] > 1000000){
-            $data = "El tamaño del documentos debe ser menor a 1 MB";
+        } else if ($_FILES['gastos_comprobante']['size'] > 3000000){
+            $data = "El tamaño del documentos debe ser menor a 3 MB";
         } else{
 
             $result = $objeto->modificar_gasto($idOperacion, $monto, $fecha);
@@ -71,8 +71,8 @@ if ($aux=="gasto"){
 
         if ($_FILES['ingresos_comprobante']['type'] != 'application/pdf'){
             $data = "Solo se admiten documentos PDF";
-        } else if ($_FILES['ingresos_comprobante']['size'] > 1000000){
-            $data = "El tamaño del documentos debe ser menor a 1 MB";
+        } else if ($_FILES['ingresos_comprobante']['size'] > 3000000){
+            $data = "El tamaño del documentos debe ser menor a 3 MB";
         } else{
 
             $result = $objeto->modificar_ingreso($idOperacion, $monto, $fecha);
