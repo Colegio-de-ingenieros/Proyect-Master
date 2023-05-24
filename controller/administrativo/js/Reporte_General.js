@@ -23,7 +23,8 @@ const cuerpo_tabla = document.getElementById("cuerpo");
 const totales = document.getElementById("datos");
 
 const btn_descargar_reportes = document.getElementById("descargar");
-var nombreAct = "Cursos";
+const nombre_actividad = document.getElementById("nombre_actividad");
+var nombreAct = " ";
 
 contenedor_tabla.style.display = 'none';
 btn_descargar_reportes.style.display = 'none';
@@ -212,6 +213,7 @@ function mostrar_tabla(datos){
     }
     //tabla.innerHTML = ""
     //crearTabla()
+    nombre_actividad.innerText = nombreAct
     cuerpo_tabla.innerHTML = "";
     totales.innerHTML = "";
 
