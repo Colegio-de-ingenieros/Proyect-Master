@@ -275,12 +275,12 @@
         <!-- Fecha de inicio -->
         <div class="campo">
           <label for="" class="label-2">Periodo de inicio*</label>
-          <input type="date" id="periodo-inicio-antigua-1" class="input-format-2"></input>
+          <input type="date" id="periodo-inicio-antigua-1" class="input-format-2" ></input>
         </div>
         <!-- Fecha de fin -->
         <div class="campo">
           <label for="" class="label-2">Periodo de finalización*</label>
-          <input type="date" id="periodo-fin-antigua-1" class="input-format-2"></input>
+          <input type="date" id="periodo-fin-antigua-1" class="input-format-2" ></input>
         </div>
         <!-- Actividades relevantes -->
         <div class="campo expand">
@@ -312,12 +312,12 @@
         <!-- Fecha de inicio -->
         <div class="campo">
           <label for="" class="label-2">Periodo de inicio*</label>
-          <input type="date"id="periodo-inicio-antigua-2" class="input-format-2"></input>
+          <input type="date"id="periodo-inicio-antigua-2" class="input-format-2" ></input>
         </div>
         <!-- Fecha de fin -->
         <div class="campo">
           <label for="" class="label-2">Periodo de finalización*</label>
-          <input type="date" id="periodo-fin-antigua-2"class="input-format-2"></input>
+          <input type="date" id="periodo-fin-antigua-2"class="input-format-2" ></input>
         </div>
         <!-- Actividades relevantes -->
         <div class="campo expand">
@@ -353,11 +353,14 @@
         <p class="subtitulo-1">Estatus</p>
         <hr>
       </div>
-
+      <div id="nohay" class="formulario-estatus"></div>
       <br>
-      <div id="respuesta">
+      <div id="respuesta"  style="display: none;">
+      <div id="status" class="label-2">Estado</div>
       <div id="formulario-estatus" class="formulario-estatus"></div>
       <br>
+      <br>
+      <div id="comment" class="label-2">Comentario</div>
       <div id="comentario" class="formulario-estatus"></div>
       </div>
       <div class="botones-registro">
@@ -372,4 +375,17 @@
 <script src="../../controller/socio-asociado/js/Reg_CV.js"></script>
 <script src="../../controller/socio-asociado/js/Precarga_Datos_CV.js"></script>
 <script src="js/Vali_Reg_CV.js"></script>
+<script>
+var fechaActual = new Date().toISOString().split("T")[0];
+document.getElementById("periodo-inicio-antigua-1").max = fechaActual;
+
+var fechaActual = new Date().toISOString().split("T")[0];
+document.getElementById("periodo-fin-antigua-1").max = fechaActual;
+
+var fechaActual = new Date().toISOString().split("T")[0];
+document.getElementById("periodo-inicio-antigua-2").max = fechaActual;
+
+var fechaActual = new Date().toISOString().split("T")[0];
+document.getElementById("periodo-fin-antigua-2").max = fechaActual;
+</script>
 </html>

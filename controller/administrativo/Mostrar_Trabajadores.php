@@ -63,6 +63,7 @@ if (isset($_POST['consulta'])) {
             $amat = $resultado[$i]["ApeMT"];
             $correo = $resultado[$i]["CorreoT"];
             $telefono = $resultado[$i]["TelT"];
+            $rfcc="'".$rfc."'";
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $rfc. '</td>';
@@ -71,7 +72,7 @@ if (isset($_POST['consulta'])) {
             $salida .= '<td>' . $amat . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $telefono . '</td>';
-            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv(String('.$id.'))" class="table_item__link">Eliminar</a></td>';
+            $salida .= '<td><a href="../../controller/administrativo/Get_Trabajadores.php?rfc='.$rfc.'" >Modificar</a>&nbsp;&nbsp;&nbsp<a href="#" onclick="confirmDesactiv(String('.$rfcc.'))" class="table_item__link">Eliminar</a></td>';
             //
             //
             $salida .= '</tr></div>';

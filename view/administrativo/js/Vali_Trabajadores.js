@@ -85,7 +85,7 @@ formulario.caja_nombre.addEventListener('keyup', (e) => {
    // Eliminar numeros
    .replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,<>\/?]/g, '')
 
     if (!expresiones.nombre.test(valorInput)) {
         caja_nombre.style.border = "3px solid red";
@@ -105,7 +105,7 @@ formulario.caja_ap_paterno.addEventListener('keyup', (e) => {
 // Eliminar numeros
 .replace(/[0-9]/g, '')
 // Eliminar caracteres especiales
-.replace(/[üâäàåçê♪ëèïîìÄÅÉæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,.<>\/?]/g, '')
+.replace(/[üâäàåçê♪ëèïîìÄÅæ·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
     if (!expresiones.apellidos.test(valorInput)) {
         caja_ap_paterno.style.border = "3px solid red";
@@ -125,7 +125,7 @@ formulario.caja_ap_materno.value = valorInput
 // Eliminar numeros
 .replace(/[0-9]/g, '')
 // Eliminar caracteres especiales
-.replace(/[üâäàåçê♪ëèïîì·ÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,.<>\/?]/g, '')
+.replace(/[üâäàåçê♪ëèïîì·ÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,.<>\/?]/g, '')
 
 if (!expresiones.apeMa.test(valorInput)) {
     caja_ap_materno.style.border = "3px solid red";
@@ -144,7 +144,8 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[áéíóúÁÉÍÓÚñÑ]/g, '')
     // Eliminar el ultimo espaciado
     //condicional para que no inice con un numero
     .replace(/^[0-9]/g, '')
