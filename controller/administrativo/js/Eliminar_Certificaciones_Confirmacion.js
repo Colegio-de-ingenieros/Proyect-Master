@@ -27,6 +27,10 @@ function confirmacion(e){
                     //la certificacion esta relacionada con instructores
                     alert('Error, la certificación no puede ser eliminada porque está relacionada con uno o más instructores');
                 }
+
+                else {
+                    console.log(errorThrown)
+                }
                 
                 location.href = '../../view/administrativo/Vista_Certificaciones.html';
             }

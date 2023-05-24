@@ -28,6 +28,6 @@ else{
    
 }
 
-echo "<script>location.href = '../../view/administrativo/Vista_Certificaciones.html';</script>";
+//echo "<script>location.href = '../../view/administrativo/Vista_Certificaciones.html';</script>";
 
 ?>
