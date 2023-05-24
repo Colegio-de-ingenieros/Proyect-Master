@@ -162,7 +162,7 @@ class Reporte{
             //suma los ingresos de los instructores
             $ingreTotal = $ingreEmp[0]["total"] + $ingreInst[0]["total"] + $ingrePerso[0]["total"];
 
-            $datos_seg[0] = $ids . '-' . $nombre[0]["nombre"];
+            $datos_seg[0] = $ids . ' - ' . $nombre[0]["nombre"];
             $datos_seg[1] = $hotel;
             $datos_seg[2] = $transporte;
             $datos_seg[3] = $comida;
