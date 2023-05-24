@@ -15,7 +15,7 @@ function confirmacion(e){
                 //el registro fue exitoso
                 if (data === 'ok') {
                     alert("Eliminado con éxito");
-                    location.href = '../../view/administrativo/Reg_Certificaciones.html';
+                    location.href = '../../view/administrativo/Vista_Certificaciones.html';
                 }
 
                 //los datos no pasaron alguna validacion
