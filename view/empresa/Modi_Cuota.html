@@ -143,7 +143,7 @@
         <div class="campo">
           
             <div class="label-form">
-              <p class="label-2">Fecha fin*</p>
+              <p class="label-2">Fecha finalización*</p>
           </div>
           <input type="date" class="input-format-2" placeholder="Ingrese la fecha de fin" id="fechafin" name="fechafin" required>
           </div>
@@ -164,7 +164,9 @@
           <div class="label-form">
             <p class="label-2">Comprobante de cuota nuevo</p>
         </div>
-            <input type="file" class="input-format-2" id="archivo1"  name="archivo1" accept="application/pdf" title="El archivo debe ser maximo de 10MB."></input>
+        <input type="file" class="input-format-2" id="archivo1"  name="archivo1" accept="application/pdf" 
+        required title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"></input>
+            
             <br><br>
             
           </div>
@@ -186,6 +188,17 @@
 
   </main>
   <script src="../../view/empresa/js/Vali_Modi_Cuota.js"></script>
+  <script>function validarArchivo(input) {
+    var archivo = input.files[0];
+    var maxSize = 3 * 1024 * 1024; // 3MB
+    
+    if (archivo && archivo.size > maxSize) {
+      alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
+      input.value = ""; // Limpia el valor del campo de archivo
+    }
+  }</script>
+  
+  
   
 </body>
 <script src="../../controller/empresa/js/Modificar_Cuotas.js"></script>

@@ -3,7 +3,8 @@ $('input[type="file"]').on('change', function(){
     if ($( this ).val() != '') {
       if(ext == "pdf"){
         if($(this)[0].files[0].size > 3048576){
-          console.log("El documento excede el tamaño máximo");
+          alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
+          $(this)[0].value = ""; // Limpia el valor del campo de archivo
           $('#modal-title').text('¡Precaución!');
           $('#modal-msg').html("Se solicita un archivo no mayor a 3MB. Por favor verifica.");
           $("#modal-gral").modal();           

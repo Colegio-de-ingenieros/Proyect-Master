@@ -154,3 +154,13 @@ function validar(bandera){
     }
 
 }
+
+function validarArchivo(input) {
+    var archivo = input.files[0];
+    var maxSize = 3 * 1024 * 1024; // 3MB
+    
+    if (archivo && archivo.size > maxSize) {
+      alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
+      input.value = ""; // Limpia el valor del campo de archivo
+    }
+  }
