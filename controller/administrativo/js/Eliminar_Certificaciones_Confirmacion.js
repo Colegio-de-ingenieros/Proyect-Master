@@ -4,38 +4,25 @@ function confirmacion(e){
         e.preventDefault();
         var idc = $(this).data('idc');
 
-        // Realizar la solicitud Ajax para eliminar el elemento
-        $.ajax({
-            //manda a llamar al php que tiene la logica para eliminar
-            url: '../../controller/administrativo/Eliminar_Certificaciones.php', 
-            type: 'GET', 
-            data: {idc: idc}, 
-            success: function (response){
-                alert(response)
-                // Procesar la respuesta del servidor en caso de éxito
-                alert('Eliminado con éxito');
-                // volver a la pagina de vista
-                location.href = '../../view/administrativo/Vista_Certificaciones.html';
-            },
-            error: function (jqXHR, textStatus, errorThrown){
-
-                if (errorThrown == 'Forbidden') {
-                //la certificacion tiene un seguimiento
-                alert('Error, la certificación no puede ser eliminada porque tiene un seguimiento');
+        fetch('../../controller/administrativo/Eliminar_Certificaciones.php?idc='+idc, {
+            method: 'GET',
+            idc:idc
+        })
+            //recibe el mensaje para mandarlo como alerta
+            .then(res => res.json())
+            .then(data =>
+            {
+                //el registro fue exitoso
+                if (data === 'ok') {
+                    alert("Eliminado con éxito");
+                    location.href = '../../view/administrativo/Reg_Certificaciones.html';
                 }
 
-                else if (errorThrown == 'Method Not Allowed') {
-                    //la certificacion esta relacionada con instructores
-                    alert('Error, la certificación no puede ser eliminada porque está relacionada con uno o más instructores');
-                }
-
+                //los datos no pasaron alguna validacion
                 else {
-                    console.log(errorThrown)
+                    alert(data);
                 }
-                
-                location.href = '../../view/administrativo/Vista_Certificaciones.html';
-            }
-        });
+            })
 
 
     } else {
