@@ -659,3 +659,44 @@ function validarDecimales(cadena){
 
     
 }
+
+function validarFecha1() {
+    var fechaInput = document.getElementById("periodo-inicio-antigua-1").value;
+    var fechaIngresada = new Date(fechaInput);
+    var fechaActual = new Date();
+  
+    if (fechaIngresada > fechaActual) {
+      alert("La fecha ingresada debe ser del día de hoy o anterior");
+      document.getElementById("periodo-inicio-antigua-1").value = "";
+    }
+  }
+  function validarFecha2() {
+    var fechaInput = document.getElementById("periodo-fin-antigua-1").value;
+    var fechaIngresada = new Date(fechaInput);
+    var fechaActual = new Date();
+  
+    if (fechaIngresada > fechaActual) {
+      alert("La fecha ingresada debe ser del día de hoy o anterior");
+      document.getElementById("periodo-fin-antigua-1").value = "";
+    }
+  }
+  function validarFecha3() {
+    var fechaInput = document.getElementById("periodo-inicio-antigua-2").value;
+    var fechaIngresada = new Date(fechaInput);
+    var fechaActual = new Date();
+  
+    if (fechaIngresada > fechaActual) {
+      alert("La fecha ingresada debe ser del día de hoy o anterior");
+      document.getElementById("periodo-inicio-antigua-2").value = "";
+    }
+  }
+  function validarFecha4() {
+    var fechaInput = document.getElementById("periodo-fin-antigua-2").value;
+    var fechaIngresada = new Date(fechaInput);
+    var fechaActual = new Date();
+  
+    if (fechaIngresada > fechaActual) {
+      alert("La fecha ingresada debe ser del día de hoy o anterior");
+      document.getElementById("periodo-fin-antigua-2").value = "";
+    }
+  }
