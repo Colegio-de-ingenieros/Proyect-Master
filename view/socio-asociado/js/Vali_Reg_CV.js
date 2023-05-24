@@ -39,7 +39,7 @@ actividad2.addEventListener('keyup', (e) => {
     actividad2.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -62,7 +62,7 @@ actividad.addEventListener('keyup', (e) => {
     actividad.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -82,7 +82,7 @@ puesto1.addEventListener('keyup', (e) => {
     puesto1.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.puesto.test(valorInput)) {
@@ -105,7 +105,7 @@ puesto.addEventListener('keyup', (e) => {
     puesto.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.puesto.test(valorInput)) {
@@ -123,7 +123,7 @@ empresa2.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
    
     empresa2.value = valorInput
-    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.empresa.test(valorInput)) {
         /* empresa2.style.border = "3px solid red"; */
@@ -144,7 +144,7 @@ empresa.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
    
     empresa.value = valorInput
-    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.empresa.test(valorInput)) {
         empresa.style.border = "3px solid red";
@@ -162,7 +162,7 @@ carrera3.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
    
     carrera3.value = valorInput
-    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera3.style.border = "3px solid red";
@@ -183,7 +183,7 @@ carrera1.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     
     carrera1.value = valorInput
-    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera1.style.border = "3px solid red";
@@ -205,7 +205,7 @@ carrera.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     
     carrera.value = valorInput
-    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+    .replace(/[0-9üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
     if (!expresiones.nombre_carrera.test(valorInput)) {
         carrera.style.border = "3px solid red";
@@ -225,7 +225,7 @@ objetivo.addEventListener('keyup', (e) => {
     objetivo.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+`=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -246,7 +246,7 @@ salario.addEventListener('keyup', (e) =>{
     //elimina los espacios en blanco
     .replace(/\s+/g, '')
     //elimina caracteres especiales
-    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒª`´·¨°º¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':" \\|,<>\/?]/g, '')
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒª`´·¨°º¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-`=\[\]{};':" \\|,<>\/?]/g, '')
 
     //elimina las letras
         .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
