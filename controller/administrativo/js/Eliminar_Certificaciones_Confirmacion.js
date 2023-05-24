@@ -11,6 +11,7 @@ function confirmacion(e){
             type: 'GET', 
             data: {idc: idc}, 
             success: function (response){
+                alert(response)
                 // Procesar la respuesta del servidor en caso de éxito
                 alert('Eliminado con éxito');
                 // volver a la pagina de vista

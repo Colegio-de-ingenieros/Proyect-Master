@@ -19,7 +19,7 @@ else{
     //verifica si hay relacion con instructores, simulamos un error 405
     $ins = $obj->buscarIns($idc);
 
-    echo $inst . '<br>';
+    echo $ins . '<br>';
 
     if($ins == true){
         //si hay relacion
