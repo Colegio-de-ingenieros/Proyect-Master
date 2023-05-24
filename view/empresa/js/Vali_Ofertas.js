@@ -80,7 +80,7 @@ formula.nom_vacante.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|,<>\/?]/g, '')
 
     if (!expresiones.cadenasGeneral.test(valorInput)) {
         nom_vacante.style.border = "3px solid red";
@@ -99,7 +99,7 @@ formula.requi_academicos.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.cadenasAcademicos.test(valorInput)) {
         requi_academicos.style.border = "3px solid red";
@@ -118,7 +118,7 @@ formula.requi_tecnicos.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.cadenasAcademicos.test(valorInput)) {
         requi_tecnicos.style.border = "3px solid red";
@@ -136,7 +136,7 @@ formula.descri_puesto.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+`\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.cadenasDescripcion.test(valorInput)) {
         descri_puesto.style.border = "3px solid red";
@@ -204,7 +204,7 @@ formula.calle.addEventListener('keyup', (e) => {
 
 	formula.calle.value = valorInput
      // Eliminar caracteres especiales
-     .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@$%^&^*()_+\-=\[\]{};,':"\\|<>\/?]/g, '');
+     .replace(/[üâäàåçê♪ëèïîìÄÅæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@$%^&^*()_+`\-=\[\]{};,':"\\|<>\/?]/g, '');
 
     let valorInput2 = e.target.value;
     if (!expresiones.calle.test(valorInput2)) {
