@@ -222,12 +222,10 @@ class EliminarSeguimento{
             $res_Gas = $this->base->mostrar($q_Gas, $a_Gas);
 
             //Eliminar en la tabla persogastos con el IdParp que tenemos
-            $q3 = "DELETE FROM insgastos 
-                                    WHERE IdParI=:idParI";
+            $q3 = "DELETE FROM insgastos WHERE IdParI=:idParI";
 
             $a3=[ ":idParI"=>$idParI];
             $this->base->insertar_eliminar_actualizar($q3, $a3);
-
 
             //Elimina todos los gastos que tiene un participante 
             for ($y=0; $y < count($res_Gas); $y++){
@@ -242,27 +240,27 @@ class EliminarSeguimento{
                 $this->base->insertar_eliminar_actualizar($q5, $a4);
             }
             //Consulta la clave del instructor
-            $querry = "SELECT ClaveIns FROM insparticipa WHERE IdParI=:idParI";
-            $arre = [":idParI"=>$idParI];
-            $resul = $this->base->mostrar($querry, $arre);
-
+            $querry1 = "SELECT ClaveIns FROM insparticipa WHERE IdParI=:idParI";
+            $arre1 = [":idParI"=>$idParI];
+            $resul = $this->base->mostrar($querry1, $arre1);
+            $idIns=$resul[0]["ClaveIns"];
+            
             //Eliminar en tabla insparticipa
             $q6 = "DELETE FROM insparticipa WHERE IdParI = :idParI";
             $a6=[":idParI"=>$idParI];
             $this->base->insertar_eliminar_actualizar($q6, $a6);
 
-            $querry = "SELECT * FROM insparticipa WHERE IdParI=:idParI";
-            $arre = [":idParI"=>$idParI];
-            $resulta = $this->base->mostrar($querry, $arre);
+            $querry2 = "SELECT * FROM insparticipa WHERE ClaveIns=:claveIns";
+            $arre2 = [":claveIns"=>$idIns];
+            $resulta = $this->base->mostrar($querry2, $arre2);
 
             if ($resulta!=null){
                 return false;
             }
             else{
-                //No tiene seguimientos, cambia el estatus 
-                $idIns=$resul[0]["ClaveIns"];
+                //No tiene seguimientos, cambia el estatus
                 $querry = "UPDATE instructor SET EstatusIns=:estatus WHERE ClaveIns=:id";
-                $arre = [":estatus"=>0, ":id"=>$idIns ];
+                $arre = [":estatus"=>1, ":id"=>$idIns ];
                 $this->base->insertar_eliminar_actualizar($querry, $arre);
             }
 

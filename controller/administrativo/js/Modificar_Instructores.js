@@ -66,6 +66,9 @@ window.addEventListener("load",async (e)=>{
     banderas.nombre = true;
     banderas.paterno = true;
 
+    var fechaActual = new Date().toISOString().split("T")[0];
+    fecha_e_cert.max = fechaActual;
+    fecha_e_cert_modi.max = fechaActual;
 
 
 });
