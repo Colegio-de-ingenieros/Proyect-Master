@@ -30,11 +30,13 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
       // Obtener el elemento del DOM al que se añadirá la nueva caja de texto
       const contenedor = document.getElementById('formulario-certificaciones');
       const respuesta_estatus = document.getElementById('respuesta');
+      let bandera = true;
 
       for (let i = 2; i < respuesta.length; i++) {
          console.log (i);
          if (respuesta[i] == "no hay certificaciones"){
             contenedor.textContent = 'No se encontraron certificaciones';
+            bandera = true;
          }
          else if (respuesta[i] == "certificaciones"){
             for (let j = i+1; j < respuesta.length; j++) {
@@ -70,6 +72,7 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                // Añadir la nueva caja de texto al contenedor
                contenedor.appendChild(CajaTexto);
             }
+            bandera = true;
          }
          else if (respuesta[i] == "bolsa"){
 
@@ -103,6 +106,7 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                }else{
                 contenedor_comentario.textContent = respuesta[i+1]['ComeCv'];
                }
+               bandera = false;
    
          }
          else if (respuesta[i] == "academica"){
@@ -127,6 +131,7 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                }
                
             }
+            bandera = false;
          }
          else if (respuesta[i] == "profesional"){
             let posicion = i+1;
@@ -153,10 +158,11 @@ fetch("../../controller/socio-asociado/Precarga_Datos_CV.php")
                
                
             }
+            bandera = false;
          }
       }
       
-      if (respuesta.length <= 3){
+      if (bandera == true){
          const no_hay = document.getElementById('nohay');
          no_hay.textContent = 'No hay CV registrado';
       }
