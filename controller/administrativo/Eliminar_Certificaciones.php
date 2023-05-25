@@ -13,7 +13,7 @@ $seg = $obj->buscarSeg($idc);
 if($seg == true){
     //echo '  relacion con seguimiento';
     //http_response_code(403);
-    echo json_encode('Error, la certificación no puede ser eliminada porque tiene un seguimiento');
+    echo json_encode('seguimiento');
 }
 
 else{
@@ -26,7 +26,7 @@ else{
         //si hay relacion
         //echo '  relacion con instructores';
         //http_response_code(405);
-        echo json_encode('Error, la certificación no puede ser eliminada porque está relacionada con uno o más instructores');
+        echo json_encode('instructores');
     }
 
     else{

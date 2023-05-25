@@ -18,9 +18,16 @@ function confirmacion(e){
                     location.href = '../../view/administrativo/Vista_Certificaciones.html';
                 }
 
-                //los datos no pasaron alguna validacion
+                else if (data === 'instructores') {
+                    alert("Error, la certificación no puede ser eliminada porque está relacionada con uno o más instructores")
+                }
+
+                else if (data === 'seguimiento') {
+                    alert("Error, la certificación no puede ser eliminada porque tiene un seguimiento")
+                }
+
                 else {
-                    alert(data);
+                    console.log(data)
                 }
             })
 
