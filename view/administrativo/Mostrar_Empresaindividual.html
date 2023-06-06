@@ -1,3 +1,5 @@
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,132 +9,239 @@
   <title>Mostrar empresa</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Trabajadores.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Mostrar_Empresaindividual.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
-
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
     sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-	<link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
 </head>
 
 <body>
-    <header>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
 
-        <div class="menu">
-          <input type="checkbox" id="check__menu">
-          <label id="label__check" for="check__menu"><i class="fa-sharp fa-solid fa-bars icon__menu"></i></label>
-          <img class="logo_ciscig" src="../../public/img/ciscigCompleto.png" alt="">
-          <nav>
-            <ul>
-              <!-- Cuotas -->
-              <li>
-                <a href="#">
-                  <!-- <i class="fa-solid fa-circle-check"></i> -->
-                  Cuotas
-                </a>
-    
-                <ul>
-                  <li><a id="" href="Reg_Cuota.html">Registrar</a></li>
-                  <li><a id="" href="Vista_Cuotas.html">Mostrar</a></li>
-                </ul>
-              </li>
-    
-              <!-- Bolsa de trabajo -->
-              <li>
-                <a href="#">
-                  <!-- <i class="fa-solid fa-chalkboard-user"></i> -->
-                  Bolsa de trabajo
-                </a>
-    
-                <ul>
-                  <li><a id="" href="../../view/empresa/Reg_Ofertas.html">Registrar</a></li>
-                  <li><a id="" href="../../view/empresa/Vista_Ofertas.html">Mostrar</a></li>
-                </ul>
-              </li>
-    
-              <!-- Servicios -->
-              <li>
-                <a href="#">
-                  <!-- <i class="fa-solid fa-clipboard-list"></i> -->
-                  Servicios
-                </a>
-    
-                <ul>
-                  <li><a id="" href="#">Registrar</a></li>
-                  <li><a id="" href="#">Mostrar</a></li>
-                </ul>
-              </li>
-    
-              <!-- Mi Perfil -->
-              <li>
-                <a href="#">
-                  <!-- <i class="fa-regular fa-user"></i> -->
-                  Mi perfil
-                </a>
-    
-                <ul>
-                  <li><a id="" href="#">Datos Generales</a></li>
-                </ul>
-              </li>
-    
-            </ul>
-          </nav>
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Empresa </h1>
         </div>
-    
-        <div class="boton-cerrar-session">
-          <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' " >Cerrar sesión</button>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn"
+          onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Trabajadores.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
+              </ul>
+            </li>
+
+
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+							<ul>
+								<li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
+							</ul>
+						</li>
+					</ul>
+        		</nav>
+      		</div>
+    	</div>
+	</header>
+
+  <main>
+    <section class="section-main hoja">
+      <div class="cabezera">
+        <h4 class="h3">Empresa</h4>
+      </div>
+      <br>
+      <p class="subtitulo-1"> Datos generales</p>
+      <hr>
+      <!-- Datos generales avacante -->
+      <br>
+      <form action="" id="formula" method="post">
+        <div class="formulario-generales">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">RFC fiscal:</p>
+                </div>
+                <div class="input-form">
+                    <p class="label-4" id="rfcempresa">Pruebas de como se ve el texto</p>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Nombre comercial:</p>
+                </div>
+                <div class="input-form">
+                    <p class="label-4" id="nombrecomercialempresa">Pruebas de como se ve el texto</p>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Correo electrónico empresarial:</p>
+                </div>
+                <div class="input-form">
+                    <p class="label-4" id="correoempresa">Pruebas de como se ve el texto</p>
+                </div>
+            </div>
         </div>
-      </header>
-	<div class="contenedorregistro">
-		<h3 class="h3">Empresa</h3>
-		<br>
-		<form action="" id="formula">
-			<p class="subtitulo-1"> Datos generales</p>
-			<hr size="1px" />
-			<div class="contenedor-formulario">
-				<div class="grupo-input">
-					<div class="label-form">
-						<p class="label-2">RFC fiscal:</p>
-					</div>
-					<div class="input-form">
-						<p class="label-4" id="rfcempresa">Pruebas de como se ve el texto</p>
-					</div>
-				</div>
+        <br>
+        <div class="grupo-input2">
+            <div class="label-form">
+                <p class="label-2">Razón social:</p>
+            </div>
+            <div class="input-form">
+                <p class="label-4" id="razonsocialempresa">Pruebas de como se ve el texto</p>
+            </div>
+        </div>
+        <br>
+        <br>
 
-				<div class="grupo-input">
-					<div class="label-form">
-						<p class="label-2">Nombre comercial:</p>
-					</div>
-					<div class="input-form">
-						<p class="label-4" id="nombrecomercialempresa">Pruebas de como se ve el texto</p>
-					</div>
-				</div>
+        </div>
 
-				<div class="grupo-input">
-					<div class="label-form">
-						<p class="label-2">Correo electrónico empresarial:</p>
-					</div>
-					<div class="input-form">
-						<p class="label-4" id="correoempresa">Pruebas de como se ve el texto</p>
-					</div>
-				</div>
-			</div>
-			<div class="grupo-input2">
-				<div class="label-form">
-					<p class="label-2">Razón social:</p>
-				</div>
-				<div class="input-form">
-					<p class="label-4" id="razonsocialempresa">Pruebas de como se ve el texto</p>
-				</div>
-			</div>
-			<br>
-			<br>
-			
-			<!--PARTE DOS-->
+        
+        <!--PARTE DOS-->
 			<p class="subtitulo-1"> Domicilio fiscal</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -188,7 +297,9 @@
 			</div> 
 			<br>
 			
-			<!--PARTE TRES-->
+
+        </div>
+          <!--PARTE TRES-->
 			<p class="subtitulo-1"> Horario laboral</p>
 			<hr size="1px" />
 			<div class="contenedor-formulario">
@@ -218,9 +329,8 @@
 					</div>
 				</div>
 			</div>
-			<br>
-
-			<!--PARTE CUATRO-->
+          <br>
+          <!--PARTE CUATRO-->
 			
 			<br>
 			<p class="label-2">Área de Recursos Humanos</p>
@@ -281,8 +391,7 @@
 				</div>
 			</div> 
 			<br>
-
-			<!--PARTE CINCO-->
+            <!--PARTE CINCO-->
 
 			
 			<br>
@@ -344,7 +453,7 @@
 				</div>
 			</div> 
 			<br>
-			<!--PARTE SEIS-->
+            <!--PARTE SEIS-->
 			<br>
 			<p class="label-2">Área de Capacitación</p>
 			<hr size="1px" />
@@ -404,7 +513,7 @@
 				</div>
 			</div>
 			<br>
-			<legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
+            <legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
 			<div>
                 <br>
 				<p class="label-4" id="acuerdoempresa">Pruebas de como se ve el texto</p>
@@ -413,10 +522,12 @@
 			<br>
 			
 			<br>
-		</form>
-
-	<script src="../../controller/registro/js/Alta_Empresa_In.js"></script>
-	<script src="../registro/js/Vali_Empresa.js"></script> 
+        </div>
+        
+    </section>
+  </main>
+  <script src="../../view/administrativo/js/Vali_Oferta_AR.js"></script>
+  <script src="../../controller/administrativo/js/Registro_Comentario_Ofertas.js"></script>
 </body>
 
-</html>
+</html
