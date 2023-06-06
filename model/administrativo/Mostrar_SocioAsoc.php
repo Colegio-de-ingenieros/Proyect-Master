@@ -35,6 +35,16 @@
             return $resultado;
         }
         
+        public function get_laborales($idP){
+            $this->conexion_bd();
+            $sql = "SELECT TipoGrado
+                    FROM persoestudios, gradoestudios 
+                    WHERE persoestudios.IdGrado=gradoestudios.IdGrado and  persoestudios.IdPerso = :idP";
+            $arre = [":idP"=>$idP];
+            $resultado = $this->mostrar($sql,$arre);
+            $this->cerrar_conexion();
+            return $resultado;
+        }
 
     }
 
