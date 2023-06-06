@@ -68,7 +68,7 @@ if($valTipo!=""){
                 $salida .= '<td>' . $numInte . '</td>';
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>  <a href="../../controller/administrativo/Mostrar_Empresa_Individual.php?id='.$numInte.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="../../controller/administrativo/Mostrar_Cuota_Individual_Empresa.php?id='.$numInte.'">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </td>';
                 $salida .= '</tr>';
             }  

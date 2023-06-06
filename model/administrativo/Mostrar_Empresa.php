@@ -56,6 +56,9 @@ class MostrarEmpresa{
         $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
         return $resultados;
     }
+    function mostrarCuota($rfc){
+        
+    }
 }
 $obj = new MostrarEmpresa();
 $obj->instancias();
