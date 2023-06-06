@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
 	<link rel="stylesheet" href="../../public/css/administrativo/Vista_Seguimiento.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<!-- <script src="../../controller/administrativo/js/Mostrar_Seguimiento.js"></script> -->
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
@@ -195,7 +194,6 @@
           </div>
           <hr>
           <div class="grupo-input">
-            <input type="hidden" name="oculto" id="oculto" value="curso">
             <div class="input-form">
               <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
@@ -203,19 +201,19 @@
           <form class="formulario-de-datos" id="formulario">
 
             <div class="grupo-input-vista">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_cursos" value="asosciado">
-                Asosciado
+                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_asociados" value="asociados">
+                Asociados
             </div>
 
             <div class="grupo-input-vista">
-              <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_proyecto"
-                value="socio">
-                Socio
+              <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_socios"
+                value="socios">
+                Socios
             </div>
 
             <div class="grupo-input-vista">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_certificaciones" value="empresa">
-                Empresa
+                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_empresas" value="empresas">
+                Empresas
             </div>
           </form>
 
@@ -232,7 +230,7 @@
   </main>
 
   </div>
-
+  <script src="../../controller/administrativo/js/Mostrar_Usuarios.js"></script>
 </body>
 
 </html>
