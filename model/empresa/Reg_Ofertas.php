@@ -24,6 +24,16 @@
             $resultados = $this->base->mostrar($querry, [":correo" => $correo]);
             return $resultados;
         }
+        function llenarJornada(){
+            $querry = "SELECT * FROM jornada";
+            $resultados = $this->base->mostrar($querry);
+            return $resultados;
+        }
+        function llenarModalidad(){
+            $querry = "SELECT * FROM modalidad";
+            $resultados = $this->base->mostrar($querry);
+            return $resultados;
+        }
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
         function insertar($id, $nom, $aca, $tec, $descr, $exp, $bruto, $mensual, $ini, $fin, $tel, $calle, $correo, $jornada, $colonia, $modalidad, $c1, $c2, $c3, $c4, $c5, $c6, $c7, $rfce){
             //consultas para la tabla de certificaciones internas
