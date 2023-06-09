@@ -6,12 +6,12 @@ $base->instancias();
 $id_arre = $base->getId($id);
 $salida="";
 $idSocio=$id_arre[0]["IdPerso"];
-$cuotas = $base->cuotas_disponibles($idSocio); 
+$cuotas = $base->cursos_disponibles($idSocio); 
     if (isset($_POST['consulta'])) {
         //echo($_POST['consulta']);
         $busqueda = $_POST['consulta'];
 
-        $resultado = $base->buscar($busqueda,$idSocio);
+        $resultado = $base->cursos_buscar($busqueda,$idSocio);
 
         if ($resultado == true) {
             
@@ -47,10 +47,9 @@ $cuotas = $base->cuotas_disponibles($idSocio);
             <table class="header_table" >
                 <thead>
                     <tr>
-                        <th>Tipo</th>
-                        <th>Fecha de inicio</th>
-                        <th>Fecha de finalización</th>
-                        <th>Monto</th>
+                        <th>Nombre</th>
+                        <th>Organización</th>
+                        <th>Horas</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -60,12 +59,11 @@ $cuotas = $base->cuotas_disponibles($idSocio);
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($resultado); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV = $resultado[$i]["IdVigCuo"];
-                $monto = $resultado[$i]["MontoVigCuo"];
-                $tipo = $resultado[$i]["TipoCuota"];
-                $fecha_inicio = $resultado[$i]["IniVigCuo"];
-                $fecha_fin = $resultado[$i]["FinVigCuo"];
-                $estatus = $cuotas[$i]["EstatusVigCuo"];
+                $idV = $resultado[$i]["IdCurPerso"];
+                $nombre = $resultado[$i]["NomCurPerso"];
+                $horas = $resultado[$i]["HraCurPerso"];
+                $organizacion = $resultado[$i]["OrgCurPerso"];
+                $estatus = $resultado[$i]["EstatusCurPerso"];
                 if ($estatus==1) {
                     $estatus="Aprobado";
                     }
@@ -75,16 +73,16 @@ $cuotas = $base->cuotas_disponibles($idSocio);
                     else{
                     $estatus="En espera";
                     }
+                
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $tipo . '</td>';
-                $salida .= '<td>' . $fecha_inicio . '</td>';
-                $salida .= '<td>' . $fecha_fin . '</td>';
-                $salida .= '<td>' . $monto . '</td>';
+                $salida .= '<td>' . $nombre . '</td>';
+                $salida .= '<td>' . $organizacion . '</td>';
+                $salida .= '<td>' . $horas . '</td>';
                 $salida .= '<td>' . $estatus . '</td>';
                 $salida .= '<td> 
-                <a href="../../controller/administrativo/Mostrar_Cuota_Individual_SocioAsociado.php?id='.$idV.'">Más...</a>
+                <a href="../../controller/administrativo/Mostrar_Curso_Individual_SocioAsociado.php?id='.$idV.'">Más...</a>
                 </td>';
                 $salida .= '</tr>';
             }
@@ -130,10 +128,9 @@ $cuotas = $base->cuotas_disponibles($idSocio);
             <table class="header_table" >
                 <thead>
                     <tr>
-                        <th>Tipo</th>
-                        <th>Fecha de inicio</th>
-                        <th>Fecha de finalización</th>
-                        <th>Monto</th>
+                        <th>Nombre</th>
+                        <th>Organización</th>
+                        <th>Horas</th>
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
@@ -143,12 +140,11 @@ $cuotas = $base->cuotas_disponibles($idSocio);
             //agrega los resultados de la busqueda
             for ($i = 0; $i < count($cuotas); $i++) {
                 //obtiene los valores de la tupla actual de cada uno de los campos y los guarda como variables
-                $idV = $cuotas[$i]["IdVigCuo"];
-                $monto = $cuotas[$i]["MontoVigCuo"];
-                $tipo = $cuotas[$i]["TipoCuota"];
-                $fecha_inicio = $cuotas[$i]["IniVigCuo"];
-                $fecha_fin = $cuotas[$i]["FinVigCuo"];
-                $estatus = $cuotas[$i]["EstatusVigCuo"];
+                $idV = $cuotas[$i]["IdCurPerso"];
+                $nombre = $cuotas[$i]["NomCurPerso"];
+                $horas = $cuotas[$i]["HraCurPerso"];
+                $organizacion = $cuotas[$i]["OrgCurPerso"];
+                $estatus = $cuotas[$i]["EstatusCurPerso"];
                 if ($estatus==1) {
                     $estatus="Aprobado";
                     }
@@ -162,13 +158,12 @@ $cuotas = $base->cuotas_disponibles($idSocio);
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
-                $salida .= '<td>' . $tipo . '</td>';
-                $salida .= '<td>' . $fecha_inicio . '</td>';
-                $salida .= '<td>' . $fecha_fin . '</td>';
-                $salida .= '<td>' . $monto . '</td>';
+                $salida .= '<td>' . $nombre . '</td>';
+                $salida .= '<td>' . $organizacion . '</td>';
+                $salida .= '<td>' . $horas . '</td>';
                 $salida .= '<td>' . $estatus . '</td>';
                 $salida .= '<td> 
-                <a href="../../controller/administrativo/Mostrar_Cuota_Individual_SocioAsociado.php?id='.$idV.'">Más...</a>
+                <a href="../../controller/administrativo/Mostrar_Curso_Individual_SocioAsociado.php?id='.$idV.'">Más...</a>
                 </td>';
                 $salida .= '</tr>';
             }

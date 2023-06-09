@@ -6,20 +6,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aprobacion curso</title>
+  <title>Visualización de cuotas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Trabajadores.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Aprobacion_Cvadmin.css">
-  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Trabajadores.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Cursos_SocioAsociado.js"></script>
+
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-    sizes="192x192">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
   <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-  <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage" content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
 </head>
 
 <body>
@@ -29,14 +30,13 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Curso</h1>
+          <h1 class="nombre_Ventana">Cuotas</h1>
         </div>
 
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn"
-          onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
       </div>
     </div>
 
@@ -44,7 +44,6 @@
     <div class="container_menu">
       <div class="menu">
         <input type="checkbox" id="check__menu">
-
         <label id="label__check" for="check__menu">
           <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
         </label>
@@ -117,8 +116,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+              <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -158,8 +157,6 @@
               </ul>
             </li>
 
-
-
             <li>
               <a href="#">
                 <i class="fa-solid fa-user-gear"></i>
@@ -177,98 +174,53 @@
                 Bolsa de trabajo
               </a>
 
-							<ul>
-								<li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
-							</ul>
-						</li>
-					</ul>
-        		</nav>
-      		</div>
-    	</div>
-	</header>
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
 
   <main>
-    <section class="section-main hoja">
-      <div class="cabezera">
-        <h4 class="h3">Curso</h4>
-      </div>
-      <br>
-      <p class="subtitulo-1"> Datos generales</p>
-      <hr>
-      <!-- Datos generales avacante -->
-      <br>
-      <form action="" id="formula" method="post">
-        <!-- Datos generales -->
-      <div class="formulario-generales">
-        <!-- Nombre -->
-        <div class="campo">
-          
-          <div class="label-form">
-            <p class="label-2">Nombre:</p>
-        </div>
-           <p class="label-4" id="nombreCUR">Pruebas de como se ve el texto</p>
-        </div>
-        <!-- Org -->
-        <div class="campo">
-          
-          <div class="label-form">
-            <p class="label-2">Organización:</p>
-        </div>
-          <p class="label-4" id="organizacionCUR">Pruebas de como se ve el texto</p>
-        </div>
-        <!-- HORAS -->
-        <div class="campo">
-          
-          <div class="label-form">
-            <p class="label-2">Total de horas:</p>
-        </div>
-           <p class="label-4" id="totalhoraCUR">Pruebas de como se ve el texto</p>
-        </div>
-        </div>
-        <br>
-        </div>
-        <a id="link_com">Verificar comprobante</a>
+    <div>
+      <div class="article-tablas">
+        <article>
+          <div class="sub-titulo">
+            <h4 class="subtitulo-1">Mostrar / Consultar</h4>
           </div>
-          <br>
-        </div>
-        <br>
-        <p class="subtitulo-1">Aprobación del curso</p>
-        <hr size="1px" />
-        <br>
-        <form action="" id="formula">
-          <div class="input-form">
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
-                value="1"> Aprobado </label>  &nbsp;
-          </div>
-          <br>
-          <div class="input-form"> 
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck2" class="checkbox-format"
-                value="2" > Denegado </label>
-            <br>
-            <br>
-          </div>
-
-          <div class="grupo-input2">
-            <div class="label-form">
-              <p class="label-2">Motivo del rechazo</p>
-            </div>
-
+          <hr>
+          <div class="grupo-input">
             <div class="input-form">
-              <textarea name="descri_puesto" id="descri_puesto" class="input-textarea-aca-tec" required
-                placeholder="Ingrese la descripción del rechazo" maxlength="100"
-                title="Acepta números, letras, espacios intermedios, comas y puntos."></textarea>
+              <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
           </div>
+
+          <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Trabajadores.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
+
           <br>
+          <div class="tablas">
+            <section class="header_table" id="tablaResultado">
+
+            </section>
           </div>
-          <div class="botones-registro">
-            <button class="btn btn-medium" id="boton_registro" type="submit">Enviar</button>
-          </div>
-        </form>
-    </section>
+        </article>
+      </div>
+    </div>
   </main>
-  <script src="../../view/administrativo/js/Vali_Oferta_AR.js"></script>
-  <script src="../../controller/administrativo/js/Registro_Comentario_Cursos.js"></script>
+
 </body>
 
-</html
+
+</html>
