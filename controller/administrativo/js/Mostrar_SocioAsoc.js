@@ -1,5 +1,7 @@
 window.onload = function () {
-    obtener_Datos()
+    obtener_Datos();
+    rellenar_tabla();
+   
 }
 
 function obtener_Datos(){
@@ -7,6 +9,7 @@ function obtener_Datos(){
     let split = urlAct.split("=");
     var idP = split[1];
     let url = "../../controller/administrativo/Get_SocioAsoc.php";
+
 
     let form = new FormData();
     form.append("idP", idP);
@@ -18,62 +21,107 @@ function obtener_Datos(){
         .then(data => {
             console.log(data);
             var parrafo= document.getElementById("nombre");
-            parrafo.innerHTML = data[0][0];
+            parrafo.innerHTML = data[0];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("ap_paterno");
-            parrafo.innerHTML = data[0][1];
+            parrafo.innerHTML = data[1];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("ap_materno");
-            parrafo.innerHTML = data[0][2];
+            parrafo.innerHTML = data[2];
             var parrafo = document.createElement("p");
             
-
             var parrafo= document.getElementById("fecha_nacimiento");
-            parrafo.innerHTML = data[0][3];
+            parrafo.innerHTML = data[3];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("tel_fijo");
-            parrafo.innerHTML = data[0][4];
+            parrafo.innerHTML = data[4];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("tel_movil");
-            parrafo.innerHTML = data[0][5];
+            parrafo.innerHTML = data[5];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("correo");
-            parrafo.innerHTML = data[0][6];
+            parrafo.innerHTML = data[6];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("cedula");
-            parrafo.innerHTML = data[0][7];
-            var parrafo = document.createElement("p");
-
-            var parrafo= document.getElementById("calle_numero");
-            parrafo.innerHTML = data[0][8];
+            parrafo.innerHTML = data[7];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("codigo_postal");
-            parrafo.innerHTML = data[1][0];
+            parrafo.innerHTML = data[8];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("calle_numero");
+            parrafo.innerHTML = data[9];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("colonia");
-            parrafo.innerHTML = data[1][1];
+            parrafo.innerHTML = data[10];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("ciudad");
-            parrafo.innerHTML = data[1][2];
+            parrafo.innerHTML = data[11];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("estado");
-            parrafo.innerHTML = data[1][3];
+            parrafo.innerHTML = data[12];
             var parrafo = document.createElement("p");
 
             var parrafo= document.getElementById("grado_estudio");
-            parrafo.innerHTML = data[2][0];
+            parrafo.innerHTML = data[13];
             var parrafo = document.createElement("p");
 
+            var parrafo= document.getElementById("Empresa");
+            parrafo.innerHTML = data[14];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("Puesto");
+            parrafo.innerHTML = data[15];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("correo_laboral");
+            parrafo.innerHTML = data[16];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("tel_oficina");
+            parrafo.innerHTML = data[17];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("extension");
+            parrafo.innerHTML = data[18];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("funcion");
+            parrafo.innerHTML = data[19];
+            var parrafo = document.createElement("p");
 
         }) 
 }
+
+function rellenar_tabla(){
+    let urlAct = window.location+''
+    let split = urlAct.split("=");
+    var idP = split[1];
+
+    $.ajax({
+        url: '../../controller/administrativo/Mostrar_SocioAsoc_Individual.php',
+        type: 'POST',
+        dataType: 'html',
+        data: {idP: idP },
+    })
+
+        .done(function (respuesta)
+        {
+            $("#tablaResultado").html(respuesta);
+        })
+        .fail(function ()
+        {
+            console.log("error");
+        })
+}
+
