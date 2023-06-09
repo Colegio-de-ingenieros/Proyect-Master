@@ -65,7 +65,7 @@ $cuotas = $base->cuotas_disponibles($idSocio);
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
                 $fecha_fin = $resultado[$i]["FinVigCuo"];
-                $estatus = $cuotas[$i]["EstatusVigCuo"];
+                $estatus = $resultado[$i]["EstatusVigCuo"];
                 if ($estatus==1) {
                     $estatus="Aprobado";
                     }

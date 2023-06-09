@@ -38,12 +38,12 @@ if ($resultado == true) {
   parrafo.innerHTML = "<?php echo $organizacion; ?>";
 var parrafo = document.createElement("p");
 
-var parrafo = document.getElementById("fechainitotalhoraCURcioCUOTASOCIO"); // obtenemos la referencia al elemento
+var parrafo = document.getElementById("totalhoraCUR"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $horas; ?>";
 var parrafo = document.createElement("p");
 
 const linkElement = document.getElementById("link_com");
-linkElement.href = "../../controller/Comprobantes/socio-asociado/cursos/<?php echo $id; ?>";
+linkElement.href = "../../controller/Comprobantes/socio-asociado/cuotas/<?php echo $id; ?>";
 
 </script>
 
