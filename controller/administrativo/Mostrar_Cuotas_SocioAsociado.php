@@ -1,18 +1,17 @@
 <?php
 $id=$_GET['id'];
-include_once('../../model/administrativo/Mostrar_Empresa.php');
-$base = new MostrarEmpresa();
+include_once('../../model/administrativo/Mostrar_SocioAsociado.php');
+$base = new MostrarSocioAsociado();
 $base->instancias();
-$rfc_Num = $base->getRFC($id);
+$id_arre = $base->getId($id);
 $salida="";
-$rfc=$rfc_Num[0]["RFCUsuaEmp"];
-    $cuotas = $base->cuotas_disponibles($rfc); 
-
+$idSocio=$id_arre[0]["IdPerso"];
+$cuotas = $base->cuotas_disponibles($idSocio); 
     if (isset($_POST['consulta'])) {
         //echo($_POST['consulta']);
         $busqueda = $_POST['consulta'];
 
-        $resultado = $base->buscar($busqueda,$rfc);
+        $resultado = $base->buscar($busqueda,$idSocio);
 
         if ($resultado == true) {
             

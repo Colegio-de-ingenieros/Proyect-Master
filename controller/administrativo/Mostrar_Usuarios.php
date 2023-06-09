@@ -53,7 +53,7 @@ if($valTipo!=""){
                 $salida .= '<td>' . $nombre . '</td>';
                 $salida .= '<td>  <a href="../../view/administrativo/Vista_Datos_Usuario.html?usuario='.$idUsuario.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <a href="#">Cursos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="#">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a href="../../view/administrativo/Vista_Cuotas_SocioAsociado.html?id='.$numInte.'">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </td>';
                 $salida .= '</tr>';  
 
