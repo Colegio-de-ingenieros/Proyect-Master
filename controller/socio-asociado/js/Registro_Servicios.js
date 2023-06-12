@@ -33,7 +33,6 @@ btn_registrar.addEventListener('click', () => {
     alert('Debes seleccionar al menos un servicio');
   }
   else if (headhunter == 1 && outplacement == 1) {
-    alert("Ambos servicios pedidos")
     let dd = date.getDate();
     let mm = date.getMonth() + 1;
     let yyyy = date.getFullYear();
@@ -47,7 +46,6 @@ btn_registrar.addEventListener('click', () => {
     let fecha = yyyy + '-' + mm + '-' + dd;
 
     let url = "../../controller/socio-asociado/Registro_Servicios.php";
-    alert("Headhunter: " + headhunter + " Outplacement: " + outplacement + " Fecha: " + fecha)
     let form = new FormData();
     form.append("headhunter", headhunter);
     form.append("outplacement", outplacement);
@@ -60,10 +58,11 @@ btn_registrar.addEventListener('click', () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         alert("Servicios registrados correctamente")
+        check_headhunter.checked = false;
+        check_outplacement.checked = false;
       });
   }
   else if (headhunter == 1 || outplacement == 1) {
-    alert("Un solo servicio pedido")
     let dd = date.getDate();
     let mm = date.getMonth() + 1;
     let yyyy = date.getFullYear();
@@ -90,6 +89,8 @@ btn_registrar.addEventListener('click', () => {
       .catch(error => console.error('Error:', error))
       .then(response => {
         alert("Servicio registrado correctamente");
+        check_headhunter.checked = false;
+        check_outplacement.checked = false;
       });
   }
 
