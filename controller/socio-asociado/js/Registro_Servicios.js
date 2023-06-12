@@ -27,32 +27,70 @@ check_outplacement.addEventListener('change', (event) => {
 });
 
 btn_registrar.addEventListener('click', () => {
-  /* Obten la zona horaria y la fecha del día */
   const date = new Date();
 
   if (headhunter == 0 && outplacement == 0) {
     alert('Debes seleccionar al menos un servicio');
-  }else if(headhunter == 1 || outplacement == 1) {
-    
-    let url = "";
-    
+  }
+  else if (headhunter == 1 && outplacement == 1) {
+    alert("Ambos servicios pedidos")
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
+    let yyyy = date.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd;
+    }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    let fecha = yyyy + '-' + mm + '-' + dd;
+
+    let url = "../../controller/socio-asociado/Registro_Servicios.php";
+    alert("Headhunter: " + headhunter + " Outplacement: " + outplacement + " Fecha: " + fecha)
     let form = new FormData();
     form.append("headhunter", headhunter);
     form.append("outplacement", outplacement);
-    form.append("fecha", date);
+    form.append("fecha", fecha);
 
     fetch(url, {
       method: 'POST',
       body: form
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      .then(response => resultados(response));
-    
-    function resultados(response) {
-      alert('Servicio registrado exitosamente')
+      .then(response => {
+        alert("Servicios registrados correctamente")
+      });
+  }
+  else if (headhunter == 1 || outplacement == 1) {
+    alert("Un solo servicio pedido")
+    let dd = date.getDate();
+    let mm = date.getMonth() + 1;
+    let yyyy = date.getFullYear();
+
+    if (dd < 10) {
+      dd = '0' + dd;
     }
+    if (mm < 10) {
+      mm = '0' + mm;
+    }
+    let fecha = yyyy + '-' + mm + '-' + dd;
+
+    let url = "../../controller/socio-asociado/Registro_Servicios.php";
+
+    let form = new FormData();
+    form.append("headhunter", headhunter);
+    form.append("outplacement", outplacement);
+    form.append("fecha", fecha);
+
+    fetch(url, {
+      method: 'POST',
+      body: form
+    }).then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {
+        alert("Servicio registrado correctamente");
+      });
   }
-  else if(headhunter == 1 && outplacement == 1) {
-    alert('Servicios registrados exitosamente');
-  }
+
 });
