@@ -1,0 +1,301 @@
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mostrar oferta laboral</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Modi_Trabajadores.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Aprobacion_Cvadmin.css">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
+  <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
+    sizes="192x192">
+  <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+  <meta name="msapplication-TileImage"
+    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+</head>
+
+<body>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Bolsa de trabajo</h1>
+        </div>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn"
+          onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Trabajadores.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
+              </ul>
+            </li>
+
+
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+							<ul>
+								<li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
+							</ul>
+						</li>
+					</ul>
+        		</nav>
+      		</div>
+    	</div>
+	</header>
+
+  <main>
+    <section class="section-main hoja">
+      <div class="cabezera">
+        <h4 class="h3">Servicio</h4>
+      </div>
+      <br>
+      <p class="subtitulo-1"> Datos generales</p>
+      <hr>
+      <!-- Datos generales avacante -->
+      <br>
+      <form action="" id="formula" method="post">
+        <div class="formulario-generales">
+          <!-- Nombre -->
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Nombre:</p>
+              <p class="label-4" id="nombreOT">Pruebas de como se ve el texto</p>
+            </div>
+            <div class="input-form">
+
+            </div>
+          </div>
+          
+          <br>
+
+        </div>
+
+        <div class="grupo-input2">
+          <div class="label-form">
+            <p class="label-2">Teléfono:</p>
+            <p class="label-4" id="descri_puestoOT">Pruebas de como se ve el texto</p>
+          </div>
+          <div class="input-form">
+
+          </div>
+        </div>
+
+        <div class="grupo-input2">
+          <div class="label-form">
+            <p class="label-2">Correo:</p>
+            <p class="label-4" id="reqi_academicosOT">Pruebas de como se ve el texto</p>
+          </div>
+          <div class="input-form">
+
+          </div>
+        </div>
+
+
+        <div class="grupo-input">
+          <div class="label-form">
+            <p class="label-2">Fecha:</p>
+            <p class="label-4" id="reqi_tecnicosuOT">Pruebas de como se ve el texto</p>
+          </div>
+          <div class="input-form">
+
+          </div>
+        </div>
+
+        <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Estatus:</p>
+              <p class="label-4" id="estatus">Pruebas de como se ve el texto</p>
+            </div>
+            <div class="input-form">
+  
+            </div>
+          </div>
+
+        <br>
+        <br>
+          <br>
+        </div>
+        <p class="subtitulo-1">Aprobación del servicio</p>
+        <hr size="1px" />
+        <br>
+        <form action="" id="formula">
+          <div class="input-form">
+            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
+                value="1"> Aceptar </label>  &nbsp;
+          </div>
+          <br>
+          <div class="input-form"> 
+            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck2" class="checkbox-format"
+                value="2" > Rechazar </label>
+            <br>
+            <br>
+          </div>
+
+          <!-- <div class="grupo-input2">
+            <div class="label-form">
+              <p class="label-2">Motivo del rechazo</p>
+            </div>
+
+            <div class="input-form">
+              <textarea name="descri_puesto" id="descri_puesto" class="input-textarea-aca-tec" required
+                placeholder="Ingrese la descripción del rechazo" maxlength="100"
+                title="Acepta números, letras, espacios intermedios, comas y puntos."></textarea>
+            </div>
+          </div>
+          <br>
+          </div> -->
+          <div class="botones-registro">
+            <button class="btn btn-medium" id="boton_registro" type="submit">Enviar</button>
+          </div>
+        </form>
+    </section>
+  </main>
+  
+  <script src="../../controller/administrativo/js/Registro_Servicio_Admon.js"></script>
+</body>
+
+</html

@@ -29,7 +29,7 @@ if($valTipo!=""){
                         <thead>
                             <tr>
                                 <th>Nombre</th>
-                              
+                                <th>Teléfono</th>
                                 <th>Correo</th>
                                 <th>Fecha de aplicación</th>
                                 <th>Estatus</th>
@@ -42,23 +42,34 @@ if($valTipo!=""){
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
             if ($valTipo=="headhunter"){
-
+                $id = $resultado[$i]["IdPerso"];
                 $nombre = $resultado[$i]["NomPerso"];
                 $correo = $resultado[$i]["CorreoPerso"];
+                $telefono = $resultado[$i]["TelMPerso"];
             }else if ($valTipo=="outplacement"){
+                $id = $resultado[$i]["IdAreaEmp"];
+                $nombre = $resultado[$i]["NomEncArea"];
+                $correo = $resultado[$i]["CorreoEncArea"];
+                $telefono = $resultado[$i]["TelFEncArea"];
+            }
 
-                $nombre = $resultado[$i]["NomUsuaEmp"];
-                $correo = $resultado[$i]["CorreoUsuaemp"];
+            if ($resultado[$i]["EstatusSer"] == '0') {
+                $estatus = "En espera";
+            } else if ($resultado[$i]["EstatusSer"] == '1') {
+                $estatus = "Aprobado";
+            } else if ($resultado[$i]["EstatusSer"] == '2') {
+                $estatus = "Rechazado";
             }
 
             
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
+            $salida .= '<td>' . $telefono . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $resultado[$i]["FechaSer"] . '</td>';
-            $salida .= '<td>' . $resultado[$i]["EstatusSer"] . '</td>';
-            $salida .= '<td>  <a href="#">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>' . $estatus . '</td>';
+            $salida .= '<td>  <a href="../../controller/administrativo/Mostrar_Oferta_Servicios.php?id='.$id.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>';
             $salida .= '</tr>';   
         }
