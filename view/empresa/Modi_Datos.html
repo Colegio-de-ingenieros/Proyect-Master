@@ -83,7 +83,7 @@
   </header>
   <main>
     <section class="section-main">
-      <form action="" >
+      <form action="" id="formula">
         <br>
         <br>
         <p class="subtitulo-1"> Datos generales</p>
@@ -118,8 +118,7 @@
               title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
             </div>
           </div>
-
-
+  
           <div class="grupo-input">
             <div class="label-form">
               <p class="label-2">Nueva contraseña*</p>
@@ -148,13 +147,12 @@
             <textarea type="text" name="razon" id="razon" class="input-format" maxlength="100" placeholder="Ingrese su razón social"
             title="La razón social solo puede contener letras mayúsculas o minúsculas, el punto y la coma."></textarea>
           </div>
-        </div> 
+        </div>
         <br>
         <br>
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
-        <br>
         <br>
         
         <!--PARTE DOS-->
@@ -210,13 +208,15 @@
             <div class="input-form">
               <input type="text" name="estado" id="estado" maxlength="50" class="input-format" placeholder="Ingrese su estado" disabled>
             </div>
-          </div> 
-        </div>  
+          </div>
+          
+          
+        </div> 
+        <br>
         <br>
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
-        <br>
         
         <!--PARTE TRES-->
         <p class="subtitulo-1"> Horario laboral</p>
@@ -260,16 +260,20 @@
               <input type="time" class="input-format" name="fin" id="fin" placeholder="Ingrese su texto aquí">
             </div>
           </div>
-        </div> 
+        </div>
+        <br>
         <br>
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
-        <br>
   
         <!--PARTE CUATRO-->
+        <p class="subtitulo-1"> Áreas</p>
         <br>
-        <p class="subtitulo-1">Área de Recursos Humanos</p>
+        <label for="" class="checkbox"><input type="checkbox" id="rh_ck" class="checkbox-format"> Deseo agregar área de Recursos Humanos </label>
+        <br>
+        <br>
+        <p class="label-2">Área de Recursos Humanos</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
           <div class="grupo-input">
@@ -335,13 +339,14 @@
         <br>
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
-        </div> 
-        <br>
+        </div>
   
         <!--PARTE CINCO-->
   
+        <label for="" class="checkbox"><input type="checkbox" id="ti_ck" class="checkbox-format" > Deseo agregar área de TI </label>
         <br>
-        <p class="subtitulo-1">Área de TI</p>
+        <br>
+        <p class="label-2">Área de TI</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
           <div class="grupo-input">
@@ -404,15 +409,15 @@
             </div>
           </div>
         </div> 
-        <br>
+        <br> 
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
-        <br>
         <!--PARTE SEIS-->
-        
+        <label for="" class="checkbox"><input type="checkbox" id="ac_ck" class="checkbox-format"  > Deseo agregar área de Capacitación </label>
         <br>
-        <p class="subtitulo-1">Área de Capacitación</p>
+        <br>
+        <p class="label-2">Área de Capacitación</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
           <div class="grupo-input">
@@ -479,7 +484,6 @@
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
-        <br>
         <legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
         <div>
           <input type="checkbox" name="acuerdo" id="acuerdo1" value="1">
@@ -489,8 +493,8 @@
           <label for="huey">No</label>
         </div>
         <br>
-        <br>
-
+        <div class="boton">
+          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
         </div>
         <br>
       </form>
