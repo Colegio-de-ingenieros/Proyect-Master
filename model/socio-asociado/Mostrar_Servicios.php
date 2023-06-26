@@ -67,5 +67,19 @@
             
             return "Servicio cancelado";
         }
+
+        function busqueda_inteligente($contenido){
+            $query = "SELECT tiposervicios.TipoSer, DATE_FORMAT(servicios.FechaSer,'%d/%m/%Y') AS FechaSer, servicios.EstatusSer, servicios.IdSer 
+            FROM persoservicios, servicios, sertipo, tiposervicios 
+            WHERE persoservicios.NumInteligente = 'P0005' 
+            AND persoservicios.IdSer = servicios.IdSer 
+            AND servicios.IdSer = sertipo.IdSer 
+            AND sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            AND servicios.FechaSer = :contenido";
+            $parametros = [":contenido"=>$contenido];
+            $resultados = $this->bd->mostrar($query,$parametros);
+
+            return $resultados;
+        }
     }
 ?>

@@ -5,11 +5,15 @@ const caja_mensaje = document.getElementById("mensaje");
 const cnt_tabla = document.getElementById("tabla_contenedor");
 const opciones = document.getElementById("opciones");
 
+
 window.onload = function () {
   let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let fecha = "0000-00-00";
 
   let data = new FormData();
   data.append("servicio", "all");
+  data.append("fecha", fecha);
+
   fetch(url, {
     method: 'POST',
     body: data
@@ -21,9 +25,11 @@ window.onload = function () {
 
 headhunter.addEventListener("click", function () {
   let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let fecha = "0000-00-00";
 
   let data = new FormData();
   data.append("servicio", "headhunter");
+  data.append("fecha", fecha);
 
   fetch(url, {
     method: 'POST',
@@ -36,9 +42,11 @@ headhunter.addEventListener("click", function () {
 
 outplacement.addEventListener("click", function () {
   let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let fecha = "0000-00-00";
 
   let data = new FormData();
   data.append("servicio", "outplacement");
+  data.append("fecha", fecha);
 
   fetch(url, {
     method: 'POST',
@@ -48,6 +56,7 @@ outplacement.addEventListener("click", function () {
     .then(data => resultados(data, "outplacement"))
     .catch(error => console.log(error));
 });
+
 
 function resultados(json, llamada) {
   if (json.length == 0 && llamada == "all") {

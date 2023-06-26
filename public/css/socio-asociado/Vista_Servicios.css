@@ -26,6 +26,7 @@
     --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
     --shadow-3: inset 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 }
+
 main {
     margin-top: 6.0rem;
     display: flex;
@@ -58,28 +59,32 @@ article{
     width: 1200px;
     background-color: #dfe3e7;
 }
+
 .article-tablas article{
     margin: 20px auto;
     padding: 10px;
     width: 1200px;
     background-color: #dfe3e7;
 }
+
 .table{
     padding: 2rem 0 0 0;
 }
+
 .sub-titulo{
     display: flex;
     flex-direction: column;
     align-items: start;   
     padding-left: 0rem; 
 }
+
 .grupo-input{
     display: flex;
     flex-direction: column;
     align-items: flex-end;    
     padding: 2rem 0 0 0;
-
 }
+
 .input-format-2{
     color: var(--color-black);
     background-color: var(--color-white);
@@ -105,11 +110,13 @@ article{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
+
 table{
     width: 100%;
     border-collapse: collapse;
     font-family: 'Manrope';
 }
+
 .header_table {
     max-height: 100vh;
     width: 100%;
@@ -123,6 +130,7 @@ table{
     color: #e6e7e8;
     font-size: 1.125rem;
 }
+
 th,td {
     max-width: 150px;
     border-bottom: 1px solid #000000;
@@ -133,14 +141,17 @@ th,td {
     white-space: normal;
     background-color: #dfe3e7;
 }
+
 tr:hover td {
     color: #3a42b4;
     cursor: pointer;
     background-color: #ffffff;
 }
+
 .container-options{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 7px;
 }
 
 .btn-danger{

@@ -7,6 +7,7 @@
         $usuario = $_SESSION['usuario'];
         $tipo_usuario = $_SESSION['tipo_usuario'];
         $servicio = $_POST['servicio'];
+        $fecha = $_POST['fecha'];
 
         $objeto = new Mostrar_Servicios();
         $objeto -> BD();
@@ -26,6 +27,11 @@
         }
         else if($servicio == 'outplacement'){
             $resultados_servicios = $objeto -> servicios_solicitados_outplacement($id_usuario);
+
+            echo json_encode($resultados_servicios);
+        }
+        else if($servicio == 'busqueda'){
+            $resultados_servicios = $objeto -> busqueda_inteligente($fecha);
 
             echo json_encode($resultados_servicios);
         }
