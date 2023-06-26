@@ -95,7 +95,7 @@
             </div>
             <div class="input-form">
               <input type="text"  name="rfc" id="rfc" class="input-format" maxlength="12" placeholder="Ingrese su RFC"
-              title="El RFC debe iniciar por tres letras mayúsculas, 6 números y la homoclave, que puden ser números, letras o una combinacion de ambas.">
+              title="El RFC debe iniciar por tres letras mayúsculas, 6 números y la homoclave, que puden ser números, letras o una combinacion de ambas." required>
             </div>
           </div>
   
@@ -105,7 +105,7 @@
             </div>
             <div class="input-form">
               <input type="text"name="nombre" id="nombre" class="input-format" maxlength="100" placeholder="Ingrese su nombre comercial"
-              title="El nombre solo puede contener letras mayúsculas, minúsculas y el guión.">
+              title="El nombre solo puede contener letras mayúsculas, minúsculas y el guión." required>
             </div>
           </div>
   
@@ -115,7 +115,7 @@
             </div>
             <div class="input-form">
               <input type="email" name="correo" id="correo_m" class="input-format" maxlength="40" placeholder="someone@example.com"
-              title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+              title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." required>
             </div>
           </div>
   
@@ -151,11 +151,12 @@
         <br>
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar" >
         </div>
         <br>
-        
+      </form>
         <!--PARTE DOS-->
+      <form id="formDomicilio">
         <p class="subtitulo-1"> Domicilio fiscal</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
@@ -215,10 +216,11 @@
         <br>
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_domicilio" value="Actualizar" >
         </div>
-        
+      </form>
         <!--PARTE TRES-->
+      <form id="formDias">
         <p class="subtitulo-1"> Horario laboral</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
@@ -264,10 +266,11 @@
         <br>
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_horario" value="Actualizar">
         </div>
-  
+      </form>
         <!--PARTE CUATRO-->
+      <form action="" id="recursosHumanos">
         <p class="subtitulo-1"> Áreas</p>
         <br>
         <label for="" class="checkbox"><input type="checkbox" id="rh_ck" class="checkbox-format"> Deseo agregar área de Recursos Humanos </label>
@@ -338,11 +341,11 @@
         </div> 
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_rh" value="Actualizar" disabled>
         </div>
-  
+      </form>
         <!--PARTE CINCO-->
-  
+      <form id="areaIt">
         <label for="" class="checkbox"><input type="checkbox" id="ti_ck" class="checkbox-format" > Deseo agregar área de TI </label>
         <br>
         <br>
@@ -411,9 +414,12 @@
         </div> 
         <br> 
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_it" value="Actualizar" disabled>
         </div>
+
+      </form>
         <!--PARTE SEIS-->
+      <form id="areaCapacitacion">
         <label for="" class="checkbox"><input type="checkbox" id="ac_ck" class="checkbox-format"  > Deseo agregar área de Capacitación </label>
         <br>
         <br>
@@ -482,8 +488,10 @@
         </div>
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_ac" value="Actualizar" disabled >
         </div>
+      </form>
+      <form action="" id="acuerdo">
         <legend> ¿Cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales?</legend>
         <div>
           <input type="checkbox" name="acuerdo" id="acuerdo1" value="1">
@@ -494,13 +502,14 @@
         </div>
         <br>
         <div class="boton">
-          <input type="submit" class="btn-medium1 btn" value="Actualizar" >
+          <input type="submit" class="btn-medium1 btn" id="btn_acuerdo" value="Actualizar"  >
         </div>
         <br>
       </form>
     </section>
   </main>
-
+  <script src="../../controller/empresa/js/Modificar_Datos_Perfil_Empresa.js"></script>
+<script src="../empresa/js/Vali_Modi_Datos_Perfil_Empresa.js"></script>
 </body>
 
 </html>
