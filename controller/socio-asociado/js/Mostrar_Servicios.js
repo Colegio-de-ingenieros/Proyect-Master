@@ -7,21 +7,64 @@ const opciones = document.getElementById("opciones");
 
 window.onload = function () {
   let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
-  fetch(url)
+
+  let data = new FormData();
+  data.append("servicio", "all");
+  fetch(url, {
+    method: 'POST',
+    body: data
+  })
     .then(response => response.json())
-    .then(data => resultados(data))
+    .then(data => resultados(data, "all"))
     .catch(error => console.log(error));
 };
 
-function resultados(json) {
-  if (json.length == 0) {
+headhunter.addEventListener("click", function () {
+  let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+
+  let data = new FormData();
+  data.append("servicio", "headhunter");
+
+  fetch(url, {
+    method: 'POST',
+    body: data
+  })
+    .then(response => response.json())
+    .then(data => resultados(data, "headhunter"))
+    .catch(error => console.log(error));
+});
+
+outplacement.addEventListener("click", function () {
+  let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+
+  let data = new FormData();
+  data.append("servicio", "outplacement");
+
+  fetch(url, {
+    method: 'POST',
+    body: data
+  })
+    .then(response => response.json())
+    .then(data => resultados(data, "outplacement"))
+    .catch(error => console.log(error));
+});
+
+function resultados(json, llamada) {
+  if (json.length == 0 && llamada == "all") {
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
     caja_mensaje.innerText = "No se encontraron resultados";
     opciones.style.display = 'none';
   }
-  else {
+  else if (json.length == 0 && ((llamada == "headhunter") || (llamada == "outplacement"))){
+    ocument.querySelector("table tbody").innerHTML = "";
+    cnt_tabla.style.display = 'none';
+    caja_mensaje.innerText = "No se encontraron resultados";
+
+  }
+  else if (json.length != 0 & ((llamada == "headhunter") || (llamada == "outplacement") || (llamada == "all"))) {
     const tableBody = document.querySelector("table tbody");
+    tableBody.innerHTML = "";
     json.forEach(rowData => {
       let row = document.createElement('tr');
 
@@ -62,47 +105,54 @@ function resultados(json) {
         row.appendChild(StateCell);
       }
 
-      //* Acciones para el servicio
-      let ActionCell = document.createElement('td');
-      const ActionText = document.createElement('button');
-      ActionText.classList.add("btn", "btn-small", "btn-danger");
+      if (Status != "3") {
+        //* Acciones para el servicio
+        let ActionCell = document.createElement('td');
+        const ActionText = document.createElement('button');
+        ActionText.classList.add("btn", "btn-small", "btn-danger");
 
-      const icon3 = document.createElement("i");
-      icon3.classList.add("ti", "ti-backspace-filled");
-      ActionText.appendChild(icon3);
-      
-      ActionText.addEventListener("click", function () {
-        let respuesta = confirm("¿Está seguro de eliminar el servicio?");
-        if (respuesta) {
-          let url = "../../controller/socio-asociado/Cancelar_Servicio.php";
+        const icon3 = document.createElement("i");
+        icon3.classList.add("ti", "ti-backspace-filled");
+        ActionText.appendChild(icon3);
 
-          let data = new FormData();
-          data.append("id", rowData[3]);
+        ActionText.addEventListener("click", function () {
+          let respuesta = confirm("¿Está seguro de eliminar el servicio?");
+          if (respuesta) {
+            let url = "../../controller/socio-asociado/Cancelar_Servicio.php";
 
-          fetch(url, {
-            method: 'POST',
-            body: data
-          })
-            .then(response => response.json())
-            .then(data => {
-              if (data == "Servicio cancelado") {
-                alert("Servicio cancelado");
-                location.reload();
+            let data = new FormData();
+            data.append("id", rowData[3]);
+
+            fetch(url, {
+              method: 'POST',
+              body: data
+            })
+              .then(response => response.json())
+              .then(data => {
+                if (data == "Servicio cancelado") {
+                  alert("Servicio cancelado");
+                  location.reload();
+                }
+                else {
+                  alert("No se pudo cancelar el servicio");
+                }
               }
-              else {
-                alert("No se pudo cancelar el servicio");
-              }
-            }
-            )
-            .catch(error => console.log(error));
+              )
+              .catch(error => console.log(error));
 
-        }
+          }
 
-      });
+        });
 
-      ActionCell.appendChild(ActionText);
-      row.appendChild(ActionCell);
-
+        ActionCell.appendChild(ActionText);
+        row.appendChild(ActionCell);
+      }
+      else {
+        let ActionCell = document.createElement('td');
+        let ActionText = document.createTextNode("No disponible");
+        ActionCell.appendChild(ActionText);
+        row.appendChild(ActionCell);
+      }
       tableBody.appendChild(row);
 
     });

@@ -32,6 +32,34 @@
             return $resultados;
         }
 
+        function servicios_solicitados_headhunter($id){
+            $consulta = "SELECT tiposervicios.TipoSer, DATE_FORMAT(servicios.FechaSer,'%d/%m/%Y') AS FechaSer, servicios.EstatusSer, servicios.IdSer 
+            FROM persoservicios, servicios, sertipo, tiposervicios 
+            WHERE persoservicios.NumInteligente = :id 
+            AND persoservicios.IdSer = servicios.IdSer 
+            AND servicios.IdSer = sertipo.IdSer 
+            AND sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            AND tiposervicios.IdTipoSer = '1' ";
+            $parametros = [":id"=>$id];
+            $resultados = $this->bd->mostrar($consulta,$parametros);
+            
+            return $resultados;
+        }
+
+        function servicios_solicitados_outplacement($id){
+            $consulta = "SELECT tiposervicios.TipoSer, DATE_FORMAT(servicios.FechaSer,'%d/%m/%Y') AS FechaSer, servicios.EstatusSer, servicios.IdSer 
+            FROM persoservicios, servicios, sertipo, tiposervicios 
+            WHERE persoservicios.NumInteligente = :id 
+            AND persoservicios.IdSer = servicios.IdSer 
+            AND servicios.IdSer = sertipo.IdSer 
+            AND sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            AND tiposervicios.IdTipoSer = '2' ";
+            $parametros = [":id"=>$id];
+            $resultados = $this->bd->mostrar($consulta,$parametros);
+            
+            return $resultados;
+        }
+
         function cancelar_servicio($id){
             $consulta = "UPDATE servicios SET EstatusSer = '3' WHERE IdSer = :id";
             $parametros = [":id"=>$id];
