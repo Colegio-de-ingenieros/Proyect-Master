@@ -18,7 +18,6 @@
                 return $resultados;
             }
         }
-        
 
         function get_id_servicio(){
             $consulta = "SELECT IdSer FROM servicios ORDER BY IdSer DESC LIMIT 1";
@@ -26,7 +25,7 @@
             
             return $resultados;
         }
-        
+
         function registrar_servicio_headhunter($id_servicio, $id_usuario, $fecha, $estatus){
             //* Registrar en la tabla servicios
             $consulta = "INSERT INTO servicios(IdSer, FechaSer, EstatusSer) VALUES (:id,:fecha,:estatus)";

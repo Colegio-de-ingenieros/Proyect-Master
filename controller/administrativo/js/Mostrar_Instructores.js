@@ -49,6 +49,7 @@ function respuesta(json) {
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
     caja_mensaje.innerText = "No se encontraron resultados";
+    
   }
   else {
     const tableBody = document.querySelector("table tbody");

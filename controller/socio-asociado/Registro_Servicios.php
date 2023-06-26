@@ -26,7 +26,7 @@
                 $id_servicio = $id_servicio[0]['IdSer'];
                 $id_servicio = str_pad((int)substr($id_servicio,1)+1,6,"0",STR_PAD_LEFT);
             }
-            $estatus = 1;
+            $estatus = 0;
             $resultado = $objeto->registrar_servicio_headhunter($id_servicio, $id_usuario, $fecha, $estatus);
         }   
         if($outplacement == 1){
@@ -39,8 +39,9 @@
                 $id_servicio = $id_servicio[0]['IdSer'];
                 $id_servicio = str_pad((int)substr($id_servicio,1)+1,6,"0",STR_PAD_LEFT);
             }
-            $estatus = 1;
+            $estatus = 0;
             $resultado = $objeto->registrar_servicio_outplacement($id_servicio, $id_usuario, $fecha, $estatus);
         }
     
     }
+?>
