@@ -41,6 +41,10 @@ main {
     justify-content: right;
     width: 100%;
 }
+.par{
+    justify-content: center;
+    display: flex;
+} 
 
 .contenedor-formulario{
     padding: 20px 0px 20px 0;
