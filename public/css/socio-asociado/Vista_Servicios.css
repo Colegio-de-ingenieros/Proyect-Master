@@ -49,15 +49,10 @@ main {
     justify-content: center;
 }
 
-.section-main{
-    width: 100%;
-}
+
 
 article{
     margin: 20px auto;
-    padding: 10px;
-    width: 1200px;
-    background-color: #dfe3e7;
 }
 
 .article-tablas article{
@@ -162,17 +157,13 @@ tr:hover td {
     background: var(--color-red);
 }
 
-@media screen and (max-width: 1024px){
-    table{
-        width: 100%;
-        border-collapse: collapse;
-        font-family: 'Manrope';
-        margin-left: 25rem;
+@media screen and (max-width: 680px){
+    .tablas{
+        overflow: hidden;
+        overflow-x: auto;
+        overflow-y: scroll;
     }
-    .sub-titulo{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; 
-        margin-left: 25rem;  
+    tr{
+        width: 150px;
     }
-  }
+}
