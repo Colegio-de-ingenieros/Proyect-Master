@@ -17,6 +17,7 @@
     --color-placeholder-3: #474a57;
 
     --color-red: #ff0000;
+    --color-red-2: #8a0000;
 
     --radius-1: 15px;
     --radius-2: 8px;
@@ -136,4 +137,20 @@ hr{
     color: var(--color-white);
     transition: all 300ms;
     margin: auto 47em;
+} 
+
+.btn-danger{
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-red-2);
+    color: var(--color-white);
+    transition: all 300ms;
+} 
+
+.btn-danger:hover{
+    background: var(--color-red); 
 }
