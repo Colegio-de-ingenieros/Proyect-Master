@@ -76,6 +76,14 @@ let element_btn_rh = document.getElementById("btn_rh");
 let element_btn_it = document.getElementById("btn_it");
 let element_btn_ac = document.getElementById("btn_ac");
 
+let btn_elimnar_rh = document.getElementById("btn_eliminar_rh");
+let btn_elimnar_it = document.getElementById("btn_eliminar_it");
+let btn_elimnar_ac = document.getElementById("btn_eliminar_ac");
+
+let checkbox_rh_1 = document.getElementById("rh_ck");
+let checkbox_it_2 = document.getElementById("ti_ck");
+let checkbox_ac_3 = document.getElementById("ac_ck");
+
 window.addEventListener("load",(e)=>{
     
 
@@ -222,6 +230,8 @@ formularioRH.addEventListener("submit",(e)=>{
     if(clase_con_id != undefined){
         let id = clase_con_id.split("-")[1];
         formulario_data.append("id",id);
+    }else{
+        formulario_data.append("tipo","1");
     }
              
     fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
@@ -232,7 +242,14 @@ formularioRH.addEventListener("submit",(e)=>{
     .then(response => response.json())
     .then(data => {
                 
-        alert(data);
+        alert(data[0]);
+        if(clase_con_id == undefined){// significa que inserto
+            //mostrar
+            btn_elimnar_rh.style.display = "";
+            let id = "id-"+ data[1];
+            formularioRH.classList.add(id);
+            checkbox_rh_1.disabled = true;
+        }
     });
 });
 formularioIT.addEventListener("submit",(e)=>{
@@ -245,6 +262,8 @@ formularioIT.addEventListener("submit",(e)=>{
     if(clase_con_id != undefined){
         let id = clase_con_id.split("-")[1];
         formulario_data.append("id",id);
+    }else{
+        formulario_data.append("tipo","2");
     }
                   
              
@@ -256,7 +275,16 @@ formularioIT.addEventListener("submit",(e)=>{
     .then(response => response.json())
     .then(data => {
                 
-        alert(data);
+        alert(data[0]);
+        if(clase_con_id == undefined){
+
+            //mostrar
+            btn_elimnar_it.style.display = "";
+            let id = "id-"+ data[1];
+            formularioIT.classList.add(id);
+            checkbox_it_2.disabled = true;
+        }
+
     });
 });
 
@@ -270,6 +298,8 @@ formularioAC.addEventListener("submit",(e)=>{
     if(clase_con_id != undefined){
         let id = clase_con_id.split("-")[1];
         formulario_data.append("id",id);
+    }else{
+        formulario_data.append("tipo","3");
     } 
              
     fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
@@ -280,7 +310,15 @@ formularioAC.addEventListener("submit",(e)=>{
     .then(response => response.json())
     .then(data => {
                 
-        alert(data);
+        alert(data[0]);
+        if(clase_con_id == undefined){
+            //mostrar
+            btn_elimnar_ac.style.display = "";
+            let id = "id-"+ data[1];
+            formularioAC.classList.add(id);
+            checkbox_ac_3.disabled = true;
+        }
+
     });
 
 });
@@ -303,6 +341,122 @@ formularioAcuerdo.addEventListener("submit",(e)=>{
 });
 
 
+btn_elimnar_rh.addEventListener("click",(e)=>{
+
+    if (confirm("¿Está seguro que desea eliminar esta área?")) {
+        let formulario_data = new FormData();
+        formulario_data.append("tipo","1");
+        
+        let clasesLista = formularioRH.className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("id"));
+
+        if(clase_con_id != undefined){
+            let id = clase_con_id.split("-")[1];
+            formulario_data.append("id",id);
+        } 
+
+        fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
+        {
+            method: 'POST',
+            body: formulario_data,
+        })
+        .then(response => response.json())
+        .then(data => {
+                    
+            alert(data);
+            
+            formularioRH.classList.remove(clase_con_id);
+            btn_elimnar_rh.style.display = "none";
+            
+            checkbox_rh_1.disabled = false;
+            checkbox_rh_1.checked = false;
+            checkbox_rh_1.dispatchEvent(new Event("change"));
+
+        }).catch(error => { 
+            alert("Upps ocurrio un error!!!");
+            console.log(error);
+        });
+    }
+    
+
+
+});
+btn_elimnar_it.addEventListener("click",(e)=>{
+
+    if (confirm("¿Está seguro que desea eliminar esta área?")) {
+        let formulario_data = new FormData();
+        formulario_data.append("tipo","2");
+        
+        let clasesLista = formularioIT.className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("id"));
+
+        if(clase_con_id != undefined){
+            let id = clase_con_id.split("-")[1];
+            formulario_data.append("id",id);
+        } 
+
+        fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
+        {
+            method: 'POST',
+            body: formulario_data,
+        })
+        .then(response => response.json())
+        .then(data => {
+                    
+            alert(data);
+            formularioIT.classList.remove(clase_con_id);
+            btn_elimnar_it.style.display = "none";
+
+            checkbox_it_2.disabled = false;            
+            checkbox_it_2.checked = false;
+            checkbox_it_2.dispatchEvent(new Event("change"));
+        }).catch(error => { 
+            alert("Upps ocurrio un error!!!");
+            console.log(error);
+        });
+    }
+
+
+});
+btn_elimnar_ac.addEventListener("click",(e)=>{
+
+    if (confirm("¿Está seguro que desea eliminar esta área?")) {
+        let formulario_data = new FormData();
+        formulario_data.append("tipo","3");
+        
+        let clasesLista = formularioAC.className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("id"));
+
+        if(clase_con_id != undefined){
+            let id = clase_con_id.split("-")[1];
+            formulario_data.append("id",id);
+        } 
+
+        fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
+        {
+            method: 'POST',
+            body: formulario_data,
+        })
+        .then(response => response.json())
+        .then(data => {
+                    
+            alert(data);
+            //ocultar boton eliminar
+            formularioAC.classList.remove(clase_con_id);
+            btn_elimnar_ac.style.display = "none";
+
+            checkbox_ac_3.disabled = false;
+            checkbox_ac_3.checked = false;
+            checkbox_ac_3.dispatchEvent(new Event("change"));
+            
+        }).catch(error => { 
+            alert("Upps ocurrio un error!!!");
+            console.log(error);
+        });
+    }
+
+
+});
 
 
 function rellenar_lista(datos) {
@@ -335,10 +489,7 @@ function checke() {
     return lista;
 }
 
-function limpiar() {
-    estado.value = "";
-    ciudad.value = "";  
-}
+
 function llenar_campos_formulario(datos) {
     // coloca todoa la informacion de la empresa en su lugar correspondiente
     
@@ -407,6 +558,7 @@ function llenar_campos_formulario(datos) {
             if(tipo_area == 1){
                 // recursos humanos
                 formularioRH.rh_ck.checked = true;
+                checkbox_rh_1.disabled = true;
             
                 rh_nombre.disabled = false; 
                 rh_paterno.disabled = false;
@@ -433,11 +585,17 @@ function llenar_campos_formulario(datos) {
                 
                 formularioRH.classList.add(id);
 
+                // lo regresa a lo determinado en css
+                btn_elimnar_rh.style.display = "";
+
 
              
             }else if(tipo_area == 2){
                 // it
                 formularioIT.ti_ck.checked = true;
+
+                checkbox_it_2.disabled = true;
+
                 it_nombre.disabled = false;
                 it_paterno.disabled = false;
                 it_materno.disabled = false;
@@ -461,10 +619,14 @@ function llenar_campos_formulario(datos) {
                 it_correo.value = datos["areas"][i][7];
 
                 formularioIT.classList.add(id);
+                btn_elimnar_it.style.display = "";
                 
             }else{
                 // capacitacion
                 formularioAC.ac_ck.checked = true;
+
+                checkbox_ac_3.disabled = true;
+
                 ac_nombre.disabled = false;
                 ac_paterno.disabled = false;
                 ac_materno.disabled = false;
@@ -488,6 +650,7 @@ function llenar_campos_formulario(datos) {
                 ac_exten.value = datos["areas"][i][6];
                 ac_correo.value = datos["areas"][i][7];
                 formularioAC.classList.add(id);
+                btn_elimnar_ac.style.display = "";
             }
         
        }

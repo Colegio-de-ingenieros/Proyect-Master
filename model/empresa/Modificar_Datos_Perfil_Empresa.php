@@ -48,57 +48,23 @@ class Modificar_perfil_empresa extends Crud_bd {
      * funcion para actualizar los datos generales
      */
    
-    function set_datos_generales($rfc_anterior, $rfc_nuevo,$nombre, $correo, $password, $razon){
+    function set_datos_generales($rfc_anterior, $nombre, $correo, $password, $razon){
         #actualiza datos generales
         $sqls = [];
         $parametros = [];
         $this->conexion_bd();
 
-        
-        if(strcmp($rfc_anterior,$rfc_nuevo) != 0){
-            # que los dos rfc no son iguales, entonces hubo un cambio
-            // cambio en usuaemplugares
-            $sqls[] = "UPDATE usuaemplugares SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            //cambio en empservicios
-            $sqls[] = "UPDATE empservicios SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio en usuaempnintel
-            $sqls[] = "UPDATE usuaempnintel SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio emptipousua
-            $sqls[] = "UPDATE emptipousua SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio empparticipa
-            $sqls[] = "UPDATE empparticipa SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio empvigcuota
-            $sqls[] = "UPDATE empvigcuota SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio empaltacur
-            $sqls[] = "UPDATE empaltacur SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio emparea
-            $sqls[] = "UPDATE emparea SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio empdias
-            $sqls[] = "UPDATE empdias SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-            // cambio usuaempbolsa
-            $sqls[] = "UPDATE usuaempbolsa SET RFCUsuaEmp=:rfcNuevo WHERE RFCUsuaEmp=:rfcAnterior";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo, ":rfcAnterior"=>$rfc_anterior];
-        }
         if(empty($password)){
 
-            $sqls[] = "UPDATE usuaemp SET RFCUsuaEmp=:rfcNuevo, NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo
+            $sqls[] = "UPDATE usuaemp SET NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo
                 WHERE RFCUsuaEmp=:rfcAnterior ";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo,":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":rfcAnterior"=>$rfc_anterior ];
+            $parametros[] = [":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":rfcAnterior"=>$rfc_anterior ];
         }else{
             $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 
-            $sqls[] = "UPDATE usuaemp SET RFCUsuaEmp=:rfcNuevo, NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo, ContraUsuaEmp=:contra
+            $sqls[] = "UPDATE usuaemp SET  NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo, ContraUsuaEmp=:contra
                 WHERE RFCUsuaEmp=:rfcAnterior ";
-            $parametros[] = [":rfcNuevo"=>$rfc_nuevo,":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":contra"=>$password_hash ,":rfcAnterior"=>$rfc_anterior ];
+            $parametros[] = [":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":contra"=>$password_hash ,":rfcAnterior"=>$rfc_anterior ];
         }
 
         $res = $this->insertar_eliminar_actualizar($sqls,$parametros);
@@ -190,7 +156,7 @@ class Modificar_perfil_empresa extends Crud_bd {
         $res = $this->insertar_eliminar_actualizar($sqls,$parametros);
         $this->cerrar_conexion();
 
-        return $res;
+        return [$res,$id_area];
     }
     function eliminar_area($rfc,$id_area, $tipo){
 
@@ -200,7 +166,7 @@ class Modificar_perfil_empresa extends Crud_bd {
 
        
 
-        $sqls[] = "DELETE FROM emparea WHERE RFCUsuaEmp=:rfc AND IdAreaEmp=:id)";    
+        $sqls[] = "DELETE FROM emparea WHERE RFCUsuaEmp=:rfc AND IdAreaEmp=:id";    
         $parametros[] = [":rfc"=>$rfc,":id"=>$id_area];   
 
         $sqls[] = "DELETE FROM areaemptipo WHERE  IdArea=:tipo AND IdAreaEmp=:id ";
