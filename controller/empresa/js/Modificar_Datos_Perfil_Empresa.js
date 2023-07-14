@@ -90,7 +90,7 @@ window.addEventListener("load",(e)=>{
     fetch("../../controller/empresa/Mostrar_Datos_Perfil_Empresa.php")
         .then(response => response.json())
         .then(data =>{
-            console.log(data);
+            
             llenar_campos_formulario(data);
         });
     
@@ -133,7 +133,7 @@ inp_codigo_postal.addEventListener('blur', (e) => {
 
 formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
-   
+    formulario.rfc.disabled = false;
     let formulario_data = new FormData(e.target);
     
         
@@ -149,6 +149,7 @@ formulario.addEventListener("submit",(e)=>{
             formulario.password.value = "";
             formulario.password_confirmacion.value = "";
         }
+        formulario.rfc.disabled = true;
     });
         
        
@@ -498,6 +499,7 @@ function llenar_campos_formulario(datos) {
         formulario.nombre.value = datos["generales"][1];
         formulario.correo_m.value = datos["generales"][2];
         formulario.razon.value = datos["generales"][3];
+        formulario.rfc.disabled = true;
 
         baderas.brfc = true;
         baderas.bnombre_empresa = true;
