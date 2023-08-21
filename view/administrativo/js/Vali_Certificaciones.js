@@ -7,7 +7,7 @@ let abre = true
 
 //validar()
 
-//detecta tl click del boton
+//detecta el click del boton
 let botonRegistrar = document.getElementById("registrar");
 botonRegistrar.addEventListener("click", (e) =>
 {
