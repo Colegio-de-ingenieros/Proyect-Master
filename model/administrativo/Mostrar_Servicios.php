@@ -19,17 +19,21 @@
 
         public function buscar_outplacement(){
             $this->conexion_bd();
-            $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
+            /* $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer , TelFEncArea, 
-            areaempresa.IdAreaEmp, servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios, areaempresa, emparea
+            areaempresa.IdAreaEmp, servicios.IdSer */
+            $sql = "SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, 
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            servicios.IdSer
+            /* FROM usuaemp,empservicios,servicios,sertipo,tiposervicios, areaempresa, emparea */
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
-            and tiposervicios.TipoSer = 'Outplacement'
-            and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp 
-            and emparea.IdAreaEmp = areaempresa.IdAreaEmp ";
+            and tiposervicios.TipoSer = 'Outplacement'"; 
+            /* and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp 
+            and emparea.IdAreaEmp = areaempresa.IdAreaEmp "; */
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -57,18 +61,23 @@
 
         function consul_intel_outplacement($valor){
             $this->conexion_bd();
-            $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
+            /* $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer , TelFEncArea,
-            areaempresa.IdAreaEmp, servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios, areaempresa, emparea
+            areaempresa.IdAreaEmp, servicios.IdSer */
+            $sql = "SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, 
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            servicios.IdSer
+            /* FROM usuaemp,empservicios,servicios,sertipo,tiposervicios, areaempresa, emparea */
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp 
+            and (usuaemp.NomUsuaEmp like :busqueda or usuaemp.CorreoUsuaEmp like :busqueda)"; 
+            /* and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp 
             and emparea.IdAreaEmp = areaempresa.IdAreaEmp 
-            and (areaempresa.NomEncArea like :busqueda or areaempresa.CorreoEncArea like :busqueda)";
+            and (areaempresa.NomEncArea like :busqueda or areaempresa.CorreoEncArea like :busqueda)"; */
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
             $resultados = $this->mostrar($sql, $arre);
@@ -96,8 +105,11 @@
 
         public function buscar_outplacement_individual($id){
             $this->conexion_bd();
-            $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
-            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer , TelFEncArea, servicios.IdSer
+            /* $sql = "SELECT usuaemp.RFCUsuaEmp, areaempresa.NomEncArea, areaempresa.CorreoEncArea, 
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer , TelFEncArea, servicios.IdSer */
+            $sql = "SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, 
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            servicios.IdSer
             FROM usuaemp,empservicios,servicios,sertipo,tiposervicios, areaempresa, emparea
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
@@ -105,8 +117,9 @@
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
             and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp 
-            and emparea.IdAreaEmp = areaempresa.IdAreaEmp 
-            and areaempresa.IdAreaEmp = :id ";
+            and usuaemp.RFCUsuaEmp = :id "; 
+            /* and emparea.IdAreaEmp = areaempresa.IdAreaEmp 
+            and areaempresa.IdAreaEmp = :id "; */
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
