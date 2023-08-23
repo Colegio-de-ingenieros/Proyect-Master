@@ -59,6 +59,10 @@ outplacement.addEventListener("click", function () {
 
 
 function resultados(json, llamada) {
+
+  console.log("Resultado del valor de llamada: ", llamada);
+  console.log("Resultado del contenido del objeto: ", json);
+
   if (json.length == 0 && llamada == "all") {
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
@@ -66,12 +70,15 @@ function resultados(json, llamada) {
     opciones.style.display = 'none';
   }
   else if (json.length == 0 && ((llamada == "headhunter") || (llamada == "outplacement"))){
-    ocument.querySelector("table tbody").innerHTML = "";
+    document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
+    caja_mensaje.style.display = 'block';
     caja_mensaje.innerText = "No se encontraron resultados";
 
   }
   else if (json.length != 0 & ((llamada == "headhunter") || (llamada == "outplacement") || (llamada == "all"))) {
+    cnt_tabla.style.display = 'block';
+    caja_mensaje.style.display = 'none';
     const tableBody = document.querySelector("table tbody");
     tableBody.innerHTML = "";
     json.forEach(rowData => {
