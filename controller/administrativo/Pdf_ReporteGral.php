@@ -62,7 +62,7 @@ class PDF extends FPDF
             }
 
 
-            $columnas = explode(",", $filas[$i]);
+            $columnas = explode(",$", $filas[$i]);
             $y = $this->GetY();
             $x = $this->GetX();
 
@@ -97,7 +97,7 @@ class PDF extends FPDF
                     $x = $this->GetX();
                     $altura = ($y_anterior - $y);
                     $this->Rect($x, $y, 35, $altura);
-                    $this->MultiCell(35, $altura, $columnas[$j], 1);
+                    $this->MultiCell(35, $altura, "$".$columnas[$j], 1);
                 }
             }
             //agrega un salto de pagina si hay overflow a causa de la celda
