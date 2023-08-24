@@ -296,7 +296,20 @@ h3{
     color: var(--color-white);
     transition: all 300ms;
     margin: auto 49em;
-} 
+}  
+
+ .btn-mediu{
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: all 300ms;
+    ;
+}  
 
 
 
@@ -526,6 +539,13 @@ tr:hover td {
     display: flex;
     flex-direction: column;
     align-items: center;
+} 
+
+.aqui{
+    width: 100%; 
+    display: flex;
+    justify-content: right;
+    align-items: right;
 }
 /*--------------------------- Seccion responsive -----------------------------*/
 @media screen and (max-width: 1250px){
