@@ -295,19 +295,19 @@ function rellenar_tabla(datos) {
 
                         if(datos[i][1][k][2] == "Hotel"){
                             sub_hotel += parseFloat(datos[i][1][k][1]);
-                            hotel_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
+                            hotel_col.innerText = "$ "+parseFloat(datos[i][1][k][1]).toFixed(2);
                         }else if(datos[i][1][k][2] == "Transporte"){
                             sub_transporte += parseFloat(datos[i][1][k][1]);
-                            transporte_col.innerText = "$ "+ parseFloat(datos[i][1][k][1]);
+                            transporte_col.innerText = "$ "+ parseFloat(datos[i][1][k][1]).toFixed(2);
                         }else if(datos[i][1][k][2] == "Comida"){
                             sub_comida += parseFloat(datos[i][1][k][1]);
-                            comida_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
+                            comida_col.innerText = "$ "+parseFloat(datos[i][1][k][1]).toFixed(2);
                         }else if(datos[i][1][k][2] == "Oficina"){
                             sub_oficina += parseFloat(datos[i][1][k][1]);
-                            oficina_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
+                            oficina_col.innerText = "$ "+parseFloat(datos[i][1][k][1]).toFixed(2);
                         }else if(datos[i][1][k][2] == "Honorario"){
                             sub_honorarios += parseFloat(datos[i][1][k][1]);
-                            honorarios_col.innerText = "$ "+parseFloat(datos[i][1][k][1]);
+                            honorarios_col.innerText = "$ "+parseFloat(datos[i][1][k][1]).toFixed(2);
                         }
                         sub_gastos += parseFloat(datos[i][1][k][1]);
                     }
@@ -315,7 +315,7 @@ function rellenar_tabla(datos) {
                 }
 
                 sub_sub_gastos += sub_gastos;
-                sub_gastos_col.innerText = "$ "+parseFloat(sub_gastos);
+                sub_gastos_col.innerText = "$ "+parseFloat(sub_gastos).toFixed(2);
                 
                 // ingresos
                 //console.log(datos[i][2]);
@@ -326,7 +326,7 @@ function rellenar_tabla(datos) {
                        
                        
                         if(datos[i][2][index][0] === identificador){
-                            ingresos_col.innerText = "$ "+ parseFloat(datos[i][2][index][1]);
+                            ingresos_col.innerText = "$ "+ parseFloat(datos[i][2][index][1]).toFixed(2);
                             sub_ingresos += parseFloat(datos[i][2][index][1]);
                         }
                         
@@ -365,13 +365,13 @@ function rellenar_tabla(datos) {
     var ingresos_col = document.createElement('td'); 
 
     sub_col.innerText = "Subtotal";
-    hotel_col.innerText = "$ " + parseFloat(sub_hotel);
-    transporte_col.innerText = "$ " + parseFloat(sub_transporte);
-    comida_col.innerText = "$ " + parseFloat(sub_comida);
-    oficina_col.innerText = "$ " + parseFloat(sub_oficina);
-    honorarios_col.innerText = "$ " + parseFloat(sub_honorarios);
-    sub_gastos_col.innerText = "$ " + parseFloat(sub_sub_gastos);
-    ingresos_col.innerText = "$ " + parseFloat(sub_ingresos);
+    hotel_col.innerText = "$ " + parseFloat(sub_hotel).toFixed(2);
+    transporte_col.innerText = "$ " + parseFloat(sub_transporte).toFixed(2);
+    comida_col.innerText = "$ " + parseFloat(sub_comida).toFixed(2);
+    oficina_col.innerText = "$ " + parseFloat(sub_oficina).toFixed(2);
+    honorarios_col.innerText = "$ " + parseFloat(sub_honorarios).toFixed(2);
+    sub_gastos_col.innerText = "$ " + parseFloat(sub_sub_gastos).toFixed(2);
+    ingresos_col.innerText = "$ " + parseFloat(sub_ingresos).toFixed(2);
 
     sub_col.classList.add('subtotal');
     hotel_col.classList.add('subtotal');
@@ -403,9 +403,9 @@ function rellenar_tabla(datos) {
     cantidad2.setAttribute("id","ingresos");
     cantidad3.setAttribute("id","total");
 
-    cantidad1.textContent = "$ " + parseFloat(sub_sub_gastos);
-    cantidad2.textContent = "$ " + parseFloat(sub_ingresos);
-    cantidad3.textContent = "$ " + parseFloat((sub_ingresos-sub_sub_gastos));
+    cantidad1.textContent = "$ " + parseFloat(sub_sub_gastos).toFixed(2);
+    cantidad2.textContent = "$ " + parseFloat(sub_ingresos).toFixed(2);
+    cantidad3.textContent = "$ " + parseFloat((sub_ingresos-sub_sub_gastos)).toFixed(2);
 
     gastos_totales.innerText = "Total de gastos: "  ;
     ingresos_totales.innerText = "Total de ingresos: " ;
