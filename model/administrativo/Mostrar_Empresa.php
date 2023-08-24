@@ -15,7 +15,7 @@ class MostrarEmpresa{
         $resultados = $this->base->mostrar($querry, [":inteligente" => $intel]);
         return $resultados;
     }
-    function mostrarEmpresa($rfc){
+    function mostrarEmpresa1($rfc){
         $querry = "SELECT * FROM usuaemp WHERE RFCUsuaEmp = :rfc";
         $resultados = $this->base->mostrar($querry, [":rfc" => $rfc]);
         return $resultados;
