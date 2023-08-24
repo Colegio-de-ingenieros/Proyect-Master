@@ -1,7 +1,7 @@
 <?php
 $id=$_GET['id'];
 include_once('../../model/administrativo/Mostrar_Empresa.php');
-include_once('../../view/administrativo//Aprobacion_Cuotassocio.html');
+include_once('../../view/administrativo/Aprobacion_Cuotassocio.html');
 $base = new MostrarEmpresa();
 $base->instancias();
 $resultado = $base->buscar_datos($id);
