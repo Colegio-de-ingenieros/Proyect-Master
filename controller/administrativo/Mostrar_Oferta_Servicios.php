@@ -17,7 +17,9 @@ if ($resultado == true) {
     $estatus1 = "Aprobado";
     } else if ($estatus == '2') {
     $estatus1 = "Rechazado";
-    }
+    } else if ($estatus == '3') {
+      $estatus1 = "Cancelado";
+      }
 } 
 $resultado = $base->buscar_outplacement_individual($id);
 if ($resultado == true) {
@@ -32,7 +34,9 @@ if ($resultado == true) {
       $estatus1 = "Aprobado";
       } else if ($estatus == '2') {
       $estatus1 = "Rechazado";
-      }
+      } else if ($estatus == '3') {
+        $estatus1 = "Cancelado";
+        }
   } 
 ?>
 
