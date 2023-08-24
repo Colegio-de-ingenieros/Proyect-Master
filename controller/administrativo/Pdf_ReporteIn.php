@@ -63,7 +63,7 @@ class PDF extends FPDF{
             }
             
           
-            $columnas = explode(",",$filas[$i]);
+            $columnas = explode(",$",$filas[$i]);
             $y = $this->GetY(); 
             $x = $this->GetX();
         
@@ -88,7 +88,7 @@ class PDF extends FPDF{
                     }
                         
                     //para que acepte acentos
-                    $this->MultiCell(35,7,iconv('UTF-8', 'windows-1252',$columnas[$j]),1); //creamos la primera celda
+                    $this->MultiCell(35,7,iconv('UTF-8', 'windows-1252',"$".$columnas[$j]),1); //creamos la primera celda
                     
                   
                 }else{
@@ -98,7 +98,7 @@ class PDF extends FPDF{
                     $x = $this->GetX();  
                     $altura = ($y_anterior-$y);
                     $this->Rect($x,$y,35,$altura);
-                    $this->MultiCell(35,$altura,$columnas[$j],1);
+                    $this->MultiCell(35,$altura,"$".$columnas[$j],1);
                 }
                 
               
