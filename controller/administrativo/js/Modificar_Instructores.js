@@ -73,7 +73,7 @@ window.addEventListener("load",async (e)=>{
 
 });
 btn_cancelar_registro_principal.addEventListener("click",(e)=>{
-    let respuesta = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    let respuesta = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
     if(respuesta){
         window.location.href = '../administrativo/Vista_Instructor.html' 
     }
@@ -518,7 +518,7 @@ function mostrar_modal(id) {
 }
 
 function ocultar_modal() {
-    let respuesta = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    let respuesta = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
     if(respuesta){
         nombre_cert_modi.removeAttribute("style");
         banderas_modal.nombre_modi = true;
