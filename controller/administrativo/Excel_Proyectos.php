@@ -75,10 +75,13 @@ for($i=0; $i<count($resultado); $i++){
     //guardar los datos de la certificacion actual 
     $idp= $resultado[$i]["IdPro"];
     $nombre= $resultado[$i]["NomProyecto"];
-    $inicio = $resultado[$i]["IniPro"];
-    $fin = $resultado[$i]["FinPro"];
+    $inicio = date('d-m-Y', strtotime($resultado[$i]["IniPro"]));
+    $fin = date('d-m-Y', strtotime($resultado[$i]["FinPro"]));
     $monto = $resultado[$i]["MontoPro"];
     $objetivo = $resultado[$i]["ObjPro"];
+
+    //poner las celdas de los precios como tipo money
+    $hoja->getStyle('D'. strval($i+2))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
     //poner los datos en la tabla
     $hoja->setCellValue('A'. strval($i+2), $nombre)->setCellValue('B'.strval($i+2), $inicio)->setCellValue('C'. strval($i+2), $fin)->
@@ -104,8 +107,10 @@ for($i=0; $i<count($resultado); $i++){
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    $estilo = $hoja->getStyle('D'. strval($i+2));
-    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    
+    //alinear los precios a la derecha
+    $estilo = $hoja->getStyle('D'. strval($i+2) . ':E' . strval($i+2));
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinear el contenido a la derecha
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
