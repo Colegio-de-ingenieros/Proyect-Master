@@ -290,8 +290,8 @@ function mostrar_tabla(datos){
     nombre_col.innerText = "Subtotal"
     hotel_col.innerText = sub_hotel.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
     transporte_col.innerText = sub_transporte.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-    comida_col.innerText = sub_comida.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
-    oficina_col.innerText = sub_oficina.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    comida_col.innerText = sub_comida.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    oficina_col.innerText = sub_oficina.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
     honorarios_col.innerText = sub_honorarios.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
     sub_gastos_col.innerText = sub_sub_gastos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
     ingresos_col.innerText = sub_ingresos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
