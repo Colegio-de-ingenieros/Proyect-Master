@@ -69,7 +69,7 @@
             </a>
 
             <ul>
-              <li><a id="" href="#">Datos Generales</a></li>
+              <li><a id="" href="../../view/empresa/Modi_Datos.html">Datos Generales</a></li>
             </ul>
           </li>
 
@@ -118,7 +118,28 @@
               title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." required>
             </div>
           </div> 
+        </div>
+        <div class="grupo-input2">
+          <div class="label-form">
+            <p class="label-2">Razón social*</p>
+          </div>
+          <div class="input-form">
+            <textarea type="text" name="razon" id="razon" class="input-format" maxlength="100" placeholder="Ingrese su razón social"
+            title="La razón social solo puede contener letras mayúsculas o minúsculas, el punto y la coma."></textarea>
+          </div>
+        </div>
+        <br>
+        <br>
+        <div class="boton">
+          <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar" >
+        </div>
+        <br>
+      </form> 
 
+      <form action=""> 
+        <p class="subtitulo-1"> Contraseña</p>
+        <hr size="1px" />  
+        <div class="contenedor-formulario">
           <div class="grupo-input">
             <div class="label-form">
               <p class="label-2">Contraseña actual*</p>
@@ -138,7 +159,7 @@
               title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
             </div>
           </div>
-  
+
           <div class="grupo-input">
             <div class="label-form">
               <p class="label-2">Confirmar contraseña*</p>
@@ -147,23 +168,12 @@
               <input type="password" name="password_confirmacion" id="password_confirmacion" maxlength="16" class="input-format" placeholder="Confirme su contraseña"
               title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
             </div>
-          </div>
-        </div>
-        <div class="grupo-input2">
-          <div class="label-form">
-            <p class="label-2">Razón social*</p>
-          </div>
-          <div class="input-form">
-            <textarea type="text" name="razon" id="razon" class="input-format" maxlength="100" placeholder="Ingrese su razón social"
-            title="La razón social solo puede contener letras mayúsculas o minúsculas, el punto y la coma."></textarea>
-          </div>
-        </div>
-        <br>
+          </div>  
+        </div> 
         <br>
         <div class="boton">
           <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar" >
         </div>
-        <br>
       </form>
         <!--PARTE DOS-->
       <form id="formDomicilio">
