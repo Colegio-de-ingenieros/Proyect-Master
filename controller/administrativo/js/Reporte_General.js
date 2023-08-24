@@ -244,7 +244,8 @@ function mostrar_tabla(datos){
             var ingresos_col = document.createElement('td');
 
             //suma las cosas para los totales
-            sub_hotel += parseFloat(datos[i][1]);
+            sub_hotel = sub_hotel + parseFloat(datos[i][1]);
+            console.log(sub_hotel + " estos son gastos de hotel");
             sub_transporte += parseFloat(datos[i][2]);
             sub_comida += parseFloat(datos[i][3]);
             sub_oficina += parseFloat(datos[i][4]);
@@ -252,14 +253,14 @@ function mostrar_tabla(datos){
             sub_sub_gastos += parseFloat(datos[i][6])
             sub_ingresos += parseFloat(datos[i][7])
 
-            nombre_col.innerText = datos[i][0]
-            hotel_col.innerText = "$" + datos[i][1];
-            transporte_col.innerText = "$" + datos[i][2];
-            comida_col.innerText = "$" + datos[i][3];
-            oficina_col.innerText = "$" + datos[i][4];
-            honorarios_col.innerText = "$" + datos[i][5];
-            sub_gastos_col.innerText = "$" + datos[i][6];
-            ingresos_col.innerText = "$" + datos[i][7];
+            nombre_col.innerText = datos[i][0];
+            hotel_col.innerText = datos[i][1].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            transporte_col.innerText = datos[i][2].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            comida_col.innerText = datos[i][3].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            oficina_col.innerText = datos[i][4].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            honorarios_col.innerText = datos[i][5].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            sub_gastos_col.innerText = datos[i][6].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+            ingresos_col.innerText = datos[i][7].toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
 
             row.appendChild(nombre_col);
             row.appendChild(hotel_col);
@@ -287,13 +288,13 @@ function mostrar_tabla(datos){
     
     //le da valor a las coumnas
     nombre_col.innerText = "Subtotal"
-    hotel_col.innerText = "$" + sub_hotel;
-    transporte_col.innerText = "$" + sub_transporte;
-    comida_col.innerText = "$" + sub_comida;
-    oficina_col.innerText = "$" + sub_oficina;
-    honorarios_col.innerText = "$" + sub_honorarios;
-    sub_gastos_col.innerText = "$" + sub_sub_gastos;
-    ingresos_col.innerText = "$" + sub_ingresos;
+    hotel_col.innerText = sub_hotel.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    transporte_col.innerText = sub_transporte.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    comida_col.innerText = sub_comida.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    oficina_col.innerText = sub_oficina.toFixed(2).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    honorarios_col.innerText = sub_honorarios.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    sub_gastos_col.innerText = sub_sub_gastos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    ingresos_col.innerText = sub_ingresos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
 
     nombre_col.classList.add('subtotal');
     hotel_col.classList.add('subtotal');
@@ -319,6 +320,7 @@ function mostrar_tabla(datos){
 
     //calcula los totales
     var total_gastos = sub_hotel + sub_transporte + sub_comida + sub_oficina + sub_honorarios
+    console.log(total_gastos);
     
     let gastos_totales = document.createElement('div');
     let ingresos_totales = document.createElement('div');
@@ -331,9 +333,9 @@ function mostrar_tabla(datos){
     cantidad2.setAttribute("id", "ingresos");
     cantidad3.setAttribute("id", "total");
 
-    cantidad1.textContent = "$ " + parseFloat(sub_sub_gastos);
-    cantidad2.textContent = "$ " + parseFloat(sub_ingresos);
-    cantidad3.textContent = "$ " + parseFloat((sub_ingresos - sub_sub_gastos));
+    cantidad1.textContent = total_gastos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    cantidad2.textContent = sub_ingresos.toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
+    cantidad3.textContent = (sub_ingresos - sub_sub_gastos).toLocaleString('es-MX', { style: 'currency', currency: 'MXN' });
 
     gastos_totales.innerText = "Total de gastos: ";
     ingresos_totales.innerText = "Total de ingresos: ";
