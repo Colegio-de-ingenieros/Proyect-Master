@@ -190,4 +190,8 @@ main {
         grid-template-columns: repeat(1, 1fr);
         row-gap: 1.5rem;
     }
+
+    .buttons{
+        margin-bottom: 12px;
+    }
 }

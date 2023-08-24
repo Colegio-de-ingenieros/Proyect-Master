@@ -6,7 +6,10 @@ include_once('../../view/administrativo/Aprobar_Servicio.html');
 $base = new Mostrar_Servicio();
 $resultado = $base->buscar_headhunter_individual($id);
 if ($resultado == true) {
-  $nombre = $resultado[0]["NomPerso"];
+  $nombres = $resultado[0]["NomPerso"];
+  $nombreP = $resultado[0]["ApePPerso"];
+  $nombreM = $resultado[0]["ApeMPerso"];
+  $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
   $correo = $resultado[0]["CorreoPerso"];
   $fecha = $resultado[0]["FechaSer"];
   $telefono = $resultado[0]["TelMPerso"];
@@ -23,7 +26,10 @@ if ($resultado == true) {
 } 
 $resultado = $base->buscar_outplacement_individual($id);
 if ($resultado == true) {
-  $nombre = $resultado[0]["NomPerso"];
+  $nombres = $resultado[0]["NomPerso"];
+  $nombreP = $resultado[0]["ApePPerso"];
+  $nombreM = $resultado[0]["ApeMPerso"];
+  $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
   $correo = $resultado[0]["CorreoPerso"];
   $fecha = $resultado[0]["FechaSer"];
   $telefono = $resultado[0]["TelMPerso"];

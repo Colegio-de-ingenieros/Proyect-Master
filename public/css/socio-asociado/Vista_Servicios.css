@@ -163,7 +163,12 @@ tr:hover td {
         overflow-x: auto;
         overflow-y: scroll;
     }
+
     tr{
         width: 150px;
+    }
+
+    .grupo-input-vista{
+        font-size: 14px;
     }
 }
