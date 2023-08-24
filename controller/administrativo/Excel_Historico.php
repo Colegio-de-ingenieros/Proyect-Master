@@ -94,7 +94,7 @@ $estilo->getFont()->setName("Inter', sans-serif")->setSize(12.5); //cambiar el t
 //llenar el archivo con los datos
 for($i=0; $i<count($asociados); $i++){
     //guardar los datos de la certificacion actual 
-    $fecha = date('d-m-y', strtotime($asociados[$i]["FechaH"]));
+    $fecha = date('d-m-Y', strtotime($asociados[$i]["FechaH"]));
     $precioG = $general[$i]["PrecioH"];
     $precioA = $asociados[$i]["PrecioH"];
 
