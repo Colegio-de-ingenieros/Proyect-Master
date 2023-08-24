@@ -38,9 +38,9 @@ main {
 }  
 
 .boton{ 
-    align-items: right;
+    display: flex;
     justify-content: right;
-    width: 100%;
+    width: 100%; 
 }
 .par{
     justify-content: center;
@@ -136,7 +136,7 @@ hr{
     background: var(--color-primary);
     color: var(--color-white);
     transition: all 300ms;
-    margin: auto 47em;
+    
 } 
 
 .btn-danger{
@@ -153,4 +153,180 @@ hr{
 
 .btn-danger:hover{
     background: var(--color-red); 
+} 
+
+@media screen and (max-width: 1250px){
+    main{
+        margin-top: 8.5rem;
+    }
+    li.logo_menu{
+        display: none;
+    }
+    h1.nombre_Ventana{
+        color: #FFFF;
+        font-weight: 900;
+        font-size: 30px;
+    }
+    .container_menu{
+        height: fit-content;
+    }
+    .btn-cerrar-session{
+        display: flex;
+    }
+
+    .header_superior{
+        padding: 5px;
+        height: fit-content;
+        width:auto;
+    }
+    .titulo{
+        font-size: 8px;
+    }
+    .logo{
+        width: 125px;
+    }
+
+    nav > ul{
+        font-size: 12px;
+        flex-direction: column;
+        background-color: #fff;
+        position: fixed;
+        left: 0;
+        top: 169px;
+        width: 100%;
+        height: 0px;
+        transition: all 300ms ease;
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    }
+    
+    nav > ul > li > a:hover{
+        transform: scale(1);
+    }
+    
+    nav ul li ul{
+        left: 100px;
+    }
+
+    nav > ul > li:hover ul{
+        top: 20px;
+    }
+
+    nav > ul > li:first-child a{
+        background-position: 20px;
+    }
+
+    #selected{
+        transform: scale(1);
+
+    }
+
+    .icon__menu{
+        display: flex;
+    }
+
+    #check__menu:checked ~ nav > ul{
+        height: 70%;
+        visibility: visible;
+        opacity: 1;
+    }
+    .contenedor-formulario{
+        margin:auto; 
+    }
+    .section-main-trabajadores{
+        display: flex;
+        flex-direction: column;
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .nombre_Ventana{
+        font-size: 1rem;
+    }
+    .section-main-trabajadores{
+        display: flex;
+        flex-direction: column;
+        width: 98%;
+    }
+}
+
+@media screen and (max-width: 650px){
+
+    main{
+        margin-top: 10.5rem;
+    }
+    img.logo_ciscig{
+        padding-right: 10px;
+        width: 54px;
+    }
+
+    .titulo{
+        padding: 0 1rem;
+    } 
+
+    .contenedor-formulario{
+        display: flow-root;
+    }
+
+    .section-main-trabajadores{
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    } 
+
+    .input-format-0{
+        width: 100%;
+    } 
+
+    .contenedor-formulario1{
+        width: 100%;
+    }
+
+    .input-format-22{
+        width: 12em;
+    } 
+    
+    .input-format-2{
+        width: 100%;
+    } 
+
+    .input-format-{
+        width: 25%;
+        align-items: center;
+        margin: auto 25em;
+    }
+
+    .btn-medium{
+        
+        margin: auto;
+    } 
+    
+    .btn-medium1{
+        margin: auto 5em ;
+    } 
+
+    .botones_actualizar1{
+        width: 100%;
+        margin: auto;
+    }
+
+    .btn-small1{
+        margin: auto 0.3em;
+    } 
+    
+    .modal-container{
+        height: 120%;
+    }
+
+    .subtitulo-{
+        width: 90%;
+    }
+
+    .btn-medium1{
+        margin: auto;
+    }
+
 }
