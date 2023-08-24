@@ -1,7 +1,7 @@
 let tipo;
 window.onload = function () {
     console.log("cargar")
-    document.getElementById("radio_headhunter").checked=false;
+    document.getElementById("radio_headhunter").checked=true;
     document.getElementById("radio_outplacement").checked=false;
     
     tipo=document.getElementById("oculto").value;

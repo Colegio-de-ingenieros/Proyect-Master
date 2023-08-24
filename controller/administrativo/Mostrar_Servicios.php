@@ -29,6 +29,7 @@ if($valTipo!=""){
                         <thead>
                             <tr>
                                 <th>Nombre</th>
+                                <th>Teléfono</th>
                                 <th>Correo</th>
                                 <th>Fecha de aplicación</th>
                                 <th>Estatus</th>
@@ -44,16 +45,12 @@ if($valTipo!=""){
                 $id = $resultado[$i]["IdPerso"];
                 $nombre = $resultado[$i]["NomPerso"];
                 $correo = $resultado[$i]["CorreoPerso"];
-                /* $telefono = $resultado[$i]["TelMPerso"]; */
+                $telefono = $resultado[$i]["TelMPerso"];
             }else if ($valTipo=="outplacement"){
-                /* $id = $resultado[$i]["IdAreaEmp"];
-                $nombre = $resultado[$i]["NomEncArea"];
-                $correo = $resultado[$i]["CorreoEncArea"];
-                $telefono = $resultado[$i]["TelFEncArea"]; */
-                $id = $resultado[$i]["RFCUsuaEmp"];
-                $nombre = $resultado[$i]["NomUsuaEmp"];
-                $correo = $resultado[$i]["CorreoUsuaEmp"];
-                /* $telefono = $resultado[$i]["TelFEncArea"]; */
+                $id = $resultado[$i]["IdPerso"];
+                $nombre = $resultado[$i]["NomPerso"];
+                $correo = $resultado[$i]["CorreoPerso"];
+                $telefono = $resultado[$i]["TelMPerso"];
             }
 
             if ($resultado[$i]["EstatusSer"] == '0') {
@@ -62,13 +59,15 @@ if($valTipo!=""){
                 $estatus = "Aprobado";
             } else if ($resultado[$i]["EstatusSer"] == '2') {
                 $estatus = "Rechazado";
+            }else if ($resultado[$i]["EstatusSer"] == '3') {
+                $estatus = "Cancelado";
             }
 
             
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $nombre . '</td>';
-            /* $salida .= '<td>' . $telefono . '</td>'; */
+            $salida .= '<td>' . $telefono . '</td>';
             $salida .= '<td>' . $correo . '</td>';
             $salida .= '<td>' . $resultado[$i]["FechaSer"] . '</td>';
             $salida .= '<td>' . $estatus . '</td>';

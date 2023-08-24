@@ -68,12 +68,16 @@ for($i=0; $i<count($resultados); $i++){
     $hoja->getStyle('C'. strval($i+2))->applyFromArray($style);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. strval($i+2) . ':E' . strval($i+2));
+    $estilo = $hoja->getStyle('A'. strval($i+2) . ':C' . strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
-    
+    //alinear los precios a la derecha
+    $estilo = $hoja->getStyle('D'. strval($i+2) . ':E' . strval($i+2));
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinear el contenido a la derecha
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 }
 
 //colocar los bordes

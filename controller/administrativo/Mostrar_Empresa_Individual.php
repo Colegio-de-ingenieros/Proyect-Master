@@ -6,7 +6,7 @@ $base = new MostrarEmpresa();
 $base->instancias();
 $rfc_Num = $base->getRFC($id);
 $rfc=$rfc_Num[0]["RFCUsuaEmp"];
-$resultado = $base->mostrarEmpresa($rfc);
+$resultado = $base->mostrarEmpresa1($rfc);
 if ($resultado == true) {
     $rfc = $resultado[0]["RFCUsuaEmp"];
     $nom = $resultado[0]["NomUsuaEmp"];

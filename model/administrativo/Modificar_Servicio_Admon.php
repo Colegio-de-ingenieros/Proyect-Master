@@ -33,16 +33,17 @@
 
         function outplacement($valor){
             $sql = "SELECT servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
-            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
-            and empservicios.IdSer = servicios.IdSer
+            FROM usuaperso,persoservicios,servicios,sertipo,tiposervicios
+            WHERE usuaperso.IdPerso = persoservicios.NumInteligente 
+            and persoservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaemp.RFCUsuaEmp = :busqueda";
+            and usuaperso.IdPerso = :busqueda";
 
             $arre = [":busqueda"=>$valor];
             $resultados = $this->base->mostrar($sql, $arre);
+
             return $resultados;
         }
     }

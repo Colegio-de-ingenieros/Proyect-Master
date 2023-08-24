@@ -9,7 +9,7 @@ if ($resultado == true) {
   $nombre = $resultado[0]["NomPerso"];
   $correo = $resultado[0]["CorreoPerso"];
   $fecha = $resultado[0]["FechaSer"];
-  /* $telefono = $resultado[0]["TelMPerso"]; */
+  $telefono = $resultado[0]["TelMPerso"];
  $estatus = $resultado[0]["EstatusSer"];
  if ($estatus == '0') {
   $estatus1 = "En espera";
@@ -17,14 +17,16 @@ if ($resultado == true) {
     $estatus1 = "Aprobado";
     } else if ($estatus == '2') {
     $estatus1 = "Rechazado";
-    }
+    } else if ($estatus == '3') {
+      $estatus1 = "Cancelado";
+      }
 } 
 $resultado = $base->buscar_outplacement_individual($id);
 if ($resultado == true) {
-    $nombre = $resultado[0]["NomUsuaEmp"];
-    $correo = $resultado[0]["CorreoUsuaEmp"];
-    $fecha = $resultado[0]["FechaSer"];
-    /* $telefono = $resultado[0]["TelFEncArea"]; */
+  $nombre = $resultado[0]["NomPerso"];
+  $correo = $resultado[0]["CorreoPerso"];
+  $fecha = $resultado[0]["FechaSer"];
+  $telefono = $resultado[0]["TelMPerso"];
    $estatus = $resultado[0]["EstatusSer"];
    if ($estatus == '0') {
     $estatus1 = "En espera";
@@ -32,7 +34,9 @@ if ($resultado == true) {
       $estatus1 = "Aprobado";
       } else if ($estatus == '2') {
       $estatus1 = "Rechazado";
-      }
+      } else if ($estatus == '3') {
+        $estatus1 = "Cancelado";
+        }
   } 
 ?>
 
@@ -42,8 +46,8 @@ if ($resultado == true) {
 <script>
     var parrafo = document.getElementById("nombreOT"); 
   parrafo.innerHTML = "<?php echo $nombre; ?>"; 
-  /* var parrafo = document.getElementById("descri_puestoOT"); 
-  parrafo.innerHTML = "<?php ; ?>";  */
+  var parrafo = document.getElementById("descri_puestoOT"); 
+  parrafo.innerHTML = "<?php echo $telefono; ?>"; 
   var parrafo = document.getElementById("reqi_academicosOT"); 
   parrafo.innerHTML = "<?php echo $correo; ?>"; 
   var parrafo = document.getElementById("reqi_tecnicosuOT"); 
@@ -64,6 +68,11 @@ var parrafo = document.createElement("p");
     <?php }else if ($estatus==2){ ?>
         document.getElementById("ti_ck2").checked = true;
         var textBox = document.getElementById("descri_puesto");
+
+      <?php }else if ($estatus==3){ ?>
+      document.getElementById("ti_ck3").checked = true;
+      var textBox = document.getElementById("descri_puesto");
         
     <?php } ?>
+    
 </script>

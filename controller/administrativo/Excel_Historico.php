@@ -94,7 +94,7 @@ $estilo->getFont()->setName("Inter', sans-serif")->setSize(12.5); //cambiar el t
 //llenar el archivo con los datos
 for($i=0; $i<count($asociados); $i++){
     //guardar los datos de la certificacion actual 
-    $fecha = date('d-m-y', strtotime($asociados[$i]["FechaH"]));
+    $fecha = date('d-m-Y', strtotime($asociados[$i]["FechaH"]));
     $precioG = $general[$i]["PrecioH"];
     $precioA = $asociados[$i]["PrecioH"];
 
@@ -106,8 +106,14 @@ for($i=0; $i<count($asociados); $i++){
     $hoja->setCellValue('A'. strval($i+6), $fecha)->setCellValue('B'.strval($i+6), $precioG)->setCellValue('C'. strval($i+6), $precioA);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. strval($i+6) . ':C' . strval($i+6));
+    $estilo = $hoja->getStyle('A'. strval($i+6));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
+
+    //centrar el contenido
+    $estilo = $hoja->getStyle('B'. strval($i+6) . ':C' . strval($i+6));
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinea el contenido a la derecha
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
