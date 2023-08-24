@@ -106,8 +106,14 @@ for($i=0; $i<count($asociados); $i++){
     $hoja->setCellValue('A'. strval($i+6), $fecha)->setCellValue('B'.strval($i+6), $precioG)->setCellValue('C'. strval($i+6), $precioA);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. strval($i+6) . ':C' . strval($i+6));
+    $estilo = $hoja->getStyle('A'. strval($i+6));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
+    $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
+    $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
+
+    //centrar el contenido
+    $estilo = $hoja->getStyle('A'. strval($i+6) . ':C' . strval($i+6));
+    $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinea el contenido a la derecha
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
