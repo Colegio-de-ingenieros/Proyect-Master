@@ -18,7 +18,7 @@
 
         public function get_datos($idP){
             $this->conexion_bd();
-            $sql = "SELECT  NomPerso, ApePPerso, ApeMPerso,DATE_FORMAT(FechaNacPerso, '%d/%m/%Y')FechaNacPerso,TelFPerso,TelMPerso,CorreoPerso,CedulaPerso, CallePerso, ceduPerso, PasantiaPerso
+            $sql = "SELECT  NomPerso, ApePPerso, ApeMPerso,DATE_FORMAT(FechaNacPerso, '%d/%m/%Y')FechaNacPerso,TelFPerso,TelMPerso,CorreoPerso,CedulaPerso, CallePerso, ceduPerso, PasantiaPerso, AntecePerso, DatosVerPerso
                     FROM usuaperso WHERE IdPerso = :idP";
             $arre = [":idP"=>$idP];
             $resultado = $this->mostrar($sql,$arre);

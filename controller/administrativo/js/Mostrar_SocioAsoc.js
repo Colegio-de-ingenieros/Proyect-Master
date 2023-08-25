@@ -112,6 +112,14 @@ function obtener_Datos(){
             parrafo.innerHTML = data[22];
             var parrafo = document.createElement("p");
 
+            var parrafo= document.getElementById("antecedente");
+            parrafo.innerHTML = data[23];
+            var parrafo = document.createElement("p");
+
+            var parrafo= document.getElementById("aceptoInfo");
+            parrafo.innerHTML = data[24];
+            var parrafo = document.createElement("p");
+
             if(data[22]=='Datos del asociado'){
                 document.getElementById("radio_socio").checked=false;
                 document.getElementById("radio_asociado").checked=true;

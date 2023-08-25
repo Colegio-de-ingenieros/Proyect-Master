@@ -33,6 +33,8 @@ $correoP=$datos[0]['CorreoPerso'];
 $cedula=$datos[0]['CedulaPerso'];
 $calle=$datos[0]['CallePerso'];
 $cedulaSiNo=$datos[0]['ceduPerso'];
+$antece=$datos[0]['AntecePerso'];
+$datosVer=$datos[0]['DatosVerPerso'];
 
 
 if($am==null or $am=='NULL'){
@@ -92,8 +94,20 @@ else{
     $funcion="No registrado";
 }
 
+if($antece==1){
+    $antece="Si";
+}else{
+    $antece="No";
+}
+
+if($datosVer==1){
+    $datosVer="Si";
+}else{
+    $datosVer="No";
+}
+
 $data=[$nom, $ap,$am,$fNac,$telF,$telM,$correoP,$cedula,$cp,$calle,$colonia,$ciudad,$estado,$estudio, 
-        $empresa,$puesto,$correoL, $telFE,$telExt,$funcion, $cedulaSiNo, $pasantia, $valor_usua];
+        $empresa,$puesto,$correoL, $telFE,$telExt,$funcion, $cedulaSiNo, $pasantia, $valor_usua, $antece, $datosVer];
 
 
 
