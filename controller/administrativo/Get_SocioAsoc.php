@@ -17,9 +17,9 @@ $labor=$objeto->get_laborales($idp);
 $valor_usua=$tipo_usua[0]['IdUsua'];
 
 if($valor_usua==1){
-    $valor_usua="Datos del asociado";
+    $valor_usua="Datos de asociado";
 }else{
-    $valor_usua="Datos del socio";
+    $valor_usua="Datos de socio";
 }
 
 
