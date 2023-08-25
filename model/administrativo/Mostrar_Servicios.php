@@ -25,7 +25,17 @@
             and persoservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
-            and tiposervicios.TipoSer = 'Outplacement' ";
+            and tiposervicios.TipoSer = 'Outplacement'
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            servicios.IdSer,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+            and empservicios.IdSer = servicios.IdSer
+            and servicios.IdSer = sertipo.IdSer
+            and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            and tiposervicios.TipoSer = 'Outplacement'";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -93,7 +103,18 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaperso.IdPerso = :id ";
+            and usuaperso.IdPerso = :id 
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            servicios.IdSer,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+            and empservicios.IdSer = servicios.IdSer
+            and servicios.IdSer = sertipo.IdSer
+            and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            and tiposervicios.TipoSer = 'Outplacement'
+            and usuaemp.RFCUsuaEmp = :id ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
