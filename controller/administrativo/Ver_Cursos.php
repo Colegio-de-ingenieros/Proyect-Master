@@ -77,7 +77,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="#">Mostrar</a></li>
+                <li><a id="menuProducto1" href="../../view/administrativo/Vista_Usuarios.html">Mostrar</a></li>
               </ul>
             </li>
 

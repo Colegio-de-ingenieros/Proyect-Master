@@ -465,7 +465,6 @@ html{
     display: flex;
     flex-direction: column;
     align-items: center; 
-    border: 2px solid red;
 } 
 /* ****************************************************************************************************** */
 .botones_actualizar{

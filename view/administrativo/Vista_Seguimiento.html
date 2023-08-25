@@ -222,6 +222,19 @@
             </div>
           </form>
 
+          <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Seguimientos.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
+
+          <br>
+
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
               <!-- AQUÍ VA LA TABLA -->
