@@ -68,11 +68,16 @@ main {
 .descripcion {
     min-height: 50%
 }
+
 .lead-2{
     font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: justify;
+}
+
+.buttons{
+    margin-top: 10px;
 }
 
 /* Css del checkbox */
@@ -102,6 +107,7 @@ main {
     transform: scale(var(--scale, 1)) translateZ(0);
     -webkit-animation: var(--name, unchecked) var(--duration) ease forwards;
     animation: var(--name, unchecked) var(--duration) ease forwards;
+    margin-top: 10px;
 }
 
 .plus-minus:before,

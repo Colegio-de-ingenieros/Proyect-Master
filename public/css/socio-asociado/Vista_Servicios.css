@@ -49,8 +49,6 @@ main {
     justify-content: center;
 }
 
-
-
 article{
     margin: 20px auto;
 }
@@ -146,7 +144,7 @@ tr:hover td {
 .container-options{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    margin-bottom: 7px;
+    margin-bottom: 21px;
 }
 
 .btn-danger{
