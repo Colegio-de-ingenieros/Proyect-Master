@@ -1,3 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
+
+:root{
+    --color-primary: #273544;
+    --color-secondary: #303a6e;
+    --color-tertiary: #3f4552;
+    --color-quaternary: #61a8ab;
+    --color-quinary: #085262;
+
+    --color-white: #ffffff;
+    --color-gray: #dfe3e7;
+    --color-gray-2: #d6dbe0;
+    --color-black: #000000;
+
+    --color-placeholder-1: #93979b;
+    --color-placeholder-2: #7c838a;
+    --color-placeholder-3: #474a57;
+
+    --color-red: #ff0000;
+
+    --radius-1: 15px;
+    --radius-2: 8px;
+
+    --shadow-1:3px 5px 5px 1px rgba(128, 126, 126, 0.553);
+    --shadow-2: 0 0 4px 5px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+    
+}
+
+body{
+    background-color: var(--color-gray);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 13rem;
+}
+
+/* Main y section */
+.section-main{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.cabezera{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+h1.nombre_Ventana{
+    color: #FFFF;
+    font-weight: 900;
+    font-size: 48px;
+}
+
 /*----------------------- Encabezados --------------------------*/
 h3{
     color: var(--color-black);
@@ -28,58 +95,8 @@ h3{
     gap: 16px;
 }
 
-.input-format-2{
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 300ms all;
-    width: 100%;
-}
-/*-------------------------------- Animaciones de las cajas de texto ----------------------*/
-.inputs{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    gap: 16px;
-}
-
-.inputs-2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 10px;
-    gap: 16px;
-    background-color: var(--color-gray);
-}
-
 .input-format{
     color: var(--color-black);
-    background-color: var(--color-gray);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 300ms all;
-}
-
-.input-format-2{
-    color: var(--color-black);
     background-color: var(--color-white);
     border-radius: var(--radius-2);
     padding: 10px 20px;
@@ -90,27 +107,15 @@ h3{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 300ms all;
 }
-
+/*-------------------------------- Animaciones de las cajas de texto ----------------------*/
 .input-format:focus{
     background: var(--color-gray-2);
     box-shadow: var(--shadow-1);
-    /* transform: scale(1.1); */
-}
-
-.input-format-2:focus{
-    background: var(--color-white);
-    box-shadow: var(--shadow-1);
-    transform: scale(1.02);
+    transition: all 300ms;
 }
 
 .input-format:focus::placeholder{
-    color: var(--color-placeholder-2);
-    font-weight: 500;
-}
-
-.input-format-2:focus::placeholder{
     color: var(--color-placeholder-2);
     font-weight: 500;
 }
@@ -120,69 +125,28 @@ h3{
     font-size: 1rem;
     font-weight: 400;
 }
-
-.input-format-2::placeholder{
-    color: var(--color-placeholder-1);
-    font-size: 1rem;
-    font-weight: 400;
-}
-
-.input-textarea-2{
-    height: 100px;
-    resize: none;
-    color: var(--color-black);
-    background-color: var(--color-white);
-    border-radius: var(--radius-2);
-    padding: 10px 20px;
-    border: none;
-    outline: none;
-
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    grid-column: span 3;
-    transition: 300ms all;
-}
-
-.input-textarea-2:focus{
-    box-shadow: var(--shadow-1);
-    transform: scale(1.1);
-}
-
 /* contenedor guia */
 html{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
 }    
-
-.contenedortrabajadores{
+.contenedorregistro{
     height: 32em;
-    width: 60em;
+    width: 90%;
     border: none;
     background-color: none; 
     width: 80%;
     height: 500px;
     justify-content: center;
-    margin: 14em auto; 
+    margin: 6em auto; 
 } 
 .contenedor-formulario{
     padding: 20px 0px 20px 0;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 10px;
-
-}.contenedor-formulario_2{
-    padding: 20px 0px 20px 0;
+    gap: 20px;
 }
 
-
-.grupo-boton-reg{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    grid-column: span 3;
-}
 .grupo-input2{
     display: block;
     grid-column: span 1;
@@ -200,6 +164,7 @@ html{
 }
 
 .input-format{
+    resize: none;
     width: 100%;
 }
 
@@ -207,27 +172,35 @@ html{
     width: 100%;
 }
 .boton_registrar{
-    display: block;
+    display: flex;
     flex-direction: column;
     align-items: center;}
 
 hr{
     color: gray;
 }
-main{
-    display: flex;
-    flex-direction: column;
+
+/*Responsive*/
+.icon__menu{
+    font-size: 34px;
+    color: #000000;
+    cursor: pointer;
+    width: 26px;
+    height: 100%;
+    display: none;
     align-items: center;
-    margin-top: 13rem;
 }
 
-/* Main y section */
-.section-main-trabajadores{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
+.label__check{
+    width: 26px;
+    height: 100%;
+    display: none;
 }
-/*--------------------------- Seccion responsive -----------------------------*/
+
+#check__menu{
+    display: none;
+}
+
 @media screen and (max-width: 1250px){
     main{
         margin-top: 8.5rem;
@@ -305,24 +278,14 @@ main{
         visibility: visible;
         opacity: 1;
     }
-    .contenedor-formulario{
-        margin:auto; 
-    }
-    .section-main-trabajadores{
-        display: flex;
-        flex-direction: column;
-        width: 96%;
+    .contePlantilla{
+        margin: 8em auto; 
     }
 }
 
 @media screen and (max-width: 760px) {
     .nombre_Ventana{
         font-size: 1rem;
-    }
-    .section-main-trabajadores{
-        display: flex;
-        flex-direction: column;
-        width: 98%;
     }
 }
 
@@ -342,12 +305,6 @@ main{
 
     .contenedor-formulario{
         display: flow-root;
-    }
-
-    .section-main-trabajadores{
-        display: flex;
-        flex-direction: column;
-        width: 80%;
     }
     
 }

@@ -8,7 +8,7 @@ const opciones = document.getElementById("opciones");
 headhunter.checked = true;
 
 window.onload = function () {
-  let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let url = "../../controller/empresa/Mostrar_Servicios.php";
   let fecha = "0000-00-00";
 
   let data = new FormData();
@@ -25,7 +25,7 @@ window.onload = function () {
 };
 
 headhunter.addEventListener("click", function () {
-  let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let url = "../../controller/empresa/Mostrar_Servicios.php";
   let fecha = "0000-00-00";
 
   let data = new FormData();
@@ -42,7 +42,7 @@ headhunter.addEventListener("click", function () {
 });
 
 outplacement.addEventListener("click", function () {
-  let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
+  let url = "../../controller/empresa/Mostrar_Servicios.php";
   let fecha = "0000-00-00";
 
   let data = new FormData();
@@ -129,7 +129,7 @@ function resultados(json, llamada) {
         ActionText.addEventListener("click", function () {
           let respuesta = confirm("¿Está seguro de eliminar el servicio?");
           if (respuesta) {
-            let url = "../../controller/socio-asociado/Cancelar_Servicio.php";
+            let url = "../../controller/empresa/Cancelar_Servicio.php";
 
             let data = new FormData();
             data.append("id", rowData[3]);

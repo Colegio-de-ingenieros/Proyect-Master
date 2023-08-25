@@ -1,27 +1,19 @@
 <script src="../../view/login/js/Verificar_Permiso_Empresa.js"></script>
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Consultar aplicantes</title>
-    <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	  <script src="../../controller/empresa/js/Mostrar_Aplicantes.js"></script>
-    <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
-    <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Ofertas.css">
-    <link rel="stylesheet" href="../../public/css/administrativo/Vista_Aplicantes.css">
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
-    <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png"
-      sizes="192x192">
-    <link rel="apple-touch-icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
-    <meta name="msapplication-TileImage"
-    content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
+<html lang="es">
 
-    <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registrar servicios</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/socio-asociado/Reg_Servicios.css">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
 </head>
+
 <body>
   <header>
 
@@ -88,27 +80,43 @@
     </div>
 
     <div class="boton-cerrar-session">
-      <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' " >Cerrar sesión</button>
+      <button class="btn-cerrar-session btn"
+        onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
     </div>
   </header>
-  <main>
-    <div>
-      <div class="article-tablas">
-        <article>
-          <div class="sub-titulo">
-            <h4 class="subtitulo-1">Mostrar / Consultar aplicantes</h4>
-          </div>
-          <hr>
-          <br>
-          <div class="tablas">
-            <section class="header_table" id="tablaResultado">
 
-            
-            </section>
-          </div>
-        </article>
+  <main>
+    <section class="section-main">
+      <div class="cabezera">
+        <h3 class="h3 titulo-ventana">Registro</h2>
+          <p class="subtitulo-1">Descripción del servicio</p>
+          <hr>
       </div>
-    </div>
+
+      <div class="cards">
+        <div class="card">
+          <p class="subtitulo-2">Headhunter</p>
+          <div class="descripcion">
+            <p class="lead-2">Especialista en reclutamiento de talento ejecutivo, encargado de identificar y atraer candidatos altamente calificados para empresas.</p>
+          </div>
+          <input type="checkbox" class="plus-minus" id="headhunter">
+        </div>
+
+        <div class="card">
+          <p class="subtitulo-2">Outplacement</p>
+          <div class="descripcion">
+            <p class="lead-2">Servicio de apoyo profesional para empleados en transición laboral, facilitando su reintegración al mercado laboral.</p>
+          </div>
+          <input type="checkbox" class="plus-minus" id="outplacement">
+        </div>
+      </div>
+      
+      <div class="buttons">
+        <button class="btn btn-medium" id="btn-aplicar">Aplicar</button>
+      </div>
+    </section>
   </main>
 </body>
+
+<script src="../../controller/empresa/js/Registro_Servicios.js"></script>
 </html>
