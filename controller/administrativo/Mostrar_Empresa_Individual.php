@@ -87,6 +87,24 @@ else{
     $telCap = "No registrado";
     $extCap = "No registrado";
 }
+if ($apeMTI==""){
+    $apeMTI="No registrado";
+}
+if ($apeMRH==""){
+    $apeMRH="No registrado";
+}
+if ($apeMCap==""){
+    $apeMCap="No registrado";
+}
+if ($extTI==""){
+    $extTI="No registrado";
+}
+if ($extRH==""){
+    $extRH="No registrado";
+}
+if ($extCap==""){
+    $extCap="No registrado";
+}
 ?>
 
 <script>

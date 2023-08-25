@@ -44,21 +44,27 @@ if($valTipo!=""){
             if ($valTipo=="headhunter"){
                 $id = $resultado[$i]["IdPerso"];
                 /* $nombre = $resultado[$i]["NomPerso"]; */
-                $nombres = $resultado[0]["NomPerso"];
-  $nombreP = $resultado[0]["ApePPerso"];
-  $nombreM = $resultado[0]["ApeMPerso"];
+                $nombres = $resultado[$i]["NomPerso"];
+  $nombreP = $resultado[$i]["ApePPerso"];
+  $nombreM = $resultado[$i]["ApeMPerso"];
   $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
                 $correo = $resultado[$i]["CorreoPerso"];
                 $telefono = $resultado[$i]["TelMPerso"];
+                if ($telefono == "" || $telefono == null){
+                    $telefono = ' - ';
+                }
             }else if ($valTipo=="outplacement"){
                 $id = $resultado[$i]["IdPerso"];
                 /* $nombre = $resultado[$i]["NomPerso"]; */
-                $nombres = $resultado[0]["NomPerso"];
-  $nombreP = $resultado[0]["ApePPerso"];
-  $nombreM = $resultado[0]["ApeMPerso"];
+                $nombres = $resultado[$i]["NomPerso"];
+  $nombreP = $resultado[$i]["ApePPerso"];
+  $nombreM = $resultado[$i]["ApeMPerso"];
   $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
                 $correo = $resultado[$i]["CorreoPerso"];
                 $telefono = $resultado[$i]["TelMPerso"];
+                if ($telefono == "" || $telefono == null){
+                    $telefono = ' - ';
+                }
             }
 
             if ($resultado[$i]["EstatusSer"] == '0') {

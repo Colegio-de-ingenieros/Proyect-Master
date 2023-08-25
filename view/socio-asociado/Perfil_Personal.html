@@ -100,277 +100,304 @@
       <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
   </div>
   </header>
-  
-	<div class="contenedorregistro">
-		<h3>Mi perfil</h3>
-		<br>
-        <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
-            <p class="subtitulo-1"> Datos personales</p>
-            <hr size="1px" />
-            <div class="contenedor-formulario">
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Nombre(s)*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su nombre" id="nomPerso" name="nomPerso" required maxlength="40"
-                        title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto.">
-                    </div>
+  <div class="contenedorregistro">
+    <h3>Mi perfil</h3>
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario">
+        <p class="subtitulo-1">Datos personales</p>
+        <hr size="1px" />
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Nombre(s)*</p>
                 </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Apellido paterno*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  required maxlength="20"
-                        title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
-                    </div>
-                </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Apellido materno</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su apellido materno" id="apeMPerso" name="apeMPerso" maxlength="20"
-                        title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
-                    </div>
-                </div>
-                <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Fecha de nacimiento*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="date" class="input-format"placeholder="Ingrese su fecha de nacimiento" id="fechaNacPerso" name="fechaNacPerso" required maxlength="20" max="" >
-                    </div>
-                </div>
-                <div class="grupo-input3">
-                    <div class="label-form">
-                        <p class="label-2">Teléfono fijo</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su teléfono fijo " id="telFPerso" name="telFPerso"maxlength="10"
-                        title="El número de teléfono solo puede contener números.">
-                    </div>
-                </div>
-                <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Teléfono móvil*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" required maxlength="10"
-                        title="El número de teléfono solo puede contener números.">
-                    </div>
-                </div>
-
-                <div class="grupo-input3">
-                    <div class="label-form">
-                        <p class="label-2">Correo electrónico*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="email" class="input-format"placeholder="someone@example.com" id="correoPerso" name="correoPerso" required maxlength="40"
-                        title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
-                    </div>
-                    <div class="grupo-input2">
-                        
-                    </div>
-                    <div class="grupo-input2">
-                        <div class="label-form">
-                            <p>*Por favor, ingrese su correo electrónico personal, ya que este será utilizado como medio de contacto.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grupo-input3">
-                    <div class="label-form">
-                        <p class="label-2">Contraseña*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="password" class="input-format" placeholder="Ingrese su contraseña" id="contraPerso" name="contraPerso" required maxlength="16"
-                        title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al  menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
-                    </div>
-                </div>
-
-                <div class="grupo-input3">
-                    <div class="label-form">
-                        <p class="label-2">Confirmar contraseña*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="password" class="input-format"placeholder="Confirme su contraseña" id="confiContraPerso" name="confiContraPerso" required maxlength="16"
-                        title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al  menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
-                    </div>
-                </div>
-
-                <div class="grupo-input2">
-                    <div class="label-form">
-                        <p class="label-2">¿Cuenta con cédula profesional?*</p>
-                    </div>
-                    <div class="check-box">
-                        <input type="checkbox" name="opcion5" id="ceduPerso1" value="opcion1" onclick="deseleccionar5('opcion1')">&nbsp;&nbsp;&nbsp;Si<br>
-                        <input type="checkbox" name="opcion5" id="ceduPerso2" value="opcion2" onclick="deseleccionar5('opcion2')">&nbsp;&nbsp;&nbsp;No<br>
-                    </div>
-                </div>
-                
-
-                <div class="grupo-input3">
-                    <div class="label-form">
-                        <p class="label-2">Cédula profesional</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su cédula profesional" id="cedulaPerso" name="cedulaPerso"  maxlength="8"
-                        title="La cedula debe contener entre 7 y 8 números" disabled>
-                    </div>
-                </div>
-
-                
-
-                
-
-                
-            </div>
-
-            <br>
-            <p class="subtitulo-1">Dirección</p>
-            <hr size="1px"/>
-            <div class="contenedor-formulario">
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Código postal*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su código postal" id="cpPerso" name="cpPerso" required maxlength="5"
-                        title="El código postal solo puede contener números.">
-                    </div>
-                </div>
-
-                <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Calle y número*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese su calle y número" id="callePerso" name="callePerso" required maxlength="100"
-                        title="La calle y el número solo puenden estar formados por letras mayúsculas, minúsculas y caracateres especiales (., #, /).">
-                    </div>
-                </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Colonia*</p>
-                    </div>
-                    <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" maxlength="50">
-                            <option value="0">Seleccione su colonia</option>
-						</select>
-                    </div>
-                </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Ciudad*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso"  maxlength="50" readonly>
-                    </div>
-                </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Estado*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso"  maxlength="50" readonly>
-                    </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese su nombre" id="nomPerso" name="nomPerso" required maxlength="40"
+                    title="El nombre solo puede contener letras mayúsculas, minúsculas y el punto.">
                 </div>
             </div>
-            
-            <br>
-            <p class="subtitulo-1"> Educación</p>
-            <hr size="1px"/>
-            <div class="contenedor-formulario">
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Máximo grado de estudios*</p>
-                    </div>
-                    <div class="input-form">
-                        <select type="text" class="input-format"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
-                        <option value="" selected disabled>Seleccione su máximo grado de estudios</option>
-                        <option value="1">Pasante</option>
-                        <option value="2">Licenciatura</option>
-                        <option value="3">Maestría</option>
-                        <option value="4">Doctorado</option>
-                        </select>
-                    </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Apellido paterno*</p>
                 </div>
-                <div class="grupo-input2">
-                    <div class="label-form">
-                        <p class="label-2">¿La pasantía se relaciona con tecnologías?*</p>
-                    </div>
-                    <div class="check-box">
-                        <input type="checkbox" name="opcion1" id="pasantia1" value="opcion1" onclick="deseleccionar1('opcion1')">&nbsp;&nbsp;&nbsp;Si<br>
-                        <input type="checkbox" name="opcion1" id="pasantia2" value="opcion2" onclick="deseleccionar1('opcion2')">&nbsp;&nbsp;&nbsp;No<br>
-                    </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese su apellido paterno" id="apePPerso" name="apePPerso"  required maxlength="20"
+                    title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
                 </div>
             </div>
-            
-            <br></br>
-            <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
-            <input type="checkbox" id="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
 
-            <br>
-            <p class="subtitulo-1"> Certificación</p>
-            <hr size="1px"/>
-            <div class="contenedor-formulario">
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Nombre de certificación*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese el nombre de la certificación" id="nomCert" name="nomCert"  maxlength="60"
-                        title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." disabled>
-                    </div>
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Apellido materno</p>
                 </div>
-
-                <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Organización del certificado*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format" placeholder="Ingrese la organización de la certificación" id="orgCert" name="orgCert" maxlength="50"
-                        title="El nombre de la organización puede contener letras mayúsculas, minúsculas y caracteres especiales ( . )." disabled>
-                    </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su apellido materno" id="apeMPerso" name="apeMPerso" maxlength="20"
+                    title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
                 </div>
-
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Fecha de emisión*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" disabled name="fechaICert" maxlength="60">
-                    </div>
+            </div>
+            <div class="grupo-input4">
+                <div class="label-form">
+                    <p class="label-2">Fecha de nacimiento*</p>
                 </div>
-
-                <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Fecha de vigencia*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="date" class="input-format" placeholder="Ingrese la fecha de finalización" id="fechaFCert" name="fechaFCert" disabled  maxlength="50">
-                    </div>
+                <div class="input-form">
+                    <input type="date" class="input-format"placeholder="Ingrese su fecha de nacimiento" id="fechaNacPerso" name="fechaNacPerso" required maxlength="20" max="" >
                 </div>
+            </div>
+            <div class="grupo-input3">
+                <div class="label-form">
+                    <p class="label-2">Teléfono fijo</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese su teléfono fijo " id="telFPerso" name="telFPerso"maxlength="10"
+                    title="El número de teléfono solo puede contener números.">
+                </div>
+            </div>
+            <div class="grupo-input4">
+                <div class="label-form">
+                    <p class="label-2">Teléfono móvil*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su teléfono móvil" id="telMPerso" name="telMPerso" required maxlength="10"
+                    title="El número de teléfono solo puede contener números.">
+                </div>
+            </div>
 
-               
+            <div class="grupo-input3">
+                <div class="label-form">
+                    <p class="label-2">Correo electrónico*</p>
+                </div>
+                <div class="input-form">
+                    <input type="email" class="input-format"placeholder="someone@example.com" id="correoPerso" name="correoPerso" required maxlength="40"
+                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+                </div>
                 <div class="grupo-input2">
                     
                 </div>
                 <div class="grupo-input2">
                     <div class="label-form">
-                        <button class="btn-medium btn" type="submit" id="btn_agregar_certi">Añadir</button> 
+                        <p>*Por favor, ingrese su correo electrónico personal, ya que este será utilizado como medio de contacto.</p>
                     </div>
                 </div>
+            </div>
 
-                <br>
+
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">¿Cuenta con cédula profesional?*</p>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="opcion5" id="ceduPerso1" value="opcion1" onclick="deseleccionar5('opcion1')">&nbsp;&nbsp;&nbsp;Si<br>
+                    <input type="checkbox" name="opcion5" id="ceduPerso2" value="opcion2" onclick="deseleccionar5('opcion2')">&nbsp;&nbsp;&nbsp;No<br>
+                </div>
+            </div>
+            
+
+            <div class="grupo-input3">
+                <div class="label-form">
+                    <p class="label-2">Cédula profesional</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese su cédula profesional" id="cedulaPerso" name="cedulaPerso"  maxlength="8"
+                    title="La cedula debe contener entre 7 y 8 números" disabled>
+                </div>
+            </div>
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+    <form action="">
+        <p class="subtitulo-1">Contraseña</p>
+        <hr size="1px" />
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                  <p class="label-2">Contraseña actual*</p>
+                </div>
+                <div class="input-form">
+                  <input type="password" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
+                  title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
+                </div>
+              </div>
+    
+              <div class="grupo-input">
+                <div class="label-form">
+                  <p class="label-2">Nueva contraseña*</p>
+                </div>
+                <div class="input-form">
+                  <input type="password" name="password" id="password" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
+                  title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
+                </div>
+              </div>
+    
+              <div class="grupo-input">
+                <div class="label-form">
+                  <p class="label-2">Confirmar contraseña*</p>
+                </div>
+                <div class="input-form">
+                  <input type="password" name="password_confirmacion" id="password_confirmacion" maxlength="16" class="input-format" placeholder="Confirme su contraseña"
+                  title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
+                </div>
+              </div> 
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+    <form action="">
+        <p class="subtitulo-1">Dirección</p>
+        <hr size="1px" />
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Código postal*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su código postal" id="cpPerso" name="cpPerso" required maxlength="5"
+                    title="El código postal solo puede contener números.">
+                </div>
+            </div>
+
+            <div class="grupo-input4">
+                <div class="label-form">
+                    <p class="label-2">Calle y número*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese su calle y número" id="callePerso" name="callePerso" required maxlength="100"
+                    title="La calle y el número solo puenden estar formados por letras mayúsculas, minúsculas y caracateres especiales (., #, /).">
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Colonia*</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su texto aquí..." id="coloniaPerso" name="coloniaPerso" maxlength="50">
+                        <option value="0">Seleccione su colonia</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Ciudad*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su ciudad" id="ciudadPerso" name="ciudadPerso"  maxlength="50" readonly>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Estado*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su estado" id="estadoPerso" name="estadoPerso"  maxlength="50" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+    <form action="">
+        <p class="subtitulo-1">Educación</p>
+        <hr size="1px" />
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Máximo grado de estudios*</p>
+                </div>
+                <div class="input-form">
+                    <select type="text" class="input-format"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                    <option value="" selected disabled>Seleccione su máximo grado de estudios</option>
+                    <option value="1">Pasante</option>
+                    <option value="2">Licenciatura</option>
+                    <option value="3">Maestría</option>
+                    <option value="4">Doctorado</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grupo-input2">
+                <div class="label-form">
+                    <p class="label-2">¿La pasantía se relaciona con tecnologías?*</p>
+                </div>
+                <div class="check-box">
+                    <input type="checkbox" name="opcion1" id="pasantia1" value="opcion1" onclick="deseleccionar1('opcion1')">&nbsp;&nbsp;&nbsp;Si<br>
+                    <input type="checkbox" name="opcion1" id="pasantia2" value="opcion2" onclick="deseleccionar1('opcion2')">&nbsp;&nbsp;&nbsp;No<br>
+                </div>
+            </div>
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+    <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
+    <input type="checkbox" id="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
+    <p class="subtitulo-1">Certificación</p>
+    <hr size="1px" />
+    <form action="">
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Nombre de certificación*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese el nombre de la certificación" id="nomCert" name="nomCert"  maxlength="60"
+                    title="El nombre de la certificación puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." disabled>
+                </div>
+            </div>
+
+            <div class="grupo-input4">
+                <div class="label-form">
+                    <p class="label-2">Organización del certificado*</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format" placeholder="Ingrese la organización de la certificación" id="orgCert" name="orgCert" maxlength="50"
+                    title="El nombre de la organización puede contener letras mayúsculas, minúsculas y caracteres especiales ( . )." disabled>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Fecha de emisión*</p>
+                </div>
+                <div class="input-form">
+                    <input type="date" class="input-format" placeholder="Ingrese la fecha de inicio" id="fechaICert" disabled name="fechaICert" maxlength="60">
+                </div>
+            </div>
+
+            <div class="grupo-input4">
+                <div class="label-form">
+                    <p class="label-2">Fecha de vigencia*</p>
+                </div>
+                <div class="input-form">
+                    <input type="date" class="input-format" placeholder="Ingrese la fecha de finalización" id="fechaFCert" name="fechaFCert" disabled  maxlength="50">
+                </div>
+            </div>
+
+            
+            <div class="grupo-input2">
+                
+            </div>
+            <div class="grupo-input2">
+                
+            </div>
+            
+
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+
+            <br>
             <br>
             <div class="conteTabla" >
                 <div class="article-tablas" >
@@ -398,102 +425,90 @@
                 </div>
             </div> 
             <br>
-
-                
-            </div>
-            <br></br>
-            <div class="grupo-input2">
-                <div class="label-form">
-                    
-                </div>
-                
-                <div class="check-box">
-                    <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
-                    <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
-                </div>
-            </div>
-            
-            
-            
             <br>
-            <p class="subtitulo-1"> Datos laborales</p>
-            <hr size="1px"/>
-            <div class="contenedor-formulario">
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Empresa donde labora*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese la empresa donde labora" id="nomEmpPerso" name="nomEmpPerso"  maxlength="100"
-                        title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . )." disabled>
-                    </div>
-                </div>
+            <br>
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Puesto*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su puesto" id="puestoEmpPerso" name="puestoEmpPerso"  maxlength="50"
-                        title="El nombre de puesto puede contener letras mayúsculas y minúsculas" disabled>
-                    </div>
+    <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
+    <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
+    <p class="subtitulo-1">Datos laborales</p>
+    <hr size="1px" />
+    <form action="">
+        <div class="contenedor-formulario">
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Empresa donde labora*</p>
                 </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese la empresa donde labora" id="nomEmpPerso" name="nomEmpPerso"  maxlength="100"
+                    title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . )." disabled>
+                </div>
+            </div>
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Correo laboral*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su correo laboral" id="correoEmpPerso" name="correoEmpPerso"  maxlength="40"
-                        title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
-                    </div>
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Puesto*</p>
                 </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su puesto" id="puestoEmpPerso" name="puestoEmpPerso"  maxlength="50"
+                    title="El nombre de puesto puede contener letras mayúsculas y minúsculas" disabled>
+                </div>
+            </div>
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Teléfono de oficina*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese el teléfono de oficina" id="telFEmpPerso" name="telFEmpPerso"  maxlength="10"
-                        title="El número de teléfono solo puede contener números." disabled>
-                    </div>
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Correo laboral*</p>
                 </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su correo laboral" id="correoEmpPerso" name="correoEmpPerso"  maxlength="40"
+                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
+                </div>
+            </div>
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Extensión</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese la extensión" id="ExtTelFEmp" name="ExtTelFEmp"  maxlength="3"
-                        title="La extensión solo puede contener números." disabled>
-                    </div>
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Teléfono de oficina*</p>
                 </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese el teléfono de oficina" id="telFEmpPerso" name="telFEmpPerso"  maxlength="10"
+                    title="El número de teléfono solo puede contener números." disabled>
+                </div>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Extensión</p>
+                </div>
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese la extensión" id="ExtTelFEmp" name="ExtTelFEmp"  maxlength="3"
+                    title="La extensión solo puede contener números." disabled>
+                </div>
+            </div>
 
 
-                <div class="grupo-input">
-                    <div class="label-form">
-                        <p class="label-2">Función*</p>
-                    </div>
-                    <div class="input-form">
-                        <input type="text" class="input-format"placeholder="Ingrese su función" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60"
-                        title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." disabled>
-                    </div>
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Función*</p>
                 </div>
-                <div class="grupo-input2">
-                    
+                <div class="input-form">
+                    <input type="text" class="input-format"placeholder="Ingrese su función" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60"
+                    title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." disabled>
                 </div>
-                <div class="grupo-input2">
-                    
-                </div>
+            </div>
+            <div class="grupo-input2">
                 
+            </div>
+            <div class="grupo-input2">
+                
+            </div>
             
-            
-                <div class="grupo-input2">
-                    <div class="label-form">
-                        <button class="btn-medium btn" type="submit" id="btn_agregar_certi">Añadir</button> 
-                    </div>
-                </div>
-                <br>
+        </div>
+        <div class="boton">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+        </div>
+    </form>
+
+  
+            <br>
             <br>
             <div class="conteTabla" >
                 <div class="article-tablas" >
@@ -503,12 +518,8 @@
                             <table id="tabla">
                               <thead>
                                 <tr>
-                                    <th>Empresa</th>
-                                    <th>Puesto</th>
-                                    <th>Correo Laboral</th>
-                                    <th>Teléfono de oficina</th>
-                                    <th>Extensión</th>
-                                    <th>Función</th>
+                                    <th >Función</th>
+                                    
                                     <th>Acciones</th>
                                 </tr>
                               </thead>
@@ -523,20 +534,13 @@
                 </div>
             </div> 
             <br>
-                
+            <br>
+            <br>
 
-        <br></br>       
-		</div>
-        
-        
-        <div class="boton_registrar">
-        <!--<button class="btn-medium btn">Guardar</button>-->
-        <input type="submit" class="btn-medium btn" id="boton_registrar" value="Guardar" >
-        </div>
-        
-    
-</br>
-</form>
+    <br>
+   
+</div>
+
 
 
     <script>

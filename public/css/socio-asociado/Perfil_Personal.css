@@ -179,7 +179,21 @@ html{
 hr{
     color: gray;
 }
-
+.boton {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+}
+.btn-medium1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-primary);
+    color: var(--color-white);
+    transition: all 300ms;
+}
 /*Responsive*/
 .icon__menu{
     font-size: 34px;
