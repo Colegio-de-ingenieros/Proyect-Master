@@ -5,13 +5,14 @@ const caja_mensaje = document.getElementById("mensaje");
 const cnt_tabla = document.getElementById("tabla_contenedor");
 const opciones = document.getElementById("opciones");
 
+headhunter.checked = true;
 
 window.onload = function () {
   let url = "../../controller/socio-asociado/Mostrar_Servicios.php";
   let fecha = "0000-00-00";
 
   let data = new FormData();
-  data.append("servicio", "all");
+  data.append("servicio", "headhunter");
   data.append("fecha", fecha);
 
   fetch(url, {
@@ -83,12 +84,6 @@ function resultados(json, llamada) {
     tableBody.innerHTML = "";
     json.forEach(rowData => {
       let row = document.createElement('tr');
-
-      //* Tipo de servicio
-      let ServiceCell = document.createElement('td');
-      let ServiceText = document.createTextNode(rowData[0]);
-      ServiceCell.appendChild(ServiceText);
-      row.appendChild(ServiceCell);
 
       //* Fecha de aplicación del servicio
       let DateCell = document.createElement('td');
