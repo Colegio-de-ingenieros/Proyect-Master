@@ -196,8 +196,18 @@
                 <input type="text" class="input-format-2" id="buscar"  placeholder="Buscar">
               </div>
             </div>
-            <button class="btn-medium btn">Descargar Excel</button>
-            <br>
+            
+            <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Instructores.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
+          </div>
+          
             <br>
             <div id="mensaje"></div>
             <div class="tablas" id="tabla_contenedor">
