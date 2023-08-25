@@ -190,7 +190,7 @@
   <main>
     <section class="section-main hoja">
       <div class="cabezera">
-        <h4 class="h3">Datos del usuario</h4>
+        <h4 class="h3" id="encabezado">Datos del usuario</h4>
       </div>
       <br>
       <p class="subtitulo-1"> Datos generales</p>
@@ -244,6 +244,13 @@
           <div class="label-form">
             <p class="label-2">Correo electrónico:</p>
             <p class="label-4" id="correo">Texto</p>
+          </div>
+        </div>
+
+        <div class="grupo-input">
+          <div class="label-form">
+            <p class="label-2">¿Cuenta con cédula profesional?</p>
+            <p class="label-4" id="cedulaSiNo">Texto</p>
           </div>
         </div>
 
@@ -308,6 +315,14 @@
               <label class="label-4" id="grado_estudio">Texto</label>
             </div>
           </div>
+
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">¿La pasantía se relaciona con tecnologías?</p>
+              <label class="label-4" id="pasantia">Texto</label>
+            </div>
+          </div>
+
         </div>
 
         <p class="subtitulo-1"> Datos laborales</p>
@@ -361,22 +376,24 @@
         <p class="subtitulo-1"> Tipo de usuario </p>
         <hr size="1px" />
 
-        <div class="contenedor-formulario_2">
-          
-          <div class="grupo-input">
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
-              value="1"> Asociado </label>
-          </div>
-          <br>
-          <div class="grupo-input">
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
-              value="2"> Socio </label>
-          </div>
+        <form class="formulario-de-datos" id="formulario_usuario">
+          <div class="contenedor-formulario_2">
+            
+            <div class="grupo-input">
+              <label for="" class="checkbox"><input type="radio" name="radio" id="radio_asociado" class="checkbox-format"
+                value="1"> Asociado </label>
+            </div>
+            <br>
+            <div class="grupo-input">
+              <label for="" class="checkbox"><input type="radio" name="radio" id="radio_socio" class="checkbox-format"
+                value="2"> Socio </label>
+            </div>
 
-          <div class="botones-registro">
-            <button class="btn btn-medium" id="boton_registro" type="submit">Enviar</button>
+            <div class="botones-registro">
+              <button class="btn btn-medium" name="boton_enviar" id="boton_enviar" type="submit">Enviar</button>
+            </div>
           </div>
-        </div>
+        </form>
 
         <p class="subtitulo-1">Certificaciones</p>
         <hr size="1px" />
