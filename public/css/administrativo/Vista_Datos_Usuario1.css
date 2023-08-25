@@ -155,12 +155,7 @@ html{
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
 }    
-.formulario-de-datos{
-    padding: 20px 0px 20px 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
-}
+
 .contenedortrabajadores{
     height: 32em;
     width: 60em;

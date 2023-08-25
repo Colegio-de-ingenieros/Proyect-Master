@@ -167,7 +167,7 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_Servicios.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -190,7 +190,7 @@
   <main>
     <section class="section-main hoja">
       <div class="cabezera">
-        <h4 class="h3">Datos del usuario</h4>
+        <h4 class="h3" id="encabezado">Datos del usuario</h4>
       </div>
       <br>
       <p class="subtitulo-1"> Datos generales</p>
@@ -244,6 +244,13 @@
           <div class="label-form">
             <p class="label-2">Correo electrónico:</p>
             <p class="label-4" id="correo">Texto</p>
+          </div>
+        </div>
+
+        <div class="grupo-input">
+          <div class="label-form">
+            <p class="label-2">¿Cuenta con cédula profesional?</p>
+            <p class="label-4" id="cedulaSiNo">Texto</p>
           </div>
         </div>
 
@@ -308,6 +315,14 @@
               <label class="label-4" id="grado_estudio">Texto</label>
             </div>
           </div>
+
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">¿La pasantía se relaciona con tecnologías?</p>
+              <label class="label-4" id="pasantia">Texto</label>
+            </div>
+          </div>
+
         </div>
 
         <p class="subtitulo-1"> Datos laborales</p>
@@ -361,20 +376,42 @@
         <p class="subtitulo-1"> Tipo de usuario </p>
         <hr size="1px" />
 
+        <form class="formulario-de-datos" id="formulario_usuario">
+          <div class="contenedor-formulario_2">
+            
+            <div class="grupo-input">
+              <label for="" class="checkbox"><input type="radio" name="radio" id="radio_asociado" class="checkbox-format"
+                value="1"> Asociado </label>
+            </div>
+            <br>
+            <div class="grupo-input">
+              <label for="" class="checkbox"><input type="radio" name="radio" id="radio_socio" class="checkbox-format"
+                value="2"> Socio </label>
+            </div>
+
+            <div class="botones-registro">
+              <button class="btn btn-medium" name="boton_enviar" id="boton_enviar" type="submit">Enviar</button>
+            </div>
+          </div>
+        </form>
+
+        <p class="subtitulo-1"> Información adicional</p>
+        <hr size="1px" />
+
         <div class="contenedor-formulario_2">
-          
           <div class="grupo-input">
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
-              value="1"> Asociado </label>
+            <div class="label-form">
+              <p class="label-2">¿Alguna vez ha sido condenado por algún delito grave o un delito menor? (puede ser fraude, soborno, corrupción, robo, malversación, delito sexual, o cualquier delito que pone en tela de juicio la integridad o juicio, etc.):</p>
+              
+              <p class="label-4" id="antecedente">Texto</p>
+            </div>
           </div>
           <br>
           <div class="grupo-input">
-            <label for="" class="checkbox"><input type="radio" name="radiosb" id="ti_ck1" class="checkbox-format"
-              value="2"> Socio </label>
-          </div>
-
-          <div class="botones-registro">
-            <button class="btn btn-medium" id="boton_registro" type="submit">Enviar</button>
+            <div class="label-form">
+              <p class="label-2">Certifico que la información proporcionada es verídica y correcta hasta mi más leal saber y entender. Acepto que se incluyan mis datos personales en el “Colegio de Ingenieros en Sistemas Computacionales para la Seguridad de Información, Control Interno y Gobernanza, A.C.”. Me obligo a apegarme y cumplir cabalmente con los Estatutos y el Código de Ética del Colegio.*</p>
+              <p class="label-4" id="aceptoInfo">Texto</p>
+            </div>
           </div>
         </div>
 
