@@ -2,9 +2,23 @@
     include('../../config/Crud_bd.php');
 
     class Mostrar_SocioAsoc extends Crud_bd{
+
+        public function get_tipo_usuario($idP){
+            $this->conexion_bd();
+            $sql = "SELECT  tipousua.IdUsua
+                    FROM usuaperso, persotipousua, tipousua 
+                    WHERE usuaperso.IdPerso = persotipousua.IdPerso and
+                            persotipousua.IdUsua = tipousua.IdUsua and
+                            usuaperso.IdPerso = :idP";
+            $arre = [":idP"=>$idP];
+            $resultado = $this->mostrar($sql,$arre);
+            $this->cerrar_conexion();
+            return $resultado;
+        }
+
         public function get_datos($idP){
             $this->conexion_bd();
-            $sql = "SELECT  NomPerso, ApePPerso, ApeMPerso,DATE_FORMAT(FechaNacPerso, '%d/%m/%Y')FechaNacPerso,TelFPerso,TelMPerso,CorreoPerso,CedulaPerso, CallePerso
+            $sql = "SELECT  NomPerso, ApePPerso, ApeMPerso,DATE_FORMAT(FechaNacPerso, '%d/%m/%Y')FechaNacPerso,TelFPerso,TelMPerso,CorreoPerso,CedulaPerso, CallePerso, ceduPerso, PasantiaPerso
                     FROM usuaperso WHERE IdPerso = :idP";
             $arre = [":idP"=>$idP];
             $resultado = $this->mostrar($sql,$arre);
