@@ -128,7 +128,7 @@ function resultados(json, llamada) {
 
         ActionText.addEventListener("click", function () {
           let respuesta = confirm("¿Está seguro que desea cancelar esta solicitud?");
-          if (respuesta) {
+          if (respuesta == true) {
             let url = "../../controller/empresa/Cancelar_Servicio.php";
 
             let data = new FormData();
