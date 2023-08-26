@@ -50,6 +50,9 @@ if($valTipo!=""){
   $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
                 $correo = $resultado[$i]["CorreoPerso"];
                 $telefono = $resultado[$i]["TelMPerso"];
+                if ($telefono == "" || $telefono == null){
+                    $telefono = ' - ';
+                }
             }else if ($valTipo=="outplacement"){
                 $id = $resultado[$i]["IdPerso"];
                 /* $nombre = $resultado[$i]["NomPerso"]; */
@@ -59,6 +62,9 @@ if($valTipo!=""){
   $nombre = $nombres . ' ' . $nombreP . ' ' . $nombreM;
                 $correo = $resultado[$i]["CorreoPerso"];
                 $telefono = $resultado[$i]["TelMPerso"];
+                if ($telefono == "" || $telefono == null){
+                    $telefono = ' - ';
+                }
             }
 
             if ($resultado[$i]["EstatusSer"] == '0') {

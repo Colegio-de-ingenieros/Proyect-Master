@@ -29,13 +29,18 @@
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
-            servicios.IdSer,servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
-            and tiposervicios.TipoSer = 'Outplacement'";
+            and tiposervicios.TipoSer = 'Outplacement'
+            and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+            and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+            and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+            and areaemptipo.IdArea = areas.IdArea
+            and areas.IdArea = '1'";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -72,13 +77,18 @@
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
-            servicios.IdSer,servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
+            and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+            and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+            and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+            and areaemptipo.IdArea = areas.IdArea
+            and areas.IdArea = '1'
             and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  servicios.FechaSer like :busqueda)";
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
@@ -118,13 +128,18 @@
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
-            servicios.IdSer,servicios.IdSer
-            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
             WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
             and empservicios.IdSer = servicios.IdSer
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
+            and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+            and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+            and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+            and areaemptipo.IdArea = areas.IdArea
+            and areas.IdArea = '1'
             and usuaemp.RFCUsuaEmp = :id ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);

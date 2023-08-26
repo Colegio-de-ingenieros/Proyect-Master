@@ -13,6 +13,9 @@ if ($resultado == true) {
   $correo = $resultado[0]["CorreoPerso"];
   $fecha = $resultado[0]["FechaSer"];
   $telefono = $resultado[0]["TelMPerso"];
+  if ($telefono == "" || $telefono == null){
+    $telefono = ' - ';
+}
  $estatus = $resultado[0]["EstatusSer"];
  if ($estatus == '0') {
   $estatus1 = "En espera";
@@ -33,6 +36,9 @@ if ($resultado == true) {
   $correo = $resultado[0]["CorreoPerso"];
   $fecha = $resultado[0]["FechaSer"];
   $telefono = $resultado[0]["TelMPerso"];
+  if ($telefono == "" || $telefono == null){
+    $telefono = ' - ';
+}
    $estatus = $resultado[0]["EstatusSer"];
    if ($estatus == '0') {
     $estatus1 = "En espera";
