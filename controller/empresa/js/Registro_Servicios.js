@@ -30,7 +30,7 @@ btn_registrar.addEventListener('click', () => {
   const date = new Date();
 
   if (headhunter == 0 && outplacement == 0) {
-    alert('Debes seleccionar al menos un servicio');
+    alert('Debe seleccionar al menos un servicio');
   }
   else if (headhunter == 1 && outplacement == 1) {
     let dd = date.getDate();
@@ -57,7 +57,7 @@ btn_registrar.addEventListener('click', () => {
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
-        alert("Servicios registrados correctamente")
+        alert("Envío exitoso")
         check_headhunter.checked = false;
         check_outplacement.checked = false;
       });
@@ -88,7 +88,7 @@ btn_registrar.addEventListener('click', () => {
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => {
-        alert("Servicio registrado correctamente");
+        alert("Envío exitoso");
         check_headhunter.checked = false;
         check_outplacement.checked = false;
       });

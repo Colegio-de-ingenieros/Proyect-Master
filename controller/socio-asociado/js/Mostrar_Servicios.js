@@ -64,12 +64,6 @@ function resultados(json, llamada) {
   console.log("Resultado del valor de llamada: ", llamada);
   console.log("Resultado del contenido del objeto: ", json);
 
-/*   if (json.length == 0 && llamada == "all") {
-    document.querySelector("table tbody").innerHTML = "";
-    cnt_tabla.style.display = 'none';
-    caja_mensaje.innerText = "No se encontraron resultados";
-    opciones.style.display = 'none';
-  } */
   if (json.length == 0 && ((llamada == "headhunter") || (llamada == "outplacement"))){
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
@@ -127,7 +121,7 @@ function resultados(json, llamada) {
         ActionText.appendChild(icon3);
 
         ActionText.addEventListener("click", function () {
-          let respuesta = confirm("¿Está seguro de eliminar el servicio?");
+          let respuesta = confirm("¿Está seguro que desea cancelar esta solicitud?");
           if (respuesta) {
             let url = "../../controller/socio-asociado/Cancelar_Servicio.php";
 
@@ -141,7 +135,7 @@ function resultados(json, llamada) {
               .then(response => response.json())
               .then(data => {
                 if (data == "Servicio cancelado") {
-                  alert("Servicio cancelado");
+                  alert("Cancelación exitosa");
                   location.reload();
                 }
                 else {

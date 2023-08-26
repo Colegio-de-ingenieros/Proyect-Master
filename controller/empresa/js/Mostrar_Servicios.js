@@ -20,7 +20,7 @@ window.onload = function () {
     body: data
   })
     .then(response => response.json())
-    .then(data => resultados(data, "all"))
+    .then(data => resultados(data, "headhunter"))
     .catch(error => console.log(error));
 };
 
@@ -64,13 +64,13 @@ function resultados(json, llamada) {
   console.log("Resultado del valor de llamada: ", llamada);
   console.log("Resultado del contenido del objeto: ", json);
 
-  if (json.length == 0 && llamada == "all") {
+/*   if (json.length == 0 && llamada == "all") {
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
     caja_mensaje.innerText = "No se encontraron resultados";
     opciones.style.display = 'none';
-  }
-  else if (json.length == 0 && ((llamada == "headhunter") || (llamada == "outplacement"))){
+  } */
+  if (json.length == 0 && ((llamada == "headhunter") || (llamada == "outplacement"))){
     document.querySelector("table tbody").innerHTML = "";
     cnt_tabla.style.display = 'none';
     caja_mensaje.style.display = 'block';
@@ -127,7 +127,7 @@ function resultados(json, llamada) {
         ActionText.appendChild(icon3);
 
         ActionText.addEventListener("click", function () {
-          let respuesta = confirm("¿Está seguro de eliminar el servicio?");
+          let respuesta = confirm("¿Está seguro que desea cancelar esta solicitud?");
           if (respuesta) {
             let url = "../../controller/empresa/Cancelar_Servicio.php";
 
@@ -141,7 +141,7 @@ function resultados(json, llamada) {
               .then(response => response.json())
               .then(data => {
                 if (data == "Servicio cancelado") {
-                  alert("Servicio cancelado");
+                  alert("Cancelación exitosa");
                   location.reload();
                 }
                 else {
