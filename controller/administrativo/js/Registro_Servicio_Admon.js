@@ -23,7 +23,7 @@ formulario.addEventListener('submit', function (e)
         if (data === 'exito') {
             const form= document.getElementById('formulario');
             alert("Envío exitoso");
-            location.href = '../../view/administrativo/Vista_Servicios.html';
+            /* location.href = '../../view/administrativo/Vista_Servicios.html'; */
         }
         else{
             console.log(data);

@@ -23,7 +23,16 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Headhunter'
-            and usuaperso.IdPerso = :busqueda";
+            and usuaperso.IdPerso = :busqueda
+            UNION
+            SELECT servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+            and empservicios.IdSer = servicios.IdSer
+            and servicios.IdSer = sertipo.IdSer
+            and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+            and tiposervicios.TipoSer = 'Headhunter'
+            and usuaemp.RFCUsuaEmp = :busqueda";
 
             $arre = [":busqueda"=>$valor];
             $resultados = $this->base->mostrar($sql, $arre);
