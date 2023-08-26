@@ -1,24 +1,28 @@
-//responde cuando hay un click en el boton actualizar
-formulario.addEventListener('submit', function (e){
-    e.preventDefault();
-    let urlAct = window.location+''
-    let split = urlAct.split("=");
-    var idP= split[1];
+$(buscar_datos());
 
-
-    let url = "../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php";
-
-    let form = new FormData(formulario);
-    form.append("idP", idP);
-    fetch(url, {
-    method: "POST",
-    body: form
+function buscar_datos(consulta){
+    $.ajax({
+        url: '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php',
+        type: 'POST',
+        dataType: 'html',
+        data: { consulta: consulta },
     })
-        .then(response => response.json())
-        .then(data => {
-            if (data==='exito'){
-                alert("Actualización exitosa");
-                window.location.href='../../view/socio-asociado/Vista_Cursos.html';
-            }
-    })  
+
+        .done(function (respuesta)
+        {
+            $("#contenedor_tabla").html(respuesta);
+        })
+        .fail(function ()
+        {
+            console.log("error");
+        })
+}
+
+$(document).on('keyup', '#busqueda', function (){
+    var valorBusqueda = $(this).val();
+    if (valorBusqueda != "") {
+        buscar_datos(valorBusqueda);
+    } else {
+        buscar_datos();
+    }
 })

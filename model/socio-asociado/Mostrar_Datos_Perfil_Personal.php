@@ -15,10 +15,20 @@
 
         public function domicilio($id){
             $this->conexion_bd();
-            
             $consulta = "SELECT persolugares.IdColonia, colonias.codpostal  FROM  persolugares INNER JOIN colonias 
             on persolugares.IdColonia = colonias.IdColonia and IdPerso = :user";
             $parametros = [":user"=>$id];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function domicilio_completo($codigo_postal){
+            $this->conexion_bd();
+            $consulta = "SELECT colonias.nomcolonia, municipios.nommunicipio, estados.nomestado  
+            FROM colonias, municipios, estados WHERE codpostal=:user 
+            and colonias.idmunicipio=municipios.idmunicipio and estados.idestado=municipios.idestado";
+            $parametros = [":user"=>$codigo_postal];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
             return $datos;
@@ -32,5 +42,27 @@
             $this->cerrar_conexion();
             return $datos;
         }
+
+        public function certificaciones($id){
+            $this->conexion_bd();
+            $consulta = "SELECT certexterna.NomCerExt, certexterna.OrgCerExt, certexterna.IniCerExt, certexterna.FinCerExt 
+            FROM certexterna, persocertexterna WHERE persocertexterna.IdCertExt=certexterna.IdCerExt and persocertexterna.IdPerso=:user";
+            $parametros = [":user"=>$id];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function datos_laborales($id){
+            $this->conexion_bd();
+            $consulta = "SELECT empresaperso.NomEmpPerso, empresaperso.PuestoEmpPerso, empresaperso.CorreoEmpPerso, 
+            empresaperso.TelFEmpPerso, empresaperso.ExtenTelFEmpPerso FROM empresaperso, usuapersoemp 
+            WHERE empresaperso.IdEmpPerso=usuapersoemp.IdEmpPerso and usuapersoemp.IdPerso=:user";
+            $parametros = [":user"=>$id];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
     }
 ?>

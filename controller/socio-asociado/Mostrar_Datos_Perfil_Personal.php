@@ -6,6 +6,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     include_once('../../model/socio-asociado/Mostrar_Datos_Perfil_Personal.php');
     include_once('../../view/socio-asociado/Perfil_Personal.html');
+    $salida = '';
     $base = new mostrarDatosPersonales();
 
     $resultado=$base->datos_personales($usuario);
@@ -31,17 +32,111 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $calle=$cal;  
     $pasantia=$pasan;
     $cedula1=$ced;
-    echo $pasantia;
 
     $resultado1=$base->domicilio($idperso);
     $codigo=$resultado1[0]['codpostal'];
     $codigoPostal=$codigo;
 
+    $resultado1_1=$base->domicilio_completo($codigoPostal);
+    $col=$resultado1_1[0]['nomcolonia'];
+    $muni=$resultado1_1[0]['nommunicipio'];
+    $esta=$resultado1_1[0]['nomestado'];
+    $colonia=$col;
+    $municipio=$muni;
+    $estado=$esta;
+
     $resultado2=$base->estudios($idperso);
     $est=$resultado2[0]['IdGrado'];
     $estudios=$est;
-    
+
+    $resultado3=$base->certificaciones($idperso);
+    $nombre_certificacion=$resultado3[0]['NomCerExt'];
+    $organizacion_certificacion=$resultado3[0]['OrgCerExt'];
+    $inicio_certificacion=$resultado3[0]['IniCerExt'];
+    $fin_certificacion=$resultado3[0]['FinCerExt'];
+    $nombreCer=$nombre_certificacion;
+    $organizacionCer=$organizacion_certificacion;
+    $iniCer=$inicio_certificacion;
+    $finCer=$fin_certificacion;
+
+    $resultado4=$base->datos_laborales($idperso);
+    $nombre_empresa=$resultado4[0]['NomEmpPerso'];
+    $puesto_empresa=$resultado4[0]['PuestoEmpPerso'];
+    $correo_empresa=$resultado4[0]['CorreoEmpPerso'];
+    $telefono_empresa=$resultado4[0]['TelFEmpPerso'];
+    $extTelefono_empresa=$resultado4[0]['ExtenTelFEmpPerso'];
+    $nombreEmp=$nombre_empresa;
+    $puestoEmp=$puesto_empresa;
+    $correoEmp=$correo_empresa;
+    $telEmp=$telefono_empresa;
+    $extTelEmp=$extTelefono_empresa;
+
+    if ($resultado3 == true) {
+        //pone los encabezados de la tabla
+        $salida .= '<table>
+            <thead>
+                <tr>
+                    <th >Nombre</th>
+                    <th>Organización</th>
+                    <th>Fecha de emisión</th>
+                    <th>Fecha de vigencia</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+        //escribe los valores en la tabla
+        $salida .= '<tr>';
+        $salida .= '<td>' . $nombreCer . '</td>';
+        $salida .= '<td>' . $organizacionCer . '</td>';
+        $salida .= '<td>' . $iniCer . '</td>';
+        $salida .= '<td>' . $finCer . '</td>';
+        $salida .= '<td> 
+        <a>Modificar</a>&nbsp;&nbsp;&nbsp
+        <a>Eliminar</a>
+        </td>';
+        $salida .= '</tr>';
+    }else {
+        $salida .= 'No se encontraron resultados';
+    }
+
+    if ($resultado4 == true) {
+        //pone los encabezados de la tabla
+        $salida .= '<table>
+            <thead>
+                <tr>
+                    <th >Nombre</th>
+                    <th >Puesto</th>
+                    <th>Correo</th>
+                    <th>Telefono oficina</th>
+                    <th>Extension</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>';
+
+        //escribe los valores en la tabla
+        $salida .= '<tr>';
+        $salida .= '<td>' . $nombreEmp . '</td>';
+        $salida .= '<td>' . $puestoEmp . '</td>';
+        $salida .= '<td>' . $correoEmp . '</td>';
+        $salida .= '<td>' . $telEmp . '</td>';
+        $salida .= '<td>' . $extTelEmp. '</td>';
+        $salida .= '<td> 
+        <a>Modificar</a>&nbsp;&nbsp;&nbsp
+        <a>Eliminar</a>
+        </td>';
+        $salida .= '</tr>';
+    }else {
+        $salida .= 'No se encontraron resultados';
+    }
+
+    $salida .= "</tbody></table>";
+
 }
+echo $salida;
+
+
 ?>
 
     <!-- script para poner los valores en los campos correspondientes -->
@@ -63,6 +158,9 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         }
         document.getElementById("cpPerso").value = "<?php echo $codigoPostal ?>";
         document.getElementById("callePerso").value = "<?php echo $calle ?>";
+        document.getElementById("coloniaPerso").value = "<?php echo $colonia ?>";
+        document.getElementById("ciudadPerso").value = "<?php echo $municipio ?>";
+        document.getElementById("estadoPerso").value = "<?php echo $estado ?>";
         document.getElementById("tipoGradoPerso").value = "<?php echo $estudios ?>";
         if (pasantia==1){
             document.getElementById("pasantia1").checked = true;
