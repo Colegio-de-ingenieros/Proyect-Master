@@ -88,12 +88,14 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado4 == true) {
         $llenarlab = "si";
+        $id_certificacion=$resultado4[0]['IdEmpPerso'];
         $nombre_empresa=$resultado4[0]['NomEmpPerso'];
         $puesto_empresa=$resultado4[0]['PuestoEmpPerso'];
         $correo_empresa=$resultado4[0]['CorreoEmpPerso'];
         $telefono_empresa=$resultado4[0]['TelFEmpPerso'];
         $extTelefono_empresa=$resultado4[0]['ExtenTelFEmpPerso'];
 
+        $idEmp=$id_certificacion;
         $nombreEmp=$nombre_empresa;
         $puestoEmp=$puesto_empresa;
         $correoEmp=$correo_empresa;
@@ -107,7 +109,9 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     }
 
     
-    
+    $resultado5=$base->funciones($idEmp);
+    $nombre_funcion=$resultado5[0]['NomFuncion'];
+    $nomFunc=$nombre_funcion;
 
 }
 
@@ -158,7 +162,7 @@ for (var i = 0; i < datos.length; i++) {
     var tbody2 = document.getElementById("body_tabla2");
     if ("<?php echo $llenarlab ?>" == "si"){
     var datos = [
-    { funcion: "<?php echo $nombreEmp ?>" }
+    { funcion: "<?php echo $nomFunc ?>" }
 ];
 
 
@@ -185,6 +189,8 @@ for (var i = 0; i < datos.length; i++) {
     <script languaje="javascript">
         var cedula = "<?php echo $cedula1 ?>";
         var pasantia = "<?php echo $pasantia ?>";
+        var laborales = "<?php echo $llenarlab ?>";
+        var colonia = "<?php echo $colonia ?>";
         document.getElementById("nomPerso").value = "<?php echo $nombre ?>";
         document.getElementById("apePPerso").value = "<?php echo $apellidoP ?>";
         document.getElementById("apeMPerso").value = "<?php echo $apellidoM ?>";
@@ -200,14 +206,36 @@ for (var i = 0; i < datos.length; i++) {
         }
         document.getElementById("cpPerso").value = "<?php echo $codigoPostal ?>";
         document.getElementById("callePerso").value = "<?php echo $calle ?>";
-        document.getElementById("coloniaPerso").value = "<?php echo $colonia ?>";
+        
         document.getElementById("ciudadPerso").value = "<?php echo $municipio ?>";
         document.getElementById("estadoPerso").value = "<?php echo $estado ?>";
         document.getElementById("tipoGradoPerso").value = "<?php echo $estudios ?>";
+
+        document.getElementById("coloniaPerso").innerHTML = "";
+        var optionElement = document.createElement("option");
+        optionElement.value = 0;
+        optionElement.text = colonia;
+        document.getElementById("coloniaPerso").appendChild(optionElement);
+           
         if (pasantia==1){
             document.getElementById("pasantia1").checked = true;
         }else{
             document.getElementById("pasantia2").checked = true;
+        }
+        if (pasantia==1){
+            document.getElementById("pasantia1").checked = true;
+        }else{
+            document.getElementById("pasantia2").checked = true;
+        }
+        if (laborales=="si"){
+            document.getElementById("checkboxlaboral").checked = true;
+            document.getElementById("nomEmpPerso").value = "<?php echo $nombreEmp ?>";
+            document.getElementById("puestoEmpPerso").value = "<?php echo $puestoEmp ?>";
+            document.getElementById("correoEmpPerso").value = "<?php echo $correoEmp ?>";
+            document.getElementById("telFEmpPerso").value = "<?php echo $telEmp ?>";
+            document.getElementById("ExtTelFEmp").value = "<?php echo $extTelEmp ?>";
+        }else{
+            document.getElementById("checkboxlaboral").checked = false;
         }
     
     

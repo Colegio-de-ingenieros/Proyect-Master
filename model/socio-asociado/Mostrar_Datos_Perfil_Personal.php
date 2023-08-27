@@ -55,10 +55,20 @@
 
         public function datos_laborales($id){
             $this->conexion_bd();
-            $consulta = "SELECT empresaperso.NomEmpPerso, empresaperso.PuestoEmpPerso, empresaperso.CorreoEmpPerso, 
+            $consulta = "SELECT empresaperso.IdEmpPerso, empresaperso.NomEmpPerso, empresaperso.PuestoEmpPerso, empresaperso.CorreoEmpPerso, 
             empresaperso.TelFEmpPerso, empresaperso.ExtenTelFEmpPerso FROM empresaperso, usuapersoemp 
             WHERE empresaperso.IdEmpPerso=usuapersoemp.IdEmpPerso and usuapersoemp.IdPerso=:user";
             $parametros = [":user"=>$id];
+            $datos = $this->mostrar($consulta,$parametros);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function funciones($idEmp){
+            $this->conexion_bd();
+            $consulta ="SELECT funciones.NomFuncion FROM funciones, persoempfun 
+            WHERE funciones.IdFuncion=persoempfun.IdFuncion and persoempfun.IdEmpPerso='0001'";
+            $parametros = [":user"=>$idEmp];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
             return $datos;
