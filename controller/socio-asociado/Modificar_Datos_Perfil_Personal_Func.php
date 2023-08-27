@@ -15,17 +15,37 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $ide=$resultado1[0]['IdEmpPerso'];
     $idEmpPerso=$ide;
     $idFunc=$base->id_funcion($idPerso);
+    $check=$_POST['checkboxlaboraloculto'];
+    echo $check;
+    $nomEmp=$_POST["nomEmpPerso"];
+    $puestoEmp=$_POST["puestoEmpPerso"];
+    $correoEmp=$_POST["correoEmpPerso"];
+    $telFEmp=$_POST["telFEmpPerso"];
+    $ExtTelFEmp=$_POST["ExtTelFEmp"];
     $funcion=$_POST["funcionEmpPerso"];
 
-    $u=$base->funciones($idEmpPerso, $idFunc, $funcion);
-
-    if($u==true){
-        echo json_encode('exito');
-        
+    if ($funcion==''){
+        $u=$base->datos_laborales($idEmpPerso, $nomEmp, $puestoEmp, $correoEmp, $telFEmp, $ExtTelFEmp);
+        if($u==true){
+            echo json_encode('exito');
+            
+        }else{
+            echo json_encode('no exito');
+            
+        }
     }else{
-        echo json_encode('no exito');
-        
+        $uu=$base->funciones($idEmpPerso, $idFunc, $funcion, $nomEmp, $puestoEmp, $correoEmp, $telFEmp, $ExtTelFEmp);
+        if($uu==true){
+            echo json_encode('exito');
+            
+        }else{
+            echo json_encode('no exito');
+            
+        }
     }
+
+    
+    
     
     
 }

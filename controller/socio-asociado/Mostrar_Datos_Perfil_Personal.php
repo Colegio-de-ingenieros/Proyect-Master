@@ -67,16 +67,51 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado3 == true) {
         $llenarcer = "si";
-        for ($i = 0; $i < count($resultado); $i++) {
+        for ($i = 0; $i < count($resultado3); $i++) {
             $nombre_certificacion=$resultado3[$i]['NomCerExt'];
             $organizacion_certificacion=$resultado3[$i]['OrgCerExt'];
             $inicio_certificacion=$resultado3[$i]['IniCerExt'];
             $fin_certificacion=$resultado3[$i]['FinCerExt'];
+            ?>
+            <script languaje="javascript">
+            llenartabla1();
+            function llenartabla1() {
+            var tbody = document.getElementById("body_tabla1");
+            if ("<?php echo $llenarcer ?>" == "si"){
+            var datos = [
+            { nombre: "<?php echo $nombre_certificacion ?>", organizacion: "<?php echo $organizacion_certificacion ?>", emision: "<?php echo $inicio_certificacion ?>", vigencia: "<?php echo $fin_certificacion ?>" }
+        ];
 
-            $nombreCer=$nombre_certificacion;
-            $organizacionCer=$organizacion_certificacion;
-            $iniCer=$inicio_certificacion;
-            $finCer=$fin_certificacion;
+
+        for (var i = 0; i < datos.length; i++) {
+            var fila = document.createElement("tr");
+
+            var celdaNombre = document.createElement("td");
+            celdaNombre.textContent = datos[i].nombre;
+            fila.appendChild(celdaNombre);
+
+            var celdaOrganizacion = document.createElement("td");
+            celdaOrganizacion.textContent = datos[i].organizacion;
+            fila.appendChild(celdaOrganizacion);
+
+            var celdaEmision = document.createElement("td");
+            celdaEmision.textContent = datos[i].emision;
+            fila.appendChild(celdaEmision);
+
+            var celdaVigencia = document.createElement("td");
+            celdaVigencia.textContent = datos[i].vigencia;
+            fila.appendChild(celdaVigencia);
+
+            var celdaAcciones = document.createElement("td");
+            celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
+            fila.appendChild(celdaAcciones);
+
+            tbody.appendChild(fila);
+        }
+        }
+            }
+            </script>
+            <?php
         }
 
 
@@ -90,7 +125,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado4 == true) {
         $llenarlab = "si";
-        for ($i = 0; $i < count($resultado); $i++) {
+        for ($i = 0; $i < count($resultado4); $i++) {
             $id_certificacion=$resultado4[$i]['IdEmpPerso'];
             $nombre_empresa=$resultado4[$i]['NomEmpPerso'];
             $puesto_empresa=$resultado4[$i]['PuestoEmpPerso'];
@@ -114,133 +149,97 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     
     $resultado5=$base->funciones($idEmp);
-    $nombre_funcion=$resultado5[0]['NomFuncion'];
-    $nomFunc=$nombre_funcion;
+    if ($resultado5== true) {
+        for ($i = 0; $i < count($resultado5); $i++) {
+            $nombre_funcion=$resultado5[$i]['NomFuncion'];
+            ?>
+            <script languaje="javascript">
 
+            llenartabla2();
+            function llenartabla2() {
+            var tbody2 = document.getElementById("body_tabla2");
+            if ("<?php echo $llenarlab ?>" == "si"){
+            var datos = [
+            { funcion: "<?php echo $nombre_funcion ?>" }
+            ];
+
+
+            for (var i = 0; i < datos.length; i++) {
+            var fila2 = document.createElement("tr");
+
+            var celdafuncion = document.createElement("td");
+            celdafuncion.textContent = datos[i].funcion;
+            fila2.appendChild(celdafuncion);
+
+            var celdaAcciones = document.createElement("td");
+            celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
+            fila2.appendChild(celdaAcciones);
+
+            tbody2.appendChild(fila2);
+            }
+            }
+            }
+            </script>
+            <?php
+        }
+
+}
 }
 
 
 ?>
-
+<!-- script para poner los valores en los campos correspondientes -->
 <script languaje="javascript">
-    llenartabla1();
-    function llenartabla1() {
-    var tbody = document.getElementById("body_tabla1");
-    if ("<?php echo $llenarcer ?>" == "si"){
-    var datos = [
-    { nombre: "<?php echo $nombreCer ?>", organizacion: "<?php echo $organizacionCer ?>", emision: "<?php echo $iniCer ?>", vigencia: "<?php echo $finCer ?>" }
-];
+    var cedula = "<?php echo $cedula1 ?>";
+    var pasantia = "<?php echo $pasantia ?>";
+    var laborales = "<?php echo $llenarlab ?>";
+    var colonia = "<?php echo $colonia ?>";
+    document.getElementById("nomPerso").value = "<?php echo $nombre ?>";
+    document.getElementById("apePPerso").value = "<?php echo $apellidoP ?>";
+    document.getElementById("apeMPerso").value = "<?php echo $apellidoM ?>";
+    document.getElementById("fechaNacPerso").value = "<?php echo $fecha ?>";
+    document.getElementById("telFPerso").value = "<?php echo $telefonoF ?>";
+    document.getElementById("telMPerso").value = "<?php echo $telefonoM ?>";
+    document.getElementById("correoPerso").value = "<?php echo $usuario ?>";
+    document.getElementById("cedulaPerso").value = "<?php echo $cedula ?>";
+    if (cedula==1){
+        document.getElementById("ceduPerso1").checked = true;
+    }else{
+        document.getElementById("ceduPerso2").checked = true;
+    }
+    document.getElementById("cpPerso").value = "<?php echo $codigoPostal ?>";
+    document.getElementById("callePerso").value = "<?php echo $calle ?>";
+    
+    document.getElementById("ciudadPerso").value = "<?php echo $municipio ?>";
+    document.getElementById("estadoPerso").value = "<?php echo $estado ?>";
+    document.getElementById("tipoGradoPerso").value = "<?php echo $estudios ?>";
 
-
-for (var i = 0; i < datos.length; i++) {
-    var fila = document.createElement("tr");
-
-    var celdaNombre = document.createElement("td");
-    celdaNombre.textContent = datos[i].nombre;
-    fila.appendChild(celdaNombre);
-
-    var celdaOrganizacion = document.createElement("td");
-    celdaOrganizacion.textContent = datos[i].organizacion;
-    fila.appendChild(celdaOrganizacion);
-
-    var celdaEmision = document.createElement("td");
-    celdaEmision.textContent = datos[i].emision;
-    fila.appendChild(celdaEmision);
-
-    var celdaVigencia = document.createElement("td");
-    celdaVigencia.textContent = datos[i].vigencia;
-    fila.appendChild(celdaVigencia);
-
-    var celdaAcciones = document.createElement("td");
-    celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
-    fila.appendChild(celdaAcciones);
-
-    tbody.appendChild(fila);
-}
-}
+    document.getElementById("coloniaPerso").innerHTML = "";
+    var optionElement = document.createElement("option");
+    optionElement.value = 0;
+    optionElement.text = colonia;
+    document.getElementById("coloniaPerso").appendChild(optionElement);
+    
+    if (pasantia==1){
+        document.getElementById("pasantia1").checked = true;
+    }else{
+        document.getElementById("pasantia2").checked = true;
+    }
+    if (pasantia==1){
+        document.getElementById("pasantia1").checked = true;
+    }else{
+        document.getElementById("pasantia2").checked = true;
+    }
+    if (laborales=="si"){
+        document.getElementById("checkboxlaboral").checked = true;
+        document.getElementById("nomEmpPerso").value = "<?php echo $nombreEmp ?>";
+        document.getElementById("puestoEmpPerso").value = "<?php echo $puestoEmp ?>";
+        document.getElementById("correoEmpPerso").value = "<?php echo $correoEmp ?>";
+        document.getElementById("telFEmpPerso").value = "<?php echo $telEmp ?>";
+        document.getElementById("ExtTelFEmp").value = "<?php echo $extTelEmp ?>";
+    }else{
+        document.getElementById("checkboxlaboral").checked = false;
     }
 
 
-    llenartabla2();
-    function llenartabla2() {
-    var tbody2 = document.getElementById("body_tabla2");
-    if ("<?php echo $llenarlab ?>" == "si"){
-    var datos = [
-    { funcion: "<?php echo $nomFunc ?>" }
-];
-
-
-for (var i = 0; i < datos.length; i++) {
-    var fila2 = document.createElement("tr");
-
-    var celdafuncion = document.createElement("td");
-    celdafuncion.textContent = datos[i].funcion;
-    fila2.appendChild(celdafuncion);
-
-    var celdaAcciones = document.createElement("td");
-    celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
-    fila2.appendChild(celdaAcciones);
-
-    tbody2.appendChild(fila2);
-}
-}
-    }
 </script>
-
-
-
-    <!-- script para poner los valores en los campos correspondientes -->
-    <script languaje="javascript">
-        var cedula = "<?php echo $cedula1 ?>";
-        var pasantia = "<?php echo $pasantia ?>";
-        var laborales = "<?php echo $llenarlab ?>";
-        var colonia = "<?php echo $colonia ?>";
-        document.getElementById("nomPerso").value = "<?php echo $nombre ?>";
-        document.getElementById("apePPerso").value = "<?php echo $apellidoP ?>";
-        document.getElementById("apeMPerso").value = "<?php echo $apellidoM ?>";
-        document.getElementById("fechaNacPerso").value = "<?php echo $fecha ?>";
-        document.getElementById("telFPerso").value = "<?php echo $telefonoF ?>";
-        document.getElementById("telMPerso").value = "<?php echo $telefonoM ?>";
-        document.getElementById("correoPerso").value = "<?php echo $usuario ?>";
-        document.getElementById("cedulaPerso").value = "<?php echo $cedula ?>";
-        if (cedula==1){
-            document.getElementById("ceduPerso1").checked = true;
-        }else{
-            document.getElementById("ceduPerso2").checked = true;
-        }
-        document.getElementById("cpPerso").value = "<?php echo $codigoPostal ?>";
-        document.getElementById("callePerso").value = "<?php echo $calle ?>";
-        
-        document.getElementById("ciudadPerso").value = "<?php echo $municipio ?>";
-        document.getElementById("estadoPerso").value = "<?php echo $estado ?>";
-        document.getElementById("tipoGradoPerso").value = "<?php echo $estudios ?>";
-
-        document.getElementById("coloniaPerso").innerHTML = "";
-        var optionElement = document.createElement("option");
-        optionElement.value = 0;
-        optionElement.text = colonia;
-        document.getElementById("coloniaPerso").appendChild(optionElement);
-           
-        if (pasantia==1){
-            document.getElementById("pasantia1").checked = true;
-        }else{
-            document.getElementById("pasantia2").checked = true;
-        }
-        if (pasantia==1){
-            document.getElementById("pasantia1").checked = true;
-        }else{
-            document.getElementById("pasantia2").checked = true;
-        }
-        if (laborales=="si"){
-            document.getElementById("checkboxlaboral").checked = true;
-            document.getElementById("nomEmpPerso").value = "<?php echo $nombreEmp ?>";
-            document.getElementById("puestoEmpPerso").value = "<?php echo $puestoEmp ?>";
-            document.getElementById("correoEmpPerso").value = "<?php echo $correoEmp ?>";
-            document.getElementById("telFEmpPerso").value = "<?php echo $telEmp ?>";
-            document.getElementById("ExtTelFEmp").value = "<?php echo $extTelEmp ?>";
-        }else{
-            document.getElementById("checkboxlaboral").checked = false;
-        }
-    
-    
-    </script>

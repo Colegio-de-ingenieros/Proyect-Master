@@ -186,9 +186,25 @@
             return $idCert;
         }
 
+        public function datos_laborales($idEmp, $nomEmp, $puestoEmp, $correoEmp, $telFEmp, $extTelEmp){
+            $this->conexion_bd();
+
+            $q0 = "UPDATE empresaperso SET NomEmpPerso=:nombre, PuestoEmpPerso=:puesto, CorreoEmpPerso=:correo, 
+            TelFEmpPerso=:telf, ExtenTelFEmpPerso=:exten WHERE IdEmpPerso=:idEmpPerso";
+
+            $a0 = [":idEmpPerso"=>$idEmp, ":nombre"=>$nomEmp, ":puesto"=>$puestoEmp, ":correo"=>$correoEmp, ":telf"=>$telFEmp, ":exten"=>$extTelEmp];
+            $querry = [$q0];
+            $parametros = [$a0];
+            //acomoda todo en arreglos para mandarlos al CRUD
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+        }
+
+
+
         public function funciones($idEmp, $idFunc, $nomFunc){
             $this->conexion_bd();
-            
             $q1 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion) 
             VALUES (:idEmp, :idFunc)";
 
