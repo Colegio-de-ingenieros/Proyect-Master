@@ -1,0 +1,14 @@
+.formulario-generales{
+    display: flex;
+    flex-wrap:wrap ;
+  }
+
+ 
+  .label-form1 {
+   width: 0px;
+   min-width: 100px;
+  }
+  .label-form2 {
+    width: 0px;
+    min-width: 100px;
+   }
