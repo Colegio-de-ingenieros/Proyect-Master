@@ -67,15 +67,17 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado3 == true) {
         $llenarcer = "si";
-        $nombre_certificacion=$resultado3[0]['NomCerExt'];
-        $organizacion_certificacion=$resultado3[0]['OrgCerExt'];
-        $inicio_certificacion=$resultado3[0]['IniCerExt'];
-        $fin_certificacion=$resultado3[0]['FinCerExt'];
+        for ($i = 0; $i < count($resultado); $i++) {
+            $nombre_certificacion=$resultado3[$i]['NomCerExt'];
+            $organizacion_certificacion=$resultado3[$i]['OrgCerExt'];
+            $inicio_certificacion=$resultado3[$i]['IniCerExt'];
+            $fin_certificacion=$resultado3[$i]['FinCerExt'];
 
-        $nombreCer=$nombre_certificacion;
-        $organizacionCer=$organizacion_certificacion;
-        $iniCer=$inicio_certificacion;
-        $finCer=$fin_certificacion;
+            $nombreCer=$nombre_certificacion;
+            $organizacionCer=$organizacion_certificacion;
+            $iniCer=$inicio_certificacion;
+            $finCer=$fin_certificacion;
+        }
 
 
         
@@ -88,19 +90,21 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado4 == true) {
         $llenarlab = "si";
-        $id_certificacion=$resultado4[0]['IdEmpPerso'];
-        $nombre_empresa=$resultado4[0]['NomEmpPerso'];
-        $puesto_empresa=$resultado4[0]['PuestoEmpPerso'];
-        $correo_empresa=$resultado4[0]['CorreoEmpPerso'];
-        $telefono_empresa=$resultado4[0]['TelFEmpPerso'];
-        $extTelefono_empresa=$resultado4[0]['ExtenTelFEmpPerso'];
+        for ($i = 0; $i < count($resultado); $i++) {
+            $id_certificacion=$resultado4[$i]['IdEmpPerso'];
+            $nombre_empresa=$resultado4[$i]['NomEmpPerso'];
+            $puesto_empresa=$resultado4[$i]['PuestoEmpPerso'];
+            $correo_empresa=$resultado4[$i]['CorreoEmpPerso'];
+            $telefono_empresa=$resultado4[$i]['TelFEmpPerso'];
+            $extTelefono_empresa=$resultado4[$i]['ExtenTelFEmpPerso'];
 
-        $idEmp=$id_certificacion;
-        $nombreEmp=$nombre_empresa;
-        $puestoEmp=$puesto_empresa;
-        $correoEmp=$correo_empresa;
-        $telEmp= $telefono_empresa;
-        $extTelEmp=$extTelefono_empresa;
+            $idEmp=$id_certificacion;
+            $nombreEmp=$nombre_empresa;
+            $puestoEmp=$puesto_empresa;
+            $correoEmp=$correo_empresa;
+            $telEmp= $telefono_empresa;
+            $extTelEmp=$extTelefono_empresa;
+        }
     
         
     } else {

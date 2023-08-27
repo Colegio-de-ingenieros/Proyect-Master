@@ -208,7 +208,7 @@
         </div>
     </form>
 
-    <form action="">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario1">
         <p class="subtitulo-1">Contraseña</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
@@ -217,7 +217,7 @@
                   <p class="label-2">Contraseña actual*</p>
                 </div>
                 <div class="input-form">
-                  <input type="password" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
+                  <input type="password" name="password_old" id="password_old" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
                   title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
                 </div>
               </div>
@@ -247,7 +247,7 @@
         </div>
     </form>
 
-    <form action="">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario2">
         <p class="subtitulo-1">Dirección</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
@@ -305,7 +305,7 @@
         </div>
     </form>
 
-    <form action="">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario3">
         <p class="subtitulo-1">Educación</p>
         <hr size="1px" />
         <div class="contenedor-formulario">
@@ -338,11 +338,14 @@
         </div>
     </form>
 
-    <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
-    <input type="checkbox" id="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
+    
     <p class="subtitulo-1">Certificación</p>
     <hr size="1px" />
-    <form action="">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario4">
+        <div>
+            <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
+            <input type="checkbox" id="checkboxcertificacion" name="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
+        </div>
         <div class="contenedor-formulario">
             <div class="grupo-input">
                 <div class="label-form">
@@ -434,11 +437,14 @@
             <br>
             <br>
 
-    <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
-    <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
+    
     <p class="subtitulo-1">Datos laborales</p>
     <hr size="1px" />
-    <form action="">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario5">
+        <div>
+            <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
+            <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
+        </div>
         <div class="contenedor-formulario">
             <div class="grupo-input">
                 <div class="label-form">
@@ -446,7 +452,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese la empresa donde labora" id="nomEmpPerso" name="nomEmpPerso"  maxlength="100"
-                    title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . )." disabled>
+                    title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . ).">
                 </div>
             </div>
 
@@ -456,7 +462,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su puesto" id="puestoEmpPerso" name="puestoEmpPerso"  maxlength="50"
-                    title="El nombre de puesto puede contener letras mayúsculas y minúsculas" disabled>
+                    title="El nombre de puesto puede contener letras mayúsculas y minúsculas">
                 </div>
             </div>
 
@@ -466,7 +472,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su correo laboral" id="correoEmpPerso" name="correoEmpPerso"  maxlength="40"
-                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
+                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
                 </div>
             </div>
 
@@ -476,7 +482,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese el teléfono de oficina" id="telFEmpPerso" name="telFEmpPerso"  maxlength="10"
-                    title="El número de teléfono solo puede contener números." disabled>
+                    title="El número de teléfono solo puede contener números.">
                 </div>
             </div>
 
@@ -486,7 +492,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese la extensión" id="ExtTelFEmp" name="ExtTelFEmp"  maxlength="3"
-                    title="La extensión solo puede contener números." disabled>
+                    title="La extensión solo puede contener números.">
                 </div>
             </div>
 
@@ -497,7 +503,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su función" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60"
-                    title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." disabled>
+                    title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .).">
                 </div>
             </div>
             <div class="grupo-input2">
@@ -696,5 +702,12 @@
       <script src="../../view/registro/js/Alertas_Personal.js"></script>
       <script src="../../view/registro/js/Reg_Personal.js"></script>
       <script src="../../view/registro/js/Vali_Personal.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal_Contra.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal_Domicilio.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal_Grado.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal_Cert.js"></script>
+      <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal_Func.js"></script>
+
 </body>
 </html>
