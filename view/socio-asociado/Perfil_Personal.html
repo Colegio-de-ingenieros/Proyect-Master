@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/plantilla_admin.css">
   <link rel="stylesheet" href="../../public/css/socio-asociado/Perfil_Personal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   
@@ -392,7 +393,7 @@
 
         </div>
         <div class="boton">
-            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Agregar">
         </div>
     </form>
 
@@ -403,7 +404,7 @@
                 <div class="article-tablas" >
                     <article>          
                       <div class="tablas">
-                        <section class="header_table" id="contenedor_tabla" style="display: none;" >
+                        <section class="header_table" id="contenedor_tabla"  >
                             <table id="tabla">
                               <thead>
                                 <tr>
@@ -417,7 +418,7 @@
                               <!-- esto se debe dejar asi  <tbody id="body_tabla" ></tbody>, para que no me marque en el js que tengo un nodo
                                   de texto fantasma
                               -->
-                              <tbody id="body_tabla" ></tbody>
+                              <tbody id="body_tabla1" ></tbody>
                             </table>
                         </section>
                       </div>
@@ -500,36 +501,29 @@
             <div class="grupo-input2">
                 
             </div>
-            
-        </div>
-        <div class="boton">
-            <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Actualizar">
-        </div>
-    </form>
-
+            <div class="boton">
+                <input type="submit" class="btn-medium1 btn" id="btn_generales" value="Agregar">
+            </div>  
+        
   
-            <br>
-            <br>
+            
             <div class="conteTabla" >
                 <div class="article-tablas" >
                     <article>          
                       <div class="tablas">
-                        <section class="header_table" id="contenedor_tabla1" style="display: none;" >
+                        <section class="header_table" id="contenedor_tabla"  >
                             <table id="tabla">
                               <thead>
                                 <tr>
-                                    <th >Nombre</th>
-                                    <th >Puesto</th>
-                                    <th>Correo</th>
-                                    <th>Telefono oficina</th>
-                                    <th>Extension</th>
+                                    
+                                    <th>Función</th>
                                     <th>Acciones</th>
                                 </tr>
                               </thead>
                               <!-- esto se debe dejar asi  <tbody id="body_tabla" ></tbody>, para que no me marque en el js que tengo un nodo
                                   de texto fantasma
                               -->
-                              <tbody id="body_tabla" ></tbody>
+                              <tbody id="body_tabla2" ></tbody>
                             </table>
                         </section>
                       </div>
@@ -539,7 +533,8 @@
             <br>
             <br>
             <br>
-
+        </form>
+        
     <br>
    
 </div>
