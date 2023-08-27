@@ -50,7 +50,7 @@ if(isset($_SESSION["usuario"])){
             }
 
         }else{
-            $respuesta = "Contraseña incorrecta";
+            $respuesta = "La contraseña actual es incorrecta";
         }
 
 
