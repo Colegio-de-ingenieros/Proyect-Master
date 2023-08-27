@@ -1,6 +1,8 @@
 <?php
 require_once("../../model/empresa/Modificar_Datos_Perfil_Empresa.php");
+require_once("../../model/login/Sesiones.php");
 
+$user = new User();
 $objeto = new Modificar_perfil_empresa();
 $respuesta = "Ocurrio un error" ;
 session_start();
@@ -12,23 +14,20 @@ if(isset($_SESSION["usuario"])){
     $rfc_anterior = $objeto->buscar_rfc_empresa($correo);
    
 
-    if(isset($_POST["rfc"]) && isset($_POST["nombre"]) && isset($_POST["correo"]) && 
-        isset($_POST["password"]) && isset($_POST["password_confirmacion"]) && isset($_POST["razon"])){
+    if(isset($_POST["rfc"]) && isset($_POST["nombre"]) && isset($_POST["correo"]) && isset($_POST["razon"])){
         
         $correo_nuevo = $_POST["correo"];
 
         if(strcmp($correo,$correo_nuevo) == 0){
 
             
-            $res = $objeto->set_datos_generales($rfc_anterior,$_POST["nombre"],$correo_nuevo,
-            $_POST["password"],$_POST["razon"]);
+            $res = $objeto->set_datos_generales($rfc_anterior,$_POST["nombre"],$correo_nuevo,$_POST["razon"]);
             if($res){
                 $respuesta = "Actualización exitosa";
             }
 
         }else if($objeto->existeCorreo($correo_nuevo) == false){
-            $res = $objeto->set_datos_generales($rfc_anterior,$_POST["nombre"],$correo_nuevo,
-            $_POST["password"],$_POST["razon"]);
+            $res = $objeto->set_datos_generales($rfc_anterior,$_POST["nombre"],$correo_nuevo,$_POST["razon"]);
             if($res){
                 $respuesta = "Actualización exitosa";
                 $_SESSION["usuario"] = $correo_nuevo;
@@ -39,6 +38,22 @@ if(isset($_SESSION["usuario"])){
         }
 
         
+
+    }else if(isset($_POST["password"]) && isset($_POST["password_confirmacion"]) && isset($_POST["password_actual"])){
+
+        $password = $_POST["password_actual"];
+        if($user->isPasswordCorrect_empresa($correo,$password)){
+            
+            $res = $objeto->set_password_nueva($rfc_anterior,$_POST["password"]);
+            if($res){
+                $respuesta = "Actualización exitosa";
+            }
+
+        }else{
+            $respuesta = "Contraseña incorrecta";
+        }
+
+
 
     }else if(isset($_POST["codigo_postal"]) && isset($_POST["calle"]) && isset($_POST["colonia"])){
         $res = $objeto->set_domicilio($rfc_anterior,$_POST["calle"],$_POST["colonia"]);

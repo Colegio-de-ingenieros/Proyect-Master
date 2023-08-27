@@ -48,24 +48,19 @@ class Modificar_perfil_empresa extends Crud_bd {
      * funcion para actualizar los datos generales
      */
    
-    function set_datos_generales($rfc_anterior, $nombre, $correo, $password, $razon){
+    function set_datos_generales($rfc_anterior, $nombre, $correo, $razon){
         #actualiza datos generales
         $sqls = [];
         $parametros = [];
         $this->conexion_bd();
 
-        if(empty($password)){
+       
 
-            $sqls[] = "UPDATE usuaemp SET NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo
+        $sqls[] = "UPDATE usuaemp SET NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo
                 WHERE RFCUsuaEmp=:rfcAnterior ";
-            $parametros[] = [":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":rfcAnterior"=>$rfc_anterior ];
-        }else{
-            $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
-
-            $sqls[] = "UPDATE usuaemp SET  NomUsuaEmp=:nombre, RazonUsuaEmp=:razon, CorreoUsuaEmp=:correo, ContraUsuaEmp=:contra
-                WHERE RFCUsuaEmp=:rfcAnterior ";
-            $parametros[] = [":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":contra"=>$password_hash ,":rfcAnterior"=>$rfc_anterior ];
-        }
+        $parametros[] = [":nombre"=>$nombre, ":razon"=>$razon, ":correo"=>$correo, ":rfcAnterior"=>$rfc_anterior ];
+        
+        
 
         $res = $this->insertar_eliminar_actualizar($sqls,$parametros);
         $this->cerrar_conexion();
@@ -73,6 +68,24 @@ class Modificar_perfil_empresa extends Crud_bd {
         return $res;
         
     }
+
+    function set_password_nueva($rfc,$password_nueva){
+
+        $this->conexion_bd();
+
+        $password_hash = password_hash($password_nueva, PASSWORD_DEFAULT);
+
+        $sql = "UPDATE usuaemp SET ContraUsuaEmp=:contra WHERE RFCUsuaEmp=:rfcAnterior ";
+        $parametros = [":contra"=>$password_hash ,":rfcAnterior"=>$rfc];
+
+        $res = $this->insertar_eliminar_actualizar($sql,$parametros);
+        $this->cerrar_conexion();
+
+        return $res;
+
+        
+    }
+
     function set_domicilio($rfc,$calle,$colonia){
         // coloca el domicilio en las tablas correpondientes
         $sqls = [];

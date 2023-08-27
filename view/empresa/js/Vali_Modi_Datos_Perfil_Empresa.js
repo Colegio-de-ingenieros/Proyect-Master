@@ -4,12 +4,16 @@ let checkbox_ac = document.getElementById("ac_ck");
 
 
 const btn_generales = document.getElementById("btn_generales");
+const btn_password = document.getElementById("btn_password");
 const btn_domicilio = document.getElementById("btn_domicilio");
 
 const btn_rh = document.getElementById("btn_rh");
 const btn_it = document.getElementById("btn_it");
 const btn_ac = document.getElementById("btn_ac");
 
+const password_actual = document.getElementById("password_actual");
+const password = document.getElementById("password");
+const password_confirmacion = document.getElementById("password_confirmacion");
 
 
 const expresiones = {
@@ -249,21 +253,107 @@ formulario.correo_m.addEventListener('keyup', (e) => {
     }
     
 });
-
-/* password*/
-formulario.password.addEventListener('blur', (e) => {
+/* password actualmente siendo utilizada*/
+formulario_contra.password_actual.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
-	formulario.password.value = valorInput
+	formulario_contra.password_actual.value = valorInput
     .trimEnd();
+
+    let valor1 = password.value;
+    let valor2 = password_confirmacion.value;
+
+    password.value = valor1.trimEnd();
+    password_confirmacion.value = valor2.trimEnd();
+
     if(e.target.value.length == 0 ){
-        formulario.password.removeAttribute("style");
-        baderas.bcontra = true;
+        formulario_contra.password_actual.removeAttribute("style");
+        baderas.bcontra_actual = false;
+
+        if(password.value.length == 0 ){
+            password.removeAttribute("style");
+            baderas.bcontra = false;
+        }
+        if(password_confirmacion.value.length == 0 ){
+            password_confirmacion.removeAttribute("style");
+            baderas.bcontra_conf = false;
+        }
+
+    }else {
+
+        if(password.value.length == 0 ){
+            password.style.border = "3px solid red";
+            baderas.bcontra = false;
+        }
+        if(password_confirmacion.value.length == 0 ){
+            password_confirmacion.style.border = "3px solid red";
+            baderas.bcontra_conf = false;
+        }
     }
+
 });
-formulario.password.addEventListener('keyup', (e) => {
+formulario_contra.password_actual.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.password.value = valorInput
+	formulario_contra.password_actual.value = valorInput
+    // Eliminar espacios en blanco
+	.replace(/\s/g, '')
+    // Eliminar caracteres especiales
+    .replace(/[^a-zA-Z0-9$\#\-_.@,!*\/+]/g, '')
+    // Eliminar el ultimo espaciado
+   .trim();
+   let valorInput2 = e.target.value;
+    if (!expresiones.password.test(valorInput2)) {
+        password_actual.style.border = "3px solid red";
+        baderas.bcontra_actual = false;
+	}else{
+        password_actual.removeAttribute("style");
+        baderas.bcontra_actual = true;
+    }
+   
+
+});
+
+/* password*/
+formulario_contra.password.addEventListener('blur', (e) => {
+    let valorInput = e.target.value;
+	formulario_contra.password.value = valorInput
+    .trimEnd();
+
+    let valor1 = password_actual.value;
+    let valor2 = password_confirmacion.value;
+
+    password_actual.value = valor1.trimEnd();
+    password_confirmacion.value = valor2.trimEnd();
+
+    if(e.target.value.length == 0 ){
+        formulario_contra.password.removeAttribute("style");
+        baderas.bcontra = false;
+
+        if(password_actual.value.length == 0 ){
+            password_actual.removeAttribute("style");
+            baderas.bcontra_actual = false;
+        }
+        if(password_confirmacion.value.length == 0 ){
+            password_confirmacion.removeAttribute("style");
+            baderas.bcontra_conf = false;
+        }
+
+    }else {
+
+        if(password_actual.value.length == 0 ){
+            password_actual.style.border = "3px solid red";
+            baderas.bcontra_actual = false;
+        }
+        if(password_confirmacion.value.length == 0 ){
+            password_confirmacion.style.border = "3px solid red";
+            baderas.bcontra_conf = false;
+        }
+    }
+});
+formulario_contra.password.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+	formulario_contra.password.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
@@ -273,35 +363,63 @@ formulario.password.addEventListener('keyup', (e) => {
    let valorInput2 = e.target.value;
     if (!expresiones.password.test(valorInput2)) {
         password.style.border = "3px solid red";
-        baderas.bcontra = false
+        baderas.bcontra = false;
 	}else{
         password.removeAttribute("style");
-        baderas.bcontra = true
+        baderas.bcontra = true;
     }
-    let valorpassword = formulario.password_confirmacion.value;
+    let valorpassword = password_confirmacion.value;
     if((valorpassword == valorInput2) == false){
         password_confirmacion.style.border = "3px solid red";
-        bcontra_conf = false
+        bcontra_conf = false;
     }else{
         password_confirmacion.removeAttribute("style");
-        baderas.bcontra_conf = true
+        baderas.bcontra_conf = true;
     }
 
 });
 /* password confirmacion*/
-formulario.password_confirmacion.addEventListener('blur', (e) => {
+formulario_contra.password_confirmacion.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
-	formulario.password_confirmacion.value = valorInput
+	formulario_contra.password_confirmacion.value = valorInput
     .trimEnd();
-    if(e.target.value.length == 0 ){
-        formulario.password_confirmacion.removeAttribute("style");
-        baderas.bcontra_conf = true;
+    let valor_contra  = formulario_contra.password.value.trimEnd();
+
+    let valor1 = password_actual.value;
+    let valor2 = password.value;
+
+    password_actual.value = valor1.trimEnd();
+    password.value = valor2.trimEnd();
+
+    if(e.target.value.length == 0 && valor_contra.length == 0  ){
+
+        formulario_contra.password_confirmacion.removeAttribute("style");
+        baderas.bcontra_conf = false;
+
+        if(password_actual.value.length == 0 ){
+            password_actual.removeAttribute("style");
+            baderas.bcontra_actual = false;
+        }
+        if(password.value.length == 0 ){
+            password.removeAttribute("style");
+            baderas.bcontra = false;
+        }
+    }else{
+        
+        if(password_actual.value.length == 0 ){
+            password_actual.style.border = "3px solid red";
+            baderas.bcontra_actual = false;
+        }
+        if(password.value.length == 0 ){
+            password.style.border = "3px solid red";
+            baderas.bcontra = false;
+        }
     }
 });
-formulario.password_confirmacion.addEventListener('keyup', (e) => {
+formulario_contra.password_confirmacion.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
-	formulario.password_confirmacion.value = valorInput
+	formulario_contra.password_confirmacion.value = valorInput
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
@@ -311,14 +429,14 @@ formulario.password_confirmacion.addEventListener('keyup', (e) => {
 
     if (!expresiones.password.test(valorInput2)) {
         password_confirmacion.style.border = "3px solid red";
-        baderas.bcontra_conf = false
+        baderas.bcontra_conf = false;
 	}else{
         password_confirmacion.removeAttribute("style");
-        baderas.bcontra_conf = true
-        let valorpassword = formulario.password.value;
+        baderas.bcontra_conf = true;
+        let valorpassword = formulario_contra.password.value;
         if((valorpassword == valorInput2) == false){
             password_confirmacion.style.border = "3px solid red";
-            bcontra_conf = false
+            bcontra_conf = false;
         }
     }
 
@@ -873,12 +991,6 @@ btn_generales.addEventListener("click",(e)=>{
     }else if(baderas.bcorreo_empresa == false){
         document.getElementById("correo_m").style.border = "3px solid red";
         e.preventDefault();
-    }else if(baderas.bcontra == false ){
-        document.getElementById("password").style.border = "3px solid red";
-        e.preventDefault();
-    }else if(baderas.bcontra_conf == false){
-        document.getElementById("password_confirmacion").style.border = "3px solid red";
-        e.preventDefault();
     }else if(baderas.brazon == false){
         document.getElementById("razon").style.border = "3px solid red";
         e.preventDefault();
@@ -886,6 +998,25 @@ btn_generales.addEventListener("click",(e)=>{
     
 
     
+});
+btn_password.addEventListener("click",(e)=>{
+
+    if(!formulario.checkValidity()){
+        formulario.reportValidity();
+    }
+    if(baderas.bcontra_actual == false){
+        document.getElementById("password_actual").style.border = "3px solid red";
+        e.preventDefault();
+    }
+    if(baderas.bcontra == false ){
+        document.getElementById("password").style.border = "3px solid red";
+        e.preventDefault();
+    }
+    if(baderas.bcontra_conf == false){
+        document.getElementById("password_confirmacion").style.border = "3px solid red";
+        e.preventDefault();
+    }
+
 });
 
 btn_domicilio.addEventListener("click", (e)=>{

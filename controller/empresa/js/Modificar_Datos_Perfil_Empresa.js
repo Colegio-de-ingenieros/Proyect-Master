@@ -3,8 +3,9 @@ let baderas = {
     brfc: false,
     bnombre_empresa: false,
     bcorreo_empresa: false,
-    bcontra: true,
-    bcontra_conf: true,
+    bcontra: false,
+    bcontra_conf: false,
+    bcontra_actual: false,
     brazon: false,
 
     bcodigo_postal: false,
@@ -61,6 +62,7 @@ let acuerdo_si = document.getElementById("acuerdo1");
 let acuerdo_no = document.getElementById("acuerdo2");
 
 let formulario  = document.getElementById("formula");
+let formulario_contra = document.getElementById("formulario_contra");
 let formDomicilio  = document.getElementById("formDomicilio");
 let formDias  = document.getElementById("formDias");
 let formularioRH  = document.getElementById("recursosHumanos");
@@ -145,10 +147,7 @@ formulario.addEventListener("submit",(e)=>{
     .then(response => response.json())
     .then(data => {
         alert(data);
-        if(data == "Actualización exitosa"){
-            formulario.password.value = "";
-            formulario.password_confirmacion.value = "";
-        }
+       
         formulario.rfc.disabled = true;
     });
         
@@ -157,6 +156,33 @@ formulario.addEventListener("submit",(e)=>{
     
    
 });
+
+formulario_contra.addEventListener("submit",(e)=>{
+    e.preventDefault();
+ 
+    let formulario_data = new FormData(e.target);
+    
+        
+    fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",
+    {
+            method: 'POST',
+            body: formulario_data,
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data);
+        if(data == "Actualización exitosa"){
+            formulario_contra.password.value = "";
+            formulario_contra.password_confirmacion.value = "";
+            formulario_contra.password_actual.value = "";
+        }
+       
+    });
+        
+    
+   
+});
+
 formDomicilio.addEventListener("submit",(e)=>{
     e.preventDefault();
     let formData = new FormData(formDomicilio);
