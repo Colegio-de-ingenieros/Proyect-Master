@@ -64,15 +64,15 @@ if ($resultado == true) {
   parrafo.innerHTML = "<?php echo $correo; ?>"; 
   var parrafo = document.getElementById("reqi_tecnicosuOT"); 
   parrafo.innerHTML = "<?php echo $fecha; ?>"; 
-  var parrafo = document.getElementById("estatus"); 
-  parrafo.innerHTML = "<?php echo $estatus1; ?>"; 
+  /* var parrafo = document.getElementById("estatus"); 
+  parrafo.innerHTML = "<?php ; ?>";  */
 
   
 var parrafo = document.createElement("p");
 </script>
 
 <script>
-    <?php if ($estatus==1 or $estatus==0) { ?>
+    <?php if ($estatus==1 or $estatus==0 ) { ?>
         
         var textBox = document.getElementById("descri_puesto");
         document.getElementById("ti_ck1").checked = true;
@@ -82,8 +82,11 @@ var parrafo = document.createElement("p");
         var textBox = document.getElementById("descri_puesto");
 
       <?php }else if ($estatus==3){ ?>
-      document.getElementById("ti_ck3").checked = true;
-      var textBox = document.getElementById("descri_puesto");
+      /* document.getElementById("ti_ck3").checked = true;
+      var textBox = document.getElementById("descri_puesto"); */
+      document.getElementById("ti_ck1").setAttribute("disabled", true);
+      document.getElementById("ti_ck2").setAttribute("disabled", true);
+      document.getElementById("boton_registro").setAttribute("disabled", true);
         
     <?php } ?>
     

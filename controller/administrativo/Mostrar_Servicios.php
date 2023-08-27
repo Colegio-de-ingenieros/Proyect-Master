@@ -30,7 +30,7 @@ if($valTipo!=""){
                             <tr>
                                 <th>Nombre</th>
                                 <th>Teléfono</th>
-                                <th>Correo</th>
+                                <th>Correo electrónico</th>
                                 <th>Fecha de aplicación</th>
                                 <th>Estatus</th>
                                 <th>Acciones</th>
