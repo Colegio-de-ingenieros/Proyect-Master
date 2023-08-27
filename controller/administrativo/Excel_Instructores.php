@@ -3,7 +3,7 @@
 
 use PhpOffice\PhpSpreadsheet\Style\Color;
 
-include_once('../../controller/administrativo/Mostrar_Instructores.php');
+include_once('../../model/administrativo/Mostrar_Instructores.php');
 require '../../controller/CrearExcel/vendor/autoload.php';
 
 $color = new Color('000000');
@@ -40,7 +40,16 @@ for($i=0; $i<count($instructores); $i++){
     $nom= $instructores[$i]["NomIns"];
     $am= $instructores[$i]["ApePIns"];
     $ap= $instructores[$i]["ApeMIns"];
-    $seguimiento = $instructores[$i]["EstatusIns"];
+    //$seguimiento = $instructores[$i]["EstatusIns"];
+
+    if($instructores[$i]["EstatusIns"] == 0){
+        $seguimiento = "Si";
+    }
+
+    else{
+        $seguimiento = "No";
+    }
+    
 
     $nombre=$nom;
 

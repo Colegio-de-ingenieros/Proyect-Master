@@ -200,7 +200,9 @@
             <!-- llama al archivo que genera el excel -->
           <script languaje="javascript">
             function generar() {
-              location.href = '../../controller/administrativo/Excel_Instructores.php';
+              setTimeout(function() {
+                location.href = '../../controller/administrativo/Excel_Instructores.php';
+              }, 10); 
             }
           </script>
 
