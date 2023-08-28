@@ -51,7 +51,7 @@ formula.descri_puesto.addEventListener('keyup', (e) => {
    // Eliminar numeros
    //.replace(/[0-9]/g, '')
    // Eliminar caracteres especiales
-  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
+  .replace(/[üâäàåçê♪ëèïîìÄÅÉæÆôö·òûùÿÖÜ¢£¥₧`ƒªº¿⌐¬½¼«»÷°¨±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?]/g, '')
 
     if (!expresiones.cadenasAcademicos.test(valorInput)) {
         descri_puesto.style.border = "3px solid red";
