@@ -116,7 +116,7 @@ function resultados(json, llamada) {
         row.appendChild(StateCell);
       }
 
-      if (Status != "3") {
+      if (Status == "0" || Status == "1") {
         //* Acciones para el servicio
         let ActionCell = document.createElement('td');
         const ActionText = document.createElement('button');

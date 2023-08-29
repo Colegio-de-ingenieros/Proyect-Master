@@ -104,13 +104,13 @@ function resultados(json, llamada) {
         StateCell.appendChild(StateText);
         row.appendChild(StateCell);
       }
-      else if (Status == "3") {
+      else if (Status == "3" || Status == "2") {
         let StateText = document.createTextNode("Cancelado");
         StateCell.appendChild(StateText);
         row.appendChild(StateCell);
       }
 
-      if (Status != "3") {
+      if (Status == "0" || Status == "1") {
         //* Acciones para el servicio
         let ActionCell = document.createElement('td');
         const ActionText = document.createElement('button');
