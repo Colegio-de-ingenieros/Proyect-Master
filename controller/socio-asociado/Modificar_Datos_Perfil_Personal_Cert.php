@@ -13,7 +13,6 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     $idCert=$base->id_certificaciones();
     $check=$_POST['checkboxcertificacionoculto'];
-    echo $check;
     if($check == 'activado'){  
         $certifi=$_POST["nomCert"];
         $orgCert=$_POST["orgCert"];

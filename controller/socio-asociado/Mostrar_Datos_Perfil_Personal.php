@@ -139,16 +139,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             $correoEmp=$correo_empresa;
             $telEmp= $telefono_empresa;
             $extTelEmp=$extTelefono_empresa;
-        }
-    
-        
-    } else {
-        $llenarlab = "no";
-        
-    }
 
-    
-    $resultado5=$base->funciones($idEmp);
+            $resultado5=$base->funciones($idEmp);
     if ($resultado5== true) {
         for ($i = 0; $i < count($resultado5); $i++) {
             $nombre_funcion=$resultado5[$i]['NomFuncion'];
@@ -184,6 +176,16 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         }
 
 }
+        }
+    
+        
+    } else {
+        $llenarlab = "no";
+        
+    }
+
+    
+    
 }
 
 
