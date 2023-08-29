@@ -101,9 +101,17 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             var celdaVigencia = document.createElement("td");
             celdaVigencia.textContent = datos[i].vigencia;
             fila.appendChild(celdaVigencia);
-
+            
+            let icono_eliminar = document.createElement("i");
             var celdaAcciones = document.createElement("td");
-            celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
+            
+            icono_eliminar.className = "ti ti-backspace-filled" ;
+    
+            celdaAcciones.classList.add("btn", "btn-small", "btn-danger");
+            celdaAcciones.setAttribute("type","button");
+            //celdaAcciones.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");
+            celdaAcciones.appendChild(icono_eliminar);
+
             fila.appendChild(celdaAcciones);
 
             tbody.appendChild(fila);
@@ -163,8 +171,15 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             celdafuncion.textContent = datos[i].funcion;
             fila2.appendChild(celdafuncion);
 
+            let icono_eliminar = document.createElement("i");
             var celdaAcciones = document.createElement("td");
-            celdaAcciones.textContent = "Acciones"; // Puedes agregar botones u otros elementos aquí
+            
+            icono_eliminar.className = "ti ti-backspace-filled" ;
+    
+            celdaAcciones.classList.add("btn", "btn-small", "btn-danger");
+            celdaAcciones.setAttribute("type","button");
+            //celdaAcciones.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");
+            celdaAcciones.appendChild(icono_eliminar);
             fila2.appendChild(celdaAcciones);
 
             tbody2.appendChild(fila2);
