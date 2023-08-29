@@ -23,7 +23,8 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Headhunter'
-            and usuaperso.IdPerso = :busqueda
+            and servicios.IdSer = :busqueda
+            and servicios.EstatusSer != '3'
             UNION
             SELECT servicios.IdSer
             FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
@@ -32,7 +33,8 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Headhunter'
-            and usuaemp.RFCUsuaEmp = :busqueda";
+            and servicios.IdSer = :busqueda
+            and servicios.EstatusSer != '3'";
 
             $arre = [":busqueda"=>$valor];
             $resultados = $this->base->mostrar($sql, $arre);
@@ -48,7 +50,8 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaperso.IdPerso = :busqueda
+            and servicios.IdSer = :busqueda
+            and servicios.EstatusSer != '3'
             UNION
             SELECT servicios.IdSer
             FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
@@ -57,7 +60,8 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaemp.RFCUsuaEmp = :busqueda";
+            and servicios.IdSer = :busqueda
+            and servicios.EstatusSer != '3'";
 
             $arre = [":busqueda"=>$valor];
             $resultados = $this->base->mostrar($sql, $arre);

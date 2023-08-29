@@ -42,7 +42,7 @@ if($valTipo!=""){
         //agrega los resultados de la busqueda
         for ($i = 0; $i < count($resultado); $i++) {
             if ($valTipo=="headhunter"){
-                $id = $resultado[$i]["IdPerso"];
+                $id = $resultado[$i]["IdSer"];
                 /* $nombre = $resultado[$i]["NomPerso"]; */
                 $nombres = $resultado[$i]["NomPerso"];
   $nombreP = $resultado[$i]["ApePPerso"];
@@ -54,7 +54,7 @@ if($valTipo!=""){
                     $telefono = ' - ';
                 }
             }else if ($valTipo=="outplacement"){
-                $id = $resultado[$i]["IdPerso"];
+                $id = $resultado[$i]["IdSer"];
                 /* $nombre = $resultado[$i]["NomPerso"]; */
                 $nombres = $resultado[$i]["NomPerso"];
   $nombreP = $resultado[$i]["ApePPerso"];

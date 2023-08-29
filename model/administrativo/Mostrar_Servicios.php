@@ -138,7 +138,7 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Headhunter'
-            and usuaperso.IdPerso = :id 
+            and servicios.IdSer = :id 
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
@@ -154,7 +154,7 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and usuaemp.RFCUsuaEmp = :id ";
+            and servicios.IdSer = :id ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -171,7 +171,7 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and usuaperso.IdPerso = :id 
+            and servicios.IdSer = :id 
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
@@ -187,7 +187,7 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and usuaemp.RFCUsuaEmp = :id ";
+            and servicios.IdSer = :id ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
