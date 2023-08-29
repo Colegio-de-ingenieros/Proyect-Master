@@ -86,16 +86,13 @@ let checkbox_rh_1 = document.getElementById("rh_ck");
 let checkbox_it_2 = document.getElementById("ti_ck");
 let checkbox_ac_3 = document.getElementById("ac_ck");
 
-window.addEventListener("load",(e)=>{
+window.addEventListener("load",async (e)=>{
     
 
-    fetch("../../controller/empresa/Mostrar_Datos_Perfil_Empresa.php")
-        .then(response => response.json())
-        .then(data =>{
-            
-            llenar_campos_formulario(data);
-        });
-    
+    let respuesta = await fetch("../../controller/empresa/Mostrar_Datos_Perfil_Empresa.php");
+    let datos = await respuesta.json();
+
+    llenar_campos_formulario(datos);
 
     
 });
@@ -517,7 +514,7 @@ function checke() {
 }
 
 
-function llenar_campos_formulario(datos) {
+async function  llenar_campos_formulario(datos) {
     // coloca todoa la informacion de la empresa en su lugar correspondiente
     
     if(datos["generales"].length > 0){
@@ -537,19 +534,18 @@ function llenar_campos_formulario(datos) {
         let formulario_data = new FormData();
         formulario_data.append("codigo_postal",datos["domicilio"][1]);
             
-
-        fetch("../../controller/registro/Registro_Empresa.php",
+        // async
+        let respuesta_domicilio = await fetch("../../controller/registro/Registro_Empresa.php",
             {
                 method: 'POST',
                 body: formulario_data,
-            })
-            .then(response => response.json())
-            .then(data => {
-                if(data.length != 0){
-                    rellenar_lista_postal(data,datos["domicilio"][0]);
-                }
-                
             });
+
+        let data = await respuesta_domicilio.json();
+
+        if(data.length != 0){
+            rellenar_lista_postal(data,datos["domicilio"][0]);
+        }
 
         
         formDomicilio.codigo_postal.value = datos["domicilio"][1];
