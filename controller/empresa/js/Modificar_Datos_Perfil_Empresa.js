@@ -182,6 +182,7 @@ formulario_contra.addEventListener("submit",(e)=>{
 
 formDomicilio.addEventListener("submit",(e)=>{
     e.preventDefault();
+   
     let formData = new FormData(formDomicilio);
     fetch("../../controller/empresa/Modificar_Datos_Perfil_Empresa.php",{
         method: "POST",

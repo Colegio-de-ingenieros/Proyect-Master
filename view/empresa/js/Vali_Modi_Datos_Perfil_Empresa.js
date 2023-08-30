@@ -1025,8 +1025,19 @@ btn_domicilio.addEventListener("click", (e)=>{
         document.getElementById("codigo_postal").style.border = "3px solid red";
     }else if(baderas.bcalle == false){
         document.getElementById("calle").style.border = "3px solid red";
+    }else {
+        estado.disabled = false;
+        
+        if(estado.value.length == 0){
+            alert("Por favor, ingrese un código postal válido.");
+            e.preventDefault();
+            estado.disabled = true;
+        }else{
+            ciudad.disabled = false;
+            
+        }
     }
-    validar(e);
+    
 });
 
 btn_rh.addEventListener("click",(e)=>{
@@ -1098,34 +1109,6 @@ btn_ac.addEventListener("click",(e)=>{
     
 });
 
-function validar(e) {
-    //si hay una bandera en falso la coloca en rojo
-
-    let is_ok = true;
-    
-    for (const key in baderas) {
-
-        if(baderas[key] == false){
-            is_ok = false;
-        }
-
-    }
-    if(is_ok == false){
-        e.preventDefault();
-    }else{
-        
-        estado.disabled = false;
-        
-        if(estado.value.length == 0){
-            alert("Por favor, ingrese un código postal válido.");
-            e.preventDefault();
-            estado.disabled = true;
-        }else{
-            ciudad.disabled = false;
-            
-        }
-    }
-}
 
 
 
