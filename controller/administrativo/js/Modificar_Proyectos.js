@@ -65,7 +65,7 @@ formularioProyectos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
     let urlAct = window.location+''
 
-    var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
     if(resp ==  true){
       window.location.href='../../view/administrativo/Vista_Proyectos.html';
     }

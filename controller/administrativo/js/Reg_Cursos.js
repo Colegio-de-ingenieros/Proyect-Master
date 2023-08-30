@@ -191,7 +191,7 @@ function enviar() {
   else {
     console.log("Entramos a enviar los datos")
     if (flag_almacenar == false) {
-      let resultado = confirm("¿Desea continuar con el registro? Si es así, el temario se perderá");
+      let resultado = confirm("¿desea continuar con el registro? Si es así, el temario se perderá");
       console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
       /* console.log("El contenido de resultado es: " + resultado + ""); */
 

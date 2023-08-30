@@ -65,7 +65,7 @@ formulario_Ingresos.cancelar.addEventListener('click', function (e){
     let split = urlAct.split("=");
     var participante = split[1];
 
-    var resp = confirm("Los cambios realizados no se guardarán, ¿Desea continuar?");
+    var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
     if(resp ==  true){
       //location.href = '../../view/administrativo/Vista_Certificaciones.html';
       window.location.href='../../view/administrativo/Accion_Participante.html?participante='+participante;
