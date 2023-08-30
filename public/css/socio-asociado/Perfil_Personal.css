@@ -17,6 +17,7 @@
     --color-placeholder-3: #474a57;
 
     --color-red: #ff0000;
+    --color-red-2: #8a0000;
 
     --radius-1: 15px;
     --radius-2: 8px;
@@ -51,6 +52,13 @@ main{
     width: 80%;
 }
 
+.btn-danger {
+    background: var(--color-red-2);
+}
+
+.btn-small:hover {
+    background:var(--color-red); /* Nuevo color de fondo cuando el mouse está sobre el botón */
+}
 .cabezera{
     display: flex;
     flex-direction: row;

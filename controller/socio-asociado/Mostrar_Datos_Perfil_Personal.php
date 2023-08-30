@@ -103,15 +103,20 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             fila.appendChild(celdaVigencia);
             
             let icono_eliminar = document.createElement("i");
-            var celdaAcciones = document.createElement("td");
-            
-            icono_eliminar.className = "ti ti-backspace-filled" ;
-    
-            celdaAcciones.classList.add("btn", "btn-small", "btn-danger");
-            celdaAcciones.setAttribute("type","button");
-            //celdaAcciones.setAttribute('onclick',"elimina_elementos_tabla('"+id_fila+"')");
-            celdaAcciones.appendChild(icono_eliminar);
+            icono_eliminar.className = "ti ti-backspace-filled";
 
+            var celdaAcciones = document.createElement("td");
+            //eldaAcciones.classList.add("btn-small");
+
+            var botonEliminar = document.createElement("button");
+            botonEliminar.className = "btn btn-danger btn btn-small btn-danger";
+            botonEliminar.type = "button";
+            botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
+            botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
+            //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + id_fila + "')");
+            botonEliminar.appendChild(icono_eliminar);
+
+            celdaAcciones.appendChild(botonEliminar);
             fila.appendChild(celdaAcciones);
 
             tbody.appendChild(fila);
@@ -178,15 +183,15 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             //eldaAcciones.classList.add("btn-small");
 
             var botonEliminar = document.createElement("button");
-            botonEliminar.className = "btn btn-danger";
+            botonEliminar.className = "btn btn-danger btn btn-small btn-danger";
             botonEliminar.type = "button";
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
             //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + id_fila + "')");
             botonEliminar.appendChild(icono_eliminar);
 
-celdaAcciones.appendChild(botonEliminar);
-fila2.appendChild(celdaAcciones);
+            celdaAcciones.appendChild(botonEliminar);
+            fila2.appendChild(celdaAcciones);
 
             tbody2.appendChild(fila2);
             }

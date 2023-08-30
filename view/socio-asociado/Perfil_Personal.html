@@ -217,7 +217,7 @@
                   <p class="label-2">Contraseña actual*</p>
                 </div>
                 <div class="input-form">
-                  <input type="password" name="password_old" id="password_old" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
+                  <input type="password" name="password_old" id="password_old" class="input-format" maxlength="16" required placeholder="Ingrese su contraseña"
                   title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
                 </div>
               </div>
@@ -227,7 +227,7 @@
                   <p class="label-2">Nueva contraseña*</p>
                 </div>
                 <div class="input-form">
-                  <input type="password" name="password" id="password" class="input-format" maxlength="16" placeholder="Ingrese su contraseña"
+                  <input type="password" name="password" id="password" class="input-format" maxlength="16" required placeholder="Ingrese su contraseña"
                   title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
                 </div>
               </div>
@@ -237,7 +237,7 @@
                   <p class="label-2">Confirmar contraseña*</p>
                 </div>
                 <div class="input-form">
-                  <input type="password" name="password_confirmacion" id="password_confirmacion" maxlength="16" class="input-format" placeholder="Confirme su contraseña"
+                  <input type="password" name="password_confirmacion" id="password_confirmacion" maxlength="16" class="input-format" required placeholder="Confirme su contraseña"
                   title="La contraseña debe contener entre 8 y 16 caracteres, de los cuales al menos uno debe ser una mayúscula, una minúscula, un número y un carácter especial (., ',' , _, +, *, /, !, @, #, $).">
                 </div>
               </div> 
@@ -334,17 +334,17 @@
             </div>
         </div>
         <div class="boton">
-            <input type="submit" class="btn-medium1 btn" id="btn_generales3" value="Actualizar">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales4" value="Actualizar">
         </div>
     </form>
 
     
     <p class="subtitulo-1">Certificación</p>
     <hr size="1px" />
-    <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario4">
+    <form action="" class="formularios" method="post" enctype="multipart/form-data"  id="formulario4">
         <div>
             <input type="hidden" id="checkboxcertificacionoculto" name="checkboxcertificacionoculto" value="desactivado">
-            <input type="checkbox" id="checkboxcertificacion" name="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
+            <input type="checkbox" id="checkboxcertificacion" required name="checkboxcertificacion">&nbsp;&nbsp;&nbsp;Deseo agregar una certificación<br>
         </div>
         <div class="contenedor-formulario">
             <div class="grupo-input">
@@ -396,7 +396,7 @@
 
         </div>
         <div class="boton">
-            <input type="submit" class="btn-medium1 btn" id="btn_generales4" value="Agregar certificación">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales5" value="Agregar certificación">
         </div>
     </form>
 
@@ -440,8 +440,8 @@
     <hr size="1px" />
     <form action="" class="formularios" method="post" enctype="multipart/form-data" id="formulario5">
         <div>
-            <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto" value="desactivado">
-            <input type="checkbox" id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
+            <input type="hidden" id="checkboxlaboraloculto" name="checkboxlaboraloculto"value="desactivado">
+            <input type="checkbox"  required  id="checkboxlaboral">&nbsp;&nbsp;&nbsp;Deseo agregar datos laborales<br>
         </div>
         <div class="contenedor-formulario">
             <div class="grupo-input">
@@ -513,7 +513,7 @@
             
             
             <div class="boton">
-                <input type="submit" class="btn-medium1 btn" id="btn_generales5" value="Agregar Función">
+                <input type="submit" class="btn-medium1 btn" id="btn_generales6" value="Agregar Función">
             </div>  
         </form>
 
@@ -683,6 +683,7 @@
 
         
       <script src="../../view/registro/js/Reg_Personal.js"></script>
+      <script src="../../view/socio-asociado/js/Vali_Perfil_Personal.js"></script>
       <script src="../../controller/socio-asociado/js/Modificar_Datos_Perfil_Personal.js"></script>
 
 </body>
