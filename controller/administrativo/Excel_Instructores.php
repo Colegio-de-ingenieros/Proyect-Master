@@ -37,9 +37,8 @@ $estilo->getFont()->setName("Inter', sans-serif")->setSize(12.5); //cambiar el t
 
 //llenar la hoja con los datos
 for($i=0; $i<count($instructores); $i++){
-    $nom= $instructores[$i]["NomIns"];
-    $am= $instructores[$i]["ApePIns"];
-    $ap= $instructores[$i]["ApeMIns"];
+    $nombre= $instructores[$i]["NomIns"] . ' ' . $instructores[$i]["ApePIns"] . ' ' . $instructores[$i]["ApeMIns"];
+    
     //$seguimiento = $instructores[$i]["EstatusIns"];
 
     if($instructores[$i]["EstatusIns"] == 0){
@@ -50,8 +49,6 @@ for($i=0; $i<count($instructores); $i++){
         $seguimiento = "No";
     }
     
-
-    $nombre=$nom;
 
     $hoja->setCellValue('A'.strval($i+2), $nombre)->setCellValue('B'.strval($i+2), $seguimiento);
 
