@@ -70,7 +70,7 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Headhunter'
-            and (usuaperso.NomPerso like :busqueda or  usuaperso.CorreoPerso like :busqueda  or  servicios.FechaSer like :busqueda)
+            and (usuaperso.NomPerso like :busqueda or  usuaperso.CorreoPerso like :busqueda  or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
@@ -86,7 +86,7 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  servicios.FechaSer like :busqueda)";
+            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)";
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
             $resultados = $this->mostrar($sql, $arre);
@@ -104,7 +104,7 @@
             and servicios.IdSer = sertipo.IdSer
             and sertipo.IdTipoSer = tiposervicios.IdTipoSer
             and tiposervicios.TipoSer = 'Outplacement'
-            and (usuaperso.NomPerso like :busqueda or  usuaperso.CorreoPerso like :busqueda or  servicios.FechaSer like :busqueda)
+            and (usuaperso.NomPerso like :busqueda or  usuaperso.CorreoPerso like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
             UNION
             SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
             DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
@@ -120,7 +120,7 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  servicios.FechaSer like :busqueda)";
+            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)";
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
             $resultados = $this->mostrar($sql, $arre);
