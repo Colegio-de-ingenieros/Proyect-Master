@@ -80,7 +80,7 @@ formulario.addEventListener("submit",(e)=>{
     }else if(time_fin.value.length == 0){
         alert("Por favor, seleccione una hora de finalización.");    
     }else if(acuerdo_si.checked == false && acuerdo_no.checked == false){
-        alert("Por favor, idique si cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales");
+        alert("Por favor, indique si cuenta con algún acuerdo con el Colegio de Ingenieros en Sistemas Computacionales");
     }else if(aviso_privacidad.checked == false){
         alert("Para continuar con el registro, debe aceptar el aviso de privacidad.");
     } 
