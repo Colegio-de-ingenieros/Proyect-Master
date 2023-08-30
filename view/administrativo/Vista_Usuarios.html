@@ -193,10 +193,21 @@
             <h4 class="subtitulo-1">Mostrar / Consultar</h4>
           </div>
           <hr>
+          
           <div class="grupo-input">
             <div class="input-form">
               <input type="text" class="input-format-2" placeholder="Buscar" name="busqueda" id="busqueda">
             </div>
+          </div>
+          <!-- llama al archivo que genera el excel -->
+          <script languaje="javascript">
+            function generar() {
+              location.href = '../../controller/administrativo/Excel_Usuarios.php';
+            }
+          </script>
+
+          <div class="boton_registrar">
+            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
           </div>
           <form class="formulario-de-datos" id="formulario">
 
@@ -217,17 +228,7 @@
             </div>
           </form>
 
-          <!-- llama al archivo que genera el excel -->
-          <script languaje="javascript">
-            function generar() {
-              location.href = '../../controller/administrativo/Excel_Usuarios.php';
-            }
-          </script>
 
-          <div class="boton_registrar">
-            <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
-          </div>
-          <br>
 
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
