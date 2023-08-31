@@ -121,7 +121,11 @@ inp_codigo_postal.addEventListener('blur', (e) => {
         .then(response => response.json())
         .then(data => {
             if(data.length != 0){
+                
                 rellenar_lista(data);
+            }else{
+                alert("Codigo postal inválido");
+                baderas.bcodigo_postal = false;
             }
             
         });

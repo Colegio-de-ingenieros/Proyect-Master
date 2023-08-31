@@ -496,6 +496,11 @@ formDomicilio.calle.addEventListener('blur', (e) => {
     let valorInput = e.target.value;
 	formDomicilio.calle.value = valorInput
     .trimEnd();
+    let valor = formDomicilio.calle.value;
+    if (valor.length == 0) {
+        formDomicilio.calle.style.border = "3px solid red";
+        baderas.bcalle = false;
+    }
 });
 formDomicilio.calle.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
@@ -1023,16 +1028,19 @@ btn_domicilio.addEventListener("click", (e)=>{
 
     if(baderas.bcodigo_postal == false){
         document.getElementById("codigo_postal").style.border = "3px solid red";
+        e.preventDefault();
     }else if(baderas.bcalle == false){
         document.getElementById("calle").style.border = "3px solid red";
-    }else {
+        e.preventDefault();
+    }else if(baderas.bcodigo_postal == true  && baderas.bcalle == true ){
         estado.disabled = false;
-        
+        console.log("entro");
         if(estado.value.length == 0){
             alert("Por favor, ingrese un código postal válido.");
             e.preventDefault();
             estado.disabled = true;
         }else{
+        
             ciudad.disabled = false;
             
         }

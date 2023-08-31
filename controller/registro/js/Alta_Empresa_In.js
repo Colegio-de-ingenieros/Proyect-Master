@@ -54,6 +54,8 @@ document.getElementById("codigo_postal").addEventListener('blur', (e) => {
         .then(data => {
             if(data.length != 0){
                 rellenar_lista(data);
+            }else{
+                alert("Codigo postal inválido");
             }
             
         });
