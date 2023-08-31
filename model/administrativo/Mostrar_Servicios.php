@@ -26,11 +26,94 @@
             and emparea.IdAreaEmp = areaempresa.IdAreaEmp
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
-            and areas.IdArea = '1'";
+            and areas.IdArea = '1'UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhuntert'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2'))
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea in ('1','2','3')) ";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
         }
+
+
+
+
         public function buscar_outplacement(){
             $this->conexion_bd();
             $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso, usuaperso.CorreoPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso, 
@@ -55,11 +138,95 @@
             and emparea.IdAreaEmp = areaempresa.IdAreaEmp
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
-            and areas.IdArea = '1'";
+            and areas.IdArea = '1'
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2'))
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2','3')) ";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
         }
+
+
+
+
         function consul_intel_headhunter($valor){
             $this->conexion_bd();
             $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso, usuaperso.CorreoPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso, 
@@ -86,7 +253,94 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)";
+            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2')
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                    )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2','3')
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda))";
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
             $resultados = $this->mostrar($sql, $arre);
@@ -94,6 +348,10 @@
 
             return $resultados;
         }
+
+
+
+
         function consul_intel_outplacement($valor){
             $this->conexion_bd();
             $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso, usuaperso.CorreoPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso, 
@@ -120,7 +378,93 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)";
+            and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2')
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                    )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda)
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2','3')
+                    and (usuaemp.NomUsuaEmp like :busqueda or  usuaemp.CorreoUsuaEmp like :busqueda or  DATE_FORMAT(FechaSer, '%d/%m/%Y') like :busqueda))";
 
             $arre = [":busqueda"=>'%'.$valor.'%'];
             $resultados = $this->mostrar($sql, $arre);
@@ -128,6 +472,10 @@
 
             return $resultados;
         }
+
+
+
+
         public function buscar_headhunter_individual($id){
             $this->conexion_bd();
             $sql = "SELECT usuaperso.IdPerso, usuaperso.NomPerso, usuaperso.CorreoPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso, 
@@ -154,7 +502,93 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and servicios.IdSer = :id ";
+            and servicios.IdSer = :id  
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                    and servicios.IdSer = :id
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2')
+                    and servicios.IdSer = :id)
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Headhunter'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Headhunter'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2','3')
+                    and servicios.IdSer = :id) ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -187,7 +621,93 @@
             and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
             and areaemptipo.IdArea = areas.IdArea
             and areas.IdArea = '1'
-            and servicios.IdSer = :id ";
+            and servicios.IdSer = :id 
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '2'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea = '1' 
+                    and servicios.IdSer = :id
+                )
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            areaempresa.TelFEncArea,servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                and areaemptipo.IdArea = areas.IdArea
+                and areas.IdArea = '3'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2')
+                    and servicios.IdSer = :id)
+            UNION
+            SELECT usuaemp.RFCUsuaEmp, usuaemp.NomUsuaEmp, usuaemp.CorreoUsuaEmp, ('') ,('') ,
+            DATE_FORMAT(FechaSer, '%d/%m/%Y') FechaSer, servicios.EstatusSer ,  
+            (' - '),servicios.IdSer
+            FROM usuaemp,empservicios,servicios,sertipo,tiposervicios
+            WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                and empservicios.IdSer = servicios.IdSer
+                and servicios.IdSer = sertipo.IdSer
+                and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                and tiposervicios.TipoSer = 'Outplacement'
+                and servicios.IdSer = :id
+                and usuaemp.RFCUsuaEmp not in (
+                    SELECT usuaemp.RFCUsuaEmp
+                    FROM usuaemp,empservicios,servicios,sertipo,tiposervicios,emparea,areaempresa,areaemptipo,areas
+                    WHERE usuaemp.RFCUsuaEmp = empservicios.RFCUsuaEmp  
+                    and empservicios.IdSer = servicios.IdSer
+                    and servicios.IdSer = sertipo.IdSer
+                    and sertipo.IdTipoSer = tiposervicios.IdTipoSer
+                    and tiposervicios.TipoSer = 'Outplacement'
+                    and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
+                    and emparea.IdAreaEmp = areaempresa.IdAreaEmp
+                    and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
+                    and areaemptipo.IdArea = areas.IdArea
+                    and areas.IdArea IN ('1', '2','3')
+                    and servicios.IdSer = :id) ";
             $arre = [":id"=> $id];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
