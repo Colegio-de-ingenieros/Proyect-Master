@@ -115,7 +115,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             botonEliminar.type = "button";
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
-            botonEliminar.setAttribute('onclick', 'confirmacion('+id+')');
+            botonEliminar.setAttribute('onclick', 'confirmacion('+ id +')');
             console.log(id);
             
             botonEliminar.appendChild(icono_eliminar);
@@ -130,7 +130,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }   
             function confirmacion(id){
             if (confirm("¿Está seguro que desea eliminar esta cuota?" + id)) {
-                var idc=id;
+                var idc="00000" + id ;
+                
                 // Realizar la solicitud Ajax para eliminar el elemento
                 $.ajax({
                     //manda a llamar al php que tiene la logica para eliminar
@@ -216,7 +217,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             botonEliminar.type = "button";
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
-            //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + id_fila + "')");
+            //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + git  + "')");
             botonEliminar.appendChild(icono_eliminar);
 
             celdaAcciones.appendChild(botonEliminar);
