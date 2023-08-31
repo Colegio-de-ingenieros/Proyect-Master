@@ -130,7 +130,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }   
             function confirmacion(id){
             if (confirm("¿Está seguro que desea eliminar esta cuota?" + id)) {
-                var idc="00000" + id ;
+                var idc = id.toString().padStart(6, '0');
+                
                 
                 // Realizar la solicitud Ajax para eliminar el elemento
                 $.ajax({
