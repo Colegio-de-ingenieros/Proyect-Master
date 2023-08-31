@@ -27,6 +27,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             echo json_encode('no exito');
             
         }
+    }else{
+        echo json_encode('igual');
     }
 }
 ?>

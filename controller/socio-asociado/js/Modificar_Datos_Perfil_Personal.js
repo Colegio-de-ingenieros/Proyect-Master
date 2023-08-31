@@ -49,6 +49,8 @@ formulario1.addEventListener('submit', function (e)
         //los datos no pasaron alguna validacion
         else if (data === 'no exito'){
             alert("Hubo un error");
+        }else if (data === 'igual'){
+            alert("La contraseña actual no coincide");
         }else{
             alert (data)
         }

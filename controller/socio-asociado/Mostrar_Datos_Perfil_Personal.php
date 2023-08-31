@@ -68,6 +68,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     if ($resultado3 == true) {
         $llenarcer = "si";
         for ($i = 0; $i < count($resultado3); $i++) {
+            $id_certificacion=$resultado3[$i]['IdCerExt'];
             $nombre_certificacion=$resultado3[$i]['NomCerExt'];
             $organizacion_certificacion=$resultado3[$i]['OrgCerExt'];
             $inicio_certificacion=$resultado3[$i]['IniCerExt'];
@@ -84,6 +85,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
 
         for (var i = 0; i < datos.length; i++) {
+            var id="<?php echo $id_certificacion ?>"
             var fila = document.createElement("tr");
 
             var celdaNombre = document.createElement("td");
@@ -113,7 +115,9 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             botonEliminar.type = "button";
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
-            //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + id_fila + "')");
+            botonEliminar.setAttribute('onclick', 'confirmacion('+id+')');
+            console.log(id);
+            
             botonEliminar.appendChild(icono_eliminar);
 
             celdaAcciones.appendChild(botonEliminar);
@@ -122,7 +126,32 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             tbody.appendChild(fila);
         }
         }
+        
+            }   
+            function confirmacion(id){
+            if (confirm("¿Está seguro que desea eliminar esta cuota?" + id)) {
+                var idc=id;
+                // Realizar la solicitud Ajax para eliminar el elemento
+                $.ajax({
+                    //manda a llamar al php que tiene la logica para eliminar
+                    url: '../../controller/socio-asociado/Eliminar_Cert_Perfil_Personal.php', 
+                    type: 'GET', 
+                    data: {idc: idc}, 
+                    success: function (response)
+                    {
+                        // Procesar la respuesta del servidor en caso de éxito
+                        
+                        alert('Eliminado con éxito');
+                        // volver a la pagina de vista
+                        location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
+                    },
+                });
+
+
+            } else {
             }
+            };
+        
             </script>
             <?php
         }

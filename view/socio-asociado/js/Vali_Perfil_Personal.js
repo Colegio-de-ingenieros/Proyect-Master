@@ -5,12 +5,11 @@ let bandAP = true
 let bandAM = true
 let bandEmail = true
 let bandCedu = true
-let bandTelF = true
 let bandTelM = true
 
-let bandContraold = flase
-let bandContra = flase
-let bandConfiContra = false
+let bandContraold = true
+let bandContra = true
+let bandConfiContra = true
 
 let bandCP = true
 let bandCalle = true
@@ -152,31 +151,6 @@ formulario.cedulaPerso.addEventListener('keyup', (e) => {
     }
     validar(bandCedu);
     }
-});
-
-/* Input telefono fijo*/
-formulario.telFPerso.addEventListener('keyup', (e) => {
-	let valorInput = e.target.value;
-
-    if(valorInput !==""){
-        formulario.telFPerso.value = valorInput
-        // Eliminar espacios en blanco
-        .replace(/\s/g, '')
-        // Eliminar caracteres especiales
-        .replace(/[^0-9]/g, '')
-        // Eliminar el ultimo espaciado
-        .trim();
-    
-        if (!expresiones.telefono.test(valorInput)) {
-            formulario.telFPerso.style.border = "3px solid red";
-            bandTelF = false;
-        }else{
-            formulario.telFPerso.removeAttribute("style");
-            bandTelF = true;
-        }
-        validar(bandTelF);
-    }
-	
 });
 
 /* Input telefono movil*/
@@ -570,12 +544,12 @@ function validar(bandera1){
 const boton_enviar2 = document.getElementById("btn_generales2");
 boton_enviar.addEventListener("click",(e)=>{
 
-    if(bandNom == false){
-        formulario1.bandContraold.style.border = "3px solid red";
-    }else if(bandAP == false){
-        formulario1.bandContra.style.border = "3px solid red";
-    }else if(bandEmail == false){
-        formulario1.bandConfiContra.style.border = "3px solid red";
+    if(bandContraold == false){
+        formulario1.password_old.style.border = "3px solid red";
+    }else if(bandContra == false){
+        formulario1.password.style.border = "3px solid red";
+    }else if(bandConfiContra == false){
+        formulario1.password_confirmacion.style.border = "3px solid red";
     }else{
         validar(true);
     }
