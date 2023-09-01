@@ -129,7 +129,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         
             }   
             function confirmacion(id){
-            if (confirm("¿Está seguro que desea eliminar esta cuota?" + id)) {
+            if (confirm("¿Está seguro que desea eliminar esta certificación?")) {
                 var idc = id.toString().padStart(6, '0');
                 
                 
@@ -187,6 +187,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             $resultado5=$base->funciones($idEmp);
     if ($resultado5== true) {
         for ($i = 0; $i < count($resultado5); $i++) {
+            $id_funcion=$resultado5[$i]['IdFuncion'];
             $nombre_funcion=$resultado5[$i]['NomFuncion'];
             ?>
             <script languaje="javascript">
@@ -194,6 +195,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             llenartabla2();
             function llenartabla2() {
             var tbody2 = document.getElementById("body_tabla2");
+            var id="<?php echo $id_funcion ?>"
             if ("<?php echo $llenarlab ?>" == "si"){
             var datos = [
             { funcion: "<?php echo $nombre_funcion ?>" }
@@ -218,7 +220,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             botonEliminar.type = "button";
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
-            //botonEliminar.setAttribute('onclick', "elimina_elementos_tabla('" + git  + "')");
+            botonEliminar.setAttribute('onclick', 'confirmacion1('+ id +')');
             botonEliminar.appendChild(icono_eliminar);
 
             celdaAcciones.appendChild(botonEliminar);
@@ -228,6 +230,30 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }
             }
             }
+
+            function confirmacion1(id){
+            if (confirm("¿Está seguro que desea eliminar esta función?")) {
+                var idc = id.toString().padStart(6, '0');
+                
+                
+                // Realizar la solicitud Ajax para eliminar el elemento
+                $.ajax({
+                    //manda a llamar al php que tiene la logica para eliminar
+                    url: '../../controller/socio-asociado/Eliminar_Fun_Perfil_Personal.php', 
+                    type: 'GET', 
+                    data: {idc: idc}, 
+                    success: function (response)
+                    {
+                        // Procesar la respuesta del servidor en caso de éxito
+                        
+                        alert('Eliminado con éxito');
+                        // volver a la pagina de vista
+                        location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
+                    },
+                });
+            } else {
+            }
+            };
             </script>
             <?php
         }

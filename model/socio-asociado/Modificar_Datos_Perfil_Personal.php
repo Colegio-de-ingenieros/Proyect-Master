@@ -201,8 +201,6 @@
             return $ejecucion;
         }
 
-
-
         public function funciones($idEmp, $idFunc, $nomFunc){
             $this->conexion_bd();
             $q1 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion) 
@@ -230,6 +228,22 @@
             $parametros1 = [":idc"=>$idc];
     
             $consulta = "DELETE FROM certexterna WHERE IdCerExt=:idc";
+            $parametros = [":idc"=>$idc];
+    
+            $consul=[$consulta1, $consulta];
+            $para=[$parametros1, $parametros];
+    
+            $datos = $this->insertar_eliminar_actualizar($consul,$para);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function eliminar_func($idc){
+            $this->conexion_bd();
+            $consulta1 = "DELETE FROM persoempfun WHERE IdFuncion=:idc";
+            $parametros1 = [":idc"=>$idc];
+    
+            $consulta = "DELETE FROM funciones WHERE IdFuncion=:idc";
             $parametros = [":idc"=>$idc];
     
             $consul=[$consulta1, $consulta];

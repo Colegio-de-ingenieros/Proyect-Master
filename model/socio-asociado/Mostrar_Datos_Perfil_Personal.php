@@ -66,7 +66,7 @@
 
         public function funciones($idEmp){
             $this->conexion_bd();
-            $consulta ="SELECT funciones.NomFuncion FROM funciones, persoempfun 
+            $consulta ="SELECT funciones.IdFuncion, funciones.NomFuncion FROM funciones, persoempfun 
             WHERE funciones.IdFuncion=persoempfun.IdFuncion and persoempfun.IdEmpPerso='0001'";
             $parametros = [":user"=>$idEmp];
             $datos = $this->mostrar($consulta,$parametros);
