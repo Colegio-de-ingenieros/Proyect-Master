@@ -126,6 +126,12 @@ inp_codigo_postal.addEventListener('blur', (e) => {
             }else{
                 alert("Codigo postal inválido");
                 baderas.bcodigo_postal = false;
+                estado.value = "";
+                ciudad.value = "";
+                document.getElementById("busqueda_colonia").innerHTML = "";
+                var optionElement = document.createElement("option");
+                optionElement.text = "Seleccione su colonia";
+                document.getElementById("busqueda_colonia").appendChild(optionElement);
             }
             
         });
