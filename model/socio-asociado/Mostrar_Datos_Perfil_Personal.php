@@ -23,12 +23,12 @@
             return $datos;
         }
 
-        public function domicilio_completo($codigo_postal){
+        public function domicilio_completo($codigo_postal, $colonia){
             $this->conexion_bd();
-            $consulta = "SELECT colonias.nomcolonia, municipios.nommunicipio, estados.nomestado  
-            FROM colonias, municipios, estados WHERE codpostal=:user 
-            and colonias.idmunicipio=municipios.idmunicipio and estados.idestado=municipios.idestado";
-            $parametros = [":user"=>$codigo_postal];
+            $consulta = "SELECT colonias.IdColonia, colonias.nomcolonia, municipios.nommunicipio, estados.nomestado  
+            FROM colonias, municipios, estados WHERE codpostal=:user
+            and colonias.idmunicipio=municipios.idmunicipio and estados.idestado=municipios.idestado and colonias.IdColonia=:colonia";
+            $parametros = [":user"=>$codigo_postal, ":colonia"=>$colonia];
             $datos = $this->mostrar($consulta,$parametros);
             $this->cerrar_conexion();
             return $datos;

@@ -34,10 +34,11 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $cedula1=$ced;
 
     $resultado1=$base->domicilio($idperso);
+    $colonia1=$resultado1[0]['IdColonia'];
     $codigo=$resultado1[0]['codpostal'];
     $codigoPostal=$codigo;
 
-    $resultado1_1=$base->domicilio_completo($codigoPostal);
+    $resultado1_1=$base->domicilio_completo($codigoPostal, $colonia1);
     $col=$resultado1_1[0]['nomcolonia'];
     $muni=$resultado1_1[0]['nommunicipio'];
     $esta=$resultado1_1[0]['nomestado'];
@@ -116,7 +117,6 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             botonEliminar.style.fontSize = "0.8rem"; // Ajustar el tamaño de fuente
             botonEliminar.style.padding = "6px 10px"; // Ajustar el relleno
             botonEliminar.setAttribute('onclick', 'confirmacion('+ id +')');
-            console.log(id);
             
             botonEliminar.appendChild(icono_eliminar);
 

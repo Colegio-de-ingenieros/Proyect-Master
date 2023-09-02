@@ -11,13 +11,14 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $idp=$resultado[0]['IdPerso'];
     $idPerso=$idp;
 
+    $colonia1=$_POST["coloniaPerso"];
     $calle=$_POST["callePerso"];
     $colonia_actual=$_POST["cpPerso"];
     $resultado1=$base->obtener_colonia($colonia_actual);
     $col=$resultado1[0]['IdColonia'];
     $coloni=$col;
 
-    $u=$base->nueva_colonia($idPerso, $coloni);
+    $u=$base->nueva_colonia($idPerso, $colonia1);
     $uu=$base->nueva_calle($idPerso, $calle);
         if($u==true and $uu==true){
             echo json_encode('exito');
