@@ -64,7 +64,7 @@
                 and empservicios.IdSer = servicios.IdSer
                 and servicios.IdSer = sertipo.IdSer
                 and sertipo.IdTipoSer = tiposervicios.IdTipoSer
-                and tiposervicios.TipoSer = 'Headhuntert'
+                and tiposervicios.TipoSer = 'Headhunter'
                 and usuaemp.RFCUsuaEmp = emparea.RFCUsuaEmp
                 and emparea.IdAreaEmp = areaempresa.IdAreaEmp
                 and areaempresa.IdAreaEmp = areaemptipo.IdAreaEmp
