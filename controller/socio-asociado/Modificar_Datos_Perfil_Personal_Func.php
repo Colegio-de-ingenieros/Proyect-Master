@@ -10,12 +10,53 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $resultado=$base->id($usuario);
     $idp=$resultado[0]['IdPerso'];
     $idPerso=$idp;
-    $resultado1=$base->obtener_empresa($idPerso);
-    $ide=$resultado1[0]['IdEmpPerso'];
-    $idEmpPerso=$ide;
     $check=$_POST["checkboxlaboraloculto"];
+    $resultado1=$base->obtener_empresa($idPerso);
+    
 
-    if ($check=="activado"){
+    if ($check=="activado" && $resultado1==false){
+        $idemp=$base->id_empresa();
+        $empresaLab=$_POST["nomEmpPerso"];
+        $puestoEmp=$_POST["puestoEmpPerso"];
+        $correoEmp=$_POST["correoEmpPerso"];
+        $extTelFEmp=$_POST["ExtTelFEmp"];
+        $telFEmp=$_POST["telFEmpPerso"];
+        $u=$base->inserta_empresa($idPerso, $idemp, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp);
+        if($u==true){
+            echo json_encode('exito1');
+            
+        }else{
+            echo json_encode('no exito');
+            
+        }
+    
+    }
+    else if ($check=="activado" && $resultado1==true){
+        $ide=$resultado1[0]['IdEmpPerso'];
+        $idEmpPerso=$ide;
+        $nomEmp=$_POST["nomEmpPerso"];
+        $puestoEmp=$_POST["puestoEmpPerso"];
+        $correoEmp=$_POST["correoEmpPerso"];
+        $telFEmp=$_POST["telFEmpPerso"];
+        $ExtTelFEmp=$_POST["ExtTelFEmp"];
+        $u=$base->datos_laborales($idEmpPerso, $nomEmp, $puestoEmp, $correoEmp, $telFEmp, $ExtTelFEmp);
+            if($u==true){
+                echo json_encode('exito');
+                
+            }else{
+                echo json_encode('no exito');
+                
+            }
+}
+}
+
+
+
+
+
+
+
+/*
         $idFunc=$base->id_funcion();
         $nomEmp=$_POST["nomEmpPerso"];
         $puestoEmp=$_POST["puestoEmpPerso"];
@@ -44,22 +85,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             
         }
     }else{
-        $idemp=$base->id_empresa();
-        $idFun=$base->id_funcion();
-        $empresaLab=$_POST["nomEmpPerso"];
-        $puestoEmp=$_POST["puestoEmpPerso"];
-        $correoEmp=$_POST["correoEmpPerso"];
-        $extTelFEmp=$_POST["ExtTelFEmp"];
-        $telFEmp=$_POST["telFEmpPerso"];
-        $funcionEmp=$_POST["funcionEmpPerso"];
-        $u=$base->inserta_empresa($idPerso, $idemp, $empresaLab, $puestoEmp, $correoEmp, $telFEmp, $extTelFEmp, $idFun, $funcionEmp);
-        if($u==true){
-            echo json_encode('exito');
-            
-        }else{
-            echo json_encode('no exito');
-            
-        }
+        
     }
-}
+}*/
 ?>

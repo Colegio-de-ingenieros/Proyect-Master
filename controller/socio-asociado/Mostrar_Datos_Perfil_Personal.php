@@ -252,7 +252,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }
 
             function confirmacion1(id){
-            if (confirm("¿Está seguro que desea eliminar esta función?")) {
+            if (confirm("¿Está seguro que desea eliminar esta función?" + id)) {
                 var idc = id.toString().padStart(6, '0');
                 
                 
@@ -300,6 +300,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     var pasantia = "<?php echo $pasantia ?>";
     var laborales = "<?php echo $llenarlab ?>";
     var colonia = "<?php echo $colonia ?>";
+    var id_lab = "<?php echo $idEmp ?>";
     document.getElementById("nomPerso").value = "<?php echo $nombre ?>";
     document.getElementById("apePPerso").value = "<?php echo $apellidoP ?>";
     document.getElementById("apeMPerso").value = "<?php echo $apellidoM ?>";
@@ -347,6 +348,34 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     }else{
         document.getElementById("checkboxlaboral").checked = false;
     }
+
+    var boton=document.getElementById("btn_eliminarlaborales");
+    boton.setAttribute('onclick', 'confirmacion2('+ id_lab +')');
+    console.log(id_lab);
+
+    function confirmacion2(id_lab){
+        if (confirm("¿Está seguro que desea eliminar sus datos laborales?" + id_lab)) {
+            var idc = id.toString().padStart(3, '0');
+            // Realizar la solicitud Ajax para eliminar el elemento
+            $.ajax({
+                //manda a llamar al php que tiene la logica para eliminar
+                url: '../../controller/socio-asociado/Eliminar_Datos_Lab_Perfil_Personal.php', 
+                type: 'GET', 
+                data: {idc: idc}, 
+                success: function (response)
+                {
+                    // Procesar la respuesta del servidor en caso de éxito
+                    
+                    alert(response);
+                    // volver a la pagina de vista
+                    location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
+                },
+            });
+
+
+        } else {
+        }
+        };
 
 
 </script>
