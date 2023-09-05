@@ -56,6 +56,18 @@ main{
     background: var(--color-red-2);
 }
 
+.btn-medium2{
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-radius: var(--radius-2);
+
+    padding: 10px 20px;
+    border: none;
+    background: var(--color-red-2);
+    color: var(--color-white);
+    transition: all 300ms;
+}
+
 .btn-small:hover {
     background:var(--color-red); /* Nuevo color de fondo cuando el mouse está sobre el botón */
 }

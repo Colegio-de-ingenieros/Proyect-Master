@@ -74,6 +74,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     if ($resultado3 == true) {
         $llenarcer = "si";
+        
         for ($i = 0; $i < count($resultado3); $i++) {
             $id_certificacion=$resultado3[$i]['IdCerExt'];
             $nombre_certificacion=$resultado3[$i]['NomCerExt'];
@@ -85,6 +86,12 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             llenartabla1();
             function llenartabla1() {
             var tbody = document.getElementById("body_tabla1");
+            var tabla = document.getElementById("tabla");
+            if (tabla.style.display === "none") {
+                tabla.style.display = "block"; // Cambia a "block" para mostrar
+            } else {
+                tabla.style.display = "none"; // Cambia a "none" para ocultar
+            }
             if ("<?php echo $llenarcer ?>" == "si"){
             var datos = [
             { nombre: "<?php echo $nombre_certificacion ?>", organizacion: "<?php echo $organizacion_certificacion ?>", emision: "<?php echo $inicio_certificacion ?>", vigencia: "<?php echo $fin_certificacion ?>" }
@@ -197,10 +204,17 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             $nombre_funcion=$resultado5[$i]['NomFuncion'];
             ?>
             <script languaje="javascript">
+                var tabla2 = document.getElementById("tabladatos");
+            
+            if (tabla2.style.display === "none") {
+                
+                tabla2.style.display = "block"; // Cambia a "block" para mostrar
+            }
 
             llenartabla2();
             function llenartabla2() {
             var tbody2 = document.getElementById("body_tabla2");
+            
             var id="<?php echo $id_funcion ?>"
             if ("<?php echo $llenarlab ?>" == "si"){
             var datos = [
@@ -269,6 +283,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     
         
     } else {
+        
         $llenarlab = "no";
         
     }
