@@ -396,7 +396,7 @@
 
         </div>
         <div class="boton">
-            <input type="submit" class="btn-medium1 btn" id="btn_generales5" value="Agregar certificación">
+            <input type="submit" class="btn-medium1 btn" id="btn_generales5" disabled value="Agregar"  >
         </div>
     </form>
 
@@ -493,7 +493,9 @@
                     title="La extensión solo puede contener números.">
                 </div>
             </div>
-
+            <div class="grupo-input2">
+                
+            </div>
 
             <div class="grupo-input">
                 <div class="label-form">
@@ -504,17 +506,37 @@
                     title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .).">
                 </div>
             </div>
-            <div class="grupo-input2">
-                
-            </div>
-            <div class="grupo-input2">
-                
-            </div>
             
             
             <div class="boton">
-                <input type="submit" class="btn-medium1 btn" id="btn_generales6" value="Agregar Función">
-            </div>  
+                <input type="submit" class="btn-medium1 btn" id="btn_generales6" value="Agregar">
+            </div> 
+            <div class="grupo-input2">
+                
+            </div>
+            <div class="grupo-input2">
+                
+            </div>
+            <div class="grupo-input2">
+                
+            </div>
+            <div class="grupo-input2">
+                
+            </div>
+
+
+            <div class="boton">
+                <input type="submit" class="btn-medium1 btn" id="btn_guardarlaborales" disabled value="Actualizar" >
+            </div> 
+            
+            
+            <div class="boton">
+                <input type="submit" class="btn-medium1 btn" id="btn_eliminarlaborales"  disabled value="Eliminar">
+            </div> 
+            
+            
+            
+            
         </form>
 
 
@@ -621,6 +643,7 @@
         input2.setAttribute('required', '');
         input3.setAttribute('required', '');
         input4.setAttribute('required', '');
+        btn_generales5.disabled = false
         } else {
             checkboxoculto.value = "desactivado";
         input1.disabled = true;
@@ -631,6 +654,11 @@
         input2.removeAttribute('required');
         input3.removeAttribute('required');
         input4.removeAttribute('required');
+        input1.value = "";
+        input2.value = "";
+        input3.value = "";
+        input4.value = "";
+        btn_generales5.disabled = true
         }
         });
 
@@ -659,6 +687,8 @@
         input7.setAttribute('required', '');
         input8.setAttribute('required', '');
         input10.setAttribute('required', '');
+        btn_eliminarlaborales.disabled = false
+        btn_guardarlaborales.disabled = false
         } else {
             checkboxoculto2.value = "desactivado";
         input5.disabled = true;
@@ -672,6 +702,8 @@
         input7.removeAttribute('required');
         input8.removeAttribute('required');
         input10.removeAttribute('required');
+        btn_eliminarlaborales.disabled = true
+        btn_guardarlaborales.disabled = true
         }
         });
 

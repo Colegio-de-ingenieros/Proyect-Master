@@ -5,6 +5,8 @@
 let estado = document.getElementById("estadoPerso");
 let ciudad = document.getElementById("ciudadPerso");
 
+
+
 document.getElementById("cpPerso").addEventListener('blur', (e) => {
     let contenido =  document.getElementById("cpPerso").value;
     
@@ -25,8 +27,15 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
                 rellenar_lista(data);
             }else{
                 alert("Codigo postal inválido");
+
                 estado.value = "";
                 ciudad.value = "";
+                document.getElementById("coloniaPerso").innerHTML = "";
+                var optionElement = document.createElement("option");
+                optionElement.value = "0";
+                optionElement.text = 'Seleccione su colonia';
+                document.getElementById("coloniaPerso").appendChild(optionElement);
+                
             }
             
         });
@@ -37,6 +46,7 @@ document.getElementById("cpPerso").addEventListener('blur', (e) => {
 function rellenar_lista(datos) {
     estado.value = "";
     ciudad.value = "";
+    
 
     document.getElementById("coloniaPerso").innerHTML = "";
     estado.value = datos[0][3]

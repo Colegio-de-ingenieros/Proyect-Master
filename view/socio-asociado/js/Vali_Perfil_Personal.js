@@ -5,6 +5,7 @@ let bandAP = true
 let bandAM = true
 let bandEmail = true
 let bandCedu = true
+let bandTelF = true
 let bandTelM = true
 
 let bandContraold = true
@@ -124,6 +125,31 @@ formulario.correoPerso.addEventListener('keyup', (e) => {
         bandEmail = true;
     }
     validar(bandEmail);
+});
+
+/* Input telefono fijo*/
+formulario.telFPerso.addEventListener('keyup', (e) => {
+	let valorInput = e.target.value;
+
+    if(valorInput !==""){
+        formulario.telFPerso.value = valorInput
+        // Eliminar espacios en blanco
+        .replace(/\s/g, '')
+        // Eliminar caracteres especiales
+        .replace(/[^0-9]/g, '')
+        // Eliminar el ultimo espaciado
+        .trim();
+    
+        if (!expresiones.telefono.test(valorInput)) {
+            formulario.telFPerso.style.border = "3px solid red";
+            bandTelF = false;
+        }else{
+            formulario.telFPerso.removeAttribute("style");
+            bandTelF = true;
+        }
+        validar(bandTelF);
+    }
+	
 });
 
 
