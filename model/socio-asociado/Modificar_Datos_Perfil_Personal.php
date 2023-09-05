@@ -146,8 +146,64 @@
 
             $a2 = [":idCert"=>$idcert, ":nomCert"=>$nomCert, ":orgCert"=>$orgCert, ":iniCert"=>$iniCert, ":finCert"=>$finCert];
 
-            $querry = [$q1, $q2];
-            $parametros = [$a1, $a2];
+            $querry = [$q2, $q1];
+            $parametros = [$a2, $a1];
+            //acomoda todo en arreglos para mandarlos al CRUD
+
+            $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
+            return $ejecucion;
+        }
+
+        public function id_empresa(){
+            $this->conexion_bd();
+
+            $sql = "SELECT MAX(CAST(IdEmpPerso AS INT)) FROM persoempfun";
+            $arreglo = $this->mostrar($sql);
+            $this->cerrar_conexion();
+        
+            $numero = "";
+            if(is_null($arreglo[0][0]) == 1){
+                $numero = 1;
+                
+            }else{
+                $numero = $arreglo[0][0];
+                $numero++;
+                
+            }
+
+            $idEmp = $this->agregar_ceros($numero, 4);
+        
+            return $idEmp;
+        }
+
+        public function inserta_empresa($idperso, $idemp, $nomEmp, $puestoEmp, $correoEmp, $telFEmp, $extTelEmp, $idFun, $nomFun){
+            $this->conexion_bd();
+            
+            $q0 = "INSERT INTO empresaperso (IdEmpPerso, NomEmpPerso, PuestoEmpPerso, CorreoEmpPerso, TelFEmpPerso, ExtenTelFEmpPerso)
+            VALUES(:idEmpre, :nombre, :puesto, :correo, :telFEmp, :extTelFEmp)";
+
+            $a0 = [":idEmpre"=>$idemp, ":nombre"=>$nomEmp, ":puesto"=>$puestoEmp, ":correo"=>$correoEmp, ":telFEmp"=>$telFEmp, ":extTelFEmp"=>$extTelEmp];
+
+            $q1 = "INSERT INTO usuapersoemp (IdPerso, IdEmpPerso) 
+            VALUES (:idPer, :idEmp)";
+
+            $a1 = [":idPer"=>$idperso, ":idEmp"=>$idemp];
+
+            //consultas para la tabla de usuaperso
+            $q2 = "INSERT INTO funciones (IdFuncion, NomFuncion) 
+            VALUES (:idFunc, :nomFunc)";
+
+            $a2 = [":idFunc"=>$idFun, ":nomFunc"=>$nomFun];
+
+            $q3 = "INSERT INTO persoempfun (IdEmpPerso, IdFuncion) 
+            VALUES (:idEmp, :idFunc)";
+
+            $a3 = [":idEmp"=>$idemp, ":idFunc"=>$idFun];
+
+            
+
+            $querry = [$q0, $q1, $q2, $q3];
+            $parametros = [$a0, $a1, $a2, $a3];
             //acomoda todo en arreglos para mandarlos al CRUD
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
@@ -214,8 +270,8 @@
 
             $a2 = [":idFunc"=>$idFunc, ":nomFunc"=>$nomFunc];
 
-            $querry = [$q1, $q2];
-            $parametros = [$a1, $a2];
+            $querry = [$q2, $q1];
+            $parametros = [$a2, $a1];
             //acomoda todo en arreglos para mandarlos al CRUD
 
             $ejecucion = $this->insertar_eliminar_actualizar($querry, $parametros);
@@ -248,6 +304,29 @@
     
             $consul=[$consulta1, $consulta];
             $para=[$parametros1, $parametros];
+    
+            $datos = $this->insertar_eliminar_actualizar($consul,$para);
+            $this->cerrar_conexion();
+            return $datos;
+        }
+
+        public function eliminar_empresa($idc, $ide){
+            $this->conexion_bd();
+
+            $consulta1 = "DELETE FROM usuapersoemp WHERE IdEmpPerso=:ide";
+            $parametros1 = [":ide"=>$ide];
+    
+            $consulta2 = "DELETE FROM empresaperso WHERE IdEmpPerso=:ide";
+            $parametros2 = [":ide"=>$ide];
+
+            $consulta3 = "DELETE FROM persoempfun WHERE IdFuncion=:idc";
+            $parametros3 = [":idc"=>$idc];
+    
+            $consulta4 = "DELETE FROM funciones WHERE IdFuncion=:idc";
+            $parametros4 = [":idc"=>$idc];
+    
+            $consul=[$consulta1, $consulta2, $consulta3, $consulta4];
+            $para=[$parametros1, $parametros2, $parametros3, $parametros4];
     
             $datos = $this->insertar_eliminar_actualizar($consul,$para);
             $this->cerrar_conexion();

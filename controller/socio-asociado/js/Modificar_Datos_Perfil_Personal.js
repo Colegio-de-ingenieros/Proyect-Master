@@ -4,6 +4,8 @@ let formulario2 = document.getElementById('formulario2');
 let formulario3 = document.getElementById('formulario3');
 let formulario4 = document.getElementById('formulario4');
 let formulario5 = document.getElementById('formulario5');
+let btn_guardarlaborales = document.getElementById("btn_guardarlaborales");
+let btn_generales6 = document.getElementById("btn_generales6");
 
 //responde cuando hay un click en el boton
 formulario.addEventListener('submit', function (e)
@@ -136,6 +138,61 @@ formulario4.addEventListener('submit', function (e)
 //responde cuando hay un click en el boton
 formulario5.addEventListener('submit', function (e)
 {
+    e.preventDefault();
+    var datos= new FormData(formulario5);
+    fetch('../../controller/socio-asociado/Modificar_Datos_Perfil_Personal_Func.php', {
+        method: 'POST',
+        body: datos
+    })
+
+    .then(res => res.json())
+    .then(data => {
+        if (data === 'exito') {
+            alert("Actualización exitosa");
+            location.href="../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php";
+        }
+        //los datos no pasaron alguna validacion
+        else if (data === 'no exito'){
+            alert("Hubo un error");
+        }else{
+            alert (data)
+        }
+    })
+})
+
+
+btn_generales6.addEventListener('submit', function (e)
+{
+    btn_guardarlaborales.disabled=true;
+    e.preventDefault();
+    var datos= new FormData(formulario5);
+    fetch('../../controller/socio-asociado/Modificar_Datos_Perfil_Personal_Func.php', {
+        method: 'POST',
+        body: datos
+    })
+
+    .then(res => res.json())
+    .then(data => {
+        if (data === 'exito') {
+            alert("Actualización exitosa");
+            location.href="../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php";
+        }
+        //los datos no pasaron alguna validacion
+        else if (data === 'no exito'){
+            alert("Hubo un error");
+        }else{
+            alert (data)
+        }
+    })
+})
+
+
+btn_guardarlaborales.addEventListener('submit', function (e)
+{
+    let funcion=document.getElementById("funcionEmpPerso");
+    btn_generales6.disabled=true;
+    funcion.disabled=true;
+    funcion.value="";
     e.preventDefault();
     var datos= new FormData(formulario5);
     fetch('../../controller/socio-asociado/Modificar_Datos_Perfil_Personal_Func.php', {

@@ -33,6 +33,12 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $pasantia=$pasan;
     $cedula1=$ced;
 
+    if ($cedula=="NULL"){
+        $cedula="";
+    }else{
+        $cedula;
+    }
+
     $resultado1=$base->domicilio($idperso);
     $colonia1=$resultado1[0]['IdColonia'];
     $codigo=$resultado1[0]['codpostal'];
@@ -316,6 +322,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         document.getElementById("pasantia2").checked = true;
     }
     if (laborales=="si"){
+        document.getElementById("checkboxlaboraloculto").value = "activado";
         document.getElementById("checkboxlaboral").checked = true;
         document.getElementById("nomEmpPerso").value = "<?php echo $nombreEmp ?>";
         document.getElementById("puestoEmpPerso").value = "<?php echo $puestoEmp ?>";

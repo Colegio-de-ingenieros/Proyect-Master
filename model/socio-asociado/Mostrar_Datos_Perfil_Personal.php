@@ -45,7 +45,8 @@
 
         public function certificaciones($id){
             $this->conexion_bd();
-            $consulta = "SELECT certexterna.IdCerExt, certexterna.NomCerExt, certexterna.OrgCerExt, certexterna.IniCerExt, certexterna.FinCerExt 
+            $consulta = "SELECT certexterna.IdCerExt, certexterna.NomCerExt, certexterna.OrgCerExt, DATE_FORMAT(IniCerExt, '%d/%m/%Y') IniCerExt, 
+            DATE_FORMAT(FinCerExt, '%d/%m/%Y') FinCerExt
             FROM certexterna, persocertexterna WHERE persocertexterna.IdCertExt=certexterna.IdCerExt and persocertexterna.IdPerso=:user";
             $parametros = [":user"=>$id];
             $datos = $this->mostrar($consulta,$parametros);
