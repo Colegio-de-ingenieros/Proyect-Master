@@ -86,11 +86,11 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             llenartabla1();
             function llenartabla1() {
             var tbody = document.getElementById("body_tabla1");
-            var tabla = document.getElementById("tabla");
+            var tabla = document.getElementById("tablacerti");
+            
             if (tabla.style.display === "none") {
+                
                 tabla.style.display = "block"; // Cambia a "block" para mostrar
-            } else {
-                tabla.style.display = "none"; // Cambia a "none" para ocultar
             }
             if ("<?php echo $llenarcer ?>" == "si"){
             var datos = [
