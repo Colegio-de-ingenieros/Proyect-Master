@@ -514,7 +514,7 @@ formulario5.telFEmpPerso.addEventListener('keyup', (e) => {
 });
 
 /* Input funcion empresa*/
-formulario5.funcionEmpPerso.addEventListener('keyup', (e) => {
+formulario7.funcionEmpPerso.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
     let laboral=document.getElementById('checkboxlaboral');
 
