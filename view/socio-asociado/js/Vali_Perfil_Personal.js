@@ -522,7 +522,7 @@ formulario7.funcionEmpPerso.addEventListener('keyup', (e) => {
     if(valorInput !="" && laboral.checked){
 
     
-	formulario5.funcionEmpPerso.value = valorInput
+	formulario7.funcionEmpPerso.value = valorInput
      // Eliminar caracteres especiales
      .replace(/[^a-zA-ZÁ-Ýá-ý0-9,.\s]/g, '');
 
@@ -530,7 +530,7 @@ formulario7.funcionEmpPerso.addEventListener('keyup', (e) => {
         formulario5.funcionEmpPerso.style.border = "3px solid red";
         bandFunciones = false;
 	}else{
-        formulario5.funcionEmpPerso.removeAttribute("style");
+        formulario7.funcionEmpPerso.removeAttribute("style");
         bandFunciones = true;
     }
     validar(bandFunciones);

@@ -367,6 +367,11 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                     // Procesar la respuesta del servidor en caso de éxito
                     
                     alert("Eliminado con éxito");
+                    document.getElementById("nomEmpPerso").value = "";
+                    document.getElementById("puestoEmpPerso").value = "";
+                    document.getElementById("correoEmpPerso").value = "";
+                    document.getElementById("telFEmpPerso").value = "";
+                    document.getElementById("ExtTelFEmp").value = "";
                     // volver a la pagina de vista
                     location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
                 },
