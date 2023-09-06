@@ -9,6 +9,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $salida = '';
     $base = new mostrarDatosPersonales();
 
+    $idEmp="";
     $resultado=$base->datos_personales($usuario);
     $idp=$resultado[0]['IdPerso'];
     $nombre_p=$resultado[0]['NomPerso'];
@@ -252,7 +253,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }
 
             function confirmacion1(id){
-            if (confirm("¿Está seguro que desea eliminar esta función?" + id)) {
+            if (confirm("¿Está seguro que desea eliminar esta función?")) {
                 var idc = id.toString().padStart(6, '0');
                 
                 
@@ -351,11 +352,10 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     var boton=document.getElementById("btn_eliminarlaborales");
     boton.setAttribute('onclick', 'confirmacion2('+ id_lab +')');
-    console.log(id_lab);
 
     function confirmacion2(id_lab){
-        if (confirm("¿Está seguro que desea eliminar sus datos laborales?" + id_lab)) {
-            var idc = id.toString().padStart(3, '0');
+        if (confirm("¿Está seguro que desea eliminar sus datos laborales?")) {
+            var idc = id_lab.toString().padStart(4, '0');
             // Realizar la solicitud Ajax para eliminar el elemento
             $.ajax({
                 //manda a llamar al php que tiene la logica para eliminar
@@ -366,7 +366,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 {
                     // Procesar la respuesta del servidor en caso de éxito
                     
-                    alert(response);
+                    alert("Eliminado con éxito");
                     // volver a la pagina de vista
                     location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
                 },

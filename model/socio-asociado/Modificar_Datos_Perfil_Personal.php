@@ -157,7 +157,7 @@
         public function id_empresa(){
             $this->conexion_bd();
 
-            $sql = "SELECT MAX(CAST(IdEmpPerso AS INT)) FROM persoempfun";
+            $sql = "SELECT MAX(CAST(IdEmpPerso AS INT)) FROM usuapersoemp";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
         
@@ -213,7 +213,7 @@
         public function id_funcion(){
             $this->conexion_bd();
 
-            $sql = "SELECT MAX(CAST(IdFuncion AS INT)) FROM persoempfun";
+            $sql = "SELECT MAX(CAST(IdFuncion AS INT)) FROM funciones";
             $arreglo = $this->mostrar($sql);
             $this->cerrar_conexion();
         
@@ -304,10 +304,10 @@
             $this->conexion_bd();
 
             $consulta1 = "DELETE FROM usuapersoemp WHERE IdEmpPerso=:idc";
-            $parametros1 = [":ide"=>$idc];
+            $parametros1 = [":idc"=>$idc];
     
             $consulta2 = "DELETE FROM empresaperso WHERE IdEmpPerso=:idc";
-            $parametros2 = [":ide"=>$idc];
+            $parametros2 = [":idc"=>$idc];
 
             $consulta3 = "DELETE FROM persoempfun WHERE IdEmpPerso=:idc";
             $parametros3 = [":idc"=>$idc];
