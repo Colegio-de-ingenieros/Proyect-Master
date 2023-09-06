@@ -346,46 +346,49 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         document.getElementById("correoEmpPerso").value = "<?php echo $correoEmp ?>";
         document.getElementById("telFEmpPerso").value = "<?php echo $telEmp ?>";
         document.getElementById("ExtTelFEmp").value = "<?php echo $extTelEmp ?>";
+        var boton=document.getElementById("btn_eliminarlaborales");
+        boton.setAttribute('onclick', 'confirmacion2('+ id_lab +')');
+        function confirmacion2(id_lab){
+            if (confirm("¿Está seguro que desea eliminar sus datos laborales?")) {
+                var idc = id_lab.toString().padStart(4, '0');
+                // Realizar la solicitud Ajax para eliminar el elemento
+                $.ajax({
+                    //manda a llamar al php que tiene la logica para eliminar
+                    url: '../../controller/socio-asociado/Eliminar_Datos_Lab_Perfil_Personal.php', 
+                    type: 'GET', 
+                    data: {idc: idc}, 
+                    success: function (response)
+                    {
+                        // Procesar la respuesta del servidor en caso de éxito
+                        
+                        alert("Eliminado con éxito");
+                        nombre=document.getElementById("nomEmpPerso");
+                        puesto=document.getElementById("puestoEmpPerso");
+                        correo=document.getElementById("correoEmpPerso");
+                        tel=document.getElementById("telFEmpPerso");
+                        ext=document.getElementById("ExtTelFEmp");
+                        nombre.value="";
+                        puesto.value="";
+                        correo.value="";
+                        tel.value="";
+                        ext.value="";
+                        // volver a la pagina de vista
+                        location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
+                    },
+                });
+
+
+            } else {
+            }
+            };
+
     }else{
         document.getElementById("checkboxlaboral").checked = false;
     }
 
-    var boton=document.getElementById("btn_eliminarlaborales");
-    boton.setAttribute('onclick', 'confirmacion2('+ id_lab +')');
+    
 
-    function confirmacion2(id_lab){
-        if (confirm("¿Está seguro que desea eliminar sus datos laborales?")) {
-            var idc = id_lab.toString().padStart(4, '0');
-            // Realizar la solicitud Ajax para eliminar el elemento
-            $.ajax({
-                //manda a llamar al php que tiene la logica para eliminar
-                url: '../../controller/socio-asociado/Eliminar_Datos_Lab_Perfil_Personal.php', 
-                type: 'GET', 
-                data: {idc: idc}, 
-                success: function (response)
-                {
-                    // Procesar la respuesta del servidor en caso de éxito
-                    
-                    alert("Eliminado con éxito");
-                    nombre=document.getElementById("nomEmpPerso");
-                    puesto=document.getElementById("puestoEmpPerso");
-                    correo=document.getElementById("correoEmpPerso");
-                    tel=document.getElementById("telFEmpPerso");
-                    ext=document.getElementById("ExtTelFEmp");
-                    nombre.value="";
-                    puesto.value="";
-                    correo.value="";
-                    tel.value="";
-                    ext.value="";
-                    // volver a la pagina de vista
-                    location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
-                },
-            });
-
-
-        } else {
-        }
-        };
+    
 
 
 </script>
