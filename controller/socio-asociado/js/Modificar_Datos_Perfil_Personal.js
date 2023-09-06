@@ -9,6 +9,8 @@ let formulario7 = document.getElementById('formulario7'); //Agregar funciones
 let btn_guardarlaborales = document.getElementById("btn_guardarlaborales");
 let btn_generales6 = document.getElementById("btn_generales6");
 
+
+
 //responde cuando hay un click en el boton
 formulario.addEventListener('submit', function (e)
 {
@@ -130,6 +132,8 @@ formulario4.addEventListener('submit', function (e)
         //los datos no pasaron alguna validacion
         else if (data === 'no exito'){
             alert("Hubo un error");
+        }else if (data === 'fecha'){
+            alert("La fecha de emisión tiene que ser menor que la fecha de vigencia");
         }else{
             alert (data)
         }

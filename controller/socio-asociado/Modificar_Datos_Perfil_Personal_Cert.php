@@ -18,14 +18,19 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         $orgCert=$_POST["orgCert"];
         $fechaICert=$_POST["fechaICert"];
         $fechaFCert=$_POST["fechaFCert"];
-        $u=$base->certificaciones($idPerso, $idCert, $certifi, $orgCert, $fechaICert, $fechaFCert);
-        if($u==true){
-            echo json_encode('exito');
-            
+        if ($fechaICert>$fechaFCert){
+            echo json_encode('fecha');
         }else{
-            echo json_encode('no exito');
-            
+            $u=$base->certificaciones($idPerso, $idCert, $certifi, $orgCert, $fechaICert, $fechaFCert);
+            if($u==true){
+                echo json_encode('exito');
+                
+            }else{
+                echo json_encode('no exito');
+                
+            }
         }
+        
     }
     
 }
