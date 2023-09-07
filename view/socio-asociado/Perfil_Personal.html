@@ -450,7 +450,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese la empresa donde labora" id="nomEmpPerso" name="nomEmpPerso"  maxlength="100"
-                    title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . ).">
+                    title="El nombre de la empresa puede contener letras mayúsculas, minúsculas, números y caracteres especiales ( . )." disabled>
                 </div>
             </div>
 
@@ -460,7 +460,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su puesto" id="puestoEmpPerso" name="puestoEmpPerso"  maxlength="50"
-                    title="El nombre de puesto puede contener letras mayúsculas y minúsculas">
+                    title="El nombre de puesto puede contener letras mayúsculas y minúsculas" disabled>
                 </div>
             </div>
 
@@ -470,7 +470,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su correo laboral" id="correoEmpPerso" name="correoEmpPerso"  maxlength="40"
-                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+                    title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @)." disabled>
                 </div>
             </div>
 
@@ -480,7 +480,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese el teléfono de oficina" id="telFEmpPerso" name="telFEmpPerso"  maxlength="10"
-                    title="El número de teléfono solo puede contener números.">
+                    title="El número de teléfono solo puede contener números." disabled>
                 </div>
             </div>
 
@@ -490,7 +490,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese la extensión" id="ExtTelFEmp" name="ExtTelFEmp"  maxlength="3"
-                    title="La extensión solo puede contener números.">
+                    title="La extensión solo puede contener números." disabled>
                 </div>
             </div>
             <div class="grupo-input2">
@@ -528,7 +528,7 @@
                 </div>
                 <div class="input-form">
                     <input type="text" class="input-format"placeholder="Ingrese su función" id="funcionEmpPerso" name="funcionEmpPerso"  maxlength="60"
-                    title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .).">
+                    title="El nombre de la función puede contener letras mayúsculas, minúsculas, números y caracteres especiales (',', .)." >
                 </div>
                 <br>
                 <br>
@@ -707,7 +707,7 @@
         input7.disabled = false;
         input8.disabled = false;
         input9.disabled = false;
-        input10.disabled = false;
+        
         input5.setAttribute('required', '');
         input6.setAttribute('required', '');
         input7.setAttribute('required', '');
@@ -715,6 +715,7 @@
         input10.setAttribute('required', '');
         btn_eliminarlaborales.disabled = false
         btn_guardarlaborales.disabled = false
+        
         } else {
             checkboxoculto2.value = "desactivado";
         input5.disabled = true;
@@ -722,7 +723,7 @@
         input7.disabled = true;
         input8.disabled = true;
         input9.disabled = true;
-        input10.disabled = true;
+        
         input5.removeAttribute('required');
         input6.removeAttribute('required');
         input7.removeAttribute('required');
@@ -730,6 +731,7 @@
         input10.removeAttribute('required');
         btn_eliminarlaborales.disabled = true
         btn_guardarlaborales.disabled = true
+        
         }
         });
 
