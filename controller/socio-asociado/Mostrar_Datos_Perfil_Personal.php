@@ -351,6 +351,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
 
     }else{
         document.getElementById("checkboxlaboral").checked = false;
+        var boton=document.getElementById("btn_eliminarlaborales");
+        boton.style.display= "none";
     }
 
     
