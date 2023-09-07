@@ -140,6 +140,47 @@ formulario4.addEventListener('submit', function (e)
     })
 })
 
+//responde cuando hay un click en el boton
+formulario6.addEventListener('submit', function (e)
+{
+    e.preventDefault();
+    if (confirm("¿Está seguro que desea eliminar sus datos laborales?")) {
+
+        var datos= new FormData(formulario6);
+        let campo = document.getElementById("idlaboral");
+        var idc= campo.value;
+        console.log(idc);
+        // Realizar la solicitud Ajax para eliminar el elemento
+        $.ajax({
+            //manda a llamar al php que tiene la logica para eliminar
+            url: '../../controller/socio-asociado/Eliminar_Datos_Lab_Perfil_Personal.php?idc='+idc, 
+            method: 'POST',
+            body: datos,
+            data: {idc: idc}, 
+            success: function (response)
+            {
+                // Procesar la respuesta del servidor en caso de éxito
+                alert("Eliminado con exito");
+                nombre=document.getElementById("nomEmpPerso");
+                puesto=document.getElementById("puestoEmpPerso");
+                correo=document.getElementById("correoEmpPerso");
+                tel=document.getElementById("telFEmpPerso");
+                ext=document.getElementById("ExtTelFEmp");
+                nombre.value="";
+                puesto.value="";
+                correo.value="";
+                tel.value="";
+                ext.value="";
+                // volver a la pagina de vista
+                location.href = '../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php';
+            },
+        });
+
+
+    } else {
+    }
+    })
+
 
 //responde cuando hay un click en el boton
 formulario5.addEventListener('submit', function (e)
@@ -168,6 +209,9 @@ formulario5.addEventListener('submit', function (e)
         }
     })
 })
+
+
+
 
 formulario7.addEventListener('submit', function (e)
 {
