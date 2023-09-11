@@ -312,8 +312,8 @@
             $consulta3 = "DELETE FROM persoempfun WHERE IdEmpPerso=:idc";
             $parametros3 = [":idc"=>$idc];
     
-            $consul=[$consulta1, $consulta2, $consulta3];
-            $para=[$parametros1, $parametros2, $parametros3];
+            $consul=[$consulta1, $consulta3, $consulta2];
+            $para=[$parametros1, $parametros3, $parametros2];
     
             $datos = $this->insertar_eliminar_actualizar($consul,$para);
             $this->cerrar_conexion();
