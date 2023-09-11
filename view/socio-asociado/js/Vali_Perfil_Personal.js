@@ -148,7 +148,14 @@ formulario.telFPerso.addEventListener('keyup', (e) => {
             bandTelF = true;
         }
         validar(bandTelF);
+    }  
+    if(valorInput == ""){
+        formulario.telFPerso.removeAttribute("style");
+        bandTelF = true;
+        validar(bandTelF);
+
     }
+    
 	
 });
 
@@ -222,7 +229,7 @@ formulario1.password_old.addEventListener('keyup', (e) => {
         formulario1.password_old.removeAttribute("style");
         bandContraold = true;
     }
-    validar(bandContraold);
+    validar2(bandContraold);
 });
 
 /* Input contraseña */
@@ -245,7 +252,7 @@ formulario1.password.addEventListener('keyup', (e) => {
         bandContra = true;
     }
     validarPassword2();
-    validar(bandContra);
+    validar2(bandContra);
 });
 
 /* password confirmacion*/
@@ -275,7 +282,7 @@ const validarPassword2 = () =>{
         password_confirmacion.removeAttribute("style");
         bandConfiContra = true
     }
-    validar(bandConfiContra);
+    validar2(bandConfiContra);
 }
 
 
@@ -551,6 +558,8 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.correoPerso.style.border = "3px solid red";
     }else if(bandTelM == false){
         formulario.telMPerso.style.border = "3px solid red";
+    }else if(bandTelF == false){
+            formulario.telMPerso.style.border = "3px solid red";
     }else{
         validar(true);
     }
@@ -577,10 +586,10 @@ boton_enviar.addEventListener("click",(e)=>{
     }else if(bandConfiContra == false){
         formulario1.password_confirmacion.style.border = "3px solid red";
     }else{
-        validar(true);
+        validar2(true);
     }
 });
-function validar(bandera1){
+function validar2(bandera1){
     const guardar2 = document.getElementById('btn_generales2');
 
     if(bandera1 == false){              
