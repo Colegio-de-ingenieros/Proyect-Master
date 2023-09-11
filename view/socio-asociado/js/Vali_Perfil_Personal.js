@@ -6,7 +6,7 @@ let bandAM = true
 let bandEmail = true
 let bandCedu = true
 let bandTelF = true
-let bandTelM = true
+let bandTelM = false
 
 let bandContraold = true
 let bandContra = true
@@ -559,7 +559,7 @@ boton_enviar.addEventListener("click",(e)=>{
     }else if(bandTelM == false){
         formulario.telMPerso.style.border = "3px solid red";
     }else if(bandTelF == false){
-            formulario.telMPerso.style.border = "3px solid red";
+            formulario.telFPerso.style.border = "3px solid red";
     }else{
         validar(true);
     }
