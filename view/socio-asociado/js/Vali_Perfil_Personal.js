@@ -556,8 +556,6 @@ boton_enviar.addEventListener("click",(e)=>{
         formulario.apePPerso.style.border = "3px solid red";
     }else if(bandEmail == false){
         formulario.correoPerso.style.border = "3px solid red";
-    }else if(bandTelM == false){
-        formulario.telMPerso.style.border = "3px solid red";
     }else if(bandTelF == false){
             formulario.telFPerso.style.border = "3px solid red";
     }else{
