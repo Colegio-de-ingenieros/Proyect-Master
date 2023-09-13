@@ -21,6 +21,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $inicio=$_POST["fechainicio"];
     $fin=$_POST["fechafin"];
     $archivo=$_FILES["archivo1"]["name"];
+    $estatus=0;
+    $comentarios="";
 
     if ($fin> $inicio){
 
@@ -53,7 +55,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
             }
         }
 
-        $u=$objeto->actualizar($id, $tipo1, $monto, $inicio, $fin);
+        $u=$objeto->actualizar($id, $tipo1, $monto, $inicio, $fin, $estatus, $comentarios);
 
         if ($u==true){
             echo json_encode('exito');

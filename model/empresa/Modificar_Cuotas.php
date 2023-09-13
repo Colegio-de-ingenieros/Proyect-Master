@@ -3,11 +3,12 @@
 
     class modificarCuotas extends Crud_bd{
 
-        public function actualizar($idV, $tipo, $monto, $inicio, $fin){
+        public function actualizar($idV, $tipo, $monto, $inicio, $fin, $sta, $com){
             $this->conexion_bd();
             
-            $consulta1 = "UPDATE vigenciacuotas SET MontoVigCuo=:monto, IniVigCuo=:inicio, FinVigCuo=:fin WHERE IdVigCuo=:idV";
-            $parametros1 = [":idV"=>$idV, ":monto"=>$monto, ":inicio"=>$inicio, ":fin"=>$fin];
+            $consulta1 = "UPDATE vigenciacuotas SET MontoVigCuo=:monto, IniVigCuo=:inicio, FinVigCuo=:fin, 
+            EstatusVigCuo=:sta, ComeVigCuo=:com WHERE IdVigCuo=:idV";
+            $parametros1 = [":idV"=>$idV, ":monto"=>$monto, ":inicio"=>$inicio, ":fin"=>$fin, ":sta"=>$sta, ":com"=>$com];
             
             $consulta = "UPDATE tipovigcuota SET IdCuota=:tipo WHERE IdVigCuo=:idV";
             $parametros = [":idV"=>$idV, ":tipo"=>$tipo];
