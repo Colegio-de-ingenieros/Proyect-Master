@@ -15,6 +15,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
     $organizacion=$_POST["organizacion"];
     $horas=$_POST["totalhoras"];
     $archivo=$_FILES["archivo1"]["name"];
+    $estatus=0;
+    $comentarios="";
     
 
     $new_name_file=null;
@@ -36,7 +38,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         
     }
 
-    $u=$objeto->actualizar($id, $nombre, $horas, $organizacion);
+    $u=$objeto->actualizar($id, $nombre, $horas, $organizacion, $estatus, $comentarios);
 
     if ($u==true){
         echo json_encode('exito');

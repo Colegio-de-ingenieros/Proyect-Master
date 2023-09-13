@@ -28,6 +28,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                         <th>Organización</th>
                         <th>Total de horas</th>
                         <th>Comprobante</th>
+                        <th>Estatus</th>
+                        <th>Comentarios</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -40,6 +42,19 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $nombre = $resultado[$i]["NomCurPerso"];
                 $orga = $resultado[$i]["OrgCurPerso"];
                 $hrs = $resultado[$i]["HraCurPerso"];
+                $sta = $cursos[$i]["EstatusCurPerso"];
+                $com = $cursos[$i]["ComeCurPerso"];
+
+                if ($sta==0){
+                    $estatus='En espera';
+                    $comentario='Sin comentarios';
+                }else if ($sta==1){
+                    $estatus='Aprobado';
+                    $comentario='Sin comentarios';
+                }else if ($sta==2){
+                    $estatus='Rechazado';
+                    $comentario=$com;
+                }
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
@@ -47,6 +62,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/socio-asociado/cursos/'.$idc.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus . '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
@@ -70,7 +87,9 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                         <th>Nombre</th>
                         <th>Organización</th>
                         <th>Total de horas</th>
-                        <th>Comprobante</th>   
+                        <th>Comprobante</th>  
+                        <th>Estatus</th>
+                        <th>Comentarios</th> 
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -83,6 +102,19 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $nombre = $cursos[$i]["NomCurPerso"];
                 $orga = $cursos[$i]["OrgCurPerso"];
                 $hrs = $cursos[$i]["HraCurPerso"];
+                $sta = $cursos[$i]["EstatusCurPerso"];
+                $com = $cursos[$i]["ComeCurPerso"];
+
+                if ($sta==0){
+                    $estatus='En espera';
+                    $comentario='Sin comentarios';
+                }else if ($sta==1){
+                    $estatus='Aprobado';
+                    $comentario='Sin comentarios';
+                }else if ($sta==2){
+                    $estatus='Rechazado';
+                    $comentario=$com;
+                }
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
@@ -90,6 +122,8 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
                 $salida .= '<td>' . $orga . '</td>';
                 $salida .= '<td>' . $hrs . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/socio-asociado/cursos/'.$idc.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus . '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cursos.php?idc='.$idc.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idc . '">Eliminar</a>
