@@ -25,6 +25,8 @@ if (isset ($_SESSION['usuario']  )){
                         <th>Fecha de finalización</th>
                         <th>Monto</th>
                         <th>Comprobante</th>
+                        <th>Estatus</th>
+                        <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -38,8 +40,20 @@ if (isset ($_SESSION['usuario']  )){
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
                 $fecha_fin = $resultado[$i]["FinVigCuo"];
+                $estatus = $resultado[$i]["EstatusVigCuo"];
+                $comentario = $resultado[$i]["ComeVigCuo"];
                 
-
+                if ($estatus == 0) {
+                    $estatus = "En espera";
+                    $comentario = "Sin comentario";
+                } else if  ($estatus == 1){
+                    $estatus = "Aprobado";
+                    $comentario = "Sin comentario";
+                }
+                else {
+                    $estatus = "Rechazado";
+                    $comentario = $cuotas[$i]["ComeVigCuo"];
+                }
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
                 $salida .= '<td>' . $tipo . '</td>';
@@ -47,6 +61,8 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/empresa/cuotas/'.$idV.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus. '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
@@ -72,6 +88,8 @@ if (isset ($_SESSION['usuario']  )){
                         <th>Fecha de finalización</th>
                         <th>Monto</th>
                         <th>Comprobante</th>
+                        <th>Estatus</th>
+                        <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -85,8 +103,20 @@ if (isset ($_SESSION['usuario']  )){
                 $tipo = $cuotas[$i]["TipoCuota"];
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
                 $fecha_fin = $cuotas[$i]["FinVigCuo"];
+                $estatus = $cuotas[$i]["EstatusVigCuo"];
+                $comentario = $cuotas[$i]["ComeVigCuo"];
                 
-
+                if ($estatus == 0) {
+                    $estatus = "En espera";
+                    $comentario = "Sin comentario";
+                } else if  ($estatus == 1){
+                    $estatus = "Aprobado";
+                    $comentario = "Sin comentario";
+                }
+                else {
+                    $estatus = "Rechazado";
+                    $comentario = $cuotas[$i]["ComeVigCuo"];
+                }
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
                 $salida .= '<td>' . $tipo . '</td>';
@@ -94,6 +124,8 @@ if (isset ($_SESSION['usuario']  )){
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/empresa/cuotas/'.$idV.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus. '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/empresa/Get_Cuotas.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
