@@ -29,6 +29,8 @@ session_start();
                         <th>Fecha de finalización</th>
                         <th>Monto</th>
                         <th>Comprobante</th>
+                        <th>Estatus</th>
+                        <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -42,7 +44,19 @@ session_start();
                 $tipo = $resultado[$i]["TipoCuota"];
                 $fecha_inicio = $resultado[$i]["IniVigCuo"];
                 $fecha_fin = $resultado[$i]["FinVigCuo"];
-                
+                $estatus = $resultado[$i]["EstatusVigCuo"];
+                $comentario = $resultado[$i]["ComeVigCuo"];
+                if ($estatus == 0) {
+                    $estatus = "En espera";
+                    $comentario = "Sin comentario";
+                } else if  ($estatus == 1){
+                    $estatus = "Aprobado";
+                    $comentario = "Sin comentario";
+                }
+                else {
+                    $estatus = "Rechazado";
+                    $comentario = $cuotas[$i]["ComeVigCuo"];
+                }
 
                 //escribe los valores en la tabla
                 $salida .= '<tr>';
@@ -51,6 +65,8 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a href="../../controller/Comprobantes/socio-asociado/cuotas/'.$idV.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus. '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>
@@ -76,6 +92,8 @@ session_start();
                         <th>Fecha de finalización</th>
                         <th>Monto</th>
                         <th>Comprobante</th>
+                        <th>Estatus</th>
+                        <th>Comentario</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -89,6 +107,20 @@ session_start();
                 $fecha_inicio = $cuotas[$i]["IniVigCuo"];
                 $fecha_fin = $cuotas[$i]["FinVigCuo"];
                 $monto = $cuotas[$i]["MontoVigCuo"];
+                $estatus = $cuotas[$i]["EstatusVigCuo"];
+                $comentario = $cuotas[$i]["ComeVigCuo"];
+
+                if ($estatus == 0) {
+                    $estatus = "En espera";
+                    $comentario = "Sin comentario";
+                } else if  ($estatus == 1){
+                    $estatus = "Aprobado";
+                    $comentario = "Sin comentario";
+                }
+                else {
+                    $estatus = "Rechazado";
+                    $comentario = $cuotas[$i]["ComeVigCuo"];
+                }
                 
 
                 //escribe los valores en la tabla
@@ -98,6 +130,8 @@ session_start();
                 $salida .= '<td>' . $fecha_fin . '</td>';
                 $salida .= '<td>' . $monto . '</td>';
                 $salida .= '<td> <a target="_blank" href="../../controller/Comprobantes/socio-asociado/cuotas/'.$idV.'">Abrir archivo</a></td>';
+                $salida .= '<td>' . $estatus . '</td>';
+                $salida .= '<td>' . $comentario . '</td>';
                 $salida .= '<td> 
                 <a href="../../controller/socio-asociado/Get_Cuotas.php?idV='.$idV.'">Modificar</a>&nbsp;&nbsp;&nbsp
                 <a href="#" class="table_item__link eliminar-elemento" data-idc="' . $idV . '">Eliminar</a>

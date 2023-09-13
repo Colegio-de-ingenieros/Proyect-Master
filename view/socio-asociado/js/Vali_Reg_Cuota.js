@@ -170,12 +170,12 @@ function validarArchivo(input) {
     var archivo = input.files[0];
     var maxSize = 3 * 1024 * 1024; // 3MB
     var ext = input.value.split('.').pop().toLowerCase();
+    console.log(ext);
     if (archivo && archivo.size > maxSize) {
       alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
       input.value = ""; // Limpia el valor del campo de archivo
     }
-   
-     else if (ext !== "pdf" || ext !== "PDF") {
+    else if (ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
     } else {
