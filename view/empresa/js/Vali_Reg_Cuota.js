@@ -170,9 +170,16 @@ boton_enviar.addEventListener("click",(e)=>{
 function validarArchivo(input) {
     var archivo = input.files[0];
     var maxSize = 3 * 1024 * 1024; // 3MB
-    
+    var ext = input.value.split('.').pop().toLowerCase();
     if (archivo && archivo.size > maxSize) {
       alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
       input.value = ""; // Limpia el valor del campo de archivo
+    }
+    else if (ext !== "pdf" || ext !== "PDF") {
+        alert("Extensión no permitida: " + ext);
+        input.value = ""; // Limpia el valor del campo de archivo
+    } else {
+        // El archivo es válido, no se muestra ninguna alerta
+        $("#modal-gral").hide();
     }
   }
