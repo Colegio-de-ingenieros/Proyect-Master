@@ -178,8 +178,5 @@ function validarArchivo(input) {
     else if (ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
-    } else {
-        // El archivo es válido, no se muestra ninguna alerta
-        $("#modal-gral").hide();
-    }
+    } 
   }
