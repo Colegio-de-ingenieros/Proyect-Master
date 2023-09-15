@@ -175,7 +175,7 @@ formulario.caja_telefono.addEventListener('keyup', (e) => {
 	// Eliminar el ultimo espaciado
 	.trim();
 
-    if (!expresiones.telefono.test(valorInput)) {
+    if (!expresiones.telefono.test(valorInput) || valorInput.length != 10) {
         caja_telefono.style.border = "3px solid red";
         bandTel = false
 	}else{
