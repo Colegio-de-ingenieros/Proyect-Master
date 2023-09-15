@@ -7,7 +7,6 @@ window.onload = function () {
 function obtener_URL(){
     let urlAct = window.location+''
     let split = urlAct.split("=");
-    console.log(split[1], split[2]);
     return split
 }
 
@@ -91,44 +90,6 @@ function rellenar_datos(datos) {
         } 
     }
     valueHidden = 0; 
-}
-
-function rellenar_tablaExtra(){
-    split=obtener_URL()
-    let idAct=split[2]
-
-    const tabla = document.querySelector('#cuerpo'); 
-
-    let url = "../../controller/administrativo/Mostrar_Actividad_Tabla.php";
-    let form = new FormData();
-    form.append("idAct", idAct);
-    fetch(url, {
-    method: "POST",
-    body: form
-    })
-    .then(respuesta => respuesta.json()) 
-    .then(resultado =>{ 
-        console.log('tabla')
-        console.log(resultado)
-        for (var i = 0; i < resultado[0].length; i++) {
-
-            dato=resultado[0][i]
-            console.log("DATO", dato)
-            tabla.innerHTML += 
-            ` <tr> 
-                <td>${resultado[1][i]}</td> 
-                <td>${resultado[2][i]}</td> 
-                <td>${resultado[3][i]}</td> 
-                <td>${resultado[4][i]}</td> 
-                <td>${resultado[5][i]}</td> 
-                <td>${resultado[6][i]}</td> 
-                <td>${resultado[7][i]}</td> 
-                <td><a href="../../view/administrativo/Vista_Certificaciones.html">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <a  href="<script src="../../controller/administrativo/js/Eliminar_Participante_Confirmacion.js"></script> ">Eliminar</a></td></td> 
-            </tr> 
-            ` 
-        }
-    }) 
 }
 
 function rellenar_tabla(){

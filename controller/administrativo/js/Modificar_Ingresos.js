@@ -32,7 +32,6 @@ function obtener_Datos(){
 //responde cuando hay un click en el boton actualizar
 formulario_Ingresos.addEventListener('submit', function (e){
     e.preventDefault();
-    console.log("aqui andamosb")
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var participante = split[1];
@@ -60,7 +59,6 @@ formulario_Ingresos.addEventListener('submit', function (e){
 //responde cuando hay un click en el boton cancelar
 formulario_Ingresos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
-    console.log("auchIngresos")
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var participante = split[1];

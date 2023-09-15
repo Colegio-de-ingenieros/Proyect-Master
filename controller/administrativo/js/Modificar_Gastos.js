@@ -69,7 +69,6 @@ formulario_Gastos.addEventListener('submit', function (e){
 //responde cuando hay un click en el boton cancelar
 formulario_Gastos.cancelar.addEventListener('click', function (e){
     e.preventDefault();
-    console.log("auch")
     let urlAct = window.location+''
     let split = urlAct.split("=");
     var participante = split[1];
