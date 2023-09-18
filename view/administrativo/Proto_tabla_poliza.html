@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabla con estructura personalizada</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Tabla </h2>
+
+<table>
+  <tr>
+    <th colspan="4">Título de la sección</th>
+    <th>Fecha</th>
+    <th>Número de folio</th>
+    
+  </tr>
+  <tr>
+    <th>Cuenta</th>
+    <th>Subcuenta</th>
+    <th>Concepto</th>
+    <th>Parcial</th>
+    <th>Debe</th>
+    <th>Haber</th>
+  </tr>
+  <!-- Filas de datos -->
+  <tr>
+    <td>Dato 1</td>
+    <td>Dato 2</td>
+    <td>Dato 3</td>
+    <td>Dato 4</td>
+    <td>Dato 5</td>
+    <td>Dato 6</td>
+  </tr>
+  <!-- Agrega más filas de datos según sea necesario -->
+  
+  <!-- Subtotal y total -->
+  <tr>
+    <td colspan="4"></td>
+    <td>Subtotal</td>
+    <td>Total</td>
+    
+  </tr>
+</table>
+
+</body>
+</html>

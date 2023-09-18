@@ -347,6 +347,13 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         document.getElementById("telFEmpPerso").value = "<?php echo $telEmp ?>";
         document.getElementById("ExtTelFEmp").value = "<?php echo $extTelEmp ?>";
         document.getElementById("idlaboral").value = "<?php echo $idEmp ?>";
+
+        document.getElementById("nomEmpPerso").disabled = false;
+        document.getElementById("puestoEmpPerso").disabled = false;
+        document.getElementById("correoEmpPerso").disabled = false;
+        document.getElementById("telFEmpPerso").disabled = false;
+        document.getElementById("ExtTelFEmp").disabled = false;
+        document.getElementById("idlaboral").disabled = false;
         
 
     }else{
