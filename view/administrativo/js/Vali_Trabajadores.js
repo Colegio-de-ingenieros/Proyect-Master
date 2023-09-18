@@ -175,9 +175,10 @@ formulario.caja_telefono.addEventListener('keyup', (e) => {
 	// Eliminar el ultimo espaciado
 	.trim();
 
-    if (!expresiones.telefono.test(valorInput)) {
+    if (!expresiones.telefono.test(valorInput) && valorInput.length != 10) {
         caja_telefono.style.border = "3px solid red";
         bandTel = false
+        console.log("tel no valido")
 	}else{
         caja_telefono.removeAttribute("style");
         bandTel = true
@@ -242,14 +243,14 @@ const validarPassword2 = () =>{
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
-    if(bandera == false && bRFC == false){        
+    if(bandera == false && bRFC == false && bandTel == false){        
         //guardar.style.border = "3px solid red";
       
         guardar.disabled=true;
 
         
     }
-    else if (bandera == true && bRFC == true){
+    else if (bandera == true && bRFC == true && bandTel == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
 
