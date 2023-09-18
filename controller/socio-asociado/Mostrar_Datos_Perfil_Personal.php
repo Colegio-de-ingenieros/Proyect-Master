@@ -354,6 +354,7 @@ if (isset ($_SESSION['usuario']  )&& isset($_SESSION['tipo_usuario'])){
         document.getElementById("telFEmpPerso").disabled = false;
         document.getElementById("ExtTelFEmp").disabled = false;
         document.getElementById("idlaboral").disabled = false;
+        document.getElementById('checkboxlaboral').disabled = true;
         
 
     }else{
