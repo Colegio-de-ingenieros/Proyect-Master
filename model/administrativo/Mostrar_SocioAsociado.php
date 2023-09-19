@@ -1,5 +1,5 @@
 <?php
-include('../../config/Crud_bd.php'); 
+include_once('../../config/Crud_bd.php'); 
 
 class MostrarSocioAsociado{
     private $base;
