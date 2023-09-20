@@ -179,44 +179,58 @@
   <main>
     <section class="section-main">
         <div class="cabezera">
-            <h4 class="h4">Registro general</h4>
-          </div>
-          <br>
-          <p class="subtitulo-1"> Tipo de póliza</p>
-          <hr>
+            <h4 class="h4">Datos generales</h4>
         </div>
+        <hr>
 
         <form class="formulario-de-datos" id="formulario">
-            <div class="grupo-input-vista">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_cursos" value="curso">
-                Ingreso
+            <div class="input-form">
+                <div class="label-form">
+                    <p class="label-2">Tipo de póliza</p>
+                </div>
+
+                <select type="text" class="input-format-2"  id="accion" name="accion">
+                    <option value="P1">Ingresos</option>
+                    <option value="P2">Egresos</option>
+                </select>
             </div>
 
-            <div class="grupo-input">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_proyecto"
-                value="proyecto">
-                Egreso
+            <div class="input-form">
+                <div class="label-form">
+                    <p class="label-2">Usuario</p>
+                </div>
+
+                <select type="text" class="input-format-2"  id="accion" name="accion">
+                </select>
             </div>
 
-            <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Usuario</p>
-                <hr>
+            <div class="input-form">
+                <div class="label-form">
+                    <p class="label-2">Nombre del usuario</p>
+                </div>
+
+                <select type="text" class="input-format-2"  id="accion" name="accion">
+                </select>
             </div>
 
             <div class="grupo-input4">
                 <div class="input-form">
                     <div class="label-form">
-                        <p class="label-2">Tipo</p>
+                        <p class="label-2">Servicio</p>
                     </div>
 
                     <select type="text" class="input-format-2"  id="accion" name="accion">
+                        <option value="S1">Curso</option>
+                        <option value="S2">Certificación</option>
+                        <option value="S3">Consultoría</option>
+                        <option value="S4">Membresía</option>
+                        <option value="S5">Headhunter</option>
                     </select>
                 </div>
 
                 <div class="input-form">
                     <div class="label-form">
-                        <p class="label-2">Nombre</p>
+                        <p class="label-2">Nombre del servicio</p>
                     </div>
 
                     <select type="text" class="input-format-2"  id="accion" name="accion">
@@ -225,38 +239,6 @@
             </div>
 
             <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Servicio</p>
-                <hr>
-            </div>
-
-            <div class="grupo-input4">
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Tipo</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Nombre</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-            </div>
-
-            <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Información adicional</p>
-                <hr>
-            </div>
-
-            <div class="grupo-input2">
                 <div class="input-form">
                     <div class="label-form">
                         <p class="label-2">Concepto general</p>
