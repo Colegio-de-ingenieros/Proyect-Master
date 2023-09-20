@@ -1,57 +1,350 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-  <title>Tabla con estructura personalizada</title>
-  <style>
-    table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    th, td {
-      border: 1px solid black;
-      padding: 10px;
-      text-align: left;
-    }
-  </style>
-</head>
-<body>
-
-<h2>Tabla </h2>
-
-<table>
-  <tr>
-    <th colspan="4">Título de la sección</th>
-    <th>Fecha</th>
-    <th>Número de folio</th>
-    
-  </tr>
-  <tr>
-    <th>Cuenta</th>
-    <th>Subcuenta</th>
-    <th>Concepto</th>
-    <th>Parcial</th>
-    <th>Debe</th>
-    <th>Haber</th>
-  </tr>
-  <!-- Filas de datos -->
-  <tr>
-    <td>Dato 1</td>
-    <td>Dato 2</td>
-    <td>Dato 3</td>
-    <td>Dato 4</td>
-    <td>Dato 5</td>
-    <td>Dato 6</td>
-  </tr>
-  <!-- Agrega más filas de datos según sea necesario -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de pólizas</title>
+  <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../../public/css/style.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
+  <link rel="stylesheet" href="../../public/css/administrativo/Proto_tabla_poliza.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   
-  <!-- Subtotal y total -->
-  <tr>
-    <td colspan="4"></td>
-    <td>Subtotal</td>
-    <td>Total</td>
-    
-  </tr>
-</table>
+</head>
 
+<body>
+  <header>
+    <div class="header_superior">
+      <div class="titulo">
+
+        <div class="nombre_ventana">
+          <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
+          <h1 class="nombre_Ventana">Pólizas</h1>
+        </div>
+
+      </div>
+
+      <div class="boton-cerrar-session">
+        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>      </div>
+    </div>
+
+    <!-- Menu Desplegable -->
+    <div class="container_menu">
+      <div class="menu">
+        <input type="checkbox" id="check__menu">
+        <label id="label__check" for="check__menu">
+          <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
+        </label>
+        <nav>
+          <ul>
+
+            <li>
+              <a href="#">
+                <i class="fa-regular fa-user"></i>
+                Usuarios
+              </a>
+
+              <ul>
+                <li><a id="menuProducto1" href="../administrativo/Vista_Usuarios.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-tie"></i>
+                Trabajadores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Trabajadores.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Trabajadores.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-circle-check"></i>
+                Certificaciones
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Certificaciones.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Certificaciones.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Cursos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-clipboard-list"></i>
+                Proyectos
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Proyectos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Proyectos.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-person-chalkboard"></i>
+                Instructores
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-chart-column"></i>
+                Seguimiento
+              </a>
+        
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file"></i>
+                Pólizas
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-file-lines"></i>
+                Reportes
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_ReporteIn.html">Individual</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-user-gear"></i>
+                Servicios
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_Servicios.html">Mostrar</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="#">
+                <i class="fa-solid fa-briefcase"></i>
+                Bolsa de trabajo
+              </a>
+
+              <ul>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header> 
+
+  <main>
+    <section class="section-main"> 
+      <div class="cabezera">
+        <h4 class="h4">Registro</h4>
+    </div>
+    <br>
+    <p class="subtitulo-1">Concepto</p>
+    <hr> 
+    <form action="" id="formulario">  
+        <div class="contenedor-formulario">
+            
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Descripción*</p>
+              </div>
+              <div class="input-form">
+                <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
+              </div>
+            </div>
+
+            <div class="grupo-input">
+              <div class="label-form">
+                  <p class="label-2">Tipo*</p>
+              </div>
+              <div class="input-form">
+                  <select type="text" class="input-format-2"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                  <option value="" selected disabled>Seleccione un tipo</option>
+                  <option value="1">Debe</option>
+                  <option value="2">Haber</option>
+                  
+                  </select>
+              </div>
+          </div>
+          
+        
+            <div class="grupo-input">
+              <div class="label-form">
+                <p class="label-2">Monto*</p>
+              </div>
+              <div class="input-form">
+                <input type="text" class="input-format-2" name="apellido_m"  id="materno" maxlength="20"
+                  placeholder="Ingrese el monto" title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+              </div>
+            </div>
+            
+             
+           
+        </div> 
+        <br>
+        <p class="subtitulo-1">Evidencia</p>
+        <hr> 
+        <div class="contenedor-formulario">
+          
+           
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Descripción*</p>
+            </div>
+            <div class="input-form">
+              <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
+            </div>
+          </div> 
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Comprobante*</p>
+            </div>
+            <div class="input-form">
+              <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
+          required title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"></input>
+            </div>
+          </div> 
+      </div> 
+        <br> 
+
+        
+        </div>
+        <div class="aqui">
+          <button class="btn-mediu btn" type="submit" id="btn_agregar_certi">Añadir</button> 
+        </div>
+      </form>
+        
+        <br>
+        <br>
+        <br>
+      
+            <div class="conteTabla" >
+                <div class="article-tablas" >
+                    <article>          
+                      <div class="tablas">
+                        <section class="header_table" id="contenedor_tabla" >
+                            <table id="tabla">
+                              <thead>
+                                <tr>
+                                  <th colspan="1">Fecha</th>
+                                  <td colspan="6">DD/MM/AAAA</td>
+                                  <th colspan="1">Número de folio</th>
+                                  <td colspan="3">000000</td>
+                                  
+                                </tr>
+                                <tr>
+                                  <th colspan="1" >Concepto general</th>
+                                  <td colspan="9" class="justify-text" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius culpa velit qui consequatur optio architecto. Quis, voluptate libero totam nihil omnis autem amet, fugit reprehenderit alias ad aut rerum voluptates.
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate earum reiciendis sed velit asperiores architecto consectetur consequuntur unde minus? Aperiam tenetur hic magni nemo fugiat quibusdam veniam nesciunt, repellat placeat.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique veniam blanditiis ab nemo porro rem facilis dicta tempore, aliquid alias consequatur quasi doloremque explicabo voluptates iure sequi rerum exercitationem iusto.
+                                  </td>
+                                  
+                                  
+                                </tr>
+                              </thead>
+          
+                              <tbody id="body_tabla" >
+                                <tr>
+                                  <th colspan="5">Concepto</th>
+                                  <th colspan="1">Debe</th>
+                                  <th colspan="1">Haber</th>
+                                  <th>Descripcion del documento</th>
+                                  <th>Comprobante</th>
+                                  <th>Acción</th>
+                                </tr>
+                                <!-- Filas de datos -->
+                                <tr>
+                                  <td colspan="5" class="justify-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error non magnam nesciunt unde doloribus, nisi rerum quas ratione laboriosam iste odio numquam rem illum vel ipsa aliquid provident in repudiandae!</td>
+                                  <td>$00000000</td>
+                                  <td>$00000000</td>
+                                  <td class="justify-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam doloribus neque in aspernatur incidunt suscipit mollitia ducimus quis optio commodi dolor natus sed repellat explicabo aliquam dolorem magni, ipsum similique?</td>
+                                  <td>document.pdf</td>
+                                  <td><button class="btn btn-small btn-danger ti ti-backspace-filled" id="boton_registro" type="button"></button></td>
+                                  
+                                </tr>
+                                <!-- Agrega más filas de datos según sea necesario -->
+                                
+                                <!-- Subtotal y total -->
+                                <tr>
+                                  <th colspan="5" class="right-text">Sumas iguales</th>
+                                  <td class="right-text">$00000000</td>
+                                  <td class="right-text">$00000000</td>
+                                  <th></th>
+                                  <th></th>
+                                  <th></th>
+                                  
+                                  
+                                </tr>
+                  
+                                <tr>
+                                  
+                                  <th colspan="5" class="right-text">Realizó</th>
+                                  <td colspan="6" class="left-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                  
+                                </tr>
+                              </tbody>
+                            </table>
+                            
+                        </section>
+                      </div>
+                    </article>
+                </div>
+            </div> 
+            <br>
+            <br>
+            <br>
+            <div class="botones_registrar">
+                <button class="btn-medium btn" id="boton_registro" type="button">Registrar</button>
+            </div>
+            <br>
+            <br>
+            <br>
+        
+    </section>
+  </main> 
+ 
 </body>
+
 </html>
