@@ -517,7 +517,12 @@ table{
   top: 0;
   background-color: #085262;
   color: #e6e7e8;
-  font-size: 1.125rem;
+  
+}
+.titulo-text{
+  font-weight: bold;
+ 
+  font-size: 24px;
 }
 td {
   max-width: 150px;
@@ -537,6 +542,7 @@ td input {
   border: 1px solid #ccc; /* Establece un borde */
   box-sizing: border-box; /* Asegura que el tamaño incluye el relleno y el borde */
 }
+
 th {
   max-width: 150px;
   border-bottom: 1px solid #000000;
@@ -548,6 +554,9 @@ th {
   white-space: normal;
   background-color: --color-placeholder-2;
 }
+
+
+
 .justify-text {
   text-align: justify;
 }
