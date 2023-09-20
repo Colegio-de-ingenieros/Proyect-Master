@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de instructores</title>
+  <title>Registro de pólizas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
@@ -22,7 +22,7 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Instructores</h1>
+          <h1 class="nombre_Ventana">Pólizas</h1>
         </div>
 
       </div>
@@ -178,7 +178,7 @@
   <main>
     <section class="section-main"> 
       <div class="cabezera">
-        <h4 class="h4">Registro polizas</h4>
+        <h4 class="h4">Registro</h4>
     </div>
     <br>
     <p class="subtitulo-1">Concepto</p>
@@ -188,20 +188,20 @@
             
             <div class="grupo-input">
               <div class="label-form">
-                <p class="label-2">Concepto*</p>
+                <p class="label-2">Descripción*</p>
               </div>
               <div class="input-form">
-                <textarea rows="5" cols="40" placeholder="Ingresa tu texto largo aquí" class="input-textarea-2" ></textarea>
+                <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
               </div>
             </div>
 
             <div class="grupo-input">
               <div class="label-form">
-                  <p class="label-2">Accion*</p>
+                  <p class="label-2">Tipo*</p>
               </div>
               <div class="input-form">
                   <select type="text" class="input-format-2"placeholder="Ingrese su máximo grado de estudios" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
-                  <option value="" selected disabled>Seleccione una accion</option>
+                  <option value="" selected disabled>Seleccione un tipo</option>
                   <option value="1">Debe</option>
                   <option value="2">Haber</option>
                   
@@ -224,22 +224,22 @@
            
         </div> 
         <br>
-        <p class="subtitulo-1">Documentación</p>
+        <p class="subtitulo-1">Evidencia</p>
         <hr> 
         <div class="contenedor-formulario">
           
            
           <div class="grupo-input">
             <div class="label-form">
-              <p class="label-2">Descripcion del documento*</p>
+              <p class="label-2">Descripción*</p>
             </div>
             <div class="input-form">
-              <textarea rows="5" cols="40" placeholder="Ingresa tu texto largo aquí" class="input-textarea-2" ></textarea>
+              <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
             </div>
           </div> 
           <div class="grupo-input">
             <div class="label-form">
-              <p class="label-2">Documento*</p>
+              <p class="label-2">Comprobante*</p>
             </div>
             <div class="input-form">
               <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
@@ -276,7 +276,7 @@
                                 </tr>
                                 <tr>
                                   <th colspan="1" >Concepto general</th>
-                                  <td colspan="9" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius culpa velit qui consequatur optio architecto. Quis, voluptate libero totam nihil omnis autem amet, fugit reprehenderit alias ad aut rerum voluptates.
+                                  <td colspan="9" class="justify-text" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius culpa velit qui consequatur optio architecto. Quis, voluptate libero totam nihil omnis autem amet, fugit reprehenderit alias ad aut rerum voluptates.
                                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate earum reiciendis sed velit asperiores architecto consectetur consequuntur unde minus? Aperiam tenetur hic magni nemo fugiat quibusdam veniam nesciunt, repellat placeat.
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique veniam blanditiis ab nemo porro rem facilis dicta tempore, aliquid alias consequatur quasi doloremque explicabo voluptates iure sequi rerum exercitationem iusto.
                                   </td>
@@ -291,15 +291,15 @@
                                   <th colspan="1">Debe</th>
                                   <th colspan="1">Haber</th>
                                   <th>Descripcion del documento</th>
-                                  <th>Documento</th>
-                                  <th>Accion</th>
+                                  <th>Comprobante</th>
+                                  <th>Acción</th>
                                 </tr>
                                 <!-- Filas de datos -->
                                 <tr>
-                                  <td colspan="5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error non magnam nesciunt unde doloribus, nisi rerum quas ratione laboriosam iste odio numquam rem illum vel ipsa aliquid provident in repudiandae!</td>
+                                  <td colspan="5" class="justify-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Error non magnam nesciunt unde doloribus, nisi rerum quas ratione laboriosam iste odio numquam rem illum vel ipsa aliquid provident in repudiandae!</td>
                                   <td>$00000000</td>
                                   <td>$00000000</td>
-                                  <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam doloribus neque in aspernatur incidunt suscipit mollitia ducimus quis optio commodi dolor natus sed repellat explicabo aliquam dolorem magni, ipsum similique?</td>
+                                  <td class="justify-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam doloribus neque in aspernatur incidunt suscipit mollitia ducimus quis optio commodi dolor natus sed repellat explicabo aliquam dolorem magni, ipsum similique?</td>
                                   <td>document.pdf</td>
                                   <td><button class="btn btn-small btn-danger ti ti-backspace-filled" id="boton_registro" type="button"></button></td>
                                   
@@ -308,25 +308,20 @@
                                 
                                 <!-- Subtotal y total -->
                                 <tr>
-                                  <th colspan="5">Subtotal</th>
-                                  <td>$00000000</td>
-                                  <td>$00000000</td>
+                                  <th colspan="5" class="right-text">Sumas iguales</th>
+                                  <td class="right-text">$00000000</td>
+                                  <td class="right-text">$00000000</td>
                                   <th></th>
                                   <th></th>
                                   <th></th>
                                   
                                   
                                 </tr>
+                  
                                 <tr>
                                   
-                                  <th colspan="5">Total</th>
-                                  <td colspan="6">$00000000</td>
-                                  
-                                </tr>
-                                <tr>
-                                  
-                                  <th colspan="5">Realizo</th>
-                                  <td colspan="6">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                  <th colspan="5" class="right-text">Realizó</th>
+                                  <td colspan="6" class="left-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                                   
                                 </tr>
                               </tbody>
