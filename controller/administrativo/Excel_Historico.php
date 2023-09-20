@@ -26,8 +26,8 @@ $desc = $datosCert[0]["DesCerInt"];
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
 //establecer las propiedades del archivo
-$spreadsheet->getProperties()->setTitle("Historial de precios de " . $nombre)->setCreator("Colegio de Ingeneieros en Sistemas Computacionales")
-->setCategory("Reporte de Certificaciones")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
+$spreadsheet->getProperties()->setTitle("Historial de precios de " . $nombre)->setCreator("Colegio de Ingenieros en Sistemas Computacionales")
+->setCategory("Historial de precios")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //establecer la hoja en la que vamos a trabajar
 $spreadsheet->setActiveSheetIndex(0)->setTitle("Historial");
@@ -124,8 +124,8 @@ $hoja->getColumnDimension('C')->setWidth(26);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Historial de precios de ' . $nombre. '.Xls"');
+header('Content-Disposition: attachment;filename="Historial de precios de ' . $nombre. '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');

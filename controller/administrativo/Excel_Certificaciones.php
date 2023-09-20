@@ -17,7 +17,7 @@ $resultados = $base->getCertificaciones();
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
 //establecer las propiedades del archivo
-$spreadsheet->getProperties()->setTitle("Reporte de certificaciones al " . date('d-m-Y'))->setCreator("Colegio de Ingeneieros en Sistemas Computacionales")
+$spreadsheet->getProperties()->setTitle("Reporte de certificaciones al " . date('d-m-Y'))->setCreator("Colegio de Ingenieros en Sistemas Computacionales")
 ->setCategory("Reporte de Certificaciones")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //establecer la hoja en la que vamos a trabajar
@@ -89,10 +89,10 @@ $hoja->getColumnDimension('E')->setWidth(26);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Reporte de certificaciones al '. date('d-m-Y'). '.Xls"');
+header('Content-Disposition: attachment;filename="Reporte de certificaciones al '. date('d-m-Y'). '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 
 ?>

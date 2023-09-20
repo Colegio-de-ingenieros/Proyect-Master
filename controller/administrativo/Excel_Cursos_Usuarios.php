@@ -35,7 +35,7 @@ else{
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
 //establecer las propiedades del archivo
-$spreadsheet->getProperties()->setTitle("Cursos del usuario ". $nombre_persona)->setCreator("Colegio de Ingeneieros en Sistemas Computacionales")
+$spreadsheet->getProperties()->setTitle("Cursos del usuario ". $nombre_persona)->setCreator("Colegio de Ingenieros en Sistemas Computacionales")
 ->setCategory("Reporte de Cusros de usuario")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //establecer la hoja en la que vamos a trabajar
@@ -99,9 +99,9 @@ $hoja->getColumnDimension('D')->setWidth(20);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Cusros del usuario '. $nombre_persona. '.Xls"');
+header('Content-Disposition: attachment;filename="Cusros del usuario '. $nombre_persona. '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 ?>
