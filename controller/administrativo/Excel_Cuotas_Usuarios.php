@@ -102,11 +102,11 @@ $estilo = $hoja->getStyle('A2:E'.strval($i+2));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 //definir los tamaños de las columnas
-$hoja->getColumnDimension('A')->setWidth(40);
-$hoja->getColumnDimension('B')->setWidth(40);
-$hoja->getColumnDimension('C')->setWidth(15);
-$hoja->getColumnDimension('D')->setWidth(20);
-$hoja->getColumnDimension('E')->setWidth(20);
+$hoja->getColumnDimension('A')->setWidth(20);
+$hoja->getColumnDimension('B')->setWidth(20);
+$hoja->getColumnDimension('C')->setWidth(25);
+$hoja->getColumnDimension('D')->setWidth(15);
+$hoja->getColumnDimension('E')->setWidth(15);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
