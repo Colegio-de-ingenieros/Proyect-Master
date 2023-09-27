@@ -129,8 +129,8 @@ $hoja->getColumnDimension('A')->setWidth(45);
 $hoja->getColumnDimension('B')->setWidth(45);
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Temario del curso '. $nombre .  '.Xls"');
+header('Content-Disposition: attachment;filename="Temario del curso '. $nombre .  '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');

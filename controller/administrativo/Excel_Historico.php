@@ -130,8 +130,8 @@ $hoja->getColumnDimension('C')->setWidth(26);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Historial de precios de ' . $nombre. '.Xls"');
+header('Content-Disposition: attachment;filename="Historial de precios de ' . $nombre. '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');

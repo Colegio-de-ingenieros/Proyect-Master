@@ -69,9 +69,9 @@ $hoja->getColumnDimension('B')->setWidth(25);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
-header('Content-Disposition: attachment;filename="Reporte de instructores al '. date('d-m-Y'). '.Xls"');
+header('Content-Disposition: attachment;filename="Reporte de instructores al '. date('d-m-Y'). '.Xlsx"');
 header('Cache-Control: max-age=0');
 
-$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
+$writer = PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
 ?>
