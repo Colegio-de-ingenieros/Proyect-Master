@@ -1,5 +1,5 @@
 <?php
-    include('../../config/Crud_bd.php');
+    include_once('../../config/Crud_bd.php');
 
     class Mostrar_SocioAsoc extends Crud_bd{
 
