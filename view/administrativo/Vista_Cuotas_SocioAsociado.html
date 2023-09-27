@@ -201,10 +201,12 @@
           <!-- llama al archivo que genera el excel -->
           <script languaje="javascript">
             function generar() {
-              location.href = '../../controller/administrativo/Excel_Trabajadores.php';
+              const parametros = new URLSearchParams(window.location.search);
+              id = parametros.get('id');
+              console.log(id);
+              location.href = '../../controller/administrativo/Excel_Cuotas_Usuarios.php?id=' + id;
             }
           </script>
-
           <div class="boton_registrar">
             <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
           </div>
