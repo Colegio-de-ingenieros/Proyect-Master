@@ -40,7 +40,7 @@ main {
     margin-bottom: 1.1875rem;
 }
 
-.subtitulo-2{
+.subtitulo-2 {
     font-size: 1.5rem;
     font-weight: 700;
     line-height: 1.5;
@@ -69,130 +69,15 @@ main {
     min-height: 50%
 }
 
-.lead-2{
+.lead-2 {
     font-size: 1.1rem;
     font-weight: 400;
     line-height: 1.5;
     text-align: justify;
 }
 
-.buttons{
+.buttons {
     margin-top: 10px;
-}
-
-/* Css del checkbox */
-.plus-minus {
-    --primary: #3ac53a;
-    --secondary: #FAFBFF;
-    --danger: #d12f2f;
-    --duration: .5s;
-    -webkit-appearance: none;
-    appearance: none;
-    -moz-appearance: none;
-    -webkit-tap-highlight-color: transparent;
-    -webkit-mask-image: -webkit-radial-gradient(white, black);
-    mask-image: radial-gradient(white, black);
-    outline: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 240px;
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    min-width: 36px;
-    min-height: 36px;
-    max-width: 36px;
-    max-height: 36px;
-    border: 4px solid var(--primary);
-    background-size: 300% 300%;
-    transition: transform 0.3s;
-    transform: scale(var(--scale, 1)) translateZ(0);
-    -webkit-animation: var(--name, unchecked) var(--duration) ease forwards;
-    animation: var(--name, unchecked) var(--duration) ease forwards;
-    margin-top: 10px;
-}
-
-.plus-minus:before,
-.plus-minus:after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: var(--height, 16px);
-    left: 6px;
-    top: var(--top, 6px);
-    background: var(--background, var(--primary));
-    -webkit-animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
-    animation: var(--name-icon-b, var(--name-icon, unchecked-icon)) var(--duration) ease forwards;
-}
-
-.plus-minus:before {
-    -webkit-clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
-    clip-path: polygon(0 6px, 6px 6px, 6px 0, 10px 0, 10px 6px, 16px 6px, 16px 10px, 10px 10px, 10px 16px, 6px 16px, 6px 10px, 0 10px);
-}
-
-.plus-minus:after {
-    --height: 4px;
-    --top: 12px;
-    --background: var(--secondary);
-    --name-icon-b: var(--name-icon-a, checked-icon);
-}
-
-.plus-minus:active {
-    --scale: .95;
-}
-
-.plus-minus:checked {
-    --name: checked;
-    --name-icon-b: checked-icon;
-    --name-icon-a: unchecked-icon;
-}
-
-@keyframes checked-icon {
-    from {
-        transform: translateZ(12px);
-    }
-
-    to {
-        transform: translateX(16px) rotateY(90deg) translateZ(12px);
-    }
-}
-
-@keyframes unchecked-icon {
-    from {
-        transform: translateX(-16px) rotateY(-90deg) translateZ(12px);
-    }
-
-    to {
-        transform: translateZ(12px);
-    }
-}
-
-@keyframes checked {
-    from {
-        background-image: radial-gradient(ellipse at center, var(--danger) 0%, var(--danger) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
-        background-position: 100% 50%;
-        border: 4px solid var(--danger);
-    }
-
-    to {
-        background-image: radial-gradient(ellipse at center, var(--danger) 0%, var(--danger) 25%, var(--secondary) 25.1%, var(--secondary) 100%);
-        background-position: 50% 50%;
-        border: 4px solid var(--danger);
-    }
-}
-
-@keyframes unchecked {
-    from {
-        background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
-        background-position: 100% 50%;
-    }
-
-    to {
-        background-image: radial-gradient(ellipse at center, var(--secondary) 0%, var(--secondary) 25%, var(--primary) 25.1%, var(--primary) 100%);
-        background-position: 50% 50%;
-    }
 }
 
 @media screen and (max-width: 768px) {
@@ -201,7 +86,70 @@ main {
         row-gap: 1.5rem;
     }
 
-    .buttons{
+    .buttons {
         margin-bottom: 12px;
     }
 }
+
+.checkbox-wrapper-31:hover .check {
+    stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-31 {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+}
+
+.checkbox-wrapper-31 .background {
+    fill: #ccc;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 .stroke {
+    fill: none;
+    stroke: #fff;
+    stroke-miterlimit: 10;
+    stroke-width: 2px;
+    stroke-dashoffset: 100;
+    stroke-dasharray: 100;
+    transition: ease all 0.6s;
+    -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper-31 .check {
+    fill: none;
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 2px;
+    stroke-dasharray: 22;
+    /* Eliminamos la propiedad stroke-dashoffset */
+}
+
+.checkbox-wrapper-31 input[type=checkbox] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    opacity: 0;
+    -appearance: none;
+    -webkit-appearance: none;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:hover {
+    cursor: pointer;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:checked+svg .background {
+    fill: #6cbe45;
+}
+
+.checkbox-wrapper-31 input[type=checkbox]:checked+svg .stroke {
+    stroke-dashoffset: 0;
+}
+

@@ -1,7 +1,6 @@
-<script src="../../view/login/js/Verificar_Permiso_Socio.js"></script>
 <!DOCTYPE html>
+<script src="../../view/login/js/Verificar_Permiso_Socio.js"></script>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +50,7 @@
           <!-- Bolsa de trabajo -->
           <li>
             <a href="#">
-             
+
               Bolsa de trabajo
             </a>
 
@@ -77,12 +76,13 @@
           <!-- Mi Perfil -->
           <li>
             <a href="#">
-              
+
               Mi perfil
             </a>
 
             <ul>
-              <li><a id="" href="../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php">Datos Generales</a></li>
+              <li><a id="" href="../../controller/socio-asociado/Mostrar_Datos_Perfil_Personal.php">Datos Generales</a>
+              </li>
             </ul>
           </li>
 
@@ -108,20 +108,36 @@
         <div class="card">
           <p class="subtitulo-2">Headhunter</p>
           <div class="descripcion">
-            <p class="lead-2">Especialista en reclutamiento de talento ejecutivo, encargado de identificar y atraer candidatos altamente calificados para empresas.</p>
+            <p class="lead-2">Especialista en reclutamiento de talento ejecutivo, encargado de identificar y atraer
+              candidatos altamente calificados para empresas.</p>
           </div>
-          <input type="checkbox" class="plus-minus" id="headhunter">
+          <div class="checkbox-wrapper-31">
+            <input type="checkbox" id="headhunter">
+            <svg viewBox="0 0 35.6 35.6">
+              <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+              <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+              <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+            </svg>
+          </div>
         </div>
 
         <div class="card">
           <p class="subtitulo-2">Outplacement</p>
           <div class="descripcion">
-            <p class="lead-2">Servicio de apoyo profesional para empleados en transición laboral, facilitando su reintegración al mercado laboral.</p>
+            <p class="lead-2">Servicio de apoyo profesional para empleados en transición laboral, facilitando su
+              reintegración al mercado laboral.</p>
           </div>
-          <input type="checkbox" class="plus-minus" id="outplacement">
+          <div class="checkbox-wrapper-31">
+            <input type="checkbox" id="outplacement">
+            <svg viewBox="0 0 35.6 35.6">
+              <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+              <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+              <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+            </svg>
+          </div>
         </div>
       </div>
-      
+
       <div class="buttons">
         <button class="btn btn-medium" id="btn-aplicar">Aplicar</button>
       </div>
@@ -130,4 +146,5 @@
 </body>
 
 <script src="../../controller/socio-asociado/js/Registro_Servicios.js"></script>
+
 </html>
