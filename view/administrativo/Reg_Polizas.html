@@ -184,34 +184,54 @@
         <hr>
 
         <form class="formulario-de-datos" id="formulario">
-            <div class="input-form">
-                <div class="label-form">
-                    <p class="label-2">Tipo de póliza</p>
+            <div class="grupo-input4">
+                <div class="input-form">
+                    <div class="label-form">
+                        <p class="label-2">Tipo de póliza*</p>
+                    </div>
+    
+                    <select type="text" class="input-format-2"  id="tipo_poliza" name="tipo_poliza">
+                        <option value="P1">Ingresos</option>
+                        <option value="P2">Egresos</option>
+                    </select>
                 </div>
 
-                <select type="text" class="input-format-2"  id="accion" name="accion">
-                    <option value="P1">Ingresos</option>
-                    <option value="P2">Egresos</option>
-                </select>
-            </div>
+                <div class="input-form">
+                    <div class="label-form">
+                        <p class="label-2">Concepto general*</p>
+                    </div>
 
-            <div class="input-form">
-                <div class="label-form">
-                    <p class="label-2">Usuario</p>
+                    <div class="input-form">
+                        <textarea type="text" name="concepto_gen" id="concepto_gen" class="input-textarea"
+                          placeholder="Ingrese el concepto general" required
+                          title="El concepto general solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
+                    </div>
                 </div>
 
-                <select type="text" class="input-format-2"  id="accion" name="accion">
-                </select>
             </div>
-
-            <div class="input-form">
-                <div class="label-form">
-                    <p class="label-2">Nombre del usuario</p>
+            <div class="grupo-input4">
+                <div class="input-form">
+                    <div class="label-form">
+                        <p class="label-2">Usuario*</p>
+                    </div>
+    
+                    <select type="text" class="input-format-2"  id="usuario" name="usuario">
+                    </select>
+                </div>
+    
+                <div class="input-form">
+                    <div class="label-form">
+                        <p class="label-2">Nombre del usuario*</p>
+                    </div>
+    
+                    <select type="text" class="input-format-2"  id="nombre_us" name="nombre_us">
+                    </select>
                 </div>
 
-                <select type="text" class="input-format-2"  id="accion" name="accion">
-                </select>
             </div>
+            
+
+            
 
             <div class="grupo-input4">
                 <div class="input-form">
@@ -219,7 +239,7 @@
                         <p class="label-2">Servicio</p>
                     </div>
 
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
+                    <select type="text" class="input-format-2"  id="tipo_servicio" name="tipo_servicio">
                         <option value="S1">Curso</option>
                         <option value="S2">Certificación</option>
                         <option value="S3">Consultoría</option>
@@ -233,25 +253,56 @@
                         <p class="label-2">Nombre del servicio</p>
                     </div>
 
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
+                    <select type="text" class="input-format-2"  id="nom_servicio" name="nom_servicio">
                     </select>
                 </div>
             </div>
 
-            <div class="grupo-input3">
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Concepto general</p>
-                    </div>
 
-                    <div class="input-form">
-                        <textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea"
-                          placeholder="Ingrese el concepto general" required
-                          title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
-                    </div>
+            <div class="grupo-input3">
+                <p class="label-2">Elaborado por*</p>
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Nombre</p>
+                </div>
+
+                <div class="input-form">
+                    <input type="text" class="input-format-2" id="nombre" name="nombre" 
+                      placeholder="Ingrese su nombre" required
+                      title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                 </div>
 
             </div>
+            
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Apellido paterno*</p>
+                </div>
+
+                <div class="input-form">
+                    <input type="text" class="input-format-2" id="apellido_pat" name="apellido_pat"
+                      placeholder="Ingrese su nombre" required
+                      title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                </div>
+
+            </div>
+
+            <div class="grupo-input">
+                <div class="label-form">
+                    <p class="label-2">Apellido materno</p>
+                </div>
+
+                <div class="input-form">
+                    <input type="text" class="input-format-2" id="apellido_mat" name="apellido_mat"
+                      placeholder="Ingrese su nombre" required
+                      title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                </div>
+
+            </div>
+
 
             <div class="grupo-boton-reg">
                 <div class="boton_registrar">
