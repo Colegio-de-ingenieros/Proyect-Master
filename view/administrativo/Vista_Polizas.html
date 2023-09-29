@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="../../public/css/administrativo/Vista_Trabajadores.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../../controller/administrativo/js/Mostrar_Trabajadores.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Polizas.js"></script>
 
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-45x45.png" sizes="32x32">
   <link rel="icon" href="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png" sizes="192x192">
@@ -208,7 +208,19 @@
           <div class="boton_registrar">
             <button class="btn-medium btn" onclick="generar()">Descargar Excel</button>
           </div>
+          <form class="formulario-de-datos" id="formulario">
 
+            <div class="grupo-input-vista">
+                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_ingreso" value="ingreso" checked>
+                Ingreso
+            </div>
+
+            <div class="grupo-input-vista">
+              <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="egreso"
+                value="egreso">
+                Egreso
+            </div>
+          </form>
           <br>
           <div class="tablas">
             <section class="header_table" id="tablaResultado">
