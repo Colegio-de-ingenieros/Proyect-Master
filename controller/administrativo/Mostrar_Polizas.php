@@ -2,7 +2,6 @@
 require_once('../../model/administrativo/Mostrar_Polizas.php');
 $objeto=new Mostrar_Polizas();
 $salida = '';
-
 $valTipo=$_POST["tipo"];
 if ($valTipo==""){
     $resultado = $objeto->mostrar_Egresos();
