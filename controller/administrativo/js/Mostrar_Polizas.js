@@ -1,7 +1,8 @@
+let tipo;
 window.onload = () => {
   const ingreso = document.getElementById("radio_ingreso");
   const egreso = document.getElementById("egreso");
-  let tipo;
+  tipo = "ingreso";
   ingreso.addEventListener("click", function () {
     tipo = "ingreso";
     buscar_datos(tipo);

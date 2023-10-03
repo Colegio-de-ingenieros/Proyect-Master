@@ -4,20 +4,26 @@ $objeto=new Mostrar_Polizas();
 $salida = '';
 
 $valTipo=$_POST["tipo"];
+if ($valTipo==""){
+    $resultado = $objeto->mostrar_Egresos();
+}
 if($valTipo!=""){
     if ($valTipo=="egreso"){
-        $resultado = $objeto->Mostrar_Egresos();
+        $resultado = $objeto->mostrar_Egresos();
     }else if ($valTipo=="ingreso"){
-        $resultado = $objeto->Mostrar_Ingresos();
+        $resultado = $objeto->mostrar_Ingresos();
     }
 }
 if (isset($_POST['consulta'])){
     $busqueda=($_POST['consulta']);
-    if ($valTipo=="egreso"){
-        $resultado = $objeto->Mostrar_Egresos();
-    }else if ($valTipo=="ingreso"){
-        $resultado = $objeto->Mostrar_Ingresos();
+    if ($busqueda!="ingreso" && $busqueda!="egreso"){
+        if ($valTipo=="egreso"){
+        $resultado = $objeto->buscar_Egresos($busqueda);
+        }else if ($valTipo=="ingreso"){
+            $resultado = $objeto->buscar_Ingresos($busqueda);
+        }
     }
+    
 }
 if ($resultado == true) {
     //pone los encabezados de la tabla
