@@ -208,6 +208,16 @@
 
         <div class="grupo-input">
           <div class="label-form">
+            <p class="label-2">Identificador*</p>
+          </div>
+          <div class="input-form">
+            <input type="text" class="input-format-2" placeholder="Ingrese la abreviación" name="identificador" , id="identificador" required maxlength="8"
+            title="La abreviación solo puede contener letras.">
+          </div>
+        </div>
+
+        <div class="grupo-input">
+          <div class="label-form">
             <p class="label-2">Abreviación*</p>
           </div>
           <div class="input-form">
@@ -226,24 +236,22 @@
           </div>
         </div>
         
-
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Precio general*</p>
-          </div>
+        <div class="grupo-input3">
           <div class="input-form">
-            <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioGen" , id="precioGen"
-            title="El precio solo puede contener números y un punto." required>
-          </div>
-        </div>
+              <div class="label-form">
+                  <p class="label-2">Precio general*</p>
+              </div>
 
-        <div class="grupo-input">
-          <div class="label-form">
-            <p class="label-2">Precio socio/asociado*</p>
+              <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioGen" , id="precioGen"
+            title="El precio solo puede contener números y un punto." maxlength="60" required>
           </div>
+
           <div class="input-form">
-            <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioAsoc" ,
-              id="precioAsoc" title="El precio solo puede contener números y un punto." required>
+              <div class="label-form">
+                  <p class="label-2">Precio socio/asociado*</p>
+              </div>
+              <input type="text" class="input-format-2" placeholder="Ingrese el precio" name="precioAsoc" ,
+              id="precioAsoc" title="El precio solo puede contener números y un punto." maxlength="60" required>
           </div>
         </div>
 
@@ -257,7 +265,7 @@
           </div>
         </div>
 
-        <div class="grupo-input2">
+        <div class="grupo-input">
 
         <div class="label-form">
           <p class="label-2">&nbsp; &nbsp; Logo actual &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Nuevo logo</p>

@@ -32,13 +32,16 @@
     justify-content: center;
     transition: 300ms all;
 }
-
 .grupo-input2 {
-    grid-column: span 1;
+    flex-direction: column;
+    grid-column: span 2;
 }
 
 .grupo-input3 {
     grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
 .grupo-boton-reg {
