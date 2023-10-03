@@ -54,9 +54,9 @@ if ($resultado == true) {
             $salida .= '<td>' . $concepto . '</td>';
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $elaboro . '</td>';
-            $salida .= '<td>  <a href="../../view/administrativo/Mostrar_Polizaindividual.html?usuario='.$folio.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="../../view/administrativo/Vista_Cursos_SocioAsociado.html?id='.$folio.'">Cursos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <a href="../../view/administrativo/Vista_Cuotas_SocioAsociado.html?id='.$folio.'">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../controller/administrativo/Mostrar_Poliza_Individual.php?usuario='.$folio.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="../../view/administrativo/Reg_Polizas_General.html?id='.$folio.'">Cursos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="../../view/administrativo/Modi_Polizas_Individual.html?id='.$folio.'">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>';
             $salida .= '</tr>';  
     }
