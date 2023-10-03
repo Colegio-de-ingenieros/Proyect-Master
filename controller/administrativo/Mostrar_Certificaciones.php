@@ -17,6 +17,7 @@ if (isset($_POST['consulta'])) {
             <thead>
                 <tr>
                     <th>Logo</th>
+                    <th>Identificador<th>
                     <th>Abreviación</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
@@ -50,6 +51,7 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
+            $salida .= '<td>' . $abre . '</td>';
             $salida .= '<td>' . $abre . '</td>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $desc . '</td>';
