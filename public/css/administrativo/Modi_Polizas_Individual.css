@@ -466,7 +466,7 @@
     flex-direction: column;
     align-items: center; 
   } 
-  /* ****************************************************************************************************** */
+
   .botones_actualizar{
     display: flex;
     align-items: center;
@@ -570,7 +570,16 @@
   }
   .right-text {
     text-align: right;
-  }
+  } 
+
+  .error {
+    text-align: right;
+    background: rgb(235, 71, 71); 
+    font-weight: 600;
+    color: white;
+  } 
+  /*********************************************************************************************************************/
+
   tr:hover td {
     color: #3a42b4;
     cursor: pointer;
