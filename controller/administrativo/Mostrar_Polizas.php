@@ -30,6 +30,7 @@ if ($resultado == true) {
                     <thead>
                         <tr>
                             <th>Folio</th>
+                            <th>Tipo</th>
                             <th>Concepto general</th>
                             <th>Fecha</th>
                             <th>Elaboro</th>
@@ -45,14 +46,15 @@ if ($resultado == true) {
             $elaboro = $resultado[$i]["NomElaPol"].' '.$resultado[$i]["ApePElaPol"].' '.$resultado[$i]["ApeMElaPol"];
             $concepto = $resultado[$i]["CoceptoGral"];
             $fecha = $resultado[$i]["FechaPolGral"];
-
+            $tipoPoliza=$resultado[$i]["SerPol"];
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . $folio . '</td>';
+            $salida .= '<td>' . $tipoPoliza . '</td>';
             $salida .= '<td>' . $concepto . '</td>';
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $elaboro . '</td>';
-            $salida .= '<td>  <a href="../../view/administrativo/Vista_Datos_Usuario.html?usuario='.$folio.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            $salida .= '<td>  <a href="../../view/administrativo/Mostrar_Polizaindividual.html?usuario='.$folio.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="../../view/administrativo/Vista_Cursos_SocioAsociado.html?id='.$folio.'">Cursos</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <a href="../../view/administrativo/Vista_Cuotas_SocioAsociado.html?id='.$folio.'">Cuotas</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         </td>';
