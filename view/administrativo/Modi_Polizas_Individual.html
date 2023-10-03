@@ -191,7 +191,7 @@
                 <p class="label-2">Descripción*</p>
               </div>
               <div class="input-form">
-                <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150"></textarea>
+                <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcion1" name="descripcion1"></textarea>
               </div>
             </div>
 
@@ -200,7 +200,7 @@
                   <p class="label-2">Tipo*</p>
               </div>
               <div class="input-form">
-                  <select type="text" class="input-format-2"placeholder="Ingrese el tipo" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                  <select type="text" class="input-format-2"placeholder="Ingrese el tipo" id="tipoCargo" name="tipoCargo" required maxlength="12">
                   <option value="" selected disabled>Seleccione un tipo</option>
                   <option value="1">Debe</option>
                   <option value="2">Haber</option>
@@ -215,7 +215,7 @@
                 <p class="label-2">Monto*</p>
               </div>
               <div class="input-form">
-                <input type="text" class="input-format-2" name="apellido_m"  id="materno" maxlength="20"
+                <input type="text" class="input-format-2" name="monto"  id="monto" maxlength="20"
                   placeholder="Ingrese el monto" title="Ingrese el monto">
               </div>
             </div>
@@ -234,7 +234,7 @@
               <p class="label-2">Descripción*</p>
             </div>
             <div class="input-form">
-              <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
+              <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcion2" name="descripcion2"></textarea>
             </div>
           </div> 
 
@@ -467,7 +467,7 @@
     </section>
   </main> 
 
- 
+  <script src="js/Vali_Mod_Poliza_Individual.js"></script>
   <script src="js/Vali_Modal_Poliza_Individual.js"></script> 
   <script src="../../controller/administrativo/js/Modificar_Poliza_Individual.js"></script>
 </body>
