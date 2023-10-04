@@ -77,12 +77,12 @@
         }
 
         //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-        function insertar($idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha, $abre){
+        function insertar($idc, $logo, $desc, $nombre, $precioG, $precioA, $fecha, $idhg, $idha, $abre, $clave){
             //consultas para la tabla de certificaciones internas
-            $q1 = "INSERT INTO certinterna (IdCerInt, LogoCerInt, DesCerInt, NomCertInt, EstatusCertInt, abrevCertInt)
-            VALUES(:id, :logo, :descripcion, :nombre, :estatus, :abre)";
+            $q1 = "INSERT INTO certinterna (IdCerInt, LogoCerInt, DesCerInt, NomCertInt, EstatusCertInt, abrevCertInt, ClaveCerInt)
+            VALUES(:id, :logo, :descripcion, :nombre, :estatus, :abre, :clave)";
 
-            $a1 = [":id"=>$idc, ":logo"=>$logo, ":nombre"=>$nombre, ":descripcion"=>$desc, "estatus"=>1, ":abre"=>$abre];
+            $a1 = [":id"=>$idc, ":logo"=>$logo, ":nombre"=>$nombre, ":descripcion"=>$desc, "estatus"=>1, ":abre"=>$abre, ":clave"=>$clave];
 
             //consultas para la tabla de historicos
             $q2g = "INSERT INTO historico (Idh, FechaH, PrecioH)
@@ -124,6 +124,23 @@
 
             $this->base->insertar_eliminar_actualizar($querry, $parametros);
         }
+    
+        function buscarClave($clave){
+            $querry = "SELECT * FROM certinterna WHERE ClaveCerInt = :clave";
+    
+            $arre = [":clave"=>$clave];
+
+            $resultados = $this->base->mostrar($querry, $arre);
+    
+            if($resultados != null){
+                return true;
+            }
+    
+            else{
+                return false;
+            }
+        }
+    
         
     }
 

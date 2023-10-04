@@ -2,7 +2,7 @@
 include_once('../../model/administrativo/Reg_Certificaciones.php');
 
 class RegistroCert{
-    private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre, $abre;
+    private $obj, $idc, $idhg, $idha, $precioG, $precioA, $logo, $desc, $nombre, $abre, $clave;
 
     //inicializa los valores que ocupan las demas funciones
     function instancias(){
@@ -17,6 +17,7 @@ class RegistroCert{
         $this->desc = $_POST["descripcion"];
         $this->abre = $_POST["abreviacion"];
         $this->logo = $_FILES["inputLogo"]['name'];
+        $this->clave = $_POST["identificador"];
         $this->validarFoto();
 
     }
@@ -46,7 +47,7 @@ class RegistroCert{
     //manda a llamar al archivo de model para meter los datos a la base
     function insertar(){
         $fecha = date('y-m-d');
-        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha, $this->abre);
+        $this->obj->insertar($this->idc, $this->logo, $this->desc,$this->nombre, $this->precioG, $this->precioA, $fecha, $this->idhg, $this->idha, $this->abre, $this->clave);
 
         //verifica que los datos se insertarin en la base de datos
         $resultados = $this->obj->buscarPorId($this->idc);
@@ -75,7 +76,7 @@ class RegistroCert{
             }
             else{
                 $this->logo = file_get_contents($temp);
-                $this->insertar();
+                $this->buscarClave();
             }
 
         }
@@ -97,6 +98,18 @@ class RegistroCert{
         }
         
         return $ids;
+    }
+
+    function buscarClave(){
+        $resultados = $this->obj->buscarClave($this->clave);
+
+        if($resultados == true){
+            echo json_encode('Ya existe una certificación con ese identificador');
+        }
+
+        else{
+            $this->insertar();
+        }
     }
 }
 

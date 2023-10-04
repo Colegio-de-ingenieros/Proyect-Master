@@ -4,15 +4,11 @@ let precioG = true
 let precioA = true
 let desc = true
 let abre = true
-
-//validar()
+let clave = true
 
 //detecta el click del boton
 let botonRegistrar = document.getElementById("registrar");
-botonRegistrar.addEventListener("click", (e) =>
-{
-    
-
+botonRegistrar.addEventListener("click", (e) =>{
     if (nom == false) {
         nombre.style.border = "3px solid red";
         e.preventDefault()
@@ -28,7 +24,6 @@ botonRegistrar.addEventListener("click", (e) =>
         e.preventDefault()
     }
 
-
     else if (desc == false) {
         descripcion.style.border = "3px solid red";
         e.preventDefault()
@@ -39,24 +34,57 @@ botonRegistrar.addEventListener("click", (e) =>
         e.preventDefault()
     }
 
+    else if (clave == false) {
+        identificador.style.border = "3px solid red";
+        e.preventDefault()
+    }
+
     else {
         validar(true)
     }
 
 })
 
-
 //definicion de las expresiones regulares
 const expresiones = {
     name: /^[a-zA-ZÁ-ý0-9\s .,]{1,60}$/,
     precio: /^[0-9]+(.([0-9])+)*$/,
     descripcion: /^[a-zA-ZÁ-ý0-9\s"-.,]{1,10000}$/,
-    abreviacion: /^[a-zA-ZÁ-ý]{4,8}$/
+    abreviacion: /^[a-zA-ZÁ-ý]{4,8}$/,
+    clave: /^[0-9]{6}$/
 }
 
+//revisa el campo clave
+formulario.identificador.addEventListener('keyup', (e) => {
+    let valorInput = e.target.value;
+    formulario.identificador.value = valorInput
+
+    //elimina los espacios en blanco
+    .replace(/\s+/g, '')
+
+    //elimina caracteres especiales
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒª`´.·¨°º¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':" \\|,<>\/?]/g, '')
+
+    //elimina las letras
+    .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
+    
+    //elimina el ultimo espacio en blanco
+    .trim()
+
+    //verifica que se cumpla con la expresion correpondiente
+    if (!expresiones.clave.test(valorInput)) {
+        identificador.style.border = "3px solid red";
+        clave = false
+    }
+
+    else {
+        identificador.removeAttribute("style");
+        clave = true;
+    }
+})
+
 //revisa el campo abreviacion
-formulario.abreviacion.addEventListener('keyup', (e) =>
-{
+formulario.abreviacion.addEventListener('keyup', (e) =>{
     let valorInput = e.target.value;
     formulario.abreviacion.value = valorInput
         
@@ -69,8 +97,6 @@ formulario.abreviacion.addEventListener('keyup', (e) =>
         //elimina numeros
         .replace(/[0123456789]/g, '')
 
-        //.toUpperCase()
-
     //verifica que se cumpla con la expresion correpondiente
     if (!expresiones.abreviacion.test(valorInput)) {
         abreviacion.style.border = "3px solid red";
@@ -81,13 +107,10 @@ formulario.abreviacion.addEventListener('keyup', (e) =>
         abreviacion.removeAttribute("style");
         abre = true;
     }
-
-    //validar();
 })
 
 //revisa el campo nombre
-formulario.nombre.addEventListener('keyup', (e) =>
-{
+formulario.nombre.addEventListener('keyup', (e) =>{
     let valorInput = e.target.value;
     formulario.nombre.value = valorInput
 
@@ -104,8 +127,6 @@ formulario.nombre.addEventListener('keyup', (e) =>
         nombre.removeAttribute("style");
         nom = true;
     }
-
-    //validar();
 })
 
 //revisa el campo precio general
@@ -115,6 +136,7 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
 
     //elimina los espacios en blanco
     .replace(/\s+/g, '')
+
     //elimina caracteres especiales
     .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒª`´·¨°º¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':" \\|,<>\/?]/g, '')
 
@@ -160,62 +182,61 @@ formulario.precioGen.addEventListener('keyup', (e) =>{
     }
 
     validar(precioG)
-
 })
     
 //revisa el campo precio asociado
-    formulario.precioAsoc.addEventListener('keyup', (e) =>
-    {
-        let valorInput = e.target.value;
-        formulario.precioAsoc.value = valorInput
+formulario.precioAsoc.addEventListener('keyup', (e) =>{
+    let valorInput = e.target.value;
+    formulario.precioAsoc.value = valorInput
 
-            //elimina los espacios en blanco
-            .replace(/\s+/g, '')
-            //elimina caracteres especiales
-            .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿`´·¨°⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
+        //elimina los espacios en blanco
+        .replace(/\s+/g, '')
 
-            //elimina las letras
-            .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
+        //elimina caracteres especiales
+        .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿`´·¨°⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|,<>\/?]/g, '')
 
-            //elimina el ultimo espacio en blanco
-            .trim();
+        //elimina las letras
+        .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
 
-        //elimina el ultimo punto agregado si ya habia otro
-        if (verificarPuntos(valorInput) == true) {
-            precioAsoc.style.border = "3px solid red";
-            valorInput = valorInput.substr(0, valorInput.length - 1);
-            formulario.precioAsoc.value = valorInput;
-            precioA = false
-        }
+        //elimina el ultimo espacio en blanco
+        .trim();
 
-        //elimina el tercer decimal
-        if (validarDecimales(valorInput) == true) {
-            //precioAsoc.style.border = "3px solid red";
-            valorInput = valorInput.substr(0, valorInput.length - 1);
-            formulario.precioAsoc.value = valorInput;
-        }
+    //elimina el ultimo punto agregado si ya habia otro
+    if (verificarPuntos(valorInput) == true) {
+        precioAsoc.style.border = "3px solid red";
+        valorInput = valorInput.substr(0, valorInput.length - 1);
+        formulario.precioAsoc.value = valorInput;
+        precioA = false
+    }
 
-        //elimina el primer caracter si es un punto
-        if (primeroNum(valorInput) == true) {
-            precioAsoc.style.border = "3px solid red";
-            valorInput = valorInput.substr(1, valorInput.length);
-            //alert(valorInput.length);
-            formulario.precioAsoc.value = valorInput;
-            precioA = false
-        }
-        //verifica que se cumpla con la expresion correpondiente    
-        if (!expresiones.precio.test(valorInput)) {
-            precioAsoc.style.border = "3px solid red";
-            precioA = false
-        }
+    //elimina el tercer decimal
+    if (validarDecimales(valorInput) == true) {
+        //precioAsoc.style.border = "3px solid red";
+        valorInput = valorInput.substr(0, valorInput.length - 1);
+        formulario.precioAsoc.value = valorInput;
+    }
 
-        else {
-            precioAsoc.removeAttribute("style");
-            precioA = true;
-        }
+    //elimina el primer caracter si es un punto
+    if (primeroNum(valorInput) == true) {
+        precioAsoc.style.border = "3px solid red";
+        valorInput = valorInput.substr(1, valorInput.length);
+        //alert(valorInput.length);
+        formulario.precioAsoc.value = valorInput;
+        precioA = false
+    }
+    //verifica que se cumpla con la expresion correpondiente    
+    if (!expresiones.precio.test(valorInput)) {
+        precioAsoc.style.border = "3px solid red";
+        precioA = false
+    }
 
-        validar(precioA)
-    })
+    else {
+        precioAsoc.removeAttribute("style");
+        precioA = true;
+    }
+
+    validar(precioA)
+})
 
 //revisa el campo descripcion
 formulario.descripcion.addEventListener('keyup', (e) =>{
@@ -237,15 +258,13 @@ formulario.descripcion.addEventListener('keyup', (e) =>{
         descripcion.removeAttribute("style");
         desc = true;
     }
-    //validar()
 })
 
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
-function validar(bandera)
-{
+function validar(bandera){
     
     const guardar = document.getElementById('registrar');
-    //alert(ultimoNum(formulario.precioGen.value) == true);
+
     if (ultimoNum(formulario.precioGen.value) == true) {
         precioG = false;
         guardar.disabled = true;
@@ -268,6 +287,9 @@ function validar(bandera)
         guardar.disabled = false;
     }
 
+    console.log(bandera);
+    console.log(guardar.disabled);  
+    
 }
 
 //funcion para verificar que la cadena no tenga mas de un punto
