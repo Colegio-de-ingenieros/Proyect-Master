@@ -25,15 +25,15 @@ $spreadsheet->setActiveSheetIndex(0)->setTitle("Certificaciones");
 $hoja = $spreadsheet->getActiveSheet();
 
 //poner los encabezados de las columnas
-$hoja -> setCellValue('A1', "Nombre") -> setCellValue("B1", "Abreviación") -> setCellValue("C1", "Descripción") ->
-    setCellValue("D1", "Precio general") -> setCellValue("E1", "Precio socio/asociado");
+$hoja -> setCellValue('A1', "Indentificador") -> setCellValue("B1", "Nombre") -> setCellValue("C1", "Abreviación") ->
+    setCellValue("D1", "Descripción") -> setCellValue("E1", "Precio general")->setCellValue("F1", "Preacio socio/asociado");
 
 //cambiar el color de las celdas de encabezado
-$hoja->getStyle('A1:E1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
+$hoja->getStyle('A1:F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
 
 
  //poner estilo a los encabezados
-$estilo = $hoja->getStyle('A1:E1');
+$estilo = $hoja->getStyle('A1:F1');
 $estilo->getFont()->setBold(true)->setSize(12.5)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
@@ -54,42 +54,44 @@ for($i=0; $i<count($resultados); $i++){
     $status = $resultados[$i]["EstatusCertInt"];
     $precioG = $base->buscarUltimoPrecioG($idc);
     $precioA = $base->buscarUltimoPrecioA($idc);
+    $clave = $resultados[$i]["ClaveCerInt"];
 
     //poner las celdas de los precios como tipo money
-    $hoja->getStyle('D'. strval($i+2))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+    $hoja->getStyle('F'. strval($i+2))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
     $hoja->getStyle('E' . strval($i+2))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
     //poner los datos en la tabla
-    $hoja->setCellValue('A'. strval($i+2), $nombre)->setCellValue('B'.strval($i+2), $abre)->setCellValue('C'. strval($i+2), $desc)->
-    setCellValue('D'. strval($i+2), $precioG)->setCellValue('E' . strval($i+2), $precioA);
+    $hoja->setCellValue('A'. strval($i+2), $clave)->setCellValue('B'.strval($i+2), $nombre)->setCellValue('C'. strval($i+2), $abre)->
+    setCellValue('D'. strval($i+2), $desc)->setCellValue('E' . strval($i+2), $precioG)->setCellValue('F' . strval($i+2), $precioA);
 
     //aplicar el estilo a la descripción
-    $hoja->getStyle('A'. strval($i+2))->applyFromArray($style);
-    $hoja->getStyle('C'. strval($i+2))->applyFromArray($style);
+    $hoja->getStyle('B'. strval($i+2))->applyFromArray($style);
+    $hoja->getStyle('D'. strval($i+2))->applyFromArray($style);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. strval($i+2) . ':C' . strval($i+2));
+    $estilo = $hoja->getStyle('A'. strval($i+2) . ':D' . strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     //alinear los precios a la derecha
-    $estilo = $hoja->getStyle('D'. strval($i+2) . ':E' . strval($i+2));
+    $estilo = $hoja->getStyle('E'. strval($i+2) . ':F' . strval($i+2));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinear el contenido a la derecha
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 }
 
 //colocar los bordes
-$estilo = $hoja->getStyle('A2:E'.strval($i+2));
+$estilo = $hoja->getStyle('A2:F'.strval($i+2));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 //definir los tamaños de las columnas
-$hoja->getColumnDimension('A')->setWidth(32);
-$hoja->getColumnDimension('B')->setWidth(16);
-$hoja->getColumnDimension('C')->setWidth(45);
-$hoja->getColumnDimension('D')->setWidth(26);
+$hoja->getColumnDimension('A')->setWidth(18);
+$hoja->getColumnDimension('B')->setWidth(32);
+$hoja->getColumnDimension('C')->setWidth(16);
+$hoja->getColumnDimension('D')->setWidth(45);
 $hoja->getColumnDimension('E')->setWidth(26);
+$hoja->getColumnDimension('F')->setWidth(26);
 
 //guardar el archivo
 header('Content-Type: application/vnd.ms-excel');
