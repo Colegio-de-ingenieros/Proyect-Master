@@ -343,8 +343,8 @@
                                 <!-- Subtotal y total -->
                                 <tr>
                                   <th colspan="5" class="right-text">Sumas iguales</th>
-                                  <td class="error">$19,600.00</td>
-                                  <td class="error">$19,600.00</td>
+                                  <td class="right-text">$19,600.00</td>
+                                  <td class="right-text">$19,600.00</td>
                                   <th></th>
                                   <th></th>
                                   <th></th>
@@ -376,18 +376,12 @@
             <br>
             <br>
 
-
-
-
             <div class="modal-container" id="modal-container">
-      
-
-
               <div class="modal">
-                
-                <p class="subtitulo-1">Concepto</p>
-                <hr> 
-                <div class="contenedor-formulario">
+                <br>
+                <p class="subtitulo-">Concepto</p>
+                <hr width="90%"> 
+                <div class="contenedor-formulario_">
 
                   <div class="grupo-input">
                     <div class="label-form">
@@ -398,12 +392,12 @@
                     </div>
                   </div>
 
-                  <div class="grupo-input">
+                  <div class="grupo-input4">
                     <div class="label-form">
                         <p class="label-2">Tipo*</p>
                     </div>
                     <div class="input-form">
-                        <select type="text" class="input-format-2"placeholder="Ingrese el tipo" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
+                        <select type="text" class="input-format-" placeholder="Ingrese el tipo" id="tipoGradoPerso" name="tipoGradoPerso" required maxlength="12">
                         <option value="" selected disabled>Seleccione un tipo</option>
                         <option value="1">Debe</option>
                         <option value="2">Haber</option>
@@ -420,48 +414,41 @@
                       <input type="text" class="input-format-2" name="apellido_m"  id="materno" maxlength="20"
                         placeholder="Ingrese el monto" title="Ingrese el monto">
                     </div>
+                    <br>
+                    <br>
                   </div>
-
-                  <br>
-                  <p class="subtitulo-1">Evidencia</p>
-                  <hr>
-                  <div class="contenedor-formulario">
-
-                    <div class="grupo-input">
-                      <div class="label-form">
-                        <p class="label-2">Descripción*</p>
-                      </div>
-                      <div class="input-form">
-                        <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
-                      </div>
-                    </div> 
-
-
-                    <div class="grupo-input">
-                      <div class="label-form">
-                        <p class="label-2">Comprobante*</p>
-                      </div>
-                      <div class="input-form">
-                        <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
-                        required title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"></input>
-                      </div>
-                    </div>
-
-
-                  </div>
-
-
+                  <br> 
                 </div>
+                <br>
+                <br> 
+                <p class="subtitulo-">Evidencia</p>
+                <hr width="90%">
+                <div class="contenedor-formulario_">
+                  <div class="grupo-input">
+                    <div class="label-form">
+                      <p class="label-2">Descripción*</p>
+                    </div>
+                    <div class="input-form">
+                      <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" ></textarea>
+                    </div>
+                  </div> 
 
+                  <div class="grupo-input">
+                    <div class="label-form">
+                      <p class="label-2">Comprobante*</p>
+                    </div>
+                    <div class="input-form">
+                      <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
+                      required title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"></input>
+                    </div>
+                  </div>
 
+                </div> 
+                <div class="botones_actualizar">
+                  <button id="guardar_modal" class="btn-mediumm btn" type="button">Guardar</button>
+                  <button id="close" class="btn-mediumm btn" type="button">Cancelar</button>
+                </div>
               </div>
-
-              <div class="botones_actualizar">
-                <button id="guardar_modal" class="btn-mediumm btn" type="button">Guardar</button>
-                <button id="close" class="btn-mediumm btn" type="button">Cancelar</button>
-              </div>
-
-
             </div>
         
     </section>

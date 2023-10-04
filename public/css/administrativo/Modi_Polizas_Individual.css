@@ -420,8 +420,8 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 10px;
-  } 
-  
+  }    
+
   .contenedor-formulario1{
     display: flex;
   } 
@@ -466,12 +466,6 @@
     flex-direction: column;
     align-items: center; 
   } 
-
-  .botones_actualizar{
-    display: flex;
-    align-items: center;
-    margin: auto 25em; 
-  }
   
   .botones_actualizar1{
     display: flex;
@@ -832,6 +826,21 @@
   
     pointer-events: all;
   
+  } 
+
+  .contenedor-formulario_{
+    padding: 20px 0px 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    width: 90%;
+    height: 30%;
+  } 
+
+  .botones_actualizar{
+    display: flex;
+    align-items: center;
+    margin: auto; 
   }
   
   .show {
