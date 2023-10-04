@@ -90,7 +90,7 @@ class MostrarCertificaciones{
 
     function consultaInteligente($valor){
         $querry = "SELECT * FROM certinterna 
-        WHERE NomCertInt LIKE :q OR DesCerInt LIKE :q OR EstatusCertInt LIKE :q OR abrevCertInt LIKE :q";
+        WHERE NomCertInt LIKE :q OR DesCerInt LIKE :q OR EstatusCertInt LIKE :q OR abrevCertInt LIKE :q OR ClaveCerInt LIKE :q";
 
         $arre = [":q"=>'%'.$valor.'%'];
 
