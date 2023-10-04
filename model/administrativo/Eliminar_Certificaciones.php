@@ -91,5 +91,22 @@ class EliminarCert{
             return true;
         }
     }
+
+    function buscarPol($idc){
+        $querry = "SELECT * FROM cerserpol WHERE IdCerInt = :id";
+        $arre = [":id" => $idc];
+
+        $resultados = $this->base->mostrar($querry, $arre);
+        
+        if($resultados == null){
+            //no hay relacion
+            return false;
+        }
+
+        else{
+            //si hay relacion
+            return true;
+        }
+    }
 }
 ?>

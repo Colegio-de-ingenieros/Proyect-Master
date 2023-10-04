@@ -26,6 +26,10 @@ function confirmacion(e){
                     alert("Error, la certificación no puede ser eliminada porque tiene un seguimiento")
                 }
 
+                else if (data === 'polizas') {
+                    alert("Error, la certificación no puede ser eliminada porque está relacionada con una o más pólizas")
+                }
+
                 else {
                     console.log(data)
                 }

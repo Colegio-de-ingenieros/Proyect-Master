@@ -12,7 +12,6 @@ $seg = $obj->buscarSeg($idc);
 
 if($seg == true){
     //echo '  relacion con seguimiento';
-    //http_response_code(403);
     echo json_encode('seguimiento');
 }
 
@@ -24,16 +23,22 @@ else{
 
     if($ins == true){
         //si hay relacion
-        //echo '  relacion con instructores';
-        //http_response_code(405);
         echo json_encode('instructores');
     }
 
     else{
-        //echo '  no hay relacion';
-        //no hay relacion, se elimina la certificacion y el proceso termina sin errores
-        $obj->eliminar($idc);
-        echo json_encode('ok');
+        
+        $pol = $obj->buscarPol($idc);
+
+        if($pol == true){
+            echo json_encode('polizas');
+        }
+
+        else{
+            //no hay relacion, se elimina la certificacion y el proceso termina sin errores
+            $obj->eliminar($idc);
+            echo json_encode('ok');
+        }
     }
    
 }
