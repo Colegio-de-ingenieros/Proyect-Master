@@ -6,7 +6,7 @@ let conceptopdf = false
 /*Detecta cuando el boton fue presionado*/
 let inserta = document.getElementById("btn_agregar");
 inserta.addEventListener("click", (e) => {
-  
+    e.preventDefault();
     if (concepto==false){
         concept.style.border = "3px solid red";
         e.preventDefault()
@@ -18,7 +18,63 @@ inserta.addEventListener("click", (e) => {
         e.preventDefault()
     }
     else{
-        validar(true);
+        //obtener el valor de la combobox y el nombre del archivo
+        const combo = document.getElementById("tipoGradoPerso").value;
+        const archivo = document.querySelector('input[type="file"]').files[0];
+        const nombreArchivo = archivo.name;
+
+        const conceptos = document.getElementById("concepto").value;
+        const montos = document.querySelector("monto");
+        const concepto_pdf = document.querySelector("concepto_pdf");
+
+
+        if (combo != "" && nombreArchivo != "") {
+            if (combo == "1") {
+            //alert("pdf"+nombreArchivo);
+            var table = document.getElementById("tabla");
+            var tbody = document.getElementById("body_tabla");
+            var row = tbody.insertRow();
+            var cell1 = row.insertCell();
+            cell1.setAttribute("colspan", "5");
+            var cell6 = row.insertCell();
+            var cell7 = row.insertCell();
+            var cell8 = row.insertCell();
+            var cell9 = row.insertCell();
+            var cell10 = row.insertCell();
+
+            // Agrega contenido a las celdas
+            cell1.innerHTML = conceptos;
+            cell6.innerHTML = montos;
+            cell7.innerHTML = "";
+            cell8.innerHTML = concepto_pdf_pdf;
+            cell9.innerHTML = nombreArchivo;
+            cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
+            } else if (combo == "2") {
+                var table = document.getElementById("tabla");
+                var tbody = document.getElementById("body_tabla");
+                var row = tbody.insertRow();
+                var cell1 = row.insertCell();
+                cell1.setAttribute("colspan", "5");
+                var cell6 = row.insertCell();
+                var cell7 = row.insertCell();
+                var cell8 = row.insertCell();
+                var cell9 = row.insertCell();
+                var cell10 = row.insertCell();
+    
+                // Agrega contenido a las celdas
+                cell1.innerHTML = conceptos;
+                cell6.innerHTML = "";
+                cell7.innerHTML = montos;
+                cell8.innerHTML = concepto_pdf;
+                cell9.innerHTML = nombreArchivo;
+                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
+            }
+        }else{
+            alert("faltan campos por llenar");
+        }
+
+
+    
     }
 });
 
