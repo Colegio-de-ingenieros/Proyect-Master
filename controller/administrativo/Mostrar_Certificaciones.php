@@ -17,7 +17,7 @@ if (isset($_POST['consulta'])) {
             <thead>
                 <tr>
                     <th>Logo</th>
-                    <th>Identificador<th>
+                    <th>Identificador</th>
                     <th>Abreviación</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
@@ -40,8 +40,10 @@ if (isset($_POST['consulta'])) {
             $abre = $resultado[$i]["abrevCertInt"];
             $desc = $resultado[$i]["DesCerInt"];
             $status = $resultado[$i]["EstatusCertInt"];
+            $clave = $resultado[$i]["ClaveCerInt"];
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
+            
 
             //obtiene el valor real de seguimiento
             if($status == 0){
@@ -51,7 +53,7 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
-            $salida .= '<td>' . $abre . '</td>';
+            $salida .= '<td>' . $clave . '</td>';
             $salida .= '<td>' . $abre . '</td>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $desc . '</td>';
@@ -81,11 +83,12 @@ if (isset($_POST['consulta'])) {
             <thead>
                 <tr>
                     <th>Logo</th>
+                    <th>Identificador</th>
                     <th>Abreviación</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Precio general</th>
-                    <th>Precio <br>socio/asociado</th>
+                    <th>Precio socio/asociado</th>
                     <th>Seguimiento</th>
                     <th>Acciones</th>
                 </tr>
@@ -101,6 +104,7 @@ if (isset($_POST['consulta'])) {
             $nombre = $resultado[$i]["NomCertInt"];
             $abre = $resultado[$i]["abrevCertInt"];
             $desc = $resultado[$i]["DesCerInt"];
+            $clave = $resultado[$i]["ClaveCerInt"];
             $status = $resultado[$i]["EstatusCertInt"];
             $precioG = $base->buscarUltimoPrecioG($idc);
             $precioA = $base->buscarUltimoPrecioA($idc);
@@ -113,6 +117,7 @@ if (isset($_POST['consulta'])) {
             //escribe los valores en la tabla
             $salida .= '<tr>';
             $salida .= '<td>' . '<img src="data:image/jpeg;base64,' . base64_encode($logo) . '"width="50" height="50"></td>';
+            $salida .= '<td>' . $clave . '</td>';
             $salida .= '<td>' . $abre . '</td>';
             $salida .= '<td>' . $nombre . '</td>';
             $salida .= '<td>' . $desc . '</td>';

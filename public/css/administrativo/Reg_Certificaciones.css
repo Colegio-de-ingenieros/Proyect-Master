@@ -247,5 +247,9 @@
         flex-direction: column;
         width: 80%;
     }
+    .grupo-input3{
+        display: contents;
+        padding: 0 0 10px 0;
+    }
     
 }

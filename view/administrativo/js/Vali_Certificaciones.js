@@ -286,10 +286,6 @@ function validar(bandera){
     else {
         guardar.disabled = false;
     }
-
-    console.log(bandera);
-    console.log(guardar.disabled);  
-    
 }
 
 //funcion para verificar que la cadena no tenga mas de un punto

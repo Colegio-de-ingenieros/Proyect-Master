@@ -25,8 +25,8 @@ $spreadsheet->setActiveSheetIndex(0)->setTitle("Certificaciones");
 $hoja = $spreadsheet->getActiveSheet();
 
 //poner los encabezados de las columnas
-$hoja -> setCellValue('A1', "Indentificador") -> setCellValue("B1", "Nombre") -> setCellValue("C1", "Abreviación") ->
-    setCellValue("D1", "Descripción") -> setCellValue("E1", "Precio general")->setCellValue("F1", "Preacio socio/asociado");
+$hoja -> setCellValue('A1', "Identificador") -> setCellValue("B1", "Nombre") -> setCellValue("C1", "Abreviación") ->
+    setCellValue("D1", "Descripción") -> setCellValue("E1", "Precio general")->setCellValue("F1", "Precio socio/asociado");
 
 //cambiar el color de las celdas de encabezado
 $hoja->getStyle('A1:F1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');

@@ -17,6 +17,7 @@ $nombre = $resultado[0]["NomCertInt"];
 $abre = $resultado[0]["abrevCertInt"];
 $desc = $resultado[0]["DesCerInt"];
 $status = $resultado[0]["EstatusCertInt"];
+$clave = $resultado[0]["ClaveCerInt"];
 $precioG = $base->buscarUltimoPrecioG($idc);
 $precioA = $base->buscarUltimoPrecioA($idc);
 
@@ -26,6 +27,7 @@ $precioA = $base->buscarUltimoPrecioA($idc);
 <!-- script para poner los valores en los campos correspondientes -->
 <script languaje="javascript">
     document.getElementById("idc").value = "<?php echo $idc ?>";
+    document.getElementById("identificador").value = "<?php echo $clave ?>";
     document.getElementById("nombre").value = "<?php echo $nombre ?>";
     document.getElementById("abreviacion").value = "<?php echo $abre ?>";
     document.getElementById("descripcion").value = "<?php echo $desc ?>";
