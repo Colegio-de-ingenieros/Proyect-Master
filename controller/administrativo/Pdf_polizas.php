@@ -115,7 +115,7 @@
     $titulo_servicio = $response_name_service[0]['Nombre_servicio'];
 
 
-    $pdf = new PDF();
+    $pdf = new PDF('L','mm','Letter');
 
     //* Definimos el tamaño de la ventana y la altura de las celdas
     $ancho_total = $pdf -> GetPageWidth() - 20;
@@ -171,7 +171,7 @@
     $pdf -> Cell($ancho_celda,$altura,utf8_decode($id),1,1,'C',true);
 
     $pdf->SetFont('Arial','',12);
-    $lineas = $pdf->NbLines(142.5, $concepto);
+    $lineas = $pdf->NbLines($ancho_celda * 3, $concepto);
     $altura = 5 * $lineas;
 
     //* SECCION CONCEPTO GENERAL
