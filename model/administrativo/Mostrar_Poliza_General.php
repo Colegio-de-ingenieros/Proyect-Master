@@ -37,6 +37,40 @@
             }
         }
 
+        function TipoServicio($id){
+            $consulta = "SELECT serviciospol.IdSerPol, serviciospol.SerPol
+            FROM polgeneral, serviciospol, sergralpol
+            WHERE polgeneral.IdPolGral = :id
+            AND polgeneral.IdPolGral = sergralpol.IdPolGral
+            AND sergralpol.IdSerPol = serviciospol.IdSerPol";
+            $parametros = [":id"=>$id];
+            $response = $this->bd->mostrar($consulta,$parametros);
+            return $response;
+        }
+
+        function TituloServicio($tipo, $id){
+            if($tipo == 'Curso'){
+                $consulta = "SELECT cursos.NomCur as Nombre_servicio
+                FROM cursos, cursoserpol, polgeneral
+                WHERE polgeneral.IdPolGral = :id
+                AND polgeneral.IdPolGral = cursoserpol.IdPolGral
+                AND cursoserpol.ClaveCur = cursos.ClaveCur";
+                $parametros = [":id"=>$id];
+                $response = $this->bd->mostrar($consulta, $parametros);
+                return $response;
+            }
+            else{
+                $consulta = "SELECT certinterna.NomCertInt as Nombre_servicio
+                FROM certinterna, cerserpol, polgeneral
+                WHERE polgeneral.IdPolGral = :id
+                AND polgeneral.IdPolGral = cerserpol.IdPolGral
+                AND cerserpol.IdCerInt = certinterna.IdCerInt";
+                $parametros = [":id"=>$id];
+                $response = $this->bd->mostrar($consulta, $parametros);
+                return $response;
+            } 
+        }
+
         function DatosGeneralesUsuario($id){
             $consulta = "SELECT usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol
             FROM usuaperso, persogralpol, polgeneral, tipogralpol, tipopol
