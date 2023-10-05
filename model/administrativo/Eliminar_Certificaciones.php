@@ -64,12 +64,13 @@ class EliminarCert{
 
         $resultados = $this->base->mostrar($querry, $arre);
 
-        //echo '<script>alert("'. $resultados[0]["EstatusCertInt"]. '")</script>';
         if($resultados[0]["EstatusCertInt"] == 0){
+            //si hay relacion
             return true;
         }
 
         else{
+            //no hay relacion
             return false;
         }
     }

@@ -45,5 +45,3 @@ var linkDelete = document.querySelectorAll(".table_item__link");
 for (var i = 0; i < linkDelete.length; i++) {
     linkDelete[i].addEventListener('click', confirmacion);
 }
-
-//alert("si entra al js");
