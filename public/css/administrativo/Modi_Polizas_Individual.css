@@ -311,8 +311,6 @@
     ;
   }  
   
-  
-  
   .btn-small0{
     font-size: 1rem;
     font-weight: 600;
@@ -548,8 +546,6 @@
     white-space: normal;
     background-color: --color-placeholder-2;
   }
-  
-  
   
   .justify-text {
     text-align: justify;
@@ -815,17 +811,13 @@
     background: var(--color-gray);
     border-radius: var(--radius-2);
     box-shadow: var(--shadow-1);
-  
     width: 90%;
     min-height: 35rem;
     max-height: 35rem;
-  
     display: flex;
     flex-direction: column;
     align-items: center;
-  
     pointer-events: all;
-  
   } 
 
   .contenedor-formulario_{
@@ -875,18 +867,14 @@
   @keyframes fade-in {
     from {
         opacity: 0;
-        /* La ventana modal es invisible al principio */
     }
   
     to {
         opacity: 1;
-        /* La ventana modal se vuelve completamente visible */
     }
   }
   
   #close{
     margin-top: 10px;
     margin-bottom: 10px;
-  }
-  
-    
+  }   
