@@ -20,36 +20,43 @@ inserta.addEventListener("click", (e) => {
     else{
         //obtener el valor de la combobox y el nombre del archivo
         const combo = document.getElementById("tipoGradoPerso").value;
-        const archivo = document.querySelector('input[type="file"]').files[0];
-        const nombreArchivo = archivo.name;
+
+        const archivo = document.getElementById("archivo");
+
+        var rutaCompleta = archivo.value;
+        var partes = rutaCompleta.split("\\");
+        var nombreArchivo = partes[partes.length - 1];
 
         const conceptos = document.getElementById("concepto").value;
-        const montos = document.querySelector("monto");
-        const concepto_pdf = document.querySelector("concepto_pdf");
+        const montos = document.getElementById("monto").value;
+        const concepto_pdf = document.getElementById("concepto_pdf").value;
 
-
+lista = []
         if (combo != "" && nombreArchivo != "") {
+            var nombreArchivo2 = document.getElementById("archivo").files[0].name;
+            //console.log("archivo2"+nombreArchivo2);
             if (combo == "1") {
-            //alert("pdf"+nombreArchivo);
-            var table = document.getElementById("tabla");
-            var tbody = document.getElementById("body_tabla");
-            var row = tbody.insertRow();
-            var cell1 = row.insertCell();
-            cell1.setAttribute("colspan", "5");
-            var cell6 = row.insertCell();
-            var cell7 = row.insertCell();
-            var cell8 = row.insertCell();
-            var cell9 = row.insertCell();
-            var cell10 = row.insertCell();
+                //alert("pdf"+nombreArchivo);
+                var table = document.getElementById("tabla");
+                var tbody = document.getElementById("body_tabla");
+                var row = tbody.insertRow();
+                var cell1 = row.insertCell();
+                cell1.setAttribute("colspan", "5");
+                var cell6 = row.insertCell();
+                var cell7 = row.insertCell();
+                var cell8 = row.insertCell();
+                var cell9 = row.insertCell();
+                var cell10 = row.insertCell();
 
-            // Agrega contenido a las celdas
-            cell1.innerHTML = conceptos;
-            cell6.innerHTML = montos;
-            cell7.innerHTML = "";
-            cell8.innerHTML = concepto_pdf_pdf;
-            cell9.innerHTML = nombreArchivo;
-            cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
-            } else if (combo == "2") {
+                // Agrega contenido a las celdas
+                cell1.innerHTML = conceptos;
+                cell6.innerHTML = montos;
+                cell7.innerHTML = "";
+                cell8.innerHTML = concepto_pdf;
+                cell9.innerHTML = nombreArchivo;
+                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
+                 
+            }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
                 var row = tbody.insertRow();
@@ -68,6 +75,7 @@ inserta.addEventListener("click", (e) => {
                 cell8.innerHTML = concepto_pdf;
                 cell9.innerHTML = nombreArchivo;
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
+            
             }
         }else{
             alert("faltan campos por llenar");
@@ -122,7 +130,7 @@ conceptpdf.addEventListener('keyup', (e) => {
 })
 
 
-let amount = document.getElementById("materno");
+let amount = document.getElementById("monto");
 amount.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
 
@@ -275,8 +283,5 @@ function validarArchivo(input) {
     else if (ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
-    } else {
-        // El archivo es válido, no se muestra ninguna alerta
-        $("#modal-gral").hide();
-    }
+    } 
   }
