@@ -85,6 +85,8 @@ img.logo_ciscig{
 
 .boton-cerrar-session{
     padding-right: 50px;
+    display: flex;
+    align-items: center;
 }
 
 .btn-cerrar-session{
@@ -275,6 +277,15 @@ nav ul li ul li a:hover{
 
 #check__menu{
     display: none;
+}
+
+.ti{
+    color: white;
+    font-size: 2.2rem;
+}
+
+.info{
+    text-decoration: none;
 }
 
 @media screen and (max-width: 1250px){

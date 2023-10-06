@@ -97,7 +97,7 @@
     }
 
     //* Llamada a la base de datos para la consulta de los datos generales de la póliza
-    $id = '0001';
+    $id = '0002';
     include('../../model/administrativo/Mostrar_Poliza_PDF.php');
     $bd = new ObtenerPolizasGenerales();
     $bd -> BD();
