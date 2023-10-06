@@ -44,6 +44,60 @@
             $this->cerrar_conexion();
             return $resultados;
         }
+        public function mostrarIndividualSoc($folio){
+            $this->conexion_bd();
+            $sql = "SELECT * FROM persogralpol WHERE IdPolGral=:busqueda ";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function mostrarIndividualEmp($folio){
+            $this->conexion_bd();
+            $sql = "SELECT * FROM empgralpol WHERE IdPolGral=:busqueda";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function getEmpresa($rfc){
+            $this->conexion_bd();
+            $sql = "SELECT NomUsuaEmp FROM usuaemp WHERE RFCUsuaEmp=:rfc";
+            $arre = [":rfc"=>$rfc];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function getSocio($id){
+            $this->conexion_bd();
+            $sql = "SELECT NomPerso, ApePPerso, ApeMPerso, TipoU
+            FROM usuaperso,persotipousua,tipousua 
+            WHERE usuaperso.IdPerso =:id AND usuaperso.IdPerso=persotipousua.IdPerso AND persotipousua.IdUsua=tipousua.IdUsua";
+            $arre = [":id"=>$id];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function Poliza_Empresa($folio){
+            $this->conexion_bd();
+            $sql = "SELECT CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral
+            FROM polgeneral
+            WHERE IdPolGral=:busqueda";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function RellenoPoliza($folio){
+            $this->conexion_bd();
+            $sql = "SELECT indgralpol.IdPolInd, DesPolInd, Monto, DesDocInd, IdPolAcc
+            FROM indgralpol, polindividual, indpolacc
+            WHERE IdPolGral=:busqueda AND indgralpol.IdPolInd=polindividual.IdPolInd AND polindividual.IdPolInd=indpolacc.IdPolInd";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
 
     }
 ?>
