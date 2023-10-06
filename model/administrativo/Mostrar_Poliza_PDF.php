@@ -96,5 +96,18 @@
             $response = $this->bd->mostrar($consulta,$parametros);
             return $response;
         }
+
+        function DatosIndividuales($id){
+            $consulta = "SELECT polindividual.DesPolInd, polindividual.Monto, polindividual.DesDocInd, tipopolacc.NomPolAcc
+            FROM polgeneral, indgralpol, polindividual, indpolacc, tipopolacc
+            WHERE polgeneral.IdPolGral = :id
+            AND polgeneral.IdPolGral = indgralpol.IdPolGral
+            AND indgralpol.IdPolInd = polindividual.IdPolInd
+            AND polindividual.IdPolInd = indpolacc.IdPolInd
+            AND indpolacc.IdPolAcc = tipopolacc.IdPolAcc";
+            $parametros = [":id"=>$id];
+            $response = $this->bd->mostrar($consulta,$parametros);
+            return $response;
+        }
     }
 ?>

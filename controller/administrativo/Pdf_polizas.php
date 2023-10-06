@@ -1,29 +1,27 @@
 <?php
     require('../../public/libreria-pdf/fpdf.php');
-
     class PDF extends FPDF{
-        // Cabecera de página
         function Header(){
-            // Logo
             $this -> Image('../../public/img/ciscigCompleto.png',10,8,50);
-            // Arial bold 15
             $this -> SetFont('Arial','B',16);
-            // Movernos a la derecha
-            $this -> SetXY(70,10);
-            // Título
-            $this -> Cell(70,10,utf8_decode('Colegio de Ingenieros'),0,0,'C');
-            $this -> SetXY(60,16);
-            $this -> Cell(90,10,utf8_decode('en Sistemas Computacionales'),0,0,'C');
-            // Salto de línea
+            $width = $this -> GetPageWidth();
+ 
+            $cell_width = $width - $this -> lMargin - $this -> rMargin;
+
+            $this -> SetX(($width - $cell_width) / 2);
+        
+            $this -> Cell($cell_width,16,utf8_decode('Colegio de Ingenieros en Sistemas Computacionales'),0,0,'C');
+        
             $this -> Ln(12);
         }
+        
 
         function NbLines($w, $txt) {
-            $cw = &$this->CurrentFont['cw'];
+            $cw = &$this -> CurrentFont['cw'];
             if ($w == 0) {
-                $w = $this->w - $this->rMargin - $this->x;
+                $w = $this -> w - $this -> rMargin - $this -> x;
             }
-            $wmax = ($w - 2 * $this->cMargin) * 1000 / $this->FontSize;
+            $wmax = ($w - 2 * $this -> cMargin) * 1000 / $this -> FontSize;
             $s = str_replace("\r", '', $txt);
             $nb = strlen($s);
             if ($nb > 0 && $s[$nb - 1] == "\n") {
@@ -67,7 +65,27 @@
             return $nl;
         }
 
-        // Pie de página
+        function MultiCellRow($cells, $width, $height, $data) {
+            $x = $this->GetX();
+            $y = $this->GetY();
+            $maxheight = 0;
+      
+            for ($i = 0; $i < $cells; $i++) {
+              $this->MultiCell($width, $height, $data[$i]);
+              if ($this->GetY() - $y > $maxheight) 
+                $maxheight = $this->GetY() - $y;
+              $this->SetXY($x + ($width * ($i + 1)), $y);
+            }
+      
+            for ($i = 0; $i < $cells + 1; $i++) {
+              $this->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
+            }
+      
+            // Dibuja las líneas horizontales
+            $this->Line($x, $y, $x + $width * $cells, $y);
+            $this->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
+        }
+
         function Footer(){
             // Posición: a 1,5 cm del final
             $this -> SetY(-15);
@@ -80,7 +98,7 @@
 
     //* Llamada a la base de datos para la consulta de los datos generales de la póliza
     $id = '0001';
-    include('../../model/administrativo/Mostrar_Poliza_General.php');
+    include('../../model/administrativo/Mostrar_Poliza_PDF.php');
     $bd = new ObtenerPolizasGenerales();
     $bd -> BD();
 
@@ -116,7 +134,6 @@
 
 
     $pdf = new PDF('L','mm','Letter');
-
     //* Definimos el tamaño de la ventana y la altura de las celdas
     $ancho_total = $pdf -> GetPageWidth() - 20;
     $altura = 10;
@@ -171,7 +188,7 @@
     $pdf -> Cell($ancho_celda,$altura,utf8_decode($id),1,1,'C',true);
 
     $pdf->SetFont('Arial','',12);
-    $lineas = $pdf->NbLines($ancho_celda * 3, $concepto);
+    $lineas = $pdf -> NbLines($ancho_celda * 3, $concepto);
     $altura = 5 * $lineas;
 
     //* SECCION CONCEPTO GENERAL
@@ -193,14 +210,116 @@
     $pdf -> SetTextColor(0,0,0);
     $pdf -> SetFillColor(223, 227, 231);
 
-    $ancho_celda = $ancho_total / 5;
+    $ancho_celda = $ancho_total / 4;
     $altura = 10;
 
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('Concepto'),1,0,'C',true);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('Debe'),1,0,'C',true);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('Haber'),1,0,'C',true);
-    $pdf -> Cell($ancho_celda, $altura,utf8_decode('Descripción'),1,0,'C',true);
-    $pdf -> Cell($ancho_celda, $altura,utf8_decode('Comprobante'),1,1,'C',true);
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('Descripción'),1,1,'C',true);
+
+    //* OBTENER LOS DATOS DE LAS POLIZAS INDIVIDUALES
+    $response = $bd -> DatosIndividuales($id);
+
+    //* Iterar sobre los datos de las pólizas individuales
+    $pdf -> SetFont('Arial','',12);
+    $pdf -> SetTextColor(0,0,0);
+    $pdf -> SetFillColor(255, 255, 255);
+
+    $ancho_celda = $ancho_total / 4;
+
+    foreach($response as $row){
+        $concepto = $row['DesPolInd'];
+        $monto = $row['Monto'];
+        $descripcion = $row['DesDocInd'];
+        $tipo = $row['NomPolAcc'];
     
+        $lineas_concepto = $pdf -> NbLines($ancho_celda, $concepto);
+        $lineas_descripcion = $pdf -> NbLines($ancho_celda, $descripcion);
+
+        $altura_concepto = $lineas_concepto * 5;
+        $altura_descripcion = $lineas_descripcion * 5;
+
+        $debe = '';
+        $haber = '';
+        
+        if($tipo == 'Debe'){
+            $debe = $monto;
+            $haber = '';
+        }
+        else if($tipo == 'Haber'){
+            $haber = $monto;
+            $debe = '';
+        }
+        
+        if($altura_concepto > $altura_descripcion){   
+            $x = $pdf -> GetX();
+            $y = $pdf -> GetY();
+
+            $pdf -> MultiCell($ancho_celda, 5, utf8_decode($concepto), 1);
+            $pdf -> SetXY($x + $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($debe), 1, 'R');
+            $pdf -> SetXY($x + 2 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($haber), 1, 'R');
+            $pdf -> SetXY($x + 3 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($descripcion), 1);
+    
+        }
+        else if($altura_concepto < $altura_descripcion){
+
+            $x = $pdf -> GetX();
+            $y = $pdf -> GetY();
+
+        
+            $pdf -> MultiCell($ancho_celda, $altura_descripcion / $lineas_concepto, utf8_decode($concepto), 1);
+            $pdf -> SetXY($x + $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_descripcion, utf8_decode($debe), 1, 'R');
+            $pdf -> SetXY($x + 2 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_descripcion, utf8_decode($haber), 1, 'R');
+            $pdf -> SetXY($x + 3 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, 5, utf8_decode($descripcion), 1);
+        }
+        else if($altura_concepto == $altura_descripcion && $lineas_concepto != 1 && $lineas_descripcion != 1){
+
+            $x = $pdf -> GetX();
+            $y = $pdf -> GetY();
+        
+            $pdf -> MultiCell($ancho_celda, 5, utf8_decode($concepto), 1);
+            $pdf -> SetXY($x + $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($debe), 1, 'R');
+            $pdf -> SetXY($x + 2 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($haber), 1, 'R');
+            $pdf -> SetXY($x + 3 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, 5, utf8_decode($descripcion), 1);
+        }
+        else if($altura_concepto == $altura_descripcion && $lineas_concepto == 1 && $lineas_descripcion == 1){
+            
+            $x = $pdf -> GetX();
+            $y = $pdf -> GetY();
+        
+            $pdf -> MultiCell($ancho_celda, 10, utf8_decode($concepto), 1);
+            $pdf -> SetXY($x + $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, 10, utf8_decode($debe), 1, 'R');
+            $pdf -> SetXY($x + 2 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, 10, utf8_decode($haber), 1, 'R');
+            $pdf -> SetXY($x + 3 * $ancho_celda, $y);
+            
+            $pdf -> MultiCell($ancho_celda, 10, utf8_decode($descripcion), 1);
+        }
+    }
+
+      
+
     $pdf -> Output();
 ?>
