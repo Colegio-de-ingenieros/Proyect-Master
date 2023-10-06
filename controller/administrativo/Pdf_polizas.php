@@ -265,7 +265,7 @@
             $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($haber), 1, 'R');
             $pdf -> SetXY($x + 3 * $ancho_celda, $y);
             
-            $pdf -> MultiCell($ancho_celda, $altura_concepto, utf8_decode($descripcion), 1);
+            $pdf -> MultiCell($ancho_celda, $altura_concepto / $lineas_descripcion, utf8_decode($descripcion), 1);
     
         }
         else if($altura_concepto < $altura_descripcion){
