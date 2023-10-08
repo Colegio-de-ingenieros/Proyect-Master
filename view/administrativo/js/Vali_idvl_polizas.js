@@ -34,11 +34,18 @@ inserta.addEventListener("click", (e) => {
 lista = []
         if (combo != "" && nombreArchivo != "") {
             var nombreArchivo2 = document.getElementById("archivo").files[0].name;
+            const filaInferior = document.getElementById("footer");
+            const debe = document.getElementById("debe");
+            const haber = document.getElementById("haber");
+            const debe_value = document.getElementById("debe").textContent;
+            const haber_value = document.getElementById("haber").textContent;
             //console.log("archivo2"+nombreArchivo2);
             if (combo == "1") {
                 //alert("pdf"+nombreArchivo);
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
+                 
+
                 var row = tbody.insertRow();
                 var cell1 = row.insertCell();
                 cell1.setAttribute("colspan", "5");
@@ -51,11 +58,13 @@ lista = []
                 // Agrega contenido a las celdas
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = montos;
+                cell6.id = "cantidad";
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
                 cell9.innerHTML = nombreArchivo;
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
-                 
+                tbody.insertBefore(row, filaInferior);
+                debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos);
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -72,10 +81,12 @@ lista = []
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "";
                 cell7.innerHTML = montos;
+                cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 cell9.innerHTML = nombreArchivo;
-                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
-            
+                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar2(this)' type='button'></button>";
+                tbody.insertBefore(row, filaInferior);
+                haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos);
             }
         }else{
             alert("faltan campos por llenar");
