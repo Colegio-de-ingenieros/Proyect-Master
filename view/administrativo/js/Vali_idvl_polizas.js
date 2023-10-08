@@ -3,6 +3,10 @@ let concepto = false
 let monto = false
 let conceptopdf = false
 
+const tabla = []
+
+fila = 0;
+
 /*Detecta cuando el boton fue presionado*/
 let inserta = document.getElementById("btn_agregar");
 inserta.addEventListener("click", (e) => {
@@ -31,7 +35,7 @@ inserta.addEventListener("click", (e) => {
         const montos = document.getElementById("monto").value;
         const concepto_pdf = document.getElementById("concepto_pdf").value;
 
-lista = []
+        filas = []
         if (combo != "" && nombreArchivo != "") {
             var nombreArchivo2 = document.getElementById("archivo").files[0].name;
             const filaInferior = document.getElementById("footer");
@@ -62,9 +66,18 @@ lista = []
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
                 cell9.innerHTML = nombreArchivo;
-                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar(this)' type='button'></button>";
+                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar(this)' type='button'></button>";
+                fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos);
+                
+                filas.push(conceptos);
+                filas.push(montos);
+                filas.push(concepto_pdf);
+                filas.push(nombreArchivo2);
+                filas.push("Debe");
+                tabla.push(filas);
+
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -84,9 +97,16 @@ lista = []
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 cell9.innerHTML = nombreArchivo;
-                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id='boton_registro' onclick = 'eliminar2(this)' type='button'></button>";
+                cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar2(this)' type='button'></button>";
+                fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos);
+                filas.push(conceptos);
+                filas.push(montos);
+                filas.push(concepto_pdf);
+                filas.push(nombreArchivo2);
+                filas.push("Haber");
+                tabla.push(filas);
             }
         }else{
             alert("faltan campos por llenar");
@@ -296,3 +316,60 @@ function validarArchivo(input) {
         input.value = ""; // Limpia el valor del campo de archivo
     } 
   }
+
+
+function registrar(){
+    const debe = document.getElementById("debe");
+    const haber = document.getElementById("haber");
+    const debe_value = document.getElementById("debe").textContent;
+    const haber_value = document.getElementById("haber").textContent;
+    const haber_total = parseFloat(haber_value.replace(/\$|,/g, ''));
+    const deber_total = parseFloat(debe_value.replace(/\$|,/g, ''));
+    
+    if (haber_total == deber_total && haber_total == 0 && deber_total == 0) {
+        alert("No se puede registrar una poliza sin movimientos");
+    }else if (haber_total != deber_total) {
+        alert("La poliza no esta cuadrada");
+    }else{
+    console.log(tabla);
+    }
+}
+
+function eliminar(button){
+    btnid = button.id;
+    console.log("numero de fila"+btnid);
+
+    tabla[parseInt(btnid)] = "n/a"
+
+    var row = button.parentNode.parentNode;
+    var montoElement = row.querySelector('#cantidad');
+    var montoTexto = montoElement.textContent;
+    console.log(montoTexto);
+    row.parentNode.removeChild(row);
+
+    const debe = document.getElementById("debe");
+    
+    const debe_value = document.getElementById("debe").textContent;
+   
+    debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
+    
+}
+function eliminar2(button){
+    btnid = button.id;
+    console.log("numero de fila"+btnid);
+
+    tabla[parseInt(btnid)] = "n/a"
+
+    var row = button.parentNode.parentNode;
+    var montoElement = row.querySelector('#cantidad');
+    var montoTexto = montoElement.textContent;
+    console.log(montoTexto);
+    row.parentNode.removeChild(row);
+
+   
+    const haber = document.getElementById("haber"); 
+    const haber_value = document.getElementById("haber").textContent; 
+    haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
+    
+    
+}

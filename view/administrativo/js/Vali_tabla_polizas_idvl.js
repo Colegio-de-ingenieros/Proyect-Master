@@ -34,29 +34,3 @@ function removeColumn() {
          /* pdfList.pop(); */
     }
 }
-function eliminar(button){
-    var row = button.parentNode.parentNode;
-    var montoElement = row.querySelector('#cantidad');
-    var montoTexto = montoElement.textContent;
-    console.log(montoTexto);
-    row.parentNode.removeChild(row);
-
-    const debe = document.getElementById("debe");
-    
-    const debe_value = document.getElementById("debe").textContent;
-   
-    debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
-    
-}
-function eliminar2(button){
-    var row = button.parentNode.parentNode;
-    var montoElement = row.querySelector('#cantidad');
-    var montoTexto = montoElement.textContent;
-    console.log(montoTexto);
-    row.parentNode.removeChild(row);
-
-   
-    const haber = document.getElementById("haber"); 
-    const haber_value = document.getElementById("haber").textContent; 
-    haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto); 
-}
