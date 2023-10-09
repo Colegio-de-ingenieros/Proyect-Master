@@ -5,7 +5,7 @@ $nombreBD='u283658544_colegiociscig';
 $usuario='u283658544_colegiociscig';
 $password='ColegioCISCIG2023.';
 
-$fecha=date('dmY-His');
+$fecha=date('Ymd-His');
 
 $nombre_sql=$nombreBD . '_' . $fecha.'.sql';
 
@@ -15,15 +15,16 @@ system($dump,$output);
 
 
 $zip = new ZipArchive(); 
-$salida_zip = $nombreBD . '.zip';
+$nombre_zip=$nombreBD . '_' . $fecha.'.zip';
 
-if ($zip->open($salida_zip, ZIPARCHIVE::CREATE) === true) { //Creamos y abrimos el archivo ZIP
-    $zip->addFile($salida_sql); //Agregamos el archivo SQL a ZIP
-    $zip->close(); //Cerramos el ZIP
-    unlink($salida_sql); //Eliminamos el archivo temporal SQL
-    header("Location: $salida_zip"); // Redireccionamos para descargar el Arcivo ZIP
+
+if ($zip->open($nombre_zip, ZIPARCHIVE::CREATE) === true) { 
+    $zip->addFile($nombre_sql); 
+    $zip->close();
+    //unlink($nombre_zip); 
+    header("Location: $nombre_zip");
 } else {
-    echo 'Error'; //Enviamos el mensaje de error
+    echo 'Error';
 }
 
 ?>
