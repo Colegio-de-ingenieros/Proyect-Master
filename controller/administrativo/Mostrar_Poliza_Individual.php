@@ -91,8 +91,9 @@ if ($resultado==true){
     }else if ($accion=="2"){
         $montoHaber+=$monto;
     }
-    $montoDebe=number_format($montoDebe, 2, '.', '');
-    $montoHaber=number_format($montoHaber, 2, '.', '');
+    $monto=number_format($monto, 2, '.', ',');
+
+    
 ?>
     <script>
         
@@ -108,7 +109,7 @@ if ($resultado==true){
         if (accion=="1"){
             var cell2 = newRow.insertCell(1);
             cell2.colSpan = 1; 
-            cell2.textContent = monto;
+            cell2.textContent = '$'+monto;
             cell2.style.textAlign = "right";
 
             var cell3 = newRow.insertCell(2);
@@ -123,7 +124,7 @@ if ($resultado==true){
 
             var cell3 = newRow.insertCell(2);
             cell3.colSpan = 1; // Establece el colspan deseado para esta celda
-            cell3.textContent = monto;
+            cell3.textContent = '$'+monto;
             cell3.style.textAlign = "right";
         }
 
@@ -141,6 +142,8 @@ if ($resultado==true){
 <?php
     }
 }
+$montoHaber=number_format($montoHaber, 2, '.', ',');
+$montoDebe=number_format($montoDebe, 2, '.', ',');
 ?>  
 <script>
     var montoDebe = <?php echo json_encode($montoDebe); ?>;
@@ -154,11 +157,11 @@ if ($resultado==true){
     cell1.style.backgroundColor = "#dfe3e7"
     var cell2 = newRow.insertCell(1);
     cell2.colSpan = 1; // Establece el colspan deseado para esta celda
-    cell2.textContent = montoDebe;
+    cell2.textContent = '$'+montoDebe;
     cell2.style.textAlign = "right";
     var cell3 = newRow.insertCell(2);
     cell3.colSpan = 1; // Establece el colspan deseado para esta celda
-    cell3.textContent = montoHaber;
+    cell3.textContent = '$'+montoHaber;
     cell3.style.textAlign = "right";
     var cell4 = newRow.insertCell(3);
     cell4.colSpan = 1; // Establece el colspan deseado para esta celda
