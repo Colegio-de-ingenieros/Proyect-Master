@@ -334,14 +334,14 @@ function registrar(){
         var formData = new FormData();
         formData.append("tabla", JSON.stringify(tabla));
 
-
-        const archivosInput = document.getElementById("archivo");
+        console.log(tabla);
+        /* const archivosInput = document.getElementById("archivo");
 
         for (let i = 0; i < archivosInput.files.length; i++) {
             formData.append("archivo[]", archivosInput.files[i]);
             console.log(archivosInput.files[i]);
         }
-
+ */
   
   
         fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
