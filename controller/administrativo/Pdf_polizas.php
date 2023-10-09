@@ -342,8 +342,7 @@
 
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('Sumas iguales:'),1,0,'R',true);
 
-    $pdf -> SetTextColor(255,255,255);
-    $pdf -> SetFillColor(235, 71, 71);
+    $pdf -> SetFillColor(255,255,255);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_debe / 100, 2, '.', ',')),1,0,'R',true);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_haber / 100, 2, '.', ',')),1,0,'R',true);
 
