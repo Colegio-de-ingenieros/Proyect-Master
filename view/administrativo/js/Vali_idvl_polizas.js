@@ -331,7 +331,35 @@ function registrar(){
     }else if (haber_total != deber_total) {
         alert("La poliza no esta cuadrada");
     }else{
-    console.log(tabla);
+        var formData = new FormData();
+        formData.append("tabla", JSON.stringify(tabla));
+
+
+        const archivosInput = document.getElementById("archivo");
+
+        for (let i = 0; i < archivosInput.files.length; i++) {
+            formData.append("archivo[]", archivosInput.files[i]);
+            console.log(archivosInput.files[i]);
+        }
+
+  
+  
+        fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
+          method: 'POST',
+          body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if (data === 'exito') {
+                alert (data);
+                
+            }
+            //los datos no pasaron alguna validacion
+            else {
+                alert (data);
+            }
+        })
     }
 }
 
