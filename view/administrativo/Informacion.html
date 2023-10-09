@@ -5,14 +5,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Informacion del sistema</title>
+  <title>Información del sistema</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Proyectos.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="../../controller/administrativo/js/Mostrar_Proyectos.js"></script>
+  <link rel="stylesheet" href="../../public/css/administrativo/informacion.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
@@ -23,7 +21,7 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Informacion del sistema</h1>
+          <h1 class="nombre_Ventana">Información del sistema</h1>
         </div>
 
       </div>
@@ -183,8 +181,29 @@
   </header>
 
   <main>
-    <button>Exportar</button>
-    <button>Importar</button>
+    <section class="section-main">
+      <article class="info">
+        <h1 class="h4">Acerca de</h1>
+        <hr>
+        <p class="label-3">Sistema desarrollado por el Instituto Tecnológico Superior Zacatecas Sur (ITSZaS) en conjunto con Fábrica de Software del ITSZaS</p>
+        <p class="label-3">Versión 1.0.0</p>
+      </article>
 
+      <article>
+        <h1 class="h4">Manuales de operación</h1>
+        <hr>
+        <a href="#">Link del manual</a>
+      </article>
+
+      <article class="respaldo">
+        <h1 class="h4">Respaldo y seguridad</h1>
+        <hr>
+        <p class="label-3">Proceso de importación</p>
+        <input type="file" name="" id="" class="input-format-2">
+        <button class="btn btn-medium">Importar</button>
+        <p class="label-3">Proceso de exportación</p>
+        <button class="btn btn-medium">Exportar</button>       
+      </article>
+    </section>    
   </main>
 </body>
