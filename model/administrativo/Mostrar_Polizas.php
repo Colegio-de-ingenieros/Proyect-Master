@@ -80,7 +80,7 @@
         }
         public function Poliza_Empresa($folio){
             $this->conexion_bd();
-            $sql = "SELECT CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral
+            $sql = "SELECT CoceptoGral, NomElaPol, ApePElaPol, ApeMElaPol, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral
             FROM polgeneral
             WHERE IdPolGral=:busqueda";
             $arre = [":busqueda"=>$folio];
