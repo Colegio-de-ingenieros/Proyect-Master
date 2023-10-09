@@ -148,6 +148,7 @@ if ($resultado==true){
     cell1.colSpan = 5; // Establece el colspan deseado para esta celda
     cell1.textContent = "Sumas iguales";
     cell1.style.fontWeight = "bold";
+    cell1.style.backgroundColor = "#dfe3e7"
     var cell2 = newRow.insertCell(1);
     cell2.colSpan = 1; // Establece el colspan deseado para esta celda
     cell2.textContent = montoDebe;
@@ -160,13 +161,15 @@ if ($resultado==true){
     cell4.colSpan = 1; // Establece el colspan deseado para esta celda
     cell4.textContent ="";
     cell4.style.textAlign = "right";
-
+    cell4.style.backgroundColor = "#dfe3e7"
     var cell5 = newRow.insertCell(4);
     cell5.colSpan = 1; // Establece el colspan deseado para esta celda
+    cell5.style.backgroundColor = "#dfe3e7"
     var newRow = tbody.insertRow();
     var cell1 = newRow.insertCell(0);
     cell1.colSpan = 5; // Establece el colspan deseado para esta celda
     cell1.textContent = "Realizó";
+    cell1.style.backgroundColor = "#dfe3e7"
     cell1.style.fontWeight = "bold";
     var cell2 = newRow.insertCell(1);
     cell2.colSpan = 6; // Establece el colspan deseado para esta celda
