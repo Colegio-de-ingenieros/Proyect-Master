@@ -10,16 +10,23 @@ class Nuevapoliza{
         $this->base->conexion_bd();
     }
 
-    //manda las consultas para insertar en las tablas de certificaciones internas e historicos
-    function insertar($nombre, $apat, $amat, $rfc, $correo, $telefono, $pass, $num){
-        //consultas para la tabla de certificaciones internas
-        $q1 = "INSERT INTO trabajadores (RFCT,NombreT,ApePT,ApeMT,CorreoT,TelT,ContraT)
-        VALUES(:rfc, :nombre, :apat, :amat, :correo, :telefono, :pass)";
-        $a1= [":rfc"=>$rfc, ":nombre"=>$nombre, ":apat"=>$apat, ":amat"=>$amat, ":correo"=>$correo, ":telefono"=>$telefono, ":pass"=>$pass];
-        //acomoda todo en arreglos para mandarlos al CRUD
-        $q2="INSERT INTO tratipousua (IdUsua,RFCT)
-        VALUES (:num, :rfc)";
-        $a2= [":num"=>$num,":rfc"=>$rfc];
+   
+    function insertar($id, $des, $monto, $des_pdf, $tipo){
+      
+        $q1 = "INSERT INTO polindividual (IdPolInd, DesPolInd, Monto, DesDocInd)
+        VALUES(:IdPolInd, :DesPolInd, :Monto, :DesDocInd)";
+        $a1= [":IdPolInd"=>$id, ":DesPolInd"=>$des, ":Monto"=>$monto, ":DesDocInd"=>$des_pdf];
+        
+        if ($tipo == "Debe"){
+            $q2="INSERT INTO indpolacc (IdPolInd,IdPolAcc)
+            VALUES (:IdPolInd, :IdPolAcc)";
+            $a2= [":IdPolInd"=>$id,":IdPolAcc"=>"1"];
+        }else{
+            $q2="INSERT INTO indpolacc (IdPolInd,IdPolAcc)
+            VALUES (:IdPolInd, :IdPolAcc)";
+            $a2= [":IdPolInd"=>$id,":IdPolAcc"=>"2"];
+        }
+        
 
         $querry = [$q1,$q2];
         $parametros = [$a1,$a2];           
@@ -50,26 +57,6 @@ class Nuevapoliza{
 
     }
 
-
-    //retorna true si el id que recibe ya esta en la base y false si no
-    function buscarPorRFC($rfc){
-        $querry = "SELECT * FROM trabajadores
-        WHERE RFCT = :rfc";
-        
-        
-        $arre = [":rfc"=>$rfc];
-
-        $resultados = $this->base->mostrar($querry, $arre);
-        
-        if($resultados != null){
-            
-            return true;
-        }
-
-        else{
-            return false;
-        }
-    }
 }
 
 ?>

@@ -335,13 +335,7 @@ function registrar(){
         formData.append("tabla", JSON.stringify(tabla));
 
         console.log(tabla);
-        /* const archivosInput = document.getElementById("archivo");
-
-        for (let i = 0; i < archivosInput.files.length; i++) {
-            formData.append("archivo[]", archivosInput.files[i]);
-            console.log(archivosInput.files[i]);
-        }
- */
+        
   
   
         fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
@@ -352,7 +346,7 @@ function registrar(){
         .then(data => {
             console.log(data);
             if (data === 'exito') {
-                alert (data);
+                alert ("Registro exitoso");
                 
             }
             //los datos no pasaron alguna validacion
