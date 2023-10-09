@@ -4,6 +4,7 @@ include_once('../../view/administrativo/Mostrar_Polizaindividual.html');
 $base = new Mostrar_Polizas();
 $id=$_GET['usuario'];
 $tipo=$_GET['tipo'];
+$tipoPoliza='Poliza de '.$_GET['poliza'];
 $salida ="";
 $banEmpresa=false;
 $banSocio=false;
@@ -70,6 +71,8 @@ if ($banSocio){
   parrafo.innerHTML = "<?php echo $id; ?>";
   var parrafo = document.getElementById("conepgenerapoliza"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $concepto; ?>";
+  var parrafo = document.getElementById("nompoliza"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $tipoPoliza; ?>";
   var tbody = document.getElementById('body_tabla');
 </script>
 <?php
