@@ -132,6 +132,13 @@
     $response_name_service = $bd -> TituloServicio($tipo_servicio, $id);
     $titulo_servicio = $response_name_service[0]['Nombre_servicio'];
 
+    $response_elaborador = $bd -> DatosElaborador($id);
+    $nombre_elaborador = $response_elaborador[0]['NomElaPol'];
+    $apellido_paterno_elaborador = $response_elaborador[0]['ApePElaPol'];
+    $apellido_materno_elaborador = $response_elaborador[0]['ApeMElaPol'];
+
+    $realizador = $nombre_elaborador.' '.$apellido_paterno_elaborador.' '.$apellido_materno_elaborador;
+
 
     $pdf = new PDF('L','mm','Letter');
     //* Definimos el tamaño de la ventana y la altura de las celdas
@@ -228,6 +235,9 @@
 
     $ancho_celda = $ancho_total / 4;
 
+    $valor_debe = 0;
+    $valor_haber = 0;
+
     foreach($response as $row){
         $concepto = $row['DesPolInd'];
         $monto = $row['Monto'];
@@ -244,12 +254,16 @@
         $haber = '';
         
         if($tipo == 'Debe'){
-            $debe = $monto;
+            $valor = intval(floatval($monto) * 100);
+            $debe = '$'.number_format($valor / 100, 2, '.', ',');
             $haber = '';
+            $valor_debe += intval(floatval($monto) * 100);
         }
         else if($tipo == 'Haber'){
-            $haber = $monto;
+            $valor = intval(floatval($monto) * 100);
+            $haber = '$'.number_format($valor / 100, 2, '.', ',');
             $debe = '';
+            $valor_haber += intval(floatval($monto) * 100);
         }
         
         if($altura_concepto > $altura_descripcion){   
@@ -319,7 +333,30 @@
         }
     }
 
-      
+    $pdf -> SetFont('Arial','B',12);
+    $pdf -> SetTextColor(0,0,0);
+    $pdf -> SetFillColor(223, 227, 231);
+
+    $ancho_celda = $ancho_total / 4;
+    $altura = 10;
+
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('SUMAS IGUALES:'),1,0,'R',true);
+
+    $pdf -> SetTextColor(255,255,255);
+    $pdf -> SetFillColor(235, 71, 71);
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_debe / 100, 2, '.', ',')),1,0,'R',true);
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_haber / 100, 2, '.', ',')),1,0,'R',true);
+
+    $pdf -> SetTextColor(0,0,0);
+    $pdf -> SetFillColor(223, 227, 231);
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode(''),1,1,'R',true);
+
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('Realizó:'),1,0,'R',true);
+    $pdf -> SetFont('Arial','',12);
+    $pdf -> SetTextColor(0,0,0);
+    $pdf -> SetFillColor(255, 255, 255);
+    
+    $pdf -> Cell($ancho_celda * 3, $altura,utf8_decode($realizador),1,0,'L',true);
 
     $pdf -> Output();
 ?>

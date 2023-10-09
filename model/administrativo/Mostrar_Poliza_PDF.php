@@ -71,6 +71,15 @@
             } 
         }
 
+        function DatosElaborador($id){
+            $consulta = 'SELECT polgeneral.NomElaPol, polgeneral.ApePElaPol, polgeneral.ApeMElaPol
+            FROM polgeneral
+            WHERE polgeneral.IdPolGral = :id';
+            $parametros = [":id"=>$id];
+            $response = $this->bd->mostrar($consulta,$parametros);
+            return $response;
+        }
+
         function DatosGeneralesUsuario($id){
             $consulta = "SELECT usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol
             FROM usuaperso, persogralpol, polgeneral, tipogralpol, tipopol
