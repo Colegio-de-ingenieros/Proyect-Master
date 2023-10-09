@@ -1,5 +1,5 @@
-<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <!DOCTYPE html>
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <html lang="en">
 
 <head>
@@ -231,7 +231,7 @@
                             <table id="tabla">
                               <thead>
                                 <tr>
-                                  <th colspan="10" class="titulo-text">Póliza de ingreso</th>
+                                  <th colspan="10" class="titulo-text" id="nompoliza">Póliza de ingreso</th>
                                   
                                   
                                 </tr>
@@ -274,7 +274,7 @@
                     <div class="grupo-boton-reg">
                       <div class="boton_registrar">
                           <button class="btn-medium btn" id="boton_actualizar" type="submit">Descargar Excel</button>&nbsp;&nbsp;
-                          <button class="btn-medium btn" id="boton_cancelar" type="button" onclick="regresar()">Descargar PDF</button>
+                          <button class="btn-medium btn" id="boton_pdf" type="button">Descargar PDF</button>
                        </div>
                    </div>
                 </div> 
@@ -283,8 +283,7 @@
         
     </section>
   </main>
-  <script src="../../view/administrativo/js/Vali_Oferta_AR.js"></script>
-  <script src="../../controller/administrativo/js/Registro_Comentario_Ofertas.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Pdf_Polizas.js"></script>
 </body>
 
 </html

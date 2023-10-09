@@ -4,6 +4,7 @@ include_once('../../view/administrativo/Mostrar_Polizaindividual.html');
 $base = new Mostrar_Polizas();
 $id=$_GET['usuario'];
 $tipo=$_GET['tipo'];
+$tipoPoliza='Poliza de '.$_GET['poliza'];
 $salida ="";
 $banEmpresa=false;
 $banSocio=false;
@@ -70,6 +71,8 @@ if ($banSocio){
   parrafo.innerHTML = "<?php echo $id; ?>";
   var parrafo = document.getElementById("conepgenerapoliza"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $concepto; ?>";
+  var parrafo = document.getElementById("nompoliza"); // obtenemos la referencia al elemento
+  parrafo.innerHTML = "<?php echo $tipoPoliza; ?>";
   var tbody = document.getElementById('body_tabla');
 </script>
 <?php
@@ -148,6 +151,7 @@ if ($resultado==true){
     cell1.colSpan = 5; // Establece el colspan deseado para esta celda
     cell1.textContent = "Sumas iguales";
     cell1.style.fontWeight = "bold";
+    cell1.style.backgroundColor = "#dfe3e7"
     var cell2 = newRow.insertCell(1);
     cell2.colSpan = 1; // Establece el colspan deseado para esta celda
     cell2.textContent = montoDebe;
@@ -160,13 +164,15 @@ if ($resultado==true){
     cell4.colSpan = 1; // Establece el colspan deseado para esta celda
     cell4.textContent ="";
     cell4.style.textAlign = "right";
-
+    cell4.style.backgroundColor = "#dfe3e7"
     var cell5 = newRow.insertCell(4);
     cell5.colSpan = 1; // Establece el colspan deseado para esta celda
+    cell5.style.backgroundColor = "#dfe3e7"
     var newRow = tbody.insertRow();
     var cell1 = newRow.insertCell(0);
     cell1.colSpan = 5; // Establece el colspan deseado para esta celda
     cell1.textContent = "Realizó";
+    cell1.style.backgroundColor = "#dfe3e7"
     cell1.style.fontWeight = "bold";
     var cell2 = newRow.insertCell(1);
     cell2.colSpan = 6; // Establece el colspan deseado para esta celda

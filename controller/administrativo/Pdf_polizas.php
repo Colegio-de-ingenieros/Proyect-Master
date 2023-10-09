@@ -97,7 +97,7 @@
     }
 
     //* Llamada a la base de datos para la consulta de los datos generales de la póliza
-    $id = '0002';
+    $id = $_GET['id'];
     include('../../model/administrativo/Mostrar_Poliza_PDF.php');
     $bd = new ObtenerPolizasGenerales();
     $bd -> BD();
@@ -340,10 +340,9 @@
     $ancho_celda = $ancho_total / 4;
     $altura = 10;
 
-    $pdf -> Cell($ancho_celda, $altura,utf8_decode('SUMAS IGUALES:'),1,0,'R',true);
+    $pdf -> Cell($ancho_celda, $altura,utf8_decode('Sumas iguales:'),1,0,'R',true);
 
-    $pdf -> SetTextColor(255,255,255);
-    $pdf -> SetFillColor(235, 71, 71);
+    $pdf -> SetFillColor(255,255,255);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_debe / 100, 2, '.', ',')),1,0,'R',true);
     $pdf -> Cell($ancho_celda, $altura,utf8_decode('$'.number_format($valor_haber / 100, 2, '.', ',')),1,0,'R',true);
 
