@@ -4,7 +4,7 @@ include_once('../../view/administrativo/Mostrar_Polizaindividual.html');
 $base = new Mostrar_Polizas();
 $id=$_GET['usuario'];
 $tipo=$_GET['tipo'];
-$tipoPoliza='Poliza de '.$_GET['poliza'];
+$tipoPoliza='Póliza de '.$_GET['poliza'];
 $salida ="";
 $banEmpresa=false;
 $banSocio=false;
