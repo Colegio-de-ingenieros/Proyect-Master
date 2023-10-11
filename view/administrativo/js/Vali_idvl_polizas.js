@@ -7,6 +7,38 @@ const tabla = []
 
 fila = 0;
 
+window.onload = function() {
+    id = "0001"
+    let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
+
+    let form = new FormData();
+    form.append("id", id);
+    
+    fetch(url, {
+        method: "POST",
+        body: form
+    })
+        .then(response => response.json())
+        .then(data => arrays(data))
+        .catch(error => console.log(error));
+    const arrays = (data) => { 
+        console.log(data);
+        let primer_nombre = data.map(objeto => Object.values(objeto)[1]);
+        let folio = String(data.map(objeto => Object.values(objeto)[0]));
+        let apellido_materno = data.map(objeto => Object.values(objeto)[2]);
+        let apellido_paterno = data.map(objeto => Object.values(objeto)[3]);
+
+        let nombre = primer_nombre + " " + apellido_materno + " " + apellido_paterno;
+
+        var folioElement = document.getElementById("folio_individual");
+        var personaElaboracionElement = document.getElementById("persona_de_elaboracion");
+      
+        // Set the text content for the elements
+        folioElement.textContent = folio; // Replace "Your Folio Text" with the desired text
+        personaElaboracionElement.textContent = nombre; // Replace with the desired name
+    }
+}
+
 /*Detecta cuando el boton fue presionado*/
 let inserta = document.getElementById("btn_agregar");
 inserta.addEventListener("click", (e) => {
