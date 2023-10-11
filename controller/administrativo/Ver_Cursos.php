@@ -29,6 +29,7 @@ $datoss = $bd->tema($id);
 
 $respuesta .= ' -->
 <!DOCTYPE html>
+<script src="../../view/login/js/Verificar_Permiso_Trabajador.js"></script>
 <html lang="es">
 
 <head>
@@ -42,6 +43,7 @@ $respuesta .= ' -->
   <link rel="stylesheet" href="../../public/css/administrativo/Reg_Cursos.css">
   <link rel="stylesheet" href="../../public/css/administrativo/Ver_Cursos.css">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
@@ -57,6 +59,7 @@ $respuesta .= ' -->
 
       <div class="boton-cerrar-session">
         <button class="btn-cerrar-session btn" onclick="window.location.href = \'../../controller/login/Logout.php \'">Cerrar sesión</button>
+        <a href="Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
       </div>
     </div>
 

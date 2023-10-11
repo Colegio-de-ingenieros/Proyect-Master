@@ -19,8 +19,8 @@
   <meta name="msapplication-TileImage"
     content="https://ciscig.com.mx/wp-content/uploads/2022/07/LOGO_CISCIG-fav-1-300x300.png">
 
-    <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
-
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
@@ -36,7 +36,9 @@
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn"
+          onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
+        <a href="Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
       </div>
     </div>
 
@@ -116,8 +118,8 @@
               </a>
 
               <ul>
-								<li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
-								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -126,7 +128,7 @@
                 <i class="fa-solid fa-chart-column"></i>
                 Seguimiento
               </a>
-        
+
               <ul>
                 <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Seguimiento.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Seguimiento.html">Mostrar</a></li>
@@ -194,87 +196,92 @@
       <hr>
 
       <form class="formulario" id="formulario">
-        
-          <div class="contenedor-formulario">
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">Nombre(s)*</p>
-              </div>
-              <div class="input-form">
-                <input type="text" class="input-format-2" id="caja_nombre" name="caja_nombre" maxlength="40"
-                  placeholder="Ingrese su nombre" required title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
-              </div>
+
+        <div class="contenedor-formulario">
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Nombre(s)*</p>
             </div>
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">Apellido paterno*</p>
-              </div>
-              <div class="input-form">
-                <input type="text" class="input-format-2" id="caja_ap_paterno" name="caja_ap_paterno" maxlength="20"
-                  placeholder="Ingrese su apellido paterno" required title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
-              </div>
-            </div>
-    
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">Apellido materno</p>
-              </div>
-              <div class="input-form">
-                  <input type="text" class="input-format-2" id="caja_ap_materno" name="caja_ap_materno" maxlength="20"
-                  placeholder="Ingrese su apellido materno" title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
-              </div>
-            </div>
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">RFC</p>
-              </div>
-              <div class="input-form">
-                <input type="text" class="input-format-2" id="caja_rfc" name="caja_rfc" readonly>
-              </div>
-            </div>
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">Correo electrónico*</p>
-              </div>
-              <div class="input-form">
-                <input type="email" class="input-format-2" id="caja_correo" name="caja_correo" maxlength="40"
-                  placeholder="someone@example.com" required title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
-              </div>
-            </div>
-            <div class="grupo-input">
-              <div class="label-form">
-                <p class="label-2">Teléfono*</p>
-              </div>
-              <div class="input-form">
-                <input type="tel" class="input-format-2" id="caja_telefono" name="caja_telefono" maxlength="10"
-                  placeholder="Ingrese su número de teléfono" required title="El número de teléfono solo puede contener números.">
-              </div>
+            <div class="input-form">
+              <input type="text" class="input-format-2" id="caja_nombre" name="caja_nombre" maxlength="40"
+                placeholder="Ingrese su nombre" required
+                title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
             </div>
           </div>
-          <br>
-          <div class="grupo-boton-reg">
-             <div class="boton_registrar">
-                 <button class="btn-medium btn" id="boton_actualizar" type="submit">Actualizar</button>&nbsp;&nbsp;
-                 <button class="btn-medium btn" id="boton_cancelar" type="button" onclick="regresar()">Cancelar</button>
-              </div>
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Apellido paterno*</p>
+            </div>
+            <div class="input-form">
+              <input type="text" class="input-format-2" id="caja_ap_paterno" name="caja_ap_paterno" maxlength="20"
+                placeholder="Ingrese su apellido paterno" required
+                title="El apellido paterno solo puede contener letras mayúsculas y minúsculas.">
+            </div>
           </div>
+
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Apellido materno</p>
+            </div>
+            <div class="input-form">
+              <input type="text" class="input-format-2" id="caja_ap_materno" name="caja_ap_materno" maxlength="20"
+                placeholder="Ingrese su apellido materno"
+                title="El apellido materno solo puede contener letras mayúsculas y minúsculas.">
+            </div>
+          </div>
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">RFC</p>
+            </div>
+            <div class="input-form">
+              <input type="text" class="input-format-2" id="caja_rfc" name="caja_rfc" readonly>
+            </div>
+          </div>
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Correo electrónico*</p>
+            </div>
+            <div class="input-form">
+              <input type="email" class="input-format-2" id="caja_correo" name="caja_correo" maxlength="40"
+                placeholder="someone@example.com" required
+                title="El email solo puede contener letras mayúsculas, minúsculas, números y caracteres especiales (., -, _, @).">
+            </div>
+          </div>
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Teléfono*</p>
+            </div>
+            <div class="input-form">
+              <input type="tel" class="input-format-2" id="caja_telefono" name="caja_telefono" maxlength="10"
+                placeholder="Ingrese su número de teléfono" required
+                title="El número de teléfono solo puede contener números.">
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="grupo-boton-reg">
+          <div class="boton_registrar">
+            <button class="btn-medium btn" id="boton_actualizar" type="submit">Actualizar</button>&nbsp;&nbsp;
+            <button class="btn-medium btn" id="boton_cancelar" type="button" onclick="regresar()">Cancelar</button>
+          </div>
+        </div>
       </form>
       <br>
     </section>
   </main>
   <script languaje="javascript">
-    function regresar(){
+    function regresar() {
       var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
-      if(resp ==  true){
+      if (resp == true) {
         location.href = '../../view/administrativo/Vista_Trabajadores.html';
       }
     }
   </script>
   <script src="../../view/administrativo/js/Vali_Mod_Trabajadores.js"></script>
   <script languaje="javascript">
-    function regresar(){
+    function regresar() {
       var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
-      if(resp ==  true){
+      if (resp == true) {
         location.href = '../../view/administrativo/Vista_Trabajadores.html';
       }
     }
