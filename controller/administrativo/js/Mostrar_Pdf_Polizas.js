@@ -7,5 +7,6 @@ boton.addEventListener('click', () => {
 
     const id = encodeURIComponent(id_cliente);
 
-    window.location.href = url+"?id="+id;
+    //Abrir en una nueva pestaña
+    window.open(`${url}?id=${id}`, '_blank');
 });
