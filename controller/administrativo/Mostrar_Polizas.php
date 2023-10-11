@@ -55,8 +55,8 @@ if ($resultado == true) {
             $salida .= '<td>' . $fecha . '</td>';
             $salida .= '<td>' . $elaboro . '</td>';
             $salida .= '<td>  <a href="../../controller/administrativo/Mostrar_Poliza_Individual.php?usuario='.$folio.'&tipo=' . $tipoPoliza .'&poliza='.$valTipo.'">Ver más</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <a href="../../view/administrativo/Modi_Polizas_General.html?id='.$folio.'">Datos generales</a>&nbsp;&nbsp;
-                        <a href="../../view/administrativo/Modi_Polizas_Individual.html?id='.$folio.'">Datos individuales</a>&nbsp;&nbsp;
+                        <a href="../../view/administrativo/Modi_Polizas_General.html?id='.$folio.'">Modificar general</a>&nbsp;&nbsp;
+                        <a href="../../view/administrativo/Modi_Polizas_Individual.html?id='.$folio.'">Modificar individual</a>&nbsp;&nbsp;
                         </td>';
             $salida .= '</tr>';  
     }
