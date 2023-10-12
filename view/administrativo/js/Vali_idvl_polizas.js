@@ -7,6 +7,43 @@ const tabla = []
 
 fila = 0;
 
+window.onload = function() {
+    id = "0002"
+    let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
+
+    let form = new FormData();
+    form.append("id", id);
+    
+    fetch(url, {
+        method: "POST",
+        body: form
+    })
+        .then(response => response.json())
+        .then(data => arrays(data))
+        .catch(error => console.log(error));
+    const arrays = (data) => { 
+        console.log(data);
+        let primer_nombre = data.map(objeto => Object.values(objeto)[1]);
+        let folio = String(data.map(objeto => Object.values(objeto)[0]));
+        let apellido_materno = data.map(objeto => Object.values(objeto)[2]);
+        let apellido_paterno = data.map(objeto => Object.values(objeto)[3]);
+        let fecha_poliza = String(data.map(objeto => Object.values(objeto)[4]));
+
+        let nombre = primer_nombre + " " + apellido_materno + " " + apellido_paterno;
+
+        var folioElement = document.getElementById("folio_individual");
+        var personaElaboracionElement = document.getElementById("persona_de_elaboracion");
+        var fecha = document.getElementById("fecha_actual");
+      
+        // Set the text content for the elements
+        folioElement.textContent = folio; // Replace "Your Folio Text" with the desired text
+        personaElaboracionElement.textContent = nombre; // Replace with the desired name
+        fecha.textContent = fecha_poliza; // Replace with the desired date
+
+
+    }
+}
+
 /*Detecta cuando el boton fue presionado*/
 let inserta = document.getElementById("btn_agregar");
 inserta.addEventListener("click", (e) => {
@@ -331,12 +368,13 @@ function registrar(){
     }else if (haber_total != deber_total) {
         alert("La poliza no esta cuadrada");
     }else{
+        lista_id=[];
+        lista_id.push(id);
         var formData = new FormData();
         formData.append("tabla", JSON.stringify(tabla));
+        formData.append("id_general", JSON.stringify(lista_id));
 
         console.log(tabla);
-        
-  
   
         fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
           method: 'POST',

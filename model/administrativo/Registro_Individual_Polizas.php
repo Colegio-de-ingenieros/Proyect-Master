@@ -11,7 +11,7 @@ class Nuevapoliza{
     }
 
    
-    function insertar($id, $des, $monto, $des_pdf, $tipo){
+    function insertar($id, $des, $monto, $des_pdf, $tipo, $id_general){
       
         $q1 = "INSERT INTO polindividual (IdPolInd, DesPolInd, Monto, DesDocInd)
         VALUES(:IdPolInd, :DesPolInd, :Monto, :DesDocInd)";
@@ -27,9 +27,13 @@ class Nuevapoliza{
             $a2= [":IdPolInd"=>$id,":IdPolAcc"=>"2"];
         }
         
+        $q3="INSERT INTO indgralpol (IdPolGral,IdPolInd)
+        VALUES (:IdPolGral, :IdPolInd)";
+        $a3= [":IdPolGral"=>$id_general,":IdPolInd"=>$id];
 
-        $querry = [$q1,$q2];
-        $parametros = [$a1,$a2];           
+
+        $querry = [$q1,$q2,$q3];
+        $parametros = [$a1,$a2,$a3];          
         
         $this->base->insertar_eliminar_actualizar($querry, $parametros);
         
