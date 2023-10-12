@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="../../public/css/administrativo/Vista_Polizas.css">
   <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
 
 <body>
@@ -29,7 +28,6 @@
 
       <div class="boton-cerrar-session">
         <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
-        <a href="Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
       </div>
     </div>
 
@@ -134,7 +132,7 @@
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Polizas.html">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
               </ul>
             </li>
 
@@ -205,7 +203,7 @@
 
                     <div class="input-form">
                         <textarea type="text" name="concepto_gen" id="concepto_gen" class="input-textarea"
-                          placeholder="Ingrese el concepto general" required
+                          placeholder="Ingrese el concepto general" required maxlength="400"
                           title="El concepto general solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
                     </div>
                 </div>
@@ -218,9 +216,6 @@
                     </div>
     
                     <select type="text" class="input-format-2"  id="usuario" name="usuario">
-                        <option value="U1">Socio</option>
-                        <option value="U2">Asociado</option>
-                        <option value="U3">Empresa</option>
                     </select>
                 </div>
     
@@ -242,11 +237,6 @@
                     </div>
 
                     <select type="text" class="input-format-2"  id="tipo_servicio" name="tipo_servicio">
-                        <option value="S1">Curso</option>
-                        <option value="S2">Certificación</option>
-                        <option value="S3">Consultoría</option>
-                        <option value="S4">Membresía</option>
-                        <option value="S5">Headhunter</option>
                     </select>
                 </div>
 
@@ -273,7 +263,7 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="nombre" name="nombre" 
-                      placeholder="Ingrese su nombre" required
+                      placeholder="Ingrese su nombre" required maxlength="40"
                       title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                 </div>
             </div>          
@@ -285,7 +275,7 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_pat" name="apellido_pat"
-                      placeholder="Ingrese su apellido paterno" required
+                      placeholder="Ingrese su apellido paterno" required maxlength="20"
                       title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                 </div>
             </div>
@@ -297,7 +287,7 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_mat" name="apellido_mat"
-                      placeholder="Ingrese su apellido materno" required
+                      placeholder="Ingrese su apellido materno" required maxlength="20"
                       title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                 </div>
             </div>
@@ -313,4 +303,6 @@
     </section>
   </main>
   <script src="../../view/administrativo/js/Vali_Mod_Gral_Polizas.js"></script>
+  <script src="../../controller/administrativo/js/Mostrar_Poliza_Gral.js"></script>
 </body>
+</html>>
