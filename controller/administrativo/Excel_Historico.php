@@ -20,6 +20,7 @@ $datosCert = $base->getCertificacionesId($idc);
 $nombre = $datosCert[0]["NomCertInt"];
 $abre = $datosCert[0]["abrevCertInt"];
 $desc = $datosCert[0]["DesCerInt"];
+$clave = $datosCert[0]["ClaveCerInt"];
 
 
 //crear el objeto des excel
@@ -34,17 +35,17 @@ $spreadsheet->setActiveSheetIndex(0)->setTitle("Historial");
 $hoja = $spreadsheet->getActiveSheet();
 
 //poner los encabezados de los datos de la certificación
-$hoja->setCellValue('A1', "Abreviación:")->setCellValue('A2', 'Nombre:')->setCellValue('A3', 'Descripción:');
+$hoja->setCellValue('A1', "Identificador:")->setCellValue('A2', 'Abreviación:')->setCellValue('A3', 'Nombre:')->setCellValue('A4', 'Descripción:');
 
 
 
 //formato de los encabezados
-$hoja->getStyle('A1:A3')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
+$hoja->getStyle('A1:A4')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
 
-$estilo = $hoja->getStyle('A1:A3');
+$estilo = $hoja->getStyle('A1:A4');
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($blanco);
 
-$estilo = $hoja->getStyle('A1:A3');
+$estilo = $hoja->getStyle('A1:A4');
 $estilo->getFont()->setBold(true)->setSize(12.5)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
@@ -54,17 +55,19 @@ $estilo->getFont()->setName("Inter', sans-serif")->setSize(12.5); //cambiar el t
 $hoja->mergeCells('B1:C1');
 $hoja->mergeCells('B2:C2');
 $hoja->mergeCells('B3:C3');
+$hoja->mergeCells('B4:C4');
 
 //poner los datos de la certificacion
-$hoja->setCellValue('B1', $abre);
-$hoja->setCellValue('B2', $nombre);
-$hoja->setCellValue('B3', $desc);
+$hoja->setCellValue('B1', $clave);
+$hoja->setCellValue('B2', $abre);
+$hoja->setCellValue('B3', $nombre);
+$hoja->setCellValue('B4', $desc);
 
 //formato de los datos de la certificacion
-$estilo = $hoja->getStyle('B1:C4');
+$estilo = $hoja->getStyle('B1:C5');
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($negro);
 
-$estilo = $hoja->getStyle('B1:C3');
+$estilo = $hoja->getStyle('B1:C4');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
 $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
@@ -77,15 +80,15 @@ $style = [
 ];
 
 //ajustar el texto de la descripcion
-$hoja->getStyle('B3:C3')->applyFromArray($style);
+$hoja->getStyle('B4:C4')->applyFromArray($style);
 
 //poner los encabezados de las columnas
-$hoja -> setCellValue('A5', "Fecha") -> setCellValue("B5", "Precio general") -> setCellValue("C5", "Precio socio/asociado");
+$hoja -> setCellValue('A6', "Fecha") -> setCellValue("B6", "Precio general") -> setCellValue("C6", "Precio socio/asociado");
 
 //poner estilo a los encabezados
-$hoja->getStyle('A5:C5')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
+$hoja->getStyle('A6:C6')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID)->getStartColor()->setARGB('FF085262');
 
-$estilo = $hoja->getStyle('A5:C5');
+$estilo = $hoja->getStyle('A6:C6');
 $estilo->getFont()->setBold(true)->setSize(12.5)->getColor()->setARGB('FFFFFFFF');
 $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
 $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
@@ -99,20 +102,20 @@ for($i=0; $i<count($asociados); $i++){
     $precioA = $asociados[$i]["PrecioH"];
 
     //poner las celdas de los precios como tipo money
-    $hoja->getStyle('B'. strval($i+6))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
-    $hoja->getStyle('C' . strval($i+6))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+    $hoja->getStyle('B'. strval($i+7))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
+    $hoja->getStyle('C' . strval($i+7))->getNumberFormat()->setFormatCode(PhpOffice\PhpSpreadsheet\Style\NumberFormat::FORMAT_CURRENCY_USD_SIMPLE);
 
     //poner los datos en la tabla
-    $hoja->setCellValue('A'. strval($i+6), $fecha)->setCellValue('B'.strval($i+6), $precioG)->setCellValue('C'. strval($i+6), $precioA);
+    $hoja->setCellValue('A'. strval($i+7), $fecha)->setCellValue('B'.strval($i+7), $precioG)->setCellValue('C'. strval($i+7), $precioA);
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('A'. strval($i+6));
+    $estilo = $hoja->getStyle('A'. strval($i+7));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER); //centra el contenido horizontalmente
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
 
     //centrar el contenido
-    $estilo = $hoja->getStyle('B'. strval($i+6) . ':C' . strval($i+6));
+    $estilo = $hoja->getStyle('B'. strval($i+7) . ':C' . strval($i+7));
     $estilo->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_RIGHT); //alinea el contenido a la derecha
     $estilo->getAlignment()->setVertical(\PhpOffice\PhpSpreadsheet\Style\Alignment::VERTICAL_CENTER); //centra el contenido verticalmente
     $estilo->getFont()->setName("Inter', sans-serif")->setSize(11.5); //cambiar el tipo de letra y tamaño
@@ -120,7 +123,7 @@ for($i=0; $i<count($asociados); $i++){
 }
 
 //colocar los bordes
-$estilo = $hoja->getStyle('A6:C'.strval($i+6));
+$estilo = $hoja->getStyle('A7:C'.strval($i+7));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($negro);
 
 //definir los tamaños de las columnas
