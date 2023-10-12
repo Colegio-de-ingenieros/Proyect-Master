@@ -9,7 +9,36 @@
             $this->base->conexion_bd();
         }
 
+        public function buscarSocios(){
+            $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso) FROM usuaperso, persotipousua, tipousua 
+            WHERE usuaperso.IdPerso=persotipousua.IdPerso and persotipousua.IdUsua=tipousua.IdUsua and tipousua.TipoU='Socio' ORDER BY NomPerso ASC";
+            $resultado = $this->base->mostrar($sql);
+            return $resultado;
+        }
+        public function buscarAsociados(){
+            $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', NomPerso, ApePPerso, ApeMPerso) FROM usuaperso, persotipousua, tipousua 
+            WHERE usuaperso.IdPerso=persotipousua.IdPerso and persotipousua.IdUsua=tipousua.IdUsua and tipousua.TipoU='Asociado' ORDER BY NomPerso ASC";
+            $resultado = $this->base->mostrar($sql);
+            return $resultado;
+        }
+
+        public function buscarEmpresas(){
+            $sql = "SELECT RFCUsuaEmp, NomUsuaEmp FROM usuaemp ORDER BY NomUsuaEmp ASC";
+            $resultado =$this->base->mostrar($sql);
+            return $resultado;
+        }
+
+        public function buscarCertificaciones(){
+            $sql = "SELECT IdCerInt, CONCAT_WS(' - ', ClaveCerInt, NomCertInt) FROM certinterna ORDER BY NomCertInt ASC";
+            $resultado = $this->base->mostrar($sql);
+            return $resultado;
+        }
         
+        public function buscarCursos(){
+            $sql = "SELECT ClaveCur, NomCur FROM cursos ORDER BY NomCur ASC";
+            $resultado = $this->base->mostrar($sql);
+            return $resultado;
+        }
         function buscarPorId($id){
             $querry = "SELECT * FROM  polgeneral WHERE IdPolGral = :id";
             $arre = [":id"=>$id];
@@ -25,7 +54,7 @@
         }
 
 
-        public function buscarUltimoIdPro(){
+        public function buscarUltimoIdPol(){
             $sql = "SELECT MAX(CAST(SUBSTRING(IdPolGral, 1) AS INT)) FROM polgeneral";
             $arreglo = $this->base->mostrar($sql);
 
@@ -59,7 +88,7 @@
         
         function insertar($idp, $nombre, $apeP, $apeM, $concepto, $fecha,$tipo,$servicio){
            //Inserta en la tabla polgeneral
-            $q1 = "INSERT INTO polgeneral (IdPolGral, NomElaPol, ApePElaPol, ApeMElaPol, ConceptoGral, FechaGral)
+            $q1 = "INSERT INTO polgeneral (IdPolGral, NomElaPol, ApePElaPol, ApeMElaPol, CoceptoGral, FechaPolGral)
             VALUES(:id, :nombre, :apeP, :apeM,:concepto, :fecha)";
             $a1 = [":id"=>$idp, ":nombre"=>$nombre, ":apeP"=>$apeP, ":apeM"=>$apeM, ":concepto"=>$concepto,  ":fecha"=>$fecha];
             //Inserta en la tabla tipogralpol
@@ -77,7 +106,7 @@
 
         function insertaCurso($idp, $curso){
             //Inserta en la tabla cursoserpol
-             $q1 = "INSERT INTO cursoserpol (IdSerPol, ClaveCur) VALUES(:id, :curso)";
+             $q1 = "INSERT INTO cursoserpol (IdPolGral, ClaveCur) VALUES(:id, :curso)";
              $a1 = [":id"=>$idp, ":curso"=>$curso];
 
              $this->base->insertar_eliminar_actualizar($q1, $a1);
@@ -85,7 +114,7 @@
 
          function insertaCertificacion($idp, $certificacion){
             //Inserta en la tabla cserserpol
-             $q1 = "INSERT INTO cerserpol (IdSerPol, IdCerInt) VALUES(:id, :certificacion)";
+             $q1 = "INSERT INTO cerserpol (IdPolGral, IdCerInt) VALUES(:id, :certificacion)";
              $a1 = [":id"=>$idp, ":certificacion"=>$certificacion];
 
              $this->base->insertar_eliminar_actualizar($q1, $a1);

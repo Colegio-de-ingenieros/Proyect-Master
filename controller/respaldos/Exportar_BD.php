@@ -5,7 +5,7 @@ $nombreBD='u283658544_colegiociscig';
 $usuario='u283658544_colegiociscig';
 $password='ColegioCISCIG2023.';
 
-$fecha=date('Ymd-His');
+$fecha=date('Y-m-d-His');
 
 $nombre_sql=$nombreBD . '_' . $fecha.'.sql';
 
