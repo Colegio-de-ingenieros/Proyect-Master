@@ -3,6 +3,8 @@ let concepto = false
 let monto = false
 let conceptopdf = false
 
+const cantidad_pdf = 0 
+
 const tabla = []
 
 fila = 0;
@@ -28,17 +30,20 @@ window.onload = function() {
         let apellido_materno = data.map(objeto => Object.values(objeto)[2]);
         let apellido_paterno = data.map(objeto => Object.values(objeto)[3]);
         let fecha_poliza = String(data.map(objeto => Object.values(objeto)[4]));
+        let concepto_general = String(data.map(objeto => Object.values(objeto)[5]));
 
         let nombre = primer_nombre + " " + apellido_materno + " " + apellido_paterno;
 
         var folioElement = document.getElementById("folio_individual");
         var personaElaboracionElement = document.getElementById("persona_de_elaboracion");
         var fecha = document.getElementById("fecha_actual");
+        var concept = document.getElementById("concepto_general");
       
         // Set the text content for the elements
         folioElement.textContent = folio; // Replace "Your Folio Text" with the desired text
         personaElaboracionElement.textContent = nombre; // Replace with the desired name
         fecha.textContent = fecha_poliza; // Replace with the desired date
+        concept.textContent = concepto_general;
 
 
     }
@@ -102,7 +107,11 @@ inserta.addEventListener("click", (e) => {
                 cell6.id = "cantidad";
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
-                cell9.innerHTML = nombreArchivo;
+                //cell9.innerHTML = nombreArchivo;
+                var fileInput = document.createElement("input");
+            fileInput.type = "file";
+            fileInput.accept = ".pdf";
+            cell9.appendChild(fileInput);
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
@@ -114,7 +123,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push(nombreArchivo2);
                 filas.push("Debe");
                 tabla.push(filas);
-
+                cantidad_pdf = cantidad_pdf +1;
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -133,7 +142,11 @@ inserta.addEventListener("click", (e) => {
                 cell7.innerHTML = montos;
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
-                cell9.innerHTML = nombreArchivo;
+                //cell9.innerHTML = nombreArchivo;
+                var fileInput = document.createElement("input");
+                fileInput.type = "file";
+                fileInput.accept = ".pdf";
+                cell9.appendChild(fileInput);
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar2(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
@@ -144,6 +157,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push(nombreArchivo2);
                 filas.push("Haber");
                 tabla.push(filas);
+                cantidad_pdf = cantidad_pdf +1;
             }
         }else{
             alert("faltan campos por llenar");
@@ -375,23 +389,40 @@ function registrar(){
         formData.append("id_general", JSON.stringify(lista_id));
 
         console.log(tabla);
+
+        lista = []
+        var fileInputs = document.querySelectorAll('input[type="file"]');
+        console.log("inputs"+fileInputs.length);
+           /*  var formData = new FormData(); */
+            console.log(fileInputs);
+            if (cantidad_pdf == fileInputs.length){
+            fileInputs.forEach(function(input) {
+                if (input.files.length > 0) {
+                    console.log(input.files[0]);
+                    formData.append("pdfs[]", input.files[0]);
+                    /* lista.push(input.files[0]); */
+                }
+            });
+            /* formData.append("pdfs", JSON.stringify(lista));
+            console.log(formData); */
   
         fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
-          method: 'POST',
-          body: formData
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            if (data === 'exito') {
-                alert ("Registro exitoso");
-                
-            }
-            //los datos no pasaron alguna validacion
-            else {
-                alert (data);
-            }
-        })
+                method: "POST",
+                body: formData
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    alert("Los PDFs se han guardado con éxito en el servidor.");
+                } else {
+                    alert("Hubo un problema al guardar los PDFs en el servidor.");
+                }
+            })
+            .catch(function(error) {
+                console.error("Error en la solicitud fetch:", error);
+            });
+        }else{
+            alert("Asegurese de llenar todos los pdfs");
+        }
     }
 }
 
@@ -412,7 +443,7 @@ function eliminar(button){
     const debe_value = document.getElementById("debe").textContent;
    
     debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
-    
+    cantidad_pdf = cantidad_pdf -1;
 }
 function eliminar2(button){
     btnid = button.id;
@@ -431,5 +462,5 @@ function eliminar2(button){
     const haber_value = document.getElementById("haber").textContent; 
     haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
     
-    
+    cantidad_pdf = cantidad_pdf -1;
 }

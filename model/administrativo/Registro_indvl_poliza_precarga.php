@@ -11,7 +11,9 @@ class Precarga{
     }
 
     function seleccionar_persona($id){
-        $querry = "SELECT IdPolGral, NomElaPol, ApePElaPol, ApeMElaPol, DATE_FORMAT(FechaPolGral, '%d/%m/%Y')FechaPolGral FROM polgeneral
+        $querry = "SELECT IdPolGral, NomElaPol, ApePElaPol, ApeMElaPol, 
+        DATE_FORMAT(FechaPolGral, '%d/%m/%Y')FechaPolGral, CoceptoGral
+        FROM polgeneral
         WHERE  IdPolGral = :id";
         $parametros = [":id"=>$id];
         $resultados = $this->base->mostrar($querry, $parametros);
