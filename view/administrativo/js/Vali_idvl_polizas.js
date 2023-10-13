@@ -3,7 +3,7 @@ let concepto = false
 let monto = false
 let conceptopdf = false
 
-const cantidad_pdf = 0 
+let cantidad_pdf = 0 
 
 const tabla = []
 
@@ -67,19 +67,20 @@ inserta.addEventListener("click", (e) => {
         //obtener el valor de la combobox y el nombre del archivo
         const combo = document.getElementById("tipoGradoPerso").value;
 
-        const archivo = document.getElementById("archivo");
+       /*  const archivo = document.getElementById("archivo"); */
 
-        var rutaCompleta = archivo.value;
-        var partes = rutaCompleta.split("\\");
-        var nombreArchivo = partes[partes.length - 1];
+       /*  var rutaCompleta = archivo.value;
+        var partes = rutaCompleta.split("\\"); */
+        //var nombreArchivo = partes[partes.length - 1];
+        var nombreArchivo = "";
 
         const conceptos = document.getElementById("concepto").value;
         const montos = document.getElementById("monto").value;
         const concepto_pdf = document.getElementById("concepto_pdf").value;
 
         filas = []
-        if (combo != "" && nombreArchivo != "") {
-            var nombreArchivo2 = document.getElementById("archivo").files[0].name;
+        if (combo != "") {
+            /* var nombreArchivo2 = document.getElementById("archivo").files[0].name; */
             const filaInferior = document.getElementById("footer");
             const debe = document.getElementById("debe");
             const haber = document.getElementById("haber");
@@ -108,10 +109,11 @@ inserta.addEventListener("click", (e) => {
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                var fileInput = document.createElement("input");
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                /* var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = ".pdf";
-            cell9.appendChild(fileInput);
+            cell9.appendChild(fileInput); */
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
@@ -120,7 +122,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
-                filas.push(nombreArchivo2);
+                filas.push("x");
                 filas.push("Debe");
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
@@ -143,10 +145,11 @@ inserta.addEventListener("click", (e) => {
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                var fileInput = document.createElement("input");
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                /* var fileInput = document.createElement("input");
                 fileInput.type = "file";
-                fileInput.accept = ".pdf";
-                cell9.appendChild(fileInput);
+                fileInput.accept = ".pdf"; */
+                /* cell9.appendChild(fileInput); */
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar2(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
@@ -154,7 +157,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
-                filas.push(nombreArchivo2);
+                filas.push("x");
                 filas.push("Haber");
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
@@ -395,24 +398,29 @@ function registrar(){
         console.log("inputs"+fileInputs.length);
            /*  var formData = new FormData(); */
             console.log(fileInputs);
-            if (cantidad_pdf == fileInputs.length){
+
+            let con = 0;
             fileInputs.forEach(function(input) {
                 if (input.files.length > 0) {
                     console.log(input.files[0]);
                     formData.append("pdfs[]", input.files[0]);
+                    con = con+1;
                     /* lista.push(input.files[0]); */
                 }
             });
+            console.log("con"+con);
+            console.log("pdf"+cantidad_pdf)
             /* formData.append("pdfs", JSON.stringify(lista));
             console.log(formData); */
-  
+        if (con==cantidad_pdf){
         fetch('../../controller/administrativo/Registro_Individual_Polizas.php', {
                 method: "POST",
                 body: formData
             })
             .then(function(response) {
                 if (response.ok) {
-                    alert("Los PDFs se han guardado con éxito en el servidor.");
+                    //alert("Los PDFs se han guardado con éxito en el servidor.");
+                    alert("Registro exitoso");
                 } else {
                     alert("Hubo un problema al guardar los PDFs en el servidor.");
                 }
@@ -421,7 +429,7 @@ function registrar(){
                 console.error("Error en la solicitud fetch:", error);
             });
         }else{
-            alert("Asegurese de llenar todos los pdfs");
+            alert("Asegúrate de llenar todos los apartados pdf")
         }
     }
 }
