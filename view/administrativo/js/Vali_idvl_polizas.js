@@ -10,7 +10,23 @@ const tabla = []
 fila = 0;
 
 window.onload = function() {
-    id = "0002"
+    const url1 = window.location.href;
+    console.log(url1);
+    const parts = url1.split('?');
+    console.log(parts);
+    if (parts.length === 2) {
+        // Divide la segunda parte (que contiene 'id=123') por '&'
+        const params = parts[1].split('&');
+        console.log(params);
+        for (const param of params) {
+            const [key, value] = param.split('=');
+            if (key === 'idPol') {
+                id1 = value; // Esto mostrará el valor del 'id' en la consola
+                break;
+            }
+        }
+    }
+    id = id1;
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -126,6 +142,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push("Debe");
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
+                filas.push(cantidad_pdf);
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -161,6 +178,7 @@ inserta.addEventListener("click", (e) => {
                 filas.push("Haber");
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
+                filas.push(cantidad_pdf);
             }
         }else{
             alert("faltan campos por llenar");
