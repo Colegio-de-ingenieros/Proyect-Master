@@ -30,7 +30,7 @@ if ($resultado == true) {
                     <thead>
                         <tr>
                             <th>Folio</th>
-                            <th>Tipo</th>
+                            <th>Tipo de servicio</th>
                             <th>Concepto general</th>
                             <th>Fecha</th>
                             <th>Elaboró</th>

@@ -8,6 +8,19 @@ $tipoPoliza='Póliza de '.$_GET['poliza'];
 $salida ="";
 $banEmpresa=false;
 $banSocio=false;
+$nom="";
+if ($tipo=="Certificaciones"){
+    $resultado=$base->getCertificacion($id);
+    for ($i = 0; $i < count($resultado); $i++) {
+        $nom= ": ".$resultado[$i]["NomCertInt"];
+    }
+}
+else if ($tipo=="Curso"){
+    $resultado=$base->getCurso($id);
+    for ($i = 0; $i < count($resultado); $i++) {
+        $nom= ": ".$resultado[$i]["NomCur"];
+    }
+}
 $resultado = $base->mostrarIndividualEmp($id);
 if ($resultado==true){
     for ($i = 0; $i < count($resultado); $i++) {
@@ -64,7 +77,7 @@ if ($banSocio){
     var parrafo = document.getElementById("usuapoliza"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $nombre; ?>"; // modificamos su contenid
   var parrafo = document.getElementById("serviciopoliza"); // obtenemos la referencia al elemento
-  parrafo.innerHTML = "<?php echo $tipo; ?>";
+  parrafo.innerHTML = "<?php echo $tipo.$nom; ?>";
   var parrafo = document.getElementById("fechapoliza"); // obtenemos la referencia al elemento
   parrafo.innerHTML = "<?php echo $fecha; ?>";
   var parrafo = document.getElementById("numerofoliopoliza"); // obtenemos la referencia al elemento
@@ -139,6 +152,7 @@ if ($resultado==true){
         var link = document.createElement('a');
         link.textContent = "document.pdf";
         link.href = direccion; // Establece la URL del enlace según sea necesario
+        link.target = "_blank";
         newRow.cells[4].appendChild(link);
     </script>
 <?php

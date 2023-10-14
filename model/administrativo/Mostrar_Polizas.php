@@ -26,7 +26,7 @@
             FROM polgeneral,tipogralpol, sergralpol, serviciospol
             WHERE polgeneral.IdPolGral=tipogralpol.IdPolGral AND IdTipoPol=2 AND polgeneral.IdPolGral=sergralpol.IdPolGral AND sergralpol.IdSerPol=serviciospol.IdSerPol
             AND (polgeneral.IdPolGral LIKE :busqueda OR NomElaPol LIKE :busqueda OR ApePElaPol LIKE :busqueda 
-            OR ApeMElaPol LIKE :busqueda OR FechaPolGral LIKE :busqueda)";
+            OR ApeMElaPol LIKE :busqueda OR DATE_FORMAT( polgeneral.FechaPolGral, '%d/%m/%Y' ) LIKE :busqueda)";
             $arre = [":busqueda"=>'%'.$busqueda.'%'];
             $resultados = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -38,7 +38,7 @@
             FROM polgeneral,tipogralpol, sergralpol, serviciospol
             WHERE polgeneral.IdPolGral=tipogralpol.IdPolGral AND IdTipoPol=1 AND polgeneral.IdPolGral=sergralpol.IdPolGral AND sergralpol.IdSerPol=serviciospol.IdSerPol
             AND (polgeneral.IdPolGral LIKE :busqueda OR NomElaPol LIKE :busqueda OR ApePElaPol LIKE :busqueda 
-            OR ApeMElaPol LIKE :busqueda OR FechaPolGral LIKE :busqueda)";
+            OR ApeMElaPol LIKE :busqueda OR DATE_FORMAT( polgeneral.FechaPolGral, '%d/%m/%Y' ) LIKE :busqueda)";
             $arre = [":busqueda"=>'%'.$busqueda.'%'];
             $resultados = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -93,6 +93,26 @@
             $sql = "SELECT indgralpol.IdPolInd, DesPolInd, Monto, DesDocInd, IdPolAcc
             FROM indgralpol, polindividual, indpolacc
             WHERE IdPolGral=:busqueda AND indgralpol.IdPolInd=polindividual.IdPolInd AND polindividual.IdPolInd=indpolacc.IdPolInd";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function getCertificacion($folio){
+            $this->conexion_bd();
+            $sql = "SELECT NomCertInt
+            FROM certinterna,cerserpol
+            WHERE cerserpol.IdCerInt =certinterna.IdCerInt  AND cerserpol.IdPolGral=:busqueda";
+            $arre = [":busqueda"=>$folio];
+            $resultados = $this->mostrar($sql, $arre);
+            $this->cerrar_conexion();
+            return $resultados;
+        }
+        public function getCurso($folio){
+            $this->conexion_bd();
+            $sql = "SELECT NomCur 
+            FROM cursoserpol,cursos
+            WHERE IdPolGral=:busqueda AND cursos.ClaveCur=cursoserpol.ClaveCur ";
             $arre = [":busqueda"=>$folio];
             $resultados = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
