@@ -164,7 +164,7 @@ $respuesta .= ' -->
 
               <ul>
                 <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Polizas.html">Mostrar</a></li>
               </ul>
             </li>
 
