@@ -34,11 +34,14 @@ class EliminarCurso extends Crud_bd{
 
     public function eliminarcurso($id=null){
         $this->conexion_bd();
+
         $q2 = "DELETE FROM cursos WHERE ClaveCur = :id"; 
         $a2= [":id"=>$id];
+
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
+
     public function eliminartema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM temas WHERE IdTema = :id"; 
@@ -46,6 +49,7 @@ class EliminarCurso extends Crud_bd{
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
+
     public function eliminartemasub($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM temassub WHERE IdTema = :id"; 
@@ -53,6 +57,7 @@ class EliminarCurso extends Crud_bd{
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
+
     public function eliminarsubtema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM subtemas WHERE IdSubT = :id"; 
@@ -60,6 +65,7 @@ class EliminarCurso extends Crud_bd{
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
+
     public function eliminarcursotema($id=null){
         $this->conexion_bd();
         $q2 = "DELETE FROM cursotema WHERE ClaveCur = :id"; 
@@ -67,6 +73,7 @@ class EliminarCurso extends Crud_bd{
         $this->insertar_eliminar_actualizar($q2, $a2);
         $this->cerrar_conexion();
     }
+
     public function t($id=null){
         $this->conexion_bd();
         $consulta = "SELECT temas.NomTema, temas.IdTema FROM cursos, cursotema, temas 
@@ -78,6 +85,7 @@ class EliminarCurso extends Crud_bd{
         $this->cerrar_conexion();
         return $datos;
     }
+    
     public function s($id=null){
         $this->conexion_bd();
         $consulta = "SELECT subtemas.NomSubT,subtemas.IdSubT FROM temas, temassub, subtemas 
