@@ -387,6 +387,10 @@ h3{
   justify-content: center;
   grid-column: span 3;
   transition: 300ms all;
+
+  width: 100%; /* El ancho del elemento se ajustará al 100% del contenedor padre */
+  max-width: 600px; /* Establece un ancho máximo para evitar que el elemento se vuelva demasiado ancho en pantallas grandes */
+  margin: 0 auto; /* Centra el elemento horizontalmente */
 }
 
 .input-textarea-2:focus{
