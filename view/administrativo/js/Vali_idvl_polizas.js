@@ -400,9 +400,21 @@ function registrar(){
     
     if (haber_total == deber_total && haber_total == 0 && deber_total == 0) {
         alert("No se puede registrar una poliza sin movimientos");
+        var d = document.getElementById("debe");
+        var h = document.getElementById("haber");
+        d.removeAttribute("style");
+        h.removeAttribute("style");
     }else if (haber_total != deber_total) {
         alert("La poliza no esta cuadrada");
+        var d = document.getElementById("debe");
+        var h = document.getElementById("haber");
+        d.style.backgroundColor = "#FFC0CB"; 
+        h.style.backgroundColor = "#FFC0CB"; 
     }else{
+        var d = document.getElementById("debe");
+        var h = document.getElementById("haber");
+        d.removeAttribute("style");
+        h.removeAttribute("style");
         lista_id=[];
         lista_id.push(id);
         var formData = new FormData();
@@ -447,6 +459,10 @@ function registrar(){
                 console.error("Error en la solicitud fetch:", error);
             });
         }else{
+            var d = document.getElementById("debe");
+            var h = document.getElementById("haber");
+            d.removeAttribute("style");
+            h.removeAttribute("style");
             alert("Asegúrate de llenar todos los apartados pdf")
         }
     }
