@@ -38,7 +38,7 @@ const expresiones = {
     nombre:/^[a-zA-ZÁ-ý.\s]{1,40}$/,
     apellidos:/^[a-zA-ZÁ-ý\s]{1,20}$/,
     apeMa:/^[a-zA-ZÁ-ý\s]{0,20}$/,
-    email:/^[a-zA-Z0-9.-_+]+@[a-zA-Z]+\.[a-zA-Z]/,
+    email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     telefono:/^[0-9]{10}$/,
     passw:/^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])).{8,16}$/,
 }
@@ -144,11 +144,11 @@ formulario.caja_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»°¨÷±~!¡#$%^&^*()¨+`´\-=\[\]{};·':"\\|,<>\/?]/g, '')
+    .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
     .replace(/[áéíóúÁÉÍÓÚñÑ]/g, '')
     // Eliminar el ultimo espaciado
     //condicional para que no inice con un numero
-    .replace(/^[0-9]/g, '')
+    .replace(/^[0-9._-]/g, '')
     //condicional para que no haya mas de un arroba
     .replace(/@{2,}/g, '@')
    .trim();
@@ -175,9 +175,10 @@ formulario.caja_telefono.addEventListener('keyup', (e) => {
 	// Eliminar el ultimo espaciado
 	.trim();
 
-    if (!expresiones.telefono.test(valorInput) || valorInput.length != 10) {
+    if (!expresiones.telefono.test(valorInput) && valorInput.length != 10) {
         caja_telefono.style.border = "3px solid red";
         bandTel = false
+        console.log("tel no valido")
 	}else{
         caja_telefono.removeAttribute("style");
         bandTel = true
@@ -242,14 +243,14 @@ const validarPassword2 = () =>{
 /*Funcion que se encarga de habiliatar o deshabilitar el boton, segun el valor del parametro que reciba*/
 function validar(bandera){
     const guardar = document.getElementById('boton_registro');
-    if(bandera == false && bRFC == false){        
+    if(bandera == false && bRFC == false && bandTel == false && bandPas2 == false){        
         //guardar.style.border = "3px solid red";
       
         guardar.disabled=true;
 
         
     }
-    else if (bandera == true && bRFC == true){
+    else if (bandera == true && bRFC == true && bandTel == true && bandPas2 == true){
         //guardar.removeAttribute("style");
         guardar.disabled=false;
 
