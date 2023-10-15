@@ -195,55 +195,56 @@ function enviar() {
       console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
       /* console.log("El contenido de resultado es: " + resultado + ""); */
 
-       if (resultado == true) {
-      console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
-      var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
-      var lista = [[]];
+      if (resultado == true) {
+        console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
+        var arrayin = [nombre_curso.value, clave_curso.value, duracion_curso.value, objetivo.value];
+        var lista = [[]];
 
-      var formData = new FormData();
-      formData.append("arrayin", JSON.stringify(arrayin));
-      formData.append("lista", JSON.stringify(lista));
+        var formData = new FormData();
+        formData.append("arrayin", JSON.stringify(arrayin));
+        formData.append("lista", JSON.stringify(lista));
 
 
-      fetch('../../controller/administrativo/Registro_Cursos.php', {
-        method: 'POST',
-        body: formData
-      })
-        .then(res => res.json())
-        .then(data => {
-          if (data === 'Ya se encuentra registrada la clave del curso') {
-            alert("Ya se encuentra registrada la clave del curso");
-
-          }
-          else {
-            alert(data);
-            document.getElementById("nombre-curso").value = "";
-            document.getElementById("clave-curso").value = "";
-            document.getElementById("duración").value = "";
-            document.getElementById("objetivo").value = "";
-            document.getElementById("titulo-curso").value = "";
-            document.getElementById("subtitulo-curso").value = "";
-            document.getElementById("lista").innerHTML = "";
-
-            const nuevo_elemento = document.createElement("li");
-
-            leyenda.innerHTML = "Añadir tema*";
-            caja_titulo.style.display = "flex";
-            caja_subtitulo.style.display = "none";
-
-            btn_add_tema.style.display = "flex";
-            btn_add_subtema.style.display = "none";
-            btn_add_new_tema.style.display = "none";
-            btn_end_proceso.style.display = "none";
-
-            lista_temario_completo = [];
-            lista_temario_parcial = [];
-            contador_temas = 1;
-            contador_subtemas = 1;
-
-            document.getElementById("btn_tema-add").disabled = false;
-          }
+        fetch('../../controller/administrativo/Registro_Cursos.php', {
+          method: 'POST',
+          body: formData
         })
+          .then(res => res.json())
+          .then(data => {
+            if (data === 'Ya se encuentra registrada la clave del curso') {
+              alert("Ya se encuentra registrada la clave del curso");
+
+            }
+            else {
+              alert(data);
+              document.getElementById("nombre-curso").value = "";
+              document.getElementById("clave-curso").value = "";
+              document.getElementById("duración").value = "";
+              document.getElementById("objetivo").value = "";
+              document.getElementById("titulo-curso").value = "";
+              document.getElementById("subtitulo-curso").value = "";
+              document.getElementById("lista").innerHTML = "";
+
+              const nuevo_elemento = document.createElement("li");
+
+              leyenda.innerHTML = "Añadir tema*";
+              caja_titulo.style.display = "flex";
+              caja_subtitulo.style.display = "none";
+
+              btn_add_tema.style.display = "flex";
+              btn_add_subtema.style.display = "none";
+              btn_add_new_tema.style.display = "none";
+              btn_end_proceso.style.display = "none";
+
+              lista_temario_completo = [];
+              lista_temario_parcial = [];
+              contador_temas = 1;
+              contador_subtemas = 1;
+
+              document.getElementById("btn_tema-add").disabled = false;
+            }
+          })
+      }
     }
     else if (flag_almacenar == true) {
       console.log("El contenido de la bandera en enviar es: " + flag_almacenar + "");
@@ -294,5 +295,4 @@ function enviar() {
         })
     }
   }
-}
 }

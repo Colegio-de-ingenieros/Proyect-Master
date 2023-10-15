@@ -19,12 +19,28 @@ class EliminarCurso extends Crud_bd{
 
     public function buscaestatus($id=null){
         $this->conexion_bd();
+
         $querry1 = "SELECT EstatusCur FROM cursos WHERE ClaveCur=:id";
         $arre1 = [":id"=>$id];
         $resultados = $this->mostrar($querry1, $arre1);
+
         $this->cerrar_conexion();
-        //Tiene un seguimiento el proyecto
-        if ($resultados[0]["EstatusCur"]==0){
+
+        $this -> conexion_bd();
+        $consulta = "SELECT cursoserpol.ClaveCur
+        FROM cursoserpol, cursos
+        WHERE cursos.ClaveCur = :id
+        AND cursos.ClaveCur = cursoserpol.ClaveCur";
+
+        $parametros = [":id"=>$id];
+        $response = $this -> mostrar($consulta, $parametros);
+        
+        $this -> cerrar_conexion();
+
+        if(count($response) > 0){
+            return 1;
+        }
+        else if ($resultados[0]["EstatusCur"] == 0){
             return 1;
         }
         else{
