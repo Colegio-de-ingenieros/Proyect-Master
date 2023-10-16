@@ -207,8 +207,8 @@
 
                     <div class="input-form">
                         <textarea type="text" name="concepto_gen" id="concepto_gen" class="input-textarea"
-                          placeholder="Ingrese el concepto general" required
-                          title="El concepto general solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
+                          placeholder="Ingrese el concepto general" required maxlength="400"
+                          title="El concepto general solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)."></textarea>
                     </div>
                 </div>
             </div>
@@ -220,8 +220,8 @@
                     </div>
     
                     <select type="text" class="input-format-2"  id="usuario" name="usuario">
-                        <option value="1">Socio</option>
                         <option value="2">Asociado</option>
+                        <option value="1">Socio</option>
                         <option value="3">Empresa</option>
                     </select>
                 </div>
@@ -244,11 +244,11 @@
                     </div>
 
                     <select type="text" class="input-format-2"  id="tipo_servicio" name="tipo_servicio">
-                        <option value="4">Curso</option>
-                        <option value="5">Certificación</option>
-                        <option value="3">Consultoría</option>
                         <option value="1">Membresía</option>
                         <option value="2">Headhunter</option>
+                        <option value="3">Consultoría</option>
+                        <option value="4">Curso</option>
+                        <option value="5">Certificación</option>
                     </select>
                 </div>
 
@@ -275,7 +275,7 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="nombre" name="nombre" 
-                      placeholder="Ingrese su nombre" required
+                      placeholder="Ingrese su nombre" required maxlength="40"
                       title='El nombre solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
                 </div>
             </div>          
@@ -287,8 +287,8 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_pat" name="apellido_pat"
-                      placeholder="Ingrese su apellido paterno" required
-                      title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                      placeholder="Ingrese su apellido paterno" required maxlength="20"
+                      title='El apellido paterno solo puede contener letras mayúsculas y minúsculas'>
                 </div>
             </div>
 
@@ -299,8 +299,8 @@
 
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_mat" name="apellido_mat"
-                      placeholder="Ingrese su apellido materno" 
-                      title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                      placeholder="Ingrese su apellido materno"  maxlength="20"
+                      title='El apellido materno solo puede contener letras mayúsculas y minúsculas'>
                 </div>
             </div>
             <br>
