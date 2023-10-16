@@ -38,7 +38,7 @@ class EliminarCurso extends Crud_bd{
         $this -> cerrar_conexion();
 
         if(count($response) > 0){
-            return 1;
+            return 2;
         }
         else if ($resultados[0]["EstatusCur"] == 0){
             return 1;
