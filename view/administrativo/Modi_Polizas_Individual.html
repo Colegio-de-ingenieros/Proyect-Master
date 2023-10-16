@@ -240,7 +240,7 @@
             </div>
           </div> 
 
-          
+<!--           
           <div class="grupo-input">
             <div class="label-form">
               <p class="label-2">Comprobante*</p>
@@ -249,7 +249,7 @@
               <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
           required title="El archivo debe ser maximo de 3MB"></input>
             </div>
-          </div> 
+          </div>  -->
       </div> 
         <br> 
 
@@ -259,7 +259,7 @@
           <button class="btn-mediu btn" type="button" id="btn_agregar">Añadir</button> 
         </div>
       </form>
-      <h4 class="h4">Nombre socio/asociado o empresa </h4> 
+      <h4 class="h4" id="propietario">Nombre socio/asociado o empresa </h4> 
       <h4 class="h4">Servicio </h4>
         <br>
       
@@ -275,14 +275,14 @@
                                 </tr>
                                 <tr>
                                   <th colspan="1">Fecha</th>
-                                  <td colspan="6">15 septiembre 2023</td>
+                                  <td colspan="6" id="fecha">15 septiembre 2023</td>
                                   <th colspan="1">Folio</th>
-                                  <td colspan="3">0035</td>
+                                  <td colspan="3" id="folio">0035</td>
                                   
                                 </tr>
                                 <tr>
                                   <th colspan="1" >Concepto general</th>
-                                  <td colspan="9" class="justify-text" >Pago realizado al instructor Antonio Duque Palacios por la
+                                  <td colspan="9" class="justify-text" id="concepto_ge" >Pago realizado al instructor Antonio Duque Palacios por la
                                     impartición del curso para la certificación en ciberseguridad realizado en Zacatecas los días 01 a 04 de 
                                     septiembre del 2023.
                                   </td>
@@ -302,22 +302,13 @@
                                 </tr>
                                 <!-- Filas de datos -->
                                
-                                <tr id="h">
-                                  <td colspan="5" class="justify-text">Banco Banamex Cta. XXXX09</td>
-                                  <td class="right-text"></td>
-                                  <td class="right-text">11,600.00</td>
-                                  <td class="justify-text">PDF del comprobante de la transferencia / cheque realizada al instructor.</td>
-                                  <td>document.pdf</td>
-                                  <td><button class="btn btn-small btn-danger1 fa-solid fa-pen-to-square" onclick="mostrar_modal('h')" id="boton_registro" type="button"></button>
-                                    <button class="btn btn-small btn-danger ti ti-backspace-filled" onclick="elimina_elementos_tabla('h')" id="boton" type="button"></button></td>
                                 
-                                </tr>
                                 
                                 <!-- Subtotal y total -->
                                 <tr>
                                   <th colspan="5" class="right-text">Sumas iguales</th>
-                                  <td class="right-text">$19,600.00</td>
-                                  <td class="right-text">$19,600.00</td>
+                                  <td class="right-text" id="suma_debe">$19,600.00</td>
+                                  <td class="right-text" id="suma_haber">$19,600.00</td>
                                   <th></th>
                                   <th></th>
                                   <th></th>
@@ -328,7 +319,7 @@
                                 <tr>
                                   
                                   <th colspan="5" class="right-text">Realizó</th>
-                                  <td colspan="6" class="left-text">Jorge García Alonso</td>
+                                  <td colspan="6" class="left-text" id="nombre_realizo">Jorge García Alonso</td>
                                   
                                 </tr>
                               </tbody>
@@ -343,7 +334,7 @@
             <br>
             <br>
             <div class="botones_registrar">
-                <button class="btn-medium btn" id="boton_registro" type="submit">Guardar</button>
+                <button class="btn-medium btn" id="boton_registro" type="click">Guardar</button>
             </div>
             <br>
             <br>
@@ -407,7 +398,7 @@
                     </div>
                   </div> 
 
-                  <div class="grupo-input">
+                  <!-- <div class="grupo-input">
                     <div class="label-form">
                       <p class="label-2">Comprobante*</p>
                     </div>
@@ -415,7 +406,7 @@
                       <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
                       title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"  required ></input>
                     </div>
-                  </div>
+                  </div> -->
 
                 </div> 
                 <div class="botones_actualizar">
@@ -437,6 +428,6 @@
   <script src="js/Vali_Mod_Poliza_Individual.js"></script>
   <script src="js/Vali_Mod_Modal_Poliza_Individual.js"></script> 
   <script src="../../controller/administrativo/js/Modificar_Poliza_Individual.js"></script>
-  <script src="../../controller/administrativo/js/Mostrar_Pdf_Polizas.js"></script>
+  <!-- <script src="../../controller/administrativo/js/Mostrar_Pdf_Polizas.js"></script> -->
 </body>
 </html>
