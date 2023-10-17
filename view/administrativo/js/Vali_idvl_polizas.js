@@ -120,7 +120,7 @@ inserta.addEventListener("click", (e) => {
 
                 // Agrega contenido a las celdas
                 cell1.innerHTML = conceptos;
-                cell6.innerHTML = montos;
+                cell6.innerHTML = "$ "+ montos;
                 cell6.id = "cantidad";
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
@@ -133,7 +133,7 @@ inserta.addEventListener("click", (e) => {
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
-                debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos);
+                debe.textContent = "$ "+(parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos));
                 
                 filas.push(conceptos);
                 filas.push(montos);
@@ -158,7 +158,7 @@ inserta.addEventListener("click", (e) => {
                 // Agrega contenido a las celdas
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "";
-                cell7.innerHTML = montos;
+                cell7.innerHTML = "$ "+montos;
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
@@ -170,7 +170,7 @@ inserta.addEventListener("click", (e) => {
                 cell10.innerHTML = "<button class='btn btn-small btn-danger ti ti-backspace-filled' id="+fila+" onclick = 'eliminar2(this)' type='button'></button>";
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
-                haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos);
+                haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos));
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
@@ -387,6 +387,9 @@ function validarArchivo(input) {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
     } 
+    else{
+    input.removeAttribute("style"); 
+    }
   }
 
 
@@ -405,11 +408,11 @@ function registrar(){
         d.removeAttribute("style");
         h.removeAttribute("style");
     }else if (haber_total != deber_total) {
-        alert("La poliza no esta cuadrada");
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
         d.style.backgroundColor = "#FFC0CB"; 
-        h.style.backgroundColor = "#FFC0CB"; 
+        h.style.backgroundColor = "#FFC0CB";
+        alert("La poliza no esta cuadrada"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
@@ -436,7 +439,14 @@ function registrar(){
                     formData.append("pdfs[]", input.files[0]);
                     con = con+1;
                     /* lista.push(input.files[0]); */
+                    input.removeAttribute("style"); 
                 }
+                else {
+                
+                    
+                    input.style.backgroundColor = "#FFC0CB"; 
+                }
+                
             });
             console.log("con"+con);
             console.log("pdf"+cantidad_pdf)
