@@ -27,7 +27,7 @@ window.onload = function() {
         }
     }
     id = id1;
-    /* id = "0001"; */
+    /* id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -117,6 +117,10 @@ inserta.addEventListener("click", (e) => {
         const montos = document.getElementById("monto").value;
         const concepto_pdf = document.getElementById("concepto_pdf").value;
 
+        const text1 = document.getElementById("concepto");
+        const saldo = document.getElementById("monto");
+        const text2 = document.getElementById("concepto_pdf");
+
         filas = []
         if (combo != "") {
             /* var nombreArchivo2 = document.getElementById("archivo").files[0].name; */
@@ -166,6 +170,16 @@ inserta.addEventListener("click", (e) => {
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
                 filas.push(cantidad_pdf);
+
+                text1.value = "";
+                saldo.value = "";
+                text2.value = "";
+                var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
+
+                // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
+                tipoGradoPerso.selectedIndex = 0;
+
+                alert("Agregado exitosamente");
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -202,6 +216,14 @@ inserta.addEventListener("click", (e) => {
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
                 filas.push(cantidad_pdf);
+                alert("Agregado exitosamente");
+                text1.value = "";
+                saldo.value = "";
+                text2.value = "";
+                var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
+
+                // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
+                tipoGradoPerso.selectedIndex = 0;
             }
         }else{
             alert("faltan campos por llenar");
@@ -484,6 +506,7 @@ function registrar(){
                 if (response.ok) {
                     //alert("Los PDFs se han guardado con éxito en el servidor.");
                     alert("Registro exitoso");
+                    window.location.href = "../../view/administrativo/Vista_Polizas.html";
                 } else {
                     alert("Hubo un problema al guardar los PDFs en el servidor.");
                 }

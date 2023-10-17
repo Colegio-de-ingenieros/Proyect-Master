@@ -4,7 +4,7 @@ include_once('../../model/administrativo/Registro_Individual_Polizas.php');
 $obj = new Nuevapoliza();
 $obj->conexion();
 $contador = $obj->id_individual();
-$conta=$contador[0];
+$conta=$contador[0][0];
 
 
 $tabla = json_decode($_POST["tabla"]);
@@ -24,7 +24,7 @@ for ($i = 0; $i < count($tabla); $i++) {
         $resultados = $obj->insertar($resultados, $concepto, $monto, $concepto_pdf, $tipo, $id_general);
     }
 }
-$conta=0;
+
 if ( isset($_FILES['pdfs'])) {
     $uploadDirectory = '../Comprobantes/administrativo/polizas/'; // Carpeta de destino para los PDFs
 
@@ -35,6 +35,7 @@ if ( isset($_FILES['pdfs'])) {
     foreach ($_FILES['pdfs']['tmp_name'] as $key => $tmpName) {
         $fileName = $_FILES['pdfs']['name'][$key];
         $conta+=1;
+        $conta = $obj->agregar_ceros($conta);
         $uploadPath = $uploadDirectory . $conta;
         
         if (move_uploaded_file($tmpName, $uploadPath)) {
