@@ -35,7 +35,7 @@
         }
         
         public function buscarCursos(){
-            $sql = "SELECT ClaveCur, NomCur FROM cursos ORDER BY NomCur ASC";
+            $sql = "SELECT cursos.ClaveCur, CONCAT_WS(' - ', ClaveCur, NomCur) FROM cursos ORDER BY NomCur ASC";
             $resultado = $this->base->mostrar($sql);
             return $resultado;
         }
