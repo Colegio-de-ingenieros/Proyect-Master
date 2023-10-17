@@ -31,7 +31,7 @@ const expresiones = {
     Nombre: /^[a-zA-ZÁ-Ýá-ý\.\s]{1,40}$/,
     ApeP: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
     ApeM: /^[a-zA-ZÁ-Ýá-ý\s]{0,20}$/,
-    Concepto:/^[a-zA-ZÁ-ý\s ,.0-9;:_"#]{1,400}$/,
+    Concepto:/^[a-zA-ZÁ-ý\s ,.0-9;:_"#-]{1,400}$/
 
 }
 
@@ -84,7 +84,7 @@ formularioPolGral.concepto_gen.addEventListener('keyup', (e) => {
     var enter = '\n'
     formularioPolGral.concepto_gen.value = valorInput
 
-    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?\n]/g, '');
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@$%^&^*()+=\[\]{}'\\|<>\/?\n]/g, '');
     if (!expresiones.Concepto.test(valorInput)) {
         concepto_gen.style.border = "3px solid red";
         bConcepto = false
