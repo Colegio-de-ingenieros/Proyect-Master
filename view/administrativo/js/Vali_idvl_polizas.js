@@ -27,7 +27,7 @@ window.onload = function() {
         }
     }
     id = id1;
-    /* id = "0001"; */
+    /* id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -67,21 +67,28 @@ window.onload = function() {
         //------------------------------------------------------------------------------------
 
         console.log(Object.keys(data[1]).length);
-        if (Object.keys(data[1]).length == 6){
+        if (Object.keys(data[1]).length == 8){
         var nom_persona = document.getElementById("nombre_persona");
         nom_perso =data[1]["NomPerso"];
         apep_perso =data[1]["ApePPerso"];
         apem_perso =data[1]["ApeMPerso"];
+        ser = data[1]["TipoU"];
+        if (ser=="Asociado"){
+            ser = "Asoc";
+        }
+        else if (ser=="Socio"){
+            ser = "Soc";
+        }
         if (apem_perso == null) {
             apem_perso = "";
         }
-        nom_persona.textContent = nom_perso+" "+apep_perso+" "+apem_perso;
+        nom_persona.textContent = ser+": "+ nom_perso+" "+apep_perso+" "+apem_perso;
     
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
         nom_empr =data[1]["NomUsuaEmp"];
-        nom_persona.textContent = nom_empr;
+        nom_persona.textContent = "Emp: "+ nom_empr;
     }
     })
     .catch(error => console.log(error));
@@ -117,6 +124,10 @@ inserta.addEventListener("click", (e) => {
         const montos = document.getElementById("monto").value;
         const concepto_pdf = document.getElementById("concepto_pdf").value;
 
+        const text1 = document.getElementById("concepto");
+        const saldo = document.getElementById("monto");
+        const text2 = document.getElementById("concepto_pdf");
+
         filas = []
         if (combo != "") {
             /* var nombreArchivo2 = document.getElementById("archivo").files[0].name; */
@@ -144,6 +155,7 @@ inserta.addEventListener("click", (e) => {
                 // Agrega contenido a las celdas
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "$ "+ montos;
+                cell6.style.textAlign = "right";
                 cell6.id = "cantidad";
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
@@ -157,7 +169,7 @@ inserta.addEventListener("click", (e) => {
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 debe.textContent = "$ "+(parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos));
-                
+                debe.style.textAlign = "right";
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
@@ -166,6 +178,16 @@ inserta.addEventListener("click", (e) => {
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
                 filas.push(cantidad_pdf);
+
+                text1.value = "";
+                saldo.value = "";
+                text2.value = "";
+                var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
+
+                // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
+                tipoGradoPerso.selectedIndex = 0;
+
+                alert("Agregado exitosamente");
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -182,6 +204,7 @@ inserta.addEventListener("click", (e) => {
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "";
                 cell7.innerHTML = "$ "+montos;
+                cell7.style.textAlign = "right";
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
@@ -194,6 +217,7 @@ inserta.addEventListener("click", (e) => {
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos));
+                haber.style.textAlign = "right";
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
@@ -202,6 +226,14 @@ inserta.addEventListener("click", (e) => {
                 tabla.push(filas);
                 cantidad_pdf = cantidad_pdf +1;
                 filas.push(cantidad_pdf);
+                alert("Agregado exitosamente");
+                text1.value = "";
+                saldo.value = "";
+                text2.value = "";
+                var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
+
+                // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
+                tipoGradoPerso.selectedIndex = 0;
             }
         }else{
             alert("faltan campos por llenar");
@@ -428,19 +460,27 @@ function registrar(){
         alert("No se puede registrar una poliza sin movimientos");
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
-        d.removeAttribute("style");
-        h.removeAttribute("style");
     }else if (haber_total != deber_total) {
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
-        d.style.backgroundColor = "#FFC0CB"; 
-        h.style.backgroundColor = "#FFC0CB";
+        d.style.backgroundColor = "rgb(235, 71, 71)";
+        d.style.fontWeight = "600";
+        d.style.color = "white";
+        d.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        h.style.backgroundColor = "rgb(235, 71, 71)";
+        h.style.fontWeight = "600";
+        h.style.color = "white";
+        h.style.textAlign = "right";
         alert("La poliza no esta cuadrada"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
         d.removeAttribute("style");
         h.removeAttribute("style");
+        d.textAlign = "right";
+        h.style.textAlign = "right";
         lista_id=[];
         lista_id.push(id);
         var formData = new FormData();
@@ -465,9 +505,7 @@ function registrar(){
                     input.removeAttribute("style"); 
                 }
                 else {
-                
-                    
-                    input.style.backgroundColor = "#FFC0CB"; 
+                    input.style.backgroundColor = "rgb(235, 71, 71)";
                 }
                 
             });
@@ -484,6 +522,7 @@ function registrar(){
                 if (response.ok) {
                     //alert("Los PDFs se han guardado con éxito en el servidor.");
                     alert("Registro exitoso");
+                    window.location.href = "../../view/administrativo/Vista_Polizas.html";
                 } else {
                     alert("Hubo un problema al guardar los PDFs en el servidor.");
                 }
@@ -496,6 +535,8 @@ function registrar(){
             var h = document.getElementById("haber");
             d.removeAttribute("style");
             h.removeAttribute("style");
+            d.textAlign = "right";
+            h.textAlign = "right";
             alert("Asegúrate de llenar todos los apartados pdf")
         }
     }

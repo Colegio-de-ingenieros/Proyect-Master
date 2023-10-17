@@ -133,8 +133,11 @@ function eliminar_f(clave) {
 
                 alert("Eliminado con éxito");
                 location.reload();
-
-            }else{
+            }
+            else if(datos[0] == "error por poliza"){
+                alert("Error, el curso no puede ser eliminado por que está asociado a una póliza")
+            }
+            else{
                 alert("Error, el curso no puede ser eliminado porque tiene un seguimiento");
             }
             

@@ -13,10 +13,8 @@ $dump="mysqldump -h$host -p$password -u$usuario $nombreBD > $nombre_sql";
 
 system($dump,$output);
 
-
 $zip = new ZipArchive(); 
 $nombre_zip=$nombreBD . '_' . $fecha.'.zip';
-
 
 if ($zip->open($nombre_zip, ZIPARCHIVE::CREATE) === true) { 
     $zip->addFile($nombre_sql); 
