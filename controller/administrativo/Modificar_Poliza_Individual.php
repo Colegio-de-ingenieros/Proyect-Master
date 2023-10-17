@@ -17,6 +17,11 @@ if(isset($_POST["id_info"])){
 
 
 
+}else if(isset($_POST["id"]) && isset($_POST["polizas_in"])){
+    $polizas_in = json_decode($_POST["polizas_in"]);
+
+    $datos = $objeto->modificar_polizas($_POST["id"],$polizas_in);
+
 }
 
 header("Content-Type: application/json");
