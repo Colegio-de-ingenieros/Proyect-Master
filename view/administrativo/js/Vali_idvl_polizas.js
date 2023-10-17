@@ -26,7 +26,7 @@ window.onload = function() {
             }
         }
     }
-    id = id1;
+   /*  id = id1; */
     /* id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
@@ -524,7 +524,7 @@ function registrar(){
         var h = document.getElementById("haber");
         d.removeAttribute("style");
         h.removeAttribute("style");
-        d.textAlign = "right";
+        d.style.textAlign = "right";
         h.style.textAlign = "right";
         lista_id=[];
         lista_id.push(id);
@@ -576,12 +576,6 @@ function registrar(){
                 console.error("Error en la solicitud fetch:", error);
             });
         }else{
-            var d = document.getElementById("debe");
-            var h = document.getElementById("haber");
-            d.removeAttribute("style");
-            h.removeAttribute("style");
-            d.textAlign = "right";
-            h.textAlign = "right";
             alert("Asegúrate de llenar todos los apartados pdf")
         }
     }
