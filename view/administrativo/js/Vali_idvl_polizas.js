@@ -27,6 +27,7 @@ window.onload = function() {
         }
     }
     id = id1;
+    /* id = "0001"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -37,18 +38,20 @@ window.onload = function() {
         body: form
     })
         .then(response => response.json())
-        .then(data => arrays(data))
-        .catch(error => console.log(error));
-    const arrays = (data) => { 
+        
+        .then(data => { 
         console.log(data);
-        let primer_nombre = data.map(objeto => Object.values(objeto)[1]);
-        let folio = String(data.map(objeto => Object.values(objeto)[0]));
-        let apellido_materno = data.map(objeto => Object.values(objeto)[2]);
-        let apellido_paterno = data.map(objeto => Object.values(objeto)[3]);
-        let fecha_poliza = String(data.map(objeto => Object.values(objeto)[4]));
-        let concepto_general = String(data.map(objeto => Object.values(objeto)[5]));
+        let primer_nombre = data[0]["NomElaPol"];
+        let folio = String(data[0]["IdPolGral"]);
+        let apellido_materno = data[0]["ApeMElaPol"];
+        let apellido_paterno = data[0]["ApePElaPol"];
+        let fecha_poliza = String(data[0]["FechaPolGral"]);
+        let concepto_general = String(data[0]["CoceptoGral"]);
+        if (apellido_materno == null) {
+            apellido_materno = "";
+        }
 
-        let nombre = primer_nombre + " " + apellido_materno + " " + apellido_paterno;
+        let nombre = primer_nombre + " " + apellido_paterno + " " + apellido_materno;
 
         var folioElement = document.getElementById("folio_individual");
         var personaElaboracionElement = document.getElementById("persona_de_elaboracion");
@@ -61,8 +64,28 @@ window.onload = function() {
         fecha.textContent = fecha_poliza; // Replace with the desired date
         concept.textContent = concepto_general;
 
+        //------------------------------------------------------------------------------------
 
+        console.log(Object.keys(data[1]).length);
+        if (Object.keys(data[1]).length == 6){
+        var nom_persona = document.getElementById("nombre_persona");
+        nom_perso =data[1]["NomPerso"];
+        apep_perso =data[1]["ApePPerso"];
+        apem_perso =data[1]["ApeMPerso"];
+        if (apem_perso == null) {
+            apem_perso = "";
+        }
+        nom_persona.textContent = nom_perso+" "+apep_perso+" "+apem_perso;
+    
+
+    }else if (Object.keys(data[1]).length == 2){
+        var nom_persona = document.getElementById("nombre_persona");
+        nom_empr =data[1]["NomUsuaEmp"];
+        nom_persona.textContent = nom_empr;
     }
+    })
+    .catch(error => console.log(error));
+    
 }
 
 /*Detecta cuando el boton fue presionado*/
