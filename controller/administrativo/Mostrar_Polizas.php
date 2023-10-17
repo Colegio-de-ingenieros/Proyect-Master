@@ -33,7 +33,7 @@ if ($resultado == true) {
                             <th>Tipo de servicio</th>
                             <th>Concepto general</th>
                             <th>Fecha</th>
-                            <th>Elaboró</th>
+                            <th>Realizado</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
