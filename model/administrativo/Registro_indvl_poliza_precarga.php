@@ -20,6 +20,26 @@ class Precarga{
         return $resultados;
 
     }
+    function persona($id){
+        $querry = "SELECT usuaperso.NomPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso
+        FROM polgeneral,persogralpol,usuaperso
+        WHERE  polgeneral.IdPolGral = :id
+        AND polgeneral.IdPolGral = persogralpol.IdPolGral
+        AND persogralpol.IdPerso = usuaperso.IdPerso";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
+    function empresa($id){
+        $querry = "SELECT usuaemp.NomUsuaEmp
+        FROM polgeneral,empgralpol,usuaemp
+        WHERE  polgeneral.IdPolGral = :id
+        AND polgeneral.IdPolGral = empgralpol.IdPolGral
+        AND empgralpol.RFCUsuaEmp = usuaemp.RFCUsuaEmp";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
 
 }
 

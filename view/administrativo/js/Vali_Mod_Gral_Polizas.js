@@ -10,16 +10,15 @@ let botonRegistrar = document.getElementById("actualizar");
 botonRegistrar.addEventListener("click", (e) => {
   
     if (bNombre==false){
-        nom_proyecto.style.border = "3px solid red";
+        nombre.style.border = "3px solid red";
         e.preventDefault()
     }else if(bApeP==false){
-        obj_proyecto.style.border = "3px solid red";
+        apellido_pat.style.border = "3px solid red";
         e.preventDefault()
     }else if(bApeM==false){
-        monto_proyecto.style.border = "3px solid red";
+        apellido_mat.style.border = "3px solid red";
         e.preventDefault()
-    }
-    else if(bConcepto==false){
+    }else if(bConcepto==false){
         concepto_gen.style.border = "3px solid red";
         e.preventDefault()
     }else{
@@ -81,10 +80,10 @@ formularioPolGral.apellido_mat.addEventListener('keyup', (e) => {
 
 formularioPolGral.concepto_gen.addEventListener('keyup', (e) => {
 	let valorInput = e.target.value;
+    var enter = '\n'
+    formularioPolGral.concepto_gen.value = valorInput
 
-	formularioPolGral.concepto_gen.value = valorInput.replace(/[^a-zA-ZÁ-ý\s ,.0-9;:_"#]/g, '');
-
-
+    .replace(/[☺☻♥♦•○◙♂♀üâäàåçê♪ëèïîìÄÅæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬`´·¨°½¼«»÷±~!¡@#$%^&^*()_+\-=\[\]{};':"\\|<>\/?\n]/g, '');
     if (!expresiones.Concepto.test(valorInput)) {
         concepto_gen.style.border = "3px solid red";
         bConcepto = false

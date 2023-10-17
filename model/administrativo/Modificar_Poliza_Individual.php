@@ -60,6 +60,116 @@ class Modificar_Poliza_Individual extends Crud_bd{
         return $datos;
 
     }
+    public function agregar_ceros($numero,$largo)
+    {
+        $ceros = "";
+        $numero_nuevo="";
+        for ($i=0; $i < $largo ; $i++) { 
+            $numero_nuevo = $ceros .$numero;
+            if(strlen($numero_nuevo) == $largo){
+                break;
+            }else{
+                $ceros = $ceros . "0";
+            }
+
+        }
+        
+        return $numero_nuevo;
+    }
+
+    public function extraer_numero_polizas()
+    {
+        # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
+        $this->conexion_bd();
+        $sql = "SELECT  MAX(CAST(SUBSTRING(IdPolInd,2) AS INT))  FROM  polindividual " ;
+        $numero_consecutivo =  $this->mostrar($sql);
+        $this->cerrar_conexion();
+        $numero = "";
+
+        if (is_null($numero_consecutivo[0][0]) == 1) {
+            # significa que no hay registros por eso hay que generarlo
+            $numero = 1;
+        }else{
+            $numero = $numero_consecutivo[0][0];
+            $numero++;
+           
+        }
+        $numero_con_ceros = $this->agregar_ceros($numero,6);
+       
+
+        return $numero_con_ceros;
+
+    }
+
+    function modificar_polizas($id_poliza,$resultado_procesado){
+
+        $sqls = [];
+        $parametros = [];
+        $id_poliza_nueva = $this->extraer_numero_polizas();
+        $poliza = [];
+
+        for ($i=0; $i < count($resultado_procesado) ; $i++) { 
+
+            $poliza = $resultado_procesado[$i];
+        
+            
+            if($poliza[0] == "new"){
+
+                $sqls[] = "INSERT INTO polindividual ( IdPolInd,DesPolInd,Monto,DesDocInd) VALUES (:id,:concepto, :monto,:descripcion)";
+                $parametros[] = [":id"=>$id_poliza_nueva, ":concepto"=>$poliza[3], ":monto"=>$poliza[2], ":descripcion"=>$poliza[4]];
+
+                $sqls[] = "INSERT INTO  indgralpol ( IdPolGral, IdPolInd) VALUES (:idGeneral,:idIndividual)";
+                $parametros[] =  [":idGeneral"=>$id_poliza,":idIndividual"=>$id_poliza_nueva];
+
+                $sqls[] = "INSERT INTO  indpolacc (IdPolInd, IdPolAcc) VALUES (:idInd,:idTipo)";
+                $parametros[] = [":idInd"=>$id_poliza_nueva, ":idTipo"=>$poliza[1] ];
+
+                $resultado_procesado[$i][1] = $id_poliza_nueva;
+
+                $id_poliza_nueva++;
+
+                $id_poliza_nueva = $this->agregar_ceros($id_poliza_nueva,6);
+
+
+            }else if($poliza[0] == "update"){
+
+                $sqls[] = "UPDATE polindividual SET DesPolInd = :concepto, Monto = :monto, DesDocInd = :descripcion WHERE IdPolInd = :idp";
+                $parametros[] = [":idp"=>$poliza[1], ":concepto"=>$poliza[4], ":monto"=>$poliza[3], ":descripcion"=>$poliza[5]];
+
+                $sqls[] = "DELETE FROM indpolacc WHERE IdPolInd = :idpa";
+                $parametros[] = [":idpa"=>$poliza[1] ];
+
+                $sqls[] = "INSERT INTO  indpolacc (IdPolInd, IdPolAcc) VALUES (:idInd,:idTipo)";
+                $parametros[] = [":idInd"=>$poliza[1], ":idTipo"=>$poliza[2] ];
+
+            }else{
+                $sqls[] = "DELETE FROM indgralpol WHERE IdPolInd = :idInd";
+                $parametros[] = [":idInd"=>$poliza[1]];
+
+                $sqls[] = "DELETE FROM indpolacc WHERE IdPolInd = :idpa";
+                $parametros[] = [":idpa"=>$poliza[1]];
+
+                $sqls[] = "DELETE FROM polindividual WHERE IdPolInd = :idp";
+                $parametros[] = [":idp"=>$poliza[1]];
+
+            }
+            
+        }
+
+        $this->conexion_bd();
+        $resultado = $this->insertar_eliminar_actualizar($sqls,$parametros);
+        $this->cerrar_conexion();
+
+        return $resultado;
+
+        
+    }
+
+
+
+
+
+
 }
 
 

@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modificación de pólizas</title>
+  <title>Modificación general de pólizas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
@@ -205,7 +205,8 @@
                     <div class="input-form">
                         <textarea type="text" name="concepto_gen" id="concepto_gen" class="input-textarea"
                           placeholder="Ingrese el concepto general" required maxlength="400"
-                          title="El concepto general solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
+                          title="El concepto general solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)."></textarea>
+                        </div></textarea>
                     </div>
                 </div>
             </div>
@@ -234,7 +235,7 @@
             <div class="grupo-input4">
                 <div class="input-form">
                     <div class="label-form">
-                        <p class="label-2">Servicio</p>
+                        <p class="label-2">Servicio*</p>
                     </div>
 
                     <select type="text" class="input-format-2"  id="tipo_servicio" name="tipo_servicio">
@@ -243,7 +244,7 @@
 
                 <div class="input-form">
                     <div class="label-form">
-                        <p class="label-2">Nombre del servicio</p>
+                        <p class="label-2">Nombre del servicio*</p>
                     </div>
 
                     <select type="text" class="input-format-2"  id="nom_servicio" name="nom_servicio">
@@ -277,7 +278,7 @@
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_pat" name="apellido_pat"
                       placeholder="Ingrese su apellido paterno" required maxlength="20"
-                      title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                      title='El apellido paterno solo puede contener letras mayúsculas y minúsculas'>
                 </div>
             </div>
 
@@ -289,7 +290,7 @@
                 <div class="input-form">
                     <input type="text" class="input-format-2" id="apellido_mat" name="apellido_mat"
                       placeholder="Ingrese su apellido materno" maxlength="20"
-                      title='El apellido solo puede contener letras mayúsculas, minúsculas y el símbolo "."'>
+                      title='El apellido materno solo puede contener letras mayúsculas y minúsculas'>
                 </div>
             </div>
             <br>

@@ -97,11 +97,27 @@ formularioPolGral.usuario.addEventListener("change", (e) => {
         .then(data => {
             document.getElementById("nombre_us").innerHTML = "";
             console.log(data);
-            for (var i = 0; i < data.length; i++) {
+            if (data.length==0){
+                if (tipoUsua==1){
+                    msj="No hay socios registrados"
+                  }else if(tipoUsua==2){
+                    msj="No hay asociados registrados"
+                  }else{
+                    msj="No hay empresas registradas"
+                  }
                 var optionElement = document.createElement("option");
-                optionElement.value = data[i][0];
-                optionElement.text = data[i][1];
-                document.getElementById("nombre_us").appendChild(optionElement);
+                optionElement.value = "Vacio";
+                optionElement.text = msj;
+                document.getElementById("nombre_us").appendChild(optionElement)
+                document.getElementById("nombre_us").disabled = true;
+            }else{
+                document.getElementById("nombre_us").disabled = false;
+                for (var i = 0; i < data.length; i++) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = data[i][0];
+                    optionElement.text = data[i][1];
+                    document.getElementById("nombre_us").appendChild(optionElement);
+                }
             }
         }) 
 })
@@ -121,11 +137,25 @@ formularioPolGral.tipo_servicio.addEventListener("change", (e) => {
         .then(data => {
             console.log(data);
             document.getElementById("nom_servicio").innerHTML = "";
-            for (var i = 0; i < data.length; i++) {
+            if (data.length==0){
+                if (tipoSer==4){
+                    msj="No hay cursos registrados"
+                  }else if(tipoSer==5){
+                    msj="No hay certificaciones registradas"
+                  }
                 var optionElement = document.createElement("option");
-                optionElement.value = data[i][0];
-                optionElement.text = data[i][1];
-                document.getElementById("nom_servicio").appendChild(optionElement);
+                optionElement.value = "Vacio";
+                optionElement.text = msj;
+                document.getElementById("nom_servicio").appendChild(optionElement)
+                document.getElementById("nom_servicio").disabled = true;
+            }else{
+                document.getElementById("nom_servicio").disabled = false;
+                for (var i = 0; i < data.length; i++) {
+                    var optionElement = document.createElement("option");
+                    optionElement.value = data[i][0];
+                    optionElement.text = data[i][1];
+                    document.getElementById("nom_servicio").appendChild(optionElement);
+                }
             }
         }) 
 })
@@ -133,25 +163,31 @@ formularioPolGral.tipo_servicio.addEventListener("change", (e) => {
 //responde cuando hay un click en el boton actualizar
 formularioPolGral.addEventListener('submit', function (e){
     e.preventDefault();
-    let urlAct = window.location+''
-    let split = urlAct.split("=");
-    var idOperacion = split[1];
+    if (document.getElementById("nombre_us").disabled == true) {
+        alert("Por favor, seleccione un tipo de usuario que si tenga registros");
+    } else if (document.getElementById("nom_servicio").disabled == true){
+        alert("Por favor, seleccione un tipo de servicio que si tenga registros");
+    } else{
+        let urlAct = window.location+''
+        let split = urlAct.split("=");
+        var idOperacion = split[1];
 
-    let url = "../../controller/administrativo/Modificar_Polizas_Gral.php";
+        let url = "../../controller/administrativo/Modificar_Polizas_Gral.php";
 
-    let form = new FormData(formularioPolGral);
-    form.append("idOperacion", idOperacion);
-    fetch(url, {
-    method: "POST",
-    body: form
-    })
-        .then(response => response.json())
-        .then(data => {
-            alert(data);
-            if (data=='Actualización exitosa'){
-                window.location.href='../../view/administrativo/Vista_Polizas.html';
-            }
-    })  
+        let form = new FormData(formularioPolGral);
+        form.append("idOperacion", idOperacion);
+        fetch(url, {
+        method: "POST",
+        body: form
+        })
+            .then(response => response.json())
+            .then(data => {
+                alert(data);
+                if (data=='Actualización exitosa'){
+                    window.location.href='../../view/administrativo/Vista_Polizas.html';
+                }
+        })  
+    }
 })
 
 //responde cuando hay un click en el boton cancelar

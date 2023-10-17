@@ -95,8 +95,25 @@ btn_registro.addEventListener("click",(e)=>{
     let debe = parseFloat(suma_debe.textContent.replace(/[^0-9.-]+/g,""));
     let haber = parseFloat(suma_haber.textContent.replace(/[^0-9.-]+/g,""));
     if (debe == haber) {
+
         extraer_datos_tabla() 
         console.log(window.poliza_individual);
+        let form_data = new FormData(formulario);
+        form_data.append("id",id_poliza);
+        form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
+      
+        fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
+            method:"POST",
+            body: form_data
+        }).then(res => res.json())
+        .then(datos =>{
+            if(datos == true){
+                alert("Actualización exitosa");
+                window.poliza_individual = [];
+                window.location.href = '../administrativo/Vista_Polizas.html' ;
+            }   
+        }).catch(error => console.log(error));
+
     }else{
         alert("Las sumas iguales son diferentes");
     }
@@ -361,7 +378,9 @@ function sumas_iguales() {
 }
 
 function extraer_datos_tabla() {
-    
+
+
+    window.poliza_individual = window.poliza_individual.filter((i) => i[0] !== "update" && i[0] !== "new");
     
     let cantidad_filas = table.rows.length - 2;
 
@@ -388,11 +407,11 @@ function extraer_datos_tabla() {
         
         if(contenido1 != ""){
             fila.push(1);
-            fila.push(contenido1);
+            fila.push(parseFloat(contenido1.replace(/[^0-9.-]+/g,"")));
         }
         if (contenido2 != "") {
             fila.push(2);
-            fila.push(contenido2);
+            fila.push(parseFloat(contenido2.replace(/[^0-9.-]+/g,"")));
         }
         // el concepto 
         fila.push(table.rows[i].cells[0].textContent);
@@ -406,3 +425,11 @@ function extraer_datos_tabla() {
 
 }
 
+function ordenarLista(lista) {
+    //coloca la lista en este orden eliminar, delete, update, new
+    let lista_new = lista.filter(element=>{ return element[0] == "new" });
+    let lista_update = lista.filter(element=>{ return element[0] == "update" });
+    let lista_delete = lista.filter(element=>{ return element[0] == "delete" });
+    let lista_ordenanda = lista_delete.concat(lista_update).concat(lista_new);
+    return lista_ordenanda; 
+}

@@ -163,7 +163,7 @@ $respuesta .= ' -->
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Polizas_General.html">Registrar</a></li>
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Polizas.html">Mostrar</a></li>
               </ul>
             </li>

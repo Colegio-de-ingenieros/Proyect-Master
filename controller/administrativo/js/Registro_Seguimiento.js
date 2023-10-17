@@ -127,12 +127,11 @@ formulario.addEventListener("submit",(e)=>{
     e.preventDefault();
     let envio=1
     let auxNombre = document.getElementById("nombre");
-    console.log("Nuevio", document.getElementById("nombre").value)
     let instructores = document.getElementById("instructores");
     let socio_asociado =document.getElementById("nom_socio_asociado");
     let empresa = document.getElementById("nom_empresa");
     if (document.getElementById("nombre").disabled == true) {
-      alert("Por favor, seleccione un tipo de activiadd que si tenga registros");
+      alert("Por favor, seleccione un tipo de actividad que si tenga registros");
     } else if (document.getElementById("instructores").disabled == true){
       alert("No se han encontrado instructores registrados")
     } else if(instructores.value.length == 0){
