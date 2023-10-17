@@ -148,6 +148,7 @@ inserta.addEventListener("click", (e) => {
                 // Agrega contenido a las celdas
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "$ "+ montos;
+                cell6.style.textAlign = "right";
                 cell6.id = "cantidad";
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
@@ -161,7 +162,7 @@ inserta.addEventListener("click", (e) => {
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 debe.textContent = "$ "+(parseFloat(debe_value.replace(/\$|,/g, '')) + parseFloat(montos));
-                
+                debe.style.textAlign = "right";
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
@@ -196,6 +197,7 @@ inserta.addEventListener("click", (e) => {
                 cell1.innerHTML = conceptos;
                 cell6.innerHTML = "";
                 cell7.innerHTML = "$ "+montos;
+                cell7.style.textAlign = "right";
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
@@ -208,6 +210,7 @@ inserta.addEventListener("click", (e) => {
                 fila = fila + 1;
                 tbody.insertBefore(row, filaInferior);
                 haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) + parseFloat(montos));
+                haber.style.textAlign = "right";
                 filas.push(conceptos);
                 filas.push(montos);
                 filas.push(concepto_pdf);
@@ -450,19 +453,27 @@ function registrar(){
         alert("No se puede registrar una poliza sin movimientos");
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
-        d.removeAttribute("style");
-        h.removeAttribute("style");
     }else if (haber_total != deber_total) {
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
-        d.style.backgroundColor = "#FFC0CB"; 
-        h.style.backgroundColor = "#FFC0CB";
+        d.style.backgroundColor = "rgb(235, 71, 71)";
+        d.style.fontWeight = "600";
+        d.style.color = "white";
+        d.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        h.style.backgroundColor = "rgb(235, 71, 71)";
+        h.style.fontWeight = "600";
+        h.style.color = "white";
+        h.style.textAlign = "right";
         alert("La poliza no esta cuadrada"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
         d.removeAttribute("style");
         h.removeAttribute("style");
+        d.textAlign = "right";
+        h.style.textAlign = "right";
         lista_id=[];
         lista_id.push(id);
         var formData = new FormData();
@@ -519,6 +530,8 @@ function registrar(){
             var h = document.getElementById("haber");
             d.removeAttribute("style");
             h.removeAttribute("style");
+            d.textAlign = "right";
+            h.textAlign = "right";
             alert("Asegúrate de llenar todos los apartados pdf")
         }
     }
