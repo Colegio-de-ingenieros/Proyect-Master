@@ -107,7 +107,6 @@ window.onload = function() {
 
 
         nom_persona.textContent = ser+": "+ nom_perso+" "+apep_perso+" "+apem_perso;
-        servicios.textContent=tipo+": "+ curso;
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
@@ -625,4 +624,14 @@ function eliminar2(button){
     haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
     
     cantidad_pdf = cantidad_pdf -1;
+}
+
+//responde cuando hay un click en el boton cancelar
+function cancelar(){
+    let urlAct = window.location+''
+
+    var resp = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
+    if(resp ==  true){
+      window.location.href='../../view/administrativo/Vista_Polizas.html';
+    }
 }
