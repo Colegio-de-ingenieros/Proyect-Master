@@ -21,11 +21,13 @@ class Precarga{
 
     }
     function persona($id){
-        $querry = "SELECT usuaperso.NomPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso
-        FROM polgeneral,persogralpol,usuaperso
+        $querry = "SELECT usuaperso.NomPerso,usuaperso.ApePPerso,usuaperso.ApeMPerso, tipousua.TipoU
+        FROM polgeneral,persogralpol,usuaperso, persotipousua, tipousua
         WHERE  polgeneral.IdPolGral = :id
         AND polgeneral.IdPolGral = persogralpol.IdPolGral
-        AND persogralpol.IdPerso = usuaperso.IdPerso";
+        AND persogralpol.IdPerso = usuaperso.IdPerso
+        AND usuaperso.IdPerso = persotipousua.IdPerso
+        AND persotipousua.IdUsua = tipousua.IdUsua";
         $parametros = [":id"=>$id];
         $resultados = $this->base->mostrar($querry, $parametros);
         return $resultados;

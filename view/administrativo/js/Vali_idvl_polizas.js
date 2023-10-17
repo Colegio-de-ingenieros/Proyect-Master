@@ -67,21 +67,28 @@ window.onload = function() {
         //------------------------------------------------------------------------------------
 
         console.log(Object.keys(data[1]).length);
-        if (Object.keys(data[1]).length == 6){
+        if (Object.keys(data[1]).length == 8){
         var nom_persona = document.getElementById("nombre_persona");
         nom_perso =data[1]["NomPerso"];
         apep_perso =data[1]["ApePPerso"];
         apem_perso =data[1]["ApeMPerso"];
+        ser = data[1]["TipoU"];
+        if (ser=="Asociado"){
+            ser = "Asoc";
+        }
+        else if (ser=="Socio"){
+            ser = "Soc";
+        }
         if (apem_perso == null) {
             apem_perso = "";
         }
-        nom_persona.textContent = nom_perso+" "+apep_perso+" "+apem_perso;
+        nom_persona.textContent = ser+": "+ nom_perso+" "+apep_perso+" "+apem_perso;
     
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
         nom_empr =data[1]["NomUsuaEmp"];
-        nom_persona.textContent = nom_empr;
+        nom_persona.textContent = "Emp: "+ nom_empr;
     }
     })
     .catch(error => console.log(error));
