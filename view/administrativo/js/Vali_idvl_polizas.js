@@ -69,9 +69,11 @@ window.onload = function() {
         console.log(Object.keys(data[1]).length);
         if (Object.keys(data[1]).length == 8){
         var nom_persona = document.getElementById("nombre_persona");
+        var servicios = document.getElementById("servicios");
         nom_perso =data[1]["NomPerso"];
         apep_perso =data[1]["ApePPerso"];
         apem_perso =data[1]["ApeMPerso"];
+        tipo=data[2]['SerPol'];
         ser = data[1]["TipoU"];
         if (ser=="Asociado"){
             ser = "Asoc";
@@ -82,13 +84,57 @@ window.onload = function() {
         if (apem_perso == null) {
             apem_perso = "";
         }
+
+        if (tipo=="Membresía"){
+            servicios.textContent=tipo;
+        }
+
+        else if (tipo=="Headhunter"){
+            servicios.textContent=tipo;
+        }
+        else if (tipo=="Consultoría"){
+            servicios.textContent=tipo;
+        }
+        else if (tipo=="Curso"){
+            curso=data[3]["NomCur"];
+            servicios.textContent=tipo+": "+curso;
+        }
+
+        else if (tipo=="Certificación"){
+            curso=data[3]["NomCertInt"];
+            servicios.textContent=tipo+": "+curso;
+        }
+
+
         nom_persona.textContent = ser+": "+ nom_perso+" "+apep_perso+" "+apem_perso;
-    
+        servicios.textContent=tipo+": "+ curso;
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
+        var servicios = document.getElementById("servicios");
         nom_empr =data[1]["NomUsuaEmp"];
+        tipo=data[2]['SerPol'];
+        if (tipo=="Membresía"){
+            servicios.textContent=tipo;
+        }
+
+        else if (tipo=="Headhunter"){
+            servicios.textContent=tipo;
+        }
+        else if (tipo=="Consultoría"){
+            servicios.textContent=tipo;
+        }
+        else if (tipo=="Curso"){
+            curso=data[3]["NomCur"];
+            servicios.textContent=tipo+": "+curso;
+        }
+
+        else if (tipo=="Certificación"){
+            curso=data[3]["NomCertInt"];
+            servicios.textContent=tipo+": "+curso;
+        }
         nom_persona.textContent = "Emp: "+ nom_empr;
+        
     }
     })
     .catch(error => console.log(error));
