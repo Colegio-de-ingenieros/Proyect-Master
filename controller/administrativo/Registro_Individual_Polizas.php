@@ -36,7 +36,7 @@ if ( isset($_FILES['pdfs'])) {
         $fileName = $_FILES['pdfs']['name'][$key];
         $conta+=1;
         $conta = $obj->agregar_ceros($conta);
-        $uploadPath = $uploadDirectory . $conta;
+        $uploadPath = $uploadDirectory . $conta.".pdf";
         
         if (move_uploaded_file($tmpName, $uploadPath)) {
             // Los archivos se han cargado correctamente

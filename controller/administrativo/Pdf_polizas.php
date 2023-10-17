@@ -153,10 +153,10 @@
     $pdf -> SetFillColor(255,255,255);
 
     $pdf -> SetFont('Arial','B',16);
-    $pdf -> Cell(0,$altura,utf8_decode('Póliza de '.$tipo_poliza.'s'),0,1,'C');
+    $pdf -> Cell(0,$altura,utf8_decode('Póliza de '.$tipo_poliza),0,1,'C');
 
     $pdf -> SetFont('Arial','B',13);
-    $pdf -> Cell(0,$altura,utf8_decode('Datos Generales'),0,1,'L');
+    $pdf -> Cell(0,$altura,utf8_decode('Datos generales'),0,1,'L');
 
     $pdf -> SetFont('Arial','',12);
     $pdf -> Cell(0,$altura,utf8_decode('Nombre: '.$nombre),0,1,'L');

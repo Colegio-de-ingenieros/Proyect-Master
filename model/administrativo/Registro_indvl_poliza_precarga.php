@@ -43,6 +43,38 @@ class Precarga{
         return $resultados;
     }
 
+    function cursos($id){
+        $querry = "SELECT cursos.NomCur
+        FROM cursos, cursoserpol, polgeneral
+        WHERE  polgeneral.IdPolGral = :id
+        AND polgeneral.IdPolGral = cursoserpol.IdPolGral
+        AND cursoserpol.ClaveCur = cursos.ClaveCur";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
+
+    function certificaciones($id){
+        $querry = "SELECT certinterna.NomCertInt
+        FROM polgeneral, cerserpol, certinterna
+        WHERE  polgeneral.IdPolGral = :id
+        AND polgeneral.IdPolGral = cerserpol.IdPolGral
+        AND cerserpol.IdCerInt = certinterna.IdCerInt";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
+
+    function tipo($id){
+        $querry = "SELECT serviciospol.SerPol
+        FROM serviciospol, polgeneral, sergralpol
+        WHERE  polgeneral.IdPolGral = :id
+        AND polgeneral.IdPolGral = sergralpol.IdPolGral
+        AND sergralpol.IdSerPol = serviciospol.IdSerPol";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
 }
 
 ?>
