@@ -14,9 +14,11 @@ if(isset($_POST["id"])){
     if($estatus == 1){
 
         $respuesta = ["no hubo exito"];
-      
-
-    }else{
+    }
+    else if ($estatus == 2){
+        $respuesta = ["error por poliza"];
+    }
+    else{
         // busca si tiene temas
         $datost = $base->t($id);
         $respuesta = $datost;
@@ -49,10 +51,8 @@ if(isset($_POST["id"])){
 
         $respuesta = ["Exito"];
     }
-
     header("Content-Type: application/json");
     echo json_encode($respuesta);
-
 }
 
 ?>

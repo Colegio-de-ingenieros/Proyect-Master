@@ -93,7 +93,7 @@
             $this->conexion_bd();
             $sql = "SELECT usuaperso.IdPerso, CONCAT_WS(' ', usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre
                     FROM usuaperso, persotipousua, tipousua
-                    WHERE usuaperso.IdPerso = persotipousua.IdPerso and persotipousua.IdUsua = tipousua.IdUsua and tipousua.IdUsua = :id";
+                    WHERE usuaperso.IdPerso = persotipousua.IdPerso and persotipousua.IdUsua = tipousua.IdUsua and tipousua.IdUsua = :id ORDER BY NomPerso ASC";
             $arre = [":id"=>$idUs];
             $resultado = $this->mostrar($sql, $arre);
             $this->cerrar_conexion();
@@ -103,7 +103,7 @@
         public function buscar_empresa(){
             $this->conexion_bd();
             $sql = "SELECT usuaemp.RFCUsuaEmp, CONCAT_WS(' ', usuaemp.NomUsuaEmp) as Nombre
-                    FROM usuaemp";
+                    FROM usuaemp ORDER BY NomUsuaEmp ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -133,8 +133,8 @@
 
         public function buscar_curso(){
             $this->conexion_bd();
-            $sql = "SELECT cursos.ClaveCur, cursos.NomCur
-                    FROM cursos";
+            $sql = "SELECT cursos.ClaveCur, CONCAT_WS(' - ', ClaveCur, NomCur)
+                    FROM cursos ORDER BY NomCur ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;
@@ -142,8 +142,8 @@
 
         public function buscar_certificaciones(){
             $this->conexion_bd();
-            $sql = "SELECT certinterna.IdCerInt, certinterna.NomCertInt
-                    FROM certinterna";
+            $sql = "SELECT certinterna.IdCerInt, CONCAT_WS(' - ', ClaveCerInt, NomCertInt) 
+                    FROM certinterna ORDER BY NomCertInt ASC";
             $resultado = $this->mostrar($sql);
             $this->cerrar_conexion();
             return $resultado;

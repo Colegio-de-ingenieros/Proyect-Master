@@ -36,7 +36,7 @@ nombrecurso.addEventListener('keyup', (e) => {
     nombrecurso.value = valorInput
         // Eliminar caracteres especiales
         //.replace(/[üâäàåçê♪ëèïîìÄÅæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-°¨]/g, '')
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨`·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.nombres.test(valorInput)) {
@@ -57,7 +57,7 @@ clavecurso.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´`ýÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -80,7 +80,7 @@ objetivo.addEventListener('keyup', (e) => {
     objetivo.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨`·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.objetivo.test(valorInput)) {
@@ -101,7 +101,7 @@ duracion.addEventListener('keyup', (e) => {
         // Eliminar espacios en blanco
         .replace(/\s/g, '')
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅÉæ·°¨´`ýÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|,.<>\/?-]/g, '')
         // Eliminar el ultimo espaciado
         .replace(/[a-zA-ZáéíóúÁÉÍÓÚñÑ.,]/g, '')
         .trim();
@@ -123,7 +123,7 @@ tema.addEventListener('keyup', (e) => {
 
     tema.value = valorInput
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨`·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
 
@@ -144,7 +144,7 @@ subtema.addEventListener('keyup', (e) => {
     subtema.value = valorInput
 
         // Eliminar caracteres especiales
-        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
+        .replace(/[üâäàåçê♪ëèïîìÄÅæ´°¨`·ÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+=\[\]{};':"\\|<>\/?-]/g, '')
 
 
     if (!expresiones.subtema.test(valorInput)) {
