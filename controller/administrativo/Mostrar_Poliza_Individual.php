@@ -9,7 +9,7 @@ $salida ="";
 $banEmpresa=false;
 $banSocio=false;
 $nom="";
-if ($tipo=="Certificaciones"){
+if ($tipo=="Certificación"){
     $resultado=$base->getCertificacion($id);
     for ($i = 0; $i < count($resultado); $i++) {
         $nom= ": ".$resultado[$i]["NomCertInt"];
