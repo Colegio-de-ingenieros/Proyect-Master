@@ -193,7 +193,7 @@
                 <p class="label-2">Descripción*</p>
               </div>
               <div class="input-form">
-                <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcion1" name="descripcion1" required></textarea>
+                <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcion1" name="descripcion1" required></textarea>
               </div>
             </div>
 
@@ -218,7 +218,7 @@
               </div>
               <div class="input-form">
                 <input type="text" class="input-format-2" name="monto"  id="monto" maxlength="20"
-                  placeholder="Ingrese el monto" title="Ingrese el monto" required>
+                  placeholder="Ingrese el monto" title="El monto solo puede contener números y un punto." required>
               </div>
             </div>
             
@@ -236,27 +236,16 @@
               <p class="label-2">Descripción*</p>
             </div>
             <div class="input-form">
-              <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcion2" name="descripcion2" required></textarea>
+              <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcion2" name="descripcion2" required></textarea>
             </div>
           </div> 
-
-<!--           
-          <div class="grupo-input">
-            <div class="label-form">
-              <p class="label-2">Comprobante*</p>
-            </div>
-            <div class="input-form">
-              <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
-          required title="El archivo debe ser maximo de 3MB"></input>
-            </div>
-          </div>  -->
       </div> 
         <br> 
 
         
         </div>
         <div class="aqui">
-          <button class="btn-mediu btn" type="button" id="btn_agregar">Añadir</button> 
+          <button class="btn-mediu btn" type="button" id="btn_agregar">Agregar</button> 
         </div>
       </form>
       <h4 class="h4" id="propietario">Nombre socio/asociado o empresa </h4> 
@@ -341,83 +330,66 @@
             <br>
 
             <div class="modal-container" id="modal-container">
-              <div class="modal">
-                <form id="formulario2">
-                <br>
-                <p class="subtitulo-">Concepto</p>
-                <hr width="90%"> 
-                <div class="contenedor-formulario_">
+                <div class="modal">
+                  
+                    <form id="formulario2">
+                      <br>
+                      <div class="general">
+                        <p class="subtitulo-">Concepto</p>
+                        <hr> 
+                        <div class="contenedor-formulario_">
 
-                  <div class="grupo-input">
-                    <div class="label-form">
-                      <p class="label-2">Descripción*</p>
-                    </div>
-                    <div class="input-form">
-                      <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcionMod1" required></textarea>
-                    </div>
-                  </div>
+                          <div class="grupo-input">
+                            <div class="label-form">
+                              <p class="label-2">Descripción*</p>
+                            </div>
+                            <div class="input-form">
+                              <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcionMod1" required></textarea>
+                            </div>
+                          </div>
 
-                  <div class="grupo-input4">
-                    <div class="label-form">
-                        <p class="label-2">Tipo*</p>
-                    </div>
-                    <div class="input-form">
-                        <select type="text" class="input-format-" placeholder="Ingrese el tipo" id="tipoMod" required maxlength="12">
-                        <option value="" selected disabled>Seleccione un tipo</option>
-                        <option value="1">Debe</option>
-                        <option value="2">Haber</option>
-                        
-                        </select>
-                    </div>
-                  </div>
+                          <div class="grupo-input4">
+                            <div class="label-form">
+                                <p class="label-2">Tipo*</p>
+                            </div>
+                            <div class="input-form">
+                                <select type="text" class="input-format-" title="Selecciona un elemento de la lista." placeholder="Ingrese el tipo" id="tipoMod" title="" required maxlength="12">
+                                <option value="" selected disabled>Seleccione un tipo</option>
+                                <option value="1">Debe</option>
+                                <option value="2">Haber</option>
+                                
+                                </select>
+                            </div>
+                          </div>
 
-                  <div class="grupo-input">
-                    <div class="label-form">
-                      <p class="label-2">Monto*</p>
-                    </div>
-                    <div class="input-form">
-                      <input type="text" class="input-format-2" id="montoMod" maxlength="20"
-                        placeholder="Ingrese el monto" title="Ingrese el monto" required>
-                    </div>
-                    <br>
-                    <br>
-                  </div>
-                  <br> 
+                          <div class="grupo-input">
+                            <div class="label-form">
+                              <p class="label-2">Monto*</p>
+                            </div>
+                            <div class="input-form">
+                              <input type="text" class="input-format-2" id="montoMod" maxlength="20"
+                                placeholder="Ingrese el monto" title="El monto solo puede contener números y un punto." required>
+                            </div>
+                            <br>
+                            <br>
+                          </div>
+                          <br> 
+                        </div>
+                         
+                        <p class="subtitulo-">Evidencia</p>
+                        <hr>
+                        <div class="contenedor-formulario_">
+                          <p class="label-2">Descripción*</p>
+                          <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea2" id="descripcionMod2" required></textarea>
+
+                        </div> 
+                        <div class="botones_actualizar">
+                          <button id="guardar_modal" class="btn-mediumm btn" type="button">Guardar</button>
+                          <button id="close" class="btn-mediumm btn" type="button">Cancelar</button>
+                        </div>
+                      </div>
+                    </form>
                 </div>
-                <br>
-                <br> 
-                <p class="subtitulo-">Evidencia</p>
-                <hr width="90%">
-                <div class="contenedor-formulario_">
-                  <div class="grupo-input">
-                    <div class="label-form">
-                      <p class="label-2">Descripción*</p>
-                    </div>
-                    <div class="input-form">
-                      <textarea rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcionMod2" required></textarea>
-                    </div>
-                  </div> 
-
-                  <!-- <div class="grupo-input">
-                    <div class="label-form">
-                      <p class="label-2">Comprobante*</p>
-                    </div>
-                    <div class="input-form" id="archivo_modal">
-                      <input type="file" class="input-format-2" id="archivo"  name="archivo" accept="application/pdf" 
-                      title="El archivo debe ser maximo de 3MB" onchange="validarArchivo(this)"  required ></input>
-                    </div>
-                  </div> -->
-
-                </div> 
-                <div class="botones_actualizar">
-                  <button id="guardar_modal" class="btn-mediumm btn" type="button">Guardar</button>
-                  <button id="close" class="btn-mediumm btn" type="button">Cancelar</button>
-                </div>
-
-
-              </form>
-
-              </div>
             </div>
 
 
