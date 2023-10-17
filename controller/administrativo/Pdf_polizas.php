@@ -11,7 +11,10 @@
             $this -> SetX(($width - $cell_width) / 2);
         
             $this -> Cell($cell_width,16,utf8_decode('Colegio de Ingenieros en Sistemas Computacionales'),0,0,'C');
-        
+            
+            $fecha_hoy = date('d/m/Y');
+            $this->Text(230,20, $fecha_hoy); //Aqui la variable de la fecha de emision del reporte 
+
             $this -> Ln(12);
         }
         
