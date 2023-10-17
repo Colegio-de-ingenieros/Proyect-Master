@@ -498,9 +498,7 @@ function registrar(){
                     input.removeAttribute("style"); 
                 }
                 else {
-                
-                    
-                    input.style.backgroundColor = "#FFC0CB"; 
+                    input.style.backgroundColor = "rgb(235, 71, 71)";
                 }
                 
             });
