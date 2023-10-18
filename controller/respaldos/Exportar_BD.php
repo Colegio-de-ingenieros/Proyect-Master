@@ -19,10 +19,10 @@ $nombre_zip=$nombreBD . '_' . $fecha.'.zip';
 if ($zip->open($nombre_zip, ZIPARCHIVE::CREATE) === true) { 
     $zip->addFile($nombre_sql); 
     $zip->close();
-    //unlink($nombre_zip); 
+    unlink($nombre_sql); 
     header("Location: $nombre_zip");
 } else {
-    echo 'Error';
+    $data=('Error en la exportación');
 }
 
 ?>
