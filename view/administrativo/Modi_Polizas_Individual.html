@@ -229,16 +229,9 @@
         <p class="subtitulo-1">Evidencia</p>
         <hr> 
         <div class="contenedor-formulario">
-          
-           
-          <div class="grupo-input">
-            <div class="label-form">
-              <p class="label-2">Descripción*</p>
-            </div>
-            <div class="input-form">
-              <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcion2" name="descripcion2" required></textarea>
-            </div>
-          </div> 
+          <p class="label-2">Descripción*</p>
+          <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" 
+          rows="5" cols="40" placeholder="Descripción" class="input-textarea2" id="descripcion2" name="descripcion2" required></textarea>
       </div> 
         <br> 
 
@@ -249,12 +242,13 @@
         </div>
       </form>
       <h4 class="h4" id="propietario">Nombre socio/asociado o empresa </h4> 
-      <h4 class="h4">Servicio </h4>
+      <h4 class="h4" id="servicio">Servicio </h4>
         <br>
       
             <div class="conteTabla" >
                 <div class="article-tablas" >
-                    <article>          
+                    <article>  
+                      <form  id="formulario_tabla">       
                       <div class="tablas">
                         <section class="header_table" id="contenedor_tabla" >
                             <table id="tabla">
@@ -296,8 +290,8 @@
                                 <!-- Subtotal y total -->
                                 <tr>
                                   <th colspan="5" class="right-text">Sumas iguales</th>
-                                  <td class="right-text" id="suma_debe">$19,600.00</td>
-                                  <td class="right-text" id="suma_haber">$19,600.00</td>
+                                  <td class="right-text" id="suma_debe">$0.00</td>
+                                  <td class="right-text" id="suma_haber">$0.00</td>
                                   <th></th>
                                   <th></th>
                                   <th></th>
@@ -316,6 +310,7 @@
                             
                         </section>
                       </div>
+                    </form> 
                     </article>
                 </div>
             </div> 
@@ -329,7 +324,7 @@
             <br>
             <br>
 
-            <div class="modal-container" id="modal-container">
+            <div class="modal-container" id="modal-container" >
                 <div class="modal">
                   
                     <form id="formulario2">

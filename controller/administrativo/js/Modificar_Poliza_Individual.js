@@ -1,5 +1,6 @@
 
 const id_poliza = (new URLSearchParams(location.search)).get('id');
+const tipo_servicio = (new URLSearchParams(location.search)).get('tipo');
 
 const cerrar_modal = document.getElementById("close");
 const guardar_modal = document.getElementById("guardar_modal");
@@ -35,22 +36,31 @@ const suma_debe = document.getElementById("suma_debe");
 const suma_haber = document.getElementById("suma_haber");
 const nombre_realizo = document.getElementById("nombre_realizo");
 const propietario = document.getElementById("propietario");
+const servicio = document.getElementById("servicio");
+
+// formulario tabla
+const formulario_tabla = document.getElementById("formulario_tabla");
 
 
 window.poliza_individual = []
-
+formulario_tabla.addEventListener("submit",(e)=>{
+    // es porque el formulario se envia automaticamente cuando presiono el boton
+    // y como lo utilizo para validar los inputs, entonces solo blloqueo el evento y ya jala bien la modal
+    e.preventDefault();
+});
 window.addEventListener("load",async (e)=>{
     let form_data = new FormData();
     form_data.append("id_info",id_poliza);
+    form_data.append("servicio_tipo",tipo_servicio);
     
     let respuesta = await fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
         method: 'POST',
         body: form_data
     }).catch(error => console.log(error));
     let datos = await respuesta.json();
-
-    console.log(datos);
+    
     propietario.textContent = datos["propietario"][0][0];
+    servicio.textContent= datos["servicio"][0];
  
     mostrarDatosBasicos(datos["datos_generales"][0]);
     mostrarPolizasIndiviuales(datos["polizas_individuales"]);
@@ -85,6 +95,8 @@ btn_agregar.addEventListener("click", ()=>{
         banderas.monto = false;
         banderas.descripcion2 = false;
 
+        alert("Agregado exitosamente.");
+
     }
 
 });
@@ -96,24 +108,40 @@ btn_registro.addEventListener("click",(e)=>{
     let haber = parseFloat(suma_haber.textContent.replace(/[^0-9.-]+/g,""));
     if (debe == haber) {
 
-        extraer_datos_tabla() 
-        console.log(window.poliza_individual);
-        let form_data = new FormData(formulario);
-        form_data.append("id",id_poliza);
-        form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
-      
-        fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
-            method:"POST",
-            body: form_data
-        }).then(res => res.json())
-        .then(datos =>{
-            if(datos == true){
-                alert("Actualización exitosa");
-                window.poliza_individual = [];
-                window.location.href = '../administrativo/Vista_Polizas.html' ;
-            }   
-        }).catch(error => console.log(error));
+        if(!formulario_tabla.checkValidity()){
+            formulario_tabla.reportValidity();
 
+        }else{
+
+            let archivos = extraer_datos_tabla() 
+            let archivos_ordenados = ordenarLista(archivos);
+           
+            let form_data = new FormData(formulario);
+            form_data.append("id",id_poliza);
+            form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
+            if(archivos_ordenados.length > 0){
+                archivos_ordenados.forEach(archivo => {
+                    form_data.append("archivos[]",archivo[1]);
+                });
+            }
+            
+        
+            fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
+                method:"POST",
+                body: form_data
+            }).then(res => res.json())
+            .then(datos =>{
+                if(datos == true){
+                    alert("Actualización exitosa");
+                    window.poliza_individual = [];
+                    window.location.href = '../administrativo/Vista_Polizas.html' ;
+                }   
+            }).catch(error => console.log(error));
+
+
+        }
+
+        
     }else{
         alert("Las sumas iguales son diferentes");
     }
@@ -158,14 +186,27 @@ function agregar_fila_tabla(debe_haber, concepto_p,monto_p, descripcion_p,  clas
     //crea el input type file
     let input_file = document.createElement('input');
     input_file.type="file";
+    input_file.accept="application/pdf";
     comprobante.appendChild(input_file);
+    // input_file.setCustomValidity("Seleccione un archivo PDF");
+    
+    input_file.addEventListener("change", (e)=>{validarArchivo(input_file,id_fila)});
+    let div_nombre_archivo = document.createElement("div");
+    comprobante.appendChild(div_nombre_archivo);
 
     if(clase){
         newRow.classList.add("old-"+id);
+
+        
+
         let link  = document.createElement("a");
         link.href = "../../controller/comprobantes/administrativo/polizas/"+id+".pdf";
-        link.textContent = "Ver comprobante";
+        link.target = "_blank";
+        link.textContent = "Ver comprobante actual";
         comprobante.appendChild(link);
+
+    }else{
+        input_file.required = true;
     }
 
     let btn_eliminar = document.createElement("button");
@@ -308,9 +349,9 @@ function guardar_cambio(id){
 function mostrarDatosBasicos(datos){
     
     folio.textContent = id_poliza;
-    nombre_realizo.textContent = datos[0] + " " + datos[1] + " " + datos[2];
-    concepto_general.textContent = datos[3];
-    fecha.textContent = datos[4];
+    nombre_realizo.textContent = datos[0];
+    concepto_general.textContent = datos[1];
+    fecha.textContent = datos[2];
    
 
 }
@@ -347,8 +388,6 @@ function sumas_iguales() {
         
 
         if(contenido1 != ""){
-            
-
         
             debe += value1;
 
@@ -366,12 +405,12 @@ function sumas_iguales() {
 
     if(debe != haber){
         
-        suma_debe.style.color = "red";
-        suma_haber.style.color = "red";
+        suma_debe.classList.add("error");
+        suma_haber.classList.add("error");
 
     }else{
-        suma_debe.style.color = "black";
-        suma_haber.style.color = "black";
+        suma_debe.classList.remove("error");
+        suma_haber.classList.remove("error");
         
     }
     
@@ -384,16 +423,24 @@ function extraer_datos_tabla() {
     
     let cantidad_filas = table.rows.length - 2;
 
+    let archivos = [];
     for (let i = 4; i < cantidad_filas; i++) {
 
         let fila_tabla =  table.rows[i]
         let fila = [];
-
+        
         let clasesLista = fila_tabla.className.split(" ");
         let clase_con_id = clasesLista.find(texto => texto.includes("old"));
 
+        // tomar archivos
+        let input_file = table.rows[i].cells[4].getElementsByTagName("input")[0];
+        
+        
+     
+
         if(clase_con_id == undefined){
             fila.push("new"); 
+           
         } else{
             let id = clase_con_id.split("-")[1];
             fila.push("update");
@@ -418,12 +465,34 @@ function extraer_datos_tabla() {
         // la descripcion
         fila.push(table.rows[i].cells[3].textContent);
 
-        window.poliza_individual.push(fila);
+        file = input_file.files[0];
+
+        if(clase_con_id == undefined){
+            archivos.push(["new",file]);
+            
+        } else{
+            if(file != undefined){
+                archivos.push(["update",file]);
+                fila.push("si");
+            }else{
+                fila.push("no");
+            }
+            
+           
+        }
+
         
-     }
+        // rellenamos el arreglo con los datos de la fila
+        window.poliza_individual.push(fila);
+
+        
+    }
+    return archivos;
     
 
 }
+
+
 
 function ordenarLista(lista) {
     //coloca la lista en este orden eliminar, delete, update, new
@@ -433,3 +502,24 @@ function ordenarLista(lista) {
     let lista_ordenanda = lista_delete.concat(lista_update).concat(lista_new);
     return lista_ordenanda; 
 }
+function validarArchivo(input, id_fila) {
+   
+    var archivo = input.files[0];
+    var maxSize = 3 * 1024 * 1024; // 3MB
+    var ext = input.value.split('.').pop().toLowerCase();
+    console.log(archivo.name);
+    if (archivo && archivo.size > maxSize) {
+        alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
+        input.value = ""; // Limpia el valor del campo de archivo
+        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
+        div.textContent = "";
+    }else if (ext != "pdf") {
+        alert("Extensión no permitida: " + ext);
+        input.value = ""; // Limpia el valor del campo de archivo
+        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
+        div.textContent = "";
+    }else{
+        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
+        div.textContent = archivo.name;
+    }
+  }

@@ -5,7 +5,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
 
     public function datos_generales($id_poliza) {
         $this->conexion_bd();
-        $consulta = "SELECT NomElaPol, ApePElaPol, ApeMElaPol, CoceptoGral, DATE_FORMAT(FechaPolGral,'%d/%m/%Y') as FechaPolGral  FROM polgeneral WHERE polgeneral.IdPolGral = :id";
+        $consulta = "SELECT CONCAT(NomElaPol,' ',COALESCE(ApePElaPol,''), COALESCE(ApeMElaPol,'')), CoceptoGral, DATE_FORMAT(FechaPolGral,'%d/%m/%Y') as FechaPolGral  FROM polgeneral WHERE polgeneral.IdPolGral = :id";
         $resultados = $this->mostrar($consulta,[":id"=>$id_poliza]);
         $this->cerrar_conexion();
 
@@ -52,13 +52,54 @@ class Modificar_Poliza_Individual extends Crud_bd{
 
         if(count($datos) == 0){
             
-            $datos = $this->mostrar("SELECT CONCAT('Asoc. ',usuaperso.NomPerso,' ',COALESCE(usuaperso.ApePPerso, ''),' ',COALESCE(usuaperso.ApeMPerso, '')) FROM usuaperso 
-            INNER JOIN (SELECT IdPerso FROM persogralpol WHERE IdPolGral = :id) as tabla on tabla.IdPerso = usuaperso.IdPerso",[':id'=>$id_poliza]);
+            $datos = $this->mostrar("SELECT CONCAT(usuaperso.NomPerso,' ',COALESCE(usuaperso.ApePPerso, ' '),' ',COALESCE(usuaperso.ApeMPerso, ' ')) as nombrecompleto, tipousua.TipoU FROM usuaperso 
+            INNER JOIN (SELECT IdPerso FROM persogralpol WHERE IdPolGral = :id) as tabla on tabla.IdPerso = usuaperso.IdPerso
+            INNER JOIN  persotipousua on persotipousua.IdPerso = usuaperso.IdPerso
+            INNER JOIN tipousua on tipousua.IdUsua = persotipousua.IdUsua",[':id'=>$id_poliza]);
+
+            $tipo_usuario = $datos[0][1];
+
+            if($tipo_usuario == "Asociado"){
+                $tipo_usuario = "Asoc. " ;
+            }else if($tipo_usuario == "Socio"){
+                $tipo_usuario = "Soc. ";
+            }
+            $nombre = $tipo_usuario.$datos[0][0];
+
+            $datos[0][0] = $nombre;
+            
         }
         $this->cerrar_conexion();
 
         return $datos;
 
+    }
+    function tipo_servicio($id_poliza,$tipo){
+        $regresar = [];
+        if($tipo == "Certificación"){
+            $this->conexion_bd();
+            $sql = "SELECT NomCertInt FROM certinterna,cerserpol WHERE cerserpol.IdCerInt =certinterna.IdCerInt  AND cerserpol.IdPolGral=:id";
+            $parametros = [":id"=>$id_poliza];
+            $resultados = $this->mostrar($sql, $parametros);
+            $this->cerrar_conexion();
+            $regresar[] = $tipo." ". $resultados[0][0];
+
+        }else if($tipo == "Curso"){
+
+            $this->conexion_bd();
+            $sql = "SELECT NomCur FROM cursoserpol,cursos WHERE IdPolGral=:id AND cursos.ClaveCur=cursoserpol.ClaveCur ";
+            $parametros = [":id"=>$id_poliza];
+            $resultados = $this->mostrar($sql, $parametros);
+            $this->cerrar_conexion();
+            $regresar[] = $tipo." ". $resultados[0][0];
+
+        }else{
+            $regresar[] = $tipo;
+        }
+        
+        
+        return $regresar;
+        
     }
     public function agregar_ceros($numero,$largo)
     {
@@ -102,12 +143,12 @@ class Modificar_Poliza_Individual extends Crud_bd{
     }
 
     function modificar_polizas($id_poliza,$resultado_procesado){
-
+        
         $sqls = [];
         $parametros = [];
         $id_poliza_nueva = $this->extraer_numero_polizas();
         $poliza = [];
-
+        
         for ($i=0; $i < count($resultado_procesado) ; $i++) { 
 
             $poliza = $resultado_procesado[$i];
@@ -143,6 +184,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
                 $parametros[] = [":idInd"=>$poliza[1], ":idTipo"=>$poliza[2] ];
 
             }else{
+
                 $sqls[] = "DELETE FROM indgralpol WHERE IdPolInd = :idInd";
                 $parametros[] = [":idInd"=>$poliza[1]];
 
@@ -160,10 +202,18 @@ class Modificar_Poliza_Individual extends Crud_bd{
         $resultado = $this->insertar_eliminar_actualizar($sqls,$parametros);
         $this->cerrar_conexion();
 
-        return $resultado;
-
+        if($resultado){
+       
+            return $resultado_procesado;
+        }else{
+            return array();
+        }
         
     }
+
+
+ 
+
 
 
 
