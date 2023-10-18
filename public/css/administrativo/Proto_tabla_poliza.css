@@ -484,11 +484,15 @@ html{
   width: 100%;
 } 
 
-.botones_registrar{
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-} 
+.botones_registrar {
+  text-align: center;
+  margin-top: 20px; 
+}
+
+.botones_registrar button {
+  display: inline-block;
+  margin: 0 5px; 
+}
 /* ****************************************************************************************************** */
 .botones_actualizar{
   display: flex;
