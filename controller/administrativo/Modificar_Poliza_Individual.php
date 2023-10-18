@@ -26,6 +26,9 @@ if(isset($_POST["id_info"]) && isset($_POST["servicio_tipo"])){
 
     $polizas_in = json_decode($_POST["polizas_in"]);
     $path = "../comprobantes/administrativo/polizas/";
+
+    
+  
     $resultado_procesado = $objeto->modificar_polizas($_POST["id"],$polizas_in);
 
     if (!is_dir($path)) {
@@ -51,18 +54,23 @@ if(isset($_POST["id_info"]) && isset($_POST["servicio_tipo"])){
                 $index_files++;
     
             }else if($poliza[0] == "update"){
+                $hayArchivo = $poliza[6];
                 $file = $path.$poliza[1].".pdf";
-    
-                if(file_exists($file)){
+
+                if($hayArchivo == "si"){
+                    if(file_exists($file)){
                     
-                    unlink($file);
-                    $tmpName = $_FILES['archivos']['tmp_name'][$index_files];
-                    move_uploaded_file($tmpName, $file);
-                }else{
-                    $tmpName = $_FILES['archivos']['tmp_name'][$index_files];
-                    move_uploaded_file($tmpName, $file);
+                        unlink($file);
+                        $tmpName = $_FILES['archivos']['tmp_name'][$index_files];
+                        move_uploaded_file($tmpName, $file);
+                    }else{
+                        $tmpName = $_FILES['archivos']['tmp_name'][$index_files];
+                        move_uploaded_file($tmpName, $file);
+                    }
+                    
                 }
                 $index_files++;
+                
     
             }else{
                 $file = $path.$poliza[1].".pdf";

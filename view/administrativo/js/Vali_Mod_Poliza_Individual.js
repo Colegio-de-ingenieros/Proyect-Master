@@ -86,7 +86,7 @@ function validarDecimales(cadena){
     var decimales = 0
     var j = cadena.length - 1
     var puntos = 0;
-    console.log(cadena);
+
     for (i = 0; i < cadena.length; i++) {
         if (cadena[i] == '.') {
             puntos++;
@@ -97,7 +97,7 @@ function validarDecimales(cadena){
         while (cadena[j] != '.' && j > 1) {
             decimales++;
             j--;
-            console.log("decimales: " + decimales);
+            
         }
 
         if (decimales >= 3) {

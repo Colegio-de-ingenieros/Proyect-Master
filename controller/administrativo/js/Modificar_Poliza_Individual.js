@@ -38,9 +38,16 @@ const nombre_realizo = document.getElementById("nombre_realizo");
 const propietario = document.getElementById("propietario");
 const servicio = document.getElementById("servicio");
 
+// formulario tabla
+const formulario_tabla = document.getElementById("formulario_tabla");
+
 
 window.poliza_individual = []
-
+formulario_tabla.addEventListener("submit",(e)=>{
+    // es porque el formulario se envia automaticamente cuando presiono el boton
+    // y como lo utilizo para validar los inputs, entonces solo blloqueo el evento y ya jala bien la modal
+    e.preventDefault();
+});
 window.addEventListener("load",async (e)=>{
     let form_data = new FormData();
     form_data.append("id_info",id_poliza);
@@ -102,30 +109,38 @@ btn_registro.addEventListener("click",(e)=>{
     let haber = parseFloat(suma_haber.textContent.replace(/[^0-9.-]+/g,""));
     if (debe == haber) {
 
+        if(!formulario_tabla.checkValidity()){
+            formulario_tabla.reportValidity();
 
-        let archivos = extraer_datos_tabla() 
-        let archivos_ordenados = ordenarLista(archivos);
-        console.log(window.poliza_individual);
-        let form_data = new FormData(formulario);
-        form_data.append("id",id_poliza);
-        form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
+        }else{
+
+            let archivos = extraer_datos_tabla() 
+            let archivos_ordenados = ordenarLista(archivos);
+           
+            let form_data = new FormData(formulario);
+            form_data.append("id",id_poliza);
+            form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
+            
+            archivos_ordenados.forEach(archivo => {
+                form_data.append("archivos[]",archivo[1]);
+            });
         
-        archivos_ordenados.forEach(archivo => {
-            form_data.append("archivos[]",archivo[1]);
-        });
-      
-        fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
-            method:"POST",
-            body: form_data
-        }).then(res => res.json())
-        .then(datos =>{
-            if(datos == true){
-                alert("Actualización exitosa");
-                window.poliza_individual = [];
-                window.location.href = '../administrativo/Vista_Polizas.html' ;
-            }   
-        }).catch(error => console.log(error));
+            fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
+                method:"POST",
+                body: form_data
+            }).then(res => res.json())
+            .then(datos =>{
+                if(datos == true){
+                    alert("Actualización exitosa");
+                    window.poliza_individual = [];
+                    window.location.href = '../administrativo/Vista_Polizas.html' ;
+                }   
+            }).catch(error => console.log(error));
 
+
+        }
+
+        
     }else{
         alert("Las sumas iguales son diferentes");
     }
@@ -172,21 +187,25 @@ function agregar_fila_tabla(debe_haber, concepto_p,monto_p, descripcion_p,  clas
     input_file.type="file";
     input_file.accept="application/pdf";
     comprobante.appendChild(input_file);
-    input_file.setCustomValidity("Seleccione un archivo PDF");
-    input_file.required = true;
+    // input_file.setCustomValidity("Seleccione un archivo PDF");
+    
     input_file.addEventListener("change", (e)=>{validarArchivo(input_file,id_fila)});
+    let div_nombre_archivo = document.createElement("div");
+    comprobante.appendChild(div_nombre_archivo);
 
     if(clase){
         newRow.classList.add("old-"+id);
 
-        let div_nombre_archivo = document.createElement("div");
-        comprobante.appendChild(div_nombre_archivo);
+        
 
         let link  = document.createElement("a");
         link.href = "../../controller/comprobantes/administrativo/polizas/"+id+".pdf";
         link.target = "_blank";
         link.textContent = "Ver comprobante actual";
         comprobante.appendChild(link);
+
+    }else{
+        input_file.required = true;
     }
 
     let btn_eliminar = document.createElement("button");
@@ -421,11 +440,11 @@ function extraer_datos_tabla() {
         if(clase_con_id == undefined){
             fila.push("new"); 
             archivos.push(["new",input_file.files[0]]);
+           
         } else{
             let id = clase_con_id.split("-")[1];
             fila.push("update");
             fila.push(id);
-
             archivos.push(["update",input_file.files[0]]);
            
         }
@@ -446,6 +465,22 @@ function extraer_datos_tabla() {
         fila.push(table.rows[i].cells[0].textContent);
         // la descripcion
         fila.push(table.rows[i].cells[3].textContent);
+
+        file = input_file.files[0];
+
+        if(clase_con_id == undefined){
+            archivos.push(["new",file]);
+            
+        } else{
+            if(file != undefined){
+                archivos.push(["update",file]);
+                fila.push("si");
+            }else{
+                fila.push("no");
+            }
+            
+           
+        }
 
         
         // rellenamos el arreglo con los datos de la fila
