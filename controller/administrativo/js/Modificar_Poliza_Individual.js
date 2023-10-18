@@ -58,7 +58,6 @@ window.addEventListener("load",async (e)=>{
         body: form_data
     }).catch(error => console.log(error));
     let datos = await respuesta.json();
-    console.log(datos);
     
     propietario.textContent = datos["propietario"][0][0];
     servicio.textContent= datos["servicio"][0];
@@ -120,10 +119,12 @@ btn_registro.addEventListener("click",(e)=>{
             let form_data = new FormData(formulario);
             form_data.append("id",id_poliza);
             form_data.append("polizas_in",JSON.stringify(ordenarLista(window.poliza_individual)));
+            if(archivos_ordenados.length > 0){
+                archivos_ordenados.forEach(archivo => {
+                    form_data.append("archivos[]",archivo[1]);
+                });
+            }
             
-            archivos_ordenados.forEach(archivo => {
-                form_data.append("archivos[]",archivo[1]);
-            });
         
             fetch("../../controller/administrativo/Modificar_Poliza_Individual.php",{
                 method:"POST",
@@ -439,13 +440,11 @@ function extraer_datos_tabla() {
 
         if(clase_con_id == undefined){
             fila.push("new"); 
-            archivos.push(["new",input_file.files[0]]);
            
         } else{
             let id = clase_con_id.split("-")[1];
             fila.push("update");
             fila.push(id);
-            archivos.push(["update",input_file.files[0]]);
            
         }
 

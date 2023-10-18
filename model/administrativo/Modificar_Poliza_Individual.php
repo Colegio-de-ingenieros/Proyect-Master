@@ -52,7 +52,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
 
         if(count($datos) == 0){
             
-            $datos = $this->mostrar("SELECT CONCAT(usuaperso.NomPerso,' ',COALESCE(usuaperso.ApePPerso, ''),' ',COALESCE(usuaperso.ApeMPerso, '')) as nombrecompleto, tipousua.TipoU FROM usuaperso 
+            $datos = $this->mostrar("SELECT CONCAT(usuaperso.NomPerso,' ',COALESCE(usuaperso.ApePPerso, ' '),' ',COALESCE(usuaperso.ApeMPerso, ' ')) as nombrecompleto, tipousua.TipoU FROM usuaperso 
             INNER JOIN (SELECT IdPerso FROM persogralpol WHERE IdPolGral = :id) as tabla on tabla.IdPerso = usuaperso.IdPerso
             INNER JOIN  persotipousua on persotipousua.IdPerso = usuaperso.IdPerso
             INNER JOIN tipousua on tipousua.IdUsua = persotipousua.IdUsua",[':id'=>$id_poliza]);
