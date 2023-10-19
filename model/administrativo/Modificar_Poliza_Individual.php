@@ -5,7 +5,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
 
     public function datos_generales($id_poliza) {
         $this->conexion_bd();
-        $consulta = "SELECT CONCAT(NomElaPol,' ',COALESCE(ApePElaPol,''), COALESCE(ApeMElaPol,'')), CoceptoGral, DATE_FORMAT(FechaPolGral,'%d/%m/%Y') as FechaPolGral  FROM polgeneral WHERE polgeneral.IdPolGral = :id";
+        $consulta = "SELECT CONCAT(NomElaPol,' ',COALESCE(ApePElaPol,' '),' ',COALESCE(ApeMElaPol,' ')), CoceptoGral, DATE_FORMAT(FechaPolGral,'%d/%m/%Y') as FechaPolGral  FROM polgeneral WHERE polgeneral.IdPolGral = :id";
         $resultados = $this->mostrar($consulta,[":id"=>$id_poliza]);
         $this->cerrar_conexion();
 

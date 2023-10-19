@@ -18,6 +18,7 @@ const formulario = document.getElementById("formulario");
 const formulario_modal = document.getElementById("formulario2");
 const btn_agregar = document.getElementById("btn_agregar");
 const btn_registro = document.getElementById("boton_registro");
+const btn_cancelar = document.getElementById("cancelar_g");
 
 
 // formulario
@@ -66,7 +67,12 @@ window.addEventListener("load",async (e)=>{
     mostrarPolizasIndiviuales(datos["polizas_individuales"]);
 });
 
-
+btn_cancelar.addEventListener("click",()=>{
+    let respuesta = confirm("Los cambios realizados no se guardarán, ¿desea continuar?");
+    if(respuesta){
+        window.location.href = '../administrativo/Vista_Polizas.html' ;
+    }
+});
 btn_agregar.addEventListener("click", ()=>{
     
     if(!banderas.descripcion1){
@@ -95,7 +101,7 @@ btn_agregar.addEventListener("click", ()=>{
         banderas.monto = false;
         banderas.descripcion2 = false;
 
-        alert("Agregado exitosamente.");
+        alert("Agregado exitosamente");
 
     }
 
@@ -143,7 +149,7 @@ btn_registro.addEventListener("click",(e)=>{
 
         
     }else{
-        alert("Las sumas iguales son diferentes");
+        alert("Los  totales de los campos debe y haber no coinciden");
     }
 });
 function agregar_fila_tabla(debe_haber, concepto_p,monto_p, descripcion_p,  clase, id) {
@@ -507,19 +513,24 @@ function validarArchivo(input, id_fila) {
     var archivo = input.files[0];
     var maxSize = 3 * 1024 * 1024; // 3MB
     var ext = input.value.split('.').pop().toLowerCase();
-    console.log(archivo.name);
+    console.log(archivo);
+    let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
     if (archivo && archivo.size > maxSize) {
         alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
         input.value = ""; // Limpia el valor del campo de archivo
-        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
         div.textContent = "";
-    }else if (ext != "pdf") {
+    }else if (archivo != undefined && ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
-        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
         div.textContent = "";
-    }else{
-        let div = document.getElementById(id_fila).cells[4].getElementsByTagName("div")[0];
+
+    }else if(archivo && archivo.size <= maxSize){
         div.textContent = archivo.name;
+
+    }else{
+
+        div.textContent = "";
+        
+
     }
   }

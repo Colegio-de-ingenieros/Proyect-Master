@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modificación de pólizas</title>
+  <title>Modificación individual de pólizas</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
@@ -193,7 +193,7 @@
                 <p class="label-2">Descripción*</p>
               </div>
               <div class="input-form">
-                <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcion1" name="descripcion1" required></textarea>
+                <textarea title="La descripcion solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)." rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" maxlength="150" id="descripcion1" name="descripcion1" required></textarea>
               </div>
             </div>
 
@@ -204,7 +204,7 @@
               <div class="input-form">
                   <select type="text" class="input-format-2"placeholder="Ingrese el tipo" id="tipoCargo" name="tipoCargo" maxlength="12" required>
                   <option value="" selected disabled>Seleccione un tipo</option>
-                  <option value="1">Debe</option>
+                  <option value="1" selected>Debe</option>
                   <option value="2">Haber</option>
                   
                   </select>
@@ -229,9 +229,15 @@
         <p class="subtitulo-1">Evidencia</p>
         <hr> 
         <div class="contenedor-formulario">
-          <p class="label-2">Descripción*</p>
-          <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" 
-          rows="5" cols="40" placeholder="Descripción" class="input-textarea2" id="descripcion2" name="descripcion2" required></textarea>
+          
+          <div class="grupo-input">
+            <div class="label-form">
+              <p class="label-2">Descripción*</p>
+            </div>
+            <div class="input-form">
+              <textarea title="La descripcion solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)." rows="5" cols="40" placeholder="Descripción" class="input-textarea-2" id="descripcion2" name="descripcion2" maxlength="200" required></textarea>
+            </div>
+          </div> 
       </div> 
         <br> 
 
@@ -317,8 +323,9 @@
             <br>
             <br>
             <br>
-            <div class="botones_registrar">
-                <button class="btn-medium btn" id="boton_registro" type="click">Guardar</button>
+            <div class="botones_actualizar">
+                <button class="btn-medium btn" id="boton_registro" type="click">Actualizar</button>
+                <button id="cancelar_g" class="btn-mediumm btn" type="button">Cancelar</button>
             </div>
             <br>
             <br>
@@ -339,7 +346,7 @@
                               <p class="label-2">Descripción*</p>
                             </div>
                             <div class="input-form">
-                              <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea2" maxlength="150" id="descripcionMod1" required></textarea>
+                              <textarea title="La descripcion solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)." rows="5" cols="40" placeholder="Descripción" class="input-textarea2" maxlength="150" id="descripcionMod1" required></textarea>
                             </div>
                           </div>
 
@@ -375,7 +382,7 @@
                         <hr>
                         <div class="contenedor-formulario_">
                           <p class="label-2">Descripción*</p>
-                          <textarea title="La descripcion solo puede contener letras mayúsculas, minúsculas, comas, puntos, punto y coma, dos puntos, guiones, guiones bajos, comillas y Hashtag" rows="5" cols="40" placeholder="Descripción" class="input-textarea2" id="descripcionMod2" required></textarea>
+                          <textarea title="La descripcion solo puede contener letras, números, y caracteres especiales (',', ., -, _, ;, :, #, comillas dobles)." rows="5" cols="40" placeholder="Descripción" class="input-textarea2" id="descripcionMod2" maxlength="200" required></textarea>
 
                         </div> 
                         <div class="botones_actualizar">

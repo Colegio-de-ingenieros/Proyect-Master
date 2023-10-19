@@ -15,7 +15,7 @@ formulario2.descripcionMod1.addEventListener('blur', (e) => {
 formulario2.descripcionMod1.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    formulario2.descripcionMod1.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\;\:\_\-\"\#\s]/g, '');
+    formulario2.descripcionMod1.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý0-9\,\.\;\:\_\-\"\#\s]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.descripcion.test(valorInput2)) {
         formulario2.descripcionMod1.style.border = "3px solid red";
@@ -69,7 +69,7 @@ formulario2.descripcionMod2.addEventListener('blur', (e) => {
 formulario2.descripcionMod2.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    formulario2.descripcionMod2.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\;\:\_\-\"\#\s]/g, '');
+    formulario2.descripcionMod2.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý0-9\,\.\;\:\_\-\"\#\s]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.descripcion.test(valorInput2)) {
         formulario2.descripcionMod2.style.border = "3px solid red";
