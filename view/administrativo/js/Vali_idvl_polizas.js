@@ -27,7 +27,7 @@ window.onload = function() {
         }
     }
     /* id = id1; */
-   /*  id = "0002"; */
+    /* id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -565,6 +565,7 @@ function validarArchivo(input) {
         
         r = document.getElementById("des"+j);
         r.textContent = input.files[0].name;
+        input.removeAttribute("style");
     
     /* input.removeAttribute("style");
     a = document.getElementById("des");
@@ -680,6 +681,35 @@ function eliminar(button){
     debe.textContent = "$ "+ (parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
     debe.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
+
+    const todo_d= document.getElementById("debe").textContent;
+    const todo_h = document.getElementById("haber").textContent;
+    
+    const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+    const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+    
+    if (haber_tot != deber_tot){
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        di.style.backgroundColor = "rgb(235, 71, 71)";
+        di.style.fontWeight = "600";
+        di.style.color = "white";
+        di.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        hi.style.backgroundColor = "rgb(235, 71, 71)";
+        hi.style.fontWeight = "600";
+        hi.style.color = "white";
+        hi.style.textAlign = "right";
+    }else{
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        hi.removeAttribute("style");
+        di.removeAttribute("style");
+        hi.style.textAlign = "right";
+        di.style.textAlign = "right";
+    }
+
 }
 function eliminar2(button){
     btnid = button.id;
@@ -699,6 +729,35 @@ function eliminar2(button){
     haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
     haber.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
+
+
+    const todo_d= document.getElementById("debe").textContent;
+    const todo_h = document.getElementById("haber").textContent;
+    const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+    const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+    
+    if (haber_tot != deber_tot){
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        di.style.backgroundColor = "rgb(235, 71, 71)";
+        di.style.fontWeight = "600";
+        di.style.color = "white";
+        di.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        hi.style.backgroundColor = "rgb(235, 71, 71)";
+        hi.style.fontWeight = "600";
+        hi.style.color = "white";
+        hi.style.textAlign = "right";
+    }else{
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        hi.removeAttribute("style");
+        di.removeAttribute("style");
+        hi.style.textAlign = "right";
+        di.style.textAlign = "right";
+    }
+
 }
 
 //responde cuando hay un click en el boton cancelar
