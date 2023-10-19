@@ -26,7 +26,7 @@ window.onload = function() {
             }
         }
     }
-    id = id1;
+    /* id = id1; */
    /*  id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
