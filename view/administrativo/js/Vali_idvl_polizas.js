@@ -206,6 +206,7 @@ inserta.addEventListener("click", (e) => {
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
                 cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                /* cell9.innerHTML="<div></div>" */
                 /* var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = ".pdf";
@@ -231,8 +232,44 @@ inserta.addEventListener("click", (e) => {
 
                 // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
                 tipoGradoPerso.selectedIndex = 0;
+                concepto = false
+                monto = false
+                conceptopdf = false
 
                 alert("Agregado exitosamente");
+
+
+                const todo_d= document.getElementById("debe").textContent;
+                const todo_h = document.getElementById("haber").textContent;
+                const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+                const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+                
+                if (haber_tot != deber_tot){
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    di.style.backgroundColor = "rgb(235, 71, 71)";
+                    di.style.fontWeight = "600";
+                    di.style.color = "white";
+                    di.textAlign = "right";
+
+                    // Establecer los estilos para "haber"
+                    hi.style.backgroundColor = "rgb(235, 71, 71)";
+                    hi.style.fontWeight = "600";
+                    hi.style.color = "white";
+                    hi.style.textAlign = "right";
+                }else{
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    hi.removeAttribute("style");
+                    di.removeAttribute("style");
+                    hi.style.textAlign = "right";
+                    di.style.textAlign = "right";
+                }
+
+
+
+
+
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -254,6 +291,7 @@ inserta.addEventListener("click", (e) => {
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
                 cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                /* cell9.innerHTML="<div></div>" */
                 /* var fileInput = document.createElement("input");
                 fileInput.type = "file";
                 fileInput.accept = ".pdf"; */
@@ -276,9 +314,39 @@ inserta.addEventListener("click", (e) => {
                 saldo.value = "";
                 text2.value = "";
                 var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
-
+                concepto = false
+                monto = false
+                conceptopdf = false
                 // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
                 tipoGradoPerso.selectedIndex = 0;
+
+                const todo_d= document.getElementById("debe").textContent;
+                const todo_h = document.getElementById("haber").textContent;
+                const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+                const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+                
+                if (haber_tot != deber_tot){
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    di.style.backgroundColor = "rgb(235, 71, 71)";
+                    di.style.fontWeight = "600";
+                    di.style.color = "white";
+                    di.textAlign = "right";
+
+                    // Establecer los estilos para "haber"
+                    hi.style.backgroundColor = "rgb(235, 71, 71)";
+                    hi.style.fontWeight = "600";
+                    hi.style.color = "white";
+                    hi.style.textAlign = "right";
+                }else{
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    hi.removeAttribute("style");
+                    di.removeAttribute("style");
+                    hi.style.textAlign = "right";
+                    di.style.textAlign = "right";
+                }
+
             }
         }else{
             alert("faltan campos por llenar");
@@ -597,7 +665,8 @@ function eliminar(button){
     
     const debe_value = document.getElementById("debe").textContent;
    
-    debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
+    debe.textContent = "$ "+ (parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
+    debe.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
 }
 function eliminar2(button){
@@ -615,8 +684,8 @@ function eliminar2(button){
    
     const haber = document.getElementById("haber"); 
     const haber_value = document.getElementById("haber").textContent; 
-    haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
-    
+    haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
+    haber.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
 }
 
