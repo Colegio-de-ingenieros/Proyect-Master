@@ -26,8 +26,8 @@ window.onload = function() {
             }
         }
     }
-   /*  id = id1; */
-    /* id = "0002"; */
+    id = id1;
+   /*  id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
@@ -205,8 +205,8 @@ inserta.addEventListener("click", (e) => {
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
-                /* cell9.innerHTML="<div></div>" */
+                var idd = "des"+fila;
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id='"+idd+"'>hola</div>";
                 /* var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = ".pdf";
@@ -290,8 +290,8 @@ inserta.addEventListener("click", (e) => {
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
-                /* cell9.innerHTML="<div></div>" */
+                var idd = "des"+fila;
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id ='"+idd+"'>hola</div>";
                 /* var fileInput = document.createElement("input");
                 fileInput.type = "file";
                 fileInput.accept = ".pdf"; */
@@ -546,6 +546,7 @@ function validarArchivo(input) {
     var archivo = input.files[0];
     var maxSize = 3 * 1024 * 1024; // 3MB
     var ext = input.value.split('.').pop().toLowerCase();
+    var lugar = input.parentNode.parentNode;
     console.log(ext);
     if (archivo && archivo.size > maxSize) {
       alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
@@ -556,7 +557,14 @@ function validarArchivo(input) {
         input.value = ""; // Limpia el valor del campo de archivo
     } 
     else{
-    input.removeAttribute("style"); 
+        j = input.id;
+        
+        r = document.getElementById("des"+j);
+        r.textContent = input.files[0].name;
+    
+    /* input.removeAttribute("style");
+    a = document.getElementById("des");
+    a.textContent = input.files[0].name; */
     }
   }
 
