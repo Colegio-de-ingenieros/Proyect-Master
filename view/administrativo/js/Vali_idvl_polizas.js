@@ -578,7 +578,7 @@ function registrar(){
     const deber_total = parseFloat(debe_value.replace(/\$|,/g, ''));
     
     if (haber_total == deber_total && haber_total == 0 && deber_total == 0) {
-        alert("No se puede registrar una poliza sin movimientos");
+        /* alert("No se puede registrar una poliza sin movimientos"); */
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
     }else if (haber_total != deber_total) {
@@ -594,7 +594,7 @@ function registrar(){
         h.style.fontWeight = "600";
         h.style.color = "white";
         h.style.textAlign = "right";
-        alert("La poliza no esta cuadrada"); 
+        alert("Los totales de los campos debe y haber mo coinciden"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
