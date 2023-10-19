@@ -294,7 +294,7 @@ const expresiones = {
     Apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
 
     e_monto: /^[0-9]+(.([0-9])+)*$/,
-    Concepto: /^[a-zA-Z0-9Á-ý\s ,.-;:_"#]{1,150}$/,
+    Concepto: /^[a-zA-Z0-9Á-ý\s ,.-;-:_"#]{1,150}$/,
 
 }
 let concept = document.getElementById("concepto");
