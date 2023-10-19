@@ -206,7 +206,7 @@ inserta.addEventListener("click", (e) => {
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
                 var idd = "des"+fila;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id='"+idd+"'>hola</div>";
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id='"+idd+"'></div>";
                 /* var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = ".pdf";
@@ -291,7 +291,7 @@ inserta.addEventListener("click", (e) => {
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
                 var idd = "des"+fila;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id ='"+idd+"'>hola</div>";
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id ='"+idd+"'></div>";
                 /* var fileInput = document.createElement("input");
                 fileInput.type = "file";
                 fileInput.accept = ".pdf"; */
@@ -555,6 +555,10 @@ function validarArchivo(input) {
     else if (ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
+        j = input.id;
+        
+        r = document.getElementById("des"+j);
+        r.textContent = "";
     } 
     else{
         j = input.id;
