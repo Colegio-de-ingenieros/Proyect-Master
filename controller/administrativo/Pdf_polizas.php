@@ -79,6 +79,7 @@
             $this -> Cell(0,10,utf8_decode('Página '.$this -> PageNo()),0,0,'C');
         }
     }
+    
     //* Llamada a la base de datos para la consulta de los datos generales de la póliza
     $id = $_GET['id'];
     include('../../model/administrativo/Mostrar_Poliza_PDF.php');
