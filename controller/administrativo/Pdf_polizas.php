@@ -118,6 +118,7 @@
         $fecha = $response[0]['FechaPolGral'];
         $tipo_poliza = $response[0]['NombrePol'];
 
+
         $nombre = $nombre.' '.$apellido_paterno.' '.$apellido_materno;
     }
     else if($is_empresa){
@@ -127,6 +128,13 @@
         $concepto = $response[0]['CoceptoGral'];
         $fecha = $response[0]['FechaPolGral'];
         $tipo_poliza = $response[0]['NombrePol'];
+    }
+
+    if($tipo_poliza == 'Ingresos'){
+        $tipo_poliza = 'ingresos';
+    }
+    else if($tipo_poliza == 'Egresos'){
+        $tipo_poliza = 'egresos';
     }
 
     $response_service_type = $bd -> TipoServicio($id);
