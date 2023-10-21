@@ -1,4 +1,5 @@
 const boton = document.getElementById('boton_pdf');
+const boton2 = document.getElementById('boton_excel');
 
 boton.addEventListener('click', () => {
     // Obtenemos el id del cliente de la url con el URLSearchParams
@@ -9,4 +10,7 @@ boton.addEventListener('click', () => {
 
     //Abrir en una nueva pestaña
     window.open(`${url}?id=${id}`, '_blank');
+});
+boton2.addEventListener("click",(e)=>{
+    location.href = '../../controller/administrativo/Excel_Poliza_Indivual.php';
 });
