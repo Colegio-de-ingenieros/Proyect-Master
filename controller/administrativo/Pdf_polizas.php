@@ -15,7 +15,7 @@
             $fecha_hoy = date('d/m/Y');
             $this->Text(230,20, $fecha_hoy); //Aqui la variable de la fecha de emision del reporte 
 
-            $this -> Ln(12);
+            $this -> Ln(18);
         }
         
 
@@ -161,7 +161,10 @@
     $pdf -> SetFont('Arial','',12);
     $pdf -> Cell(0,$altura,utf8_decode('Nombre: '.$nombre),0,1,'L');
     $pdf -> Cell(0,$altura,utf8_decode('Tipo de servicio: '.$tipo_servicio),0,1,'L');
-    $pdf -> Cell(0,$altura,utf8_decode('Nombre del servicio: '.$titulo_servicio),0,1,'L');
+
+    if($tipo_servicio != 'Headhunter' && $tipo_servicio != 'Membresía' && $tipo_servicio != 'Consultoría'){
+        $pdf -> Cell(0,$altura,utf8_decode('Nombre del servicio: '.$titulo_servicio),0,1,'L');
+    }
 
 
     $pdf -> SetFont('Arial','B',13);

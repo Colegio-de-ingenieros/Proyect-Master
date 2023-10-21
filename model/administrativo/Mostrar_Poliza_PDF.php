@@ -59,7 +59,7 @@
                 $response = $this->bd->mostrar($consulta, $parametros);
                 return $response;
             }
-            else{
+            else if($tipo == 'Certificación'){
                 $consulta = "SELECT certinterna.NomCertInt as Nombre_servicio
                 FROM certinterna, cerserpol, polgeneral
                 WHERE polgeneral.IdPolGral = :id
@@ -69,6 +69,15 @@
                 $response = $this->bd->mostrar($consulta, $parametros);
                 return $response;
             } 
+            else if($tipo == "Headhunter"){
+                return [["Nombre_servicio"=>"Headhunter"]];
+            }
+            else if($tipo == "Membresía"){
+                return [["Nombre_servicio"=>"Membresía"]];
+            }
+            else if($tipo == "Consultoría"){
+                return [["Nombre_servicio"=>"Consultoría"]];
+            }
         }
 
         function DatosElaborador($id){
