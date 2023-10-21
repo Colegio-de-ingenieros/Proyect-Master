@@ -26,12 +26,12 @@ window.onload = function() {
             }
         }
     }
-   /*  id = id1; */
+    id = id1;
     /* id = "0002"; */
     let url = "../../controller/administrativo/Registro_indvl_poliza_precarga.php";
 
     let form = new FormData();
-    form.append("id", id);
+    form.append("id", id1);
     
     fetch(url, {
         method: "POST",
@@ -205,7 +205,8 @@ inserta.addEventListener("click", (e) => {
                 cell7.innerHTML = "";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                var idd = "des"+fila;
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id='"+idd+"'></div>";
                 /* var fileInput = document.createElement("input");
             fileInput.type = "file";
             fileInput.accept = ".pdf";
@@ -231,8 +232,44 @@ inserta.addEventListener("click", (e) => {
 
                 // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
                 tipoGradoPerso.selectedIndex = 0;
+                concepto = false
+                monto = false
+                conceptopdf = false
 
                 alert("Agregado exitosamente");
+
+
+                const todo_d= document.getElementById("debe").textContent;
+                const todo_h = document.getElementById("haber").textContent;
+                const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+                const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+                
+                if (haber_tot != deber_tot){
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    di.style.backgroundColor = "rgb(235, 71, 71)";
+                    di.style.fontWeight = "600";
+                    di.style.color = "white";
+                    di.textAlign = "right";
+
+                    // Establecer los estilos para "haber"
+                    hi.style.backgroundColor = "rgb(235, 71, 71)";
+                    hi.style.fontWeight = "600";
+                    hi.style.color = "white";
+                    hi.style.textAlign = "right";
+                }else{
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    hi.removeAttribute("style");
+                    di.removeAttribute("style");
+                    hi.style.textAlign = "right";
+                    di.style.textAlign = "right";
+                }
+
+
+
+
+
             }else if (combo == "2") {
                 var table = document.getElementById("tabla");
                 var tbody = document.getElementById("body_tabla");
@@ -253,7 +290,8 @@ inserta.addEventListener("click", (e) => {
                 cell7.id = "cantidad";
                 cell8.innerHTML = concepto_pdf;
                 //cell9.innerHTML = nombreArchivo;
-                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)'></input>";
+                var idd = "des"+fila;
+                cell9.innerHTML = "<input type='file' accept='application/pdf' onchange='validarArchivo(this)' id ='"+fila+"'></input><div id ='"+idd+"'></div>";
                 /* var fileInput = document.createElement("input");
                 fileInput.type = "file";
                 fileInput.accept = ".pdf"; */
@@ -276,9 +314,39 @@ inserta.addEventListener("click", (e) => {
                 saldo.value = "";
                 text2.value = "";
                 var tipoGradoPerso = document.getElementById("tipoGradoPerso"); // Obtén el cuadro de selección por su ID
-
+                concepto = false
+                monto = false
+                conceptopdf = false
                 // Restablece la opción predeterminada (Seleccione un tipo) seleccionando el primer elemento de opción
                 tipoGradoPerso.selectedIndex = 0;
+
+                const todo_d= document.getElementById("debe").textContent;
+                const todo_h = document.getElementById("haber").textContent;
+                const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+                const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+                
+                if (haber_tot != deber_tot){
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    di.style.backgroundColor = "rgb(235, 71, 71)";
+                    di.style.fontWeight = "600";
+                    di.style.color = "white";
+                    di.textAlign = "right";
+
+                    // Establecer los estilos para "haber"
+                    hi.style.backgroundColor = "rgb(235, 71, 71)";
+                    hi.style.fontWeight = "600";
+                    hi.style.color = "white";
+                    hi.style.textAlign = "right";
+                }else{
+                    var di = document.getElementById("debe");
+                    var hi = document.getElementById("haber");
+                    hi.removeAttribute("style");
+                    di.removeAttribute("style");
+                    hi.style.textAlign = "right";
+                    di.style.textAlign = "right";
+                }
+
             }
         }else{
             alert("faltan campos por llenar");
@@ -294,7 +362,7 @@ const expresiones = {
     Apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
 
     e_monto: /^[0-9]+(.([0-9])+)*$/,
-    Concepto:/^[a-zA-Z0-9Á-ý\s ,.--;:_"#]{1,150}$/,
+    Concepto: /^[a-zA-Z0-9Á-ý\s ,.-;-:_"#]{1,150}$/,
 
 }
 let concept = document.getElementById("concepto");
@@ -478,6 +546,7 @@ function validarArchivo(input) {
     var archivo = input.files[0];
     var maxSize = 3 * 1024 * 1024; // 3MB
     var ext = input.value.split('.').pop().toLowerCase();
+    var lugar = input.parentNode.parentNode;
     console.log(ext);
     if (archivo && archivo.size > maxSize) {
       alert("El archivo seleccionado supera el tamaño máximo permitido de 3MB");
@@ -486,9 +555,21 @@ function validarArchivo(input) {
     else if (ext != "pdf") {
         alert("Extensión no permitida: " + ext);
         input.value = ""; // Limpia el valor del campo de archivo
+        j = input.id;
+        
+        r = document.getElementById("des"+j);
+        r.textContent = "";
     } 
     else{
-    input.removeAttribute("style"); 
+        j = input.id;
+        
+        r = document.getElementById("des"+j);
+        r.textContent = input.files[0].name;
+        input.removeAttribute("style");
+    
+    /* input.removeAttribute("style");
+    a = document.getElementById("des");
+    a.textContent = input.files[0].name; */
     }
   }
 
@@ -502,7 +583,7 @@ function registrar(){
     const deber_total = parseFloat(debe_value.replace(/\$|,/g, ''));
     
     if (haber_total == deber_total && haber_total == 0 && deber_total == 0) {
-        alert("No se puede registrar una poliza sin movimientos");
+        /* alert("No se puede registrar una poliza sin movimientos"); */
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
     }else if (haber_total != deber_total) {
@@ -518,7 +599,7 @@ function registrar(){
         h.style.fontWeight = "600";
         h.style.color = "white";
         h.style.textAlign = "right";
-        alert("La poliza no esta cuadrada"); 
+        alert("Los totales de los campos debe y haber mo coinciden"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
@@ -597,8 +678,38 @@ function eliminar(button){
     
     const debe_value = document.getElementById("debe").textContent;
    
-    debe.textContent = parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
+    debe.textContent = "$ "+ (parseFloat(debe_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
+    debe.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
+
+    const todo_d= document.getElementById("debe").textContent;
+    const todo_h = document.getElementById("haber").textContent;
+    
+    const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+    const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+    
+    if (haber_tot != deber_tot){
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        di.style.backgroundColor = "rgb(235, 71, 71)";
+        di.style.fontWeight = "600";
+        di.style.color = "white";
+        di.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        hi.style.backgroundColor = "rgb(235, 71, 71)";
+        hi.style.fontWeight = "600";
+        hi.style.color = "white";
+        hi.style.textAlign = "right";
+    }else{
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        hi.removeAttribute("style");
+        di.removeAttribute("style");
+        hi.style.textAlign = "right";
+        di.style.textAlign = "right";
+    }
+
 }
 function eliminar2(button){
     btnid = button.id;
@@ -615,9 +726,38 @@ function eliminar2(button){
    
     const haber = document.getElementById("haber"); 
     const haber_value = document.getElementById("haber").textContent; 
-    haber.textContent = parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto);
-    
+    haber.textContent = "$ "+ (parseFloat(haber_value.replace(/\$|,/g, '')) - parseFloat(montoTexto.replace(/\$|,/g, '')));
+    haber.style.textAlign = "right";
     cantidad_pdf = cantidad_pdf -1;
+
+
+    const todo_d= document.getElementById("debe").textContent;
+    const todo_h = document.getElementById("haber").textContent;
+    const haber_tot = parseFloat(todo_h.replace(/\$|,/g, ''));
+    const deber_tot = parseFloat(todo_d.replace(/\$|,/g, ''));
+    
+    if (haber_tot != deber_tot){
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        di.style.backgroundColor = "rgb(235, 71, 71)";
+        di.style.fontWeight = "600";
+        di.style.color = "white";
+        di.textAlign = "right";
+
+        // Establecer los estilos para "haber"
+        hi.style.backgroundColor = "rgb(235, 71, 71)";
+        hi.style.fontWeight = "600";
+        hi.style.color = "white";
+        hi.style.textAlign = "right";
+    }else{
+        var di = document.getElementById("debe");
+        var hi = document.getElementById("haber");
+        hi.removeAttribute("style");
+        di.removeAttribute("style");
+        hi.style.textAlign = "right";
+        di.style.textAlign = "right";
+    }
+
 }
 
 //responde cuando hay un click en el boton cancelar

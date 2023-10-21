@@ -18,7 +18,7 @@ $ingresos= $objeto->mostrar_Ingresos();
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
 //establecer las propiedades del archivo
-$spreadsheet->getProperties()->setTitle("Reporte de pólizas al " . date('d-m-Y'))->setCreator("Colegio de Ingeneieros en Sistemas Computacionales")
+$spreadsheet->getProperties()->setTitle("Reporte de pólizas al " . date('d-m-Y'))->setCreator("Colegio de Ingenieros en Sistemas Computacionales")
 ->setCategory("Reporte de Pólizas")->setCompany("CISIG")->setLastModifiedBy("CISCIG");
 
 //-----------------------------------------------crear la hoja de ingresos----------------------------------------------

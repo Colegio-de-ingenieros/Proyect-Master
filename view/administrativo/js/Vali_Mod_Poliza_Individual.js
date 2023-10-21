@@ -1,6 +1,6 @@
 
 const expresiones = {
-    descripcion: /^[a-zA-ZÁ-Ýá-ý\.\;\:\_\-\"\#\s]{1,200}$/, // Letras y espacios, pueden llevar acentos.
+    descripcion: /^[a-zA-ZÁ-Ýá-ý0-9\,\.\;\:\_\-\"\#\s]{1,200}$/, // Letras y espacios, pueden llevar acentos.
     monto: /^\d+(\.\d{1,2})?$/
 }
 const banderas = {
@@ -17,7 +17,7 @@ formulario.descripcion1.addEventListener('blur', (e) => {
 formulario.descripcion1.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    formulario.descripcion1.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\;\:\_\-\"\#\s]/g, '');
+    formulario.descripcion1.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý0-9\,\.\;\:\_\-\"\#\s]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.descripcion.test(valorInput2)) {
         formulario.descripcion1.style.border = "3px solid red";
@@ -70,7 +70,7 @@ formulario.descripcion2.addEventListener('blur', (e) => {
 formulario.descripcion2.addEventListener('keyup', (e) => {
     let valorInput = e.target.value;
     /* Crea una expresión regular que tenga las siguientes especificaciónes: solo aceptará letras, espacios intermedios, números, la coma “,” y el punto “.” */
-    formulario.descripcion2.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý\.\;\:\_\-\"\#\s]/g, '');
+    formulario.descripcion2.value = valorInput.replace(/[^a-zA-ZÁ-Ýá-ý0-9\,\.\;\:\_\-\"\#\s]/g, '');
     let valorInput2 = e.target.value;
     if (!expresiones.descripcion.test(valorInput2)) {
         formulario.descripcion2.style.border = "3px solid red";

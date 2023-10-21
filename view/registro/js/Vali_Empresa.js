@@ -45,7 +45,7 @@ const expresiones = {
     rfc:/^[A-Z]{3}[0-9]{6}[A-Z0-9]{3}$/,
     nombre:/^[a-zA-ZÁ-Ýá-ý\-\s]{1,100}$/,
     calle:/^[a-zA-ZÁ-Ýá-ý\.\s]+([\/\s#]?)((?:.*[0-9\s])?)([a-zA-Z]?)?$/,
-    email:/^[a-zA-Z0-9.\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
+    email:/^[a-zA-Z0-9\-_][^@]+@[^@][a-zA-Z]+\.[a-zA-Z](?:.*[\.])?(?:.*[a-zA-Z])?$/,
     password:/^(?=(?:.*\d){1})(?=(?:.*[A-Z]){1})(?=(?:.*[a-z]){1})(?=(?:.*[@$\#\-_.!*\/+]){1})\S{8,16}$/,
     razon:/^[a-zA-ZÁ-ý\s,\.]{1,100}$/,
     postal:/^[0-9]{5}$/,
@@ -254,11 +254,22 @@ formulario.correo_m.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-     .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
+     .replace(/[^a-zA-Z0-9\-_@\.]/g, '')
 
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formulario.correo_m.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formulario.correo_m.value = valorInput2;
+        baderas.bcorreo_empresa = false;
+    }
+
+    formulario.correo_m.value = borrar_puntos(valorInput2);
+
+
     if (!expresiones.email.test(valorInput2)) {
         formulario.correo_m.style.border = "3px solid red";
         baderas.bcorreo_empresa = false;
@@ -534,10 +545,20 @@ formulario.rh_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
+    .replace(/[^a-zA-Z0-9\-_@\.]/g, '')
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formulario.rh_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formulario.rh_correo.value = valorInput2;
+        baderas.brh_correo = false;
+    }
+
+    formulario.rh_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formulario.rh_correo.style.border = "3px solid red";
         baderas.brh_correo = false;
@@ -684,10 +705,20 @@ formulario.ti_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
+    .replace(/[^a-zA-Z0-9\-_@\.]/g, '')
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formulario.ti_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formulario.ti_correo.value = valorInput2;
+        baderas.bti_correo = false;
+    }
+
+    formulario.ti_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formulario.ti_correo.style.border = "3px solid red";
         baderas.bti_correo = false;
@@ -839,10 +870,20 @@ formulario.ac_correo.addEventListener('keyup', (e) => {
     // Eliminar espacios en blanco
 	.replace(/\s/g, '')
      // Eliminar caracteres especiales
-    .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
+    .replace(/[^a-zA-Z0-9\-_@\.]/g, '')
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formulario.ac_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formulario.ac_correo.value = valorInput2;
+        baderas.bca_correo = false;
+    }
+
+    formulario.ac_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formulario.ac_correo.style.border = "3px solid red";
         baderas.bca_correo = false;
@@ -951,10 +992,32 @@ function validar(e) {
         }
     }
 }
+function primeroNum(cadena){
+    if (cadena[0] == '.' || cadena[0] == '-') {
+        return true
+    }
+    else {
+        return false
+    }
+}
 
-function colorear_campos_opcionales() {
-    
-    
+function borrar_puntos(cadena) {
+
+    let nueva_cadena = "";
+    let despues_arroba = false
+    for (let i = 0; i < cadena.length; i++) {
+
+
+        if(cadena[i] == "@"){
+            despues_arroba = true;
+            nueva_cadena += cadena[i];
+        }else if (cadena[i] != "." && despues_arroba == false) {
+            nueva_cadena += cadena[i];
+        }else if(despues_arroba){
+            nueva_cadena += cadena[i];
+        }
+    }
+    return nueva_cadena;
 }
 
 

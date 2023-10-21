@@ -117,7 +117,7 @@ if ($resultado==true){
         var descripcion2 = <?php echo json_encode($doc); ?>;
         var accion = <?php echo json_encode($accion); ?>;
         var monto = <?php echo json_encode($monto); ?>;
-        var direccion = "../../controller/Comprobantes/administrativo/polizas/"+<?php echo json_encode($idpol); ?>;
+        var direccion = "../../controller/comprobantes/administrativo/polizas/"+<?php echo json_encode($idpol); ?>+".pdf";
         console.log(link);
         cell1.colSpan = 5; // Establece el colspan deseado para esta celda
         cell1.textContent = descripcion;
@@ -150,7 +150,7 @@ if ($resultado==true){
         var cell5 = newRow.insertCell(4);
         cell5.colSpan = 1; // Establece el colspan deseado para esta celda
         var link = document.createElement('a');
-        link.textContent = "document.pdf";
+        link.textContent = "Ver archivo";
         link.href = direccion; // Establece la URL del enlace según sea necesario
         link.target = "_blank";
         newRow.cells[4].appendChild(link);
