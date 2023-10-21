@@ -3,12 +3,18 @@
 
 use PhpOffice\PhpSpreadsheet\Style\Color;
 
-include_once('../../model/administrativo/Mostrar_Poliza_Individual.php');
+include_once('../../model/administrativo/Mostrar_Poliza_Excel.php');
 require '../../controller/CrearExcel/vendor/autoload.php';
 
 $color = new Color('000000');
 
 //hacer la consulta para obtener los datos
+$idc = $_GET["id"];
+$base = new ObtenerPolizasGenerales();
+$base->instancias();
+$resultados = $base->DatosGenerales($idc);
+//$datosInd = $base->getDatosInd($idc);
+
 //crear el objeto des excel
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
@@ -18,7 +24,7 @@ $spreadsheet->getProperties()->setTitle("Reporte de pólizas al " . date('d-m-Y'
 
 //-----------------------------------------------crear la hoja de ingresos----------------------------------------------
 $spreadsheet->setActiveSheetIndex(0)->setTitle("Ingresos");
-$hoja = $spreadsheet->getActiveSheet();
+$hoja = $spreadsheet->getActiveSheet(); 
 
 //poner los encabezados de las columnas
 $hoja -> setCellValue('A1', "Fólio") -> setCellValue("B1", "Tipo de servicio") -> setCellValue("C1", "Concepto general")
@@ -37,7 +43,17 @@ $style = [
     'alignment' => [
         'wrapText' => true]];
 
-//llenar la hoja con los datos
+//llenar el archivo con los datos
+for($i=0; $i<count($resultados); $i++){
+    //guardar los datos de la certificacion actual 
+    $nombre = $resultados[$i]["Nombre"];
+    $conGral = $resultados[$i]["CoceptoGral"];
+    $fecha = $resultados[$i]["FechaPolGral"];
+    $tipoPol = $resultados[$i]["NombrePol"];
+
+    //poner los daros en la hoja
+    $hoja->setCellValue('A'. strval($i+2), $nombre)->setCellValue('B'.strval($i+2), $conGral)->setCellValue('C'. strval($i+2), $fecha)->setCellValue('D'. strval($i+2), $tipoPol);
+}
 
 
 //colocar los bordes

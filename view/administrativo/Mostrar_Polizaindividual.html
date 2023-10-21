@@ -273,9 +273,18 @@
                       </div>
                     </article>
                     <br>
+                    <script languaje="javascript">
+                      function generar() {
+                        /* location.href = '../../controller/administrativo/Excel_Poliza_Individual.php'; */
+                        const parametros = new URLSearchParams(window.location.search);
+                        id = parametros.get('usuario');
+                        console.log(id);
+                        location.href = '../../controller/administrativo/Excel_Poliza_Indivual.php?id=' + id;
+                      }
+                    </script>
                     <div class="grupo-boton-reg">
                       <div class="boton_registrar">
-                          <button class="btn-medium btn" id="boton_excel" type="button">Descargar Excel</button>&nbsp;&nbsp;
+                          <button class="btn-medium btn" id="boton_excel" type="button" onclick="generar()">Descargar Excel</button>&nbsp;&nbsp;
                           <button class="btn-medium btn" id="boton_pdf" type="button">Descargar PDF</button>
                        </div>
                    </div>
