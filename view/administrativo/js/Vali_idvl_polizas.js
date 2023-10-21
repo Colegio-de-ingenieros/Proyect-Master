@@ -599,7 +599,7 @@ function registrar(){
         h.style.fontWeight = "600";
         h.style.color = "white";
         h.style.textAlign = "right";
-        alert("Los totales de los campos debe y haber mo coinciden"); 
+        alert("Los totales de los campos debe y haber no coinciden"); 
     }else{
         var d = document.getElementById("debe");
         var h = document.getElementById("haber");
@@ -657,7 +657,7 @@ function registrar(){
                 console.error("Error en la solicitud fetch:", error);
             });
         }else{
-            alert("Asegúrate de llenar todos los apartados pdf")
+            alert("favor de subir los comprobantes faltantes")
         }
     }
 }
