@@ -93,7 +93,7 @@ btn_agregar.addEventListener("click", ()=>{
         sumas_iguales()
         //limpia los campos
         inp_descripcion.value = "";
-        inp_tipo.value = "";
+        inp_tipo.value = "1";
         inp_monto.value = "";
         inp_descripcion2.value = "";
         //banderas
@@ -115,7 +115,10 @@ btn_registro.addEventListener("click",(e)=>{
     if (debe == haber) {
 
         if(!formulario_tabla.checkValidity()){
-            formulario_tabla.reportValidity();
+            
+            //ponemos todos los que no tiene archivo y que es obligatorio, en color rojo
+            poner_files_rojos();
+            alert("Favor de subir los comprobantes faltantes");
 
         }else{
 
@@ -217,6 +220,9 @@ function agregar_fila_tabla(debe_haber, concepto_p,monto_p, descripcion_p,  clas
 
     let btn_eliminar = document.createElement("button");
     let btn_modificar = document.createElement("button");
+
+    btn_eliminar.type = "button";
+    btn_modificar.type = "button";    
     btn_modificar.classList.add("btn","btn-small","btn-danger1","fa-solid","fa-pen-to-square");
     btn_eliminar.classList.add("btn","btn-small","btn-danger","ti","ti-backspace-filled");
 
@@ -526,6 +532,7 @@ function validarArchivo(input, id_fila) {
 
     }else if(archivo && archivo.size <= maxSize){
         div.textContent = archivo.name;
+        input.removeAttribute("style");
 
     }else{
 
@@ -533,4 +540,27 @@ function validarArchivo(input, id_fila) {
         
 
     }
-  }
+}
+
+
+
+
+function poner_files_rojos() {
+    let cantidad_filas = table.rows.length - 2;
+    for (let i = 4; i < cantidad_filas; i++) {
+
+        let fila_tabla =  table.rows[i]
+        
+        let clasesLista = fila_tabla.className.split(" ");
+        let clase_con_id = clasesLista.find(texto => texto.includes("old"));
+
+        // tomar archivos
+        let input_file = table.rows[i].cells[4].getElementsByTagName("input")[0];
+
+        if(clase_con_id == undefined && input_file.value == ""){
+            
+            input_file.style = "background-color: rgb(235, 71, 71);";
+           
+        } 
+    }
+}

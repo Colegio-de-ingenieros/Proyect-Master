@@ -82,7 +82,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
             $parametros = [":id"=>$id_poliza];
             $resultados = $this->mostrar($sql, $parametros);
             $this->cerrar_conexion();
-            $regresar[] = $tipo." ". $resultados[0][0];
+            $regresar[] = $tipo.": ". $resultados[0][0];
 
         }else if($tipo == "Curso"){
 
@@ -91,7 +91,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
             $parametros = [":id"=>$id_poliza];
             $resultados = $this->mostrar($sql, $parametros);
             $this->cerrar_conexion();
-            $regresar[] = $tipo." ". $resultados[0][0];
+            $regresar[] = $tipo.": ". $resultados[0][0];
 
         }else{
             $regresar[] = $tipo;
