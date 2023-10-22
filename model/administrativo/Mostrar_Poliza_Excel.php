@@ -5,8 +5,8 @@
         private $base;
 
         function instancias(){
-            $this->base = new Crud_bd();
-            $this->base->conexion_bd();
+            $this->bd = new Crud_bd();
+            $this->bd->conexion_bd();
         }
 
         function ComprobarUsuario($id){
@@ -44,7 +44,7 @@
             AND polgeneral.IdPolGral = sergralpol.IdPolGral
             AND sergralpol.IdSerPol = serviciospol.IdSerPol";
             $parametros = [":id"=>$id];
-            $response = $this->bd->mostrar($consulta,$parametros);
+            $response = $this->bd->mostrar($consulta, $parametros);
             return $response;
         }
 
@@ -90,13 +90,15 @@
         }
 
         function DatosGeneralesUsuario($id){
-            $consulta = "SELECT usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol
-            FROM usuaperso, persogralpol, polgeneral, tipogralpol, tipopol
+            $consulta = "SELECT  CONCAT_WS(' ',usuaperso.NomPerso, usuaperso.ApePPerso, usuaperso.ApeMPerso) as Nombre, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol,tipousua.TipoU
+            FROM usuaperso, persogralpol, polgeneral, tipogralpol, tipopol,tipousua,persotipousua
             WHERE usuaperso.IdPerso = persogralpol.IdPerso 
             AND persogralpol.idPolGral = :id
             AND persogralpol.IdPolGral = polgeneral.IdPolGral
             AND polgeneral.IdPolGral = tipogralpol.IdPolGral
-            AND tipogralpol.IdTipoPol = tipopol.IdTipoPol";
+            AND tipogralpol.IdTipoPol = tipopol.IdTipoPol
+            AND usuaperso.IdPerso=persotipousua.IdPerso 
+            AND persotipousua.IdUsua=tipousua.IdUsua";
             $parametros = [":id"=>$id];
             $response = $this->bd->mostrar($consulta,$parametros);
             return $response;
@@ -116,7 +118,7 @@
         }
 
         function DatosIndividuales($id){
-            $consulta = "SELECT polindividual.DesPolInd, polindividual.Monto, polindividual.DesDocInd, tipopolacc.NomPolAcc
+            $consulta = "SELECT indgralpol.IdPolInd, polindividual.DesPolInd, polindividual.Monto, polindividual.DesDocInd, tipopolacc.IdPolAcc
             FROM polgeneral, indgralpol, polindividual, indpolacc, tipopolacc
             WHERE polgeneral.IdPolGral = :id
             AND polgeneral.IdPolGral = indgralpol.IdPolGral
@@ -134,7 +136,7 @@
             FROM polgeneral, tipogralpol, tipopol
             WHERE polgeneral.IdPolGral = :id and polgeneral.IdPolGral=tipogralpol.IdPolGral and tipogralpol.IdTipoPol=tipopol.IdTipoPol";
             $arre = [":id"=>$idc];
-            $resultados = $this->base->mostrar($querry, $arre);
+            $resultados = $this->bd->mostrar($querry, $arre);
     
             return $resultados;
         }
