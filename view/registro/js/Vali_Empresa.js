@@ -1005,10 +1005,12 @@ function borrar_puntos(cadena) {
 
     let nueva_cadena = "";
     let despues_arroba = false
+
     for (let i = 0; i < cadena.length; i++) {
 
-
-        if(cadena[i] == "@"){
+        if(cadena[i] == "-" && i == 0){
+            continue;
+        }else if(cadena[i] == "@"){
             despues_arroba = true;
             nueva_cadena += cadena[i];
         }else if (cadena[i] != "." && despues_arroba == false) {
