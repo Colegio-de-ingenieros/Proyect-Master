@@ -211,7 +211,7 @@ for($i=0; $i<count($datosInd); $i++){
     }else if ($accion=="2"){
         $haber+=$monto;
         $monto=number_format($monto, 2, '.', ',');
-        $hoja->setCellValue('A'.strval($i+11), $concep)->setCellValue('B'.strval($i+11), " ")->setCellValue('C'.strval($i+11), $haber)->setCellValue('D'.strval($i+11), $descri);
+        $hoja->setCellValue('A'.strval($i+11), $concep)->setCellValue('B'.strval($i+11), " ")->setCellValue('C'.strval($i+11), $monto)->setCellValue('D'.strval($i+11), $descri);
     }
 
     $hoja->getStyle('D'. strval($i+11))->applyFromArray($style);
