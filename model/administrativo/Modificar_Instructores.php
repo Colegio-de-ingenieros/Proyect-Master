@@ -24,7 +24,7 @@ class Modificar_Instructor extends Crud_bd{
     {
         # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
         $this->conexion_bd();
-        $sql = "SELECT  MAX(CAST(SUBSTRING(IdCerExt,2) AS INT))  FROM  certexterna " ;
+        $sql = "SELECT  MAX(CAST(IdCerExt AS INT))  FROM  certexterna " ;
         $numero_consecutivo =  $this->mostrar($sql);
         $this->cerrar_conexion();
         $numero = "";
@@ -48,7 +48,7 @@ class Modificar_Instructor extends Crud_bd{
     {
         # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
         $this->conexion_bd();
-        $sql = "SELECT  MAX(CAST(SUBSTRING(IdEspIns,2) AS INT))  FROM  especialidades " ;
+        $sql = "SELECT  MAX(CAST(IdEspIns AS INT))  FROM  especialidades " ;
         $numero_consecutivo =  $this->mostrar($sql);
         $this->cerrar_conexion();
         $numero = "";
@@ -89,7 +89,7 @@ class Modificar_Instructor extends Crud_bd{
 
                 $sqls[] =  "INSERT INTO certexterna (IdCerExt,NomCerExt,OrgCerExt,IniCerExt,FinCerExt)
                          VALUES (
-                            (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdCerExt,2) AS INT))+1,1),6,'0') as id  FROM  certexterna) AS tabla),
+                            (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(IdCerExt AS INT))+1,1),6,'0') as id  FROM  certexterna) AS tabla),
                             :nomCer, :orgCer, :iniCer,:finCer)";
                 $parametros[] = [ ":nomCer" => $certificacionesExternas[$i][1], 
                                 ":orgCer"=>$certificacionesExternas[$i][2], ":iniCer"=>$certificacionesExternas[$i][3],
@@ -97,7 +97,7 @@ class Modificar_Instructor extends Crud_bd{
                                 ];
 
                 $sqls[] = "INSERT INTO inscertext (ClaveIns,IdCerExt) VALUES (:idI,
-                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdCerExt,2) AS INT)),1),6,'0') as id  FROM  certexterna) AS tabla))";
+                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(IdCerExt AS INT)),1),6,'0') as id  FROM  certexterna) AS tabla))";
                 $parametros[] = [":idI"=>$id_instructor];
 
              
@@ -131,12 +131,12 @@ class Modificar_Instructor extends Crud_bd{
             if($especialidades[$i][0] == "new"){
 
                 $sqls[] =  "INSERT INTO especialidades (IdEspIns,NomEspIns) VALUES(
-                    (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdEspIns,2) AS INT))+1,1),6,'0') as id  FROM  especialidades) AS tabla),
+                    (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(IdEspIns AS INT))+1,1),6,'0') as id  FROM  especialidades) AS tabla),
                     :nombre)";
                 $parametros[] = [":nombre" => $especialidades[$i][1]];
 
                 $sqls[] = "INSERT INTO especialins (ClaveIns,IdEspIns) VALUES (:idI,
-                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(SUBSTRING(IdEspIns,2) AS INT)),1),6,'0') as id  FROM  especialidades) AS tabla))";
+                (SELECT id FROM (SELECT LPAD(COALESCE(MAX(CAST(IdEspIns AS INT)),1),6,'0') as id  FROM  especialidades) AS tabla))";
                 $parametros[] = [":idI"=>$id_instructor];
 
             }else if($especialidades[$i][0] == "update"){

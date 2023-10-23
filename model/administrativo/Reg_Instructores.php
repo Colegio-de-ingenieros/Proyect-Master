@@ -58,7 +58,7 @@ class Registro_Instructor extends Crud_bd{
     {
         # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
         $this->conexion_bd();
-        $sql = "SELECT  MAX(CAST(SUBSTRING(IdCerExt,2) AS INT))  FROM  certexterna " ;
+        $sql = "SELECT  MAX(CAST(IdCerExt AS INT))  FROM  certexterna " ;
         $numero_consecutivo =  $this->mostrar($sql);
         $this->cerrar_conexion();
         $numero = "";
@@ -82,7 +82,7 @@ class Registro_Instructor extends Crud_bd{
     {
         # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
         $this->conexion_bd();
-        $sql = "SELECT  MAX(CAST(SUBSTRING(IdEspIns,2) AS INT))  FROM  especialidades " ;
+        $sql = "SELECT  MAX(CAST(IdEspIns AS INT))  FROM  especialidades " ;
         $numero_consecutivo =  $this->mostrar($sql);
         $this->cerrar_conexion();
         $numero = "";
