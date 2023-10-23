@@ -122,7 +122,7 @@ class Modificar_Poliza_Individual extends Crud_bd{
     {
         # obtiene el ultimo numero consecutivo en el que van  y le agrega 1
         $this->conexion_bd();
-        $sql = "SELECT  MAX(CAST(SUBSTRING(IdPolInd,2) AS INT))  FROM  polindividual " ;
+        $sql = "SELECT  MAX(CAST(IdPolInd AS INT))  FROM  polindividual " ;
         $numero_consecutivo =  $this->mostrar($sql);
         $this->cerrar_conexion();
         $numero = "";
