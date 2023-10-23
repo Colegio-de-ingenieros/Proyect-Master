@@ -5,7 +5,7 @@ formularioBD.addEventListener('submit', function (e){
     e.preventDefault();
     const importar = document.getElementById('importar');
     importar.disabled = true;
-    alert('Esto puede tardar ');
+    alert('Importación en curso, puede tomar unos minutos');
     let url = "../../controller/respaldos/Importar_BD.php";
     let form = new FormData(formularioBD);
     fetch(url, {
