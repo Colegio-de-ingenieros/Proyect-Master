@@ -150,7 +150,7 @@ class Modificar_perfil_empresa extends Crud_bd {
         $parametros = [];
         $this->conexion_bd();
         
-        $id = $this->mostrar("SELECT id FROM (SELECT MAX(IdAreaEmp)+1 as id  FROM  areaempresa) AS tabla");
+        $id = $this->mostrar("SELECT id FROM (SELECT MAX(CAST(IdAreaEmp AS INT))+1 as id  FROM  areaempresa) AS tabla");
         $id_area = $id[0][0];
 
         $sqls[] = "INSERT INTO areaempresa (IdAreaEmp, NomEncArea, ApePEncArea, ApeMEncArea, TelFEncArea, ExtenTelFEncArea, CorreoEncArea) 

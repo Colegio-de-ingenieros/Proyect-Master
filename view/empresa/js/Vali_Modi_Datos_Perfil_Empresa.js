@@ -244,6 +244,16 @@ formulario.correo_m.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formulario.correo_m.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formulario.correo_m.value = valorInput2;
+        baderas.bcorreo_empresa = false;
+    }
+
+    formulario.correo_m.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formulario.correo_m.style.border = "3px solid red";
         baderas.bcorreo_empresa = false;
@@ -665,6 +675,16 @@ formularioRH.rh_correo.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formularioRH.rh_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formularioRH.rh_correo.value = valorInput2;
+        baderas.brh_correo = false;
+    }
+
+    formularioRH.rh_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formularioRH.rh_correo.style.border = "3px solid red";
         baderas.brh_correo = false;
@@ -815,6 +835,16 @@ formularioIT.ti_correo.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formularioIT.ti_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formularioIT.ti_correo.value = valorInput2;
+        baderas.bti_correo = false;
+    }
+
+    formularioIT.ti_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formularioIT.ti_correo.style.border = "3px solid red";
         baderas.bti_correo = false;
@@ -970,6 +1000,16 @@ formularioAC.ac_correo.addEventListener('keyup', (e) => {
      // Eliminar el ultimo espaciado
 	.trim();
     let valorInput2 = e.target.value;
+
+    if (primeroNum(valorInput2) == true) {
+        formularioAC.ac_correo.style.border = "3px solid red";
+        valorInput2 = valorInput2.substr(0, valorInput2.length - 1);
+        formularioAC.ac_correo.value = valorInput2;
+        baderas.bca_correo = false;
+    }
+
+    formularioAC.ac_correo.value = borrar_puntos(valorInput2);
+
     if (!expresiones.email.test(valorInput2)) {
         formularioAC.ac_correo.style.border = "3px solid red";
         baderas.bca_correo = false;
@@ -1118,6 +1158,39 @@ btn_ac.addEventListener("click",(e)=>{
 });
 
 
+function primeroNum(cadena){
+    if (cadena[0] == '.' || cadena[0] == '-') {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+function borrar_puntos(cadena) {
+
+    let nueva_cadena = "";
+    let despues_arroba = false
+
+    for (let i = 0; i < cadena.length; i++) {
+
+        if(cadena[i] == "-" && i == 0){
+            continue;
+        }else if(cadena[i] == "@"){
+            despues_arroba = true;
+            nueva_cadena += cadena[i];
+        }else if (cadena[i] != "." && despues_arroba == false) {
+            nueva_cadena += cadena[i];
+        }else if(despues_arroba){
+            nueva_cadena += cadena[i];
+        }
+    }
+    return nueva_cadena;
+}
+
+
+
+    
 
 
 
