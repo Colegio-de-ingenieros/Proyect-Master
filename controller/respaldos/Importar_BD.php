@@ -55,6 +55,7 @@ $lineas = file($fichero);
 // Procesamos el fichero linea a linea
 foreach ($lineas as $linea) 
 {
+
     // Quitamos espacios/tabuladores por delante y por detrás
     $linea = trim($linea); 
 
@@ -63,12 +64,12 @@ foreach ($lineas as $linea)
         continue;
 
     // Saltamos los comentarios multilinea /* texto */ Se detecta cuando empiezan y cuando acaban mediante estos dos ifs  
-    if ( substr($linea, 0, 2) == '/*' ) $comentario_multilinea = true;
+   // if ( substr($linea, 0, 2) == '/*' ) $comentario_multilinea = true;
 
-    if ( $comentario_multilinea ) {
-       if ( (substr($linea, -2, 2) == '*/') or (substr($linea, -3, 3) == '*/;') ) $comentario_multilinea = false;
-       continue;
-    }
+   // if ( $comentario_multilinea ) {
+       //if ( (substr($linea, -2, 2) == '*/') or (substr($linea, -3, 3) == '*/;') ) $comentario_multilinea = false;
+      // continue;
+    //}
 
     // Añadimos la linea actual a la sentencia en la que estamos trabajando 
     $temp .= $linea;
@@ -79,6 +80,7 @@ foreach ($lineas as $linea)
         //mysqli_query($conexion, $temp) or print('<strong>Error en la consulta</strong> \'' . $temp . '\' - ' . mysqli_error($conexion) . "<br /><br />\n");
         if(mysqli_query($conexion, $temp) ){
             $data=('Importación exitosa');
+            
         }else{
             $data=('Error en la consulta'. $temp);
         }
