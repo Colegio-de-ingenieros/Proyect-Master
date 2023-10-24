@@ -132,7 +132,7 @@
 
 
         function DatosGenerales($idc){
-            $querry = "SELECT CONCAT_WS(' ', polgeneral.NomElaPol, polgeneral.ApePElaPol, polgeneral.ApeMElaPol) as Nombre, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol
+            $querry = "SELECT CONCAT_WS(' ', polgeneral.NomElaPol, polgeneral.ApePElaPol, polgeneral.ApeMElaPol) as Nombre, polgeneral.CoceptoGral, DATE_FORMAT(polgeneral.FechaPolGral,'%d/%m/%Y') AS FechaPolGral, tipopol.NombrePol,tipopol.IdTipoPol
             FROM polgeneral, tipogralpol, tipopol
             WHERE polgeneral.IdPolGral = :id and polgeneral.IdPolGral=tipogralpol.IdPolGral and tipogralpol.IdTipoPol=tipopol.IdTipoPol";
             $arre = [":id"=>$idc];

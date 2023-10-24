@@ -41,9 +41,20 @@ for($i=0; $i<count($datosGral); $i++){
     $nombre = ' '.$datosGral[$i]["Nombre"];
     $conGral = $datosGral[$i]["CoceptoGral"];
     $fecha = $datosGral[$i]["FechaPolGral"];
-    $tipoPol = $datosGral[$i]["NombrePol"];
+    $tipoPol = $datosGral[$i]["IdTipoPol"];
 }
-$servicio=($tipoSer." ".$nomServ);
+if($tipoSer=='Certificación' or $tipoSer=='Curso'){
+    $servicio=($tipoSer." ".$nomServ);
+}
+else{
+    $servicio=($tipoSer);
+}
+if($tipoPol=='1'){
+    $tipoPol='egresos';
+}
+else{
+    $tipoPol='ingresos';
+}
 //crear el objeto des excel
 $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
 
@@ -103,7 +114,7 @@ $estilo = $hoja->getStyle('A5');
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 //poner datos de la póliza
-$hoja -> setCellValue('A7', ("Póliza de ".$tipoSer))-> setCellValue('A8', "Fecha") -> setCellValue('A9', "Concepto general")-> setCellValue('C8', "Folio");
+$hoja -> setCellValue('A7', ("Póliza de ".$tipoPol))-> setCellValue('A8', "Fecha") -> setCellValue('A9', "Concepto general")-> setCellValue('C8', "Folio");
 
 //poner estilo
 $hoja->mergeCells('A7:D7');
@@ -207,10 +218,12 @@ for($i=0; $i<count($datosInd); $i++){
     if ($accion=="1"){
         $debe+=$monto;
         $monto=number_format($monto, 2, '.', ',');
+        $monto="$".$monto;
         $hoja->setCellValue('A'.strval($i+11), $concep)->setCellValue('B'.strval($i+11), $monto)->setCellValue('C'.strval($i+11), " ")->setCellValue('D'.strval($i+11), $descri);
     }else if ($accion=="2"){
         $haber+=$monto;
         $monto=number_format($monto, 2, '.', ',');
+        $monto="$".$monto;
         $hoja->setCellValue('A'.strval($i+11), $concep)->setCellValue('B'.strval($i+11), " ")->setCellValue('C'.strval($i+11), $monto)->setCellValue('D'.strval($i+11), $descri);
     }
 
@@ -244,8 +257,9 @@ $estilo = $hoja->getStyle('A10:D'.strval($i+11));
 $estilo->getBorders()->getHorizontal()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN)->setColor($color);
 
 $debe=number_format($debe, 2, '.', ',');
+$debe="$".$debe;
 $haber=number_format($haber, 2, '.', ',');
-
+$haber="$".$haber;
 
 //contenido sumas
 $hoja-> setCellValue('A'.strval($i+11), 'Sumas iguales')-> setCellValue('B'.strval($i+11), $debe)-> setCellValue('C'.strval($i+11), $haber)
