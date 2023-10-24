@@ -39,7 +39,7 @@ formulario_Gastos.gastos_monto.addEventListener('keyup', (e) =>{
     //Elimina letras
     .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´':"\\|<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´'`:"\\|<>\/?]/g, '')
     // Eliminar el ultimo espaciado
     .trim();
 
@@ -88,7 +88,7 @@ formulario_Ingresos.ingresos_monto.addEventListener('keyup', (e) =>{
     //Elimina letras
     .replace(/[qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNMéáíóúñÑªº¿®ÁÉ±|Í¶ÓÚ]/g, '')
     // Eliminar caracteres especiales
-    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´':"\\|<>\/?]/g, '')
+    .replace(/[üâäàåçê♪ëèï·îìÄÅÉæÆôöòûùÿÖÜ¢£¥₧ƒªº¿⌐¬½¼«»÷±~!¡@#$%^&^*()_+\-=,\[\]{};´`':"\\|<>\/?]/g, '')
     // Eliminar el ultimo espaciado
     .trim();
 

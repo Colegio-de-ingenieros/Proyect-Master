@@ -114,7 +114,7 @@ formularioPolGral.addEventListener('submit', function (e){
                 
                 console.log(data);
                 if (data[0] === 'Correcto') {
-                    alert("Registro exitoso");
+                    alert("Primera parte del registro completada");
                     location.href = '../../view/administrativo/Reg_Polizas_Individual.html?idPol='+data[1];
                 }
                 
