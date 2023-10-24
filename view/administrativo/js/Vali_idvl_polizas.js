@@ -106,7 +106,7 @@ window.onload = function() {
         }
 
 
-        nom_persona.textContent = ser+": "+ nom_perso+" "+apep_perso+" "+apem_perso;
+        nom_persona.textContent = ser+". "+ nom_perso+" "+apep_perso+" "+apem_perso;
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
@@ -132,7 +132,7 @@ window.onload = function() {
             curso=data[3]["NomCertInt"];
             servicios.textContent=tipo+": "+curso;
         }
-        nom_persona.textContent = "Emp: "+ nom_empr;
+        nom_persona.textContent = "Emp. "+ nom_empr;
         
     }
     })
@@ -362,7 +362,7 @@ const expresiones = {
     Apellidos: /^[a-zA-ZÁ-Ýá-ý\s]{1,20}$/,
 
     e_monto: /^[0-9]+(.([0-9])+)*$/,
-    Concepto: /^[a-zA-Z0-9Á-ý\s ,.-;-:_"#]{1,150}$/,
+    Concepto: /^[a-zA-Z0-9Á-ý\s ,.-;-:_"#]{1,200}$/,
 
 }
 let concept = document.getElementById("concepto");
