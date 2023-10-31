@@ -26,7 +26,7 @@ for ($i = 0; $i < count($tabla); $i++) {
 }
 
 if ( isset($_FILES['pdfs'])) {
-    $uploadDirectory = '../Comprobantes/administrativo/polizas/'; // Carpeta de destino para los PDFs
+    $uploadDirectory = '../comprobantes/administrativo/polizas/'; // Carpeta de destino para los PDFs
 
     if (!is_dir($uploadDirectory)) {
         mkdir($uploadDirectory, 0755, true);
