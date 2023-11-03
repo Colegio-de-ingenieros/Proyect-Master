@@ -43,7 +43,14 @@ if(isset($_POST["usuario"])){
         session_start();  
         $codigo = mt_rand(10000, 99999);
 
-        $_SESSION["tipo_usuario"] = "trabajador";
+        $esAdmin = $user->isSuperAdmin($usuario);
+
+        if($esAdmin){
+            $_SESSION["tipo_usuario"] = "super_administrador";
+        }else{
+            $_SESSION["tipo_usuario"] = "trabajador";
+        }
+        
         $_SESSION["email"] = $usuario;
         $_SESSION["codigo"] = $codigo;
         $_SESSION["timeout"] = time()+(60*30);
