@@ -117,7 +117,7 @@ window.onload = function() {
 
 
         nom_persona.textContent = ser+". "+ nom_perso+" "+apep_perso+" "+apem_perso;
-        tipo_poliza.textContent="Poliza de " + poliza;
+        tipo_poliza.textContent="Póliza de " + poliza;
 
     }else if (Object.keys(data[1]).length == 2){
         var nom_persona = document.getElementById("nombre_persona");
@@ -154,7 +154,7 @@ window.onload = function() {
         }
 
         nom_persona.textContent = "Emp. "+ nom_empr;
-        tipo_poliza.textContent="Poliza de " + poliza;
+        tipo_poliza.textContent="Póliza de " + poliza;
         
     }
     })
