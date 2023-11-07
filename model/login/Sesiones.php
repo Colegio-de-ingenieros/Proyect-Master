@@ -22,6 +22,24 @@ class User extends Crud_bd {
         }
     
     }
+    public function isSuperAdmin($user){
+        // si el usuario es super administrador
+        $esAdmin = false;
+        $this->conexion_bd();
+        $datos = $this->mostrar("SELECT tratipousua.IdUsua FROM trabajadores 
+                                INNER JOIN tratipousua on tratipousua.RFCT = trabajadores.RFCT 
+                                WHERE binary(trabajadores.CorreoT) = binary(:user)",[':user'=>$user]);
+        $this->cerrar_conexion();
+
+        if(count($datos) > 0){
+            if($datos[0][0] == 6){
+                $esAdmin = true;
+            }
+           
+        }
+        return $esAdmin;
+
+    }
 
     public function userExist_socio_asociado($user){
         //$md5pass = md5($pass);

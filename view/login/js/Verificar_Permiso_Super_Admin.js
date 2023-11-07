@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     event.preventDefault();
     document.body.style.display = "none";
     let formulario_data = new FormData();
-    formulario_data.append("acceso_a", "trabajador");
+    formulario_data.append("acceso_a", "super_administrador");
     fetch("../../controller/login/Verificar_Sesion.php",
         {
             method: "POST",
@@ -21,3 +21,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
             console.error('Error:', error);
         });
 });
+
+
