@@ -327,7 +327,12 @@ $respuesta .= ' -->
 			$respuesta .= '		
     </section>
   </main>
-
+  <script>
+  window.onload = () => {
+    body = document.querySelector("body");
+    body.style.display = "";
+  };
+  </script>
 </body>
 <!-- ';
 $respuesta .= '</html>';
