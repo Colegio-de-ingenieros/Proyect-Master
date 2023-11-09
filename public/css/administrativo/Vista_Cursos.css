@@ -36,7 +36,10 @@
     
 }
 
-
+body{
+    background-color: var(--color-gray);
+    display: flex;
+}
 
 article{
     margin: 20px auto;
