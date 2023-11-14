@@ -422,9 +422,10 @@ formula.caja_correo.addEventListener('keyup', (e) => {
 	.replace(/\s/g, '')
     // Eliminar caracteres especiales
     .replace(/[^a-zA-Z0-9.\-_@\.]/g, '')
+    .replace(/[áéíóúÁÉÍÓÚñÑ]/g, '')
     // Eliminar el ultimo espaciado
     //condicional para que no inice con un numero
-    .replace(/^[0-9]/g, '')
+    .replace(/^[0-9._-]/g, '')
     //condicional para que no haya mas de un arroba
     .replace(/@{2,}/g, '@')
    .trim();
