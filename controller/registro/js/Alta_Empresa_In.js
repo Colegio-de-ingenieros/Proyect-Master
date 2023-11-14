@@ -106,6 +106,7 @@ formulario.addEventListener("submit",(e)=>{
         .then(data => {
             alert(data[0]);
             if(data[0] == "Registro exitoso. Verifique su correo y guarde el número inteligente que le ha sido enviado"){
+                eliminar_option();
                 formulario.reset();
             }
         });
@@ -179,7 +180,21 @@ function disabled_opcionales(opcion){
 }
 
 
+function eliminar_option() {
+    let select_item = document.getElementById('busqueda_colonia');
+    let options = select_item.getElementsByTagName('option');
 
+    for (var i=options.length; i--;) {
+        select_item.removeChild(options[i]);
+    }
+
+    var optionElement = document.createElement("option");
+    optionElement.value = "0";
+    optionElement.text = "Seleccione su colonia";
+    select_item.appendChild(optionElement);
+    
+    
+}
 
 
 

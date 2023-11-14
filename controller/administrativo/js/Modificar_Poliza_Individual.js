@@ -1,6 +1,7 @@
 
 const id_poliza = (new URLSearchParams(location.search)).get('id');
 const tipo_servicio = (new URLSearchParams(location.search)).get('tipo');
+const tipo_poliza = (new URLSearchParams(location.search)).get('poliza');
 
 const cerrar_modal = document.getElementById("close");
 const guardar_modal = document.getElementById("guardar_modal");
@@ -38,7 +39,7 @@ const suma_haber = document.getElementById("suma_haber");
 const nombre_realizo = document.getElementById("nombre_realizo");
 const propietario = document.getElementById("propietario");
 const servicio = document.getElementById("servicio");
-
+const nombre_tipo_poliza = document.getElementById("nombre_tipo_poliza");
 // formulario tabla
 const formulario_tabla = document.getElementById("formulario_tabla");
 
@@ -50,6 +51,8 @@ formulario_tabla.addEventListener("submit",(e)=>{
     e.preventDefault();
 });
 window.addEventListener("load",async (e)=>{
+    
+    nombre_tipo_poliza.textContent = "Póliza de " + tipo_poliza;
     let form_data = new FormData();
     form_data.append("id_info",id_poliza);
     form_data.append("servicio_tipo",tipo_servicio);

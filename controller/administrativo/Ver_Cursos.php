@@ -59,7 +59,7 @@ $respuesta .= ' -->
 
       <div class="boton-cerrar-session">
         <button class="btn-cerrar-session btn" onclick="window.location.href = \'../../controller/login/Logout.php \'">Cerrar sesión</button>
-        <a href="Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
+        <a href="../../view/administrativo/Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
       </div>
     </div>
 
@@ -327,7 +327,12 @@ $respuesta .= ' -->
 			$respuesta .= '		
     </section>
   </main>
-
+  <script>
+  window.onload = () => {
+    body = document.querySelector("body");
+    body.style.display = "";
+  };
+  </script>
 </body>
 <!-- ';
 $respuesta .= '</html>';

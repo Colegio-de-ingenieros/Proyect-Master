@@ -16,53 +16,54 @@ $datose = $objeto->empresa($usuario);
 //$datosCert = $objeto->certificaciones($usuario);
 $datosTipo = $objeto->tipo($usuario);
 $nom=$datosTipo[0]["SerPol"];
+$tipoPoliza=$objeto->tipo_poliza($usuario);
 
 
 
 if ($datosp != null) {
     if ($nom=="Membresía"){
-        $info = array_merge($datos,$datosp,$datosTipo);
+        $info = array_merge($datos,$datosp,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Headhunter"){
-        $info = array_merge($datos,$datosp,$datosTipo);
+        $info = array_merge($datos,$datosp,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Consultoría"){
-        $info = array_merge($datos,$datosp,$datosTipo);
+        $info = array_merge($datos,$datosp,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Curso"){
         $datosCur = $objeto->cursos($usuario);
         if($datosCur!=null){
-            $info = array_merge($datos,$datosp,$datosTipo,$datosCur);
+            $info = array_merge($datos,$datosp,$tipoPoliza,$datosTipo,$datosCur);
         }
     }
     else if ($nom=="Certificación"){
         $datosCert = $objeto->certificaciones($usuario);
         if($datosCert!=null){
-            $info = array_merge($datos,$datosp,$datosTipo,$datosCert);
+            $info = array_merge($datos,$datosp,$tipoPoliza,$datosTipo,$datosCert);
         }
        
     }
 }
 else if ($datose != null) {
     if ($nom=="Membresía"){
-        $info = array_merge($datos,$datose,$datosTipo);
+        $info = array_merge($datos,$datose,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Headhunter"){
-        $info = array_merge($datos,$datose,$datosTipo);
+        $info = array_merge($datos,$datose,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Consultoría"){
-        $info = array_merge($datos,$datose,$datosTipo);
+        $info = array_merge($datos,$datose,$tipoPoliza,$datosTipo);
     }
     else if ($nom=="Curso"){
         $datosCur = $objeto->cursos($usuario);
         if($datosCur!=null){
-            $info = array_merge($datos,$datose,$datosTipo,$datosCur);
+            $info = array_merge($datos,$datose,$tipoPoliza,$datosTipo,$datosCur);
         }
     }
     else if ($nom=="Certificación"){
         $datosCert = $objeto->certificaciones($usuario);
         if($datosCert!=null){
-            $info = array_merge($datos,$datose,$datosTipo,$datosCert);
+            $info = array_merge($datos,$datose,$tipoPoliza,$datosTipo,$datosCert);
         }
        
     }

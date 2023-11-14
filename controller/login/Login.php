@@ -16,8 +16,9 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
             $respuesta = [1,"../../view/socio-asociado/Menu_Socio.html"];
         }else if($tipo_usuario == "trabajador"){
             $respuesta = [1,"../../view/administrativo/Menu_Administrativo.html"];
+        }else if($tipo_usuario == "super_administrador"){
+            $respuesta = [1,"../../view/administrativo/Informacion2.html"];
         }
-
     }
 
 }else{
@@ -66,17 +67,26 @@ if(isset($_SESSION["token"]) && isset($_COOKIE["token"])){
             }
     
         }else if($user->userExist_trabajadores($usuario)){
-    
+
+            $esAdmin = $user->isSuperAdmin($usuario);
+            
             if($user->isPasswordCorrect_trabajadores($usuario,$password)){
                 
                 $token = sha1(uniqid(rand(),true));
                 $_SESSION["token"] = $token;
-                $_SESSION["tipo_usuario"] = "trabajador";
+
                 $_SESSION["usuario"] = $usuario;
                 
                 setcookie("token",$token,time()+(60*60*8),"/");
-                
-                $respuesta = [1,"../../view/administrativo/Menu_Administrativo.html"];
+
+                if($esAdmin){
+                    $_SESSION["tipo_usuario"] = "super_administrador";
+                    $respuesta = [1,"../../view/administrativo/Informacion2.html"];
+                }else{
+                    $_SESSION["tipo_usuario"] = "trabajador";
+                    $respuesta = [1,"../../view/administrativo/Menu_Administrativo.html"];
+                }
+
             }else{
                 $respuesta = [0,"Contraseña incorrecta"];
             }

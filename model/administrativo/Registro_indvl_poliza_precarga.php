@@ -75,6 +75,14 @@ class Precarga{
         $resultados = $this->base->mostrar($querry, $parametros);
         return $resultados;
     }
+
+    function tipo_poliza($id){
+        $querry = "SELECT tipopol.NombrePol FROM tipogralpol, tipopol WHERE 
+        tipogralpol.IdPolGral=:id and tipogralpol.IdTipoPol=tipopol.IdTipoPol";
+        $parametros = [":id"=>$id];
+        $resultados = $this->base->mostrar($querry, $parametros);
+        return $resultados;
+    }
 }
 
 ?>

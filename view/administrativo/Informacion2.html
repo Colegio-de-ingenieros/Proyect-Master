@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <script src="../../view/login/js/Verificar_Permiso_Trabajador.js" defer></script>
+  <script src="../../view/login/js/Verificar_Permiso_Super_Admin.js" defer></script>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro de pólizas</title>
+  <title>Información del sistema</title>
   <script src="https://kit.fontawesome.com/f8c41f1595.js" crossorigin="anonymous"></script>
+  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
   <link rel="stylesheet" href="../../public/css/style.css">
   <link rel="stylesheet" href="../../public/css/administrativo/plantilla_admin.css">
-  <link rel="stylesheet" href="../../public/css/administrativo/Vista_Polizas.css">
-  <link rel="icon" href="../../public/img/ciscig-notch.png" sizes="32x32">
+  <link rel="stylesheet" href="../../public/css/administrativo/informacion.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 </head>
@@ -22,13 +22,14 @@
 
         <div class="nombre_ventana">
           <img class="logo_ciscig" src="../../public/img/LOGO_CISCIG-white.png" width="10px" alt="">
-          <h1 class="nombre_Ventana">Pólizas</h1>
+          <h1 class="nombre_Ventana">Información del sistema</h1>
         </div>
 
       </div>
 
       <div class="boton-cerrar-session">
-        <button class="btn-cerrar-session btn" onclick="window.location.href = '../../controller/login/Logout.php ' ">Cerrar sesión</button>
+        <button class="btn-cerrar-session btn"
+          onclick="window.location.href = '../../controller/login/Logout.php' ">Cerrar sesión</button>
         <a href="Informacion.html" class="info"><i class="ti ti-info-circle-filled"></i></a>
       </div>
     </div>
@@ -37,6 +38,7 @@
     <div class="container_menu">
       <div class="menu">
         <input type="checkbox" id="check__menu">
+
         <label id="label__check" for="check__menu">
           <i class="fa-sharp fa-solid fa-bars icon__menu"></i>
         </label>
@@ -50,7 +52,7 @@
               </a>
 
               <ul>
-                <li><a id="menuProducto1" href="../../view/administrativo/Vista_Usuarios.html">Mostrar</a></li>
+                <li><a id="menuProducto1" href="../administrativo/Vista_Usuarios.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -85,8 +87,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="../administrativo/Reg_Cursos.html">Registrar</a></li>
-                <li><a id="menuSucursal2" href="../administrativo/Vista_Cursos.html">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Cursos.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Cursos.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -109,8 +111,8 @@
               </a>
 
               <ul>
-								<li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
-								<li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Instructor.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Instructor.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -133,8 +135,8 @@
               </a>
 
               <ul>
-                <li><a id="menuSucursal1" href="#">Registrar</a></li>
-                <li><a id="menuSucursal2" href="#">Mostrar</a></li>
+                <li><a id="menuSucursal1" href="../../view/administrativo/Reg_Polizas_General.html">Registrar</a></li>
+                <li><a id="menuSucursal2" href="../../view/administrativo/Vista_Polizas.html">Mostrar</a></li>
               </ul>
             </li>
 
@@ -149,6 +151,8 @@
                 <li><a id="menuSucursal2" href="../../view/administrativo/Vista_ReporteGral.html">General</a></li>
               </ul>
             </li>
+
+
 
             <li>
               <a href="#">
@@ -171,7 +175,6 @@
                 <li><a id="menuSucursal1" href="../../view/administrativo/Vista_OfertasAdmin.html">Ofertas</a></li>
               </ul>
             </li>
-
           </ul>
         </nav>
       </div>
@@ -180,109 +183,33 @@
 
   <main>
     <section class="section-main">
-        <div class="cabezera">
-            <h4 class="h4">Registro general</h4>
-          </div>
-          <br>
-          <p class="subtitulo-1"> Tipo de póliza</p>
-          <hr>
-        </div>
+      <article class="info">
+        <h1 class="h4">Acerca de</h1>
+        <hr>
+        <p class="label-3">Sistema desarrollado por la Fábrica de Software del TecNM: Zacatecas Sur</p>
+        <p class="label-3">Versión 1.0.0</p>
+      </article>
 
-        <form class="formulario-de-datos" id="formulario">
-            <div class="grupo-input-vista">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_cursos" value="curso">
-                Ingreso
-            </div>
-
-            <div class="grupo-input">
-                <input type="radio" class="radio-button-format" placeholder="Radio" name="radio" id="radio_proyecto"
-                value="proyecto">
-                Egreso
-            </div>
-
-            <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Usuario</p>
-                <hr>
-            </div>
-
-            <div class="grupo-input4">
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Tipo</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Nombre</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-            </div>
-
-            <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Servicio</p>
-                <hr>
-            </div>
-
-            <div class="grupo-input4">
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Tipo</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Nombre</p>
-                    </div>
-
-                    <select type="text" class="input-format-2"  id="accion" name="accion">
-                    </select>
-                </div>
-            </div>
-
-            <div class="grupo-input3">
-                <br>
-                <p class="subtitulo-1">Información adicional</p>
-                <hr>
-            </div>
-
-            <div class="grupo-input2">
-                <div class="input-form">
-                    <div class="label-form">
-                        <p class="label-2">Concepto general</p>
-                    </div>
-
-                    <div class="input-form">
-                        <textarea type="text" name="obj_proyecto" id="obj_proyecto" class="input-textarea"
-                          placeholder="Ingrese el concepto general" required
-                          title="El objetivo solo puede contener letras mayúsculas, minúsculas, comas y puntos."></textarea>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="grupo-boton-reg">
-                <div class="boton_registrar">
-                  <button type="submit" name="registrar" id="registrar" class="btn-medium btn">Registrar</button>
-                </div>
-            </div>
-
-        </form>
-
-        
-
-    </section>
+      <article>
+        <h1 class="h4">Manuales de operación</h1>
+        <hr>
+        <a href="#">Link del manual</a>
+      </article>
+      <form class="formulario-de-datos" id="formularioBD">
+      <article class="respaldo">
+        <h1 class="h4">Respaldo y seguridad</h1>
+        <hr>
+        <p class="label-3">Proceso de importación</p>
+        <input type="file" name="importa_bd" id="importa_bd" class="input-format-2"  accept=".sql" required>
+        <button type="submit" name="importar" id="importar" class="btn btn-medium"  >Importar</button>
+        <p class="label-3 separador">Proceso de exportación</p>
+        <button  type="button" name="exportar" id="exportar" class="btn btn-medium" >Exportar</button>
+              
+      </article>
+    </form>
+    </section>    
   </main>
+  <script src="../administrativo/js/Vali_SQL.js"></script>
+  <script src="../../controller/respaldos/js/RespaldoBD.js"></script>
 </body>
+</html>
